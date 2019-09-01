@@ -1,0 +1,9 @@
+// default colors
+.theme-wrapper {
+  --cardColor: rgb(131, 36, 36);
+}
+
+// pass variables into a sass map
+$variables: (
+  --cardColor: var(--cardColor)
+);

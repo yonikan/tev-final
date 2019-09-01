@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~normalize.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'styles/player-maker-theme.scss';
+@import 'styles/variables';
+@import 'styles/theme';
+@import 'styles/functions';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
