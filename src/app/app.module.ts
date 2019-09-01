@@ -12,6 +12,8 @@ import { MaterialModule } from './shared/material.module';
 
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './core/error/error.component';
+import { AuthInterceptor } from './core/auth/auth-interceptor';
+import { ErrorInterceptor } from './core/error/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import { ErrorComponent } from './core/error/error.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   entryComponents: [ErrorComponent],
   bootstrap: [AppComponent]
 })
