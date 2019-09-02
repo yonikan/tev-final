@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 import { LayoutModule } from './layout/layout.module';
 
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './core/error/error.component';
 import { AuthInterceptor } from './core/auth/auth-interceptor';
 import { ErrorInterceptor } from './core/error/error-interceptor';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ErrorInterceptor } from './core/error/error-interceptor';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ContentLoaderModule,
+    CoreModule,
     LayoutModule,
   ],
   providers: [
