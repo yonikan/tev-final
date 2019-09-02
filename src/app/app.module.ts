@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
+import { LayoutModule } from './layout/layout.module';
 
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './core/error/error.component';
@@ -28,6 +29,7 @@ import { ErrorInterceptor } from './core/error/error-interceptor';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    LayoutModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
