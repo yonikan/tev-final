@@ -8,7 +8,7 @@
       display: flex;
       justify-content: space-between;
 
-      .left {
+      .toolbar-left {
       }
 
       .logo {
@@ -17,7 +17,17 @@
         }
       }
 
-      .right {
+      .toolbar-right {
+
+        .actions {
+
+          .username {
+            @media (max-width: $media-query-xs) {
+              display: none;
+            }
+          }
+
+        }
       }
     }
   }

@@ -1,8 +1,35 @@
+@import '../styles/variables';
 
-.app-container {
-    // background-color: #e8e8e8;
-
-    .page-container {
-
+:host { 
+  mat-sidenav-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(230, 230, 230);
+  
+    .sidenav {
+      width: 250px;
+      background: rgb(177, 177, 177);
     }
+  
+    mat-sidenav-content {
+
+      .app-container {
+        width: 100%;
+        margin: 0 auto;
+  
+        @media (max-width: $media-query-xs) {
+          flex-direction: column;
+          width: 100%;
+        }
+        
+        .page-container {
+          margin-top: $header-height;
+      
+          @media (max-width: $media-query-xs) {
+            
+          }
+        }
+      }
+    }
+  }
 }

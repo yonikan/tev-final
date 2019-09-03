@@ -1,9 +1,15 @@
-<div class="app-container">
-  
-    <app-header></app-header>
-  
-    <main class="page-container">
-      <router-outlet> </router-outlet>
-    </main>
+<mat-sidenav-container >
+  <mat-sidenav #sidenav role="navigation" class="sidenav">
+    test1
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="app-container">
+      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
     
-</div>
+      <main class="page-container">
+        <router-outlet> </router-outlet>
+      </main>
+   </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
