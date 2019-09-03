@@ -7,9 +7,14 @@ $pm-app-typography: mat-typography-config(
 @include mat-core($pm-app-typography);
 // @include mat-core();
 
-$pm-app-primary: mat-palette($mat-deep-purple, 300);
+$pm-app-primary: mat-palette($mat-pink, A200, A100, A400);
+// $pm-app-primary: mat-palette($mat-deep-purple, 300);
+
 $pm-app-accent: mat-palette($mat-teal, 300);
+// $pm-app-accent: mat-palette($mat-pink, A200, A100, A400);
+
 $pm-app-warn: mat-palette($mat-deep-orange);
+
 $pm-app-theme: mat-light-theme($pm-app-primary, $pm-app-accent, $pm-app-warn);
 @include angular-material-theme($pm-app-theme);
 

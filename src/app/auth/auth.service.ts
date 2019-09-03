@@ -53,5 +53,10 @@ export class AuthService {
     );
   }
 
-  logout() {}
+  logout() {
+    this.token = null;
+    this.isAuthenticated = false;
+    this.router.navigate(['login']);
+    this.uiService.showSnackbar('You have just logged out!', null, 2000);
+  }
 }

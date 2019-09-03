@@ -14,10 +14,10 @@ import { LayoutModule } from './layout/layout.module';
 
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './core/error/error.component';
-import { AuthInterceptor } from './core/auth/auth-interceptor';
 import { ErrorInterceptor } from './core/error/error-interceptor';
 import { CoreModule } from './core/core.module';
-import { AuthModule } from './core/auth/auth.module';
+import { AuthModule } from './auth/auth.module';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
