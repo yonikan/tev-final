@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/auth/auth.guard';
-import { LoginComponent } from './core/login/login.component';
-import { CoreModule } from './core/core.module';
-// import { TeamsComponent } from './core/teams/teams.component';
+import { TeamsComponent } from './core/teams/teams.component';
+import { LoginComponent } from './core/auth/login/login.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  // { path: 'teams', component: TeamsComponent, canActivate: [AuthGuard] },
+  { path: 'teams', component: TeamsComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   // { path: '**', component: PageNotFoundComponent }
 ];

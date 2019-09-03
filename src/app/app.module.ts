@@ -17,6 +17,7 @@ import { ErrorComponent } from './core/error/error.component';
 import { AuthInterceptor } from './core/auth/auth-interceptor';
 import { ErrorInterceptor } from './core/error/error-interceptor';
 import { CoreModule } from './core/core.module';
+import { AuthModule } from './core/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CoreModule } from './core/core.module';
     ContentLoaderModule,
     CoreModule,
     LayoutModule,
+    AuthModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

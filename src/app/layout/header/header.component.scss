@@ -2,7 +2,9 @@
 
 :host {
   .toolbar {
+    box-shadow: 0 5px 5px -5px #333;
     background-color: #fff;
+    z-index: 100;
 
     mat-toolbar-row {
       display: flex;
@@ -18,15 +20,36 @@
       }
 
       .toolbar-right {
-
         .actions {
 
-          .username {
-            @media (max-width: $media-query-xs) {
-              display: none;
+          .user-button {
+            // display: flex;
+
+            .user-avatar {
+              border-radius: 50px;
+              height: 30px;
+              width: 30px;
+              object-fit: cover;
+              margin-right: 10px;
+            }
+  
+            .username {
+              // display: flex;
+              
+  
+              @media (max-width: $media-query-xs) {
+                display: none;
+              }
+  
+              .user {
+  
+              }
+  
+              .icon {
+                // padding-top:20px;
+              }
             }
           }
-
         }
       }
     }

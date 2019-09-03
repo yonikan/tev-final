@@ -4,19 +4,21 @@ import { Router } from '@angular/router';
 
 import { AuthData } from './auth-data.model';
 import { LocalStorageServiceService } from 'src/app/shared/local-storage-service.service';
+import { UIService } from 'src/app/shared/ui.service';
 const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login';
 
 @Injectable({
    providedIn: 'root' 
 })
 export class AuthService {
-  private token: string;
+  private token: string = 'barb441led1b58e2T91e4T4735T84eaT741534ec0c9eoked1b58e2T91e4T4735T84eaT741534ec0c9e'; // temp
   private isAuthenticated = false;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private localStorageService: LocalStorageServiceService
+    private localStorageService: LocalStorageServiceService,
+    private uiService: UIService
   ) {}
 
   getToken() {
@@ -39,6 +41,9 @@ export class AuthService {
         if (token) {
           console.log('success!!!');
           this.localStorageService.storeOnLocalStorage(token);
+          this.isAuthenticated = true;
+          this.router.navigate(['/teams']);
+          this.uiService.showSnackbar('User is logged in!', null, 2000);
         }
       },
       error => {

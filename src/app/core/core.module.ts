@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TeamsComponent } from './teams/teams.component';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [TeamsComponent, LoginComponent],
+  declarations: [TeamsComponent],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule
   ],
-  exports: [TeamsComponent, LoginComponent]
+  exports: [TeamsComponent]
 })
 export class CoreModule { }

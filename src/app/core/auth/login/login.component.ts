@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,15 +13,15 @@ export class LoginComponent implements OnInit {
   username = null;
   password = null;
 
-  constructor() {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
       usernameText: new FormControl(this.username, {
-        validators: [Validators.required, Validators.minLength(5)]
+        validators: [Validators.required, Validators.minLength(3)]
       }),
       passwordText: new FormControl(this.password, {
-        validators: [Validators.required, Validators.minLength(5)]
+        validators: [Validators.required, Validators.minLength(3)]
       })
     });
   }
@@ -29,5 +31,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.isLoading = true;
+    this.authService.login(this.form.value.usernameText, this.form.value.passwordText);
   }
 }
