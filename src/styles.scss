@@ -17,6 +17,18 @@ body {
   background-color: #e8e8e8;
 }
 
+a {
+  color: $color-pink;
+  
+  &:hover {
+    color: black;
+  }
+
+  &:visited {
+    color: black;
+  }
+}
+
 ::selection {
-  color: #333;
+  color: $color-pink;
 }

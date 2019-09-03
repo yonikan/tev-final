@@ -1,1 +1,49 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="header">
+      <div class="logo">
+          <img src="https://playermaker.com/wp-content/themes/playermaker/assets/images/Logo.svg" />
+      </div>
+  </div>
+
+  <div class="content">
+      <div class="login-head">
+          <h3>LOG IN</h3>
+      </div>
+  
+      <div class="form-container">
+          <mat-spinner *ngIf="isLoading"></mat-spinner>
+        
+          <form [formGroup]="form" (submit)="onLogin()" *ngIf="!isLoading" class="">
+            <mat-form-field appearance="outline">
+              <mat-label>USER NAME</mat-label>
+              <input matInput type="text" formControlName="usernameText">
+              <mat-error *ngIf="form.get('usernameText').invalid">Invalid username or email</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>PASSWORD</mat-label>
+              <input matInput type="password" formControlName="passwordText">
+              <mat-error *ngIf="form.get('passwordText').invalid">Incorrect password.</mat-error>
+            </mat-form-field>
+        
+            <button class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button color="accent">LOG IN</button>
+          </form>
+      </div>
+      <div class="keep-me-logged-checkbox">
+          <mat-checkbox>Keep Me Logged In</mat-checkbox>
+      </div>
+      <div class="forget-pass">
+          <a href="#" target="_blank">Forget Password?</a>
+      </div>
+  </div>
+
+  <div class="footer">
+      <div class="login-bottom">
+          <div class="copyrights">All rights reservrd</div>
+          <div class="privacy">
+              <span><a href="https://playermaker-public.s3.eu-west-2.amazonaws.com/site/PM-Privacy-Policy.pdf" target="_self">Privecy Policy</a></span> | 
+              <span><a href="https://playermaker-public.s3.eu-west-2.amazonaws.com/site/PM-Terms.pdf" target="_self">Terms of use</a></span>
+          </div>
+      </div>
+  </div>
+</div>
