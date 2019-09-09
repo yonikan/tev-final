@@ -10,7 +10,7 @@
   padding: 35px;
   text-align: center;
   background-color: #c5c5c5;
-  box-shadow: 5px 0 5px -5px #333;
+  // box-shadow: 5px 0 5px -5px #333;
 
   @media (max-width: $media-query-xs) {
     width: 80%;
@@ -28,6 +28,7 @@
   }
   
   .content {
+    // width: 96%;
 
     .login-head {
       h3 {
@@ -37,17 +38,31 @@
     }
   
     .form-container {
-      mat-form-field {
-        width: 100%;
-      }
-    
-      mat-spinner {
-        margin: auto;
-      }
-    
-      .login-button {
-        width: 100%;
-        margin-top: 8px;
+
+      .login-card {
+        width: 90%;
+        // height: 350px;
+        height: 220px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: $media-query-xs) {
+          width: 300px;
+        }
+
+        mat-form-field {
+          width: 100%;
+        }
+      
+        mat-spinner {
+          margin: auto;
+        }
+      
+        .login-button {
+          width: 100%;
+          margin-top: 8px;
+        }
       }
     }
 
@@ -57,18 +72,24 @@
     }
 
     .forget-pass {
-      margin-bottom: 100px;
+      margin-top: 20px;
+      margin-bottom: 80px;
     }
   }
   
   .footer {
     // position: absolute;
-    position: fixed;
-    bottom: 0;
+    // position: fixed;
+    // bottom: 0;
     padding-bottom: 30px;
 
     .login-bottom {
       text-align: center;
+
+      .app-version {
+        font-size: 12px;
+        margin-bottom: 12px;
+      }
   
       .copyrights {
         font-size: 14px;

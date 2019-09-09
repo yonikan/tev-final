@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-error',
@@ -7,7 +7,14 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./error.component.scss']
 })
 export class ErrorComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { message: string }) {}
+  constructor(
+    public dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA) public data: { message: string }
+  ) {}
 
   ngOnInit() {}
+
+  onSubmit(): void {
+    this.dialogRef.close();
+  }
 }

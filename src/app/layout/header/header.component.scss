@@ -2,9 +2,13 @@
 
 :host {
   .toolbar {
-    box-shadow: 0 5px 5px -5px #333;
+    // box-shadow: 0 5px 5px -5px #333;
     background-color: #fff;
     z-index: 100;
+
+    // button {
+    //   padding: 0;
+    // }
 
     mat-toolbar-row {
       display: flex;
@@ -24,13 +28,16 @@
 
           .user-button {
             // display: flex;
+            padding: 0;
+            
 
             .user-avatar {
               border-radius: 50px;
               height: 30px;
               width: 30px;
               object-fit: cover;
-              margin-right: 10px;
+              // margin-right: 10px;
+              margin: 0 auto;
             }
   
             .username {

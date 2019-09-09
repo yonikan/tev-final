@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
         this.dialog.open(ErrorComponent, {
           width: '500px',
-          height: '250px',
+          height: '200px',
           data: { message: errorMessage }
         });
         return throwError(error);
