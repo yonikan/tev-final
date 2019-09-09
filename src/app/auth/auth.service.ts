@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../shared/local-storage-service.service';
 
 import { AuthData } from './auth-data.model';
-import { LocalStorageServiceService } from 'src/app/shared/local-storage-service.service';
 import { UIService } from 'src/app/shared/ui.service';
+import { BehaviorSubject } from 'rxjs';
 const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login';
 
 @Injectable({
@@ -12,12 +13,14 @@ const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login
 })
 export class AuthService {
   private token = null;
+  private tokenTimer: any;
   private isAuthenticated = false;
+  private authStatusListener = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private localStorageService: LocalStorageServiceService,
+    private localStorageService: LocalStorageService,
     private uiService: UIService
   ) {}
 
@@ -29,7 +32,9 @@ export class AuthService {
     return this.isAuthenticated;
   }
 
-  getAuthStatusListener() {}
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
 
   login(username: string, password: string) {
     this.setServerToAccess(username);
@@ -39,18 +44,18 @@ export class AuthService {
         const token = response.token;
         this.token = token;
         if (token) {
-          console.log('success!!!');
-          this.localStorageService.storeOnLocalStorage(token);
+          this.localStorageService.storeOnLocalStorage('token', token);
+          const expiresInDuration = 60 * 60; // in seconds
+          this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
+          this.authStatusListener.next(true);
           this.router.navigate(['/teams']);
           this.uiService.showSnackbar('User is logged in!', null, 2000);
-          // return true; // for the login page indication if succeeded.
         }
       },
       error => {
-        console.log('error: ', error);
         this.isAuthenticated = false;
-        // return false;
+        this.authStatusListener.next(false);
       }
     );
   }
@@ -58,13 +63,25 @@ export class AuthService {
   logout() {
     this.token = null;
     this.isAuthenticated = false;
+    this.authStatusListener.next(false);
+    clearTimeout(this.tokenTimer);
     this.router.navigate(['login']);
     this.uiService.showSnackbar('You have just logged out!', null, 2000);
   }
 
+  private setAuthTimer(duration: number) {
+    this.tokenTimer = setTimeout(() => {
+      this.logout();
+    }, duration * 1000);
+
+    // setTimeout(() => {
+    //   this.logout();
+    // }, duration * 1000);
+  }
+
   setServerToAccess(username) {
     if (username.startsWith('$$')) { // Stage
-      console.log('STAGE');
+      // console.log('STAGE');
       if (window.location.hostname.includes('cn')) {
 
       } else {
@@ -72,7 +89,7 @@ export class AuthService {
       }
       username = username.substr(2)         
     } else if (username.startsWith('@@')) { // DEV
-      console.log('DEV');
+      // console.log('DEV');
       if (window.location.hostname.includes('cn')) {
 
       } else {
@@ -80,7 +97,7 @@ export class AuthService {
       }
       username = username.substr(2)
     } else { // PROD
-      console.log('PROD');
+      // console.log('PROD');
       if (window.location.hostname.includes('cn')) {
 
       } else {

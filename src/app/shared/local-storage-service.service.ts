@@ -4,11 +4,14 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 @Injectable({
   providedIn: 'root'
 })
-export class LocalStorageServiceService {
+export class LocalStorageService {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {}
 
-  public storeOnLocalStorage(value: string): void {
-
+  public storeOnLocalStorage(key: string, value: string): void {
+    let storageKey = key;
+    let currentToken = this.storage.get(storageKey) || '';
+    currentToken = value;
+    this.storage.set(storageKey, currentToken);
   }
 }
