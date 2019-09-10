@@ -55,7 +55,7 @@ export class AuthService {
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
-          this.router.navigate(['/teams']);
+          this.router.navigate(['/overview']);
           this.uiService.showSnackbar('User is logged in!', null, 2000);
         }
       },

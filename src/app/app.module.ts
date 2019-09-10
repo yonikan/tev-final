@@ -18,11 +18,13 @@ import { ErrorInterceptor } from './core/error/error-interceptor';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent
+    ErrorComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
