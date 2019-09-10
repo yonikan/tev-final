@@ -24,6 +24,9 @@
 
       .toolbar-right {
         .actions {
+          display: flex;
+          flex-direction: row-reverse;
+
           .user-button-container {
             .user-button {
               height: 100%;
@@ -54,6 +57,18 @@
                   display: none;
                 }
               }
+            }
+          }
+
+          .actions-divider {
+            @media (max-width: $media-query-xs) {
+              display: none;
+            }
+          }
+
+          .help-button {
+            @media (max-width: $media-query-xs) {
+              display: none;
             }
           }
         }
