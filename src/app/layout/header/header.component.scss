@@ -2,13 +2,9 @@
 
 :host {
   .toolbar {
-    // box-shadow: 0 5px 5px -5px #333;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     background-color: #fff;
-    z-index: 100;
-
-    // button {
-    //   padding: 0;
-    // }
+    z-index: 20;
 
     mat-toolbar-row {
       display: flex;
@@ -26,37 +22,82 @@
       .toolbar-right {
         .actions {
 
-          .user-button {
-            // display: flex;
-            padding: 0;
-            
+          .user-button-container {
 
-            .user-avatar {
-              border-radius: 50px;
-              height: 30px;
-              width: 30px;
-              object-fit: cover;
-              // margin-right: 10px;
-              margin: 0 auto;
-            }
+            .user-button {
+              padding: 0;
   
-            .username {
-              // display: flex;
-              
-  
-              @media (max-width: $media-query-xs) {
-                display: none;
+              .user-avatar {
+                border-radius: 50px;
+                height: 30px;
+                width: 30px;
+                object-fit: cover;
+                margin: 0 auto;
               }
-  
-              .user {
-  
-              }
-  
-              .icon {
-                // padding-top:20px;
+    
+              .username {
+    
+                @media (max-width: $media-query-xs) {
+                  display: none;
+                }
+    
+                .user {
+    
+                }
+    
+                .icon {
+                }
               }
             }
           }
+
+
+          .user-button-container2 {
+
+            @media (max-width: $media-query-xs) {
+              display: none;
+            }
+    
+            .user-button {
+              height: 100%;
+              min-width: 72px;
+        
+              .avatar {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+              }
+          
+              .name {
+                margin: 0 8px 0 10px;
+        
+                @media (max-width: $media-query-xs) {
+                  display: none;
+                }
+              }
+          
+              .icon {
+                width: 16px;
+                height: 16px;
+                font-size: 16px;
+                transform: rotate(0);
+                transition: transform .25s cubic-bezier(.25,.8,.25,1);
+        
+                @media (max-width: $media-query-xs) {
+                  display: none;
+                }
+              }
+        
+              &.open {
+                background: rgba(0, 0, 0, .05);
+          
+                .icon {
+                  transform: rotate(-180deg);
+                }
+              }
+            }
+          }
+
         }
       }
     }

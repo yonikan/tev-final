@@ -6,9 +6,9 @@ import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'teams', component: TeamsComponent },
+  { path: 'teams', component: TeamsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({
