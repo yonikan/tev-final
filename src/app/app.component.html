@@ -1,6 +1,6 @@
 <mat-sidenav-container >
   <mat-sidenav #sidenav role="navigation" class="sidenav">
-    test1
+    <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
 
   <mat-sidenav #quickpanel position="end" mode="over" class="quickpanel">

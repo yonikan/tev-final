@@ -1,6 +1,7 @@
 @import '../../../styles/variables';
 
 :host {
+
   .toolbar {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     background-color: #fff;
@@ -10,7 +11,9 @@
       display: flex;
       justify-content: space-between;
 
-      .toolbar-left {
+      .mat-button {
+        min-width: 14px;
+        padding: 0 10px;
       }
 
       .logo {
@@ -21,47 +24,11 @@
 
       .toolbar-right {
         .actions {
-
           .user-button-container {
-
-            .user-button {
-              padding: 0;
-  
-              .user-avatar {
-                border-radius: 50px;
-                height: 30px;
-                width: 30px;
-                object-fit: cover;
-                margin: 0 auto;
-              }
-    
-              .username {
-    
-                @media (max-width: $media-query-xs) {
-                  display: none;
-                }
-    
-                .user {
-    
-                }
-    
-                .icon {
-                }
-              }
-            }
-          }
-
-
-          .user-button-container2 {
-
-            @media (max-width: $media-query-xs) {
-              display: none;
-            }
-    
             .user-button {
               height: 100%;
-              min-width: 72px;
-        
+              // min-width: 72px;
+
               .avatar {
                 width: 30px;
                 height: 30px;
@@ -87,17 +54,8 @@
                   display: none;
                 }
               }
-        
-              &.open {
-                background: rgba(0, 0, 0, .05);
-          
-                .icon {
-                  transform: rotate(-180deg);
-                }
-              }
             }
           }
-
         }
       }
     }

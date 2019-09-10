@@ -13,6 +13,7 @@ const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login
 })
 export class AuthService {
   private token = null;
+  private appStore = {};
   private tokenTimer: any;
   private isAuthenticated = false;
   private authStatusListener = new BehaviorSubject<boolean>(false);
@@ -28,6 +29,10 @@ export class AuthService {
     return this.token;
   }
 
+  getAppStore() {
+    return this.appStore;
+  }
+
   getIsAuth() {
     return this.isAuthenticated;
   }
@@ -41,10 +46,11 @@ export class AuthService {
     const authData: AuthData = { username, password };
     this.http.post<any>(BACKEND_URL, authData).subscribe(
       response => {
-        const token = response.token;
-        this.token = token;
-        if (token) {
-          this.localStorageService.storeOnLocalStorage('token', token);
+        const loginData = response;
+        if (response.token) {
+          this.token = response.token;
+          this.appStore = response;
+          this.localStorageService.storeOnLocalStorage('login_data', loginData);
           const expiresInDuration = 60 * 60; // in seconds
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;

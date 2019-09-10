@@ -9,9 +9,13 @@ export class LocalStorageService {
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {}
 
   public storeOnLocalStorage(key: string, value: string): void {
-    let storageKey = key;
+    const storageKey = key;
     let currentToken = this.storage.get(storageKey) || '';
     currentToken = value;
     this.storage.set(storageKey, currentToken);
+  }
+
+  public getOnLocalStorage(key: string): any {
+    return this.storage.get(key) || '';
   }
 }

@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '~@angular/material/theming';
 
 .login-container {
   display: flex;
@@ -10,7 +11,7 @@
   padding: 35px;
   text-align: center;
   background-color: #c5c5c5;
-  // box-shadow: 5px 0 5px -5px #333;
+  @include mat-elevation(2);
 
   @media (max-width: $media-query-xs) {
     width: 80%;
@@ -109,9 +110,9 @@
      background-color: white;
      border-radius: 0; 
   }
-  mat-form-field {
-     .mat-hint, input, ::placeholder, .mat-form-field-label {
-      // background-color: white;
-    }
-  }
+  // mat-form-field {
+  //    .mat-hint, input, ::placeholder, .mat-form-field-label {
+  //     // background-color: white;
+  //   }
+  // }
 }
