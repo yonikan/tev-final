@@ -1,46 +1,57 @@
 <mat-nav-list >
-    <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
-      <mat-icon>home</mat-icon>
-      <span class="nav-caption">Team Overview</span>
-    </a>
+    <div class="navigation-wrapper">
+        <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
+          <mat-icon>home</mat-icon>
+          <span class="nav-caption">Team Overview</span>
+        </a>
+    
+        <mat-divider></mat-divider>
+    
+        <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
+          <mat-icon>dashboard</mat-icon>
+          <span class="nav-caption">Training</span>
+          <span matBadge="3" matBadgeOverlap="false"></span>
+        </a>
+        
+        <mat-divider></mat-divider>
+        
+        <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
+          <mat-icon>dashboard</mat-icon>
+          <span class="nav-caption">Matches</span>
+          <span matBadge="3" matBadgeOverlap="false"></span>
+        </a>
+        
+        <mat-divider></mat-divider>
+        
+        <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
+          <mat-icon>dashboard</mat-icon>
+          <span class="nav-caption">Players</span>
+        </a>
+        
+        <mat-divider></mat-divider>
+        
+        <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
+          <mat-icon>dashboard</mat-icon>
+          <span class="nav-caption">Notes</span>
+          <span matBadge="3" matBadgeOverlap="false"></span>
+        </a>
+    
+        <mat-divider></mat-divider>
+    
+        <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
+          <mat-icon>dashboard</mat-icon>
+          <span class="nav-caption">Reports</span>
+        </a>
+    
+        <mat-divider></mat-divider>
+    </div>
 
-    <mat-divider></mat-divider>
+    <div class="configuration-wrapper">
+        <mat-divider></mat-divider>
 
-    <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
-      <mat-icon>dashboard</mat-icon>
-      <span class="nav-caption">Training</span>
-      <span matBadge="3" matBadgeOverlap="false"></span>
-    </a>
-    
-    <mat-divider></mat-divider>
-    
-    <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
-      <mat-icon>dashboard</mat-icon>
-      <span class="nav-caption">Matches</span>
-      <span matBadge="3" matBadgeOverlap="false"></span>
-    </a>
-    
-    <mat-divider></mat-divider>
-    
-    <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
-      <mat-icon>dashboard</mat-icon>
-      <span class="nav-caption">Players</span>
-    </a>
-    
-    <mat-divider></mat-divider>
-    
-    <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
-      <mat-icon>dashboard</mat-icon>
-      <span class="nav-caption">Notes</span>
-      <span matBadge="3" matBadgeOverlap="false"></span>
-    </a>
-
-    <mat-divider></mat-divider>
-
-    <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
-      <mat-icon>dashboard</mat-icon>
-      <span class="nav-caption">Reports</span>
-    </a>
-
-    <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/overview" routerLinkActive="active" (click)="onClose()">
+          <mat-icon>settings</mat-icon>
+          <span class="nav-caption">Team Configuration</span>
+        </a>
+    </div>
   </mat-nav-list>

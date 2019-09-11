@@ -49,10 +49,13 @@
 
           .page-container {
             width: 100%;
+            margin-top: 64px; // for the header's placeholder
+            margin-left: 250px; // for the navbar's placeholder
 
-            // @media (max-width: $media-query-xs) {
-            //   width: 100%;
-            // }
+            @media (max-width: $media-query-xs) {
+              // margin-top: 0;
+              margin-left: 0;
+            }
           }
         }
       }
