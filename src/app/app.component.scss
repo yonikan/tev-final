@@ -26,13 +26,34 @@
       .app-container {
         width: 100%;
         margin: 0 auto;
-  
+
         @media (max-width: $media-query-xs) {
           flex-direction: column;
           width: 100%;
         }
-        
-        .page-container {
+
+        .content-container {
+          display: flex;
+
+          .page-sidenav {
+            @media (max-width: $media-query-xs) {
+              display: none;
+            }
+
+            app-sidenav {
+              // width: 20%;
+              // background-color: rgb(102, 102, 102);
+              // height: 100vh;
+            }
+          }
+
+          .page-container {
+            width: 100%;
+
+            // @media (max-width: $media-query-xs) {
+            //   width: 100%;
+            // }
+          }
         }
       }
     }

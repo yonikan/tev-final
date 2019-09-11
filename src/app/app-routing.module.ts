@@ -6,9 +6,9 @@ import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'overview', component: OverviewComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', component: LoginComponent }
+  { path: 'overview', component: OverviewComponent },
+  // { path: '', redirectTo: '/overview', pathMatch: 'full' },
+  // { path: '**', component: OverviewComponent }
 ];
 
 @NgModule({

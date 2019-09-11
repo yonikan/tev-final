@@ -16,6 +16,25 @@
         padding: 0 10px;
       }
 
+      .toolbar-left {
+        
+        .hamburger-menu {
+          display: none;
+
+          @media (max-width: $media-query-xs) {
+            display: block;
+          }
+        }
+
+        .teams-menu {
+          font-size: 13px;
+          
+          @media (max-width: $media-query-xs) {
+            display: none;
+          }
+        }
+      }
+
       .logo {
         img {
           width: 200px;
@@ -61,6 +80,8 @@
           }
 
           .actions-divider {
+            margin: 0 10px;
+            
             @media (max-width: $media-query-xs) {
               display: none;
             }

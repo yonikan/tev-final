@@ -16,6 +16,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
   isUserMenuOpen = false;
   userImgUrl = '';
+  userFirstName = '';
+  userLastName = '';
+
+  teams: any[] = [
+    {value: 'hull-u18', viewValue: '2019/20: Hull City U18'},
+    {value: 'hull-u14', viewValue: '2019/20: Hull City U14'},
+    {value: 'hull-o18', viewValue: '2019/20: Hull City O18'}
+  ];
 
   constructor(public authService: AuthService, private localStorageService: LocalStorageService) { }
 
@@ -26,7 +34,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isAuthenticated = authStatus;
       });
 
-    this.userImgUrl = this.localStorageService.getOnLocalStorage('login_data').image_url;
+    const appStore = this.localStorageService.getOnLocalStorage('login_data');
+    this.userImgUrl = appStore.image_url;
+    this.userFirstName = appStore.first_name ;
+    this.userLastName = appStore.last_name ;
   }
 
   onToggleSidenav() {

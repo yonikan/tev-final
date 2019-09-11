@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+:host {
+    // width: 1000px;
+
+    .overview-header {
+        border-bottom: solid 1px #a7a7a7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            padding-left: 15px;
+        }
+
+        .overview-actions {
+            .mat-button {
+                min-width: 14px;
+                padding: 0 10px;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .overview-content {
+        padding: 15px;
+    }
+}

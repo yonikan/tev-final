@@ -10,10 +10,15 @@
   <mat-sidenav-content>
     <div class="app-container">
       <app-header (sidenavToggle)="sidenav.toggle()" [quickpanel]="quickpanel" ></app-header>
-    
-      <main class="page-container">
-        <router-outlet> </router-outlet>
-      </main>
+
+      <div class="content-container">
+          <div class="page-sidenav">
+             <app-sidenav></app-sidenav>
+          </div>
+          <main class="page-container">
+            <router-outlet></router-outlet>
+          </main>
+      </div>
    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
