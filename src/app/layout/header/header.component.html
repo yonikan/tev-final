@@ -6,8 +6,8 @@
           </button>
 
           <mat-form-field class="teams-menu">
-              <mat-label>Select a team</mat-label>
-              <mat-select>
+              <!-- <mat-label>Select a team</mat-label> -->
+              <mat-select [value]="'hull-u18'">
                 <mat-option *ngFor="let team of teams" [value]="team.value">
                   {{team.viewValue}}
                 </mat-option>
@@ -16,7 +16,9 @@
       </div>
 
       <div class="logo">
+        <a routerLink="/team-overview">
           <img src="./assets/img/logo-large.jpg">
+        </a>
       </div>
 
       <div class="toolbar-right">

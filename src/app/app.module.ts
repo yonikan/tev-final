@@ -11,20 +11,21 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 import { LayoutModule } from './layout/layout.module';
-
-import { AppComponent } from './app.component';
-import { ErrorComponent } from './core/error/error.component';
-import { ErrorInterceptor } from './core/error/error-interceptor';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { AuthInterceptor } from './auth/auth-interceptor';
-import { OverviewComponent } from './overview/overview.component';
+
+import { ErrorComponent } from './core/error/error.component';
+import { ErrorInterceptor } from './core/error/error-interceptor';
+import { AuthInterceptor } from './core/auth-interceptor';
+
+import { AppComponent } from './app.component';
+import { TeamOverviewComponent } from './team-overview/team-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorComponent,
-    OverviewComponent
+    TeamOverviewComponent
   ],
   imports: [
     BrowserModule,

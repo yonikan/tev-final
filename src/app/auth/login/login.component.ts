@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   username = null;
   password = null;
+  isForgotPasswordOn = false;
 
   constructor(public authService: AuthService) {}
 
@@ -41,6 +42,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     this.isLoading = true;
     this.authService.login(this.form.value.usernameText, this.form.value.passwordText);
+  }
+
+  toggleForgotPassword() {
+    this.isForgotPasswordOn = !this.isForgotPasswordOn;
   }
 
   ngOnDestroy() {
