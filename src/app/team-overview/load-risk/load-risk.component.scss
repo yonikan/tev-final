@@ -1,0 +1,12 @@
+@import '../../../styles/variables';
+
+:host {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding: 15px;
+
+    h3 {
+        color: #a0a0a0;
+    }
+}

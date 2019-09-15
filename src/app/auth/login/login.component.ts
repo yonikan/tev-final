@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSub: Subscription;
   form: FormGroup;
+  formForgotPassword: FormGroup;
   username = null;
   password = null;
   isForgotPasswordOn = false;
@@ -34,6 +35,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         validators: [Validators.required, Validators.minLength(3)]
       })
     });
+
+    this.formForgotPassword = new FormGroup({
+      passwordText: new FormControl(this.password, {
+        validators: [Validators.required, Validators.minLength(3)]
+      })
+    });
   }
 
   onLogin() {
@@ -42,6 +49,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     this.isLoading = true;
     this.authService.login(this.form.value.usernameText, this.form.value.passwordText);
+  }
+
+  onForgotPassword() {
+
   }
 
   toggleForgotPassword() {

@@ -1,16 +1,46 @@
 <div class="overview-header">
-        <h2>Team Overview</h2>
-        <div class="overview-actions">
-            <button mat-button class="" (click)="null">
-                <mat-icon>exit_to_app</mat-icon>
-            </button>
-            <button mat-button class="" (click)="null">
-                <mat-icon>picture_as_pdf</mat-icon>
-            </button>
+    <h2>Team Overview</h2>
+    <div class="overview-actions">
+        <button mat-button class="" (click)="null">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+        <button mat-button class="" (click)="null">
+            <mat-icon>picture_as_pdf</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div class="overview-content">
+    <div class="overview-content-left">
+        <div class="load-risk-container">
+            <h3>Load risk</h3>
+            <app-load-risk></app-load-risk>
+        </div>
+
+        <div class="performance-overtime-container">
+            <h3>Performance Overtime</h3>
+            <app-performance-overtime></app-performance-overtime>
+        </div>
+
+        <div class="leaderboard-container">
+            <h3>Leaderboard</h3>
+            <app-leader-board></app-leader-board>
         </div>
     </div>
-    
-    <div class="overview-content">
-        <p>textttt</p>
+
+    <div class="overview-content-right">
+        <div class="events-container">
+            <h3>Events</h3>
+            <app-events></app-events>
+
+            <app-events></app-events>
+
+            <app-events></app-events>
+
+            <app-events></app-events>
+
+            <app-events></app-events>
+        </div>
     </div>
+</div>
     

@@ -123,6 +123,45 @@
   }
 }
 
+.forgot-password-container {
+
+  .login-head {
+
+  }
+
+  .form-container {
+
+    .forgot-password-card {
+        width: 300px;
+        min-width: 300px;
+        // height: 350px;
+        height: 220px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: $media-query-xs) {
+          // width: 300px;
+        }
+
+        mat-form-field {
+          width: 100%;
+        }
+      
+        mat-spinner {
+          margin: auto;
+        }
+      
+        .login-button {
+          width: 100%;
+          margin-top: 8px;
+        }
+      
+    }
+
+  }
+}
+
 ::ng-deep {
   .mat-form-field-appearance-outline .mat-form-field-outline {
      background-color: white;

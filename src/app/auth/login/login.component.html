@@ -17,13 +17,13 @@
         
                         <form [formGroup]="form" (submit)="onLogin()" *ngIf="!isLoading" class="">
                             <mat-form-field appearance="outline">
-                                <mat-label>USER NAME</mat-label>
+                                <mat-label>ENTER USER NAME</mat-label>
                                 <input matInput type="text" formControlName="usernameText">
                                 <mat-error *ngIf="form.get('usernameText').invalid">Invalid username or email</mat-error>
                             </mat-form-field>
                             
                             <mat-form-field appearance="outline">
-                                <mat-label>PASSWORD</mat-label>
+                                <mat-label>ENTER PASSWORD</mat-label>
                                 <input matInput type="password" formControlName="passwordText">
                                 <mat-error *ngIf="form.get('passwordText').invalid">Incorrect password.</mat-error>
                             </mat-form-field>
@@ -43,13 +43,21 @@
 
       <div *ngIf="isForgotPasswordOn" class="forgot-password-container">
             <div class="login-head">
-                <h3>Forgot Password</h3>
+                <h3>Forgot Your Password?</h3>
+                <h4>text.......</h4>
             </div>
             <div class="form-container">
                 <mat-card class="forgot-password-card">
                     <mat-card-content>
-                        test
-                        <a (click)="toggleForgotPassword()">back</a>
+                        <form [formGroup]="form" (submit)="onForgotPassword()" *ngIf="!isLoading" class="">
+                            <mat-form-field appearance="outline">
+                                <mat-label>ENTER NEW PASSWORD</mat-label>
+                                <input matInput type="password" formControlName="passwordText">
+                                <mat-error *ngIf="form.get('passwordText').invalid">Incorrect password.</mat-error>
+                            </mat-form-field>
+
+                            <button class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button color="accent">CHANGE PASSWORD</button>
+                        </form>
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -58,6 +66,8 @@
 
   <div class="login-footer">
       <div class="login-bottom">
+          <a (click)="toggleForgotPassword()">back</a>
+
           <div class="app-version">V.2.13.0.1</div>
           <div class="copyrights">All rights reservrd</div>
           <div class="privacy">

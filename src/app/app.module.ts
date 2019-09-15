@@ -20,12 +20,20 @@ import { AuthInterceptor } from './core/auth-interceptor';
 
 import { AppComponent } from './app.component';
 import { TeamOverviewComponent } from './team-overview/team-overview.component';
+import { LoadRiskComponent } from './team-overview/load-risk/load-risk.component';
+import { EventsComponent } from './team-overview/events/events.component';
+import { PerformanceOvertimeComponent } from './team-overview/performance-overtime/performance-overtime.component';
+import { LeaderBoardComponent } from './team-overview/leader-board/leader-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorComponent,
-    TeamOverviewComponent
+    TeamOverviewComponent,
+    LoadRiskComponent,
+    EventsComponent,
+    PerformanceOvertimeComponent,
+    LeaderBoardComponent
   ],
   imports: [
     BrowserModule,
