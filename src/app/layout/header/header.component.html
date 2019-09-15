@@ -5,14 +5,18 @@
               <mat-icon>menu</mat-icon>
           </button>
 
-          <mat-form-field class="teams-menu">
-              <!-- <mat-label>Select a team</mat-label> -->
-              <mat-select [value]="'hull-u18'">
-                <mat-option *ngFor="let team of teams" [value]="team.value">
-                  {{team.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+          <div class="teams-menu-container">
+              <img src=" https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1562149029.png" class="team-img">
+
+              <mat-form-field class="teams-menu">
+                  <!-- <mat-label>Select a team</mat-label> -->
+                  <mat-select [value]="'hull-u18'">
+                    <mat-option *ngFor="let team of teams" [value]="team.value">
+                      {{team.viewValue}}
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div>
       </div>
 
       <div class="logo">

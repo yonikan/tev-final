@@ -1,48 +1,56 @@
 @import '../../../styles/variables';
 
-:host { 
-    height: 100%;
-    mat-nav-list {
-        background-color: #d4d4d4;
-        height: 100vh;
-        position: fixed;
-        width: 250px;
-        padding-top: 0; // overrids the default material top padding.
-        border-right: 1px solid #acacac;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+:host {
+  height: 100%;
+  mat-nav-list {
+    background-color: #d4d4d4;
+    height: 100vh;
+    position: fixed;
+    width: 250px;
+    padding-top: 0; // overrids the default material top padding.
+    border-right: 1px solid #acacac;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-        @media (max-width: $media-query-xs) {
-            position: static;
-            border-right: 0;
-        }
-
-        .navigation-wrapper {
-            margin-top: 64px; // for the header's placeholder
-
-            @media (max-width: $media-query-xs) {
-                margin-top: 0;
-            }
-        }
-
-        .configuration-wrapper {
-
-        }
-
-        a {
-            text-decoration: none;
-            // display: flex;
-            // justify-content: space-between;
-        
-            &:hover {
-                background: #b9b9b9;
-            }
-        }
-
-        .nav-caption {
-            margin-left: 10px;
-            margin-right: 13px;
-        }
+    @media (max-width: $media-query-xs) {
+      position: static;
+      border-right: 0;
     }
+
+    .active {
+      background-color: rgba(3, 3, 3, 0.2);
+      color: #fff;
+    }
+
+    .navigation-wrapper {
+      margin-top: 64px; // for the header's placeholder
+
+      @media (max-width: $media-query-xs) {
+        margin-top: 0;
+      }
+    }
+
+    .configuration-wrapper {
+    }
+
+    a {
+      text-decoration: none;
+      // display: flex;
+      // justify-content: space-between;
+
+      &:hover {
+        background: #b9b9b9;
+      }
+    }
+
+    .nav-caption {
+      margin-left: 10px;
+      margin-right: 13px;
+    }
+
+    .nav-badge {
+      // margin-left: auto;
+    }
+  }
 }
