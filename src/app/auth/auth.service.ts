@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../shared/local-storage-service.service';
 
+import { LocalStorageService } from '../shared/local-storage-service.service';
 import { AuthData } from './auth-data.model';
 import { UIService } from 'src/app/shared/ui.service';
 import { BehaviorSubject } from 'rxjs';

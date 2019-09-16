@@ -6,87 +6,21 @@
   </div>
 
   <div class="login-content">
-      <div *ngIf="!isForgotPasswordOn" class="login-container">
-            <div class="login-head">
-                <h3>LOG IN</h3>
-            </div>
-            <div class="form-container">
-                <mat-card class="login-card">
-                    <mat-card-content>
-                        <mat-spinner *ngIf="isLoading"></mat-spinner>
-        
-                        <form [formGroup]="form" (submit)="onLogin()" *ngIf="!isLoading" class="">
-                            <mat-form-field appearance="outline">
-                                <mat-label>ENTER USER NAME</mat-label>
-                                <input matInput type="text" formControlName="usernameText">
-                                <mat-error *ngIf="form.get('usernameText').invalid">Invalid username or email</mat-error>
-                            </mat-form-field>
-                            
-                            <mat-form-field appearance="outline">
-                                <mat-label>ENTER PASSWORD</mat-label>
-                                <input matInput type="password" formControlName="passwordText">
-                                <mat-error *ngIf="form.get('passwordText').invalid">Incorrect password.</mat-error>
-                            </mat-form-field>
-                        
-                            <button class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button color="accent">LOG IN</button>
-                        </form>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <!-- <div class="keep-me-logged-checkbox">
-                <mat-checkbox>Keep Me Logged In</mat-checkbox>
-            </div> -->
-            <div class="forget-pass">
-                <a (click)="toggleForgotPassword()">Forget Password?</a>
-            </div>
+      <div *ngIf="loginMode === 'user-login'" class="user-login-container">
+          <app-user-login (loginModeEmitter)="onLoginModeEmitter($event)"></app-user-login>
       </div>
 
-      <div *ngIf="isForgotPasswordOn" class="forgot-password-container">
-            <div class="login-head">
-                <h3>Forgot Your Password?</h3>
-                <h4>text.......</h4>
-            </div>
-            <div class="form-container">
-                <mat-card class="forgot-password-card">
-                    <mat-card-content>
-                        <form [formGroup]="form" (submit)="onForgotPassword()" *ngIf="!isLoading" class="">
-                            <mat-form-field appearance="outline">
-                                <mat-label>ENTER NEW PASSWORD</mat-label>
-                                <input matInput type="password" formControlName="passwordText">
-                                <mat-error *ngIf="form.get('passwordText').invalid">Incorrect password.</mat-error>
-                            </mat-form-field>
-
-                            <button class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button color="accent">CHANGE PASSWORD</button>
-                        </form>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+      <div *ngIf="loginMode === 'forgot-password'" class="forgot-password-container">
+        <app-forgot-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-forgot-password>
       </div>
 
-      <div *ngIf="isForgotPasswordOn" class="reset-password-container">
-            <div class="login-head">
-                <h3>Reset pass</h3>
-            </div>
-            <div class="form-container">
-                <mat-card class="login-card">
-                    <mat-card-content>
-                        reset password....
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <!-- <div class="keep-me-logged-checkbox">
-                <mat-checkbox>Keep Me Logged In</mat-checkbox>
-            </div> -->
-            <div class="forget-pass">
-                <a (click)="toggleForgotPassword()">Forget Password?</a>
-            </div>
+      <div *ngIf="loginMode === 'reset-password'" class="reset-password-container">
+        <app-reset-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-reset-password>
       </div>
   </div>
 
   <div class="login-footer">
       <div class="login-bottom">
-          <a (click)="toggleForgotPassword()">back</a>
-
           <div class="app-version">V.2.13.0.1</div>
           <div class="copyrights">All rights reservrd</div>
           <div class="privacy">

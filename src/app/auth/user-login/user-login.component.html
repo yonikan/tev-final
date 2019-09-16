@@ -1,1 +1,42 @@
-<p>user-login works!</p>
+<div class="user-login-container">
+        <div class="login-head">
+                <h3>Login</h3>
+        </div>
+
+        <div class="form-container">
+                <mat-card class="login-card">
+                        <mat-card-content>
+                            <mat-spinner *ngIf="isLoading"></mat-spinner>
+            
+                            <form [formGroup]="form" (submit)="onLogin()" *ngIf="!isLoading" class="">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>ENTER USERNAME</mat-label>
+                                    <input matInput type="text" formControlName="usernameText">
+                                    <mat-error *ngIf="form.get('usernameText').invalid">Invalid username or email</mat-error>
+                                </mat-form-field>
+                                
+                                <mat-form-field appearance="outline">
+                                    <mat-label>ENTER PASSWORD</mat-label>
+                                    <input matInput type="password" formControlName="passwordText">
+                                    <mat-error *ngIf="form.get('passwordText').invalid">Incorrect password.</mat-error>
+                                </mat-form-field>
+                            
+                                <button class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button color="accent">LOG IN</button>
+                            </form>
+                        </mat-card-content>
+                </mat-card>
+        </div>
+
+        <div class="forget-pass">
+            <a (click)="loginMode('forgot-password')">Forget Password?</a>
+        </div>
+
+        <div class="reset-pass">
+            <a (click)="loginMode('reset-password')">Reset Password</a>
+        </div>
+
+        <!-- <div class="keep-me-logged-checkbox">
+            <mat-checkbox>Keep Me Logged In</mat-checkbox>
+        </div> -->
+    </div>
+    
