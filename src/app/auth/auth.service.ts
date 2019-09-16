@@ -16,7 +16,7 @@ export class AuthService {
   private appStore = {};
   private tokenTimer: any;
   private isAuthenticated = false;
-  private authStatusListener = new BehaviorSubject<boolean>(true);
+  private authStatusListener = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
