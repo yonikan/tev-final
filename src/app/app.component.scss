@@ -57,6 +57,11 @@
               margin-left: 0;
             }
           }
+
+          .auth-off {
+            margin-top: 0; // reset for the header's placeholder
+            margin-left: 0; // reset for the navbar's placeholder
+          }
         }
       }
     }

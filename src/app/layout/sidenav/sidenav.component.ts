@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class SidenavComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
-  isAuthenticated = true;
+  isAuthenticated = false;
   private authStatusSub: Subscription;
 
   constructor(public authService: AuthService) { }

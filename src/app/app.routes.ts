@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'team-overview', component: TeamOverviewComponent },
   { path: 'team-configuration', component: TeamConfigurationComponent },
-  // { path: '', redirectTo: '/overview', pathMatch: 'full' },
-  // { path: '**', component: OverviewComponent }
+  { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
+  { path: '**', component: TeamOverviewComponent }
 ];
 
 @NgModule({

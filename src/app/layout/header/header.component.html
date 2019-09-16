@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbar">
+<mat-toolbar *ngIf="isAuthenticated" class="toolbar">
     <mat-toolbar-row>
       <div class="toolbar-left">
           <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">

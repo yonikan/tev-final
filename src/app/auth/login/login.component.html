@@ -62,6 +62,25 @@
                 </mat-card>
             </div>
       </div>
+
+      <div *ngIf="isForgotPasswordOn" class="reset-password-container">
+            <div class="login-head">
+                <h3>Reset pass</h3>
+            </div>
+            <div class="form-container">
+                <mat-card class="login-card">
+                    <mat-card-content>
+                        reset password....
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <!-- <div class="keep-me-logged-checkbox">
+                <mat-checkbox>Keep Me Logged In</mat-checkbox>
+            </div> -->
+            <div class="forget-pass">
+                <a (click)="toggleForgotPassword()">Forget Password?</a>
+            </div>
+      </div>
   </div>
 
   <div class="login-footer">

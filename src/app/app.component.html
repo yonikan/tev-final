@@ -15,7 +15,7 @@
           <div class="page-sidenav">
              <app-sidenav></app-sidenav>
           </div>
-          <main class="page-container">
+          <main class="page-container" [ngClass]="{'auth-off':!isAuthenticated}">
             <router-outlet></router-outlet>
           </main>
       </div>

@@ -12,7 +12,7 @@ import { LocalStorageService } from '../../shared/local-storage-service.service'
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
   @Input() quickpanel: MatSidenav; // for the sidebar omnipanel
-  isAuthenticated = true;
+  isAuthenticated = false;
   private authStatusSub: Subscription;
   isUserMenuOpen = false;
   userImgUrl = '';
