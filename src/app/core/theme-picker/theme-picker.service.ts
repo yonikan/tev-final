@@ -7,26 +7,21 @@ import { Subject } from 'rxjs';
 export class ThemePickerService {
   private themeWrapper = document.querySelector('body');
   private isDarkMode = false;
-  private isDarkModeUpdated = new Subject<boolean>();
-
-  themeData = {
-    navColor: null,
-    navBackground: null,
-
-    cardColor: '#4ccead',
-    cardBackground: '#353435 !important',
-
-    buttonColor: '#9575cd',
-    buttonBackground: '#4ccead',
-
-    footerColor: null,
-    footerBackground: null
-  }; // for the theme color pallete
 
   constructor() { }
 
-  getIsDarkModeUpdateListener() {
-    return this.isDarkModeUpdated.asObservable();
+  setDefaultTheme() {
+    const themeData = {
+      navColor: '#000',
+      navBackground: '#fff',
+      cardColor: '#fff',
+      cardBackground: '#353435 !important',
+      buttonColor: '#9575cd',
+      buttonBackground: '#4ccead',
+      footerColor: null,
+      footerBackground: null
+    };
+    this.globalOverride(themeData);
   }
 
   getIsDarkMode() {
@@ -34,15 +29,21 @@ export class ThemePickerService {
   }
 
   setIsDarkMode(currentMode) {
+    const themeData = {
+      navColor: '#fff',
+      navBackground: '#444',
+      cardColor: '#fff',
+      cardBackground: '#353435 !important',
+      buttonColor: '#9575cd',
+      buttonBackground: '#4ccead',
+      footerColor: null,
+      footerBackground: null
+    };
     this.isDarkMode = currentMode;
-    const isDarkModeCopy = this.isDarkMode;
-    this.isDarkModeUpdated.next(isDarkModeCopy);
-
-    this.globalOverride(this.themeData);
+    this.globalOverride(themeData);
   }
 
   globalOverride(stylesheet) {
-
     // Navigation Styles
     if (stylesheet.navColor) {
       this.themeWrapper.style.setProperty('--navColor', stylesheet.navColor);
@@ -50,7 +51,6 @@ export class ThemePickerService {
     if (stylesheet.navBackground) {
       this.themeWrapper.style.setProperty('--navBackground', stylesheet.navBackground);
     }
-
     // Card Styles
     if (stylesheet.cardColor) {
       this.themeWrapper.style.setProperty('--cardColor', stylesheet.cardColor);
@@ -58,7 +58,6 @@ export class ThemePickerService {
     if (stylesheet.navBackground) {
       this.themeWrapper.style.setProperty('--cardBackground', stylesheet.cardBackground);
     }
-
     // Footer Styles
     if (stylesheet.footerColor) {
       this.themeWrapper.style.setProperty('--footerColor', stylesheet.footerColor);
@@ -69,7 +68,6 @@ export class ThemePickerService {
     if (stylesheet.footerAlignment) {
       this.themeWrapper.style.setProperty('--footerAlignment', stylesheet.footerAlignment);
     }
-
     // Button Styles
     if (stylesheet.buttonColor) {
       this.themeWrapper.style.setProperty('--buttonColor', stylesheet.buttonColor);

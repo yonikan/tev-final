@@ -16,9 +16,6 @@ import { TeamOverviewModule } from './team-overview/team-overview.module';
 
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './core/error/error.component';
-
-import { ErrorInterceptor } from './core/error/error-interceptor';
-import { AuthInterceptor } from './core/auth-interceptor';
 import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
 
 @NgModule({
@@ -40,10 +37,6 @@ import { TeamConfigurationComponent } from './team-configuration/team-configurat
     LayoutModule,
     AuthModule,
     TeamOverviewModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   entryComponents: [ErrorComponent],
   bootstrap: [AppComponent]

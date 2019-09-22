@@ -10,13 +10,23 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
-  declarations: [LoginComponent, UserLoginComponent, ResetPasswordComponent, ForgotPasswordComponent],
+  declarations: [
+    LoginComponent, 
+    UserLoginComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  exports: [LoginComponent, UserLoginComponent, ResetPasswordComponent, ForgotPasswordComponent]
+  exports: [
+    LoginComponent, 
+    UserLoginComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
+  ]
 })
 export class AuthModule {}

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { LocalStorageService } from '../shared/local-storage-service.service';
 import { AuthData } from './auth-data.model';
-import { UIService } from 'src/app/shared/ui.service';
 import { BehaviorSubject } from 'rxjs';
+import { LocalStorageService } from '../core/services/local-storage-service.service';
+import { UIService } from '../core/services/ui.service';
 const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class AuthService {
   private token = null;
   private appStore = {};
   private tokenTimer: any;
-  private isAuthenticated = false;
-  private authStatusListener = new BehaviorSubject<boolean>(false);
+  private isAuthenticated = true;
+  private authStatusListener = new BehaviorSubject<boolean>(true);
 
   constructor(
     private http: HttpClient,
