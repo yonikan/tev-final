@@ -6,20 +6,20 @@
       </div>
   </div>
 
-  <div class="login-content">
-      <div *ngIf="loginMode === 'user-login'" class="user-login-container">
+  <div class="login-content" >
+      <div [@fadeInUp] *ngIf="loginMode === 'user-login'" class="user-login-container">
           <app-user-login (loginModeEmitter)="onLoginModeEmitter($event)"></app-user-login>
       </div>
 
-      <div *ngIf="loginMode === 'forgot-password'" class="forgot-password-container">
+      <div [@fadeInUp] *ngIf="loginMode === 'forgot-password'" class="forgot-password-container">
         <app-forgot-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-forgot-password>
       </div>
 
-      <div *ngIf="loginMode === 'reset-password'" class="reset-password-container">
+      <div [@fadeInUp] *ngIf="loginMode === 'reset-password'" class="reset-password-container">
         <app-reset-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-reset-password>
       </div>
 
-      <div *ngIf="loginMode === 'email-sent'" class="email-sent-container">
+      <div [@fadeInUp] *ngIf="loginMode === 'email-sent'" class="email-sent-container">
             <app-email-sent (loginModeEmitter)="onLoginModeEmitter($event)"></app-email-sent>
       </div>
   </div>
