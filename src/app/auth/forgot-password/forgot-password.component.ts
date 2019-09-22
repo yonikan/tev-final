@@ -37,7 +37,6 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
-    // this.authService.forogot() // NEEDS TO ADD THE RELEVANT METHOD!
   }
 
   loginMode(loginModeState) {

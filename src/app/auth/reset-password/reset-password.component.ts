@@ -13,8 +13,8 @@ export class ResetPasswordComponent implements OnInit {
   isLoading = false;
   private authStatusSub: Subscription;
   resetPassworForm: FormGroup;
-  username = null;
   password = null;
+  reEnterPassword = null;
 
   constructor(public authService: AuthService) {}
 
@@ -27,12 +27,14 @@ export class ResetPasswordComponent implements OnInit {
     );
 
     this.resetPassworForm = new FormGroup({
-      usernameText: new FormControl(this.username, {
-        validators: [Validators.required, Validators.minLength(3)]
-      }),
       passwordText: new FormControl(this.password, {
-        validators: [Validators.required, Validators.minLength(3)]
-      })
+        validators: [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+        ]   
+      }),
+      reEnterPasswordText: new FormControl(this.reEnterPassword, Validators.required)
     });
   }
 

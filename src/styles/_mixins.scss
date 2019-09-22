@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin card() {
   display: flex;
   justify-content: center;
@@ -7,4 +9,12 @@
   h3 {
     color: #a0a0a0;
   }
+}
+
+@mixin button() {
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 20px;
+  background-color: $color-pink;
+  color: white;
 }

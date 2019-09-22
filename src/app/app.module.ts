@@ -5,7 +5,7 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
 import { AppRoutingModule } from './app.routes';
 import { ContentLoaderModule } from '@ngneat/content-loader';
@@ -17,6 +17,7 @@ import { TeamOverviewModule } from './team-overview/team-overview.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './core/error/error.component';
 import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TeamConfigurationComponent } from './team-configuration/team-configurat
     CoreModule,
     LayoutModule,
     AuthModule,
-    TeamOverviewModule
+    TeamOverviewModule,
+    // ShowHidePasswordModule
   ],
   entryComponents: [ErrorComponent],
   bootstrap: [AppComponent]

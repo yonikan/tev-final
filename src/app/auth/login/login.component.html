@@ -17,6 +17,10 @@
       <div *ngIf="loginMode === 'reset-password'" class="reset-password-container">
         <app-reset-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-reset-password>
       </div>
+
+      <div *ngIf="loginMode === 'email-sent'" class="email-sent-container">
+            <app-email-sent (loginModeEmitter)="onLoginModeEmitter($event)"></app-email-sent>
+      </div>
   </div>
 
   <div class="login-footer">

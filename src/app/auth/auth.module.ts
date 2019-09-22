@@ -8,19 +8,23 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { EmailSentComponent } from './email-sent/email-sent.component';
 
 @NgModule({
   declarations: [
     LoginComponent, 
     UserLoginComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    EmailSentComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ShowHidePasswordModule
   ],
   exports: [
     LoginComponent, 
