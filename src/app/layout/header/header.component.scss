@@ -23,6 +23,7 @@
         
         .hamburger-menu {
           display: none;
+          // border-radius: 50%;
 
           @media (max-width: $media-query-xs) {
             display: block;

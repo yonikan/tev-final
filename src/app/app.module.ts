@@ -15,14 +15,11 @@ import { AuthModule } from './auth/auth.module';
 import { TeamOverviewModule } from './team-overview/team-overview.module';
 
 import { AppComponent } from './app.component';
-import { ErrorComponent } from './core/error/error.component';
 import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent,
     TeamConfigurationComponent,
   ],
   imports: [
@@ -37,10 +34,8 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     CoreModule,
     LayoutModule,
     AuthModule,
-    TeamOverviewModule,
-    // ShowHidePasswordModule
+    TeamOverviewModule
   ],
-  entryComponents: [ErrorComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

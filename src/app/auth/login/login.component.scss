@@ -10,7 +10,7 @@
   height: 100vh;
   padding: 35px;
   text-align: center;
-  background-color: #c5c5c5;
+  background-color: #fff;
   @include mat-elevation(2);
 
   @media (max-width: $media-query-xs) {

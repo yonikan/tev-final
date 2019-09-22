@@ -6,10 +6,11 @@ import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
-  declarations: [ThemePickerComponent],
+  declarations: [ThemePickerComponent, ErrorComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -19,6 +20,7 @@ import { ErrorInterceptor } from './interceptors/error-interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  exports: [ThemePickerComponent]
+  entryComponents: [ErrorComponent],
+  exports: [ThemePickerComponent, ErrorComponent]
 })
 export class CoreModule { }
