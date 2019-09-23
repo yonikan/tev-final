@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [],
@@ -10,6 +11,10 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     MaterialModule,
     ContentLoaderModule
   ],
-  exports: [MaterialModule, ContentLoaderModule]
+  exports: [
+    MaterialModule,
+    ContentLoaderModule,
+    TranslateModule
+  ]
 })
 export class SharedModule { }

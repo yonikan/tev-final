@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { ThemePickerService } from './core/services/theme-picker.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,12 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
 
-  constructor(public authService: AuthService, private themePickerService: ThemePickerService) { }
+  constructor(
+    public authService: AuthService,
+    private translate: TranslateService,
+    private themePickerService: ThemePickerService) {
+    translate.setDefaultLang('en');
+  }
 
   ngOnInit() {
     this.themePickerService.setDefaultTheme();
