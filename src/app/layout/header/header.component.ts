@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angu
 import { AuthService } from '../../auth/auth.service';
 import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
-import { LocalStorageService } from 'src/app/core/services/local-storage-service.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
   selector: 'app-header',

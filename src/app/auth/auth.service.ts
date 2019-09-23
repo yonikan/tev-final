@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 import { AuthData } from './auth-data.model';
 import { BehaviorSubject } from 'rxjs';
-import { LocalStorageService } from '../core/services/local-storage-service.service';
 import { UIService } from '../core/services/ui.service';
+import { LocalStorageService } from '../core/services/local-storage.service';
 const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login';
 
 @Injectable({

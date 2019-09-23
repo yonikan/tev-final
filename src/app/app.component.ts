@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './auth/auth.service';
-import { ThemePickerService } from './core/theme-picker/theme-picker.service';
+import { ThemePickerService } from './core/services/theme-picker.service';
 
 @Component({
   selector: 'app-root',

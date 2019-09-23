@@ -7,14 +7,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
 
-import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { ErrorComponent } from './error/error.component';
 import { FadeInRightStaggerElementDirective } from './animations/fade-in-right.animation';
 import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animation';
 
 @NgModule({
   declarations: [
-    ThemePickerComponent,
     ErrorComponent,
     FadeInRightStaggerElementDirective,
     FadeInUpStaggerElementDirective
@@ -30,7 +28,6 @@ import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animati
   ],
   entryComponents: [ErrorComponent],
   exports: [
-    ThemePickerComponent,
     ErrorComponent,
     FadeInRightStaggerElementDirective,
     FadeInUpStaggerElementDirective

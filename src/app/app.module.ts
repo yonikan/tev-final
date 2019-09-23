@@ -13,14 +13,12 @@ import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { TeamOverviewModule } from './team-overview/team-overview.module';
-
+import { MatchesModule } from './matches/matches.module';
 import { AppComponent } from './app.component';
-import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TeamConfigurationComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +32,8 @@ import { TeamConfigurationComponent } from './team-configuration/team-configurat
     CoreModule,
     LayoutModule,
     AuthModule,
-    TeamOverviewModule
+    TeamOverviewModule,
+    MatchesModule
   ],
   bootstrap: [AppComponent]
 })

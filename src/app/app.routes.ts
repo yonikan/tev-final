@@ -6,12 +6,16 @@ import { TeamOverviewComponent } from './team-overview/team-overview.component';
 import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { MatchesComponent } from './matches/matches.component';
+import { TrainingComponent } from './training/training.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'team-overview', component: TeamOverviewComponent, canActivate: [AuthGuard] },
+  { path: 'training', component: TrainingComponent, canActivate: [AuthGuard] },
+  { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
   { path: 'team-configuration', component: TeamConfigurationComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
   { path: '**', component: TeamOverviewComponent }
