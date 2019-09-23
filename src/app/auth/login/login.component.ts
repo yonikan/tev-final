@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeInUpAnimation } from '../../core/fade-in-up.animation';
-import { fadeInRightAnimation } from '../../core/fade-in-right.animation';
+import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginModeEmitter (loginModeString) {
-    console.log('loginModeString: ', loginModeString);
+    // console.log('loginModeString: ', loginModeString);
     this.loginMode = loginModeString;
   }
 }

@@ -83,25 +83,25 @@ export class AuthService {
 
   setServerToAccess(username) {
     if (username.startsWith('$$')) { // Stage
-      console.log('STAGE');
+      // console.log('STAGE');
       if (window.location.hostname.includes('cn')) {
         
       } else {
 
       }
       username = username.substr(2)         
-      console.log('username: ', username);
+      // console.log('username: ', username);
     } else if (username.startsWith('@@')) { // DEV
-      console.log('DEV');
+      // console.log('DEV');
       if (window.location.hostname.includes('cn')) {
 
       } else {
 
       }
       username = username.substr(2)
-      console.log('username: ', username);
+      // console.log('username: ', username);
     } else { // PROD
-      console.log('PROD');
+      // console.log('PROD');
       if (window.location.hostname.includes('cn')) {
 
       } else {
