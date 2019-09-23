@@ -9,15 +9,18 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
 import { AppRoutingModule } from './app.routes';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { TeamOverviewModule } from './team-overview/team-overview.module';
+import { TrainingModule } from './training/training.module';
 import { MatchesModule } from './matches/matches.module';
 import { AppComponent } from './app.component';
+import { TeamConfigurationModule } from './team-configuration/team-configuration.module';
 
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     AuthModule,
     TeamOverviewModule,
     MatchesModule,
+    TrainingModule,
+    TeamConfigurationModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

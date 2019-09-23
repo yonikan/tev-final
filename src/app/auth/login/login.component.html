@@ -27,6 +27,35 @@
   <div class="login-footer">
       <div class="login-bottom">
           <!-- <div class="app-version">V.2.13.0.1</div> -->
+
+          <mat-form-field appearance="outline">
+                <!-- <mat-label>{{ 'auth.choose-a-languages' | translate }}</mat-label> -->
+                <mat-select [value]="'en'" (selectionChange)="useLanguage($event.value)">
+                    <!-- <mat-select-trigger>
+                        <span class=""> sdsdsdsdsdsds</span>
+                      </mat-select-trigger> -->
+                  <mat-option *ngFor="let language of languages" [value]="language.value">
+                     {{ language.viewValue }}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field>
+
+
+
+          <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="useLanguage('en')">
+                <mat-icon>dialpad</mat-icon>
+                <span>English</span>
+              </button>
+              <button mat-menu-item (click)="useLanguage('es')">
+                <mat-icon>voicemail</mat-icon>
+                <span>Spanish</span>
+              </button>
+            </mat-menu> -->
+
           <div class="copyrights">C 2020 All Rights Reserved. PlayerMaker Ltd.</div>
           <div class="privacy">
               <span><a href="https://playermaker-public.s3.eu-west-2.amazonaws.com/site/PM-Privacy-Policy.pdf" target="_self">Privecy Policy</a></span> | 

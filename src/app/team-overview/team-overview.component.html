@@ -1,6 +1,6 @@
 <div class="overview-header">
-    <h2>Team Overview</h2>
-    <h1>{{ 'demo.title' | translate }}</h1>
+    <!-- <h2>Team Overview</h2> -->
+    <h3>{{ 'team-overview.title' | translate }}</h3>
 
     <div class="overview-actions">
         <button mat-button class="" (click)="null">
@@ -15,17 +15,20 @@
 <div class="overview-content">
     <div class="overview-content-left">
         <div class="load-risk-container">
-            <h3>Load risk</h3>
+            <!-- <h3>Load risk</h3> -->
+            <h3>{{ 'team-overview.load-risk.title' | translate }}</h3>
             <app-load-risk></app-load-risk>
         </div>
 
         <div class="performance-overtime-container">
-            <h3>Performance Overtime</h3>
+            <!-- <h3>Performance Overtime</h3> -->
+            <h3>{{ 'team-overview.performance-overtime.title' | translate }}</h3>
             <app-performance-overtime></app-performance-overtime>
         </div>
 
         <div class="leaderboard-container">
-            <h3>Leaderboard</h3>
+            <!-- <h3>Leaderboard</h3> -->
+            <h3>{{ 'team-overview.leader-board.title' | translate }}</h3>
             <div class="leaderboard-wrapper">
                 <app-leader-board></app-leader-board>
 
@@ -38,11 +41,8 @@
 
     <div class="overview-content-right">
         <div class="events-container">
-            <h3>Events</h3>
-            <app-events></app-events>
-
-            <app-events></app-events>
-
+            <!-- <h3>Events</h3> -->
+            <h3>{{ 'team-overview.events.title' | translate }}</h3>
             <app-events></app-events>
 
             <app-events></app-events>

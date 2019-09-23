@@ -3,6 +3,7 @@ import { AuthService } from '../../auth/auth.service';
 import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -25,9 +26,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {value: 'hull-o18', viewValue: '2019/20: Hull City O18'}
   ];
 
-  constructor(public authService: AuthService, private localStorageService: LocalStorageService) { }
+  languages: any[] = [
+    {value: 'en', viewValue: 'English - Eng'},
+    {value: 'es', viewValue: 'Spanish - Esp'}
+  ];
+  // languages: any[] = [
+  //   {value: 'en', viewValue: this.translateService.instant('layout.header.english') },
+  //   {value: 'es', viewValue: this.translateService.instant('layout.header.spanish')   }
+  // ];
+  // languages = [];
+  
+  constructor(
+    public authService: AuthService, 
+    private translateService: TranslateService,
+    private localStorageService: LocalStorageService)
+  {}
 
   ngOnInit() {
+    // this.setLanguagesDropdown();
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(authStatus => {
@@ -50,6 +66,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  // setLanguagesDropdown() {
+  //   this.translateService.get('layout.header.english')
+  //     .subscribe( (text: string) => {
+  //       console.log('text: ', text);
+  //       this.languages.push({value: 'en', viewValue: text });
+  //     })
+
+  //   this.translateService.get('layout.header.spanish')
+  //     .subscribe( (text: string) => {
+  //       console.log('text: ', text);
+  //       this.languages.push({value: 'es', viewValue: text });
+  //     })
+  // }
+
+  useLanguage(language: string) {
+    this.translateService.use(language);
   }
 
   ngOnDestroy() {

@@ -6,10 +6,11 @@
     height: 100%;
     background-color: rgb(230, 230, 230);
     // background-image: url(https://s3.eu-central-1.amazonaws.com/motionizefootball/Dashboard_images/background/pm-background14.jpg);
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-attachment: fixed;
-    // background-position: 50%;
+    // background-image: url(https://playermaker.com/wp-content/uploads/2019/05/newsbanner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50%;
   
     .sidenav {
       width: 250px;
@@ -51,6 +52,13 @@
             width: 100%;
             margin-top: 64px; // for the header's placeholder
             margin-left: 250px; // for the navbar's placeholder
+
+            // background-image: url(https://playermaker.com/wp-content/uploads/2019/06/Load_Blog-2.jpg);
+            // width: 100%;
+            // height: 100vh;
+            // background-repeat: no-repeat!important;
+            // background-size: cover!important;
+            // background-position: center!important;
 
             @media (max-width: $media-query-xs) {
               // margin-top: 0;

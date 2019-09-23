@@ -1,6 +1,84 @@
 {
-    "demo": {
-        "title": "Translation demo",
-        "text": "This is a simple demonstration app for ngx-translate"
+    "general": {
+        "toasts": {
+            
+        },
+        "dialogs": {
+            
+        },
+        "errors": {
+
+        }
+    },
+    "layout": {
+        "header": {
+            "logout": "Log out",
+            "help": "Help",
+            "english":"english",
+            "spanish": "spanish",
+            "chinese": "chinese"
+        },
+        "sidenav": {
+            "team-overview": "Team Overview",
+            "training": "Training",
+            "matches": "Matches",
+            "players": "Players",
+            "notes": "Notes",
+            "reports": "Reports",
+            "team-configuration": "Team Configuration"
+        }
+    },
+    "auth": {
+        "log-in": "Log In",
+        "go-back-to-login": "Go back to login",
+        "incorrect-password": "Incorrect password.",
+        "invalid-username-or-email": "Invalid username or email",
+        "email-address": "email address",
+        "password": "password",
+        "choose-a-languages": "choose a languages",
+        "user-login": {
+            "title": "Sign In"
+        },
+        "forgot-password": {
+            "title": "Forgot Your Password?",
+            "sub-title": "Enter your e-mail address below to revieve a verification email and reset your account:",
+            "send-verification-email": "SEND VERIFICATION EMAIL"
+        },
+        "reset-password": {
+            "title": "Reset Password",
+            "sub-title": "You have verified your account successfully. Enter a new password for your account",
+            "new-password": "NEW PASSWORD",
+            "re-enter-new-password": "RE-ENTER NEW PASSWORD",
+            "reset-password": "RESET PASSWORD"
+        },
+        "email-sent": {
+            "title": "E-Mail Sent",
+            "sub-title": "Go to your inbox and click the link. Didn't receive the email?",
+            "send-again": "Send again"
+        }
+    },
+    "team-overview": {
+        "title": "Team Overview",
+        "load-risk": {
+            "title": "Load risk"
+        },
+        "performance-overtime": {
+            "title": "Performance Overtime"
+        },
+        "leader-board": {
+            "title": "Leaderboard"
+        },
+        "events": {
+            "title": "Events"
+        }
+    },
+    "training": {
+        "title": "Training"
+    },
+    "matches": {
+        "title": "Matches"
+    },
+    "team-configuration": {
+        "title": "Team Configuration"
     }
 }

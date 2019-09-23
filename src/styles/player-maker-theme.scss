@@ -5,26 +5,16 @@ $pm-app-typography: mat-typography-config(
   $font-family: ''
 );
 @include mat-core($pm-app-typography);
-// @include mat-core();
 
-$pm-app-primary: mat-palette($mat-pink, A200, A100, A400);
-// $pm-app-primary: mat-palette($mat-deep-purple, 300);
-
+$pm-app-primary: mat-palette($mat-pink, 700);
+// $pm-app-primary: mat-palette($mat-pink, A200, A100, A400);
 $pm-app-accent: mat-palette($mat-teal, 300);
-// $pm-app-accent: mat-palette($mat-pink, A200, A100, A400);
-
 $pm-app-warn: mat-palette($mat-deep-orange);
 
 $pm-app-theme: mat-light-theme($pm-app-primary, $pm-app-accent, $pm-app-warn);
 @include angular-material-theme($pm-app-theme);
 
-// .pm-no-padding-dialog .mat-dialog-container { // For the dialogs & modals styling -  a must here!
-//   background: $background-color-light-grey;
-//   color: white;
-//   padding: 0;
-//   border-radius: 15px;
-// }
-
 .mat-dialog-container {
   padding: 0 !important;
+  // background-color: aquamarine !important;
 }

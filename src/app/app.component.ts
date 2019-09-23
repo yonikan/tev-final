@@ -13,11 +13,11 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
 
-  constructor(
-    public authService: AuthService,
-    private translate: TranslateService,
+  constructor( 
+    public authService: AuthService, 
+    private translateService: TranslateService,
     private themePickerService: ThemePickerService) {
-    translate.setDefaultLang('en');
+    translateService.setDefaultLang('en');
   }
 
   ngOnInit() {
