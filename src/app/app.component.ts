@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { ThemePickerService } from './core/services/theme-picker.service';
-import { TranslateService } from '@ngx-translate/core';
+// import { TranslateService } from '@ngx-translate/core';
+import { TranslationPickerService } from './core/services/translation-picker.service';
+import { LocalStorageService } from './core/services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +17,25 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor( 
     public authService: AuthService, 
-    private translateService: TranslateService,
+    private localStorageService: LocalStorageService,
+    private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService) {
-    translateService.setDefaultLang('en');
   }
 
   ngOnInit() {
-    this.themePickerService.setDefaultTheme();
+    // this.themePickerService.setDefaultTheme();
+    if (this.localStorageService.getOnLocalStorage('selected_theme')) {
+      this.themePickerService.setDefaultTheme(this.localStorageService.getOnLocalStorage('selected_theme'));
+    } else {
+      this.themePickerService.setDefaultTheme('light');
+    }
+
+    if (this.localStorageService.getOnLocalStorage('selected_language')) {
+      this.translationPickerService.setDefaultLang(this.localStorageService.getOnLocalStorage('selected_language'));
+    } else {
+      this.translationPickerService.setDefaultLang('en');
+    }
+
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(authStatus => {

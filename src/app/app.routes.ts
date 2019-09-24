@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { TeamOverviewComponent } from './team-overview/team-overview.component';
 import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
@@ -8,6 +7,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { MatchesComponent } from './matches/matches.component';
 import { TrainingComponent } from './training/training.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

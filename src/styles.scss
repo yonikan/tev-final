@@ -19,7 +19,8 @@ body {
 
 a {
   color: $color-pink;
-  
+  transition: .5s;
+
   &:hover {
     color: black;
   }

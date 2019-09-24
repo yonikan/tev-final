@@ -16,6 +16,13 @@
 
     .header-title {
       font-size: 13px;
+      display: flex;
+      align-items: center;
+
+      .status-bullet {
+        color: #fbb128;
+        font-size: 18px;
+      }
     }
 
     .header-actions {

@@ -42,12 +42,12 @@
 
               <mat-form-field>
                   <!-- <mat-label>choose a languages:</mat-label> -->
-                  <mat-select (selectionChange)="useLanguage($event.value)">
+                  <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
                     <mat-option *ngFor="let language of languages" [value]="language.value">
                       {{ language.viewValue }}
                     </mat-option>
                   </mat-select>
-            </mat-form-field>
+              </mat-form-field>
 
               <!-- <button mat-button class="help-button">
                 <mat-icon class="icon">help_outline</mat-icon>

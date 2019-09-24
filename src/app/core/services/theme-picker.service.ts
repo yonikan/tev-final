@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,21 +8,34 @@ import { Subject } from 'rxjs';
 export class ThemePickerService {
   private themeWrapper = document.querySelector('body');
   private isDarkMode = false;
+  private isDarkModeUpdated = new Subject<boolean>();
 
-  constructor() { }
+  lightThemeData = {
+    navColor: '#fff',
+    navBackground: '#444',
+    cardColor: '#fff',
+    cardBackground: '#353435 !important',
+    buttonColor: '#9575cd',
+    buttonBackground: '#4ccead',
+    footerColor: null,
+    footerBackground: null
+  };
 
-  setDefaultTheme() {
-    const themeData = {
-      navColor: '#000',
-      navBackground: '#fff',
-      cardColor: '#fff',
-      cardBackground: '#353435 !important',
-      buttonColor: '#9575cd',
-      buttonBackground: '#4ccead',
-      footerColor: null,
-      footerBackground: null
-    };
-    this.globalOverride(themeData);
+  darkThemeData = {
+    navColor: '#000',
+    navBackground: '#yellow',
+    cardColor: '#fff',
+    cardBackground: '#353435 !important',
+    buttonColor: '#9575cd',
+    buttonBackground: '#4ccead',
+    footerColor: null,
+    footerBackground: null
+  };
+
+  constructor(private localStorageService: LocalStorageService) { }
+
+  getIsDarkModeUpdateListener() {
+    return this.isDarkModeUpdated.asObservable();
   }
 
   getIsDarkMode() {
@@ -41,6 +55,40 @@ export class ThemePickerService {
     };
     this.isDarkMode = currentMode;
     this.globalOverride(themeData);
+    this.localStorageService.storeOnLocalStorage('selected_theme', currentMode);
+  }
+
+
+
+
+
+  setDefaultTheme(theme) { // for app init
+    let themeData;
+    if (theme === 'light') {
+      themeData = {
+        navColor: '#000',
+        navBackground: '#fff',
+        cardColor: '#fff',
+        cardBackground: '#353435 !important',
+        buttonColor: '#9575cd',
+        buttonBackground: '#4ccead',
+        footerColor: null,
+        footerBackground: null
+      };
+    } else if (theme === 'dark') {
+      // themeData = {
+      //   navColor: '#000',
+      //   navBackground: '#fff',
+      //   cardColor: '#fff',
+      //   cardBackground: '#353435 !important',
+      //   buttonColor: '#9575cd',
+      //   buttonBackground: '#4ccead',
+      //   footerColor: null,
+      //   footerBackground: null
+      // };
+    }
+    this.globalOverride(themeData);
+    this.localStorageService.storeOnLocalStorage('selected_theme', theme);
   }
 
   globalOverride(stylesheet) {

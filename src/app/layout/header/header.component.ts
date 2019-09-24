@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angu
 import { AuthService } from '../../auth/auth.service';
 import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
-import { LocalStorageService } from 'src/app/core/services/local-storage.service';
-import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageService } from '../../core/services/local-storage.service';
+import { TranslationPickerService } from '../../core/services/translation-picker.service';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +13,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
   @Input() quickpanel: MatSidenav; // for the sidebar omnipanel
+
   isAuthenticated = false;
   private authStatusSub: Subscription;
+
+  currentTranslation = 'en';
+  private currentTranslationSub: Subscription;
+
   isUserMenuOpen = false;
   userImgUrl = '';
   userFirstName = '';
@@ -28,7 +33,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   languages: any[] = [
     {value: 'en', viewValue: 'English - Eng'},
-    {value: 'es', viewValue: 'Spanish - Esp'}
+    {value: 'es', viewValue: 'Spanish - Esp'},
+    {value: 'ch', viewValue: 'Chinese - 中文'}
   ];
   // languages: any[] = [
   //   {value: 'en', viewValue: this.translateService.instant('layout.header.english') },
@@ -37,8 +43,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // languages = [];
   
   constructor(
-    public authService: AuthService, 
-    private translateService: TranslateService,
+    public authService: AuthService,
+    private translationPickerService: TranslationPickerService,
     private localStorageService: LocalStorageService)
   {}
 
@@ -48,6 +54,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .getAuthStatusListener()
       .subscribe(authStatus => {
         this.isAuthenticated = authStatus;
+      });
+
+    this.currentTranslationSub = this.translationPickerService
+      .getCurrentTranslationUpdateListener()
+      .subscribe(currentTrans => {
+        this.currentTranslation = currentTrans;
       });
 
     const appStore = this.localStorageService.getOnLocalStorage('login_data');
@@ -68,6 +80,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout();
   }
 
+  useLanguage(language: string) {
+    this.translationPickerService.setCurrentTranslation(language)
+  }
+
   // setLanguagesDropdown() {
   //   this.translateService.get('layout.header.english')
   //     .subscribe( (text: string) => {
@@ -82,11 +98,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //     })
   // }
 
-  useLanguage(language: string) {
-    this.translateService.use(language);
-  }
-
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
+    this.currentTranslationSub.unsubscribe();
   }
 }

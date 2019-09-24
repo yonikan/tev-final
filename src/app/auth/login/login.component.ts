@@ -1,33 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, OnInit } from '@angular/core'
+import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation'
+import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation'
+import { TranslationPickerService } from '../../core/services/translation-picker.service'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [fadeInRightAnimation, fadeInUpAnimation]
+  animations: [fadeInRightAnimation, fadeInUpAnimation],
 })
 export class LoginComponent implements OnInit {
-  loginMode = 'user-login';
+  loginMode = 'user-login'
   languages: any[] = [
-    {value: 'en', viewValue: 'English - Eng'},
-    {value: 'es', viewValue: 'Spanish - Esp'}
-  ];
+    { value: 'en', viewValue: 'English - Eng' },
+    { value: 'es', viewValue: 'Spanish - Esp' },
+    { value: 'ch', viewValue: 'Chinese - 中文' }
+  ]
+  currentTranslation = 'en';
 
-  constructor(private translateService: TranslateService) {}
+  constructor(private translationPickerService: TranslationPickerService) {}
 
   ngOnInit() {
-
-  }
-
-  onLoginModeEmitter (loginModeString) {
-    // console.log('loginModeString: ', loginModeString);
-    this.loginMode = loginModeString;
+    this.currentTranslation = this.translationPickerService.getCurrentTranslation();
   }
 
   useLanguage(language: string) {
-      this.translateService.use(language);
+    this.translationPickerService.setCurrentTranslation(language)
+  }
+
+  onLoginModeEmitter(loginModeString) {
+    this.loginMode = loginModeString
   }
 }

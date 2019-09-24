@@ -112,6 +112,13 @@
               display: none;
             }
           }
+
+
+          mat-form-field {
+            @media (max-width: $media-query-xs) {
+              display: none;
+            }
+          }
         }
       }
     }

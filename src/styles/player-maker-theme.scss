@@ -2,7 +2,7 @@
 @import '~@angular/material/theming';
 
 $pm-app-typography: mat-typography-config(
-  $font-family: ''
+  $font-family: 'Work Sans, Roboto'
 );
 @include mat-core($pm-app-typography);
 
@@ -16,5 +16,4 @@ $pm-app-theme: mat-light-theme($pm-app-primary, $pm-app-accent, $pm-app-warn);
 
 .mat-dialog-container {
   padding: 0 !important;
-  // background-color: aquamarine !important;
 }
