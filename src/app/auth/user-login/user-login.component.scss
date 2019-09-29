@@ -5,31 +5,29 @@
 .user-login-container {
     
     .form-container {
+      // width: 300px;
+      // min-width: 300px;
+      margin: 0 auto;
+      height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      .login-card {
-        width: 300px;
-        min-width: 300px;
-        height: 220px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        mat-form-field {
-          width: 100%;
-        }
-      
-        mat-spinner {
-          margin: auto;
-        }
-      
-        .login-button {
-          width: 100%;
-          margin-top: 8px;
-          border-radius: 20px;
-          text-transform: uppercase;
-          // background-color: $color-pink;
-          // color: white;
-        }
+      mat-spinner {
+        margin: auto;
+      }
+    
+      mat-form-field {
+        width: 100%;
+      }
+     
+      .login-button {
+        width: 100%;
+        margin-top: 8px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        // background-color: $color-pink;
+        // color: white;
       }
     }
 
