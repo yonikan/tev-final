@@ -6,13 +6,14 @@
           </button>
 
           <div class="teams-menu-container">
-              <img src=" https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1562149029.png" class="team-img">
-
               <mat-form-field class="teams-menu">
                   <!-- <mat-label>Select a team</mat-label> -->
                   <mat-select [value]="'hull-u18'">
                     <mat-option *ngFor="let team of teams" [value]="team.value">
-                      {{team.viewValue}}
+                      <!-- {{team.viewValue}} -->
+                      <img style="vertical-align:middle; margin-right: 4px; width: 30px; height: 30px;" src="https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1562149029.png" height="16"/>
+                      <span>{{team.viewValue}}</span> |
+                      <!-- <small>Population: {{ state.population }}</small> -->
                     </mat-option>
                   </mat-select>
               </mat-form-field>
@@ -45,6 +46,15 @@
                   <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
                     <mat-option *ngFor="let language of languages" [value]="language.value">
                       {{ language.viewValue }}
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                  <!-- <mat-label>choose a languages:</mat-label> -->
+                  <mat-select [(value)]="currentTheme" (selectionChange)="useTheme($event.value)">
+                    <mat-option *ngFor="let theme of themes" [value]="theme.value">
+                      {{ theme.viewValue }}
                     </mat-option>
                   </mat-select>
               </mat-form-field>

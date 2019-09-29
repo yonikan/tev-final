@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'training', component: TrainingComponent, canActivate: [AuthGuard] },
   { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
   { path: 'team-configuration', component: TeamConfigurationComponent, canActivate: [AuthGuard] },
+  // { path: 'team-configuration', loadChildren: './team-configuration/team-configuration.module#TeamConfigurationModule' },
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
   { path: '**', component: TeamOverviewComponent }
 ];

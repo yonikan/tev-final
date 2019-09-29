@@ -10,12 +10,14 @@ import { ErrorInterceptor } from './interceptors/error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { FadeInRightStaggerElementDirective } from './animations/fade-in-right.animation';
 import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animation';
+import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 
 @NgModule({
   declarations: [
     ErrorComponent,
     FadeInRightStaggerElementDirective,
-    FadeInUpStaggerElementDirective
+    FadeInUpStaggerElementDirective,
+    ThemePickerComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animati
   exports: [
     ErrorComponent,
     FadeInRightStaggerElementDirective,
-    FadeInUpStaggerElementDirective
+    FadeInUpStaggerElementDirective,
+    ThemePickerComponent
   ]
 })
 export class CoreModule { }

@@ -58,10 +58,6 @@ export class ThemePickerService {
     this.localStorageService.storeOnLocalStorage('selected_theme', currentMode);
   }
 
-
-
-
-
   setDefaultTheme(theme) { // for app init
     let themeData;
     if (theme === 'light') {
@@ -76,16 +72,20 @@ export class ThemePickerService {
         footerBackground: null
       };
     } else if (theme === 'dark') {
-      // themeData = {
-      //   navColor: '#000',
-      //   navBackground: '#fff',
-      //   cardColor: '#fff',
-      //   cardBackground: '#353435 !important',
-      //   buttonColor: '#9575cd',
-      //   buttonBackground: '#4ccead',
-      //   footerColor: null,
-      //   footerBackground: null
-      // };
+      themeData = {
+        // pageBackground: '#303030;',
+        // headerColor: '#fff',
+        // headerBackground: '#212121',
+
+        navColor: '#fff',
+        navBackground: '#212121',
+        cardColor: '#fff',
+        cardBackground: '#424242 !important',
+        buttonColor: '#9575cd',
+        buttonBackground: '#4ccead',
+        footerColor: null,
+        footerBackground: null
+      };
     }
     this.globalOverride(themeData);
     this.localStorageService.storeOnLocalStorage('selected_theme', theme);

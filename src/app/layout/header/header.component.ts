@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { TranslationPickerService } from '../../core/services/translation-picker.service';
+import { ThemePickerService } from 'src/app/core/services/theme-picker.service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTranslation = 'en';
   private currentTranslationSub: Subscription;
+
+  currentTheme = 'light';
+  private currentThemeSub: Subscription;
 
   isUserMenuOpen = false;
   userImgUrl = '';
@@ -36,6 +40,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {value: 'es', viewValue: 'Spanish - Esp'},
     {value: 'ch', viewValue: 'Chinese - 中文'}
   ];
+
+  themes: any[] = [
+    {value: 'light', viewValue: 'Light'},
+    {value: 'dark', viewValue: 'Dark'}
+  ];
   // languages: any[] = [
   //   {value: 'en', viewValue: this.translateService.instant('layout.header.english') },
   //   {value: 'es', viewValue: this.translateService.instant('layout.header.spanish')   }
@@ -45,6 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private translationPickerService: TranslationPickerService,
+    private themePickerService: ThemePickerService,
     private localStorageService: LocalStorageService)
   {}
 
@@ -82,6 +92,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   useLanguage(language: string) {
     this.translationPickerService.setCurrentTranslation(language)
+  }
+
+  useTheme(theme: string) {
+    this.themePickerService.setDefaultTheme(theme);
   }
 
   // setLanguagesDropdown() {
