@@ -8,6 +8,8 @@ import { PerformanceOvertimeComponent } from './performance-overtime/performance
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import { LeaderBoardRowComponent } from './leader-board/leader-board-row/leader-board-row.component';
 
+import { RouterModule } from '@angular/router';
+import { routes } from './team-overview.routes';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { LeaderBoardRowComponent } from './leader-board/leader-board-row/leader-
   ],
   imports: [
     CommonModule,
-    SharedModule
+    RouterModule.forChild(routes),
+    SharedModule,
   ],
   exports: [
     TeamOverviewComponent,
