@@ -12,9 +12,9 @@ import { TranslationPickerService } from '../../core/services/translation-picker
 export class LoginComponent implements OnInit {
   loginMode = 'user-login'
   languages: any[] = [
-    { value: 'en', viewValue: 'English - Eng' },
-    { value: 'es', viewValue: 'Spanish - Esp' },
-    { value: 'ch', viewValue: 'Chinese - 中文' }
+    { value: 'en', viewValue: 'English - Eng', flag: './assets/svg/flag-us.svg' },
+    { value: 'es', viewValue: 'Spanish - Esp', flag: './assets/svg/flag-es.svg' },
+    { value: 'ch', viewValue: 'Chinese - 中文', flag: './assets/svg/flag-china.svg' }
   ]
   currentTranslation = 'en';
 
