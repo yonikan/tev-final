@@ -19,7 +19,7 @@ import { TeamOverviewModule } from './team-overview/team-overview.module';
 import { TrainingModule } from './training/training.module';
 import { MatchesModule } from './matches/matches.module';
 import { AppComponent } from './app.component';
-import { TeamConfigurationModule } from './team-configuration/team-configuration.module';
+// import { TeamConfigurationModule } from './team-configuration/team-configuration.module';
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import { TeamConfigurationModule } from './team-configuration/team-configuration
     TeamOverviewModule,
     MatchesModule,
     TrainingModule,
-    TeamConfigurationModule,
+    // TeamConfigurationModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'team-overview', component: TeamOverviewComponent, canActivate: [AuthGuard] },
   { path: 'training', component: TrainingComponent, canActivate: [AuthGuard] },
   { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
-  { path: 'team-configuration', component: TeamConfigurationComponent, canActivate: [AuthGuard] },
-  // { path: 'team-configuration', loadChildren: './team-configuration/team-configuration.module#TeamConfigurationModule' },
+  { path: 'team-configuration', loadChildren: () => import('./team-configuration/team-configuration.module')
+    .then(m => m.TeamConfigurationModule), canLoad:[AuthGuard]},
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
   { path: '**', component: TeamOverviewComponent }
 ];

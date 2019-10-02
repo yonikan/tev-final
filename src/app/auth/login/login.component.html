@@ -1,4 +1,4 @@
-<div  [@fadeInRight] class="login-background-img">
+<div [@fadeInRight] class="login-background-img">
   <div class="login-container">
     <div class="login-header">
         <div class="logo">
@@ -32,24 +32,11 @@
                   <!-- <mat-label>{{ 'auth.choose-a-languages' | translate }}</mat-label> -->
                   <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
                     <mat-option *ngFor="let language of languages" [value]="language.value">
-                       {{ language.viewValue }}
+                        <img style="vertical-align:middle; margin-right: 4px; width: 30px; height: 30px;" src="https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1562149029.png" height="16"/>
+                        <span>{{ language.viewValue }}</span>
                     </mat-option>
                   </mat-select>
             </mat-form-field>
-  
-            <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="useLanguage('en')">
-                  <mat-icon>dialpad</mat-icon>
-                  <span>English</span>
-                </button>
-                <button mat-menu-item (click)="useLanguage('es')">
-                  <mat-icon>voicemail</mat-icon>
-                  <span>Spanish</span>
-                </button>
-              </mat-menu> -->
   
             <div class="copyrights">© 2020 All Rights Reserved. PlayerMaker Ltd.</div>
             <div class="privacy">
