@@ -1,9 +1,11 @@
 @import '../../../styles/variables';
+@import '../../../styles/functions';
 
 :host {
   height: 100%;
   mat-nav-list {
-    background-color: #d4d4d4;
+    background-color: var(--navBackground);
+    color: var(--navColor);
     height: 100vh;
     position: fixed;
     width: 250px;
@@ -37,10 +39,11 @@
     a {
       text-decoration: none;
       transition: .5s;
+      color: var(--navColor);
 
       &:hover {
         background: #838282;
-        color: #fff;
+        color: var(--navColor);
       }
     }
 

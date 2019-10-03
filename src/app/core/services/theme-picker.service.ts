@@ -62,38 +62,32 @@ export class ThemePickerService {
     let themeData;
     if (theme === 'light') {
       themeData = {
-        pageBackground: '#303030;',
+        pageBackground: '#c0c0c0',
 
-        headerColor: '#fff',
-        headerBackground: '#212121',
+        headerColor: '#000',
+        headerBackground: '#fff',
 
         navColor: '#000',
-        navBackground: '#fff',
+        navBackground: '#d4d4d4',
 
-        cardColor: '#fff',
-        cardBackground: '#353435 !important',
-
-        buttonColor: '#9575cd',
-        buttonBackground: '#4ccead',
+        cardColor: '#000',
+        cardBackground: '#fff',
 
         footerColor: null,
         footerBackground: null
       };
     } else if (theme === 'dark') {
       themeData = {
-        pageBackground: '#303030;',
+        pageBackground: '#000',
 
         headerColor: '#fff',
         headerBackground: '#212121',
 
         navColor: '#fff',
-        navBackground: '#212121',
+        navBackground: '#000',
 
         cardColor: '#fff',
-        cardBackground: '#424242 !important',
-
-        buttonColor: '#9575cd',
-        buttonBackground: '#4ccead',
+        cardBackground: '#000 !important',
 
         footerColor: null,
         footerBackground: null
@@ -104,6 +98,17 @@ export class ThemePickerService {
   }
 
   globalOverride(stylesheet) {
+    // Page Background Styles
+    if (stylesheet.pageBackground) {
+      this.themeWrapper.style.setProperty('--pageBackground', stylesheet.pageBackground);
+    }
+    // Header Styles
+    if (stylesheet.headerColor) {
+      this.themeWrapper.style.setProperty('--headerColor', stylesheet.headerColor);
+    }
+    if (stylesheet.headerBackground) {
+      this.themeWrapper.style.setProperty('--headerBackground', stylesheet.headerBackground);
+    }
     // Navigation Styles
     if (stylesheet.navColor) {
       this.themeWrapper.style.setProperty('--navColor', stylesheet.navColor);
@@ -124,15 +129,5 @@ export class ThemePickerService {
     }
     if (stylesheet.footerBackground) {
       this.themeWrapper.style.setProperty('--footerBackground', stylesheet.footerBackground);
-    }
-    if (stylesheet.footerAlignment) {
-      this.themeWrapper.style.setProperty('--footerAlignment', stylesheet.footerAlignment);
-    }
-    // Button Styles
-    if (stylesheet.buttonColor) {
-      this.themeWrapper.style.setProperty('--buttonColor', stylesheet.buttonColor);
-    }
-    if (stylesheet.buttonBackground) {
-      this.themeWrapper.style.setProperty('--buttonBackground', stylesheet.buttonBackground);
     }
   }}

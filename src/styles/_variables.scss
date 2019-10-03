@@ -1,18 +1,20 @@
 
 // pass variables into a sass map ================
 $variables: (
+  --pageBackground: var(--pageBackground),
+
+  --headerColor: var(--headerColor),
+  --headerBackground: var(--headerBackground),
+
   --navColor: var(--navColor),
   --navBackground: var(--navBackground),
+
   --cardColor: var(--cardColor),
   --cardBackground: var(--cardBackground),
-  --buttonColor: var(--buttonColor),
-  --buttonBackground: var(--buttonBackground),
+
   --footerColor: var(--footerColor),
-  --footerBackground: var(--footerBackground),
-  --footerAlignment: var(--footerAlignment)
+  --footerBackground: var(--footerBackground)
 );
-
-
 
 // pm app config ================
 $header-height: 55px;
