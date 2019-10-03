@@ -26,7 +26,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private themePickerService: ThemePickerService,
     private featureToggleService: FeatureToggleService) {
       this.isFeature1Enabled = featureToggleService.isFeatureEnabled('feature1');
-      this.isFeature2Enabled = featureToggleService.isFeatureEnabled('feature2');
   }
 
   ngOnInit() {
