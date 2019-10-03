@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +17,11 @@ import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
+import { AppInitService } from './app-init.service';
 
-
+const initApp = (appLoadService: AppInitService) => {
+  return () => appLoadService.init();
+};
 @NgModule({
   declarations: [
     AppComponent
@@ -42,6 +45,14 @@ import { AppComponent } from './app.component';
     CoreModule,
     LayoutModule,
     AuthModule,
+  ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      deps: [AppInitService],
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

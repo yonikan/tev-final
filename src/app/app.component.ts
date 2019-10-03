@@ -5,6 +5,7 @@ import { ThemePickerService } from './core/services/theme-picker.service';
 // import { TranslateService } from '@ngx-translate/core';
 import { TranslationPickerService } from './core/services/translation-picker.service';
 import { LocalStorageService } from './core/services/local-storage.service';
+import { FeatureToggleService } from './feature-toggle.service';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +16,17 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
 
+  public isFeature1Enabled = false;
+  public isFeature2Enabled = false;
+
   constructor( 
     public authService: AuthService, 
     private localStorageService: LocalStorageService,
     private translationPickerService: TranslationPickerService,
-    private themePickerService: ThemePickerService) {
+    private themePickerService: ThemePickerService,
+    private featureToggleService: FeatureToggleService) {
+      this.isFeature1Enabled = featureToggleService.isFeatureEnabled('feature1');
+      this.isFeature2Enabled = featureToggleService.isFeatureEnabled('feature2');
   }
 
   ngOnInit() {
