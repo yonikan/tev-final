@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation'
 import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation'
 import { TranslationPickerService } from '../../core/services/translation-picker.service'
+import { Subscription } from 'rxjs'
+import { AuthService } from '../auth.service'
 
 @Component({
   selector: 'app-login',
@@ -17,11 +19,18 @@ export class LoginComponent implements OnInit {
     { value: 'ch', viewValue: 'Chinese - 中文', flag: './assets/svg/flag-china.svg' }
   ]
   currentTranslation = 'en';
-
-  constructor(private translationPickerService: TranslationPickerService) {}
+  isAuthenticated = false;
+  private authStatusSub: Subscription;
+  
+  constructor(private translationPickerService: TranslationPickerService, public authService: AuthService) {}
 
   ngOnInit() {
     this.currentTranslation = this.translationPickerService.getCurrentTranslation();
+    this.authStatusSub = this.authService
+    .getAuthStatusListener()
+    .subscribe(authStatus => {
+      this.isAuthenticated = authStatus;
+    });
   }
 
   useLanguage(language: string) {

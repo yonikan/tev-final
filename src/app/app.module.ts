@@ -7,6 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
+
 import { AppRoutingModule } from './app.routes';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -15,16 +16,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-// import { TeamOverviewModule } from './team-overview/team-overview.module';
-// import { TrainingModule } from './training/training.module';
-// import { MatchesModule } from './matches/matches.module';
-// import { TeamConfigurationModule } from './team-configuration/team-configuration.module';
 import { AppComponent } from './app.component';
+import { PlayersComponent } from './players/players.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlayersComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +44,6 @@ import { AppComponent } from './app.component';
     CoreModule,
     LayoutModule,
     AuthModule,
-    // TeamOverviewModule,
-    // MatchesModule,
-    // TrainingModule,
-    // TeamConfigurationModule,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-<div [@fadeInRight] class="login-background-img">
+<div [@fadeInRight] *ngIf="!isAuthenticated" class="login-background-img">
   <div class="login-container">
     <div class="login-header">
         <div class="logo">
