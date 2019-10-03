@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
+
+import { AuthGuard } from './core/guards/auth.guard';
 import { FeaturesGuard } from './core/guards/features.guard';
+import { TeamsGuard } from './core/guards/teams.guard';
+import { RolesGuard } from './core/guards/roles.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -11,9 +14,9 @@ const routes: Routes = [
   { path: 'training', loadChildren: () => import('./training/training.module')
     .then(m => m.TrainingModule), canLoad: [AuthGuard, FeaturesGuard]},
   { path: 'matches', loadChildren: () => import('./matches/matches.module')
-    .then(m => m.MatchesModule), canLoad: [AuthGuard]},
+    .then(m => m.MatchesModule), canLoad: [AuthGuard, TeamsGuard]},
   { path: 'players', loadChildren: () => import('./players/players.module')
-    .then(m => m.PlayersModule), canLoad: [AuthGuard]},
+    .then(m => m.PlayersModule), canLoad: [AuthGuard, RolesGuard]},
   { path: 'team-configuration', loadChildren: () => import('./team-configuration/team-configuration.module')
     .then(m => m.TeamConfigurationModule), canLoad: [AuthGuard]},
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
