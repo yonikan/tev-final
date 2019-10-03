@@ -4,8 +4,8 @@ import { AuthService } from './auth/auth.service';
 // import { TranslateService } from '@ngx-translate/core';
 import { TranslationPickerService } from './core/services/translation-picker.service';
 import { LocalStorageService } from './core/services/local-storage.service';
-import { FeatureToggleService } from './core/services/feature-toggle.service';
 import { ThemePickerService } from './core/theme-picker/theme-picker.service';
+import { AuthorizationService } from './core/services/authorization.service';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +22,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private localStorageService: LocalStorageService,
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
-    private featureToggleService: FeatureToggleService) {
-      // this.isFeature1Enabled = featureToggleService.isFeatureEnabled('feature1');
+    private authorizationService: AuthorizationService) {
+      // this.isFeature1Enabled = authorizationService.isFeatureEnabled('feature1');
   }
 
   ngOnInit() {
