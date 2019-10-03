@@ -1,0 +1,84 @@
+{
+    "general": {
+        "toasts": {
+            
+        },
+        "dialogs": {
+            
+        },
+        "errors": {
+
+        }
+    },
+    "layout": {
+        "header": {
+            "logout": "Cerrar Sesión",
+            "help": "Help",
+            "english": "Inglés",
+            "spanish": "Español",
+            "chinese": "Chino"
+        },
+        "sidenav": {
+            "team-overview": "Team Overview - SPANISH",
+            "training": "Entrenamientos",
+            "matches": "Partidos",
+            "players": "Players - SPANISH",
+            "notes": "Notes - SPANISH",
+            "reports": "Reports - SPANISH",
+            "team-configuration": "Team Configuration - SPANISH"
+        }
+    },
+    "auth": {
+        "log-in": "Usuario",
+        "go-back-to-login": "Go back to login - SPANISH",
+        "incorrect-password": "Incorrect password - SPANISH",
+        "invalid-username-or-email": "Invalid username or email - SPANISH",
+        "email-address": "emails address - SPANISH",
+        "password": "contraseña",
+        "choose-a-languages": "choose a language - SPANISH",
+        "user-login": {
+            "title": "Usuario"
+        },
+        "forgot-password": {
+            "title": "Forgot Your Password? - SPANISH",
+            "sub-title": "Enter your e-mail address below to revieve a verification email and reset your account: - SPANISH",
+            "send-verification-email": "SEND VERIFICATION EMAIL - SPANISH"
+        },
+        "reset-password": {
+            "title": "Reset Password - SPANISH",
+            "sub-title": "You have verified your account successfully. Enter a new password for your account - SPANISH",
+            "new-password": "NEW PASSWORD - SPANISH",
+            "re-enter-new-password": "RE-ENTER NEW PASSWORD - SPANISH",
+            "reset-password": "RESET PASSWORD - SPANISH"
+        },
+        "email-sent": {
+            "title": "E-Mail Sent - SPANISH",
+            "sub-title": "Go to your inbox and click the link. Didn't receive the email? - SPANISH",
+            "send-again": "Send again - SPANISH"
+        }
+    },
+    "team-overview": {
+        "title": "Team Overview - SPANISH",
+        "load-risk": {
+            "title": "Load risk"
+        },
+        "performance-overtime": {
+            "title": "Performance Overtime"
+        },
+        "leader-board": {
+            "title": "Leaderboard"
+        },
+        "events": {
+            "title": "Events"
+        }
+    },
+    "training": {
+        "title": "Entrenamientos"
+    },
+    "matches": {
+        "title": "Partidos"
+    },
+    "team-configuration": {
+        "title": "Team Configuration"
+    }
+}

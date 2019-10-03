@@ -1,0 +1,49 @@
+<div [@fadeInRight] *ngIf="!isAuthenticated" class="login-background-img">
+  <div class="login-container">
+    <div class="login-header">
+        <div class="logo">
+            <img src="./assets/img/logo-large.jpg" />
+        </div>
+    </div>
+  
+    <div class="login-content" >
+        <div [@fadeInUp] *ngIf="loginMode === 'user-login'" class="user-login-container">
+            <app-user-login (loginModeEmitter)="onLoginModeEmitter($event)"></app-user-login>
+        </div>
+  
+        <div [@fadeInUp] *ngIf="loginMode === 'forgot-password'" class="forgot-password-container">
+          <app-forgot-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-forgot-password>
+        </div>
+  
+        <div [@fadeInUp] *ngIf="loginMode === 'reset-password'" class="reset-password-container">
+          <app-reset-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-reset-password>
+        </div>
+  
+        <div [@fadeInUp] *ngIf="loginMode === 'email-sent'" class="email-sent-container">
+            <app-email-sent (loginModeEmitter)="onLoginModeEmitter($event)"></app-email-sent>
+        </div>
+    </div>
+  
+    <div class="login-footer">
+        <div class="login-bottom">
+            <!-- <div class="app-version">V.2.13.0.1</div> -->
+  
+            <mat-form-field appearance="outline">
+                  <!-- <mat-label>{{ 'auth.choose-a-languages' | translate }}</mat-label> -->
+                  <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
+                    <mat-option *ngFor="let language of languages" [value]="language.value">
+                        <img class="test" style="vertical-align:middle; margin-right: 8px; width: 18px; height: 18px; border-radius: 50%;" [src]="language.flag"/>
+                        <span>{{ language.viewValue }}</span>
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+  
+            <div class="copyrights">© 2020 All Rights Reserved. PlayerMaker Ltd.</div>
+            <div class="privacy">
+                <span><a href="https://playermaker-public.s3.eu-west-2.amazonaws.com/site/PM-Privacy-Policy.pdf" target="_self">Privecy Policy</a></span> | 
+                <span><a href="https://playermaker-public.s3.eu-west-2.amazonaws.com/site/PM-Terms.pdf" target="_self">Terms of use</a></span>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+@import '../../../../styles/variables';
+
+:host {
+
+    .row-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .row-index {
+            width: 20px;
+        }
+
+        .row-avatar {
+            width: 40px;
+
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+              }
+        }
+
+        .row-shirt-number {
+             width: 40px;
+        }
+
+        .row-player-name {
+            // width: 10px;
+             flex: 1;
+        }
+        .row-player-score {
+            width: 20px;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+@import '../styles/variables';
+@import '../styles/functions';
+
+:host { 
+  mat-sidenav-container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--pageBackground);
+    // background-image: url(https://s3.eu-central-1.amazonaws.com/motionizefootball/Dashboard_images/background/pm-background14.jpg);
+    // background-image: url(https://playermaker.com/wp-content/uploads/2019/05/newsbanner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50%;
+  
+    .sidenav {
+      width: 250px;
+
+
+
+
+      // color: #c0c0c0 // testtttttt
+      // background: rgb(177, 177, 177);
+    }
+
+    .quickpanel {
+      width: 250px;
+      // background: rgb(177, 177, 177);
+    }
+  
+    mat-sidenav-content {
+
+      .app-container {
+        width: 100%;
+        margin: 0 auto;
+
+        @media (max-width: $media-query-xs) {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .content-container {
+          display: flex;
+
+          .page-sidenav {
+            @media (max-width: $media-query-xs) {
+              display: none;
+            }
+
+            app-sidenav {
+              // width: 20%;
+              // background-color: rgb(102, 102, 102);
+              // height: 100vh;
+            }
+          }
+
+          .page-container {
+            width: 100%;
+            margin-top: 64px; // for the header's placeholder
+            margin-left: 250px; // for the navbar's placeholder
+            color: var(--headerColor);
+
+            // background-image: url(https://playermaker.com/wp-content/uploads/2019/06/Load_Blog-2.jpg);
+            // width: 100%;
+            // height: 100vh;
+            // background-repeat: no-repeat!important;
+            // background-size: cover!important;
+            // background-position: center!important;
+
+            @media (max-width: $media-query-xs) {
+              // margin-top: 0;
+              margin-left: 0;
+            }
+          }
+
+          .auth-off {
+            margin-top: 0; // reset for the header's placeholder
+            margin-left: 0; // reset for the navbar's placeholder
+          }
+        }
+      }
+    }
+  }
+}
