@@ -15,9 +15,7 @@ import { ThemePickerService } from './core/theme-picker/theme-picker.service';
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
-
-  public isFeature1Enabled = false;
-  public isFeature2Enabled = false;
+  // public isFeature1Enabled = false;
 
   constructor( 
     public authService: AuthService, 
@@ -25,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
     private featureToggleService: FeatureToggleService) {
-      this.isFeature1Enabled = featureToggleService.isFeatureEnabled('feature1');
+      // this.isFeature1Enabled = featureToggleService.isFeatureEnabled('feature1');
   }
 
   ngOnInit() {
