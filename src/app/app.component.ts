@@ -5,7 +5,7 @@ import { ThemePickerService } from './core/services/theme-picker.service';
 // import { TranslateService } from '@ngx-translate/core';
 import { TranslationPickerService } from './core/services/translation-picker.service';
 import { LocalStorageService } from './core/services/local-storage.service';
-import { FeatureToggleService } from './feature-toggle.service';
+import { FeatureToggleService } from './core/services/feature-toggle.service';
 
 @Component({
   selector: 'app-root',

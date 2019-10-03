@@ -17,7 +17,7 @@ import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
-import { AppInitService } from './app-init.service';
+import { AppInitService } from './core/services/app-init.service';
 
 const initApp = (appLoadService: AppInitService) => {
   return () => appLoadService.init();
