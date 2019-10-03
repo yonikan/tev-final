@@ -17,13 +17,11 @@ import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
-import { PlayersComponent } from './players/players.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PlayersComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

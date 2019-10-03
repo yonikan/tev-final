@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation'
 import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation'
 import { TranslationPickerService } from '../../core/services/translation-picker.service'
@@ -11,7 +11,7 @@ import { AuthService } from '../auth.service'
   styleUrls: ['./login.component.scss'],
   animations: [fadeInRightAnimation, fadeInUpAnimation],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginMode = 'user-login'
   languages: any[] = [
     { value: 'en', viewValue: 'English - Eng', flag: './assets/svg/flag-us.svg' },
@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.currentTranslation = this.translationPickerService.getCurrentTranslation();
     this.authStatusSub = this.authService
-    .getAuthStatusListener()
-    .subscribe(authStatus => {
-      this.isAuthenticated = authStatus;
-    });
+      .getAuthStatusListener()
+      .subscribe(authStatus => {
+        this.isAuthenticated = authStatus;
+      });
   }
 
   useLanguage(language: string) {
@@ -39,5 +39,9 @@ export class LoginComponent implements OnInit {
 
   onLoginModeEmitter(loginModeString) {
     this.loginMode = loginModeString
+  }
+
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
   }
 }

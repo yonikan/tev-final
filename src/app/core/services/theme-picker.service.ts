@@ -62,27 +62,39 @@ export class ThemePickerService {
     let themeData;
     if (theme === 'light') {
       themeData = {
+        pageBackground: '#303030;',
+
+        headerColor: '#fff',
+        headerBackground: '#212121',
+
         navColor: '#000',
         navBackground: '#fff',
+
         cardColor: '#fff',
         cardBackground: '#353435 !important',
+
         buttonColor: '#9575cd',
         buttonBackground: '#4ccead',
+
         footerColor: null,
         footerBackground: null
       };
     } else if (theme === 'dark') {
       themeData = {
-        // pageBackground: '#303030;',
-        // headerColor: '#fff',
-        // headerBackground: '#212121',
+        pageBackground: '#303030;',
+
+        headerColor: '#fff',
+        headerBackground: '#212121',
 
         navColor: '#fff',
         navBackground: '#212121',
+
         cardColor: '#fff',
         cardBackground: '#424242 !important',
+
         buttonColor: '#9575cd',
         buttonBackground: '#4ccead',
+
         footerColor: null,
         footerBackground: null
       };
