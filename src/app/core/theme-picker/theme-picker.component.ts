@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ThemePickerService } from 'src/app/core/services/theme-picker.service';
+import { ThemePickerService } from './theme-picker.service';
 
 @Component({
   selector: 'app-theme-picker',

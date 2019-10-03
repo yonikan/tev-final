@@ -4,7 +4,7 @@ import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { TranslationPickerService } from '../../core/services/translation-picker.service';
-import { ThemePickerService } from 'src/app/core/services/theme-picker.service';
+import { ThemePickerService } from '../../core/theme-picker/theme-picker.service';
 
 @Component({
   selector: 'app-header',

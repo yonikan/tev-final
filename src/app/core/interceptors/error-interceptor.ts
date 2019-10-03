@@ -4,7 +4,7 @@ import { throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ErrorComponent } from '../error/error.component';
-import { ErrorService } from '../services/error.service';
+import { ErrorService } from '../error/error.service';
 
 
 @Injectable({ providedIn: 'root' })
