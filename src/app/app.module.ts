@@ -28,7 +28,6 @@ import { AppInitService, initFeatureToggling, initTeamsAuth, initRolesAuth } fro
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ContentLoaderModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -36,6 +35,7 @@ import { AppInitService, initFeatureToggling, initTeamsAuth, initRolesAuth } fro
           deps: [HttpClient]
       }
     }),
+    ContentLoaderModule,
     CoreModule,
     LayoutModule,
     AuthModule,

@@ -22,7 +22,7 @@ export class AppInitService {
     return this.httpClient
       .get('assets/configs/teams-auth-config.json')
       .pipe(
-        tap(isTeamShown => (this.authorizationService.isTeamShown = false)) // temp hard-coded
+        tap(isTeamShown => (this.authorizationService.isTeamShown = true)) // temp hard-coded
       )
       .toPromise();
   }

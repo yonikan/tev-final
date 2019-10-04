@@ -6,6 +6,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { FeaturesGuard } from './core/guards/features.guard';
 import { TeamsGuard } from './core/guards/teams.guard';
 import { RolesGuard } from './core/guards/roles.guard';
+import { SettingsComponent } from './core/settings/settings.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'players', loadChildren: () => import('./players/players.module')
     .then(m => m.PlayersModule), canLoad: [AuthGuard, RolesGuard]},
   { path: 'team-configuration', loadChildren: () => import('./team-configuration/team-configuration.module')
-    .then(m => m.TeamConfigurationModule), canLoad: [AuthGuard]},
+    .then(m => m.TeamConfigurationModule), canLoad: [AuthGuard, FeaturesGuard, TeamsGuard, RolesGuard]},
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
   { path: '**', redirectTo: '/team-overview', pathMatch: 'full' }
 ];

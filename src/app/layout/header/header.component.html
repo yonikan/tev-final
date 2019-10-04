@@ -37,33 +37,16 @@
                   <mat-icon class="icon">keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #userMenu="matMenu">
+                    <button mat-menu-item routerLink="/settings" >settings</button>
                     <button mat-menu-item (click)="onLogout()">{{ 'layout.header.logout' | translate }}</button>
                 </mat-menu>
               </div>
 
               <mat-divider [vertical]="true" class="actions-divider"></mat-divider>
 
-              <mat-form-field>
-                  <!-- <mat-label>choose a languages:</mat-label> -->
-                  <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
-                    <mat-option *ngFor="let language of languages" [value]="language.value">
-                      {{ language.viewValue }}
-                    </mat-option>
-                  </mat-select>
-              </mat-form-field>
-
-              <mat-form-field>
-                  <!-- <mat-label>choose a languages:</mat-label> -->
-                  <mat-select [(value)]="currentTheme" (selectionChange)="useTheme($event.value)">
-                    <mat-option *ngFor="let theme of themes" [value]="theme.value">
-                      {{ theme.viewValue }}
-                    </mat-option>
-                  </mat-select>
-              </mat-form-field>
-
-              <!-- <button mat-button class="help-button">
+              <button mat-button class="help-button">
                 <mat-icon class="icon">help_outline</mat-icon>
-              </button> -->
+              </button>
           </div>
       </div>
     </mat-toolbar-row>
