@@ -1,14 +1,14 @@
 <mat-nav-list *ngIf="isAuthenticated">
     <div class="navigation-wrapper">
         <a mat-list-item routerLink="/team-overview" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>home</mat-icon>
+          <mat-icon>insert_chart_outlined</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.team-overview' | translate }}</span>
         </a>
     
         <mat-divider></mat-divider>
     
         <a mat-list-item routerLink="/training" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>dashboard</mat-icon>
+          <mat-icon>directions_run</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.training' | translate }}</span>
           <span class="nav-badge" matBadge="3" matBadgeOverlap="false"></span>
         </a>
@@ -16,7 +16,7 @@
         <mat-divider></mat-divider>
         
         <a mat-list-item routerLink="/matches" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>dashboard</mat-icon>
+          <mat-icon>sports_soccer</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.matches' | translate }}</span>
           <span class="nav-badge" matBadge="3" matBadgeOverlap="false"></span>
         </a>
@@ -24,14 +24,14 @@
         <mat-divider></mat-divider>
         
         <a mat-list-item routerLink="/players" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>dashboard</mat-icon>
+          <mat-icon>people_alt</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.players' | translate }}</span>
         </a>
         
         <mat-divider></mat-divider>
         
         <a mat-list-item routerLink="/notes" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>dashboard</mat-icon>
+          <mat-icon>event_note</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.notes' | translate }}</span>
           <span class="nav-badge" matBadge="3" matBadgeOverlap="false"></span>
         </a>
@@ -39,7 +39,7 @@
         <mat-divider></mat-divider>
     
         <a mat-list-item routerLink="/reports" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>dashboard</mat-icon>
+          <mat-icon>markunread_mailboxs</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.reports' | translate }}</span>
         </a>
     

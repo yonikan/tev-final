@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    @media (max-width: $media-query-xs) {
+    @media (max-width: $media-query-sm) {
       position: static;
       border-right: 0;
     }
@@ -28,7 +28,7 @@
     .navigation-wrapper {
       margin-top: 64px; // for the header's placeholder
 
-      @media (max-width: $media-query-xs) {
+      @media (max-width: $media-query-sm) {
         margin-top: 0;
       }
     }

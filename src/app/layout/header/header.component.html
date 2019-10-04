@@ -37,8 +37,15 @@
                   <mat-icon class="icon">keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #userMenu="matMenu">
-                    <button mat-menu-item routerLink="/settings" >settings</button>
-                    <button mat-menu-item (click)="onLogout()">{{ 'layout.header.logout' | translate }}</button>
+                    <button mat-menu-item routerLink="/settings">
+                      <mat-icon>settings</mat-icon>
+                      <span>Settings</span>
+                    </button>
+
+                    <button mat-menu-item (click)="onLogout()">
+                      <mat-icon>input</mat-icon>
+                      <span>{{ 'layout.header.logout' | translate }}</span>
+                    </button>
                 </mat-menu>
               </div>
 
