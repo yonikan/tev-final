@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private currentThemeSub: Subscription;
 
   isUserMenuOpen = false;
-  userImgUrl = '';
+  userImgUrl = 'https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png';
   userFirstName = '';
   userLastName = '';
 
@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
 
     const appStore = this.localStorageService.getOnLocalStorage('login_data');
+    console.log('appStore: ', appStore);
     this.userImgUrl = appStore.image_url;
     this.userFirstName = appStore.first_name ;
     this.userLastName = appStore.last_name ;

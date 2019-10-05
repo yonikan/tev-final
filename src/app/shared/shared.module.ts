@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 import { TranslateModule } from '@ngx-translate/core';
+import { PageHeaderComponent } from './page-header/page-header.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PageHeaderComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -14,7 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
   exports: [
     MaterialModule,
     ContentLoaderModule,
-    TranslateModule
+    TranslateModule,
+    PageHeaderComponent
   ]
 })
 export class SharedModule { }

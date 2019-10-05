@@ -1,0 +1,28 @@
+<div class="overview-header">
+    <h3>{{ title }}</h3>
+    <div class="overview-actions">
+        <div class="primary-actions">
+            <button mat-button matTooltip="Action" class="" (click)="null">
+                <mat-icon>bookmark_border</mat-icon>
+            </button>
+            <button mat-button matTooltip="Export To PDF" class="" (click)="null">
+                <mat-icon>picture_as_pdf</mat-icon>
+            </button>
+        </div>
+        <div class="secondery-actions">
+            <button mat-button [matMenuTriggerFor]="pageActionsMenu" class="">
+                <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #pageActionsMenu="matMenu">
+                <button mat-menu-item class="" (click)="null">
+                    <mat-icon>bookmark_border</mat-icon>
+                    <span>Action</span>
+                </button>
+                <button mat-menu-item class="" (click)="null">
+                    <mat-icon>picture_as_pdf</mat-icon>
+                    <span>Export To PDF</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</div>
