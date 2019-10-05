@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 
 import { AuthGuard } from './core/guards/auth.guard';
@@ -7,6 +7,7 @@ import { FeaturesGuard } from './core/guards/features.guard';
 import { TeamsGuard } from './core/guards/teams.guard';
 import { RolesGuard } from './core/guards/roles.guard';
 import { SettingsComponent } from './core/settings/settings.component';
+// import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  // imports: [RouterModule.forRoot(routes, { preloadingStrategy: QuicklinkStrategy })],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule],
   providers: [AuthGuard]
 })

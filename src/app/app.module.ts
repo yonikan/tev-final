@@ -16,6 +16,7 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { AppInitService, initFeatureToggling, initTeamsAuth, initRolesAuth } from './core/services/app-init.service';
+// import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AppInitService, initFeatureToggling, initTeamsAuth, initRolesAuth } fro
   ],
   imports: [
     BrowserModule,
+    // QuicklinkModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
