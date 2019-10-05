@@ -2,8 +2,8 @@
     <h3>{{ title }}</h3>
     <div class="overview-actions">
         <div class="primary-actions">
-            <button mat-button matTooltip="Action" class="" (click)="null">
-                <mat-icon>bookmark_border</mat-icon>
+            <button mat-button matTooltip="Export To Excel" class="" (click)="null">
+                <mat-icon>file_copy</mat-icon>
             </button>
             <button mat-button matTooltip="Export To PDF" class="" (click)="null">
                 <mat-icon>picture_as_pdf</mat-icon>
@@ -15,8 +15,8 @@
             </button>
             <mat-menu #pageActionsMenu="matMenu">
                 <button mat-menu-item class="" (click)="null">
-                    <mat-icon>bookmark_border</mat-icon>
-                    <span>Action</span>
+                    <mat-icon>file_copy</mat-icon>
+                    <span>Export To Excel</span>
                 </button>
                 <button mat-menu-item class="" (click)="null">
                     <mat-icon>picture_as_pdf</mat-icon>
