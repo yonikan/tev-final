@@ -29,20 +29,11 @@
         </a>
         
         <mat-divider></mat-divider>
-        
-        <a mat-list-item routerLink="/notes" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>event_note</mat-icon>
-          <span class="nav-caption">{{ 'layout.sidenav.notes' | translate }}</span>
-          <span class="nav-badge" matBadge="3" matBadgeOverlap="false"></span>
-        </a>
-    
-        <mat-divider></mat-divider>
     
         <a mat-list-item routerLink="/reports" routerLinkActive="active" (click)="onClose()">
-          <mat-icon>markunread_mailboxs</mat-icon>
+          <mat-icon>event_note</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.reports' | translate }}</span>
         </a>
-    
         <mat-divider></mat-divider>
     </div>
 

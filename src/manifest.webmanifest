@@ -1,8 +1,8 @@
 {
-  "name": "playermaker-new-dashboard",
-  "short_name": "playermaker-new-dashboard",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "PlayerMaker Dashboard",
+  "short_name": "PlayerMaker Dashboard",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
