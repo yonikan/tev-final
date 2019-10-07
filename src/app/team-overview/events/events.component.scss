@@ -2,82 +2,84 @@
 @import '../../../styles/mixins';
 
 :host {
-  @include card;
-  margin-bottom: 20px;
-  flex-direction: column;
-
-  .loading-overlay {
-    background-color: rgba(255,255,255, 0.7);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: all .25s ease-in-out;
-    opacity: 0;
-    visibility: hidden;
+  mat-card {
+    @include card;
+    margin-bottom: 20px;
+    flex-direction: column;
   
-    &.show {
-      opacity: 1;
-      visibility: visible;
+    .loading-overlay {
+      background-color: rgba(255,255,255, 0.7);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transition: all .25s ease-in-out;
+      opacity: 0;
+      visibility: hidden;
+    
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
     }
-  }
+
+    mat-card-header {
+      .event-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 20px;
+        padding-bottom: 10px;
+    
+        .header-title {
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+    
+          .status-bullet {
+            color: #fbb128;
+            font-size: 18px;
+          }
+        }
+    
+        .header-actions {
+          mat-icon {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    mat-card-content {
+      .event-content-title {
+        display: flex;
+        align-items: center;
   
-
-  .event-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 20px;
-    padding-bottom: 10px;
-
-    .header-title {
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-
-      .status-bullet {
-        color: #fbb128;
-        font-size: 18px;
+        h4 {
+          font-size: 17px;
+          margin-left: 7px;
+          font-weight: 300;
+        }
       }
-    }
-
-    .header-actions {
-      mat-icon {
-        font-size: 20px;
+  
+      .event-content-info {
+        display: flex;
+        justify-content: space-between;
+  
+        .info-title {
+          font-size: 12px;
+        }
       }
-    }
-  }
-
-  .event-content {
-
-    .event-content-title {
-      display: flex;
-      align-items: center;
-
-      h4 {
-        font-size: 17px;
-        margin-left: 7px;
-        font-weight: 300;
-      }
-    }
-
-    .event-content-info {
-      display: flex;
-      justify-content: space-between;
-
-      .info-title {
-        font-size: 12px;
-      }
-    }
-
-    .event-content-confirm {
-      .confirm-button {
-        width: 100%;
-        margin-top: 20px;
-        background-color: rgb(167, 167, 167);
-        color: #fff;
+  
+      .event-content-confirm {
+        .confirm-button {
+          width: 100%;
+          margin-top: 20px;
+          background-color: rgb(167, 167, 167);
+          color: #fff;
+        }
       }
     }
   }

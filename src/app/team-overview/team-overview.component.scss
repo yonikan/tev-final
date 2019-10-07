@@ -57,6 +57,7 @@
       .leaderboard-container {
         .leaderboard-wrapper {
           display: flex;
+          justify-content: space-between;
 
           @media (max-width: $media-query-sm) {
             flex-direction: column;

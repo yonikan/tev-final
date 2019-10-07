@@ -1,16 +1,16 @@
-<bullet-list-content-loader *ngIf="false" [primaryColor]="'#aaaaaa'"></bullet-list-content-loader>
-
-<div *ngIf="true">
+<mat-card>
+  <mat-card-header *ngIf="true">
     <div class="leader-board-header">
-        <h3>Toches (# / min)</h3>
+      <h3>Toches (# / min)</h3>
     </div>
-    
+  </mat-card-header>
+  <mat-card-content *ngIf="true">
     <div class="leader-board-content">
-        <app-leader-board-row></app-leader-board-row>
-        <app-leader-board-row></app-leader-board-row>
-        <app-leader-board-row></app-leader-board-row>
-        <app-leader-board-row></app-leader-board-row>
-        <app-leader-board-row></app-leader-board-row>
+      <app-leader-board-row></app-leader-board-row>
+      <app-leader-board-row></app-leader-board-row>
+      <app-leader-board-row></app-leader-board-row>
+      <app-leader-board-row></app-leader-board-row>
+      <app-leader-board-row></app-leader-board-row>
     </div>
-    
-</div>
+  </mat-card-content>
+</mat-card>

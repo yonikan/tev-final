@@ -2,30 +2,34 @@
 @import '../../../styles/mixins';
 
 :host {
-  @include card;
-  width: 33%;
-  margin-right: 20px;
-  display: flex;
-  flex-direction: column;
+  mat-card {
+    @include card;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
 
-  &:last-child {
-    margin-right: 0;
-  }
-
-  @media (max-width: $media-query-sm) {
-    width: 90%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .leader-board-header {
-    h3 {
-      font-size: 13px;
+    &:last-child {
+      margin-right: 0;
     }
 
-  }
+    @media (max-width: $media-query-sm) {
+      width: 90%;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
 
-  .leader-board-content {
+    mat-card-header {
+      .leader-board-header {
+        h3 {
+          font-size: 13px;
+        }
+      }
+    }
 
+    mat-card-content {
+      .leader-board-content {
+
+      }
+    }
   }
 }

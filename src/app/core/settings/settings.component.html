@@ -1,24 +1,23 @@
 <app-page-header [title]="'settings'" [actions]="[1, 2, 3]"></app-page-header>
 
-<div>
-    <mat-form-field>
-        <!-- <mat-label>choose a languages:</mat-label> -->
-        <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
-            <mat-option *ngFor="let language of languages" [value]="language.value">
-            {{ language.viewValue }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-        <!-- <mat-label>choose a languages:</mat-label> -->
-        <mat-select [(value)]="currentTheme" (selectionChange)="useTheme($event.value)">
-            <mat-option *ngFor="let theme of themes" [value]="theme.value">
-            {{ theme.viewValue }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <!-- <app-theme-picker></app-theme-picker> -->
-</div>
-
+<mat-card class="">
+    <mat-card-content>
+        <mat-form-field>
+            <!-- <mat-label>choose a languages:</mat-label> -->
+            <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
+                <mat-option *ngFor="let language of languages" [value]="language.value">
+                {{ language.viewValue }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <!-- <mat-label>choose a languages:</mat-label> -->
+            <mat-select [(value)]="currentTheme" (selectionChange)="useTheme($event.value)">
+                <mat-option *ngFor="let theme of themes" [value]="theme.value">
+                {{ theme.viewValue }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>
