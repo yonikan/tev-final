@@ -41,17 +41,24 @@
                       <mat-icon>settings</mat-icon>
                       <span>Settings</span>
                     </button>
+                    <mat-divider></mat-divider>
 
                     <button mat-menu-item (click)="onLogout()">
                       <mat-icon>exit_to_app</mat-icon>
                       <span>{{ 'layout.header.logout' | translate }}</span>
                     </button>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="version-container">
+                      app v2.14 / API v2.0 
+                    </div>
                 </mat-menu>
               </div>
 
               <mat-divider [vertical]="true" class="actions-divider"></mat-divider>
 
-              <button mat-button class="help-button">
+              <button mat-button class="help-button" matTooltip="Help Guides">
                 <mat-icon class="icon">help_outline</mat-icon>
               </button>
           </div>

@@ -39,11 +39,10 @@
     a {
       text-decoration: none;
       transition: .5s;
-      color: var(--navColor);
 
       &:hover {
         background: #838282;
-        color: var(--navColor);
+        color: #fff; 
       }
     }
 
