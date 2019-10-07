@@ -9,6 +9,10 @@
         margin-top: 20px;
         height: 1400px;
 
+        @media (max-width: $media-query-sm) {
+            width: 86%;
+        }
+
         mat-card-content {
             display: flex;
             flex-direction: column;
