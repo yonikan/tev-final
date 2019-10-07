@@ -1,6 +1,6 @@
 {
-  "name": "PlayerMaker Dashboard",
-  "short_name": "PlayerMaker",
+  "name": "PlayerMaker-Dashboard",
+  "short_name": "PlayerMaker-Dashboard",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",

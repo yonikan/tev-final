@@ -1,49 +1,58 @@
-
-<facebook-content-loader *ngIf="false" [primaryColor]="'#aaaaaa'"></facebook-content-loader>
-
-<div *ngIf="true" class="event-header">
-    <div class="header-title">
-        <span class="status-bullet"><li></li></span>
-        <h4>Yesterday, 08:35-10:30</h4>
+<mat-card class="">
+    <div [class.show]="isLoading" class="loading-overlay">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-    <div class="header-actions">
-        <button mat-icon-button [matMenuTriggerFor]="eventMenu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #eventMenu="matMenu">
-            <button mat-menu-item>
-                <mat-icon>dialpad</mat-icon>
-                <span>test1</span>
-            </button>
-            <button mat-menu-item>
-                <mat-icon>notifications_off</mat-icon>
-                <span>test2</span>
-            </button>
-        </mat-menu>
-    </div>
-</div>
 
-<div class="event-content">
-    <div class="event-content-title">
-        <mat-icon>sports_soccer</mat-icon>
-        <h4>Manchester United</h4>
-    </div>
-    <div class="event-content-info">
-        <div class="info-duration">
-            <div class="info-title">duration:</div>
-            2:25 hrs
+    <facebook-content-loader *ngIf="false" [primaryColor]="'#aaaaaa'"></facebook-content-loader>
+
+    <mat-card-header *ngIf="true">
+        <div class="event-header">
+            <div class="header-title">
+                <span class="status-bullet"><li></li></span>
+                <h4>Yesterday, 08:35-10:30</h4>
+            </div>
+            <div class="header-actions">
+                <button mat-icon-button [matMenuTriggerFor]="eventMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #eventMenu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>dialpad</mat-icon>
+                        <span>test1</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>notifications_off</mat-icon>
+                        <span>test2</span>
+                    </button>
+                </mat-menu>
+            </div>
         </div>
-        <div class="info-players">
-            <div class="info-title">players:</div>
-            22
-        </div>
-        <div class="info-phases">
-            <div class="info-title">phases:</div>
-            N/A
-        </div>
-    </div>
+    </mat-card-header>
 
-    <div class="event-content-confirm">
-        <button class="confirm-button" mat-raised-button (click)="openBottomSheet()">CONFIRM SESSION</button>
-    </div>
-</div>
+    <mat-card-content *ngIf="true">
+        <div class="event-content">
+            <div class="event-content-title">
+                <mat-icon>sports_soccer</mat-icon>
+                <h4>Manchester United</h4>
+            </div>
+            <div class="event-content-info">
+                <div class="info-duration">
+                    <div class="info-title">duration:</div>
+                    2:25 hrs
+                </div>
+                <div class="info-players">
+                    <div class="info-title">players:</div>
+                    22
+                </div>
+                <div class="info-phases">
+                    <div class="info-title">phases:</div>
+                    N/A
+                </div>
+            </div>
+        
+            <div class="event-content-confirm">
+                <button class="confirm-button" mat-raised-button (click)="onRefresh()">CONFIRM SESSION</button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

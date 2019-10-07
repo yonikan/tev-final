@@ -25,9 +25,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private currentThemeSub: Subscription;
 
   isUserMenuOpen = false;
-  userImgUrl = 'https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png';
-  userFirstName = '';
-  userLastName = '';
+  userImgUrl = './assets/img/user_img_placeholder.png';
+  userFirstName = 'yoni';
+  userLastName = 'kangun';
 
   teams: any[] = [
     {value: 'hull-u18', viewValue: '2019/20: Hull City U18'},
@@ -47,9 +47,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     const appStore = this.localStorageService.getOnLocalStorage('login_data');
     console.log('appStore: ', appStore);
-    this.userImgUrl = appStore.image_url;
-    this.userFirstName = appStore.first_name ;
-    this.userLastName = appStore.last_name ;
+    // this.userImgUrl = appStore.image_url;
+    // this.userFirstName = appStore.first_name ;
+    // this.userLastName = appStore.last_name ;
   }
 
   onToggleSidenav() {

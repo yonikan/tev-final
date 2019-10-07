@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-events',
@@ -8,25 +7,15 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
 })
 export class EventsComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  isLoading = false;
+
+  constructor() { }
 
   ngOnInit() {
   }
 
-  openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheetOverviewExampleSheet);
-  }
-}
-
-@Component({
-  selector: 'bottom-sheet-overview-example-sheet',
-  templateUrl: 'bottom-sheet.component.html',
-})
-export class BottomSheetOverviewExampleSheet {
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>) {}
-
-  openLink(event: MouseEvent): void {
-    this._bottomSheetRef.dismiss();
-    event.preventDefault();
+  onRefresh() {
+    this.isLoading = true;
+    setTimeout(() => { this.isLoading = false }, 2000);
   }
 }
