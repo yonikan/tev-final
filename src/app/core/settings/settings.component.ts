@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslationPickerService } from '../services/translation-picker.service';
-import { ThemePickerService } from '../theme-picker/theme-picker.service';
+import { ThemePickerService } from '../services/theme-picker.service';
 // import { MatRadioChange } from '@angular/material';
 
 @Component({

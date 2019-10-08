@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamPickerService } from '../core/services/team-picker.service';
 
 @Component({
   selector: 'app-team-overview',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(public teamPickerService: TeamPickerService) { }
 
   ngOnInit() {
+    this.teamPickerService.getCurrentTeamUpdateListener()
+      .subscribe( teamEvents => {
+        console.log(teamEvents);
+      });
   }
-
 }

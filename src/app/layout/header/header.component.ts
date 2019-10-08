@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
 import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
+
+import { AuthService } from '../../auth/auth.service';
 import { LocalStorageService } from '../../core/services/local-storage.service';
-import { TranslationPickerService } from '../../core/services/translation-picker.service';
-import { ThemePickerService } from '../../core/theme-picker/theme-picker.service';
 import { TeamPickerService } from '../../core/services/team-picker.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private currentTranslationSub: Subscription;
 
   currentTheme = 'light';
-  private currentThemeSub: Subscription;
 
   currentTeam = 'hull-u14';
   teams: any[] = [

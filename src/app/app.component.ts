@@ -4,8 +4,8 @@ import { AuthService } from './auth/auth.service';
 // import { TranslateService } from '@ngx-translate/core';
 import { TranslationPickerService } from './core/services/translation-picker.service';
 import { LocalStorageService } from './core/services/local-storage.service';
-import { ThemePickerService } from './core/theme-picker/theme-picker.service';
 import { AuthorizationService } from './core/services/authorization.service';
+import { ThemePickerService } from './core/services/theme-picker.service';
 
 @Component({
   selector: 'app-root',

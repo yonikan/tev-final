@@ -9,6 +9,8 @@ export class TeamPickerService {
   private currentTeam = 'hull-u18';
   private currentTeamUpdated = new BehaviorSubject<string>('hull-u18');
 
+  teamEvents;
+
   constructor(private http: HttpClient) { }
 
   getCurrentTeamUpdateListener() {
@@ -20,21 +22,13 @@ export class TeamPickerService {
   }
 
   setCurrentTeam(team: string) {
-    console.log('team: ', team);
-
-    this.http
-      .get('assets/mocks/players-mock.json') // depands on the team argument
-      .subscribe((players) => {
-        console.log('players: ', players);
-      });
- 
     this.http
       .get('assets/mocks/team-events-mock.json') // depands on the team-events argument
       .subscribe((teamEvents) => {
-        console.log('teamEvents: ', teamEvents);
+        this.teamEvents = teamEvents;
+        this.currentTeamUpdated.next(this.teamEvents);
       });
 
-    this.currentTeam = team;
-    this.currentTeamUpdated.next(team);
+    this.currentTeam = team; // we need the current team name also 
   }
 }

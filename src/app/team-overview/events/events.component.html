@@ -5,10 +5,10 @@
 
     <facebook-content-loader *ngIf="false" [primaryColor]="'#aaaaaa'"></facebook-content-loader>
 
-    <mat-card-header *ngIf="true">
+    <div class="event-header-container" *ngIf="true">
         <div class="event-header">
             <div class="header-title">
-                <span class="status-bullet"><li></li></span>
+                <span *ngIf="!isConfirmed" class="status-bullet"><li></li></span>
                 <h4>Yesterday, 08:35-10:30</h4>
             </div>
             <div class="header-actions">
@@ -27,13 +27,14 @@
                 </mat-menu>
             </div>
         </div>
-    </mat-card-header>
+    </div>
 
     <mat-card-content *ngIf="true">
         <div class="event-content">
             <div class="event-content-title">
                 <mat-icon>sports_soccer</mat-icon>
-                <h4>Manchester United</h4>
+                <h4 *ngIf="!isConfirmed">new training session</h4>
+                <h4 *ngIf="isConfirmed">manchester united</h4>
             </div>
             <div class="event-content-info">
                 <div class="info-duration">
@@ -50,7 +51,7 @@
                 </div>
             </div>
         
-            <div class="event-content-confirm">
+            <div *ngIf="!isConfirmed" class="event-content-confirm">
                 <button class="confirm-button" mat-raised-button (click)="onRefresh()">CONFIRM SESSION</button>
             </div>
         </div>
