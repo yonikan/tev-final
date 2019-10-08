@@ -4,5 +4,9 @@
 :host {
     mat-card {
         @include card;
+
+        mat-card-content {
+            width: 100%;
+        }
     }
 }

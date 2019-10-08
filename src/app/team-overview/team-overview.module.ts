@@ -10,6 +10,8 @@ import { LeaderBoardRowComponent } from './leader-board/leader-board-row/leader-
 
 import { RouterModule } from '@angular/router';
 import { routes } from './team-overview.routes';
+import { TeamOverviewChartComponent } from './team-overview-chart/team-overview-chart.component';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { routes } from './team-overview.routes';
     EventsComponent,
     PerformanceOvertimeComponent,
     LeaderBoardComponent,
-    LeaderBoardRowComponent
+    LeaderBoardRowComponent,
+    TeamOverviewChartComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
+    ChartModule
   ],
   exports: [
     TeamOverviewComponent,
