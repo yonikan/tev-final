@@ -13,12 +13,12 @@ import { AuthService } from '../auth.service'
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginMode = 'user-login'
+  currentTranslation = 'en';
   languages: any[] = [
     { value: 'en', viewValue: 'English - Eng', flag: './assets/svg/flag-us.svg' },
     { value: 'es', viewValue: 'Spanish - Esp', flag: './assets/svg/flag-es.svg' },
     { value: 'ch', viewValue: 'Chinese - 中文', flag: './assets/svg/flag-china.svg' }
   ]
-  currentTranslation = 'en';
   isAuthenticated = false;
   private authStatusSub: Subscription;
   

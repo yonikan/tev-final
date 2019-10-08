@@ -3,21 +3,18 @@
 <mat-card class="">
     <mat-card-content>
         <mat-form-field>
-            <!-- <mat-label>choose a languages:</mat-label> -->
             <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
                 <mat-option *ngFor="let language of languages" [value]="language.value">
-                {{ language.viewValue }}
+                    <img class="test" style="vertical-align:middle; margin-right: 8px; width: 18px; height: 18px; border-radius: 50%;" [src]="language.flag"/>
+                    <span>{{ language.viewValue }}</span>
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    
-        <mat-form-field>
-            <!-- <mat-label>choose a languages:</mat-label> -->
-            <mat-select [(value)]="currentTheme" (selectionChange)="useTheme($event.value)">
-                <mat-option *ngFor="let theme of themes" [value]="theme.value">
-                {{ theme.viewValue }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+
+        <!-- <mat-radio-group aria-label="Select an option" [(ngModel)]="currentTheme" (change)="themeChange($event)">
+            <mat-radio-button class="example-radio-button" *ngFor="let theme of themes" [value]="theme">
+              {{ theme.viewValue }}
+            </mat-radio-button>
+        </mat-radio-group> -->
     </mat-card-content>
 </mat-card>

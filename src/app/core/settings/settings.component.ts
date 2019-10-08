@@ -1,49 +1,43 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { TranslationPickerService } from '../services/translation-picker.service';
 import { ThemePickerService } from '../theme-picker/theme-picker.service';
+import { MatRadioChange } from '@angular/material';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit, OnDestroy {
+export class SettingsComponent implements OnInit {
   currentTranslation = 'en';
-  private currentTranslationSub: Subscription;
-
-  currentTheme = 'light';
-  private currentThemeSub: Subscription;
-  
   languages: any[] = [
-    {value: 'en', viewValue: 'English - Eng'},
-    {value: 'es', viewValue: 'Spanish - Esp'},
-    {value: 'ch', viewValue: 'Chinese - 中文'}
-  ];
+    { value: 'en', viewValue: 'English - Eng', flag: './assets/svg/flag-us.svg' },
+    { value: 'es', viewValue: 'Spanish - Esp', flag: './assets/svg/flag-es.svg' },
+    { value: 'ch', viewValue: 'Chinese - 中文', flag: './assets/svg/flag-china.svg' }
+  ]
 
-  themes: any[] = [
-    {value: 'light', viewValue: 'Light'},
-    {value: 'dark', viewValue: 'Dark'}
-  ];
+  // currentTheme = 'light';
+  // themes: any[] = [
+  //   {value: 'light', viewValue: 'Light'},
+  //   {value: 'dark', viewValue: 'Dark'}
+  // ];
 
   constructor(private translationPickerService: TranslationPickerService, private themePickerService: ThemePickerService) { }
 
   ngOnInit() {
-    this.currentTranslationSub = this.translationPickerService
-      .getCurrentTranslationUpdateListener()
-      .subscribe(currentTrans => {
-        this.currentTranslation = currentTrans;
-      });
+    this.currentTranslation = this.translationPickerService.getCurrentTranslation();
+    // this.currentTheme = this.themePickerService.getIsDarkMode();
   }
+
   useLanguage(language: string) {
     this.translationPickerService.setCurrentTranslation(language)
   }
 
-  useTheme(theme: string) {
-    this.themePickerService.setDefaultTheme(theme);
-  }
-
-  ngOnDestroy() {
-    this.currentTranslationSub.unsubscribe();
-  }
+  // themeChange($event: MatRadioChange) {
+  //   if ($event.value.value === 'light') {
+  //     this.themePickerService.setDefaultTheme('light');
+  //   } else if ($event.value.value === 'dark') {
+  //     this.themePickerService.setDefaultTheme('dark');
+  //   }
+  // }
 }

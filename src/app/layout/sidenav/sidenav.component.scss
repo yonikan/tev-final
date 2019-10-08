@@ -41,7 +41,7 @@
       transition: .5s;
 
       &:hover {
-        background: #838282;
+        background-color: rgba(3, 3, 3, 0.3);
         color: #fff; 
       }
     }
@@ -52,7 +52,13 @@
     }
 
     .nav-badge {
-      // margin-left: auto;
+      margin-left: auto;
+      
+
     }
   }
+}
+
+.mat-badge-medium.mat-badge-after .mat-badge-content { //fix for the badge's -22px
+  right: 0 ;
 }
