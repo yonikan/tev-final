@@ -31,6 +31,15 @@
       @media (max-width: $media-query-sm) {
         margin-top: 0;
       }
+
+      .teams-menu-container {
+        display: none;
+
+        @media (max-width: $media-query-sm) {
+          display: block;
+          text-align: center;
+        }
+      }
     }
 
     .configuration-wrapper {

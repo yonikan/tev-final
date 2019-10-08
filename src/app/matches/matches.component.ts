@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeInUpAnimation } from '../core/animations/fade-in-up.animation';
+import { TeamPickerService } from '../core/services/team-picker.service';
 
 @Component({
   selector: 'app-matches',
@@ -9,9 +10,11 @@ import { fadeInUpAnimation } from '../core/animations/fade-in-up.animation';
 })
 export class MatchesComponent implements OnInit {
 
-  constructor() { }
+  currentTeam = '';
+
+  constructor(public teamPickerService: TeamPickerService) { }
 
   ngOnInit() {
+    this.currentTeam = this.teamPickerService.getCurrentTeam();
   }
-
 }

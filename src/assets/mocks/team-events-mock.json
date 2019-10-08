@@ -1,0 +1,26 @@
+{
+    "33784": {
+        "start_time":1566187771255,
+        "end_time":1566195036194,
+        "type":1,
+        "tags":[],
+        "trim_start_time":1566188375000,
+        "trim_end_time":1566194995000,
+        "abbreviation":"GMT+3",
+        "time_zone_name":"Asia/Jerusalem",
+        "offset":3,
+        "pulled":true
+    },
+    "33785": {
+        "start_time":1566187771255,
+        "end_time":1566195036194,
+        "type":1,
+        "tags":[],
+        "trim_start_time":1566188375000,
+        "trim_end_time":1566194995000,
+        "abbreviation":"GMT+3",
+        "time_zone_name":"Asia/Jerusalem",
+        "offset":3,
+        "pulled":true
+    }
+}

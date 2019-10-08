@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { TranslationPickerService } from '../../core/services/translation-picker.service';
 import { ThemePickerService } from '../../core/theme-picker/theme-picker.service';
+import { TeamPickerService } from '../../core/services/team-picker.service';
 
 @Component({
   selector: 'app-header',
@@ -24,18 +25,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentTheme = 'light';
   private currentThemeSub: Subscription;
 
-  isUserMenuOpen = false;
-  userImgUrl = './assets/img/user_img_placeholder.png';
-  userFirstName = 'yoni';
-  userLastName = 'kangun';
-
+  currentTeam = 'hull-u14';
   teams: any[] = [
     {value: 'hull-u18', viewValue: '2019/20: Hull City U18'},
     {value: 'hull-u14', viewValue: '2019/20: Hull City U14'},
     {value: 'hull-o18', viewValue: '2019/20: Hull City O18'}
   ];
 
-  constructor(public authService: AuthService, private localStorageService: LocalStorageService){}
+  isUserMenuOpen = false;
+  userImgUrl = './assets/img/user_img_placeholder.png';
+  userFirstName = 'yoni';
+  userLastName = 'kangun';
+
+  constructor(
+     public authService: AuthService,
+     private localStorageService: LocalStorageService,
+     public teamPickerService: TeamPickerService){}
 
   ngOnInit() {
     // this.setLanguagesDropdown();
@@ -77,6 +82,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //       this.languages.push({value: 'es', viewValue: text });
   //     })
   // }
+
+
+  changeTeam(team: string) {
+    this.teamPickerService.setCurrentTeam(team);
+  }
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();

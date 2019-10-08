@@ -8,7 +8,7 @@
           <div class="teams-menu-container">
               <mat-form-field class="teams-menu">
                   <!-- <mat-label>Select a team</mat-label> -->
-                  <mat-select [value]="'hull-u18'">
+                  <mat-select [(value)]="currentTeam" (selectionChange)="changeTeam($event.value)">
                     <mat-option *ngFor="let team of teams" [value]="team.value">
                       <!-- {{team.viewValue}} -->
                       <img style="vertical-align:middle; margin-right: 4px; width: 30px; height: 30px;" src="https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1562149029.png" height="16"/>
@@ -51,7 +51,7 @@
                     <mat-divider></mat-divider>
 
                     <div class="version-container">
-                      APP v2.14 / API v2.0 
+                      DASHBOARD v.2.14.0.9 <br>  API v.2.14.1.1
                     </div>
                 </mat-menu>
               </div>
