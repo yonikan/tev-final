@@ -62,7 +62,7 @@ export class ThemePickerService {
     let themeData;
     if (theme === 'light') {
       themeData = {
-        pageBackground: '#c0c0c0',
+        pageBackground: '#ebebeb',
 
         headerColor: '#000',
         headerBackground: '#fff',
