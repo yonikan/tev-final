@@ -2,16 +2,5 @@
 @import '../../styles/mixins';
 
 :host {
-    mat-card {
-        @include card;
-        width: 90%;
-        margin: 0 auto;
-        margin-top: 20px;
-        height: 120px;
-                
-        mat-card-content {
-            display: flex;
-            flex-direction: column;
-        }
-    }
+    
 }

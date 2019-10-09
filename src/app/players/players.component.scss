@@ -2,19 +2,4 @@
 @import '../../styles/mixins';
 
 :host {
-    mat-card {
-        @include card;
-        width: 90%;
-        margin: 0 auto;
-        margin-top: 20px;
-        height: 120px;        
-        @media (max-width: $media-query-sm) {
-            width: 86%;
-        }
-        
-        mat-card-content {
-            display: flex;
-            flex-direction: column;
-        }
-    }
 }

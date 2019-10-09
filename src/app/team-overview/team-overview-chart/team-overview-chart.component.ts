@@ -9,7 +9,13 @@ import { Chart } from 'angular-highcharts';
 export class TeamOverviewChartComponent implements OnInit {
   chart = new Chart({
     chart: {
-      type: 'line'
+      type: 'line',
+      style: {
+        fontFamily: 'Work Sans'
+      }
+    },
+    title: {
+      text: ''
     },
     credits: {
       enabled: false
@@ -67,7 +73,7 @@ export class TeamOverviewChartComponent implements OnInit {
       {
         type: 'area',
         name: 'USD to EUR',
-        color: '#444444',
+        color: '#888888',
         pointInterval: 24 * 3600 * 1000,
         pointStart: Date.UTC(2006, 0, 1),
         data: [

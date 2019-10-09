@@ -2,6 +2,12 @@
 @import '../../../styles/mixins';
 
 :host {
+  width: 32%;
+
+  @media (max-width: $media-query-sm) {
+    width: 100%;
+  }
+
   mat-card {
     @include card;
     margin-right: 20px;
@@ -13,7 +19,7 @@
     }
 
     @media (max-width: $media-query-sm) {
-      width: 90%;
+      width: 96%;
       margin-right: 0;
       margin-bottom: 20px;
     }
