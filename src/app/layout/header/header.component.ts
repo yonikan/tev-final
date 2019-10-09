@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
 
     const appStore = this.localStorageService.getOnLocalStorage('login_data');
-    console.log('appStore: ', appStore);
+    // console.log('appStore: ', appStore);
     // this.userImgUrl = appStore.image_url;
     // this.userFirstName = appStore.first_name ;
     // this.userLastName = appStore.last_name ;

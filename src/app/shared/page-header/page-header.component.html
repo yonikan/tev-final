@@ -1,12 +1,12 @@
 <div class="overview-header">
-    <h3>{{ title }}</h3>
+    <h3>{{ pageTitle }}</h3>
     <div class="overview-actions">
         <div class="primary-actions">
-            <button mat-button matTooltip="Export To Excel" class="" (click)="null">
-                <mat-icon>file_copy</mat-icon>
-            </button>
-            <button mat-button matTooltip="Export To PDF" class="" (click)="null">
-                <mat-icon>picture_as_pdf</mat-icon>
+            <button mat-button
+                *ngFor="let action of pageActions;" 
+                [matTooltip]="action.tooltip" 
+                (click)="action.function">
+                <mat-icon>{{ action.icon }}</mat-icon>
             </button>
         </div>
         <div class="secondery-actions">

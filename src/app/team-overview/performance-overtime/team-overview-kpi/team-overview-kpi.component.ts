@@ -12,11 +12,11 @@ export class TeamOverviewKpiComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('kpiData: ', this.kpiData);
+    // console.log('kpiData: ', this.kpiData);
 
   }
 
   onClickTest() {
-    console.log('kpi # was selected');
+    // console.log('kpi # was selected');
   }
 }

@@ -7,6 +7,7 @@ import { TeamPickerService } from '../core/services/team-picker.service';
   styleUrls: ['./team-overview.component.scss']
 })
 export class TeamOverviewComponent implements OnInit {
+  pageName = 'team overview';
 
   constructor(public teamPickerService: TeamPickerService) { }
 

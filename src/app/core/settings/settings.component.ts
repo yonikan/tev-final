@@ -9,6 +9,8 @@ import { ThemePickerService } from '../services/theme-picker.service';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  pageName = 'settings';
+
   currentTranslation = 'en';
   languages: any[] = [
     { value: 'en', viewValue: 'English - Eng', flag: './assets/svg/flag-us.svg' },

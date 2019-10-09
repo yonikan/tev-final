@@ -6,12 +6,35 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./page-header.component.scss']
 })
 export class PageHeaderComponent implements OnInit {
-  @Input() title: string; 
-  @Input() actions: any[]; 
+  @Input() pageTitle: string; 
+  // @Input() pageActions: any[]; 
 
+  pageActions = [ // vard-coded for now
+    {
+      name: 'exportToPdfAction',
+      icon: 'picture_as_pdf',
+      tooltip: 'Export To PDF',
+      function: () => console.log('TESTTT PDF')
+    },
+    {
+      name: 'exportToExcelAction',
+      icon: 'file_copy',
+      tooltip: 'Export To Excel',
+      function: () => console.log('TESTTT Excel')
+    }
+  ];
+  
   constructor() { }
 
   ngOnInit() {
-  }
+    // console.log('pageTitle: ', this.pageTitle);
+    // console.log('pageActions: ', this.pageActions);
+    this.pageActions.forEach(pageAction => {
+      // if(pageAction === 'exportToPdfAction') {
 
+      // } else if(pageAction === 'exportToExcelAction') {
+
+      // }
+    });
+  }
 }

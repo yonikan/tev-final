@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-configuration.component.scss']
 })
 export class TeamConfigurationComponent implements OnInit {
+  pageName = 'team configuration';
 
   constructor() { }
 

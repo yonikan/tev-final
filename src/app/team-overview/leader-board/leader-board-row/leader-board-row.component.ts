@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LeaderBoardRowComponent implements OnInit {
   @Input() itemData: any; 
-  @Input() itemIndex: any[]; 
+  @Input() itemIndex: number; 
 
   constructor() { }
 
