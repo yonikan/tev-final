@@ -1,18 +1,18 @@
 <div class="row-wrapper">
     <div class="row-index">
-        1
+        {{ itemIndex }}
     </div>
     <div class="row-avatar">
-        <img class="avatar" [src]="userAvatarUrl">
+        <img class="avatar" [src]="itemData.avatarUrl">
     </div>
     <div class="row-shirt-number">
-        <mat-icon>emoji_people</mat-icon>
-        <!-- 14 -->
+        <!-- <mat-icon>emoji_people</mat-icon> -->
+        {{ itemData.shirtNumber }}
     </div>
     <div class="row-player-name">
-        jonny K.
+        {{ itemData.playerName }}
     </div>
     <div class="row-player-score">
-        161
+        {{ itemData.playerScore }}
     </div>
 </div>

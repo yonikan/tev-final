@@ -4,6 +4,24 @@
 :host {
     mat-card {
         @include card;
+        display: flex;
+        flex-direction: column;
+
+        .charts-header {
+            display: flex;
+            margin-bottom: 21px;
+            // padding-bottom: 17px;
+            border-bottom: 1px solid #dddddd;
+
+            @media (max-width: $media-query-sm) {
+                flex-direction: column;
+            }
+
+            .active {
+                background: rgba(0, 0, 0, 0.06);
+                border-bottom: 3px solid #dddddd;
+            }
+        }
 
         mat-card-content {
             width: 100%;

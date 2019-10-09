@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-leader-board-row',
@@ -6,11 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leader-board-row.component.scss']
 })
 export class LeaderBoardRowComponent implements OnInit {
-  userAvatarUrl = 'https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png'
+  @Input() itemData: any; 
+  @Input() itemIndex: any[]; 
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

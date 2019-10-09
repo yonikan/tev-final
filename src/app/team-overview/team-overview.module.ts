@@ -7,11 +7,12 @@ import { EventsComponent } from './events/events.component';
 import { PerformanceOvertimeComponent } from './performance-overtime/performance-overtime.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import { LeaderBoardRowComponent } from './leader-board/leader-board-row/leader-board-row.component';
+import { TeamOverviewChartComponent } from './performance-overtime/team-overview-chart/team-overview-chart.component';
 
 import { RouterModule } from '@angular/router';
 import { routes } from './team-overview.routes';
-import { TeamOverviewChartComponent } from './team-overview-chart/team-overview-chart.component';
 import { ChartModule } from 'angular-highcharts';
+import { TeamOverviewKpiComponent } from './performance-overtime/team-overview-kpi/team-overview-kpi.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ChartModule } from 'angular-highcharts';
     PerformanceOvertimeComponent,
     LeaderBoardComponent,
     LeaderBoardRowComponent,
-    TeamOverviewChartComponent
+    TeamOverviewChartComponent,
+    TeamOverviewKpiComponent
   ],
   imports: [
     CommonModule,

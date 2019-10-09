@@ -189,7 +189,12 @@ export class TeamOverviewChartComponent implements OnInit {
             0.714, 0.7119, 0.7129, 0.7129, 0.7049, 0.7095
         ]
       }
-    ]
+    ],
+    yAxis: {
+      // setTitle({
+      //   text: 'New Y axis title'
+      // })
+    },
   });
 
   constructor() {}

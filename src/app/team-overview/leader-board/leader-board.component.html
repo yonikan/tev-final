@@ -6,11 +6,11 @@
   </mat-card-header>
   <mat-card-content *ngIf="true">
     <div class="leader-board-content">
-      <app-leader-board-row></app-leader-board-row>
-      <app-leader-board-row></app-leader-board-row>
-      <app-leader-board-row></app-leader-board-row>
-      <app-leader-board-row></app-leader-board-row>
-      <app-leader-board-row></app-leader-board-row>
+      <app-leader-board-row
+        *ngFor="let player of leaderPlayers; let i = index" 
+        [itemData]="leaderPlayers[i]"
+        [itemIndex]="i+1">
+      </app-leader-board-row>
     </div>
   </mat-card-content>
 </mat-card>
