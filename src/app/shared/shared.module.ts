@@ -4,10 +4,12 @@ import { MaterialModule } from './material.module';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageHeaderComponent } from './page-header/page-header.component';
+import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.component';
 
 @NgModule({
   declarations: [
-    PageHeaderComponent
+    PageHeaderComponent,
+    LoaderSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     MaterialModule,
     ContentLoaderModule,
     TranslateModule,
-    PageHeaderComponent
+    PageHeaderComponent,
+    LoaderSpinnerComponent
   ]
 })
 export class SharedModule { }

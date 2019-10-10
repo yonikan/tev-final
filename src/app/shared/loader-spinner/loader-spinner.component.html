@@ -1,0 +1,7 @@
+<div class="content" [ngClass]="{loading: loading}">
+    <ng-content></ng-content>
+
+    <div class="blocked">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+    </div>
+</div>
