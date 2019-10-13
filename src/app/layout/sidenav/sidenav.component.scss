@@ -3,6 +3,7 @@
 
 :host {
   height: 100%;
+
   mat-nav-list {
     background-color: var(--navBackground);
     color: var(--navColor);
@@ -21,7 +22,7 @@
     }
 
     .active {
-      background-color: rgba(3, 3, 3, 0.2);
+      background-color: rgba(0, 0, 0, 0.2);
       color: #fff;
     }
 
@@ -31,20 +32,8 @@
       @media (max-width: $media-query-sm) {
         margin-top: 0;
       }
-
-      .teams-menu-container {
-        display: none;
-
-        @media (max-width: $media-query-sm) {
-          display: block;
-          text-align: center;
-        }
-      }
     }
-
-    .configuration-wrapper {
-    }
-
+    
     a {
       text-decoration: none;
       transition: .5s;

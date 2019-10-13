@@ -1,23 +1,6 @@
 <mat-nav-list *ngIf="isAuthenticated">
     <div class="navigation-wrapper">
 
-        <div class="teams-menu-container">
-            <mat-form-field class="teams-menu">
-                <!-- <mat-label>Select a team</mat-label> -->
-                <mat-select [(value)]="currentTeam" (selectionChange)="changeTeam($event.value)">
-                  <mat-option *ngFor="let team of teams" [value]="team.value">
-                    <!-- {{team.viewValue}} -->
-                    <img style="vertical-align:middle; margin-right: 4px; width: 30px; height: 30px;" src="https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1562149029.png" height="16"/>
-                    <span>{{team.viewValue}}</span>
-                    <!-- <small>Population: {{ state.population }}</small> -->
-                  </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-divider></mat-divider>
-        </div>
-
-
-
         <a mat-list-item routerLink="/team-overview" routerLinkActive="active" (click)="onClose()">
           <mat-icon>insert_chart_outlined</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.team-overview' | translate }}</span>
