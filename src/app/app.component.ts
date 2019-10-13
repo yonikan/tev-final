@@ -16,7 +16,6 @@ import { TeamPickerService } from './core/services/team-picker.service';
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
-  // public isFeature1Enabled = false;
 
   constructor( 
     public authService: AuthService, 
@@ -25,7 +24,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private themePickerService: ThemePickerService,
     public teamPickerService: TeamPickerService,
     private authorizationService: AuthorizationService) {
-      // this.isFeature1Enabled = authorizationService.isFeatureEnabled('feature1');
   }
 
   ngOnInit() {

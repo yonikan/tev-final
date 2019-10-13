@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
+import { AuthorizationService } from 'src/app/core/services/authorization.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -12,7 +13,11 @@ export class SidenavComponent implements OnInit {
   isAuthenticated = false;
   private authStatusSub: Subscription;
 
-  constructor(public authService: AuthService) { }
+  public isFeaturePlayersEnabled = false;
+
+  constructor(public authService: AuthService, private authorizationService: AuthorizationService) {
+    this.isFeaturePlayersEnabled = authorizationService.isFeatureEnabled('featurePlayers');
+  }
 
   ngOnInit() {
     this.authStatusSub = this.authService

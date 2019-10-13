@@ -15,7 +15,6 @@ export class AuthorizationService {
   constructor() {}
 
   public isFeatureEnabled(feautureName: any): boolean {
-    // const isT = this.featureToggleService.isFeatureEnabled('feature1');
     return this.features[feautureName];
   }
 

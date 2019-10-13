@@ -24,7 +24,7 @@
         
         <mat-divider></mat-divider>
         
-        <a mat-list-item routerLink="/players" routerLinkActive="active" (click)="onClose()">
+        <a *ngIf="isFeaturePlayersEnabled" mat-list-item routerLink="/players" routerLinkActive="active" (click)="onClose()">
           <mat-icon>people_alt</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.players' | translate }}</span>
         </a>

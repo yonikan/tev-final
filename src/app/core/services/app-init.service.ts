@@ -11,7 +11,7 @@ export class AppInitService {
 
   public initFeatureToggling() {
     return this.httpClient
-      .get('assets/configs/features-config.json')
+      .get('assets/configs/config-features.json')
       .pipe(
         tap(features => (this.authorizationService.features = features as any))
       )
@@ -20,7 +20,7 @@ export class AppInitService {
 
   public initTeamsAuth() {
     return this.httpClient
-      .get('assets/configs/teams-auth-config.json')
+      .get('assets/configs/config-teams-auth.json')
       .pipe(
         tap(isTeamShown => (this.authorizationService.isTeamShown = true)) // temp hard-coded
       )
@@ -29,7 +29,7 @@ export class AppInitService {
 
   public initRolesAuth() {
     return this.httpClient
-      .get('assets/configs/roles-auth-config.json')
+      .get('assets/configs/config-roles-auth.json')
       .pipe(
         tap(isRoleShown => (this.authorizationService.isRoleShown = true)) // temp hard-coded
       )
