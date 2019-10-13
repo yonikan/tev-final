@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class TeamPickerService {
 
   teamEvents;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
 
   getCurrentTeamUpdateListener() {
     return this.currentTeamUpdated.asObservable();
@@ -30,5 +31,6 @@ export class TeamPickerService {
       });
 
     this.currentTeam = team; // we need the current team name also 
+    this.localStorageService.storeOnLocalStorage('selected_team', team);
   }
 }

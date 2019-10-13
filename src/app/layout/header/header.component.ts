@@ -17,13 +17,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   isAuthenticated = false;
   private authStatusSub: Subscription;
-
+  currentTheme = 'light';
   currentTranslation = 'en';
   private currentTranslationSub: Subscription;
 
-  currentTheme = 'light';
-
-  currentTeam = 'hull-u14';
+  currentTeam = 'hull-o18';
   teams: any[] = [
     {value: 'hull-u18', viewValue: '2019/20: Hull City U18'},
     {value: 'hull-u14', viewValue: '2019/20: Hull City U14'},
@@ -38,7 +36,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
      public authService: AuthService,
      private localStorageService: LocalStorageService,
-     public teamPickerService: TeamPickerService){}
+     public teamPickerService: TeamPickerService
+  ){}
 
   ngOnInit() {
     // this.setLanguagesDropdown();
@@ -49,6 +48,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
 
     const appStore = this.localStorageService.getOnLocalStorage('login_data');
+    this.currentTeam = this.teamPickerService.getCurrentTeam();
+
     // console.log('appStore: ', appStore);
     // this.userImgUrl = appStore.image_url;
     // this.userFirstName = appStore.first_name ;
@@ -81,8 +82,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //     })
   // }
 
-
-  changeTeam(team: string) {
+  onSelectedTeam(team) {
+    console.log(team);
+    this.currentTeam = team;
     this.teamPickerService.setCurrentTeam(team);
   }
 

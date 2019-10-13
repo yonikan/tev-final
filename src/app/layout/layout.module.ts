@@ -5,9 +5,10 @@ import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { AppRoutingModule } from '../app.routes';
+import { TeamPickerComponent } from './header/team-picker/team-picker.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidenavComponent],
+  declarations: [HeaderComponent, FooterComponent, SidenavComponent, TeamPickerComponent],
   imports: [
     CommonModule,
     SharedModule,

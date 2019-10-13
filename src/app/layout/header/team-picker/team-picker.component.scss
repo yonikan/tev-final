@@ -1,0 +1,24 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/functions';
+
+:host {
+    .teams-menu-container {
+        display: flex;
+        align-items: center;
+
+        @media (max-width: $media-query-sm) {
+          display: none;
+        }
+
+        .team-img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+
+        .teams-menu {
+          font-size: 13px;
+        }
+      }
+}
