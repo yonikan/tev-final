@@ -5,8 +5,8 @@
   height: 100%;
 
   mat-nav-list {
-    background-color: var(--navBackground);
-    color: var(--navColor);
+    background-color: var(--headerBackground);
+    color: var(--headerColor);
     height: 100vh;
     position: fixed;
     width: 250px;
@@ -51,8 +51,6 @@
 
     .nav-badge {
       margin-left: auto;
-      
-
     }
   }
 }

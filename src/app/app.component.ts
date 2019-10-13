@@ -29,24 +29,23 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.themePickerService.setDefaultTheme();
     if (this.localStorageService.getOnLocalStorage('selected_theme')) {
       this.themePickerService.setDefaultTheme(this.localStorageService.getOnLocalStorage('selected_theme'));
     } else {
-      this.themePickerService.setDefaultTheme('light'); // TO-DO - get the current from the service
+      this.themePickerService.setDefaultTheme(this.themePickerService.getCurrentTheme());
     }
 
     if (this.localStorageService.getOnLocalStorage('selected_language')) {
       this.translationPickerService.setDefaultLang(this.localStorageService.getOnLocalStorage('selected_language'));
     } else {
-      this.translationPickerService.setDefaultLang('en'); // TO-DO - get the current from the service
+      this.translationPickerService.setDefaultLang(this.translationPickerService.getCurrentTranslation());
     }
 
     if (this.localStorageService.getOnLocalStorage('selected_team')) {
       this.teamPickerService.setCurrentTeam(this.localStorageService.getOnLocalStorage('selected_team'));
     } else {
       const currentTeam = this.teamPickerService.getCurrentTeam();
-      this.teamPickerService.setCurrentTeam('hull-u14'); // TO-DO - get the current from the service
+      this.teamPickerService.setCurrentTeam(this.teamPickerService.getCurrentTeam());
     }
 
     this.authStatusSub = this.authService

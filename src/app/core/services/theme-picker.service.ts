@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable({
@@ -37,7 +36,7 @@ export class ThemePickerService {
         navColor: '#fff',
         navBackground: '#000',
         cardColor: '#fff',
-        cardBackground: '#000 !important',
+        cardBackground: '#212121 !important',
         footerColor: null,
         footerBackground: null
       };
@@ -70,7 +69,7 @@ export class ThemePickerService {
     if (stylesheet.cardColor) {
       this.themeWrapper.style.setProperty('--cardColor', stylesheet.cardColor);
     }
-    if (stylesheet.navBackground) {
+    if (stylesheet.cardBackground) {
       this.themeWrapper.style.setProperty('--cardBackground', stylesheet.cardBackground);
     }
     // Footer Styles
