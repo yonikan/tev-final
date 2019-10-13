@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 import { AuthData } from './auth-data.model';
 import { BehaviorSubject } from 'rxjs';
-import { UIService } from '../core/services/ui.service';
 import { LocalStorageService } from '../core/services/local-storage.service';
 const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login';
 
@@ -21,8 +20,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private localStorageService: LocalStorageService,
-    private uiService: UIService
+    private localStorageService: LocalStorageService
   ) {}
 
   getToken() {
@@ -56,7 +54,6 @@ export class AuthService {
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           this.router.navigate(['/team-overview']);
-          this.uiService.showSnackbar('User is logged in!', null, 2000);
         }
       },
       error => {
@@ -72,7 +69,6 @@ export class AuthService {
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.router.navigate(['login']);
-    this.uiService.showSnackbar('You have just logged out!', null, 2000);
   }
 
   private setAuthTimer(duration: number) {

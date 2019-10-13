@@ -13,7 +13,7 @@ import { TeamPickerService } from '../../core/services/team-picker.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
-  @Input() quickpanel: MatSidenav; // for the sidebar omnipanel
+  @Input() quickpanel: MatSidenav;
 
   isAuthenticated = false;
   private authStatusSub: Subscription;
@@ -83,7 +83,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // }
 
   onSelectedTeam(team) {
-    console.log(team);
     this.currentTeam = team;
     this.teamPickerService.setCurrentTeam(team);
   }

@@ -15,7 +15,7 @@ export class TeamPickerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('teamsList: ', this.teamsList);
+    // console.log('teamsList: ', this.teamsList);
   }
 
   selectedTeam(team: string) {
