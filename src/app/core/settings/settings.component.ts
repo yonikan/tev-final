@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslationPickerService } from '../services/translation-picker.service';
 import { ThemePickerService } from '../services/theme-picker.service';
-// import { MatRadioChange } from '@angular/material';
+import { MatRadioChange } from '@angular/material';
 
 @Component({
   selector: 'app-settings',
@@ -18,28 +18,28 @@ export class SettingsComponent implements OnInit {
     { value: 'ch', viewValue: 'Chinese - 中文', flag: './assets/svg/flag-china.svg' }
   ]
 
-  // currentTheme = 'light';
-  // themes: any[] = [
-  //   {value: 'light', viewValue: 'Light'},
-  //   {value: 'dark', viewValue: 'Dark'}
-  // ];
+  currentTheme = 'light';
+  themes: any[] = [
+    {value: 'light', viewValue: 'Light'},
+    {value: 'dark', viewValue: 'Dark'}
+  ];
 
   constructor(private translationPickerService: TranslationPickerService, private themePickerService: ThemePickerService) { }
 
   ngOnInit() {
     this.currentTranslation = this.translationPickerService.getCurrentTranslation();
-    // this.currentTheme = this.themePickerService.getIsDarkMode();
+    this.currentTheme = this.themePickerService.getCurrentTheme();
   }
 
   useLanguage(language: string) {
     this.translationPickerService.setCurrentTranslation(language)
   }
 
-  // themeChange($event: MatRadioChange) {
-  //   if ($event.value.value === 'light') {
-  //     this.themePickerService.setDefaultTheme('light');
-  //   } else if ($event.value.value === 'dark') {
-  //     this.themePickerService.setDefaultTheme('dark');
-  //   }
-  // }
+  themeChange($event: MatRadioChange) {
+    if ($event.value.value === 'light') {
+      this.themePickerService.setDefaultTheme('light');
+    } else if ($event.value.value === 'dark') {
+      this.themePickerService.setDefaultTheme('dark');
+    }
+  }
 }

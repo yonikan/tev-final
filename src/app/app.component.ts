@@ -33,20 +33,20 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.localStorageService.getOnLocalStorage('selected_theme')) {
       this.themePickerService.setDefaultTheme(this.localStorageService.getOnLocalStorage('selected_theme'));
     } else {
-      this.themePickerService.setDefaultTheme('light');
+      this.themePickerService.setDefaultTheme('light'); // TO-DO - get the current from the service
     }
 
     if (this.localStorageService.getOnLocalStorage('selected_language')) {
       this.translationPickerService.setDefaultLang(this.localStorageService.getOnLocalStorage('selected_language'));
     } else {
-      this.translationPickerService.setDefaultLang('en');
+      this.translationPickerService.setDefaultLang('en'); // TO-DO - get the current from the service
     }
 
     if (this.localStorageService.getOnLocalStorage('selected_team')) {
       this.teamPickerService.setCurrentTeam(this.localStorageService.getOnLocalStorage('selected_team'));
     } else {
       const currentTeam = this.teamPickerService.getCurrentTeam();
-      this.teamPickerService.setCurrentTeam('hull-u14');
+      this.teamPickerService.setCurrentTeam('hull-u14'); // TO-DO - get the current from the service
     }
 
     this.authStatusSub = this.authService

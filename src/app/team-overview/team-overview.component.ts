@@ -10,14 +10,18 @@ import { Subscription } from 'rxjs';
 export class TeamOverviewComponent implements OnInit, OnDestroy {
   pageName = 'team overview';
   private currentTeamUpdateSub: Subscription;
+  isLoading = true;;
 
   constructor(public teamPickerService: TeamPickerService) { }
 
   ngOnInit() {
+    this.isLoading = true;
+
     this.currentTeamUpdateSub = this.teamPickerService
       .getCurrentTeamUpdateListener()
-      .subscribe( selectedTeam => {
-        console.log(selectedTeam);
+      .subscribe(currentTeam => {
+        console.log('TEAM OVERVIEW - currentTeam: ', currentTeam);
+        this.isLoading = false;
       });
   }
 

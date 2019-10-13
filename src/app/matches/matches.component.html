@@ -1,7 +1,11 @@
-<app-loader-spinner [loading]="isLoading">
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div *ngIf="!isLoading" class="page-container">
+    <app-page-header *ngIf="!isLoading" [pageTitle]="pageName"></app-page-header>
+</div>
+
+<!-- <app-loader-spinner [loading]="isLoading">
     <app-page-header [pageTitle]="pageName"></app-page-header>
     <p>the currentTeam is: {{ currentTeam }}</p>
-</app-loader-spinner>
-
-<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
-<app-page-header [pageTitle]="pageName"></app-page-header> -->
+</app-loader-spinner> -->

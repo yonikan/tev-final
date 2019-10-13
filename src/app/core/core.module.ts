@@ -11,6 +11,7 @@ import { ErrorComponent } from './error/error.component';
 import { FadeInRightStaggerElementDirective } from './animations/fade-in-right.animation';
 import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animation';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
+// import { TeamPickerComponent } from './team-picker/team-picker.component';
 import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
     FadeInRightStaggerElementDirective,
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
+    // TeamPickerComponent,
     SettingsComponent
   ],
   imports: [
@@ -37,6 +39,7 @@ import { SettingsComponent } from './settings/settings.component';
     FadeInRightStaggerElementDirective,
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
+    // TeamPickerComponent,
     SettingsComponent
   ]
 })

@@ -1,20 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~normalize.css';
-// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+// @import '~material-design-icons/iconfont/material-icons.css';
 @import 'styles/player-maker-theme.scss';
 @import 'styles/variables';
 @import 'styles/functions';
 @import "styles/init-spinner";
 
-html,
-body {
+html,body {
   height: 100%;
   font-size: 16px;
 }
+
 body {
   margin: 0;
-  font-family: 'Work Sans', Roboto,  'Helvetica Neue', sans-serif;
+  font-family: 'Work Sans', 'Helvetica Neue', sans-serif;
   background-color: #e8e8e8;
 }
 

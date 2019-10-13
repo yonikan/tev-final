@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';;
 import { TeamPickerService } from '../core/services/team-picker.service';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UIService } from '../core/services/ui.service';
 
 @Component({
   selector: 'app-matches',
@@ -12,31 +10,24 @@ import { UIService } from '../core/services/ui.service';
 export class MatchesComponent implements OnInit, OnDestroy {
   pageName = 'matches';
   private currentTeamUpdateSub: Subscription;
-
-  currentTeam;
   isLoading = true;;
 
-  constructor(
-    public teamPickerService: TeamPickerService,
-    private uiService: UIService,
-    private router: Router) 
-  {}
+  constructor(public teamPickerService: TeamPickerService) {}
 
   ngOnInit() {
-    this.currentTeam = this.teamPickerService.getCurrentTeam();
-    // this.isLoading = true;
+    this.isLoading = true;
 
     this.currentTeamUpdateSub = this.teamPickerService
       .getCurrentTeamUpdateListener()
       .subscribe(currentTeam => {
-        this.isLoading = true;
-        setTimeout(() => {
-          console.log('currentTeam: ', currentTeam);
-          this.isLoading = false;
-          const toastText = `The team has changed to ${currentTeam}`;
-          this.uiService.showSnackbar(toastText, null, 1000);
-          // this.router.navigate(['/team-overview']);
-        }, 2000);
+        console.log('MATCHES - currentTeam: ', currentTeam);
+        this.isLoading = false;
+        // setTimeout(() => {
+        //   // console.log('MATCHES - currentTeam: ', currentTeam);
+        //   // this.isLoading = false;
+        //   // const toastText = `The team has changed to ${currentTeam}`;
+        //   // this.uiService.showSnackbar(toastText, null, 1000);
+        // }, 2000);
       });
   }
 

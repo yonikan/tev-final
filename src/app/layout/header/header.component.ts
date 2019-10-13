@@ -13,11 +13,10 @@ import { TeamPickerService } from '../../core/services/team-picker.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
-  @Input() quickpanel: MatSidenav;
+  isUserMenuOpen = false;
 
   isAuthenticated = false;
   private authStatusSub: Subscription;
-  currentTheme = 'light';
   currentTranslation = 'en';
   private currentTranslationSub: Subscription;
 
@@ -27,8 +26,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {value: 'hull-u14', viewValue: '2019/20: Hull City U14'},
     {value: 'hull-o18', viewValue: '2019/20: Hull City O18'}
   ];
-
-  isUserMenuOpen = false;
   userImgUrl = './assets/img/user_img_placeholder.png';
   userFirstName = 'yoni';
   userLastName = 'kangun';
@@ -40,51 +37,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ){}
 
   ngOnInit() {
-    // this.setLanguagesDropdown();
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(authStatus => {
         this.isAuthenticated = authStatus;
       });
-
-    const appStore = this.localStorageService.getOnLocalStorage('login_data');
     this.currentTeam = this.teamPickerService.getCurrentTeam();
-
-    // console.log('appStore: ', appStore);
-    // this.userImgUrl = appStore.image_url;
-    // this.userFirstName = appStore.first_name ;
-    // this.userLastName = appStore.last_name ;
   }
 
   onToggleSidenav() {
     this.sidenavToggle.emit();
   }
 
-  onOpenQuickpanel() {
-    this.quickpanel.open();
+  onSelectedTeam(team) {
+    this.currentTeam = team;
+    this.teamPickerService.setCurrentTeam(team);
   }
 
   onLogout() {
     this.authService.logout();
-  }
-
-  // setLanguagesDropdown() {
-  //   this.translateService.get('layout.header.english')
-  //     .subscribe( (text: string) => {
-  //       console.log('text: ', text);
-  //       this.languages.push({value: 'en', viewValue: text });
-  //     })
-
-  //   this.translateService.get('layout.header.spanish')
-  //     .subscribe( (text: string) => {
-  //       console.log('text: ', text);
-  //       this.languages.push({value: 'es', viewValue: text });
-  //     })
-  // }
-
-  onSelectedTeam(team) {
-    this.currentTeam = team;
-    this.teamPickerService.setCurrentTeam(team);
   }
 
   ngOnDestroy() {

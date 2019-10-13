@@ -6,7 +6,6 @@ import { FeaturesGuard } from './core/guards/features.guard';
 import { TeamsGuard } from './core/guards/teams.guard';
 import { RolesGuard } from './core/guards/roles.guard';
 import { SettingsComponent } from './core/settings/settings.component';
-// import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   { path: 'team-overview', loadChildren: () => import('./team-overview/team-overview.module')
@@ -17,11 +16,8 @@ const routes: Routes = [
     .then(m => m.MatchesModule), canLoad: [AuthGuard, TeamsGuard]},
   { path: 'players', loadChildren: () => import('./players/players.module')
     .then(m => m.PlayersModule), canLoad: [AuthGuard, RolesGuard]},
-  { path: 'reports', loadChildren: () => import('./reports/reports.module')
-    .then(m => m.ReportsModule), canLoad: [AuthGuard]},
   { path: 'team-configuration', loadChildren: () => import('./team-configuration/team-configuration.module')
     .then(m => m.TeamConfigurationModule), canLoad: [AuthGuard, FeaturesGuard, TeamsGuard, RolesGuard]},
-
   { path: 'login', component: LoginComponent },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
@@ -29,8 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  // imports: [RouterModule.forRoot(routes, { preloadingStrategy: QuicklinkStrategy })],
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [AuthGuard]
 })

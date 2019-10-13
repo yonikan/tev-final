@@ -20,7 +20,6 @@
       }
 
       .toolbar-left {
-        
         .hamburger-menu {
           display: none;
           // border-radius: 50%;
@@ -94,7 +93,6 @@
               display: none;
             }
           }
-
 
           mat-form-field {
             @media (max-width: $media-query-sm) {

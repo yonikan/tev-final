@@ -3,13 +3,9 @@
     <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
 
-  <mat-sidenav #quickpanel position="end" mode="over" class="quickpanel">
-    test2
-  </mat-sidenav>
-
   <mat-sidenav-content>
     <div class="app-container">
-      <app-header (sidenavToggle)="sidenav.toggle()" [quickpanel]="quickpanel"></app-header>
+      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
 
       <div class="content-container">
           <div class="page-sidenav">

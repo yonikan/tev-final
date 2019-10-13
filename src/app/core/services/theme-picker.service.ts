@@ -7,55 +7,12 @@ import { LocalStorageService } from '../services/local-storage.service';
 })
 export class ThemePickerService {
   private themeWrapper = document.querySelector('body');
-  private isDarkMode = false;
-  private isDarkModeUpdated = new Subject<boolean>();
-
-  lightThemeData = {
-    navColor: '#fff',
-    navBackground: '#444',
-    cardColor: '#fff',
-    cardBackground: '#353435 !important',
-    buttonColor: '#9575cd',
-    buttonBackground: '#4ccead',
-    footerColor: null,
-    footerBackground: null
-  };
-
-  darkThemeData = {
-    navColor: '#000',
-    navBackground: '#yellow',
-    cardColor: '#fff',
-    cardBackground: '#353435 !important',
-    buttonColor: '#9575cd',
-    buttonBackground: '#4ccead',
-    footerColor: null,
-    footerBackground: null
-  };
+  currentTheme = 'light';
 
   constructor(private localStorageService: LocalStorageService) { }
 
-  getIsDarkModeUpdateListener() {
-    return this.isDarkModeUpdated.asObservable();
-  }
-
-  getIsDarkMode() {
-    return this.isDarkMode;
-  }
-
-  setIsDarkMode(currentMode) {
-    const themeData = {
-      navColor: '#fff',
-      navBackground: '#444',
-      cardColor: '#fff',
-      cardBackground: '#353435 !important',
-      buttonColor: '#9575cd',
-      buttonBackground: '#4ccead',
-      footerColor: null,
-      footerBackground: null
-    };
-    this.isDarkMode = currentMode;
-    this.globalOverride(themeData);
-    this.localStorageService.storeOnLocalStorage('selected_theme', currentMode);
+  getCurrentTheme() {
+    return this.currentTheme;
   }
 
   setDefaultTheme(theme) { // for app init
@@ -63,36 +20,29 @@ export class ThemePickerService {
     if (theme === 'light') {
       themeData = {
         pageBackground: '#e1e1e1',
-
         headerColor: '#000',
         headerBackground: '#fff',
-
         navColor: '#000',
         navBackground: '#d4d4d4',
-
         cardColor: '#000',
         cardBackground: '#fff',
-
         footerColor: null,
         footerBackground: null
       };
     } else if (theme === 'dark') {
       themeData = {
         pageBackground: '#000',
-
         headerColor: '#fff',
         headerBackground: '#212121',
-
         navColor: '#fff',
         navBackground: '#000',
-
         cardColor: '#fff',
         cardBackground: '#000 !important',
-
         footerColor: null,
         footerBackground: null
       };
     }
+    this.currentTheme = theme;
     this.globalOverride(themeData);
     this.localStorageService.storeOnLocalStorage('selected_theme', theme);
   }
@@ -130,4 +80,5 @@ export class ThemePickerService {
     if (stylesheet.footerBackground) {
       this.themeWrapper.style.setProperty('--footerBackground', stylesheet.footerBackground);
     }
-  }}
+  }
+}
