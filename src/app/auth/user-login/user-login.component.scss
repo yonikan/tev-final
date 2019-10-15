@@ -1,26 +1,36 @@
 @import '../../../styles/variables';
 @import '~@angular/material/theming';
 
+:host {
+  .user-login-container {
+    .login-head {
+      h3 {
+        font-size: 26px;
+        font-weight: 700;
+      }
+    }
 
-.user-login-container {
-    
     .form-container {
       // width: 300px;
       // min-width: 300px;
-      margin: 0 auto;
-      height: 220px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      // margin: 0 auto;
+      // height: 220px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
 
       mat-spinner {
         margin: auto;
       }
-    
+
       mat-form-field {
         width: 100%;
+
+        mat-label {
+          text-transform: uppercase;
+        }
       }
-     
+
       .login-button {
         width: 100%;
         margin-top: 8px;
@@ -33,18 +43,25 @@
 
     .forget-pass {
       margin-top: 20px;
+      text-align: center;
+
+      a {
+        color: #2A9FD8;
+        text-decoration: underline;
+      }
     }
 
-    .reset-pass {
-      margin-top: 20px;
-    }
+    // .reset-pass {
+    //   margin-top: 20px;
+    // }
 
-    .email-sent {
-      margin-top: 20px;
-    }
+    // .email-sent {
+    //   margin-top: 20px;
+    // }
 
-    .keep-me-logged-checkbox {
-      margin-top: 20px;
-      margin-bottom: 100px;
-    }
+    // .keep-me-logged-checkbox {
+    //   margin-top: 20px;
+    //   margin-bottom: 100px;
+    // }
   }
+}
