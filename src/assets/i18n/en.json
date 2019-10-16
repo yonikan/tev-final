@@ -40,7 +40,8 @@
             "title": "Sign In",
             "forgot-password-link": "forgot password",
             "reset-password-link": "reset password",
-            "email-sent-link": "email sent"
+            "email-sent-link": "email sent",
+            "user-login-button": "Sign In"
         },
         "forgot-password": {
             "title": "Forgot Your Password?",

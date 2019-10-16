@@ -29,7 +29,7 @@
         }
     },
     "auth": {
-        "log-in": "Log In - CH",
+        "log-in": "登录",
         "go-back-to-login-link": "Go back to login",
         "incorrect-password": "Incorrect password.",
         "invalid-username-or-email": "Invalid username or email",
@@ -37,10 +37,11 @@
         "password": "password",
         "choose-a-languages": "choose a languages",
         "user-login": {
-            "title": "Sign In - CH",
+            "title": "登录",
             "forgot-password-link": "forgot password - CH",
             "reset-password-link": "reset password - CH",
-            "email-sent-link": "email sent - CH"
+            "email-sent-link": "email sent - CH",
+            "user-login-button": "登录"
         },
         "forgot-password": {
             "title": "Forgot Your Password?",
