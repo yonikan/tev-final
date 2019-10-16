@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app.routes';
 
-import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -13,11 +13,11 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
 
 @NgModule({
   declarations: [
-    LoginComponent, 
+    AuthComponent,
     UserLoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    EmailSentComponent
+    EmailSentComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +27,7 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
     ShowHidePasswordModule
   ],
   exports: [
-    LoginComponent, 
+    AuthComponent,
     UserLoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent

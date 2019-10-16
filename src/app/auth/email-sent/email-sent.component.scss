@@ -1,6 +1,7 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 @import '~@angular/material/theming';
 
-.email-sent-container {
-
+:host { 
+    @include login-card;
 }

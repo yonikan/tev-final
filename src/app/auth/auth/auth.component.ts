@@ -1,17 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation'
-import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation'
-import { TranslationPickerService } from '../../core/services/translation-picker.service'
-import { Subscription } from 'rxjs'
-import { AuthService } from '../auth.service'
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation';
+import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation';
+import { Subscription } from 'rxjs';
+import { TranslationPickerService } from '../../core/services/translation-picker.service';
+import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  animations: [fadeInRightAnimation, fadeInUpAnimation],
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss'],
+  animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class AuthComponent implements OnInit, OnDestroy {
+
   loginMode = 'user-login'
   currentTranslation = 'en';
   languages: any[] = [

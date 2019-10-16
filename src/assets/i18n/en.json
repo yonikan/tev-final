@@ -30,14 +30,17 @@
     },
     "auth": {
         "log-in": "Log In",
-        "go-back-to-login": "Go back to login",
+        "go-back-to-login-link": "Go back to login",        
         "incorrect-password": "Incorrect password.",
         "invalid-username-or-email": "Invalid username or email",
         "email-address": "email address",
         "password": "password",
         "choose-a-languages": "choose a languages",
         "user-login": {
-            "title": "Sign In"
+            "title": "Sign In",
+            "forgot-password-link": "forgot password",
+            "reset-password-link": "reset password",
+            "email-sent-link": "email sent"
         },
         "forgot-password": {
             "title": "Forgot Your Password?",
@@ -53,7 +56,8 @@
         },
         "email-sent": {
             "title": "E-Mail Sent",
-            "sub-title": "Go to your inbox and click the link. Didn't receive the email?",
+            "sub-title1": "Go to your inbox and click the link",
+            "sub-title2": "Didn't receive the email?",
             "send-again": "Send again"
         }
     },
