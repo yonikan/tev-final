@@ -15,8 +15,7 @@
             <mat-form-field>
                 <mat-label>{{ 'auth.password' | translate }}</mat-label>
                 <input id="password1" matInput type="password" formControlName="passwordText" showHideInput>
-                <i class="material-icons" matSuffix showHideTrigger="password1" 
-                [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
+                <i class="material-icons" matSuffix showHideTrigger="password1" [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
                 <mat-error *ngIf="form.get('passwordText').invalid">{{ 'auth.incorrect-password' | translate }}</mat-error>
             </mat-form-field>
         

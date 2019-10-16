@@ -35,6 +35,9 @@
         "invalid-username-or-email": "Invalid username or email",
         "email-address": "email address",
         "password": "password",
+        "repeated-password": "repeated password",
+        "repeat-password-is-required-error": "Repeat password is required",
+        "password-does-not-match-error": "Password does not match",
         "choose-a-languages": "choose a languages",
         "user-login": {
             "title": "Sign In",
