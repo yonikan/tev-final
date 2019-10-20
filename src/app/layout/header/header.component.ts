@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { TeamPickerService } from '../../core/services/team-picker.service';
+import { AppConsts } from '../../app.consts';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +30,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userImgUrl = './assets/img/user_img_placeholder.png';
   userFirstName = 'yoni';
   userLastName = 'kangun';
+  appVersion;
+  apiVersion;
 
   constructor(
      public authService: AuthService,
@@ -37,6 +40,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ){}
 
   ngOnInit() {
+    this.appVersion = AppConsts.version;
+    this.apiVersion = this.localStorageService.getOnLocalStorage('login_data').api_version;
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(authStatus => {

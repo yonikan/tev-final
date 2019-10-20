@@ -14,8 +14,8 @@ export class AuthService {
   private token = null;
   private appStore = {};
   private tokenTimer: any;
-  private isAuthenticated = false;
-  private authStatusListener = new BehaviorSubject<boolean>(false);
+  private isAuthenticated = true;
+  private authStatusListener = new BehaviorSubject<boolean>(true);
 
   constructor(
     private http: HttpClient,
@@ -78,30 +78,26 @@ export class AuthService {
   }
 
   setServerToAccess(username) {
+    console.log('username: ', username);
     if (username.startsWith('$$')) { // Stage
-      // console.log('STAGE');
       if (window.location.hostname.includes('cn')) {
-        
+        console.log('ch_stage');
       } else {
-
+        console.log('stage');
       }
-      username = username.substr(2)         
-      // console.log('username: ', username);
+      username = username.substr(2);
     } else if (username.startsWith('@@')) { // DEV
-      // console.log('DEV');
       if (window.location.hostname.includes('cn')) {
-
+        console.log('ch_dev');
       } else {
-
+        console.log('dev');
       }
-      username = username.substr(2)
-      // console.log('username: ', username);
+      username = username.substr(2);
     } else { // PROD
-      // console.log('PROD');
       if (window.location.hostname.includes('cn')) {
-
+        console.log('ch_prod');
       } else {
-
+        console.log('prod');
       }
     }
   }
