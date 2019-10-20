@@ -1,1 +1,30 @@
-<p>footer works!</p>
+<div *ngIf="isAuthenticated" class="footer-container">
+      <div class="nav-buttons-container">
+            <a routerLink="/team-overview" routerLinkActive="active">
+              <mat-icon>insert_chart_outlined</mat-icon>
+              <div class="nav-caption">overview</div>
+            </a>
+
+            <a routerLink="/training" routerLinkActive="active">
+                <mat-icon>directions_run</mat-icon>
+                <div class="nav-caption">training</div>
+                <!-- <div class="nav-badge" matBadge="3" matBadgeOverlap="false"></div> -->
+              </a>
+
+              <a routerLink="/matches" routerLinkActive="active">
+                <mat-icon>sports_soccer</mat-icon>
+                <div class="nav-caption">matches</div>
+                <!-- <div class="nav-badge" matBadge="3" matBadgeOverlap="false"></div> -->
+              </a>
+
+              <a routerLink="/players" routerLinkActive="active">
+                <mat-icon>people_alt</mat-icon>
+                <div class="nav-caption">players</div>
+              </a>
+
+              <a routerLink="/team-configuration" routerLinkActive="active">
+                <mat-icon>settings</mat-icon>
+                <div class="nav-caption">config</div>
+              </a>
+      </div>
+</div>
