@@ -41,7 +41,7 @@ export class TeamPickerService {
 
     this.currentTeam = currentTeam;
     this.localStorageService.storeOnLocalStorage('selected_team', currentTeam);
-    const toastText = `The team has changed to ${this.currentTeam}`;
-    this.uiService.showSnackbar(toastText, null, 2000);
+    // const toastText = `The team has changed to ${this.currentTeam}`;
+    // this.uiService.showSnackbar(toastText, null, 2000);
   }
 }

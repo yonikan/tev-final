@@ -6,9 +6,9 @@
         display: flex;
         align-items: center;
 
-        @media (max-width: $media-query-sm) {
-          display: none;
-        }
+        // @media (max-width: $media-query-sm) {
+        //   display: none;
+        // }
 
         .team-img {
           width: 30px;

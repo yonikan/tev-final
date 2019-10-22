@@ -1,18 +1,15 @@
 <mat-toolbar *ngIf="isAuthenticated" class="toolbar">
     <mat-toolbar-row>
       <div class="toolbar-left">
-          <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
+          <!-- <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
               <mat-icon>menu</mat-icon>
-          </button>
+          </button> -->
           <app-team-picker [teamsList]="teams" [defaultTeam]="currentTeam" (selectedTeamEmitter)="onSelectedTeam($event)"></app-team-picker>
       </div>
 
       <div class="logo">
-        <a routerLink="/team-overview">
-          <!-- <img src="https://playermaker.com/wp-content/themes/playermaker/assets/images/Logo.svg"> -->
-          <!-- <img src="./assets/svg/Logo.svg"> -->
-          <img src="./assets/img/logo-large.jpg">
-        </a>
+          <img src="./assets/img/logo-large.jpg" alt="logo" class="logo-desktop">
+          <img src="./assets/img/logo.png" alt="logo" class="logo-mobile">
       </div>
 
       <div class="toolbar-right">
