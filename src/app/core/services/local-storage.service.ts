@@ -13,7 +13,7 @@ export class LocalStorageService {
     private cookieService: CookieService
   ) {}
 
-  public storeOnLocalStorage(key: string, value: string): void {
+  public storeOnLocalStorage(key: string, value: string) {
     const storageKey = key;
     let currentToken = this.storage.get(storageKey) || '';
     currentToken = value;
@@ -24,7 +24,7 @@ export class LocalStorageService {
     return this.storage.get(key) || '';
   }
 
-  public storeOnCookie(key: string, value: string): void {
+  public storeOnCookie(key: string, value: string) {
     let isHttps = false;
     if (environment.production) {
       isHttps = true;

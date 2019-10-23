@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -12,10 +12,10 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   @Output() loginModeEmitter = new EventEmitter<string>();
   isLoading = false;
   private authStatusSub: Subscription;
-  forgotPasswordForm: FormGroup;
+  forgotPasswordFormGroup: FormGroup;
   username = null;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
@@ -24,15 +24,25 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.forgotPasswordForm = new FormGroup({
-      usernameText: new FormControl(this.username, {
-        validators: [Validators.required, Validators.minLength(3)]
-      })
+
+    this.forgotPasswordFormGroup = this.formBuilder.group({
+      usernameText: ['', 
+      [
+        Validators.required,
+        // Validators.minLength(8),
+        // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+      ]]
     });
+
+    // this.forgotPasswordFormGroup = new FormGroup({
+    //   usernameText: new FormControl(this.username, {
+    //     validators: [Validators.required, Validators.minLength(3)]
+    //   })
+    // });
   }
 
   onForgotPassword() {
-    if (!this.forgotPasswordForm.valid) {
+    if (!this.forgotPasswordFormGroup.valid) {
       return;
     }
     this.isLoading = true;

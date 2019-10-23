@@ -2,29 +2,32 @@
       <div class="nav-buttons-container">
             <a routerLink="/team-overview" routerLinkActive="active">
               <mat-icon>insert_chart_outlined</mat-icon>
-              <div class="nav-caption">overview</div>
+              <div class="nav-caption">{{ 'layout.footer.team-overview' | translate }}</div>
             </a>
 
-            <a routerLink="/training" routerLinkActive="active">
-                <mat-icon>directions_run</mat-icon>
-                <div class="nav-caption">training</div>
+              <a routerLink="/training" routerLinkActive="active">
+                <mat-icon matBadge="11" matBadgeColor="warn" matBadgeSize="small">directions_run</mat-icon>
+                <div class="nav-caption">{{ 'layout.footer.training' | translate }}</div>
                 <!-- <div class="nav-badge" matBadge="3" matBadgeOverlap="false"></div> -->
+
+
+
               </a>
 
               <a routerLink="/matches" routerLinkActive="active">
                 <mat-icon>sports_soccer</mat-icon>
-                <div class="nav-caption">matches</div>
+                <div class="nav-caption">{{ 'layout.footer.matches' | translate }}</div>
                 <!-- <div class="nav-badge" matBadge="3" matBadgeOverlap="false"></div> -->
               </a>
 
               <a routerLink="/players" routerLinkActive="active">
                 <mat-icon>people_alt</mat-icon>
-                <div class="nav-caption">players</div>
+                <div class="nav-caption">{{ 'layout.footer.players' | translate }}</div>
               </a>
 
               <a routerLink="/team-configuration" routerLinkActive="active">
                 <mat-icon>settings</mat-icon>
-                <div class="nav-caption">config</div>
+                <div class="nav-caption">{{ 'layout.footer.team-configuration' | translate }}</div>
               </a>
       </div>
 </div>

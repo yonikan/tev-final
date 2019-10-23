@@ -1,4 +1,12 @@
 {
-    "user": "admin",
-    "isEnabled": true
+    "admin": [
+        "featureLoadRisk",
+        "featurePlayers"
+    ],
+    "super-user": [
+        "featurePlayers"
+    ],
+    "user": [
+
+    ]
 }

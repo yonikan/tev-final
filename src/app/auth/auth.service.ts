@@ -14,8 +14,8 @@ export class AuthService {
   private token = null;
   private appStore = {};
   private tokenTimer: any;
-  private isAuthenticated = false;
-  private authStatusListener = new BehaviorSubject<boolean>(false);
+  private isAuthenticated = true;
+  private authStatusListener = new BehaviorSubject<boolean>(true);
 
   constructor(
     private http: HttpClient,
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    this.setServerToAccess(username);
+    // this.setServerToAccess(username);
     const authData: AuthData = { username, password };
     this.http.post<any>(BACKEND_URL, authData).subscribe(
       response => {
@@ -77,28 +77,28 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  setServerToAccess(username) {
-    console.log('username: ', username);
-    if (username.startsWith('$$')) { // Stage
-      if (window.location.hostname.includes('cn')) {
-        console.log('ch_stage');
-      } else {
-        console.log('stage');
-      }
-      username = username.substr(2);
-    } else if (username.startsWith('@@')) { // DEV
-      if (window.location.hostname.includes('cn')) {
-        console.log('ch_dev');
-      } else {
-        console.log('dev');
-      }
-      username = username.substr(2);
-    } else { // PROD
-      if (window.location.hostname.includes('cn')) {
-        console.log('ch_prod');
-      } else {
-        console.log('prod');
-      }
-    }
-  }
+  // setServerToAccess(username) {
+  //   console.log('username: ', username);
+  //   if (username.startsWith('$$')) { // Stage
+  //     if (window.location.hostname.includes('cn')) {
+  //       console.log('ch_stage');
+  //     } else {
+  //       console.log('stage');
+  //     }
+  //     username = username.substr(2);
+  //   } else if (username.startsWith('@@')) { // DEV
+  //     if (window.location.hostname.includes('cn')) {
+  //       console.log('ch_dev');
+  //     } else {
+  //       console.log('dev');
+  //     }
+  //     username = username.substr(2);
+  //   } else { // PROD
+  //     if (window.location.hostname.includes('cn')) {
+  //       console.log('ch_prod');
+  //     } else {
+  //       console.log('prod');
+  //     }
+  //   }
+  // }
 }

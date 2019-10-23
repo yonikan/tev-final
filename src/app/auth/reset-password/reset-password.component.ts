@@ -18,8 +18,17 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   constructor(public authService: AuthService, private formBuilder: FormBuilder) {
     this.passwordFormGroup = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]],
-      repeatPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]]
+      password: ['', 
+      [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+      ]],
+      repeatPassword: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+      ]]
     }, {
       validator: RepeatPasswordValidator.validate.bind(this)
     });

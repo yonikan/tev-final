@@ -12,12 +12,10 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
   pageName = 'team overview';
   private currentTeamUpdateSub: Subscription;
   isLoading = true;
-
   public isFeatureLoadRiskEnabled = false;
 
-
   constructor(public teamPickerService: TeamPickerService, private authorizationService: AuthorizationService) { 
-    this.isFeatureLoadRiskEnabled = authorizationService.isFeatureEnabled('featureLoadRisk');
+    this.isFeatureLoadRiskEnabled = this.authorizationService.isFeatureEnabled('featureLoadRisk');
   }
 
   ngOnInit() {

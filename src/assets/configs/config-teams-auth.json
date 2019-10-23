@@ -1,4 +1,9 @@
 {
-    "team-name": "maccabi",
-    "isEnabled": true
+    "maccabi-tel-aviv": [
+        "featureLoadRisk",
+        "featurePlayers"
+    ],
+    "hull-city": [
+        "featurePlayers"
+    ]
 }

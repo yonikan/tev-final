@@ -26,6 +26,15 @@
             "notes": "Notes - CH",
             "reports": "Reports - CH",
             "team-configuration": "Team Configuration - CH"
+        },
+        "footer": {
+            "team-overview": "Overview",
+            "training": "Training - CH",
+            "matches": "Matches - CH",
+            "players": "Players",
+            "notes": "Notes",
+            "reports": "Reports",
+            "team-configuration": "Config"
         }
     },
     "auth": {

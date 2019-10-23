@@ -11,6 +11,7 @@ export class AppInitService {
 
   public initFeatureToggling() {
     return this.httpClient
+      // .get('http://playermaker-dash-ng-dev.s3.amazonaws.com/assets/configs/config-features.json')
       .get('assets/configs/config-features.json')
       .pipe(
         tap(features => (this.authorizationService.features = features as any))
@@ -20,6 +21,7 @@ export class AppInitService {
 
   public initTeamsAuth() {
     return this.httpClient
+      // .get('http://playermaker-dash-ng-dev.s3.amazonaws.com/assets/configs/config-teams-auth.json')
       .get('assets/configs/config-teams-auth.json')
       .pipe(
         tap(isTeamShown => (this.authorizationService.isTeamShown = true)) // temp hard-coded
@@ -29,6 +31,7 @@ export class AppInitService {
 
   public initRolesAuth() {
     return this.httpClient
+      // .get('http://playermaker-dash-ng-dev.s3.amazonaws.com/assets/configs/config-roles-auth.json')
       .get('assets/configs/config-roles-auth.json')
       .pipe(
         tap(isRoleShown => (this.authorizationService.isRoleShown = true)) // temp hard-coded

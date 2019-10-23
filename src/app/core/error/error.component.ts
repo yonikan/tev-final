@@ -14,7 +14,7 @@ export class ErrorComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit(): void {
+  onSubmit() {
     this.dialogRef.close();
   }
 }

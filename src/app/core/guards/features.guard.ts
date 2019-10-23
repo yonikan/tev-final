@@ -11,12 +11,14 @@ export class FeaturesGuard implements CanActivate, CanLoad {
   constructor(private authorizationService: AuthorizationService, private router: Router) {}
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean> {
-    const isfeatureGuardPlayersEnabled = this.authorizationService.isFeatureEnabled('featureGuardPlayers');
-    return isfeatureGuardPlayersEnabled;
+    // const isfeatureGuardPlayersEnabled = this.authorizationService.isFeatureEnabled('featureGuardPlayers');
+    // return isfeatureGuardPlayersEnabled;
+    return true;
   }
 
   canLoad(): boolean | Observable<boolean> | Promise<boolean> {
-    const isfeatureGuardPlayersEnabled = this.authorizationService.isFeatureEnabled('featureGuardPlayers');
-    return isfeatureGuardPlayersEnabled;
+    // const isfeatureGuardPlayersEnabled = this.authorizationService.isFeatureEnabled('featureGuardPlayers');
+    // return isfeatureGuardPlayersEnabled;
+    return true;
   }
 }
