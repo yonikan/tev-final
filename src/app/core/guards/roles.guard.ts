@@ -12,13 +12,15 @@ export class RolesGuard implements CanActivate, CanLoad {
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean> {
     // http call to the backend and gets resp of the current user role.
-    const isUserRole = this.authorizationService.isRoleEnabled();
-    return isUserRole ? true : false;
+    // const isUserRole = this.authorizationService.isRoleEnabled();
+    // return isUserRole ? true : false;
+    return true;
   }
 
   canLoad(): boolean | Observable<boolean> | Promise<boolean> {
     // http call to the backend and gets resp of the current user role.
-    const isUserRole = this.authorizationService.isRoleEnabled();
-    return isUserRole ? true : false;
+    // const isUserRole = this.authorizationService.isRoleEnabled();
+    // return isUserRole ? true : false;
+    return true;
   }
 }

@@ -12,13 +12,15 @@ export class TeamsGuard implements CanActivate, CanLoad {
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean> {
     // http call to the backend and gets resp of the current user role.
-    const isTeam = this.authorizationService.isTeamEnabled();
-    return isTeam ? true : false;
+    // const isTeam = this.authorizationService.isTeamEnabled();
+    // return isTeam ? true : false;
+    return true;
   }
 
   canLoad(): boolean | Observable<boolean> | Promise<boolean> {
     // http call to the backend and gets resp of the current user role.
-    const isTeam = this.authorizationService.isTeamEnabled();
-    return isTeam ? true : false;
+    // const isTeam = this.authorizationService.isTeamEnabled();
+    // return isTeam ? true : false;
+    return true;
   }
 }
