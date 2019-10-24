@@ -7,6 +7,7 @@ import { LocalStorageService } from './core/services/local-storage.service';
 import { AuthorizationService } from './core/services/authorization.service';
 import { ThemePickerService } from './core/services/theme-picker.service';
 import { TeamPickerService } from './core/services/team-picker.service';
+import { ServerEnvService } from './core/services/server-env.service';
 
 @Component({
   selector: 'app-root',
@@ -23,10 +24,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
     public teamPickerService: TeamPickerService,
+    private serverEnvService: ServerEnvService,
     private authorizationService: AuthorizationService) {
   }
 
   ngOnInit() {
+    this.serverEnvService.initServerEnv();
+
     if (this.localStorageService.getOnLocalStorage('selected_theme')) {
       this.themePickerService.setDefaultTheme(this.localStorageService.getOnLocalStorage('selected_theme'));
     } else {
