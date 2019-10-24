@@ -8,20 +8,17 @@ import { environment } from '../../../environments/environment';
 })
 export class LocalStorageService {
 
-  constructor(
-    @Inject(LOCAL_STORAGE) private storage: StorageService,
-    private cookieService: CookieService
-  ) {}
+  constructor(@Inject(LOCAL_STORAGE) private localStorageService: StorageService, private cookieService: CookieService) {}
 
   public storeOnLocalStorage(key: string, value: string) {
     const storageKey = key;
-    let currentToken = this.storage.get(storageKey) || '';
+    let currentToken = this.localStorageService.get(storageKey) || '';
     currentToken = value;
-    this.storage.set(storageKey, currentToken);
+    this.localStorageService.set(storageKey, currentToken);
   }
 
   public getOnLocalStorage(key: string): any {
-    return this.storage.get(key) || '';
+    return this.localStorageService.get(key) || '';
   }
 
   public storeOnCookie(key: string, value: string) {

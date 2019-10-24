@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
-import { AuthData } from './auth-data.model';
+// import { AuthData } from './auth-data.model';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from '../core/services/local-storage.service';
-const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login';
+import { ServerEnvService } from '../core/services/server-env.service';
 
 @Injectable({
    providedIn: 'root' 
@@ -20,7 +19,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private serverEnvService: ServerEnvService
   ) {}
 
   getToken() {
@@ -42,25 +42,29 @@ export class AuthService {
   login(username: string, password: string) {
     // this.setServerToAccess(username);
     const authData: AuthData = { username, password };
-    this.http.post<any>(BACKEND_URL, authData).subscribe(
-      response => {
-        const loginData = response;
-        if (response.token) {
-          this.token = response.token;
-          this.appStore = response;
-          this.localStorageService.storeOnLocalStorage('login_data', loginData);
-          const expiresInDuration = 60 * 60; // in seconds
-          this.setAuthTimer(expiresInDuration);
-          this.isAuthenticated = true;
-          this.authStatusListener.next(true);
-          this.router.navigate(['/team-overview']);
+    const SERVER_ENV = this.serverEnvService.getBaseUrl();
+    const BACKEND_URL = `${SERVER_ENV}v1/account/login`;
+    this.http
+      .post<any>(BACKEND_URL, authData)
+      .subscribe(
+        response => {
+          const loginData = response;
+          if (response.token) {
+            this.token = response.token;
+            this.appStore = response;
+            this.localStorageService.storeOnLocalStorage('login_data', loginData);
+            const expiresInDuration = 60 * 60; // in seconds
+            this.setAuthTimer(expiresInDuration);
+            this.isAuthenticated = true;
+            this.authStatusListener.next(true);
+            this.router.navigate(['/team-overview']);
+          }
+        },
+        error => {
+          this.isAuthenticated = false;
+          this.authStatusListener.next(false);
         }
-      },
-      error => {
-        this.isAuthenticated = false;
-        this.authStatusListener.next(false);
-      }
-    );
+      );
   }
 
   logout() {
@@ -101,4 +105,9 @@ export class AuthService {
   //     }
   //   }
   // }
+}
+
+export interface AuthData {
+  username: string;
+  password: string;
 }
