@@ -11,8 +11,9 @@ export class AppInitService {
 
   public initFeatureToggling() {
     return this.httpClient
-      // .get('http://playermaker-dash-ng-dev.s3.amazonaws.com/assets/configs/config-features.json')
-      .get('assets/configs/config-features.json')
+      // .get('https://playermaker-public-dev.s3.amazonaws.com/resources/config-features.json')
+      // .get('resources/features-configuration/config-features.json')
+      .get('assets/features-configuration/config-features.json')
       .pipe(
         tap(features => { 
           this.authorizationService.features = features as any 
@@ -23,8 +24,9 @@ export class AppInitService {
 
   public initTeamsAuth() {
     return this.httpClient
-      // .get('http://playermaker-dash-ng-dev.s3.amazonaws.com/assets/configs/config-teams-auth.json')
-      .get('assets/configs/config-teams-auth.json')
+      // .get('https://playermaker-public-dev.s3.amazonaws.com/resources/config-teams-auth.json')
+      // .get('resources/features-configuration/config-teams-auth.json')
+      .get('assets/features-configuration/config-teams-auth.json')
       .pipe(
         tap(teamsAllowedFeatures => {
           const currentTeam = 'maccabi-tel-aviv'; // hard-coded for now
@@ -37,8 +39,9 @@ export class AppInitService {
 
   public initRolesAuth() {
     return this.httpClient
-      // .get('http://playermaker-dash-ng-dev.s3.amazonaws.com/assets/configs/config-roles-auth.json')
-      .get('assets/configs/config-roles-auth.json')
+      // .get('https://playermaker-public-dev.s3.amazonaws.com/resources/config-roles-auth.json')
+      // .get('resources/features-configuration/config-roles-auth.json')
+      .get('assets/features-configuration/config-roles-auth.json')
       .pipe(
         tap(roleAllowedFeatures => { 
           const currentUserRole = 'admin'; // hard-coded for now
