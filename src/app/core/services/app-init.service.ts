@@ -14,9 +14,7 @@ export class AppInitService {
       // .get('http://playermaker-dash-ng-dev.s3.amazonaws.com/assets/configs/config-features.json')
       .get('assets/configs/config-features.json')
       .pipe(
-        // tap(features => (this.authorizationService.features = features as any))
         tap(features => { 
-          // console.log('features: ', features);
           this.authorizationService.features = features as any 
         })
       )
@@ -30,9 +28,8 @@ export class AppInitService {
       .pipe(
         tap(teamsAllowedFeatures => {
           const currentTeam = 'maccabi-tel-aviv'; // hard-coded for now
-          const test1 = teamsAllowedFeatures[currentTeam];
-          // console.log('test1: ', test1);
-          this.authorizationService.teamAllowedFeatures = test1 as any;
+          const currentTeamAllowedFeatures = teamsAllowedFeatures[currentTeam];
+          this.authorizationService.teamAllowedFeatures = currentTeamAllowedFeatures as any;
         })
       )
       .toPromise();
@@ -45,9 +42,8 @@ export class AppInitService {
       .pipe(
         tap(roleAllowedFeatures => { 
           const currentUserRole = 'admin'; // hard-coded for now
-          const test2 = roleAllowedFeatures[currentUserRole];
-          // console.log('test2: ', test2);
-          this.authorizationService.roleAllowedFeatures = test2 as any;
+          const currentRoleAllowedFeatures = roleAllowedFeatures[currentUserRole];
+          this.authorizationService.roleAllowedFeatures = currentRoleAllowedFeatures as any;
         })
       )
       .toPromise();

@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core'
 
-// export type featureTypes = {
-//   'feature': boolean;
-// };
-
-export interface FeatureTypes {
-  feature: boolean
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -16,37 +8,21 @@ export class AuthorizationService {
   public teamAllowedFeatures;
   public roleAllowedFeatures;
 
-  constructor() {
-    // console.log('features: ', this.features);
-    // console.log('teamAllowedFeatures: ', this.teamAllowedFeatures);
-    // console.log('roleAllowedFeatures: ', this.roleAllowedFeatures);
-  }
+  constructor() {}
 
   public isFeatureEnabled(featureName: string): boolean {
     const isFeaturedAllowed = this.features[featureName];
-    console.log('isFeaturedAllowed: ', isFeaturedAllowed);
 
-    const test = this.roleAllowedFeatures.find((roleFeature) => { 
-      return roleFeature === featureName; 
-    }); 
-    const isFeaturedAllowedForRole = test === featureName ? true : false;
-    console.log('isFeaturedAllowedForRole: ', isFeaturedAllowedForRole);
+    const teamFeatureExists = this.teamAllowedFeatures.find(teamFeature => teamFeature === featureName); 
+    const isFeaturedAllowedForTeam = teamFeatureExists === featureName ? true : false;
 
-    return isFeaturedAllowed && isFeaturedAllowedForRole;
+    const roleFeatureExists = this.roleAllowedFeatures.find(roleFeature => roleFeature === featureName); 
+    const isFeaturedAllowedForRole = roleFeatureExists === featureName ? true : false;
 
-
-    // const isAllowed = this.features[featureName] && this.roleAllowedFeatures[featureName];
-    // console.log('isAllowed: ', isAllowed);
-    // return isAllowed;
+    return isFeaturedAllowed && isFeaturedAllowedForTeam && isFeaturedAllowedForRole;
   }
+}
 
-  public isFeatureEnabledOnTeam(featureName: string): boolean {
-    // return this.teamAllowedFeatures
-    return true;
-  }
-
-  public isFeatureEnabledOnRole(featureName: string): boolean {
-    // return this.roleAllowedFeatures
-    return true;
-  }
+export interface FeatureTypes {
+  feature: boolean
 }
