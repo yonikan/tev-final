@@ -18,27 +18,20 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-      authStatus => {
-        this.isLoading = false;
-      }
-    );
-
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe(
+        authStatus => {
+          this.isLoading = false;
+        }
+      );
 
     this.forgotPasswordFormGroup = this.formBuilder.group({
-      usernameText: ['', 
+      emailText: ['', 
       [
         Validators.required,
-        // Validators.minLength(8),
-        // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+        Validators.email
       ]]
     });
-
-    // this.forgotPasswordFormGroup = new FormGroup({
-    //   usernameText: new FormControl(this.username, {
-    //     validators: [Validators.required, Validators.minLength(3)]
-    //   })
-    // });
   }
 
   onForgotPassword() {

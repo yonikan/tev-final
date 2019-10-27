@@ -38,11 +38,12 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-      authStatus => {
-        this.isLoading = false;
-      }
-    );
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe(
+        authStatus => {
+          this.isLoading = false;
+        }
+      );
   }
 
   onResetPassword() {
