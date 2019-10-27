@@ -39,14 +39,12 @@ export class TeamPickerService {
       )
       .subscribe((currentTeam1: any) => {
         // console.log('currentTeam1: ', currentTeam1);
-        this.authorizationService.teamAuth(20);
+        this.authorizationService.teamAuth('test');
         this.currentTeam = currentTeam1;
         this.currentTeamUpdated.next(currentTeam1);
       });
 
     this.currentTeam = currentTeam;
     this.localStorageService.storeOnLocalStorage('selected_team', currentTeam);
-    // const toastText = `The team has changed to ${this.currentTeam}`;
-    // this.uiService.showSnackbar(toastText, null, 2000);
   }
 }

@@ -1,7 +1,7 @@
 <div *ngIf="isAuthenticated" class="footer-container mat-elevation-z5">
       <div class="nav-buttons-container">
             <a routerLink="/team-overview" routerLinkActive="active">
-              <mat-icon>insert_chart_outlined</mat-icon>
+              <mat-icon>home</mat-icon>
               <div class="nav-caption">{{ 'layout.footer.team-overview' | translate }}</div>
             </a>
 
@@ -21,11 +21,6 @@
                 <mat-icon>people_alt</mat-icon>
                 <div class="nav-caption">{{ 'layout.footer.players' | translate }}</div>
               </a>
-
-              <!-- <a routerLink="/team-configuration" routerLinkActive="active">
-                <mat-icon>settings</mat-icon>
-                <div class="nav-caption">{{ 'layout.footer.team-configuration' | translate }}</div>
-              </a> -->
 
               <a routerLink="/menu" routerLinkActive="active">
                 <mat-icon>menu</mat-icon>

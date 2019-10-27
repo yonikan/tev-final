@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslationPickerService } from '../services/translation-picker.service';
 import { ThemePickerService } from '../services/theme-picker.service';
 import { MatRadioChange } from '@angular/material';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  selector: 'app-preferences',
+  templateUrl: './preferences.component.html',
+  styleUrls: ['./preferences.component.scss']
 })
-export class SettingsComponent implements OnInit {
-  pageName = 'settings';
+export class PreferencesComponent implements OnInit {
+  pageName = 'Preferences';
 
   currentTranslation = 'en';
   languages: any[] = [

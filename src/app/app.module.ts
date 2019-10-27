@@ -45,19 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
       useFactory: initFeatureToggling,
       deps: [AppInitService],
       multi: true
-    },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initTeamsAuth,
-    //   deps: [AppInitService],
-    //   multi: true
-    // },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initRolesAuth,
-    //   deps: [AppInitService],
-    //   multi: true
-    // }
+    }
   ],
   bootstrap: [AppComponent]
 })

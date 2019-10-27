@@ -20,7 +20,7 @@ export class EventsComponent implements OnInit {
     setTimeout(() => {
        this.isLoading = false;
        this.isConfirmed = true;
-       this.uiService.showSnackbar('The event has been confirmed', null, 2000);
+      //  this.uiService.showSnackbar('The event has been confirmed', null, 2000);
     }, 2000);
   }
 }

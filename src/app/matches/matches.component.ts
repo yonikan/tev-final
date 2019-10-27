@@ -20,7 +20,7 @@ export class MatchesComponent implements OnInit, OnDestroy {
     this.currentTeamUpdateSub = this.teamPickerService
       .getCurrentTeamUpdateListener()
       .subscribe(currentTeam => {
-        console.log('MATCHES - currentTeam: ', currentTeam);
+        // console.log('MATCHES - currentTeam: ', currentTeam);
         this.isLoading = false;
         // setTimeout(() => {
         //   // console.log('MATCHES - currentTeam: ', currentTeam);

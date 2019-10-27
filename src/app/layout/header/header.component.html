@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="isAuthenticated" class="toolbar">
+<mat-toolbar *ngIf="isAuthenticated" class="toolbar mat-elevation-z2">
     <mat-toolbar-row>
       <div class="toolbar-left">
           <!-- <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
@@ -27,9 +27,9 @@
                     </button>
                     <mat-divider></mat-divider>
 
-                    <button mat-menu-item routerLink="/settings">
+                    <button mat-menu-item routerLink="/preferences">
                       <mat-icon>settings</mat-icon>
-                      <span>Settings</span>
+                      <span>Preferences</span>
                     </button>
                     <mat-divider></mat-divider>
 

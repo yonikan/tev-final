@@ -12,9 +12,9 @@ import { FadeInRightStaggerElementDirective } from './animations/fade-in-right.a
 import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animation';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 // import { TeamPickerComponent } from './team-picker/team-picker.component';
-import { SettingsComponent } from './settings/settings.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PreferencesComponent } from './preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,10 @@ import { ProfileComponent } from './profile/profile.component';
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     // TeamPickerComponent,
-    SettingsComponent,
+    PreferencesComponent,
     MenuComponent,
-    ProfileComponent
+    ProfileComponent,
+    PreferencesComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +45,10 @@ import { ProfileComponent } from './profile/profile.component';
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     // TeamPickerComponent,
-    SettingsComponent
+    PreferencesComponent,
+    MenuComponent,
+    ProfileComponent,
+    PreferencesComponent
   ]
 })
 export class CoreModule { }

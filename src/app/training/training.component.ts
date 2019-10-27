@@ -20,7 +20,7 @@ export class TrainingComponent implements OnInit, OnDestroy {
     this.currentTeamUpdateSub = this.teamPickerService
       .getCurrentTeamUpdateListener()
       .subscribe(currentTeam => {
-        console.log('TRAININGS - currentTeam: ', currentTeam);
+        // console.log('TRAININGS - currentTeam: ', currentTeam);
         this.isLoading = false;
       });
   }

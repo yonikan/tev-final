@@ -21,7 +21,7 @@ export class TeamConfigurationComponent implements OnInit, OnDestroy {
     this.currentTeamUpdateSub = this.teamPickerService
       .getCurrentTeamUpdateListener()
       .subscribe((currentTeam: any) => {
-        console.log('TEAM CONGIGURATION - currentTeam: ', currentTeam);
+        // console.log('TEAM CONGIGURATION - currentTeam: ', currentTeam);
         this.isLoading = false;
         this.currentTeam = currentTeam.teamName;
       });

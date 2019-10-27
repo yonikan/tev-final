@@ -10,7 +10,7 @@
     &::after {
       content: '';
       background-color: rgb(230, 230, 230);
-      background-image: url(../../../assets/img/background1.png);
+      background-image: url(../../../assets/img/login-background.png);
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -27,14 +27,10 @@
     .login-container {
       display: flex;
       flex-direction: column;
-      // align-items: center;
       justify-content: space-between;
       width: 400px;
-      // height: 100vh;
-      // height: 100%;
       height: calc(100vh - 70px); // removes the header placeholder from the height
       padding: 35px;
-      // text-align: center;
       background-color: #fff;
       box-shadow: 2px 0 5px -2px #000;
 

@@ -55,7 +55,7 @@ export class AuthService {
             this.token = response.token;
             this.appStore = response;
             this.localStorageService.storeOnLocalStorage('login_data', loginData);
-            this.authorizationService.roleAuth(response.role);
+            this.authorizationService.roleAuth('test');
             const expiresInDuration = 60 * 60; // in seconds
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;

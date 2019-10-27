@@ -22,8 +22,8 @@ export class AuthorizationService {
     // return isFeaturedAllowed && isFeaturedAllowedForTeam && isFeaturedAllowedForRole;
   }
 
-  public teamAuth(teamId: number) {
-    // console.log('teamId: ', teamId);
+  public teamAuth(team: string) {
+    console.log('team: ', team);
     // this.httpClient
     //   .get('assets/features-configuration/config-teams-auth.json')
     //     .pipe(
@@ -33,8 +33,8 @@ export class AuthorizationService {
     //     );
   }
 
-  public roleAuth(userRoleId: number) {
-    // console.log('userRoleId: ', userRoleId);
+  public roleAuth(userRole: string) {
+    console.log('userRole: ', userRole);
     // this.httpClient
     //   .get('assets/features-configuration/config-roles-auth.json')
     //     .pipe(
