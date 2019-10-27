@@ -3,7 +3,6 @@
 :host { 
     .footer-container {
         background-color: var(--headerBackground);
-        color: var(--headerColor);
         z-index: 20;
         position: fixed;
         bottom: 0;
@@ -12,10 +11,6 @@
 
         @media (max-width: $media-query-sm) {
             display: block;
-        }
-
-        .active {
-            color: $color-pink;
         }
 
         .nav-buttons-container {
@@ -34,6 +29,11 @@
                 align-items: center;
                 padding-bottom: 25px;
                 padding-top: 10px;
+                color: #c5c5c5;
+
+                &.active {
+                    color: #000;
+                }
 
                 .nav-caption {
                     text-decoration: none;

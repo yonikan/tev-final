@@ -13,6 +13,8 @@ import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animati
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 // import { TeamPickerComponent } from './team-picker/team-picker.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MenuComponent } from './menu/menu.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SettingsComponent } from './settings/settings.component';
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     // TeamPickerComponent,
-    SettingsComponent
+    SettingsComponent,
+    MenuComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

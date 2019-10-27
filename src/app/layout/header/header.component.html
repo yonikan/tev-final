@@ -9,9 +9,7 @@
 
       <div class="logo">
           <img src="./assets/img/logo-large.jpg" alt="logo" class="logo-desktop">
-          <button mat-button [matMenuTriggerFor]="userMenu">
-              <img src="./assets/img/logo.png" alt="logo" class="logo-mobile">
-          </button>
+          <img src="./assets/img/logo.png" alt="logo" class="logo-mobile">
       </div>
 
       <div class="toolbar-right">
@@ -23,6 +21,12 @@
                   <mat-icon class="icon">keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #userMenu="matMenu">
+                    <button mat-menu-item routerLink="/profile">
+                      <mat-icon>account_circle</mat-icon>
+                      <span>My Profile</span>
+                    </button>
+                    <mat-divider></mat-divider>
+
                     <button mat-menu-item routerLink="/settings">
                       <mat-icon>settings</mat-icon>
                       <span>Settings</span>
