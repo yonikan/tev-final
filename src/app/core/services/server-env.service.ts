@@ -10,49 +10,39 @@ export class ServerEnvService {
   constructor() { }
 
   initServerEnv() {
-    const URL_PATH = window.location.toString();
-    const DEV_ENV_SUBSTRING = '-dev';
-    const STAGE_ENV_SUBSTRING = '-stage';
-    const CHINA_PROD_ENV_SUBSTRING = '.cn';
+    const URL_HOSTNAME = window.location.hostname.toString();
 
-    if (URL_PATH.includes(DEV_ENV_SUBSTRING)) {
-      this.setCurrentServerEnv('dev');
-      // console.log('DEV!!!');
-    // } else if (URL_PATH.includes(STAGE_ENV_SUBSTRING)) {
-    //   this.setCurrentServerEnv('stage');
-    //   console.log('STAGE!!!');
-    // } else if (URL_PATH.includes(CHINA_PROD_ENV_SUBSTRING)) {
-    //   this.setCurrentServerEnv('ch-prod');
-    //   console.log('CHINA PROD!!!');
+    if (URL_HOSTNAME.includes('dev')) {
+      this.currentServerEnv = 'dev';
+      console.log('DEV!!!');
+    } else if (URL_HOSTNAME.includes('stage')) {
+      this.currentServerEnv = 'stage';
+      console.log('STAGE!!!');
+    } else if (URL_HOSTNAME.includes('prod')) {
+      this.currentServerEnv = 'prod';
+      console.log('STAGE!!!');
+    } else if (URL_HOSTNAME.includes('cn')) {
+      this.currentServerEnv = 'ch';
+      console.log('CHINA PROD!!!');
     } else {
-      this.setCurrentServerEnv('dev');
-      // console.log('DEV!!!');
-      // this.setCurrentServerEnv('prod');
-      // console.log('PROD!!!');
+      this.currentServerEnv = 'dev';
+      console.log('DEV!!!');
     }
   }
 
-  getCurrentServerEnv() {
-    return this.currentServerEnv;
-  }
-
-  setCurrentServerEnv(env: string) {
-    this.currentServerEnv = env;
-  }
-
-  getBaseUrl(server = 1) { // 1 as default
+  getBaseUrl(serverEnv = 1) { // 1 as default
     if (this.currentServerEnv === 'dev') {
-      if (server === 2) {
+      if (serverEnv === 2) {
         return AppConsts.devBaseUrl2
       }
       return AppConsts.devBaseUrl
     } else if (this.currentServerEnv === 'stage') {
-      if (server === 2) {
+      if (serverEnv === 2) {
         return AppConsts.stageBaseUrl2
       }
       return AppConsts.stageBaseUrl
     } else if (this.currentServerEnv === 'prod') {
-      if (server === 2) {
+      if (serverEnv === 2) {
         return AppConsts.prodBaseUrl2
       }
       return AppConsts.prodBaseUrl

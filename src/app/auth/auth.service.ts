@@ -42,7 +42,6 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    // this.setServerToAccess(username);
     const authData: AuthData = { username, password };
     const SERVER_ENV = this.serverEnvService.getBaseUrl();
     const BACKEND_URL = `${SERVER_ENV}v1/account/login`;
@@ -83,31 +82,6 @@ export class AuthService {
       this.logout();
     }, duration * 1000);
   }
-
-  // setServerToAccess(username) {
-  //   console.log('username: ', username);
-  //   if (username.startsWith('$$')) { // Stage
-  //     if (window.location.hostname.includes('cn')) {
-  //       console.log('ch_stage');
-  //     } else {
-  //       console.log('stage');
-  //     }
-  //     username = username.substr(2);
-  //   } else if (username.startsWith('@@')) { // DEV
-  //     if (window.location.hostname.includes('cn')) {
-  //       console.log('ch_dev');
-  //     } else {
-  //       console.log('dev');
-  //     }
-  //     username = username.substr(2);
-  //   } else { // PROD
-  //     if (window.location.hostname.includes('cn')) {
-  //       console.log('ch_prod');
-  //     } else {
-  //       console.log('prod');
-  //     }
-  //   }
-  // }
 }
 
 export interface AuthData {

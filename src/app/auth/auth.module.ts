@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app.routes';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { AuthComponent } from './auth/auth.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 
 @NgModule({
