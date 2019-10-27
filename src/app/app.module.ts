@@ -13,7 +13,7 @@ import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
-import { AppInitService, initFeatureToggling, initTeamsAuth, initRolesAuth } from './core/services/app-init.service';
+import { AppInitService, initFeatureToggling } from './core/services/app-init.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
@@ -46,18 +46,18 @@ import { CookieService } from 'ngx-cookie-service';
       deps: [AppInitService],
       multi: true
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initTeamsAuth,
-      deps: [AppInitService],
-      multi: true
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initRolesAuth,
-      deps: [AppInitService],
-      multi: true
-    }
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initTeamsAuth,
+    //   deps: [AppInitService],
+    //   multi: true
+    // },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initRolesAuth,
+    //   deps: [AppInitService],
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

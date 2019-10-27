@@ -17,7 +17,7 @@ export class ServerEnvService {
 
     if (URL_PATH.includes(DEV_ENV_SUBSTRING)) {
       this.setCurrentServerEnv('dev');
-      console.log('DEV!!!');
+      // console.log('DEV!!!');
     // } else if (URL_PATH.includes(STAGE_ENV_SUBSTRING)) {
     //   this.setCurrentServerEnv('stage');
     //   console.log('STAGE!!!');
@@ -26,7 +26,7 @@ export class ServerEnvService {
     //   console.log('CHINA PROD!!!');
     } else {
       this.setCurrentServerEnv('dev');
-      console.log('DEV!!!');
+      // console.log('DEV!!!');
       // this.setCurrentServerEnv('prod');
       // console.log('PROD!!!');
     }

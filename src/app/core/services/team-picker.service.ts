@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
 import { map, tap } from 'rxjs/operators';
 import { UIService } from './ui.service';
+import { AuthorizationService } from './authorization.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class TeamPickerService {
   constructor(
     private http: HttpClient, 
     private localStorageService: LocalStorageService, 
+    private authorizationService: AuthorizationService,
     private uiService: UIService
   ) { }
 
@@ -31,10 +33,13 @@ export class TeamPickerService {
       .get('assets/mocks/teams-mock.json')
       .pipe(
         map((teams: any) => teams.teamsData), // transform respond
+        // tap(team => { console.log('team: ', team) }),
         map((teams: any) => teams.find(team => team.teamName === currentTeam)), // select the selected team - temp
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
       .subscribe((currentTeam1: any) => {
+        // console.log('currentTeam1: ', currentTeam1);
+        this.authorizationService.teamAuth(20);
         this.currentTeam = currentTeam1;
         this.currentTeamUpdated.next(currentTeam1);
       });

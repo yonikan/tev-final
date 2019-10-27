@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { ServerEnvService } from '../core/services/server-env.service';
+import { AuthorizationService } from '../core/services/authorization.service';
 
 @Injectable({
    providedIn: 'root' 
@@ -20,6 +21,7 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private localStorageService: LocalStorageService,
+    private authorizationService: AuthorizationService,
     private serverEnvService: ServerEnvService
   ) {}
 
@@ -53,6 +55,7 @@ export class AuthService {
             this.token = response.token;
             this.appStore = response;
             this.localStorageService.storeOnLocalStorage('login_data', loginData);
+            this.authorizationService.roleAuth(response.role);
             const expiresInDuration = 60 * 60; // in seconds
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
