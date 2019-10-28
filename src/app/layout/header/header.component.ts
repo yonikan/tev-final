@@ -27,9 +27,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {value: 'hull-u14', viewValue: '2019/20: Hull City U14'},
     {value: 'hull-o18', viewValue: '2019/20: Hull City O18'}
   ];
-  userImgUrl = './assets/img/user-placeholder.png';
-  userFirstName = 'yoni';
-  userLastName = 'kangun';
+  userImgUrl;
+  userFirstName;
+  userLastName;
   appVersion;
   apiVersion;
 
@@ -40,8 +40,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ){}
 
   ngOnInit() {
+    this.userImgUrl = this.localStorageService.getOnLocalStorage('login_data').user_image_url;
+    this.userFirstName = this.localStorageService.getOnLocalStorage('login_data').user_first_name;
+    this.userLastName = this.localStorageService.getOnLocalStorage('login_data').user_last_name;
     this.appVersion = AppConsts.version;
     this.apiVersion = this.localStorageService.getOnLocalStorage('login_data').api_version;
+
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(authStatus => {

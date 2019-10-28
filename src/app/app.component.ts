@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './auth/auth.service';
-// import { TranslateService } from '@ngx-translate/core';
 import { TranslationPickerService } from './core/services/translation-picker.service';
 import { LocalStorageService } from './core/services/local-storage.service';
-import { AuthorizationService } from './core/services/authorization.service';
 import { ThemePickerService } from './core/services/theme-picker.service';
 import { TeamPickerService } from './core/services/team-picker.service';
 import { ServerEnvService } from './core/services/server-env.service';
@@ -24,8 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
     public teamPickerService: TeamPickerService,
-    private serverEnvService: ServerEnvService,
-    private authorizationService: AuthorizationService) {
+    private serverEnvService: ServerEnvService) {
   }
 
   ngOnInit() {
@@ -41,13 +38,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.translationPickerService.setDefaultLang(this.localStorageService.getOnLocalStorage('selected_language'));
     } else {
       this.translationPickerService.setDefaultLang(this.translationPickerService.getCurrentTranslation());
-    }
-
-    if (this.localStorageService.getOnLocalStorage('selected_team')) {
-      this.teamPickerService.setCurrentTeam(this.localStorageService.getOnLocalStorage('selected_team'));
-    } else {
-      const currentTeam = this.teamPickerService.getCurrentTeam();
-      this.teamPickerService.setCurrentTeam(this.teamPickerService.getCurrentTeam());
     }
 
     this.authStatusSub = this.authService

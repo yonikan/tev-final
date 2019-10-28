@@ -1,1 +1,11 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <app-page-header [pageTitle]="pageName"></app-page-header>
+
+    <mat-card class="">
+        <!-- <img mat-card-image [src]="userImgUrl" alt="user avatar"> -->
+        <mat-card-content>
+            <p>name: {{ userFirstName }}</p>
+            <p>last name: {{ userLastName }}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

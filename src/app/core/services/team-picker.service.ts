@@ -38,7 +38,7 @@ export class TeamPickerService {
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
       .subscribe((updatedTeam: any) => {
-        this.authorizationService.teamAuthoization(updatedTeam); // hard-coded for now
+        this.authorizationService.teamAuthorization(updatedTeam.teamName); // hard-coded for now
         this.currentTeam = updatedTeam;
         this.currentTeamUpdated.next(updatedTeam);
       });

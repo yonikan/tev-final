@@ -17,8 +17,8 @@ export class AuthorizationService {
     return isFeaturedAllowed;
   }
 
-  public teamAuthoization(team: string) {
-    console.log('team: ', team);
+  public teamAuthorization(team: string) {
+    console.log('Auth team: ', team);
     // const teamFeatureExists = this.teamAllowedFeatures.find(teamFeature => teamFeature === featureName); 
     // const isFeaturedAllowedForTeam = teamFeatureExists === featureName ? true : false;
 
@@ -31,8 +31,8 @@ export class AuthorizationService {
     //     );
   }
 
-  public roleAuthoization(userRole: string) {
-    console.log('userRole: ', userRole);
+  public roleAuthorization(userRole: string) {
+    console.log('Auth userRole: ', userRole);
     // const roleFeatureExists = this.roleAllowedFeatures.find(roleFeature => roleFeature === featureName); 
     // const isFeaturedAllowedForRole = roleFeatureExists === featureName ? true : false;
 

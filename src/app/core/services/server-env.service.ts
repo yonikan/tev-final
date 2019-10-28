@@ -30,7 +30,7 @@ export class ServerEnvService {
     }
   }
 
-  getBaseUrl(serverEnv = 1) { // 1 as default
+  getBaseUrl(serverEnv = 1) {
     if (this.currentServerEnv === 'dev') {
       if (serverEnv === 2) {
         return AppConsts.devBaseUrl2
