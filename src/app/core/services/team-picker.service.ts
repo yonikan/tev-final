@@ -37,11 +37,10 @@ export class TeamPickerService {
         map((teams: any) => teams.find(team => team.teamName === currentTeam)), // select the selected team - temp
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
-      .subscribe((currentTeam1: any) => {
-        // console.log('currentTeam1: ', currentTeam1);
-        this.authorizationService.teamAuth('test');
-        this.currentTeam = currentTeam1;
-        this.currentTeamUpdated.next(currentTeam1);
+      .subscribe((updatedTeam: any) => {
+        this.authorizationService.teamAuthoization(updatedTeam); // hard-coded for now
+        this.currentTeam = updatedTeam;
+        this.currentTeamUpdated.next(updatedTeam);
       });
 
     this.currentTeam = currentTeam;

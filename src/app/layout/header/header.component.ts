@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {value: 'hull-u14', viewValue: '2019/20: Hull City U14'},
     {value: 'hull-o18', viewValue: '2019/20: Hull City O18'}
   ];
-  userImgUrl = './assets/img/user_img_placeholder.png';
+  userImgUrl = './assets/img/user-placeholder.png';
   userFirstName = 'yoni';
   userLastName = 'kangun';
   appVersion;

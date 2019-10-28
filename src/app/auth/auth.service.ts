@@ -45,28 +45,31 @@ export class AuthService {
     const authData: AuthData = { username, password };
     const SERVER_ENV = this.serverEnvService.getBaseUrl();
     const BACKEND_URL = `${SERVER_ENV}v1/account/login`;
-    this.http
-      .post<any>(BACKEND_URL, authData)
-      .subscribe(
-        response => {
-          const loginData = response;
-          if (response.token) {
-            this.token = response.token;
-            this.appStore = response;
-            this.localStorageService.storeOnLocalStorage('login_data', loginData);
-            this.authorizationService.roleAuth('test');
-            const expiresInDuration = 60 * 60; // in seconds
-            this.setAuthTimer(expiresInDuration);
-            this.isAuthenticated = true;
-            this.authStatusListener.next(true);
-            this.router.navigate(['/team-overview']);
-          }
-        },
-        error => {
-          this.isAuthenticated = false;
-          this.authStatusListener.next(false);
-        }
-      );
+    // this.http
+    //   .post<any>(BACKEND_URL, authData)
+    //   .subscribe(
+    //     response => {
+    //       const loginData = response;
+    //       if (response.token) {
+    //         // this.token = response.token;
+    //         // this.appStore = response;
+    //         // this.localStorageService.storeOnLocalStorage('login_data', loginData);
+    //         this.authorizationService.roleAuthoization('admin'); // hard-coded for now
+    //         // const expiresInDuration = 60 * 60; // in seconds
+    //         // this.setAuthTimer(expiresInDuration);
+    //         this.isAuthenticated = true;
+    //         this.authStatusListener.next(true);
+    //         this.router.navigate(['/team-overview']);
+    //       }
+    //     },
+    //     error => {
+    //       this.isAuthenticated = false;
+    //       this.authStatusListener.next(false);
+    //     }
+    //   );
+    this.isAuthenticated = true;
+    this.authStatusListener.next(true);
+    this.router.navigate(['/team-overview']);
   }
 
   logout() {
