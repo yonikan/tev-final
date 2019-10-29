@@ -47,12 +47,10 @@ export class AuthService {
     this.http
       .get<any>('assets/mocks/login-mock.json')
       .subscribe(response => {
-          console.log('response: ', response);
+          // console.log('response: ', response);
           if (response.token) {
             this.localStorageService.storeOnLocalStorage('login_data', response);
-
-            // hard-coded for now
-            this.authorizationService.roleAuthorization('admin');
+            this.authorizationService.roleAuthorization('admin'); // hard-coded for now
 
             // needed for the first team selection (and the team Authorization )
             if (this.localStorageService.getOnLocalStorage('selected_team')) {
