@@ -4,4 +4,8 @@
 
 :host { 
     @include login-card;
+
+    p {
+        line-height: 1.4;
+    }
 }

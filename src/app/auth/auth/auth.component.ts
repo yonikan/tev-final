@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation';
-import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { TranslationPickerService } from '../../core/services/translation-picker.service';
 import { AuthService } from '../auth.service';
+import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation';
+import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation';
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +14,6 @@ import { AuthService } from '../auth.service';
   animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
 export class AuthComponent implements OnInit, OnDestroy {
-
   loginMode = 'user-login'
   currentTranslation = 'en';
   languages: any[] = [
@@ -23,9 +24,20 @@ export class AuthComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
   
-  constructor(private translationPickerService: TranslationPickerService, public authService: AuthService) {}
+  constructor(
+    private translationPickerService: TranslationPickerService,
+    public authService: AuthService,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.queryParams
+      .pipe(
+        filter(params => params.page)
+      )
+      .subscribe(params => {
+        this.loginMode = params.page; // ?page=reset-password
+      });
+
     this.currentTranslation = this.translationPickerService.getCurrentTranslation();
     this.authStatusSub = this.authService
       .getAuthStatusListener()

@@ -1,23 +1,23 @@
 <div [@fadeInRight] *ngIf="!isAuthenticated" class="login-background-img">
     <div class="login-container">
-      <div class="login-content" >
+      <div class="login-content" [ngSwitch]="loginMode">
         <div class="logo">
             <img src="./assets/img/logo-large.jpg" alt="logo"/>
         </div>
 
-        <div [@fadeInUp] *ngIf="loginMode === 'user-login'" class="user-login-container">
+        <div [@fadeInUp] *ngSwitchDefault class="user-login-container">
             <app-user-login (loginModeEmitter)="onLoginModeEmitter($event)"></app-user-login>
         </div>
   
-        <div [@fadeInUp] *ngIf="loginMode === 'forgot-password'" class="forgot-password-container">
+        <div [@fadeInUp] *ngSwitchCase="'forgot-password'" class="forgot-password-container">
           <app-forgot-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-forgot-password>
         </div>
   
-        <div [@fadeInUp] *ngIf="loginMode === 'reset-password'" class="reset-password-container">
+        <div [@fadeInUp] *ngSwitchCase="'reset-password'" class="reset-password-container">
           <app-reset-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-reset-password>
         </div>
   
-        <div [@fadeInUp] *ngIf="loginMode === 'email-sent'" class="email-sent-container">
+        <div [@fadeInUp] *ngSwitchCase="'email-sent'" class="email-sent-container">
             <app-email-sent (loginModeEmitter)="onLoginModeEmitter($event)"></app-email-sent>
         </div>
       </div>

@@ -6,10 +6,6 @@
   justify-content: center;
   background-color: var(--headerBackground);
   color: var(--headerColor);
-
-  h3 {
-    color: #a0a0a0;
-  }
 }
 
 @mixin button() {
