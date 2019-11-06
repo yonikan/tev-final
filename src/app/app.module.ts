@@ -8,7 +8,6 @@ import { MaterialModule } from './shared/material.module';
 import { AppRoutingModule } from './app.routes';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
