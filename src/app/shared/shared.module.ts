@@ -5,11 +5,13 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     PageHeaderComponent,
-    LoaderSpinnerComponent
+    LoaderSpinnerComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -17,12 +19,14 @@ import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.componen
     ContentLoaderModule,
     TranslateModule
   ],
+  entryComponents: [ModalComponent],
   exports: [
     MaterialModule,
     ContentLoaderModule,
     TranslateModule,
     PageHeaderComponent,
-    LoaderSpinnerComponent
+    LoaderSpinnerComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }
