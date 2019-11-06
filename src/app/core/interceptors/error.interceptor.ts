@@ -14,17 +14,17 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          const errorTitle = 'Error!!!';
-          let errorMessage = 'An unknown error occurred!';
+          const modalTitle = 'Error!!!';
+          let modalMessage = 'An unknown error occurred!';
           if (error.error.message) {
-            errorMessage = error.error.message;
+            modalMessage = error.error.message;
           }
           this.dialog.open(ModalComponent, {
             width: '500px',
             height: '200px',
             data: { 
-              title: errorTitle,
-              message: errorMessage
+              title: modalTitle,
+              message: modalMessage
             }
           });
           return throwError(error);

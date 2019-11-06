@@ -19,7 +19,9 @@ import { ModalComponent } from './modal/modal.component';
     ContentLoaderModule,
     TranslateModule
   ],
-  entryComponents: [ModalComponent],
+  entryComponents: [
+    ModalComponent
+  ],
   exports: [
     MaterialModule,
     ContentLoaderModule,
