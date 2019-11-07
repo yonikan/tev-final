@@ -4,7 +4,9 @@
           <!-- <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
               <mat-icon>menu</mat-icon>
           </button> -->
-          <app-team-picker [teamsList]="teams" [defaultTeam]="currentTeam" (selectedTeamEmitter)="onSelectedTeam($event)"></app-team-picker>
+          <app-generic-dropdown [itemsType]="'teams'" [items]="teams" [defaultItem]="currentTeam"></app-generic-dropdown>
+
+          <!-- <app-team-picker [teamsList]="teams" [defaultTeam]="currentTeam" (selectedTeamEmitter)="onSelectedTeam($event)"></app-team-picker> -->
       </div>
 
       <div class="logo">

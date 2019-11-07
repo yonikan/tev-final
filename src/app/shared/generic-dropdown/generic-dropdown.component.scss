@@ -1,7 +1,14 @@
 @import '../../../styles/variables';
 
 :host {
-    .dropdown-container {
-        display: flex;
+    mat-form-field {
+        width: 200px;
+
+        .dropdown-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
     }
 }

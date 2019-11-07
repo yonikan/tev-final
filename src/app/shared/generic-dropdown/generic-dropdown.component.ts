@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TranslationPickerService } from 'src/app/core/services/translation-picker.service';
+import { TeamPickerService } from 'src/app/core/services/team-picker.service';
 
 @Component({
   selector: 'app-generic-dropdown',
@@ -7,11 +8,12 @@ import { TranslationPickerService } from 'src/app/core/services/translation-pick
   styleUrls: ['./generic-dropdown.component.scss']
 })
 export class GenericDropdownComponent implements OnInit {
+  @Input() itemsType: any;
   @Input() items: any[];
   @Input() defaultItem: any;
   selectedItemImgPath: string;
 
-  constructor(private translationPickerService: TranslationPickerService) { }
+  constructor(private translationPickerService: TranslationPickerService, public teamPickerService: TeamPickerService) { }
 
   ngOnInit() {
     // console.log(this.items);
@@ -21,9 +23,13 @@ export class GenericDropdownComponent implements OnInit {
     this.selectedItemImgPath = resetToDefaultItem.flag;
   }
 
-  useLanguage(language: string) {
-    const useDefaultItem = this.items.find(item => item.value === language);
+  useLanguage(itemValue: string) {
+    const useDefaultItem = this.items.find(item => item.value === itemValue);
     this.selectedItemImgPath = useDefaultItem.flag;
-    this.translationPickerService.setCurrentTranslation(language);
+    if (this.itemsType === 'languages') {
+      this.translationPickerService.setCurrentTranslation(itemValue);
+    } else if (this.itemsType === 'teams') {
+      this.teamPickerService.setCurrentTeam(itemValue);
+    }
   }
 }

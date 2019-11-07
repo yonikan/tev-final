@@ -23,9 +23,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTeam = 'hull-o18';
   teams: any[] = [
-    {value: 'hull-u18', viewValue: '2019/20: Hull City U18'},
-    {value: 'hull-u14', viewValue: '2019/20: Hull City U14'},
-    {value: 'hull-o18', viewValue: '2019/20: Hull City O18'}
+    {
+      value: 'hull-u18',
+      viewValue: '2019/20: Hull City U18',
+      flag: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+    },
+    {
+      value: 'hull-u14',
+      viewValue: '2019/20: Hull City U14',
+      flag: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+    },
+    {
+      value: 'hull-o18',
+      viewValue: '2019/20: Hull City O18',
+      flag: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+    }
   ];
   userImgUrl;
   userFirstName;
