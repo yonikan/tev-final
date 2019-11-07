@@ -31,9 +31,9 @@ export class PreferencesComponent implements OnInit {
     this.currentTheme = this.themePickerService.getCurrentTheme();
   }
 
-  useLanguage(language: string) {
-    this.translationPickerService.setCurrentTranslation(language)
-  }
+  // useLanguage(language: string) {
+  //   this.translationPickerService.setCurrentTranslation(language)
+  // }
 
   themeChange($event: MatRadioChange) {
     if ($event.value.value === 'light') {

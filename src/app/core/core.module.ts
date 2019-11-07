@@ -14,7 +14,6 @@ import { MenuComponent } from './menu/menu.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 
-
 @NgModule({
   declarations: [
     FadeInRightStaggerElementDirective,
@@ -36,7 +35,6 @@ import { PreferencesComponent } from './preferences/preferences.component';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  // entryComponents: [ErrorComponent],
   exports: [
     FadeInRightStaggerElementDirective,
     FadeInUpStaggerElementDirective,

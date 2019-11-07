@@ -46,9 +46,9 @@ export class AuthComponent implements OnInit, OnDestroy {
       });
   }
 
-  useLanguage(language: string) {
-    this.translationPickerService.setCurrentTranslation(language)
-  }
+  // useLanguage(language: string) {
+  //   this.translationPickerService.setCurrentTranslation(language)
+  // }
 
   onLoginModeEmitter(loginModeString) {
     this.loginMode = loginModeString

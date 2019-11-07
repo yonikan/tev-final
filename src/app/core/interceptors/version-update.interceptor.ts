@@ -17,7 +17,7 @@ export class VersionUpdateInterceptor implements HttpInterceptor {
       // .pipe(
       //   tap((event: HttpEvent<any>) => {
       //     if (event instanceof HttpResponse) {
-      //       const appVersionFromBackend = event.headers.get('appVersion');
+      //       const appVersionFromBackend = event.headers.get('dashboardVersion');
       //       const appVersion = AppConsts.version;
       //       if (appVersion === appVersionFromBackend) {
       //         return;

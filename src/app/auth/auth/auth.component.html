@@ -24,15 +24,7 @@
     
       <div class="login-footer">
           <div class="login-bottom">
-              <mat-form-field appearance="outline">
-                  <!-- <mat-label>{{ 'auth.choose-a-languages' | translate }}</mat-label> -->
-                  <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
-                    <mat-option *ngFor="let language of languages" [value]="language.value">
-                        <img class="test" style="vertical-align:middle; margin-right: 8px; width: 18px; height: 18px; border-radius: 50%;" [src]="language.flag"/>
-                        <span>{{ language.viewValue }}</span>
-                    </mat-option>
-                  </mat-select>
-              </mat-form-field>
+              <app-generic-dropdown [items]="languages" [defaultItem]="currentTranslation"></app-generic-dropdown>
     
               <div class="copyrights">© 2020 All Rights Reserved. PlayerMaker Ltd.</div>
               <div class="privacy">
