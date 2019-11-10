@@ -11,25 +11,25 @@ export class UserIdleInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return next.handle(req)
-      // .pipe(
-      //    tap(() => {}, (err: any) => {
-      //       if (err instanceof HttpErrorResponse) {
-      //         if (err.status !== 401) {
-      //           return;
-      //         }
-      //         const modalTitle = 'session idle';
-      //         const modalMessage = 'user is logged out because of session idle';
-      //         this.dialog.open(ModalComponent, {
-      //           width: '500px',
-      //           height: '200px',
-      //           data: { 
-      //             title: modalTitle,
-      //             message: modalMessage
-      //           }
-      //         });
-      //         this.authService.logout();
-      //       }
-      //    })
-      // );
+      .pipe(
+         tap(() => {}, (err: any) => {
+            if (err instanceof HttpErrorResponse) {
+              if (err.status !== 401) {
+                return;
+              }
+              const modalTitle = 'session idle';
+              const modalMessage = 'user is logged out because of session idle';
+              this.dialog.open(ModalComponent, {
+                width: '500px',
+                height: '200px',
+                data: { 
+                  title: modalTitle,
+                  message: modalMessage
+                }
+              });
+              this.authService.logout();
+            }
+         })
+      );
   }
 }
