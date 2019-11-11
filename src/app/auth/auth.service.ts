@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-// import { AuthData } from './auth-data.model';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { ServerEnvService } from '../core/services/server-env.service';
@@ -13,10 +12,11 @@ import { TeamPickerService } from '../core/services/team-picker.service';
 })
 export class AuthService {
   private token = null;
-  private appStore = {};
   private tokenTimer: any;
   private isAuthenticated = false;
   private authStatusListener = new BehaviorSubject<boolean>(false);
+  private userLoginData;
+  private userLoginDataListener = new BehaviorSubject<any>({});
 
   constructor(
     private http: HttpClient,
@@ -31,10 +31,6 @@ export class AuthService {
     return this.token;
   }
 
-  getAppStore() {
-    return this.appStore;
-  }
-
   getIsAuth() {
     return this.isAuthenticated;
   }
@@ -43,16 +39,25 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  login(username: string, password: string) {
+  getUserLoginData() {
+    return this.userLoginData;
+  }
+
+  getUserLoginDataListener() {
+    return this.userLoginDataListener.asObservable();
+  }
+
+  login(email: string, password: string) {
+    const currentPlatform = 'Mobile'; // temp hard-coded!
     this.http
       .get<any>('assets/mocks/login-mock.json')
-      .subscribe(response => {
-          // console.log('response: ', response);
-          if (response.token) {
-            this.localStorageService.storeOnLocalStorage('login_data', response);
-            this.authorizationService.roleAuthorization('admin'); // hard-coded for now
+      .subscribe(userLoginDataResponse => {
+          if (userLoginDataResponse.token) {
+            this.userLoginData = userLoginDataResponse;
+            this.userLoginDataListener.next(userLoginDataResponse);
 
-            // needed for the first team selection (and the team Authorization )
+            // this.authorizationService.roleAuthorization('admin'); // hard-coded for now
+
             if (this.localStorageService.getOnLocalStorage('selected_team')) {
               this.teamPickerService.setCurrentTeam(this.localStorageService.getOnLocalStorage('selected_team'));
             } else {
@@ -65,6 +70,7 @@ export class AuthService {
           }
         },
         error => {
+          console.log('error: ', error);
           this.isAuthenticated = false;
           this.authStatusListener.next(false);
         }
@@ -105,14 +111,14 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
-  private setAuthTimer(duration: number) {
-    this.tokenTimer = setTimeout(() => {
-      this.logout();
-    }, duration * 1000);
-  }
+  // private setAuthTimer(duration: number) {
+  //   this.tokenTimer = setTimeout(() => {
+  //     this.logout();
+  //   }, duration * 1000);
+  // }
 }
 
 export interface AuthData {
-  username: string;
+  email: string;
   password: string;
 }

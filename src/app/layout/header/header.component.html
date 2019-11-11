@@ -5,8 +5,6 @@
               <mat-icon>menu</mat-icon>
           </button> -->
           <app-generic-dropdown [itemsType]="'teams'" [items]="teams" [defaultItem]="currentTeam"></app-generic-dropdown>
-
-          <!-- <app-team-picker [teamsList]="teams" [defaultTeam]="currentTeam" (selectedTeamEmitter)="onSelectedTeam($event)"></app-team-picker> -->
       </div>
 
       <div class="logo">
@@ -43,7 +41,7 @@
                     <mat-divider></mat-divider>
 
                     <div class="version-container">
-                      Dashboard v.{{ appVersion}} <br> API v.{{ apiVersion}}
+                      Dashboard v.{{ dashboardVersion}}
                     </div>
                 </mat-menu>
               </div>

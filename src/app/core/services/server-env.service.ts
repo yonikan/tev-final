@@ -5,7 +5,7 @@ import { AppConsts } from '../../../app/app.consts';
   providedIn: 'root'
 })
 export class ServerEnvService {
-  private currentServerEnv = 'dev'; // Hard-coded for now
+  private currentServerEnv = 'dev';
   
   constructor() { }
 
@@ -14,19 +14,19 @@ export class ServerEnvService {
 
     if (URL_HOSTNAME.includes('dev')) {
       this.currentServerEnv = 'dev';
-      console.log('DEV!!!');
+      // console.log('DEV!!!');
     } else if (URL_HOSTNAME.includes('stage')) {
       this.currentServerEnv = 'stage';
-      console.log('STAGE!!!');
+      // console.log('STAGE!!!');
     } else if (URL_HOSTNAME.includes('prod')) {
       this.currentServerEnv = 'prod';
-      console.log('STAGE!!!');
+      // console.log('STAGE!!!');
     } else if (URL_HOSTNAME.includes('cn')) {
       this.currentServerEnv = 'ch';
-      console.log('CHINA PROD!!!');
+      // console.log('CHINA PROD!!!');
     } else {
       this.currentServerEnv = 'dev';
-      console.log('DEV!!!');
+      // console.log('DEV!!!');
     }
   }
 

@@ -1,9 +1,7 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
-
 import { AuthService } from '../../auth/auth.service';
-import { LocalStorageService } from '../../core/services/local-storage.service';
 import { TeamPickerService } from '../../core/services/team-picker.service';
 import { AppConsts } from '../../app.consts';
 
@@ -20,7 +18,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
   currentTranslation = 'en';
   private currentTranslationSub: Subscription;
-
+  userLoginData;
+  private userLoginDataSub: Subscription;
+  
+  userImgUrl;
+  userFirstName;
+  userLastName;
+  dashboardVersion;
   currentTeam = 'hull-o18';
   teams: any[] = [
     {
@@ -39,30 +43,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
       flag: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
     }
   ];
-  userImgUrl;
-  userFirstName;
-  userLastName;
-  appVersion;
-  apiVersion;
 
-  constructor(
-     public authService: AuthService,
-     private localStorageService: LocalStorageService,
-     public teamPickerService: TeamPickerService
-  ){}
+  constructor(public authService: AuthService, public teamPickerService: TeamPickerService){}
 
   ngOnInit() {
-    this.userImgUrl = this.localStorageService.getOnLocalStorage('login_data').user_image_url;
-    this.userFirstName = this.localStorageService.getOnLocalStorage('login_data').user_first_name;
-    this.userLastName = this.localStorageService.getOnLocalStorage('login_data').user_last_name;
-    this.appVersion = AppConsts.version;
-    this.apiVersion = this.localStorageService.getOnLocalStorage('login_data').api_version;
+    this.userLoginDataSub = this.authService
+      .getUserLoginDataListener()
+      .subscribe(userLoginData => {
+        this.userImgUrl = userLoginData.image_url;
+        this.userFirstName = userLoginData.first_name;
+        this.userLastName = userLoginData.last_name;
+        this.dashboardVersion = AppConsts.version;
+      });
 
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(authStatus => {
         this.isAuthenticated = authStatus;
       });
+
     this.currentTeam = this.teamPickerService.getCurrentTeam();
   }
 
@@ -82,5 +81,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
     this.currentTranslationSub.unsubscribe();
+    this.userLoginDataSub.unsubscribe();
   }
 }

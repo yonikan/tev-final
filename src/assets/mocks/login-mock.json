@@ -1,12 +1,14 @@
 {
-	"api_version": "2.15.0.0",
+	"token": "barb441le5T84eaT741534ec0c9e",
+	"is_first_login": false,
+	"email": "yoni.kangun@playermaker.com",
+	"first_name": "Yoni",
+	"last_name": "Kangun",
+	"image_url":"https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png",
+	"role": 1,
 	"user_id": 441,
-	"user_email": "eli.raifel@playermaker.com",
-	"user_first_name": "Eli",
-	"user_last_name": "Raifel",
-	"user_gender": 0,
-	"user_image_url": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png",
-	"user_phone": "03-45454545",
-	"user_role": 1,
-    "token": "barb441le5T84eaT741534ec0c9e"
+	"features": {
+		"loadRisk": true,
+		"players": true
+	}
 }

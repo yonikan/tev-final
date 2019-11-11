@@ -1,5 +1,5 @@
 export const AppConsts = {
-  version: '2.15.0.1',
+  version: '2.17.0.0',
   devBaseUrl: 'https://football-dev.playermaker.co.uk/api/',
   devBaseUrl2: 'https://footballrest2-dev.playermaker.co.uk/api/',
   stageBaseUrl: 'https://football-stage.playermaker.co.uk/api/',

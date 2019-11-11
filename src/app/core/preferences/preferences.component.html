@@ -1,10 +1,10 @@
 <div class="settings-container">
-        <app-page-header [pageTitle]="pageName"></app-page-header>
-    
-        <mat-card class="">
-            <mat-card-content>
-                <app-generic-dropdown [itemsType]="'languages'" [items]="languages" [defaultItem]="currentTranslation"></app-generic-dropdown>
-            </mat-card-content>
-        </mat-card>
-    </div>
+    <app-page-header [pageTitle]="pageName"></app-page-header>
+    <mat-card class="">
+        <mat-card-content>
+            dashboard version: {{ dashboardVersion }}
+            <app-generic-dropdown [itemsType]="'languages'" [items]="languages" [defaultItem]="currentTranslation"></app-generic-dropdown>
+        </mat-card-content>
+    </mat-card>
+</div>
     

@@ -7,6 +7,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthorizationService {
   public features: FeatureTypes; // set these allowed features from the init config json
+  public postLoginAllowedFeatures;
   // public teamAllowedFeatures;
   // public roleAllowedFeatures;
 
@@ -15,6 +16,10 @@ export class AuthorizationService {
   public isFeatureEnabled(featureName: string): boolean {
     const isFeaturedAllowed = this.features[featureName];
     return isFeaturedAllowed;
+  }
+
+  public postLoginAuthorization(authorizationResponse) {
+
   }
 
   public roleAuthorization(userRole: string) {

@@ -1,23 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../services/local-storage.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   pageName = 'Profile';
-
+  private userLoginDataSub: Subscription;
   userImgUrl;
   userFirstName;
   userLastName;
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
-    this.userImgUrl = this.localStorageService.getOnLocalStorage('login_data').user_image_url;
-    this.userFirstName = this.localStorageService.getOnLocalStorage('login_data').user_first_name;
-    this.userLastName = this.localStorageService.getOnLocalStorage('login_data').user_last_name;
+    this.userLoginDataSub = this.authService
+      .getUserLoginDataListener()
+      .subscribe(userLoginData => {
+        this.userImgUrl = userLoginData.image_url;
+        this.userFirstName = userLoginData.first_name;
+        this.userLastName = userLoginData.last_name;
+      });
+  }
+
+  ngOnDestroy() {
+    this.userLoginDataSub.unsubscribe();
   }
 }

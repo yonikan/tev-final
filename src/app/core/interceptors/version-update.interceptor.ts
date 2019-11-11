@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
-import { AuthService } from 'src/app/auth/auth.service';
-import { AppConsts } from 'src/app/app.consts';
-import { ModalComponent } from 'src/app/shared/modal/modal.component';
-
+import { AuthService } from '../../auth/auth.service';
+import { AppConsts } from '../../app.consts';
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Injectable()
 export class VersionUpdateInterceptor implements HttpInterceptor {
@@ -18,7 +17,7 @@ export class VersionUpdateInterceptor implements HttpInterceptor {
         tap((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
             // const appVersionFromBackend = event.headers.get('dashboardVersion');
-            const appVersionFromBackend = AppConsts.version; //temp
+            const appVersionFromBackend = AppConsts.version; // temp hard-coded
             const appVersion = AppConsts.version;
             if (appVersion === appVersionFromBackend) {
               return;
