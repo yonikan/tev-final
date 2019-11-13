@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from '../core/services/local-storage.service';
-import { ServerEnvService } from '../core/services/server-env.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { TeamPickerService } from '../core/services/team-picker.service';
 
@@ -12,8 +11,6 @@ import { TeamPickerService } from '../core/services/team-picker.service';
 })
 export class AuthService {
   private token = null;
-  private tokenTimer: any;
-
   private isAuthenticated = false;
   private authStatusListener = new BehaviorSubject<boolean>(false);
   private userLoginData;
@@ -25,8 +22,7 @@ export class AuthService {
     private router: Router,
     private localStorageService: LocalStorageService,
     private authorizationService: AuthorizationService,
-    public teamPickerService: TeamPickerService,
-    private serverEnvService: ServerEnvService
+    public teamPickerService: TeamPickerService
   ) {}
 
   getToken() {
@@ -64,6 +60,8 @@ export class AuthService {
               this.teamPickerService.setCurrentTeam(this.teamPickerService.getCurrentTeam());
             }
 
+            this.token = userLoginDataResponse.token;
+            this.localStorageService.storeOnCookie('token', this.token);
             this.isAuthenticated = true;
             this.authStatusListener.next(true);
             this.router.navigate(['/team-overview']);
@@ -75,47 +73,14 @@ export class AuthService {
           this.authStatusListener.next(false);
         }
       );
-
-    // const authData: AuthData = { username, password };
-    // const SERVER_ENV = this.serverEnvService.getBaseUrl();
-    // const BACKEND_URL = `${SERVER_ENV}v1/account/login`;
-    // this.http
-    //   .post<any>(BACKEND_URL, authData)
-    //   .subscribe(
-    //     response => {
-    //       const loginData = response;
-    //       if (response.token) {
-    //         // this.token = response.token;
-    //         // this.appStore = response;
-    //         // this.localStorageService.storeOnLocalStorage('login_data', loginData);
-    //         this.authorizationService.roleAuthoization('admin'); // hard-coded for now
-    //         // const expiresInDuration = 60 * 60; // in seconds
-    //         // this.setAuthTimer(expiresInDuration);
-    //         this.isAuthenticated = true;
-    //         this.authStatusListener.next(true);
-    //         this.router.navigate(['/team-overview']);
-    //       }
-    //     },
-    //     error => {
-    //       this.isAuthenticated = false;
-    //       this.authStatusListener.next(false);
-    //     }
-    //   );
   }
 
   logout() {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
-    clearTimeout(this.tokenTimer);
     this.router.navigate(['login']);
   }
-
-  // private setAuthTimer(duration: number) {
-  //   this.tokenTimer = setTimeout(() => {
-  //     this.logout();
-  //   }, duration * 1000);
-  // }
 }
 
 export interface AuthData {

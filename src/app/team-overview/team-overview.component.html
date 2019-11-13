@@ -15,7 +15,7 @@
         </div>
 
         <div class="overview-content-main">
-            <div class="load-risk-container">
+            <div class="load-risk-container" *ngIf="isLoadRiskFeatureEnabled">
                 <h3>{{ 'team-overview.load-risk.title' | translate }}</h3>
                 <app-load-risk></app-load-risk>
             </div>

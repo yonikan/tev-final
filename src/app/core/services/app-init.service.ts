@@ -10,16 +10,11 @@ export class AppInitService {
   constructor(private httpClient: HttpClient, private authorizationService: AuthorizationService) {}
 
   public initFeatureToggling() {
-    // let features = {
-    //   featureLoadRisk: true,
-    //   featurePlayers: true
-    // };
-    // this.authorizationService.features = features as any;
     return this.httpClient
       .get('assets/features-configuration/config-features.json')
       .pipe(
         tap(features => { 
-          this.authorizationService.features = features as any 
+          this.authorizationService.preLoginAllowedFeatures = features as any 
         })
       )
       .toPromise();

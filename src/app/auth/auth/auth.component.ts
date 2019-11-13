@@ -15,23 +15,23 @@ import { AuthorizationService } from '../../core/services/authorization.service'
   animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
 export class AuthComponent implements OnInit, OnDestroy {
-  loginMode = 'user-login'
+  loginMode = 'user-login';
   currentTranslation = 'en';
   languages: any[] = [
     { value: 'en', viewValue: 'English - Eng', flag: './assets/svg/flag-us.svg' },
     { value: 'es', viewValue: 'Spanish - Esp', flag: './assets/svg/flag-es.svg' },
     { value: 'ch', viewValue: 'Chinese - 中文', flag: './assets/svg/flag-china.svg' }
-  ]
+  ];
   isAuthenticated = false;
   private authStatusSub: Subscription;
-  public isTranslationPickerFeatureEnabled = false;
+  public isTranslationPickerFeatureEnabled = true;
 
   constructor(
     private translationPickerService: TranslationPickerService,
     public authService: AuthService,
     private authorizationService: AuthorizationService,
     private route: ActivatedRoute) {
-      this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('translationPicker');
+      this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('translationPicker', 'preLogin');
   }
 
   ngOnInit() {
@@ -51,12 +51,8 @@ export class AuthComponent implements OnInit, OnDestroy {
       });
   }
 
-  // useLanguage(language: string) {
-  //   this.translationPickerService.setCurrentTranslation(language)
-  // }
-
   onLoginModeEmitter(loginModeString) {
-    this.loginMode = loginModeString
+    this.loginMode = loginModeString;
   }
 
   ngOnDestroy() {
