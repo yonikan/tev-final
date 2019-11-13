@@ -4,7 +4,6 @@
     <app-page-header *ngIf="!isLoading" [pageTitle]="pageName"></app-page-header>
 
     <div class="overview-content">
-
         <div class="overview-content-events">
             <h3>there are 3 new sessions</h3>
             <p>Validate these session and get the most accurate and updated performance of your team:</p>
@@ -15,9 +14,8 @@
             </div>
         </div>
 
-
         <div class="overview-content-main">
-            <div *ngIf="isFeatureLoadRiskEnabled" class="load-risk-container">
+            <div class="load-risk-container">
                 <h3>{{ 'team-overview.load-risk.title' | translate }}</h3>
                 <app-load-risk></app-load-risk>
             </div>
@@ -36,15 +34,5 @@
                 </div>
             </div>
         </div>
-    
-        <!-- <div class="overview-content-right">
-            <div class="events-container">
-                <h3>{{ 'team-overview.events.title' | translate }}</h3>
-                <app-events></app-events>
-                <app-events></app-events>
-                <app-events></app-events>
-                <app-events></app-events>
-            </div>
-        </div> -->
     </div>
 </div>

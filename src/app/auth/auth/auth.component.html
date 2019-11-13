@@ -24,8 +24,13 @@
     
       <div class="login-footer">
           <div class="login-bottom">
-              <app-generic-dropdown [itemsType]="'languages'" [items]="languages" [defaultItem]="currentTranslation"></app-generic-dropdown>
-    
+              <app-generic-dropdown *ngIf="isTranslationPickerFeatureEnabled" 
+                [appearance]="'outline'"
+                [itemsType]="'languages'" 
+                [items]="languages"
+                [defaultItem]="currentTranslation">
+              </app-generic-dropdown>
+
               <div class="copyrights">© 2020 All Rights Reserved. PlayerMaker Ltd.</div>
               <div class="privacy">
                   <span><a href="https://playermaker-public.s3.eu-west-2.amazonaws.com/site/PM-Privacy-Policy.pdf" target="_self">Privecy Policy</a></span> | 

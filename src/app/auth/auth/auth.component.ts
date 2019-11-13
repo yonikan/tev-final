@@ -6,6 +6,7 @@ import { TranslationPickerService } from '../../core/services/translation-picker
 import { AuthService } from '../auth.service';
 import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation';
+import { AuthorizationService } from '../../core/services/authorization.service';
 
 @Component({
   selector: 'app-auth',
@@ -23,11 +24,15 @@ export class AuthComponent implements OnInit, OnDestroy {
   ]
   isAuthenticated = false;
   private authStatusSub: Subscription;
-  
+  public isTranslationPickerFeatureEnabled = false;
+
   constructor(
     private translationPickerService: TranslationPickerService,
     public authService: AuthService,
-    private route: ActivatedRoute) {}
+    private authorizationService: AuthorizationService,
+    private route: ActivatedRoute) {
+      this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('translationPicker');
+  }
 
   ngOnInit() {
     this.route.queryParams

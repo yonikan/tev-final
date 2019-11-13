@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TeamPickerService } from '../core/services/team-picker.service';
 import { Subscription } from 'rxjs';
-import { AuthorizationService } from '../core/services/authorization.service';
+import { TeamPickerService } from '../core/services/team-picker.service';
 
 @Component({
   selector: 'app-team-overview',
@@ -12,11 +11,8 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
   pageName = 'team overview';
   private currentTeamUpdateSub: Subscription;
   isLoading = true;
-  public isFeatureLoadRiskEnabled = false;
 
-  constructor(public teamPickerService: TeamPickerService, private authorizationService: AuthorizationService) { 
-    this.isFeatureLoadRiskEnabled = this.authorizationService.isFeatureEnabled('featureLoadRisk');
-  }
+  constructor(public teamPickerService: TeamPickerService) {}
 
   ngOnInit() {
     this.isLoading = true;

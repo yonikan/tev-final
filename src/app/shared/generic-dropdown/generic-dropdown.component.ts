@@ -9,6 +9,7 @@ import { TeamPickerService } from 'src/app/core/services/team-picker.service';
 })
 export class GenericDropdownComponent implements OnInit {
   @Input() itemsType: any;
+  @Input() appearance: any;
   @Input() items: any[];
   @Input() defaultItem: any;
   selectedItemImgPath: string;
@@ -16,10 +17,7 @@ export class GenericDropdownComponent implements OnInit {
   constructor(private translationPickerService: TranslationPickerService, public teamPickerService: TeamPickerService) { }
 
   ngOnInit() {
-    // console.log(this.items);
-    // console.log(this.defaultItem);
     const resetToDefaultItem = this.items.find(item => item.value === this.defaultItem);
-    // console.log(test);
     this.selectedItemImgPath = resetToDefaultItem.flag;
   }
 

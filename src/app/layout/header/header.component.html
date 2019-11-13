@@ -1,10 +1,12 @@
 <mat-toolbar *ngIf="isAuthenticated" class="toolbar mat-elevation-z2">
     <mat-toolbar-row>
       <div class="toolbar-left">
-          <!-- <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
-              <mat-icon>menu</mat-icon>
-          </button> -->
-          <app-generic-dropdown [itemsType]="'teams'" [items]="teams" [defaultItem]="currentTeam"></app-generic-dropdown>
+          <app-generic-dropdown
+             [appearance]="'standard'"
+             [itemsType]="'teams'"
+             [items]="teams"
+             [defaultItem]="currentTeam">
+          </app-generic-dropdown>
       </div>
 
       <div class="logo">
@@ -26,20 +28,16 @@
                       <span>My Profile</span>
                     </button>
                     <mat-divider></mat-divider>
-
                     <button mat-menu-item routerLink="/preferences">
                       <mat-icon>settings</mat-icon>
                       <span>Preferences</span>
                     </button>
                     <mat-divider></mat-divider>
-
                     <button mat-menu-item (click)="onLogout()">
                       <mat-icon>exit_to_app</mat-icon>
                       <span>{{ 'layout.header.logout' | translate }}</span>
                     </button>
-
                     <mat-divider></mat-divider>
-
                     <div class="version-container">
                       Dashboard v.{{ dashboardVersion}}
                     </div>

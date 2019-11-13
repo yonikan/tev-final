@@ -3,7 +3,12 @@
     <mat-card class="">
         <mat-card-content>
             dashboard version: {{ dashboardVersion }}
-            <app-generic-dropdown [itemsType]="'languages'" [items]="languages" [defaultItem]="currentTranslation"></app-generic-dropdown>
+            <app-generic-dropdown 
+              [appearance]="'outline'"
+              [itemsType]="'languages'"
+              [items]="languages"
+              [defaultItem]="currentTranslation">
+            </app-generic-dropdown>
         </mat-card-content>
     </mat-card>
 </div>

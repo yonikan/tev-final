@@ -13,10 +13,12 @@ import { TeamPickerService } from '../core/services/team-picker.service';
 export class AuthService {
   private token = null;
   private tokenTimer: any;
+
   private isAuthenticated = false;
   private authStatusListener = new BehaviorSubject<boolean>(false);
   private userLoginData;
   private userLoginDataListener = new BehaviorSubject<any>({});
+  currentPlatform = 'desktop';
 
   constructor(
     private http: HttpClient,
@@ -48,15 +50,13 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const currentPlatform = 'Mobile'; // temp hard-coded!
     this.http
       .get<any>('assets/mocks/login-mock.json')
       .subscribe(userLoginDataResponse => {
           if (userLoginDataResponse.token) {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);
-
-            // this.authorizationService.roleAuthorization('admin'); // hard-coded for now
+            this.authorizationService.allowedFeatures = userLoginDataResponse.features;
 
             if (this.localStorageService.getOnLocalStorage('selected_team')) {
               this.teamPickerService.setCurrentTeam(this.localStorageService.getOnLocalStorage('selected_team'));

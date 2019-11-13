@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from './auth/auth.service';
 import { TranslationPickerService } from './core/services/translation-picker.service';
 import { LocalStorageService } from './core/services/local-storage.service';
@@ -22,11 +23,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
     public teamPickerService: TeamPickerService,
+    public breakpointObserver: BreakpointObserver,
     private serverEnvService: ServerEnvService) {
   }
 
   ngOnInit() {
     this.serverEnvService.initServerEnv();
+    this.authService.currentPlatform = this.breakpointObserver.isMatched('(min-width: 769px)') ? 'desktop' : 'mobile';
 
     if (this.localStorageService.getOnLocalStorage('selected_theme')) {
       this.themePickerService.setDefaultTheme(this.localStorageService.getOnLocalStorage('selected_theme'));
