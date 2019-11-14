@@ -3,8 +3,7 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ModalComponent } from 'src/app/shared/modal/modal.component';
-
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorInterceptor implements HttpInterceptor {
@@ -14,6 +13,12 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req)
       .pipe(
         catchError((error: HttpErrorResponse) => {
+          // if(error.status === 500) {
+          //    console.log('Server error');
+          // } else {
+          //   console.log('Client error');
+          // }
+
           const modalTitle = 'Error!!!';
           let modalMessage = 'An unknown error occurred!';
           if (error.error.message) {

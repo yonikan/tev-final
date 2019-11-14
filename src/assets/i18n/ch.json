@@ -40,6 +40,7 @@
     "auth": {
         "log-in": "登录",
         "go-back-to-login-link": "Go back to login",
+        "incorrect-email-and/or-password": "Incorrect email and/or password - CH",
         "incorrect-password": "Incorrect password.",
         "invalid-email": "Invalid email",
         "enter-email-address": "enter email address",

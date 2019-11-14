@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   ];
   isAuthenticated = false;
   private authStatusSub: Subscription;
-  public isTranslationPickerFeatureEnabled = true;
+  isTranslationPickerFeatureEnabled = true;
 
   constructor(
     private translationPickerService: TranslationPickerService,

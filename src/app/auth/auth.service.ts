@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { TeamPickerService } from '../core/services/team-picker.service';
+import { MatDialog } from '@angular/material';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Injectable({
    providedIn: 'root' 
@@ -22,6 +24,7 @@ export class AuthService {
     private router: Router,
     private localStorageService: LocalStorageService,
     private authorizationService: AuthorizationService,
+    private dialog: MatDialog,
     public teamPickerService: TeamPickerService
   ) {}
 
@@ -69,6 +72,26 @@ export class AuthService {
         },
         error => {
           console.log('error: ', error);
+          if(error.status === 500) {
+            console.log('Server error');
+          } else {
+            console.log('Client error');
+          }
+          
+          const modalTitle = 'Error!!!';
+          let modalMessage = 'An unknown error occurred!';
+          if (error.error.message) {
+            modalMessage = error.error.message;
+          }
+          this.dialog.open(ModalComponent, {
+            width: '500px',
+            height: '200px',
+            data: { 
+              title: modalTitle,
+              message: modalMessage
+            }
+          });
+
           this.isAuthenticated = false;
           this.authStatusListener.next(false);
         }

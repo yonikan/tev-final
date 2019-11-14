@@ -16,7 +16,7 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
     UserLoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    EmailSentComponent,
+    EmailSentComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,8 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
     AuthComponent,
     UserLoginComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    EmailSentComponent
   ]
 })
 export class AuthModule {}

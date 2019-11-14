@@ -39,7 +39,8 @@
     },
     "auth": {
         "log-in": "Log In",
-        "go-back-to-login-link": "Go back to login",        
+        "go-back-to-login-link": "Go back to login",
+        "incorrect-email-and/or-password": "Incorrect email and/or password",
         "incorrect-password": "Incorrect password.",
         "invalid-email": "Invalid email",
         "enter-email-address": "enter email address",
