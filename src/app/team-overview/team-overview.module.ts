@@ -14,6 +14,15 @@ import { routes } from './team-overview.routes';
 import { ChartModule } from 'angular-highcharts';
 import { TeamOverviewKpiComponent } from './performance-overtime/team-overview-kpi/team-overview-kpi.component';
 
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
 @NgModule({
   declarations: [
     TeamOverviewComponent,
@@ -29,7 +38,14 @@ import { TeamOverviewKpiComponent } from './performance-overtime/team-overview-k
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    ChartModule
+    ChartModule,
+    SwiperModule
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ],
   exports: [
     TeamOverviewComponent,
