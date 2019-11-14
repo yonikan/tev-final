@@ -13,6 +13,7 @@ import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { TestingComponent } from './testing/testing.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PreferencesComponent } from './preferences/preferences.component';
     ThemePickerComponent,
     PreferencesComponent,
     MenuComponent,
-    ProfileComponent
+    ProfileComponent,
+    TestingComponent
   ],
   imports: [
     CommonModule,

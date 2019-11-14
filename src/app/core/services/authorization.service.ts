@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthorizationService {
   public preLoginAllowedFeatures: FeatureTypes;
+  // public preLoginPlatformAllowedFeatures: FeatureTypes;
   public allowedFeatures: FeatureTypes;
 
   constructor() {}

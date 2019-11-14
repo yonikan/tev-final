@@ -3,8 +3,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
 import { map, tap } from 'rxjs/operators';
-import { UIService } from './ui.service';
-import { AuthorizationService } from './authorization.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +14,8 @@ export class TeamPickerService {
 
   constructor(
     private http: HttpClient, 
-    private localStorageService: LocalStorageService, 
-    private authorizationService: AuthorizationService,
-    private uiService: UIService
+    private localStorageService: LocalStorageService,
+    private router: Router
   ) { }
 
   getCurrentTeamUpdateListener() {
@@ -41,6 +39,7 @@ export class TeamPickerService {
         console.log('updatedTeam: ', updatedTeam);
         this.currentTeam = updatedTeam;
         this.currentTeamUpdated.next(updatedTeam);
+        this.router.navigate(['team-overview']);
       });
 
     this.currentTeam = currentTeam;

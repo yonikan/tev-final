@@ -19,6 +19,19 @@ export class AppInitService {
       )
       .toPromise();
   }
+
+  //   public initTeamsAuth() {
+  //   return this.httpClient
+  //     .get('assets/features-configuration/config-platform-features.json')
+  //     .pipe(
+  //       tap(teamsAllowedFeatures => {
+  //         const currentTeam = this.authService.currentPlatform; // hard-coded for now
+  //         const currentTeamAllowedFeatures = teamsAllowedFeatures[currentTeam];
+  //         this.authorizationService.teamAllowedFeatures = currentTeamAllowedFeatures as any;
+  //       })
+  //     )
+  //     .toPromise();
+  // }
 }
 
 // NEEDED FOR THE APP MODULE AS PROVIDERS
