@@ -24,16 +24,18 @@
         .content-container {
           display: flex;
 
-          .page-sidenav {
-            @media (max-width: $media-query-sm) {
-              display: none;
-            }
-          }
+          // .page-sidenav {
+          //   display: none;
+            
+          //   @media (max-width: $media-query-sm) {
+          //     display: none;
+          //   }
+          // }
 
           .page-container {
             width: 100%;
             margin-top: 64px; // for the header's placeholder
-            margin-left: 250px; // for the navbar's placeholder
+            // margin-left: 250px; // for the navbar's placeholder
             color: var(--headerColor);
 
             @media (max-width: $media-query-sm) {

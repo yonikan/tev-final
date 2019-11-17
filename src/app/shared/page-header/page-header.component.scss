@@ -1,10 +1,12 @@
 @import '../../../styles/variables';
 
 :host {
+    display: none;
 
     @media (max-width: $media-query-sm) {
       display: none;
     }
+    
     .overview-header {
         border-bottom: solid 1px #a7a7a7;
         display: flex;
