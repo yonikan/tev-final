@@ -14,11 +14,11 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
   private currentTeamUpdateSub: Subscription;
   isLoading = true;
   isLoadRiskFeatureEnabled = false;
-
+  isPerformanceOvertimeFeatureEnabled = false;
+  isLeaderBoardFeatureEnabled = false;
   config: SwiperConfigInterface = {
     // a11y: true,
     direction: 'horizontal',
-    // slidesPerView: 1.2,
     keyboard: true,
     grabCursor: true,
     // mousewheel: true,
@@ -26,7 +26,6 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
     // centeredSlides: true,
     // loop: true,
     // slidesPerView: 'auto',
-    spaceBetween: 30,
     // navigation: false,
     // navigation: {
     //   nextEl: '.swiper-button-next',
@@ -40,18 +39,19 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
     //   // dynamicBullets: true,
     //   // dynamicMainBullets: 2
     // },
+    spaceBetween: 30,
     slidesPerView: 4.2,
     breakpoints: {
-      // 380: {
-      //   slidesPerView: 1,
-      //   spaceBetween: 20
-      // },
-      // 640: {
-      //   slidesPerView: 2,
-      //   spaceBetween: 30
-      // },
-      768: {
+      380: {
         slidesPerView: 1.2,
+        spaceBetween: 30
+      },
+      768: {
+        slidesPerView: 2.2,
+        spaceBetween: 30
+      },
+      1024: {
+        slidesPerView: 3.2,
         spaceBetween: 30
       }
     }
@@ -62,6 +62,8 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('loadRisk');
+    this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('performanceOvertime');
+    this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('leaderBoard');
     this.isLoading = true;
 
     this.currentTeamUpdateSub = this.teamPickerService
