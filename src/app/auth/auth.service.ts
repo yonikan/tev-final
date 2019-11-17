@@ -17,7 +17,7 @@ export class AuthService {
   private authStatusListener = new BehaviorSubject<boolean>(false);
   private userLoginData;
   private userLoginDataListener = new BehaviorSubject<any>({});
-  currentPlatform = 'desktop';
+  // currentPlatform = 'desktop';
 
   constructor(
     private http: HttpClient,

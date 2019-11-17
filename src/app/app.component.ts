@@ -7,6 +7,7 @@ import { LocalStorageService } from './core/services/local-storage.service';
 import { ThemePickerService } from './core/services/theme-picker.service';
 import { TeamPickerService } from './core/services/team-picker.service';
 import { ServerEnvService } from './core/services/server-env.service';
+import { AuthorizationService } from './core/services/authorization.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor( 
     public authService: AuthService, 
+    public authorizationService: AuthorizationService,
     private localStorageService: LocalStorageService,
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
@@ -29,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.serverEnvService.initServerEnv();
-    this.authService.currentPlatform = this.breakpointObserver.isMatched('(min-width: 769px)') ? 'desktop' : 'mobile';
+    this.authorizationService.currentPlatform = this.breakpointObserver.isMatched('(min-width: 769px)') ? 'desktop' : 'mobile';
 
     if (this.localStorageService.getOnLocalStorage('selected_theme')) {
       this.themePickerService.setDefaultTheme(this.localStorageService.getOnLocalStorage('selected_theme'));

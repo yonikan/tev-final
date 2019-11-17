@@ -35,12 +35,6 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // if (this.authService.currentPlatform === 'desktop') {
-      
-    // } else if (this.authService.currentPlatform === 'mobile'){
-
-    // };
-
     this.route.queryParams
       .pipe(
         filter(params => params.page)

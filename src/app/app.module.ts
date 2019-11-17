@@ -12,8 +12,8 @@ import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
-import { AppInitService, initFeatureToggling } from './core/services/app-init.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthorizationService, initFeatureToggling, initPlatformFeatureToggling } from './core/services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,13 @@ import { CookieService } from 'ngx-cookie-service';
     {
       provide: APP_INITIALIZER,
       useFactory: initFeatureToggling,
-      deps: [AppInitService],
+      deps: [AuthorizationService],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initPlatformFeatureToggling,
+      deps: [AuthorizationService],
       multi: true
     }
   ],
