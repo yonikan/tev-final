@@ -3,11 +3,11 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  selector: 'app-mobile-nav',
+  templateUrl: './mobile-nav.component.html',
+  styleUrls: ['./mobile-nav.component.scss']
 })
-export class FooterComponent implements OnInit, OnDestroy {
+export class MobileNavComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
 

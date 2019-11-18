@@ -3,11 +3,11 @@ import { TranslationPickerService } from '../../core/services/translation-picker
 import { TeamPickerService } from '../../core/services/team-picker.service';
 
 @Component({
-  selector: 'app-generic-dropdown',
-  templateUrl: './generic-dropdown.component.html',
-  styleUrls: ['./generic-dropdown.component.scss']
+  selector: 'app-pm-dropdown',
+  templateUrl: './pm-dropdown.component.html',
+  styleUrls: ['./pm-dropdown.component.scss']
 })
-export class GenericDropdownComponent implements OnInit {
+export class PmDropdownComponent implements OnInit {
   @Input() itemsType: any;
   @Input() appearance: any;
   @Input() items: any[];

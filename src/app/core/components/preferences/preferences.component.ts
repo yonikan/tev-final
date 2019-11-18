@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatRadioChange } from '@angular/material';
-import { TranslationPickerService } from '../services/translation-picker.service';
-import { ThemePickerService } from '../services/theme-picker.service';
-import { AppConsts } from '../../app.consts';
+import { AppConsts } from '../../../app.consts';
+import { TranslationPickerService } from '../../services/translation-picker.service';
+import { ThemePickerService } from '../../theme-picker/theme-picker.service';
 
 @Component({
   selector: 'app-preferences',

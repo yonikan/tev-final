@@ -1,8 +1,8 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 :host {
-    .profile-container {
+    .settings-container {
         mat-card {
             @include card;
             width: 90%;
@@ -12,11 +12,6 @@
             mat-card-content {
                 display: flex;
                 flex-direction: column;
-
-                img {
-                    width: 100px;
-                    height: 100px;
-                }
     
                 .mat-radio-button ~ .mat-radio-button {
                     margin-left: 16px;

@@ -10,20 +10,18 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { FadeInRightStaggerElementDirective } from './animations/fade-in-right.animation';
 import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animation';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
-import { MenuComponent } from './menu/menu.component';
-import { ProfileComponent } from './profile/profile.component';
-import { PreferencesComponent } from './preferences/preferences.component';
-import { TestingComponent } from './testing/testing.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { PreferencesComponent } from './components/preferences/preferences.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     FadeInRightStaggerElementDirective,
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
-    PreferencesComponent,
     MenuComponent,
-    ProfileComponent,
-    TestingComponent
+    PreferencesComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -41,8 +39,8 @@ import { TestingComponent } from './testing/testing.component';
     FadeInRightStaggerElementDirective,
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
-    PreferencesComponent,
     MenuComponent,
+    PreferencesComponent,
     ProfileComponent
   ]
 })

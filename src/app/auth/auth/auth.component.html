@@ -24,12 +24,12 @@
     
       <div class="login-footer">
           <div class="login-bottom">
-              <app-generic-dropdown *ngIf="isTranslationPickerFeatureEnabled" 
+              <app-pm-dropdown *ngIf="isTranslationPickerFeatureEnabled" 
                 [appearance]="'outline'"
                 [itemsType]="'languages'" 
                 [items]="languages"
                 [defaultItem]="currentTranslation">
-              </app-generic-dropdown>
+              </app-pm-dropdown>
 
               <div class="copyrights">© 2020 All Rights Reserved. PlayerMaker Ltd.</div>
               <div class="privacy">

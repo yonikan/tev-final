@@ -4,12 +4,12 @@
         <mat-card-content>
             dashboard version: {{ dashboardVersion }}
             
-            <app-generic-dropdown 
+            <app-pm-dropdown 
               [appearance]="'outline'"
               [itemsType]="'languages'"
               [items]="languages"
               [defaultItem]="currentTranslation">
-            </app-generic-dropdown>
+            </app-pm-dropdown>
 
             <!-- <mat-radio-group [(ngModel)]="currentTheme" (change)="themeChange($event)">
                 <mat-radio-button color="primary" class="example-radio-button" *ngFor="let theme of themes; let i = index" [value]="theme">

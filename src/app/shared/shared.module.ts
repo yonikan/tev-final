@@ -6,14 +6,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.component';
 import { ModalComponent } from './modal/modal.component';
-import { GenericDropdownComponent } from './generic-dropdown/generic-dropdown.component';
+import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 
 @NgModule({
   declarations: [
     PageHeaderComponent,
     LoaderSpinnerComponent,
     ModalComponent,
-    GenericDropdownComponent
+    PmDropdownComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +31,7 @@ import { GenericDropdownComponent } from './generic-dropdown/generic-dropdown.co
     PageHeaderComponent,
     LoaderSpinnerComponent,
     ModalComponent,
-    GenericDropdownComponent
+    PmDropdownComponent
   ]
 })
 export class SharedModule { }

@@ -1,12 +1,12 @@
 <mat-toolbar *ngIf="isAuthenticated" class="toolbar mat-elevation-z2">
     <mat-toolbar-row>
       <div class="toolbar-left">
-          <app-generic-dropdown
+          <app-pm-dropdown 
              [appearance]="'none'"
              [itemsType]="'teams'"
              [items]="teams"
              [defaultItem]="currentTeam">
-          </app-generic-dropdown>
+          </app-pm-dropdown>
       </div>
 
       <div class="logo">
