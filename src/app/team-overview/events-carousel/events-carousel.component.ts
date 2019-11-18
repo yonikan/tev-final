@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
-import { TeamPickerService } from '../../core/team-picker/team-picker.service';
+import { TeamPickerService } from '../../core/services/team-picker.service';
 import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Component({

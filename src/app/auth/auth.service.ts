@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
-import { TeamPickerService } from '../core/team-picker/team-picker.service';
+import { TeamPickerService } from '../core/services/team-picker.service';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../shared/modal/modal.component';
 

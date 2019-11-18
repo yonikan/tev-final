@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TeamPickerService } from '../core/team-picker/team-picker.service';
+import { TeamPickerService } from '../core/services/team-picker.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 
 @Component({
