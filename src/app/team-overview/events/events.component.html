@@ -45,7 +45,7 @@
             </div>
         
             <div *ngIf="!isConfirmed" class="event-content-confirm">
-                <button class="confirm-button" mat-raised-button (click)="confirmSession()">CONFIRM SESSION</button>
+                <button class="confirm-button" mat-raised-button (click)="confirmSession(eventData.id)">confirm session</button>
             </div>
         </div>
     </mat-card-content>

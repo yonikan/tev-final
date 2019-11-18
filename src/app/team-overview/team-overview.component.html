@@ -4,12 +4,11 @@
     <app-page-header *ngIf="!isLoading" [pageTitle]="pageName"></app-page-header>
 
     <div class="overview-content">
-        <div class="overview-content-events">
+        <div *ngIf="teamEvents.length > 0"class="overview-content-events">
             <div class="events-container">
                 <div class="events-into-text">
-                    <h3>there are 3 new sessions</h3>
+                    <h3>there are {{ teamEvents.length }} new sessions</h3>
                     <p>Validate these session and get the most accurate and updated performance of your team:</p>
-                    <!-- <button (click)="testAppend()">test Append</button> -->
                 </div>
 
                 <mat-spinner *ngIf="isTeamEventsLoading"></mat-spinner>
@@ -17,12 +16,12 @@
                 <swiper *ngIf="!isTeamEventsLoading"
                     class="swiper-container" 
                     [config]="config" 
-                    [(index)]="index"
-                    [useSwiperClass]="">
+                    [(index)]="index">
 
                     <app-events *ngFor="let teamEvent of teamEvents"
                          [eventIndex]="index" 
-                         (teamEventEmitter)="onTeamEventEmitter($event)" 
+                         (confirmSessionEmitter)="onConfirmSession($event)"
+                         (deleteSessionEmitter)="onDeleteSession($event)" 
                          [eventData]="teamEvent">
                     </app-events>
                 </swiper>

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UIService } from 'src/app/core/services/ui.service';
 
 @Component({
   selector: 'app-events',
@@ -9,24 +8,22 @@ import { UIService } from 'src/app/core/services/ui.service';
 export class EventsComponent implements OnInit {
   @Input() eventIndex: number;
   @Input() eventData: any;
-  @Output() teamEventEmitter = new EventEmitter<string>();
-  isLoading = false;
+  @Output() confirmSessionEmitter = new EventEmitter<string>();
+  @Output() deleteSessionEmitter = new EventEmitter<string>();
   isConfirmed = false;
 
-  constructor(private uiService: UIService) { }
+  constructor() { }
 
   ngOnInit() {
-    // console.log('this.eventIndex: ', this.eventIndex);
-    // console.log('this.eventData: ', this.eventData);
+
   }
 
   confirmSession(eventId) {
     // this.isConfirmed = true;
-    // this.teamEventEmitter.emit(eventId);
+    this.confirmSessionEmitter.emit(eventId);
   }
 
   deleteSession(eventId) {
-    console.log('eventId: ', eventId);
-    this.teamEventEmitter.emit(eventId);
+    this.deleteSessionEmitter.emit(eventId);
   }
 }

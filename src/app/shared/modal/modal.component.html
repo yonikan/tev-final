@@ -9,7 +9,8 @@
   
     <div class="dialog-footer">
         <div mat-dialog-actions>
-            <button (click)="onSubmit()" mat-dialog-close cdkFocusInitial mat-raised-button>Okay</button>
+            <button (click)="onCancel()" mat-raised-button>Cancel</button>
+            <button [mat-dialog-close]="data.modalData" cdkFocusInitial mat-raised-button>OK</button>
         </div>
     </div>
 </div>

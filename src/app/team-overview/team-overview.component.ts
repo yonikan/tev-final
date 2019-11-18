@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { TeamPickerService } from '../core/services/team-picker.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../shared/modal/modal.component';
 
@@ -28,33 +27,16 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
     direction: 'horizontal',
     keyboard: true,
     grabCursor: true,
-    // mousewheel: true,
-    // scrollbar: false,
-    // centeredSlides: true,
-    // loop: true,
-    // slidesPerView: 'auto',
-    // navigation: false,
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev',
-    // },
-    // pagination: true,
-    // pagination: {
-    //   el: '.swiper-pagination',
-    //   clickable: true,
-    //   renderBullet: function (index, className) {
-    //     return '<span class="' + className + '">' + (index + 1) + '</span>';
-    //   },
-    // },
-    // pagination: {
-    //   el: '.swiper-pagination',
-    //   // clickable: true,
-    //   // type: 'bullets',
-    //   // dynamicBullets: true,
-    //   // dynamicMainBullets: 2
-    // },
+    observer: true,
     spaceBetween: 30,
     slidesPerView: 3.2,
+    // virtual: true,
+    // virtual: {
+    //   slides: ['Slide 1', 'Slide 2', 'Slide 3'],
+    // },
+    // virtual: {
+    //   slides: this.teamEvents
+    // },
     breakpoints: {
       // 380: {
       //   slidesPerView: 1.2,
@@ -81,10 +63,8 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('loadRisk');
     this.isLoadRiskFeatureEnabled = true;
-
     // this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('performanceOvertime');
     this.isPerformanceOvertimeFeatureEnabled = true;
-
     // this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('leaderBoard');
     this.isLeaderBoardFeatureEnabled = true;
 
@@ -101,43 +81,34 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
       .get('./assets/mocks/team-events-mock.json')
       .subscribe((result: any) => {
         this.teamEvents = result.teamEventsData;
-        // console.log('this.teamEvents: ', this.teamEvents);
         this.isTeamEventsLoading = false;
       });
   }
 
-  testAppend () {
-    // this.config.
+  onConfirmSession(teamEventId) {
+    console.log('teamEventId: ', teamEventId);
   }
 
-  onConfirmSession() {
-
-  }
-
-  onDeleteSession() {
-    const modalTitle = 'Delete Session';
-    const modalMessage = 'Are you sure you want to delete this session?';
-    this.dialog.open(ModalComponent, {
-      width: '500px',
-      height: '200px',
-      data: { 
-        title: modalTitle,
-        message: modalMessage
-      }
-    });
-  }
-
-  onTeamEventEmitter(teamEventId) {
+  onDeleteSession(teamEventId) {
     const modalTitle = 'Delete Session';
     const modalMessage = `Are you sure you want to delete ${teamEventId} session?`;
-    this.dialog.open(ModalComponent, {
+    const dialogRef = this.dialog.open(ModalComponent, {
       width: '500px',
       height: '200px',
       data: { 
         title: modalTitle,
-        message: modalMessage
+        message: modalMessage,
+        modalData: teamEventId
       }
     });
+
+    dialogRef.afterClosed()
+      .subscribe(modalData => {
+        if(modalData) {
+          const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
+          this.teamEvents.splice(teamIndex, 1);
+        }
+      });
   }
 
   ngOnDestroy(){
