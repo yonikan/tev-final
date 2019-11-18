@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from '../../auth/auth.service';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
 
@@ -21,4 +21,7 @@ export class FooterComponent implements OnInit {
       });
   }
 
+  ngOnDestroy(){
+    this.authStatusSub.unsubscribe();
+  }
 }

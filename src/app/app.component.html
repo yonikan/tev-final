@@ -1,6 +1,6 @@
 <mat-sidenav-container >
   <mat-sidenav #sidenav role="navigation" class="sidenav">
-    <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
+    <!-- <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav> -->
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -9,9 +9,9 @@
       <app-footer></app-footer>
 
       <div class="content-container">
-          <!-- <div class="page-sidenav">
+          <div class="page-sidenav">
              <app-sidenav></app-sidenav>
-          </div> -->
+          </div>
           <main class="page-container" [ngClass]="{'auth-off':!isAuthenticated}">
             <router-outlet></router-outlet>
           </main>

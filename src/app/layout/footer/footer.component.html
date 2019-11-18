@@ -1,30 +1,24 @@
 <div *ngIf="isAuthenticated" class="footer-container mat-elevation-z5">
       <div class="nav-buttons-container">
-            <a routerLink="/team-overview" routerLinkActive="active">
-              <mat-icon>home</mat-icon>
-              <div class="nav-caption">{{ 'layout.footer.team-overview' | translate }}</div>
-            </a>
-
-              <a routerLink="/training" routerLinkActive="active">
-                <mat-icon matBadge="11" matBadgeColor="primary" matBadgeSize="small">directions_run</mat-icon>
-                <div class="nav-caption">{{ 'layout.footer.training' | translate }}</div>
-                <!-- <div class="nav-badge" matBadge="3" matBadgeOverlap="false"></div> -->
-              </a>
-
-              <a routerLink="/matches" routerLinkActive="active">
-                <mat-icon>sports_soccer</mat-icon>
-                <div class="nav-caption">{{ 'layout.footer.matches' | translate }}</div>
-                <!-- <div class="nav-badge" matBadge="3" matBadgeOverlap="false"></div> -->
-              </a>
-
-              <a routerLink="/players" routerLinkActive="active">
-                <mat-icon>people_alt</mat-icon>
-                <div class="nav-caption">{{ 'layout.footer.players' | translate }}</div>
-              </a>
-
-              <a routerLink="/menu" routerLinkActive="active">
-                <mat-icon>menu</mat-icon>
-                <div class="nav-caption">menu</div>
-              </a>
+        <a routerLink="/team-overview" routerLinkActive="active">
+          <mat-icon>home</mat-icon>
+          <div class="nav-caption">{{ 'layout.footer.team-overview' | translate }}</div>
+        </a>
+        <a>
+          <mat-icon>directions_run</mat-icon>
+          <div class="nav-caption">{{ 'layout.footer.training' | translate }}</div>
+        </a>
+        <a>
+          <mat-icon>sports_soccer</mat-icon>
+          <div class="nav-caption">{{ 'layout.footer.matches' | translate }}</div>
+        </a>
+        <a>
+          <mat-icon>people_alt</mat-icon>
+          <div class="nav-caption">{{ 'layout.footer.players' | translate }}</div>
+        </a>
+        <a routerLink="/menu" routerLinkActive="active">
+          <mat-icon>menu</mat-icon>
+          <div class="nav-caption">menu</div>
+        </a>
       </div>
 </div>

@@ -7,9 +7,9 @@
     height: 100%;
     background-color: var(--pageBackground);
   
-    .sidenav {
-      width: 250px;
-    }
+    // .sidenav {
+    //   width: 250px;
+    // }
   
     mat-sidenav-content {
       .app-container {
@@ -24,22 +24,23 @@
         .content-container {
           display: flex;
 
-          // .page-sidenav {
-          //   display: none;
-            
-          //   @media (max-width: $media-query-sm) {
-          //     display: none;
-          //   }
-          // }
+          .page-sidenav {
+            width: $sidenav-width;
+
+            @media (max-width: $media-query-sm) {
+              display: none;
+            }
+          }
 
           .page-container {
-            width: 100%;
+            width: calc(100% - #{$sidenav-width});
             margin-top: 64px; // for the header's placeholder
             // margin-left: 250px; // for the navbar's placeholder
             color: var(--headerColor);
 
             @media (max-width: $media-query-sm) {
               margin-left: 0;
+              width: 100%;
             }
           }
 

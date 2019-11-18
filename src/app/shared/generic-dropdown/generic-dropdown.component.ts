@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TranslationPickerService } from 'src/app/core/services/translation-picker.service';
-import { TeamPickerService } from 'src/app/core/services/team-picker.service';
+import { TranslationPickerService } from '../../core/services/translation-picker.service';
+import { TeamPickerService } from '../../core/services/team-picker.service';
 
 @Component({
   selector: 'app-generic-dropdown',

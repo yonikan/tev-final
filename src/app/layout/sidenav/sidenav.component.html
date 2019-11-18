@@ -1,41 +1,32 @@
 <mat-nav-list *ngIf="isAuthenticated">
     <div class="navigation-wrapper">
-
-        <a mat-list-item routerLink="/team-overview" routerLinkActive="active" (click)="onClose()">
+        <a mat-list-item routerLink="/team-overview" routerLinkActive="active">
           <mat-icon>home</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.team-overview' | translate }}</span>
         </a>
-    
         <mat-divider></mat-divider>
-    
-        <a mat-list-item routerLink="/training" routerLinkActive="active" (click)="onClose()">
+        <a mat-list-item>
           <mat-icon>directions_run</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.training' | translate }}</span>
-          <span class="nav-badge" matBadge="3" matBadgeOverlap="false"></span>
+          <span class="nav-badge"></span>
         </a>
-        
         <mat-divider></mat-divider>
-        
-        <a mat-list-item routerLink="/matches" routerLinkActive="active" (click)="onClose()">
+        <a mat-list-item>
           <mat-icon>sports_soccer</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.matches' | translate }}</span>
-          <span class="nav-badge" matBadge="3" matBadgeOverlap="false"></span>
+          <span class="nav-badge"></span>
         </a>
-        
         <mat-divider></mat-divider>
-        
-        <a mat-list-item routerLink="/players" routerLinkActive="active" (click)="onClose()">
+        <a mat-list-item>
           <mat-icon>people_alt</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.players' | translate }}</span>
         </a>
-        
         <mat-divider></mat-divider>
     </div>
 
     <div class="configuration-wrapper">
         <mat-divider></mat-divider>
-
-        <a mat-list-item routerLink="/team-configuration" routerLinkActive="active" (click)="onClose()">
+        <a mat-list-item>
           <mat-icon>settings</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.team-configuration' | translate }}</span>
         </a>

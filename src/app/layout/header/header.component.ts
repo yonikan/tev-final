@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+// import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { TeamPickerService } from '../../core/services/team-picker.service';
