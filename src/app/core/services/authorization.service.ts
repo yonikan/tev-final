@@ -39,7 +39,7 @@ export class AuthorizationService {
           } else if (this.currentPlatform === 'mobile') {
             this.preLoginPlatformAllowedFeatures = features.mobile as any 
           }
-          console.log(this.preLoginPlatformAllowedFeatures);
+          // console.log(this.preLoginPlatformAllowedFeatures);
         })
       )
       .toPromise();

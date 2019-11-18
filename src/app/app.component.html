@@ -7,16 +7,14 @@
     <div class="app-container">
       <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
       <app-footer></app-footer>
-
       <div class="content-container">
-          <div class="page-sidenav">
+          <div class="page-sidenav" *ngIf="isAuthenticated">
              <app-sidenav></app-sidenav>
           </div>
           <main class="page-container" [ngClass]="{'auth-off':!isAuthenticated}">
             <router-outlet></router-outlet>
           </main>
       </div>
-
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
