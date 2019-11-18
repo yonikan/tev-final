@@ -10,7 +10,7 @@ import { TeamPickerService } from '../core/team-picker/team-picker.service';
 export class MatchesComponent implements OnInit, OnDestroy {
   pageName = 'matches';
   private currentTeamUpdateSub: Subscription;
-  isLoading = true;;
+  isLoading = true;
 
   constructor(public teamPickerService: TeamPickerService) {}
 

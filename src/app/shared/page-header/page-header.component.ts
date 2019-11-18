@@ -18,7 +18,7 @@ export class PageHeaderComponent implements OnInit {
     },
     {
       name: 'exportToExcelAction',
-      icon: 'file_copy',
+      icon: 'picture_as_pdf',
       tooltip: 'Export To Excel',
       function: () => console.log('TESTTT Excel')
     }

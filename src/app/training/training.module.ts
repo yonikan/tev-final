@@ -5,7 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { routes } from './training.routes';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
   declarations: [TrainingComponent],
   imports: [

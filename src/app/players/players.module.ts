@@ -5,7 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { routes } from './players.routes';
 import { PlayersComponent } from './players.component';
 
-
 @NgModule({
   declarations: [PlayersComponent],
   imports: [

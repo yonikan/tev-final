@@ -5,7 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { routes } from './matches.routes';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
   declarations: [MatchesComponent],
   imports: [

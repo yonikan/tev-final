@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 
 :host {
-    display: none;
+    // display: none;
 
     @media (max-width: $media-query-sm) {
       display: none;

@@ -1,0 +1,21 @@
+<div class="overview-content-events" *ngIf="teamEvents.length > 0">
+    <div class="events-container">
+        <div class="events-into-text">
+            <h3>there are {{ teamEvents.length }} new sessions</h3>
+            <p>Validate these session and get the most accurate and updated performance of your team:</p>
+        </div>
+        <mat-spinner *ngIf="isTeamEventsLoading"></mat-spinner>
+        <swiper *ngIf="!isTeamEventsLoading"
+            class="swiper-container" 
+            [config]="config" 
+            [(index)]="index">
+
+            <app-events *ngFor="let teamEvent of teamEvents"
+                [eventIndex]="index" 
+                (confirmSessionEmitter)="onConfirmSession($event)"
+                (deleteSessionEmitter)="onDeleteSession($event)" 
+                [eventData]="teamEvent">
+            </app-events>
+        </swiper>
+    </div>
+</div>

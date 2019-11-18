@@ -6,19 +6,19 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./team-picker.component.scss']
 })
 export class TeamPickerComponent implements OnInit {
-  @Output() selectedTeamEmitter = new EventEmitter<any>();
-  @Input() teamsList: any;
-  @Input() defaultTeam: any;
+  // @Output() selectedTeamEmitter = new EventEmitter<any>();
+  // @Input() teamsList: any;
+  // @Input() defaultTeam: any;
   
-  currentTeam = 'hull-u14';
+  // currentTeam = 'hull-u14';
 
-  constructor() { }
+  // constructor() { }
 
-  ngOnInit() {
-    // console.log('teamsList: ', this.teamsList);
-  }
+  // ngOnInit() {
+  //   // console.log('teamsList: ', this.teamsList);
+  // }
 
-  selectedTeam(team: string) {
-    this.selectedTeamEmitter.emit(team);
-  }
+  // selectedTeam(team: string) {
+  //   this.selectedTeamEmitter.emit(team);
+  // }
 }
