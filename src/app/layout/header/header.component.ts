@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/cor
 // import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
-import { TeamPickerService } from '../../core/services/team-picker.service';
+import { TeamPickerService } from '../../../app/core/team-picker/team-picker.service';
 import { AppConsts } from '../../app.consts';
 
 @Component({

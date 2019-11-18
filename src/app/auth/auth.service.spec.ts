@@ -4,7 +4,6 @@ import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
-import { TeamPickerService } from '../core/services/team-picker.service';
 import { HttpClient } from '@angular/common/http';
 
 describe('AuthService', () => {

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { LocalStorageService } from './local-storage.service';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,7 @@ export class TeamPickerService {
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
       .subscribe((updatedTeam: any) => {
-        // console.log('updatedTeam: ', updatedTeam);
+        console.log('updatedTeam: ', updatedTeam);
         this.currentTeam = updatedTeam;
         this.currentTeamUpdated.next(updatedTeam);
         this.router.navigate(['team-overview']);

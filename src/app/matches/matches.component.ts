@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';;
-import { TeamPickerService } from '../core/services/team-picker.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { TeamPickerService } from '../core/team-picker/team-picker.service';
 
 @Component({
   selector: 'app-matches',

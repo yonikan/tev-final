@@ -4,7 +4,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from './auth/auth.service';
 import { TranslationPickerService } from './core/services/translation-picker.service';
 import { LocalStorageService } from './core/services/local-storage.service';
-import { TeamPickerService } from './core/services/team-picker.service';
+import { TeamPickerService } from './core/team-picker/team-picker.service';
 import { ServerEnvService } from './core/services/server-env.service';
 import { AuthorizationService } from './core/services/authorization.service';
 import { ThemePickerService } from './core/theme-picker/theme-picker.service';

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { TeamPickerService } from '../core/services/team-picker.service';
+import { TeamPickerService } from '../core/team-picker/team-picker.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { MatDialog } from '@angular/material';
