@@ -13,8 +13,8 @@ import { ModalComponent } from '../shared/modal/modal.component';
 })
 export class AuthService {
   private token = null;
-  private isAuthenticated = false;
-  private authStatusListener = new BehaviorSubject<boolean>(false);
+  private isAuthenticated = true;
+  private authStatusListener = new BehaviorSubject<boolean>(true);
   private userLoginData;
   private userLoginDataListener = new BehaviorSubject<any>({});
   // currentPlatform = 'desktop';

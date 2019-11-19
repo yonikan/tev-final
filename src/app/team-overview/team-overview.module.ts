@@ -16,6 +16,7 @@ import { TeamOverviewKpiComponent } from './performance-overtime/team-overview-k
 import { EventsComponent } from './events-carousel/events/events.component';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { EventsCarouselComponent } from './events-carousel/events-carousel.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -39,7 +40,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     RouterModule.forChild(routes),
     SharedModule,
     ChartModule,
-    SwiperModule
+    SwiperModule,
+    ScrollingModule
   ],
   providers: [
     {

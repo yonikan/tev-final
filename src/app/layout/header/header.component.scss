@@ -7,11 +7,13 @@
     color: var(--headerColor);
     z-index: 20;
     position: fixed;
-    height: 56px;
+    height: $header-height;
 
-    mat-toolbar-row {
+    .toolbar-container {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      width: 100%;
 
       .mat-button {
         min-width: 14px;

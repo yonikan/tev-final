@@ -7,10 +7,11 @@
         <mat-spinner *ngIf="isTeamEventsLoading"></mat-spinner>
         <swiper *ngIf="!isTeamEventsLoading"
             class="swiper-container" 
-            [config]="config" 
+            [config]="config"
             [(index)]="index">
 
             <app-events *ngFor="let teamEvent of teamEvents"
+                [@fadeInOut]
                 [eventIndex]="index" 
                 (confirmSessionEmitter)="onConfirmSession($event)"
                 (deleteSessionEmitter)="onDeleteSession($event)" 

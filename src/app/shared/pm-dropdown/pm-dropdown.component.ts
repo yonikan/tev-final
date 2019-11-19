@@ -12,6 +12,7 @@ export class PmDropdownComponent implements OnInit {
   @Input() appearance: any;
   @Input() items: any[];
   @Input() defaultItem: any;
+  @Input() dropdownWidth: any;
   selectedItemImgPath: string;
 
   constructor(private translationPickerService: TranslationPickerService, public teamPickerService: TeamPickerService) { }
@@ -19,6 +20,7 @@ export class PmDropdownComponent implements OnInit {
   ngOnInit() {
     const resetToDefaultItem = this.items.find(item => item.value === this.defaultItem);
     this.selectedItemImgPath = resetToDefaultItem.flag;
+    // this.width
   }
 
   useLanguage(itemValue: string) {

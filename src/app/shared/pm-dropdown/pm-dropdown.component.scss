@@ -2,15 +2,24 @@
 
 :host {
     mat-form-field {
-        // width: 120px;
         min-width: 100px;
         max-width: 260px;
+        // width: 205px;
 
         .dropdown-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px;
+            font-size: 15px;
         }
+    }
+}
+
+.mat-form-field {
+    .mat-form-field-wrapper {
+        padding-bottom: 0;
+    }
+    .mat-form-field-underline {
+        display: none;
     }
 }

@@ -34,7 +34,7 @@
 
           .page-container {
             width: calc(100% - #{$sidenav-width});
-            margin-top: 64px; // for the header's placeholder
+            margin-top: $header-height; // for the header's placeholder
             // margin-left: 250px; // for the navbar's placeholder
             color: var(--headerColor);
 

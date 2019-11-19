@@ -1,10 +1,11 @@
 <mat-toolbar *ngIf="isAuthenticated" class="toolbar mat-elevation-z2">
-    <mat-toolbar-row>
+    <div class="toolbar-container">
       <div class="toolbar-left">
           <app-pm-dropdown 
              [appearance]="'none'"
              [itemsType]="'teams'"
              [items]="teams"
+             [dropdownWidth]="'220px'"
              [defaultItem]="currentTeam">
           </app-pm-dropdown>
       </div>
@@ -52,5 +53,5 @@
               </mat-menu>
           </div>
       </div>
-    </mat-toolbar-row>
+    </div>
 </mat-toolbar>

@@ -14,7 +14,12 @@ export class AuthorizationService {
   constructor(private httpClient: HttpClient) {}
 
   public isFeatureEnabled(featureName: string, featuresType?: string): boolean {
-    const isFeaturedAllowed = featuresType === 'preLogin' ? this.preLoginAllowedFeatures[featureName] : this.allowedFeatures[featureName];
+    let isFeaturedAllowed;
+    if (featuresType === 'preLogin') {
+      isFeaturedAllowed = this.preLoginAllowedFeatures[featureName] && this.preLoginPlatformAllowedFeatures[featureName];
+    } else {
+      isFeaturedAllowed = this.allowedFeatures[featureName];
+    }
     return isFeaturedAllowed;
   }
 
@@ -34,12 +39,15 @@ export class AuthorizationService {
       .get('./assets/features-configuration/config-platform-features.json')
       .pipe(
         tap((features: any) => { 
+          const platform = document.documentElement.clientWidth;
+          console.log('currentPlatformTest: ', platform);
+          this.currentPlatform = platform > 768 ? 'desktop' : 'mobile';
           if (this.currentPlatform === 'desktop') {
             this.preLoginPlatformAllowedFeatures = features.desktop as any 
           } else if (this.currentPlatform === 'mobile') {
             this.preLoginPlatformAllowedFeatures = features.mobile as any 
           }
-          // console.log(this.preLoginPlatformAllowedFeatures);
+          console.log(this.preLoginPlatformAllowedFeatures);
         })
       )
       .toPromise();

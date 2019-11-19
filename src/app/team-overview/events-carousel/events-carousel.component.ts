@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { TeamPickerService } from '../../core/services/team-picker.service';
 import { ModalComponent } from '../../shared/modal/modal.component';
+import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
 
 @Component({
   selector: 'app-events-carousel',
   templateUrl: './events-carousel.component.html',
-  styleUrls: ['./events-carousel.component.scss']
+  styleUrls: ['./events-carousel.component.scss'],
+  animations: [fadeInOutAnimation]
 })
 export class EventsCarouselComponent implements OnInit {
   isTeamEventsLoading = true;
@@ -19,8 +21,11 @@ export class EventsCarouselComponent implements OnInit {
     keyboard: true,
     grabCursor: true,
     observer: true,
-    spaceBetween: 30,
-    slidesPerView: 3.2,
+    // pagination: {
+    //   el: '.swiper-pagination',
+    //   type: 'fraction',
+    // },
+    // pagination: true,
     // virtual: true,
     // virtual: {
     //   slides: ['Slide 1', 'Slide 2', 'Slide 3'],
@@ -28,18 +33,14 @@ export class EventsCarouselComponent implements OnInit {
     // virtual: {
     //   slides: this.teamEvents
     // },
+    spaceBetween: 30,
+    slidesPerView: 3.2,
     breakpoints: {
-      // 380: {
-      //   slidesPerView: 1.2,
-      //   spaceBetween: 30
-      // },
-      768: {
-        slidesPerView: 1.2,
-        spaceBetween: 30
+      1025: {
+        slidesPerView: 1.2
       },
-      1024: {
-        slidesPerView: 2.2,
-        spaceBetween: 30
+      1441: {
+        slidesPerView: 2.2
       }
     }
   };
@@ -52,11 +53,11 @@ export class EventsCarouselComponent implements OnInit {
 
   ngOnInit() {
     this.http
-    .get('./assets/mocks/team-events-mock.json')
-    .subscribe((result: any) => {
-      this.teamEvents = result.teamEventsData;
-      this.isTeamEventsLoading = false;
-    });
+      .get('./assets/mocks/team-events-mock.json')
+      .subscribe((result: any) => {
+        this.teamEvents = result.teamEventsData;
+        this.isTeamEventsLoading = false;
+      });
   }
 
   onConfirmSession(teamEventId) {
