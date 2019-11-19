@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { TeamPickerService } from '../core/services/team-picker.service';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../shared/modal/modal.component';
+import { UserLogin } from './user-login.model';
 
 @Injectable({
    providedIn: 'root' 
 })
 export class AuthService {
   private token = null;
-  private isAuthenticated = true;
-  private authStatusListener = new BehaviorSubject<boolean>(true);
-  private userLoginData;
+  private isAuthenticated = false;
+  private authStatusListener = new BehaviorSubject<boolean>(false);
+  private userLoginData: UserLogin;
   private userLoginDataListener = new BehaviorSubject<any>({});
-  // currentPlatform = 'desktop';
 
   constructor(
     private http: HttpClient,
@@ -28,30 +28,40 @@ export class AuthService {
     public teamPickerService: TeamPickerService
   ) {}
 
-  getToken() {
+  getToken(): string {
     return this.token;
   }
 
-  getIsAuth() {
+  getIsAuth(): boolean {
     return this.isAuthenticated;
   }
 
-  getAuthStatusListener() {
+  getAuthStatusListener(): Observable<boolean> {
     return this.authStatusListener.asObservable();
   }
 
-  getUserLoginData() {
+  setIsAuth(isAuthenticated) {
+    this.isAuthenticated = isAuthenticated;
+    this.authStatusListener.next(isAuthenticated);
+  }
+
+  getUserLoginData(): UserLogin {
     return this.userLoginData;
   }
 
-  getUserLoginDataListener() {
+  getUserLoginDataListener(): Observable<UserLogin> {
     return this.userLoginDataListener.asObservable();
   }
 
+  fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
+    return this.http.get<any>('./assets/mocks/login-mock.json')
+  }
+
   login(email: string, password: string) {
-    this.http
-      .get<any>('assets/mocks/login-mock.json')
-      .subscribe(userLoginDataResponse => {
+    this.fetchUserLoginData(email, password)
+      .subscribe(
+        (userLoginDataResponse) => {
+          console.log('userLoginDataResponse: ', userLoginDataResponse);
           if (userLoginDataResponse.token) {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);
@@ -70,7 +80,7 @@ export class AuthService {
             this.router.navigate(['/team-overview']);
           }
         },
-        error => {
+        (error) => {
           console.log('error: ', error);
           if(error.status === 500) {
             console.log('Server error');
@@ -104,9 +114,4 @@ export class AuthService {
     this.authStatusListener.next(false);
     this.router.navigate(['login']);
   }
-}
-
-export interface AuthData {
-  email: string;
-  password: string;
 }

@@ -43,9 +43,9 @@ export class AuthorizationService {
           console.log('currentPlatformTest: ', platform);
           this.currentPlatform = platform > 768 ? 'desktop' : 'mobile';
           if (this.currentPlatform === 'desktop') {
-            this.preLoginPlatformAllowedFeatures = features.desktop as any 
+            this.preLoginPlatformAllowedFeatures = features.desktop as any;
           } else if (this.currentPlatform === 'mobile') {
-            this.preLoginPlatformAllowedFeatures = features.mobile as any 
+            this.preLoginPlatformAllowedFeatures = features.mobile as any;
           }
           console.log(this.preLoginPlatformAllowedFeatures);
         })

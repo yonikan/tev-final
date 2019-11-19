@@ -1,91 +1,88 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
-import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
+import { TeamPickerService } from '../core/services/team-picker.service';
 
 describe('AuthService', () => {
-  // beforeEach(() => TestBed.configureTestingModule({
-  //   providers: [AuthService],
-  //   imports: [
-  //     HttpClientTestingModule,
-  //     HttpClient,
-  //     Router,
-  //     LocalStorageService,
-  //     AuthorizationService,
-  //     TeamPickerService
-  //   ]
-  // }));
+  let authService: AuthService;
+  let httpTestingController: HttpTestingController;
+  let routerSpy: any;
+  let localStorageServiceSpy: any;
+  let authorizationServiceSpy: any;
+  let dialogSpy: any;
+  let teamPickerServiceSpy: any;
 
-  // let service: AuthService;
-  // beforeEach(() => {
-  //   service = TestBed.get(AuthService);
-  // });
+  const DATA = {
+    email: 'yoni.kangun@playermaker.com',
+    features: {loadRisk: false, performanceOvertime: false, leaderBoard: false},
+    first_name: 'Yoni',
+    image_url: 'https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png',
+    is_first_login: false,
+    last_name: 'Kangun',
+    role: 1,
+    token: 'barb441le5T84eaT741534ec0c9e',
+    user_id: 441
+  };
 
-  // it('should be created', () => {
-  //   expect(service).toBeTruthy();
-  // });
+  beforeEach(() => {
+    routerSpy = jasmine.createSpyObj('Router', ['']);
+    localStorageServiceSpy = jasmine.createSpyObj('LocalStorageService', ['']);
+    authorizationServiceSpy = jasmine.createSpyObj('AuthorizationService', ['']);
+    dialogSpy = jasmine.createSpyObj('MatDialog', ['']);
+    teamPickerServiceSpy = jasmine.createSpyObj('TeamPickerService', ['']);
 
-  // it('should get logged-out', () => {
-  //   service.logout();
-  //   expect(service.getIsAuth()).toBe(false);
-  // });
+    TestBed.configureTestingModule({
+      imports: [
+          HttpClientTestingModule
+      ],
+      providers: [
+        AuthService,
+        {provide: Router, useValue: routerSpy},
+        {provide: LocalStorageService, useValue: localStorageServiceSpy},
+        {provide: AuthorizationService, useValue: authorizationServiceSpy},
+        {provide: MatDialog, useValue: dialogSpy},
+        {provide: TeamPickerService, useValue: teamPickerServiceSpy}
+      ]
+    });
+
+    authService = TestBed.get(AuthService);
+    httpTestingController = TestBed.get(HttpTestingController);
+  });
+
+  it('should retrieve the user login data', () => {
+    authService.fetchUserLoginData('yossi', 'yossi@bla.com')
+      .subscribe(userLoginDataResponse => {
+          expect(userLoginDataResponse).toBeTruthy('No login data returned');
+      });
+
+    const req = httpTestingController.expectOne('./assets/mocks/login-mock.json');
+    expect(req.request.method).toEqual('GET');
+    req.flush({payload: Object.values(DATA)});
+  });
+
+
+  it('should give an error if retrieving user login data fails', () => {
+    authService.fetchUserLoginData('yossi', 'yossi@bla.com')
+      .subscribe(
+          () => {
+             fail('retrieving user login data should have failed')
+          },
+          (error: HttpErrorResponse) => {
+            expect(error.status).toBe(500);
+          }
+      );
+
+    const req = httpTestingController.expectOne('./assets/mocks/login-mock.json');
+    expect(req.request.method).toEqual('GET');
+    req.flush('Retrieve the user login failed', {status: 500, statusText: 'Internal Server Error'});
+  });
+
+  afterEach(() => {
+    httpTestingController.verify();
+  });
 });
-
-
-// import { TestBed } from '@angular/core/testing';
-// import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-// import { AuthService } from './auth.service';
-
-// describe('AuthService', () => {
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       providers: [AuthService],
-//       imports: [HttpClientTestingModule]
-//     });
-//   });
-
-
-//   function setup() {
-//     const authService = TestBed.get(AuthService);
-//     const httpTestingController = TestBed.get(HttpTestingController);
-//     return { authService, httpTestingController };
-//   }
-
-//   it('should call the user data', () => {
-//     const { authService, httpTestingController } = setup();
-//     const mockUserData = {
-//       token: 'barb441le5T84eaT741534ec0c9e',
-//       is_first_login: false,
-//       email: 'yoni.kangun@playermaker.com',
-//       first_name: 'Yoni',
-//       last_name: 'Kangun',
-//       image_url:'https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png',
-//       role: 1,
-//       user_id: 441,
-//       features: {
-//         loadRisk: true,
-//         players: true
-//       }
-//     };
-//     authService.login()
-//       .subscribe(data => {
-//         expect(data.mapData).toEqual(mockUserData);
-//       });
-
-//     const req = httpTestingController.expectOne('https:www.google.com/googleMapData');
-
-//     expect(req.request.method).toBe('GET');
-
-//     req.flush({
-//       mapData: mockUserData
-//     });
-//   });
-
-//   afterEach(() => {
-//     const { httpTestingController } = setup();
-//     httpTestingController.verify();
-//   });
-// }))

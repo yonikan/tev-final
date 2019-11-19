@@ -8,6 +8,7 @@ import { TeamPickerService } from './core/services/team-picker.service';
 import { ServerEnvService } from './core/services/server-env.service';
 import { AuthorizationService } from './core/services/authorization.service';
 import { ThemePickerService } from './core/theme-picker/theme-picker.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // if (!environment.production) {
+    //   this.authService.setIsAuth(true);
+    // };
     this.serverEnvService.initServerEnv();
     this.authorizationService.currentPlatform = this.breakpointObserver.isMatched('(min-width: 769px)') ? 'desktop' : 'mobile';
 
