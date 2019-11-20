@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.authStatusSub = this.authService
       .getAuthStatusListener()
-      .subscribe(authStatus => {
+      .subscribe((authStatus: boolean) => {
         this.isAuthenticated = authStatus;
       });
   }

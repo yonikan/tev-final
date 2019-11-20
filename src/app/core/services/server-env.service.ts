@@ -10,8 +10,7 @@ export class ServerEnvService {
   constructor() { }
 
   initServerEnv() {
-    const URL_HOSTNAME = window.location.hostname.toString();
-
+    const URL_HOSTNAME: string = window.location.hostname.toString();
     if (URL_HOSTNAME.includes('dev')) {
       this.currentServerEnv = 'dev';
       // console.log('DEV!!!');
@@ -30,7 +29,7 @@ export class ServerEnvService {
     }
   }
 
-  getBaseUrl(serverEnv = 1) {
+  getBaseUrl(serverEnv = 1): string {
     if (this.currentServerEnv === 'dev') {
       if (serverEnv === 2) {
         return AppConsts.devBaseUrl2

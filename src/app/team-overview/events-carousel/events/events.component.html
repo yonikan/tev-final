@@ -12,11 +12,11 @@
                 <mat-menu #eventMenu="matMenu">
                     <button mat-menu-item (click)="confirmSession(eventData.id)">
                         <mat-icon>assignment_turned_in</mat-icon>
-                        <span>Confirm session</span>
+                        <span>{{ 'team-overview.events-carousel.confirm-session' | translate }}</span>
                     </button>
                     <button mat-menu-item (click)="deleteSession(eventData.id)">
                         <mat-icon>delete</mat-icon>
-                        <span>Delete session</span>
+                        <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span>
                     </button>
                 </mat-menu>
             </div>
@@ -31,21 +31,21 @@
             </div>
             <div class="event-content-info">
                 <div class="info-duration">
-                    <div class="info-title">duration:</div>
+                    <div class="info-title">{{ 'team-overview.events-carousel.duration' | translate }}:</div>
                     {{ eventData.duration }}
                 </div>
                 <div class="info-players">
-                    <div class="info-title">players:</div>
+                    <div class="info-title">{{ 'team-overview.events-carousel.players' | translate }}:</div>
                     {{ eventData.players }}
                 </div>
                 <div class="info-phases">
-                    <div class="info-title">phases:</div>
+                    <div class="info-title">{{ 'team-overview.events-carousel.phases' | translate }}:</div>
                     {{ eventData.phases }}
                 </div>
             </div>
         
             <div *ngIf="!isConfirmed" class="event-content-confirm">
-                <button class="confirm-button" mat-raised-button (click)="confirmSession(eventData.id)">confirm session</button>
+                <button class="confirm-button" mat-raised-button (click)="confirmSession(eventData.id)">{{ 'team-overview.events-carousel.confirm-session' | translate }}</button>
             </div>
         </div>
     </mat-card-content>

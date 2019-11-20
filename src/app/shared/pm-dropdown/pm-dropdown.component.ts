@@ -8,24 +8,23 @@ import { TeamPickerService } from '../../core/services/team-picker.service';
   styleUrls: ['./pm-dropdown.component.scss']
 })
 export class PmDropdownComponent implements OnInit {
-  @Input() itemsType: any;
-  @Input() appearance: any;
+  @Input() itemsType: string;
+  @Input() appearance: string;
   @Input() items: any[];
   @Input() defaultItem: any;
-  @Input() dropdownWidth: any;
+  @Input() dropdownWidth: string;
   selectedItemImgPath: string;
 
   constructor(private translationPickerService: TranslationPickerService, public teamPickerService: TeamPickerService) { }
 
   ngOnInit() {
     const resetToDefaultItem = this.items.find(item => item.value === this.defaultItem);
-    this.selectedItemImgPath = resetToDefaultItem.flag;
-    // this.width
+    this.selectedItemImgPath = resetToDefaultItem.img;
   }
 
   useLanguage(itemValue: string) {
     const useDefaultItem = this.items.find(item => item.value === itemValue);
-    this.selectedItemImgPath = useDefaultItem.flag;
+    this.selectedItemImgPath = useDefaultItem.img;
     if (this.itemsType === 'languages') {
       this.translationPickerService.setCurrentTranslation(itemValue);
     } else if (this.itemsType === 'teams') {

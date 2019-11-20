@@ -60,8 +60,7 @@ export class AuthService {
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
       .subscribe(
-        (userLoginDataResponse) => {
-          console.log('userLoginDataResponse: ', userLoginDataResponse);
+        (userLoginDataResponse: UserLogin) => {
           if (userLoginDataResponse.token) {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);

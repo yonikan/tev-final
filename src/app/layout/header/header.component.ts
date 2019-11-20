@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-// import { MatSidenav } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { TeamPickerService } from '../../../app/core/services/team-picker.service';
 import { AppConsts } from '../../app.consts';
+import { UserLogin } from '../../../app/auth/user-login.model';
 
 @Component({
   selector: 'app-header',
@@ -13,34 +13,32 @@ import { AppConsts } from '../../app.consts';
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sidenavToggle = new EventEmitter<void>();
   isUserMenuOpen = false;
-
   isAuthenticated = false;
   private authStatusSub: Subscription;
   currentTranslation = 'en';
   private currentTranslationSub: Subscription;
-  userLoginData;
+  userLoginData: UserLogin;
   private userLoginDataSub: Subscription;
-  
-  userImgUrl;
-  userFirstName;
-  userLastName;
-  dashboardVersion;
+  userImgUrl: string;
+  userFirstName: string;
+  userLastName: string;
+  dashboardVersion: string;
   currentTeam = 'hull-o18';
   teams: any[] = [
     {
       value: 'hull-u18',
       viewValue: '2019/20: Hull City U18',
-      flag: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+      img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
     },
     {
       value: 'hull-u14',
       viewValue: '2019/20: Hull City U14',
-      flag: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+      img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
     },
     {
       value: 'hull-o18',
       viewValue: '2019/20: Hull City O18',
-      flag: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+      img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
     }
   ];
 
@@ -49,7 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userLoginDataSub = this.authService
       .getUserLoginDataListener()
-      .subscribe(userLoginData => {
+      .subscribe((userLoginData: UserLogin) => {
         this.userImgUrl = userLoginData.image_url;
         this.userFirstName = userLoginData.first_name;
         this.userLastName = userLoginData.last_name;
@@ -58,7 +56,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.authStatusSub = this.authService
       .getAuthStatusListener()
-      .subscribe(authStatus => {
+      .subscribe((authStatus: boolean) => {
         this.isAuthenticated = authStatus;
       });
 

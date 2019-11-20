@@ -14,9 +14,9 @@ export class PreferencesComponent implements OnInit {
   dashboardVersion = AppConsts.version;
   currentTranslation = 'en';
   languages: any[] = [
-    { value: 'en', viewValue: 'English - Eng', flag: './assets/svg/flag-us.svg' },
-    { value: 'es', viewValue: 'Spanish - Esp', flag: './assets/svg/flag-es.svg' },
-    { value: 'ch', viewValue: 'Chinese - 中文', flag: './assets/svg/flag-china.svg' }
+    { value: 'en', viewValue: 'English - Eng', img: './assets/svg/flag-us.svg' },
+    { value: 'es', viewValue: 'Spanish - Esp', img: './assets/svg/flag-es.svg' },
+    { value: 'ch', viewValue: 'Chinese - 中文', img: './assets/svg/flag-china.svg' }
   ]
   currentTheme = 'light';
   themes: any[] = [

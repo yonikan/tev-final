@@ -23,3 +23,8 @@
         display: none;
     }
 }
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0 !important;
+    padding-bottom: 7px !important;
+}

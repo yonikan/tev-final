@@ -12,7 +12,7 @@ export class TranslationPickerService {
   
   constructor(private translateService: TranslateService, private localStorageService: LocalStorageService) { }
 
-  getCurrentTranslation() {
+  getCurrentTranslation(): string {
     return this.currentTranslation;
   }
 

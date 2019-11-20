@@ -1,15 +1,4 @@
 {
-    "general": {
-        "toasts": {
-            
-        },
-        "dialogs": {
-            
-        },
-        "errors": {
-
-        }
-    },
     "layout": {
         "header": {
             "logout": "Log out",
@@ -27,7 +16,7 @@
             "reports": "Reports - CH",
             "team-configuration": "Team Configuration - CH"
         },
-        "footer": {
+        "mobile-nav": {
             "team-overview": "Overview",
             "training": "Training - CH",
             "matches": "Matches - CH",
@@ -38,17 +27,19 @@
         }
     },
     "auth": {
-        "log-in": "登录",
-        "go-back-to-login-link": "Go back to login",
-        "incorrect-email-and/or-password": "Incorrect email and/or password - CH",
-        "incorrect-password": "Incorrect password.",
-        "invalid-email": "Invalid email",
-        "enter-email-address": "enter email address",
-        "enter-password": "enter password",
-        "repeat-password": "repeat password",
-        "repeat-password-is-required-error": "Repeat password is required",
-        "password-does-not-match-error": "Password does not match",
-        "choose-a-languages": "choose a languages",
+        "general": {
+            "log-in": "登录",
+            "go-back-to-login-link": "Go back to login",
+            "incorrect-email-and/or-password": "Incorrect email and/or password - CH",
+            "incorrect-password": "Incorrect password.",
+            "invalid-email": "Invalid email",
+            "enter-email-address": "enter email address",
+            "enter-password": "enter password",
+            "repeat-password": "repeat password",
+            "repeat-password-is-required-error": "Repeat password is required",
+            "password-does-not-match-error": "Password does not match",
+            "choose-a-languages": "choose a languages"
+        },
         "user-login": {
             "title": "登录",
             "forgot-password-link": "forgot password - CH",
@@ -58,12 +49,13 @@
         },
         "forgot-password": {
             "title": "Forgot Your Password?",
-            "sub-title": "Enter your e-mail address below to revieve a verification email and reset your account:",
+            "sub-title": "Enter your e-mail address below to recieve a verification email and reset your account:",
             "send-verification-email": "SEND VERIFICATION EMAIL"
         },
         "reset-password": {
             "title": "Reset Password",
-            "sub-title": "You have verified your account successfully. Enter a new password for your account",
+            "sub-title1": "You have verified your account successfully.",
+            "sub-title2": "Enter a new password for your account:",
             "new-password": "NEW PASSWORD",
             "re-enter-new-password": "RE-ENTER NEW PASSWORD",
             "reset-password": "RESET PASSWORD"
@@ -76,7 +68,19 @@
         }
     },
     "team-overview": {
-        "title": "Team Overview",
+        "events-carousel": {
+            "title": "There are {{ eventsNumber }} new sessions",
+            "sub-title": "Validate these session and get the most accurate and updated performance of your team:",
+            "confirm-session": "Confirm session",
+            "delete-session": "Delete session",
+            "duration": "duration",
+            "players": "players",
+            "phases": "phases",
+            "error-modal-title": "test",
+            "error-modal-body": "test",
+            "error-modal-confirm": "test",
+            "error-modal-cancel": "test"
+        },
         "load-risk": {
             "title": "Load risk"
         },
@@ -85,18 +89,6 @@
         },
         "leader-board": {
             "title": "Leaderboard"
-        },
-        "events": {
-            "title": "Events"
         }
-    },
-    "training": {
-        "title": "Training"
-    },
-    "matches": {
-        "title": "Matches"
-    },
-    "team-configuration": {
-        "title": "Team Configuration"
     }
 }

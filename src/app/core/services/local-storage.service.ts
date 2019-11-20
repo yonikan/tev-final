@@ -11,7 +11,7 @@ export class LocalStorageService {
   constructor(@Inject(LOCAL_STORAGE) private localStorageService: StorageService, private cookieService: CookieService) {}
 
   public storeOnLocalStorage(key: string, value: string) {
-    const storageKey = key;
+    const storageKey: string = key;
     let currentToken = this.localStorageService.get(storageKey) || '';
     currentToken = value;
     this.localStorageService.set(storageKey, currentToken);

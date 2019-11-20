@@ -7,16 +7,16 @@
         
         <form [formGroup]="userLoginFormGroup" (submit)="onLogin()" *ngIf="!isLoading">
             <mat-form-field>
-                <mat-label>{{ 'auth.enter-email-address' | translate }}</mat-label>
+                <mat-label>{{ 'auth.general.enter-email-address' | translate }}</mat-label>
                 <input matInput type="email" formControlName="emailText">
             </mat-form-field>
             <mat-form-field>
-                <mat-label>{{ 'auth.enter-password' | translate }}</mat-label>
+                <mat-label>{{ 'auth.general.enter-password' | translate }}</mat-label>
                 <input id="password1" matInput type="password" formControlName="passwordText" showHideInput>
                 <i class="material-icons" matSuffix showHideTrigger="password1" [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
             </mat-form-field>
             <mat-error *ngIf="userLoginFormGroup.get('emailText').invalid || userLoginFormGroup.get('passwordText').invalid">
-                {{ 'auth.incorrect-email-and/or-password' | translate }}
+                {{ 'auth.general.incorrect-email-and/or-password' | translate }}
             </mat-error>
             <button color="primary" [disabled]="!userLoginFormGroup.valid" class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button>
                 {{ 'auth.user-login.user-login-button' | translate }}
@@ -25,7 +25,7 @@
     </div>
     <div class="auth-links">
         <a (click)="loginMode('forgot-password')">
-            {{ 'auth.user-login.forgot-password-link' | translate }}
+            {{ 'auth.user-login.forgot-password-link' | translate }}?
         </a>
         <!-- <a (click)="loginMode('reset-password')">
             {{ 'auth.user-login.reset-password-link' | translate }}

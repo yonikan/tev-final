@@ -2,11 +2,18 @@
 @import '../../../styles/mixins';
 @import '~@angular/material/theming';
 
+// @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap');
+
 :host { 
   @include login-card;
 
   .user-login-container {
     .form-container {
+      mat-error {
+        text-align: center;
+        padding: 15px 0;
+      }
+
       .login-button {
         @include login-button;
       }

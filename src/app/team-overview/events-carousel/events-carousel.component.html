@@ -1,8 +1,8 @@
 <div class="overview-content-events" *ngIf="teamEvents.length > 0">
     <div class="events-container">
         <div class="events-into-text">
-            <h3>there are {{ teamEvents.length }} new sessions</h3>
-            <p>Validate these session and get the most accurate and updated performance of your team:</p>
+            <h3>{{ 'team-overview.events-carousel.title' | translate:{'eventsNumber':teamEvents.length} }}</h3>
+            <p>{{ 'team-overview.events-carousel.sub-title' | translate }}</p>
         </div>
         <mat-spinner *ngIf="isTeamEventsLoading"></mat-spinner>
         <swiper *ngIf="!isTeamEventsLoading"

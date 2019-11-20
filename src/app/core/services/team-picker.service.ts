@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -18,17 +18,17 @@ export class TeamPickerService {
     private router: Router
   ) { }
 
-  getCurrentTeamUpdateListener() {
+  getCurrentTeamUpdateListener(): Observable<string> {
     return this.currentTeamUpdated.asObservable();
   }
 
-  getCurrentTeam() {
+  getCurrentTeam(): string {
     return this.currentTeam;
   }
 
   setCurrentTeam(currentTeam: string) {
     this.http
-      .get('assets/mocks/teams-mock.json')
+      .get('./assets/mocks/teams-mock.json')
       .pipe(
         map((teams: any) => teams.teamsData), // transform respond
         // tap(team => { console.log('team: ', team) }),
@@ -36,7 +36,7 @@ export class TeamPickerService {
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
       .subscribe((updatedTeam: any) => {
-        console.log('updatedTeam: ', updatedTeam);
+        // console.log('updatedTeam: ', updatedTeam);
         this.currentTeam = updatedTeam;
         this.currentTeamUpdated.next(updatedTeam);
         this.router.navigate(['team-overview']);

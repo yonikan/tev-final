@@ -2,8 +2,8 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@a
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
-import { AuthService } from 'src/app/auth/auth.service';
-import { ModalComponent } from 'src/app/shared/modal/modal.component';
+import { AuthService } from '../../auth/auth.service';
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Injectable()
 export class UserIdleInterceptor implements HttpInterceptor {

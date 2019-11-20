@@ -1,4 +1,4 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -40,36 +40,4 @@ export class VersionUpdateInterceptor implements HttpInterceptor {
         })
       );
   }
-
-  // intercept(req: HttpRequest<any>, next: HttpHandler) {
-  //   const appVersion = AppConsts.version;
-  //   const authRequest = req.clone({
-  //     headers: req.headers.set('AuthAppVersion', appVersion)
-  //   });
-
-  //   return next.handle(authRequest);
-  // }
 }
-    
-    // .tap((event: HttpEvent<any>) => {
-    //     console.log(event);
-    //     if (event instanceof HttpResponse) {
-    //       // do stuff with response if you want
-    //       console.log(event.headers);
-    //       const jwt = event.headers.get('Autho');
-    //       console.log(jwt);
-    //     }
-    //   }, (err: any) => {
-    //     if (err instanceof HttpErrorResponse) {
-    //       console.log(err);
-    //       if (err.status === 400) {
-    //         // redirect to the login route
-    //         // or show a modal
-    //         console.log('ERROR');
-    //       }
-    //     }
-    //   }
-      
-      
-    //   );
-    // }

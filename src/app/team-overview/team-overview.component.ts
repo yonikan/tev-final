@@ -40,7 +40,7 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
 
     this.currentTeamUpdateSub = this.teamPickerService
       .getCurrentTeamUpdateListener()
-      .subscribe(currentTeam => {
+      .subscribe((currentTeam: string) => {
         // console.log('TEAM OVERVIEW - currentTeam: ', currentTeam);
         this.isLoading = false;
       });

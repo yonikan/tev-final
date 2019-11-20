@@ -9,7 +9,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() pageTitle: string; 
   // @Input() pageActions: any[]; 
 
-  pageActions = [ // vard-coded for now
+  pageActions = [ // hard-coded for now
     {
       name: 'exportToPdfAction',
       icon: 'picture_as_pdf',
@@ -27,8 +27,6 @@ export class PageHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // console.log('pageTitle: ', this.pageTitle);
-    // console.log('pageActions: ', this.pageActions);
     this.pageActions.forEach(pageAction => {
       // if(pageAction === 'exportToPdfAction') {
 

@@ -14,7 +14,7 @@ export class AuthorizationService {
   constructor(private httpClient: HttpClient) {}
 
   public isFeatureEnabled(featureName: string, featuresType?: string): boolean {
-    let isFeaturedAllowed;
+    let isFeaturedAllowed: boolean;
     if (featuresType === 'preLogin') {
       isFeaturedAllowed = this.preLoginAllowedFeatures[featureName] && this.preLoginPlatformAllowedFeatures[featureName];
     } else {
@@ -28,7 +28,7 @@ export class AuthorizationService {
       .get('./assets/features-configuration/config-features.json')
       .pipe(
         tap(features => { 
-          this.preLoginAllowedFeatures = features as any 
+          this.preLoginAllowedFeatures = features as any;
         })
       )
       .toPromise();
@@ -40,14 +40,14 @@ export class AuthorizationService {
       .pipe(
         tap((features: any) => { 
           const platform = document.documentElement.clientWidth;
-          console.log('currentPlatformTest: ', platform);
+          // console.log('currentPlatformTest: ', platform);
           this.currentPlatform = platform > 768 ? 'desktop' : 'mobile';
           if (this.currentPlatform === 'desktop') {
             this.preLoginPlatformAllowedFeatures = features.desktop as any;
           } else if (this.currentPlatform === 'mobile') {
             this.preLoginPlatformAllowedFeatures = features.mobile as any;
           }
-          console.log(this.preLoginPlatformAllowedFeatures);
+          // console.log(this.preLoginPlatformAllowedFeatures);
         })
       )
       .toPromise();

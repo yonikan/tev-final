@@ -5,11 +5,11 @@ import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private localStorageService: LocalStorageService, ) {}
+  constructor(private authService: AuthService, private localStorageService: LocalStorageService ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // const authToken = this.authService.getToken();
-    const authToken = this.localStorageService.getOnCookie('token');
+    const authToken: string = this.localStorageService.getOnCookie('token');
     const authRequest = req.clone({
       headers: req.headers.set('Authorization', 'bearer ' + authToken)
     });

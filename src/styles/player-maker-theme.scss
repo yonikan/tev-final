@@ -5,7 +5,11 @@
 @font-face {
   font-family: 'Work Sans';
   src: url('assets/fonts/Worksans.woff');
-}
+};
+@font-face {
+  font-family: 'Work Sans Bold';
+  src: url('assets/fonts/Worksanssemibold.woff');
+};
 $pm-app-typography: mat-typography-config(
   $font-family: 'Work Sans'
 );
@@ -15,4 +19,4 @@ $playermaker-theme: mat-light-theme(mat-palette($playermaker-primary-pink), mat-
 
 .mat-dialog-container {
   padding: 0 !important;
-}
+};
