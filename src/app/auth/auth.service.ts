@@ -54,8 +54,33 @@ export class AuthService {
   }
 
   fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
-    return this.http.get<any>('./assets/mocks/login-mock.json')
+    return this.http.get<any>('./assets/mocks/login-mock.json');
+    // const userData = {
+    //   email,
+    //   password
+    // };
+    // return this.http.post<any>('./assets/mocks/login-mock.json', userData)
   }
+
+
+  // const authData: AuthData = { email: email, password: password };
+  // const modifiedWithImg = {
+  //   email: email,
+  //   password: password,
+  //   imagePath: './assets/img/shiba.jpg'
+  // };
+
+  // this.http.post(BACKEND_URL + '/signup', modifiedWithImg)
+  //   .subscribe(
+  //     (userData) => {
+  //       this.router.navigate(['/home']);
+  //     },
+  //     error => {
+  //       this.authStatusListener.next(false);
+  //     }
+  //   );
+
+
 
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
@@ -112,5 +137,13 @@ export class AuthService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.router.navigate(['login']);
+  }
+
+  forgotPassword(email: string) {
+    console.log('Forgot Password works!');
+  }
+
+  resetPassword(password: string, repeatPassword: string) {
+    console.log('Reset Password works!');
   }
 }

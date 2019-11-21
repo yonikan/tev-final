@@ -21,18 +21,6 @@ export class EventsCarouselComponent implements OnInit {
     keyboard: true,
     grabCursor: true,
     observer: true,
-    // pagination: {
-    //   el: '.swiper-pagination',
-    //   type: 'fraction',
-    // },
-    // pagination: true,
-    // virtual: true,
-    // virtual: {
-    //   slides: ['Slide 1', 'Slide 2', 'Slide 3'],
-    // },
-    // virtual: {
-    //   slides: this.teamEvents
-    // },
     spaceBetween: 30,
     slidesPerView: 3.2,
     breakpoints: {

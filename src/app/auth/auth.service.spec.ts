@@ -17,7 +17,7 @@ describe('AuthService', () => {
   let dialogSpy: any;
   let teamPickerServiceSpy: any;
 
-  const DATA = {
+  const LOGIN_DATA = {
     email: 'yoni.kangun@playermaker.com',
     features: {loadRisk: false, performanceOvertime: false, leaderBoard: false},
     first_name: 'Yoni',
@@ -62,7 +62,7 @@ describe('AuthService', () => {
 
     const req = httpTestingController.expectOne('./assets/mocks/login-mock.json');
     expect(req.request.method).toEqual('GET');
-    req.flush({payload: Object.values(DATA)});
+    req.flush({payload: Object.values(LOGIN_DATA)});
   });
 
 
@@ -73,13 +73,13 @@ describe('AuthService', () => {
              fail('retrieving user login data should have failed')
           },
           (error: HttpErrorResponse) => {
-            expect(error.status).toBe(500);
+            expect(error.status).toBe(401);
           }
       );
 
     const req = httpTestingController.expectOne('./assets/mocks/login-mock.json');
     expect(req.request.method).toEqual('GET');
-    req.flush('Retrieve the user login failed', {status: 500, statusText: 'Internal Server Error'});
+    req.flush('Retrieve the user login failed', {status: 401, statusText: 'user doesnt exists.'});
   });
 
   afterEach(() => {

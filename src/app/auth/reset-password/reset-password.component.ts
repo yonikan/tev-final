@@ -40,14 +40,18 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener()
       .subscribe(
-        authStatus => {
+        (authStatus: any) => {
           this.isLoading = false;
         }
       );
   }
 
   onResetPassword() {
-    console.log('Reset Password works!');
+    if (!this.passwordFormGroup.valid) {
+      return;
+    }
+    // this.isLoading = true;
+    this.authService.resetPassword(this.passwordFormGroup.value.password, this.passwordFormGroup.value.repeatPassword);
   }
   
   loginMode(loginModeState) {
