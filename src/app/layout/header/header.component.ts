@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userLastName: string;
   dashboardVersion: string;
   currentTeam = 'hull-o18';
+  // teams;
   teams: any[] = [
     {
       value: 'hull-u18',
@@ -52,6 +53,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.userFirstName = userLoginData.first_name;
         this.userLastName = userLoginData.last_name;
         this.dashboardVersion = AppConsts.version;
+        // this.teams = userLoginData.teams;
+        // this.teamPickerService.teams = userLoginData.teams;
+        // this.teamPickerService.setCurrentTeam(userLoginData.teams[0]);
       });
 
     this.authStatusSub = this.authService

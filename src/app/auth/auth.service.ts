@@ -77,11 +77,7 @@ export class AuthService {
             this.userLoginDataListener.next(userLoginDataResponse);
             this.authorizationService.allowedFeatures = userLoginDataResponse.features;
 
-            if (this.localStorageService.getOnLocalStorage('selected_team')) {
-              this.teamPickerService.setCurrentTeam(this.localStorageService.getOnLocalStorage('selected_team'));
-            } else {
-              this.teamPickerService.setCurrentTeam(this.teamPickerService.getCurrentTeam());
-            }
+            this.teamPickerService.setCurrentTeam(this.teamPickerService.getCurrentTeam());
 
             this.token = userLoginDataResponse.token;
             this.localStorageService.storeOnCookie('token', this.token);

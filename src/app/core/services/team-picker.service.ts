@@ -3,19 +3,20 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../services/local-storage.service';
+// import { LocalStorageService } from '../services/local-storage.service';
 import { ServerEnvService } from './server-env.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamPickerService {
+  public teams = [];
   private currentTeam = 'hull-u18';
   private currentTeamUpdated = new BehaviorSubject<string>('hull-u18');
 
   constructor(
     private http: HttpClient, 
-    private localStorageService: LocalStorageService,
+    // private localStorageService: LocalStorageService,
     private serverEnvService: ServerEnvService,
     private router: Router
   ) { }
@@ -40,13 +41,12 @@ export class TeamPickerService {
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
       .subscribe((updatedTeam: any) => {
-        // console.log('updatedTeam: ', updatedTeam);
+        console.log('updatedTeam: ', updatedTeam);
         this.currentTeam = updatedTeam;
         this.currentTeamUpdated.next(updatedTeam);
         this.router.navigate(['team-overview']);
       });
 
     this.currentTeam = currentTeam;
-    this.localStorageService.storeOnLocalStorage('selected_team', currentTeam);
   }
 }
