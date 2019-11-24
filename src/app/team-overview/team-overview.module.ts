@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { TeamOverviewComponent } from './team-overview.component';
+import { TeamOverviewComponent } from './team-overview/team-overview.component';
 import { LoadRiskComponent } from './load-risk/load-risk.component';
 
 import { PerformanceOvertimeComponent } from './performance-overtime/performance-overtime.component';
