@@ -7,10 +7,6 @@ import { MenuComponent } from './core/components/menu/menu.component';
 const routes: Routes = [
   { path: 'team-overview', loadChildren: () => import('./team-overview/team-overview.module')
     .then(m => m.TeamOverviewModule), canLoad: [AuthGuard]},
-  // { path: 'training', loadChildren: () => import('./training/training.module')
-  //   .then(m => m.TrainingModule), canLoad: [AuthGuard]},
-  // { path: 'matches', loadChildren: () => import('./matches/matches.module')
-  //   .then(m => m.MatchesModule), canLoad: [AuthGuard]},
   // { path: 'players', loadChildren: () => import('./players/players.module')
   //   .then(m => m.PlayersModule), canLoad: [AuthGuard]},
   { path: 'login', component: AuthComponent },
