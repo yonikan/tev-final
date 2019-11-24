@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
+import { ServerEnvService } from './server-env.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class TeamPickerService {
   constructor(
     private http: HttpClient, 
     private localStorageService: LocalStorageService,
+    private serverEnvService: ServerEnvService,
     private router: Router
   ) { }
 
@@ -27,16 +29,18 @@ export class TeamPickerService {
   }
 
   setCurrentTeam(currentTeam: string) {
+    const PATH = this.serverEnvService.getBaseUrl();
     this.http
-      .get('./assets/mocks/teams-mock.json')
+      .get<any>(`${PATH}/teams`)
       .pipe(
-        map((teams: any) => teams.teamsData), // transform respond
-        // tap(team => { console.log('team: ', team) }),
-        map((teams: any) => teams.find(team => team.teamName === currentTeam)), // select the selected team - temp
+        // tap(results => { console.log('results: ', results) }),
+        map((teamsData: any) => teamsData.payload.teamsData),
+        // tap(results => { console.log('results: ', results) }),
+        map((teams: any) => teams.find(team => team.teamName === currentTeam)),
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
       .subscribe((updatedTeam: any) => {
-        // console.log('updatedTeam: ', updatedTeam);
+        console.log('updatedTeam: ', updatedTeam);
         this.currentTeam = updatedTeam;
         this.currentTeamUpdated.next(updatedTeam);
         this.router.navigate(['team-overview']);

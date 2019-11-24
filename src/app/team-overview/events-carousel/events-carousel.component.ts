@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
+import { map } from 'rxjs/operators';
 import { TeamPickerService } from '../../core/services/team-picker.service';
 import { ModalComponent } from '../../shared/modal/modal.component';
 import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
+import { ServerEnvService } from '../../core/services/server-env.service';
 
 @Component({
   selector: 'app-events-carousel',
@@ -42,12 +44,17 @@ export class EventsCarouselComponent implements OnInit {
   constructor(
     public teamPickerService: TeamPickerService,
     private http: HttpClient,
+    private serverEnvService: ServerEnvService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    const PATH = this.serverEnvService.getBaseUrl();
     this.http
-      .get('./assets/mocks/team-events-mock.json')
+      .get<any>(`${PATH}/team-events`)
+      .pipe(
+        map((loginData: any) => loginData.payload),
+      )
       .subscribe((result: any) => {
         this.teamEvents = result.teamEventsData;
         this.isTeamEventsLoading = false;

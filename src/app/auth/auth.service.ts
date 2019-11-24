@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { TeamPickerService } from '../core/services/team-picker.service';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { UserLogin } from './user-login.model';
-import { map } from 'rxjs/operators';
 import { ServerEnvService } from '../core/services/server-env.service';
 
 @Injectable({
@@ -94,6 +94,7 @@ export class AuthService {
       )
       .subscribe(
         (userLoginDataResponse: UserLogin) => {
+          // console.log('userLoginDataResponse: ', userLoginDataResponse);
           if (userLoginDataResponse.token) {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);
