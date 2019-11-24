@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss']
+  selector: 'app-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.scss']
 })
-export class EventsComponent implements OnInit {
+export class EventComponent implements OnInit {
   @Input() eventIndex: number;
   @Input() eventData: any;
   @Output() confirmSessionEmitter = new EventEmitter<string>();

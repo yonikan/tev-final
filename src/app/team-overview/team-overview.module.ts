@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './team-overview.routes';
 import { ChartModule } from 'angular-highcharts';
 import { TeamOverviewKpiComponent } from './performance-overtime/team-overview-kpi/team-overview-kpi.component';
-import { EventsComponent } from './events-carousel/events/events.component';
+import { EventComponent } from './events-carousel/event/event.component';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { EventsCarouselComponent } from './events-carousel/events-carousel.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -27,7 +27,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   declarations: [
     TeamOverviewComponent,
     LoadRiskComponent,
-    EventsComponent,
+    EventComponent,
     PerformanceOvertimeComponent,
     LeaderBoardComponent,
     LeaderBoardRowComponent,
@@ -52,7 +52,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   exports: [
     TeamOverviewComponent,
     LoadRiskComponent,
-    EventsComponent,
+    EventComponent,
     PerformanceOvertimeComponent,
     LeaderBoardComponent
   ]

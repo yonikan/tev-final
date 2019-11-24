@@ -10,13 +10,13 @@
             [config]="config"
             [(index)]="index">
 
-            <app-events *ngFor="let teamEvent of teamEvents"
+            <app-event *ngFor="let teamEvent of teamEvents"
                 [@fadeInOut]
                 [eventIndex]="index" 
                 (confirmSessionEmitter)="onConfirmSession($event)"
                 (deleteSessionEmitter)="onDeleteSession($event)" 
                 [eventData]="teamEvent">
-            </app-events>
+            </app-event>
         </swiper>
     </div>
 </div>
