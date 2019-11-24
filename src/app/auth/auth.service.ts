@@ -8,6 +8,8 @@ import { TeamPickerService } from '../core/services/team-picker.service';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { UserLogin } from './user-login.model';
+import { map } from 'rxjs/operators';
+import { ServerEnvService } from '../core/services/server-env.service';
 
 @Injectable({
    providedIn: 'root' 
@@ -25,6 +27,7 @@ export class AuthService {
     private localStorageService: LocalStorageService,
     private authorizationService: AuthorizationService,
     private dialog: MatDialog,
+    private serverEnvService: ServerEnvService,
     public teamPickerService: TeamPickerService
   ) {}
 
@@ -54,7 +57,9 @@ export class AuthService {
   }
 
   fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
-    return this.http.get<any>('./assets/mocks/login-mock.json');
+    const PATH = this.serverEnvService.getBaseUrl();
+    return this.http.get<any>(`${PATH}/login`);
+    // return this.http.get<any>('./assets/mocks/login-mock.json');
     // const userData = {
     //   email,
     //   password
@@ -84,6 +89,9 @@ export class AuthService {
 
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
+      .pipe(
+        map((loginData: any) => loginData.payload),
+      )
       .subscribe(
         (userLoginDataResponse: UserLogin) => {
           if (userLoginDataResponse.token) {

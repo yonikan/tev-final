@@ -22,19 +22,12 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-
-    // if (this.authorizationService.isFeatureEnabled('loadRisk')) {
-    //   this.isLoadRiskFeatureEnabled = true;
-    // } else {
-    //   this.isLoadRiskFeatureEnabled = false;
-    // }
-
     this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('loadRisk') ? true : false;
-    // this.isLoadRiskFeatureEnabled = true;
     this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('performanceOvertime') ? true : false;
-    // this.isPerformanceOvertimeFeatureEnabled = true;
     this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('leaderBoard') ? true : false;
-    // this.isLeaderBoardFeatureEnabled = true;
+    // this.isLoadRiskFeatureEnabled = false;
+    // this.isPerformanceOvertimeFeatureEnabled = false;
+    // this.isLeaderBoardFeatureEnabled = false;
 
     this.isLoading = true;
 

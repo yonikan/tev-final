@@ -5,7 +5,7 @@ import { AppConsts } from '../../../app/app.consts';
   providedIn: 'root'
 })
 export class ServerEnvService {
-  private currentServerEnv = 'dev';
+  private currentServerEnv;
   
   constructor() { }
 
@@ -24,7 +24,7 @@ export class ServerEnvService {
       this.currentServerEnv = 'ch';
       // console.log('CHINA PROD!!!');
     } else {
-      this.currentServerEnv = 'dev';
+      this.currentServerEnv = '';
       // console.log('DEV!!!');
     }
   }
@@ -45,6 +45,8 @@ export class ServerEnvService {
         return AppConsts.prodBaseUrl2
       }
       return AppConsts.prodBaseUrl
+    } else { // for a local dev node server
+      return AppConsts.devBaseUrlLocalDevServer;
     }
   }
 }
