@@ -8,13 +8,13 @@
             "chinese": "Chino"
         },
         "sidenav": {
-            "team-overview": "Team Overview - SPANISH",
+            "team-overview": "Overview - SPANISH",
             "training": "Entrenamientos",
             "matches": "Partidos",
             "players": "Players - SPANISH",
             "notes": "Notes - SPANISH",
             "reports": "Reports - SPANISH",
-            "team-configuration": "Team Configuration - SPANISH"
+            "team-configuration": "Team Config - SPANISH"
         },
         "mobile-nav": {
             "team-overview": "Overview",
@@ -23,7 +23,7 @@
             "players": "Players",
             "notes": "Notes",
             "reports": "Reports",
-            "team-configuration": "Config"
+            "team-configuration": "Team Config"
         }
     },
     "auth": {

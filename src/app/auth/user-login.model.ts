@@ -1,6 +1,5 @@
 export interface UserLogin {
     email: string;
-    features: any;
     first_name: string;
     image_url: string;
     is_first_login: false
@@ -8,4 +7,6 @@ export interface UserLogin {
     role: number;
     token?: string;
     user_id: number;
+    features: any;
+    teams?: any[];
 }

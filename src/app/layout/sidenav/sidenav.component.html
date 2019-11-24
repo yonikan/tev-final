@@ -1,32 +1,31 @@
 <mat-nav-list *ngIf="isAuthenticated">
     <div class="navigation-wrapper">
-        <a mat-list-item routerLink="/team-overview" routerLinkActive="active">
+        <a matRipple routerLink="/team-overview" routerLinkActive="active">
           <mat-icon>home</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.team-overview' | translate }}</span>
         </a>
         <mat-divider></mat-divider>
-        <a mat-list-item>
+        <a matRipple>
           <mat-icon>directions_run</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.training' | translate }}</span>
         </a>
         <mat-divider></mat-divider>
-        <a mat-list-item>
+        <a matRipple>
           <mat-icon>directions_run</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.matches' | translate }}</span>
         </a>
         <mat-divider></mat-divider>
-        <a mat-list-item>
+        <a matRipple>
           <mat-icon>people_alt</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.players' | translate }}</span>
         </a>
         <mat-divider></mat-divider>
     </div>
-
     <div class="configuration-wrapper">
         <mat-divider></mat-divider>
-        <a mat-list-item>
+        <a matRipple>
           <mat-icon>settings</mat-icon>
           <span class="nav-caption">{{ 'layout.sidenav.team-configuration' | translate }}</span>
         </a>
     </div>
-  </mat-nav-list>
+</mat-nav-list>

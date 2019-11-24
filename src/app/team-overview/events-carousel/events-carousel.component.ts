@@ -22,13 +22,19 @@ export class EventsCarouselComponent implements OnInit {
     grabCursor: true,
     observer: true,
     spaceBetween: 30,
-    slidesPerView: 3.2,
+    slidesPerView: 5.2,
     breakpoints: {
       1025: {
         slidesPerView: 1.2
       },
       1441: {
         slidesPerView: 2.2
+      },
+      1921: {
+        slidesPerView: 3.2
+      },
+      2300: {
+        slidesPerView: 4.2
       }
     }
   };
