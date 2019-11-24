@@ -40,7 +40,7 @@ export class TeamPickerService {
         // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
       )
       .subscribe((updatedTeam: any) => {
-        console.log('updatedTeam: ', updatedTeam);
+        // console.log('updatedTeam: ', updatedTeam);
         this.currentTeam = updatedTeam;
         this.currentTeamUpdated.next(updatedTeam);
         this.router.navigate(['team-overview']);

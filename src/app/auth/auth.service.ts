@@ -58,34 +58,12 @@ export class AuthService {
 
   fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
     const PATH = this.serverEnvService.getBaseUrl();
-    return this.http.get<any>(`${PATH}/login`);
-    // return this.http.get<any>('./assets/mocks/login-mock.json');
-    // const userData = {
-    //   email,
-    //   password
-    // };
-    // return this.http.post<any>('./assets/mocks/login-mock.json', userData)
+    const USER_DATA = {
+      email,
+      password
+    };
+    return this.http.post<any>(`${PATH}/login`, USER_DATA);
   }
-
-
-  // const authData: AuthData = { email: email, password: password };
-  // const modifiedWithImg = {
-  //   email: email,
-  //   password: password,
-  //   imagePath: './assets/img/shiba.jpg'
-  // };
-
-  // this.http.post(BACKEND_URL + '/signup', modifiedWithImg)
-  //   .subscribe(
-  //     (userData) => {
-  //       this.router.navigate(['/home']);
-  //     },
-  //     error => {
-  //       this.authStatusListener.next(false);
-  //     }
-  //   );
-
-
 
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
@@ -94,7 +72,6 @@ export class AuthService {
       )
       .subscribe(
         (userLoginDataResponse: UserLogin) => {
-          // console.log('userLoginDataResponse: ', userLoginDataResponse);
           if (userLoginDataResponse.token) {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);
@@ -148,11 +125,30 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
+  postForgotPassword(email: string): Observable<any> {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const USER_DATA = {
+      email
+    };
+    return this.http.post<any>(`${PATH}/forgot-password`, USER_DATA);
+  }
+
   forgotPassword(email: string) {
-    console.log('Forgot Password works!');
+    this.postForgotPassword(email)
+     .subscribe(results => { console.log(results) });
+  }
+
+  putResetPassword(password: string, repeatedPassword: string): Observable<any> {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const USER_DATA = {
+      password,
+      repeatedPassword
+    };
+    return this.http.put<any>(`${PATH}/reset-password`, USER_DATA);
   }
 
   resetPassword(password: string, repeatPassword: string) {
-    console.log('Reset Password works!');
+    this.putResetPassword(password, repeatPassword)
+      .subscribe(results => { console.log(results) });
   }
 }
