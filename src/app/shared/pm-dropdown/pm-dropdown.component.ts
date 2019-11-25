@@ -22,13 +22,16 @@ export class PmDropdownComponent implements OnInit {
     this.selectedItemImgPath = resetToDefaultItem.img;
   }
 
-  useLanguage(itemValue: string) {
+  useCurrentSelection(itemValue: string) {
     const useDefaultItem = this.items.find(item => item.value === itemValue);
     this.selectedItemImgPath = useDefaultItem.img;
     if (this.itemsType === 'languages') {
       this.translationPickerService.setCurrentTranslation(itemValue);
     } else if (this.itemsType === 'teams') {
-      this.teamPickerService.setCurrentTeam(itemValue);
+      const selectedTeam = this.items.find(team => team.value === itemValue);
+      // console.log('selectedTeam: ', selectedTeam);
+      // TO-DO fetch new login req and go the team-overview page (needed for the new team package authorization)
+      this.teamPickerService.setCurrentTeam(selectedTeam);
     }
   }
 }

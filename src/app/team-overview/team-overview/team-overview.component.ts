@@ -1,6 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { TeamPickerService } from '../../core/services/team-picker.service';
+import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../../core/services/authorization.service';
 
 @Component({
@@ -8,16 +6,14 @@ import { AuthorizationService } from '../../core/services/authorization.service'
   templateUrl: './team-overview.component.html',
   styleUrls: ['./team-overview.component.scss']
 })
-export class TeamOverviewComponent implements OnInit, OnDestroy {
+export class TeamOverviewComponent implements OnInit {
   pageName = 'team overview';
-  private currentTeamUpdateSub: Subscription;
   isLoading = true;
   isLoadRiskFeatureEnabled = false;
   isPerformanceOvertimeFeatureEnabled = false;
   isLeaderBoardFeatureEnabled = false;
 
   constructor(
-    public teamPickerService: TeamPickerService,
     private authorizationService: AuthorizationService
   ) {}
 
@@ -29,17 +25,6 @@ export class TeamOverviewComponent implements OnInit, OnDestroy {
     // this.isPerformanceOvertimeFeatureEnabled = false;
     // this.isLeaderBoardFeatureEnabled = false;
 
-    this.isLoading = true;
-
-    this.currentTeamUpdateSub = this.teamPickerService
-      .getCurrentTeamUpdateListener()
-      .subscribe((currentTeam: string) => {
-        // console.log('TEAM OVERVIEW - currentTeam: ', currentTeam);
-        this.isLoading = false;
-      });
-  }
-
-  ngOnDestroy(){
-    this.currentTeamUpdateSub.unsubscribe();
+    this.isLoading = false;
   }
 }

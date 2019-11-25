@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { EventsCarouselModalComponent } from './events-carousel-modal/events-carousel-modal.component';
-import { TeamPickerService } from '../../core/services/team-picker.service';
 import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
 import { ServerEnvService } from '../../core/services/server-env.service';
 
@@ -42,7 +41,6 @@ export class EventsCarouselComponent implements OnInit {
   };
   
   constructor(
-    public teamPickerService: TeamPickerService,
     private http: HttpClient,
     private serverEnvService: ServerEnvService,
     private dialog: MatDialog

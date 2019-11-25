@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
-import { TeamPickerService } from '../core/services/team-picker.service';
 import { MatDialog } from '@angular/material';
 import { UserLogin } from './user-login.model';
 import { ServerEnvService } from '../core/services/server-env.service';
@@ -26,8 +25,7 @@ export class AuthService {
     private localStorageService: LocalStorageService,
     private authorizationService: AuthorizationService,
     private dialog: MatDialog,
-    private serverEnvService: ServerEnvService,
-    public teamPickerService: TeamPickerService
+    private serverEnvService: ServerEnvService
   ) {}
 
   getToken(): string {
@@ -75,8 +73,6 @@ export class AuthService {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);
             this.authorizationService.allowedFeatures = userLoginDataResponse.features;
-
-            this.teamPickerService.setCurrentTeam(this.teamPickerService.getCurrentTeam());
 
             this.token = userLoginDataResponse.token;
             this.localStorageService.storeOnCookie('token', this.token);

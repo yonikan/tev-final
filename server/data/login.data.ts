@@ -11,5 +11,22 @@ export const LOGIN_DATA: any = {
 		loadRisk: false,
 		performanceOvertime: false,
 		leaderBoard: false
-	}
+	},
+	teams: [
+		{
+		  value: 'hull-u18',
+		  viewValue: '2019/20: Hull City U18',
+		  img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+		},
+		{
+		  value: 'hull-u14',
+		  viewValue: '2019/20: Hull City U14',
+		  img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+		},
+		{
+		  value: 'hull-o18',
+		  viewValue: '2019/20: Hull City O18',
+		  img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
+		}
+	]
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
-import { TeamPickerService } from '../../../app/core/services/team-picker.service';
 import { AppConsts } from '../../app.consts';
 import { UserLogin } from '../../../app/auth/user-login.model';
 
@@ -17,33 +16,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
   currentTranslation = 'en';
   private currentTranslationSub: Subscription;
+
   userLoginData: UserLogin;
   private userLoginDataSub: Subscription;
   userImgUrl: string;
   userFirstName: string;
   userLastName: string;
   dashboardVersion: string;
+  // currentTeam;
   currentTeam = 'hull-o18';
-  // teams;
-  teams: any[] = [
-    {
-      value: 'hull-u18',
-      viewValue: '2019/20: Hull City U18',
-      img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
-    },
-    {
-      value: 'hull-u14',
-      viewValue: '2019/20: Hull City U14',
-      img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
-    },
-    {
-      value: 'hull-o18',
-      viewValue: '2019/20: Hull City O18',
-      img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png'
-    }
-  ];
+  teams;
 
-  constructor(public authService: AuthService, public teamPickerService: TeamPickerService){}
+  constructor(public authService: AuthService){}
 
   ngOnInit() {
     this.userLoginDataSub = this.authService
@@ -53,9 +37,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.userFirstName = userLoginData.first_name;
         this.userLastName = userLoginData.last_name;
         this.dashboardVersion = AppConsts.version;
-        // this.teams = userLoginData.teams;
-        // this.teamPickerService.teams = userLoginData.teams;
-        // this.teamPickerService.setCurrentTeam(userLoginData.teams[0]);
+        this.teams = userLoginData.teams;
+        // this.currentTeam = userLoginData.teams[0].value;
       });
 
     this.authStatusSub = this.authService
@@ -63,18 +46,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((authStatus: boolean) => {
         this.isAuthenticated = authStatus;
       });
-
-    this.currentTeam = this.teamPickerService.getCurrentTeam();
   }
 
-  onToggleSidenav() {
-    this.sidenavToggle.emit();
-  }
-
-  onSelectedTeam(team) {
-    this.currentTeam = team;
-    this.teamPickerService.setCurrentTeam(team);
-  }
+  // onToggleSidenav() {
+  //   this.sidenavToggle.emit();
+  // }
 
   onLogout() {
     this.authService.logout();

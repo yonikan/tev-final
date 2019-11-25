@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { MatDialog } from '@angular/material';
-import { TeamPickerService } from '../core/services/team-picker.service';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -15,7 +14,6 @@ describe('AuthService', () => {
   let localStorageServiceSpy: any;
   let authorizationServiceSpy: any;
   let dialogSpy: any;
-  let teamPickerServiceSpy: any;
 
   const LOGIN_DATA = {
     email: 'yossi@playermaker.com',
@@ -34,7 +32,6 @@ describe('AuthService', () => {
     localStorageServiceSpy = jasmine.createSpyObj('LocalStorageService', ['']);
     authorizationServiceSpy = jasmine.createSpyObj('AuthorizationService', ['']);
     dialogSpy = jasmine.createSpyObj('MatDialog', ['']);
-    teamPickerServiceSpy = jasmine.createSpyObj('TeamPickerService', ['']);
 
     TestBed.configureTestingModule({
       imports: [
@@ -45,8 +42,7 @@ describe('AuthService', () => {
         {provide: Router, useValue: routerSpy},
         {provide: LocalStorageService, useValue: localStorageServiceSpy},
         {provide: AuthorizationService, useValue: authorizationServiceSpy},
-        {provide: MatDialog, useValue: dialogSpy},
-        {provide: TeamPickerService, useValue: teamPickerServiceSpy}
+        {provide: MatDialog, useValue: dialogSpy}
       ]
     });
 

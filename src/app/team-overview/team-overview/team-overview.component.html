@@ -4,7 +4,7 @@
     <div class="overview-content">
         <app-events-carousel></app-events-carousel>
 
-        <app-page-header *ngIf="!isLoading" [pageTitle]="pageName"></app-page-header>
+        <app-page-header [pageTitle]="pageName"></app-page-header>
 
         <div class="overview-content-main">
             <div class="load-risk-container" *ngIf="isLoadRiskFeatureEnabled">
