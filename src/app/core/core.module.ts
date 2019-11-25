@@ -13,6 +13,7 @@ import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +22,17 @@ import { ProfileComponent } from './components/profile/profile.component';
     ThemePickerComponent,
     MenuComponent,
     PreferencesComponent,
-    ProfileComponent
+    ProfileComponent,
+    ErrorModalComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
     FormsModule // for the [(ngModel)]=""
+  ],
+  entryComponents: [
+    ErrorModalComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserIdleInterceptor, multi: true },
@@ -41,7 +46,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ThemePickerComponent,
     MenuComponent,
     PreferencesComponent,
-    ProfileComponent
+    ProfileComponent,
+    ErrorModalComponent
   ]
 })
 export class CoreModule { }

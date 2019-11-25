@@ -11,19 +11,5 @@ export const LOGIN_DATA: any = {
 		loadRisk: false,
 		performanceOvertime: false,
 		leaderBoard: false
-	},
-	// teams: [
-    //     {
-    //         teamId: 20,
-    //         teamName: 'hull-u18'
-    //     },
-    //     {
-    //         teamId: 21,
-    //         teamName: 'hull-u14'
-    //     },
-    //     {
-    //         teamId: 22,
-    //         teamName: 'hull-o18'
-    //     }
-    // ]
+	}
 }

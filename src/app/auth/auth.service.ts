@@ -7,7 +7,6 @@ import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { TeamPickerService } from '../core/services/team-picker.service';
 import { MatDialog } from '@angular/material';
-import { ModalComponent } from '../shared/modal/modal.component';
 import { UserLogin } from './user-login.model';
 import { ServerEnvService } from '../core/services/server-env.service';
 
@@ -87,26 +86,26 @@ export class AuthService {
           }
         },
         (error) => {
-          console.log('error: ', error);
-          if(error.status === 500) {
-            console.log('Server error');
-          } else {
-            console.log('Client error');
-          }
+          // console.log('error: ', error);
+          // if(error.status === 500) {
+          //   console.log('Server error');
+          // } else {
+          //   console.log('Client error');
+          // }
           
-          const modalTitle = 'Error!!!';
-          let modalMessage = 'An unknown error occurred!';
-          if (error.error.message) {
-            modalMessage = error.error.message;
-          }
-          this.dialog.open(ModalComponent, {
-            width: '500px',
-            height: '200px',
-            data: { 
-              title: modalTitle,
-              message: modalMessage
-            }
-          });
+          // const modalTitle = 'Error!!!';
+          // let modalMessage = 'An unknown error occurred!';
+          // if (error.error.message) {
+          //   modalMessage = error.error.message;
+          // }
+          // this.dialog.open(ModalComponent, {
+          //   width: '500px',
+          //   height: '200px',
+          //   data: { 
+          //     title: modalTitle,
+          //     message: modalMessage
+          //   }
+          // });
 
           this.isAuthenticated = false;
           this.authStatusListener.next(false);
@@ -131,7 +130,9 @@ export class AuthService {
 
   forgotPassword(email: string) {
     this.postForgotPassword(email)
-     .subscribe(results => { console.log(results) });
+     .subscribe((results: any) => { 
+       console.log(results)
+     });
   }
 
   putResetPassword(password: string, repeatedPassword: string): Observable<any> {
@@ -145,6 +146,8 @@ export class AuthService {
 
   resetPassword(password: string, repeatPassword: string) {
     this.putResetPassword(password, repeatPassword)
-      .subscribe(results => { console.log(results) });
+      .subscribe((results: any) => {
+        //  console.log(results)
+      });
   }
 }

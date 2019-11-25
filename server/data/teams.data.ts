@@ -1,52 +1,28 @@
 export const TEAMS_DATA: any = {
-    teamsData: [
+    teams: [
         {
-            teamId: 20,
-            teamName: 'hull-u18',
-            'team-data': {
-                start_time:1566187771255,
-                end_time:1566195036194,
-                type:1,
-                tags:[],
-                trim_start_time:1566188375000,
-                trim_end_time:1566194995000,
-                abbreviation:'GMT+3',
-                time_zone_name:'Asia/Jerusalem',
-                offset:3,
-                pulled:true
-            }
-        },
-        {
-            teamId: 21,
-            teamName: 'hull-u14',
-            'team-data': {
-                start_time:1566187771255,
-                end_time:1566195036194,
-                type:1,
-                tags:[],
-                trim_start_time:1566188375000,
-                trim_end_time:1566194995000,
-                abbreviation:'GMT+3',
-                time_zone_name:'Asia/Jerusalem',
-                offset:3,
-                pulled:true
-            }
-        },
-        {
-            teamId: 22,
-            teamName: 'hull-o18',
-            'team-data': {
-                start_time:1566187771255,
-                end_time:1566195036194,
-                type:1,
-                tags:[],
-                trim_start_time:1566188375000,
-                trim_end_time:1566194995000,
-                abbreviation:'GMT+3',
-                time_zone_name:'Asia/Jerusalem',
-                offset:3,
-                pulled:true
-            }
+            id: 20,
+			name: 'hull-u18',
+			viewName: 'Hull City U18',
+			seasonName: '2019/20',
+			img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png',
+			package: 'elite'
+		},
+		{
+            id: 21,
+			name: 'hull-u14',
+			viewName: 'Hull City U14',
+			seasonName: '2019/20',
+			img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png',
+			package: 'elite'
+		},
+		{
+            id: 22,
+			name: 'hull-o18',
+			viewName: 'Hull City O18',
+			seasonName: '2019/20',
+			img: 'https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1566916634.png',
+			package: 'elite'
         }
     ]
 }

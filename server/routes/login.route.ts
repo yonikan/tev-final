@@ -7,7 +7,13 @@ export function postLoginData(req: Request, res: Response) {
         password: req.body.password
     };        
     res.status(201).json({ payload: LOGIN_DATA });
-    // res.status(404).json({ payload: 'Failure.....................' }); // error possible: not found, expired
+    // res.status(404).json(
+    //     {
+    //         errorMessageId: '321',
+    //         errorMessage: 'user not found',
+    //         errorExtraValues: {}
+    //     }
+    // );
 }
 
 export function postForgotPassword(req: Request, res: Response) {
@@ -15,7 +21,13 @@ export function postForgotPassword(req: Request, res: Response) {
         email: req.body.email
     };
     res.status(201).json({ payload: 'test forgot pass' });
-    // res.status(404).json({ payload: 'Failure.....................' }); // error possible: not found
+    // res.status(404).json(
+    //     {
+    //         errorMessageId: '321',
+    //         errorMessage: 'user not found',
+    //         errorExtraValues: {}
+    //     }
+    // );
 }
 
 export function putResetPassword(req: Request, res: Response) {
@@ -24,5 +36,11 @@ export function putResetPassword(req: Request, res: Response) {
         repeatedPassword: req.body.repeatedPassword
     };
     res.status(200).json({ payload: 'test reset pass' });
-    // res.status(412).json({ payload: 'Failure.....................' }); // possible errors: same as old, not valid
+    // res.status(412).json(
+    //     {
+    //         errorMessageId: '321',
+    //         errorMessage: 'same as old',
+    //         errorExtraValues: {}
+    //     }
+    // );
 }

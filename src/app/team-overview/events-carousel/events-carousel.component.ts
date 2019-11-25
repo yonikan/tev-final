@@ -3,8 +3,8 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { map } from 'rxjs/operators';
+import { EventsCarouselModalComponent } from './events-carousel-modal/events-carousel-modal.component';
 import { TeamPickerService } from '../../core/services/team-picker.service';
-import { ModalComponent } from '../../shared/modal/modal.component';
 import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
 import { ServerEnvService } from '../../core/services/server-env.service';
 
@@ -68,7 +68,7 @@ export class EventsCarouselComponent implements OnInit {
   onDeleteSession(teamEventId) {
     const modalTitle = 'Delete Session';
     const modalMessage = `Are you sure you want to delete ${teamEventId} session?`;
-    const dialogRef = this.dialog.open(ModalComponent, {
+    const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
       data: { 

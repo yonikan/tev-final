@@ -17,6 +17,7 @@ import { EventComponent } from './events-carousel/event/event.component';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { EventsCarouselComponent } from './events-carousel/events-carousel.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { EventsCarouselModalComponent } from './events-carousel/events-carousel-modal/events-carousel-modal.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -33,7 +34,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     LeaderBoardRowComponent,
     TeamOverviewChartComponent,
     TeamOverviewKpiComponent,
-    EventsCarouselComponent
+    EventsCarouselComponent,
+    EventsCarouselModalComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ChartModule,
     SwiperModule,
     ScrollingModule
+  ],
+  entryComponents: [
+    EventsCarouselModalComponent
   ],
   providers: [
     {

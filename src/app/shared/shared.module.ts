@@ -5,14 +5,12 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.component';
-import { ModalComponent } from './modal/modal.component';
 import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 
 @NgModule({
   declarations: [
     PageHeaderComponent,
     LoaderSpinnerComponent,
-    ModalComponent,
     PmDropdownComponent
   ],
   imports: [
@@ -21,16 +19,12 @@ import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
     ContentLoaderModule,
     TranslateModule
   ],
-  entryComponents: [
-    ModalComponent
-  ],
   exports: [
     MaterialModule,
     ContentLoaderModule,
     TranslateModule,
     PageHeaderComponent,
     LoaderSpinnerComponent,
-    ModalComponent,
     PmDropdownComponent
   ]
 })

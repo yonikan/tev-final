@@ -25,6 +25,7 @@ export class AuthorizationService {
 
   public initFeatureToggling() {
     return this.httpClient
+      // .get('https://playermaker-dashboard-ng.s3.amazonaws.com/assets/features-configuration/config-features.json')
       .get('./assets/features-configuration/config-features.json')
       .pipe(
         tap(features => { 
@@ -36,6 +37,7 @@ export class AuthorizationService {
 
   public initPlatformFeatureToggling() {
     return this.httpClient
+      // .get('https://playermaker-dashboard-ng.s3.amazonaws.com/assets/features-configuration/config-platform-features.json')
       .get('./assets/features-configuration/config-platform-features.json')
       .pipe(
         tap((features: any) => { 
