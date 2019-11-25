@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ServerEnvService } from './server-env.service';
+import { AuthService } from '../../auth/auth.service';
+import { AuthorizationService } from './authorization.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +9,18 @@ import { ServerEnvService } from './server-env.service';
 export class TeamPickerService {
 
   constructor(
-    private http: HttpClient, 
-    private serverEnvService: ServerEnvService,
+    public authService: AuthService,
+    private authorizationService: AuthorizationService,
     private router: Router
   ) { }
 
   setCurrentTeam(selectedTeam: string) {
     console.log('selectedTeam: ', selectedTeam);
-    // const PATH = this.serverEnvService.getBaseUrl();
-    // this.http
-    //   .get<any>(`${PATH}/teams`)
-    //   .pipe(
-    //     // tap(results => { console.log('results: ', results) }),
-    //     map((teamsData: any) => teamsData.payload.teams),
-    //     // tap(results => { console.log('results: ', results) }),
-    //     map((teams: any) => teams.find(team => team.name === selectedTeam)),
-    //     // tap(teamFiltered => { console.log('teamFiltered: ', teamFiltered) })
-    //   )
-    //   .subscribe((team: any) => {
-    //     console.log('team: ', team);
-    //     this.router.navigate(['team-overview']);
-    //   });
+    this.authService.fetchUserLoginData('', '')
+      .subscribe((userLoginData: any) => {
+        // console.log('userLoginData after team has changed: ', userLoginData);
+        this.authorizationService.allowedFeatures = userLoginData.features;
+        this.router.navigate(['team-overview']);
+      });
   }
 }
