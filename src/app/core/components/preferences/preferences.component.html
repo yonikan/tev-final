@@ -2,8 +2,6 @@
     <app-page-header [pageTitle]="pageName"></app-page-header>
     <mat-card class="">
         <mat-card-content>
-            dashboard version: {{ dashboardVersion }}
-            
             <app-pm-dropdown 
               [appearance]="'outline'"
               [itemsType]="'languages'"
@@ -11,7 +9,6 @@
               [dropdownWidth]="'120px'"
               [defaultItem]="currentTranslation">
             </app-pm-dropdown>
-
             <!-- <mat-radio-group [(ngModel)]="currentTheme" (change)="themeChange($event)">
                 <mat-radio-button color="primary" class="example-radio-button" *ngFor="let theme of themes; let i = index" [value]="theme">
                     {{ theme.viewValue }}

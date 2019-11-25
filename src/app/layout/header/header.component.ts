@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
-import { AppConsts } from '../../app.consts';
 import { UserLogin } from '../../../app/auth/user-login.model';
 
 @Component({
@@ -22,10 +21,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userImgUrl: string;
   userFirstName: string;
   userLastName: string;
-  dashboardVersion: string;
+  appVersion: string;
   // currentTeam;
   currentTeam = 'hull-o18';
-  teams;
+  teams: any[];
 
   constructor(public authService: AuthService){}
 
@@ -36,9 +35,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.userImgUrl = userLoginData.image_url;
         this.userFirstName = userLoginData.first_name;
         this.userLastName = userLoginData.last_name;
-        this.dashboardVersion = AppConsts.version;
-        this.teams = userLoginData.teams;
+        this.appVersion = userLoginData.app_version;
         // this.currentTeam = userLoginData.teams[0].value;
+        // console.log('this.currentTeam: ', this.currentTeam);
+        this.teams = userLoginData.teams;
       });
 
     this.authStatusSub = this.authService

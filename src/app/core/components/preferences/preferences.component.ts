@@ -11,7 +11,6 @@ import { ThemePickerService } from '../../theme-picker/theme-picker.service';
 })
 export class PreferencesComponent implements OnInit {
   pageName = 'Preferences';
-  dashboardVersion = AppConsts.version;
   currentTranslation = 'en';
   languages: any[] = [
     { value: 'en', viewValue: 'English - Eng', img: './assets/svg/flag-us.svg' },
