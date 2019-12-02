@@ -14,6 +14,7 @@
                 [@fadeInOut]
                 [eventIndex]="index" 
                 (confirmSessionEmitter)="onConfirmSession($event)"
+                (convertSessionEmitter)="onConvertSession($event)"
                 (deleteSessionEmitter)="onDeleteSession($event)" 
                 [eventData]="teamEvent">
             </app-event>

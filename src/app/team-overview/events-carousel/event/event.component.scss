@@ -22,8 +22,11 @@
           align-items: center;
     
           .status-bullet {
-            color: #fbb128;
-            font-size: 18px;
+            width: 6px;
+            height: 6px;
+            margin-right: 9px;
+            background-color: #fbb128;
+            border-radius: 50%;
           }
         }
     
@@ -54,6 +57,12 @@
   
         .info-title {
           font-size: 12px;
+          text-transform: uppercase;
+        }
+
+        mat-icon {
+          font-size: 13px;
+          color: red;
         }
       }
   

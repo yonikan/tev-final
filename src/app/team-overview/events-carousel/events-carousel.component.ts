@@ -63,6 +63,27 @@ export class EventsCarouselComponent implements OnInit {
     console.log('teamEventId: ', teamEventId);
   }
 
+  onConvertSession(teamEventId) {
+    const modalTitle = 'Convert Session';
+    const modalMessage = `Are you sure you want to convert ${teamEventId} session?`;
+    const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
+      width: '500px',
+      height: '200px',
+      data: { 
+        title: modalTitle,
+        message: modalMessage,
+        modalData: teamEventId
+      }
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(modalData => {
+        if(modalData) {
+          console.log('Convert Session......................');
+        }
+      });
+  }
+
   onDeleteSession(teamEventId) {
     const modalTitle = 'Delete Session';
     const modalMessage = `Are you sure you want to delete ${teamEventId} session?`;

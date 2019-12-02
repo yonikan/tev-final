@@ -71,7 +71,8 @@
         "events-carousel": {
             "title": "There are {{ eventsNumber }} new sessions",
             "sub-title": "Validate these session and get the most accurate and updated performance of your team:",
-            "confirm-session": "Confirm session",
+            "validate-session": "Validate",
+            "toggle-event-type": "Change to",
             "delete-session": "Delete session",
             "duration": "duration",
             "players": "players",

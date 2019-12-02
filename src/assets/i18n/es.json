@@ -71,7 +71,8 @@
         "events-carousel": {
             "title": "There are {{ eventsNumber }} new sessions - SPANISH",
             "sub-title": "Validate these session and get the most accurate and updated performance of your team: - SPANISH",
-            "confirm-session": "Confirm session - SPANISH",
+            "validate-session": "Validate - SPANISH",
+            "toggle-event-type": "Change to",
             "delete-session": "Delete session",
             "duration": "duration - SPANISH",
             "players": "players",

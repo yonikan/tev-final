@@ -9,18 +9,21 @@ export class EventComponent implements OnInit {
   @Input() eventIndex: number;
   @Input() eventData: any;
   @Output() confirmSessionEmitter = new EventEmitter<string>();
+  @Output() convertSessionEmitter = new EventEmitter<string>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
-  isConfirmed = false;
 
   constructor() { }
 
   ngOnInit() {
-
+    console.log(this.eventData);
   }
 
   confirmSession(eventId) {
-    // this.isConfirmed = true;
     this.confirmSessionEmitter.emit(eventId);
+  }
+
+  convertSession(eventId) {
+    this.convertSessionEmitter.emit(eventId);
   }
 
   deleteSession(eventId) {
