@@ -2,5 +2,7 @@
 @import '../../../styles/mixins';
 
 :host {
-    @include card;
+    mat-card {
+        @include card;
+    }
 }

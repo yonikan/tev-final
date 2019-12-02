@@ -1,0 +1,23 @@
+<div class="overview-content-events" *ngIf="teamEvents.length > 0">
+    <div class="events-container">
+        <div class="events-into-text">
+            <h3>{{ 'team-overview.events-carousel.title' | translate:{'eventsNumber':teamEvents.length} }}</h3>
+            <p>{{ 'team-overview.events-carousel.sub-title' | translate }}</p>
+        </div>
+        <mat-spinner *ngIf="isTeamEventsLoading"></mat-spinner>
+        <swiper *ngIf="!isTeamEventsLoading"
+            class="swiper-container" 
+            [config]="config"
+            [(index)]="index">
+
+            <app-event *ngFor="let teamEvent of teamEvents"
+                [@fadeInOut]
+                [eventIndex]="index" 
+                (confirmSessionEmitter)="onConfirmSession($event)"
+                (convertSessionEmitter)="onConvertSession($event)"
+                (deleteSessionEmitter)="onDeleteSession($event)" 
+                [eventData]="teamEvent">
+            </app-event>
+        </swiper>
+    </div>
+</div>

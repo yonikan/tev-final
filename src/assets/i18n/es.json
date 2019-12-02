@@ -1,15 +1,4 @@
 {
-    "general": {
-        "toasts": {
-            
-        },
-        "dialogs": {
-            
-        },
-        "errors": {
-
-        }
-    },
     "layout": {
         "header": {
             "logout": "Cerrar Sesión",
@@ -19,46 +8,80 @@
             "chinese": "Chino"
         },
         "sidenav": {
-            "team-overview": "Team Overview - SPANISH",
+            "team-overview": "Overview - SPANISH",
             "training": "Entrenamientos",
             "matches": "Partidos",
             "players": "Players - SPANISH",
             "notes": "Notes - SPANISH",
             "reports": "Reports - SPANISH",
-            "team-configuration": "Team Configuration - SPANISH"
+            "team-configuration": "Team Config - SPANISH"
+        },
+        "mobile-nav": {
+            "team-overview": "Overview",
+            "training": "Entrenamientos",
+            "matches": "Partidos",
+            "players": "Players",
+            "notes": "Notes",
+            "reports": "Reports",
+            "team-configuration": "Team Config"
         }
     },
     "auth": {
-        "log-in": "Usuario",
-        "go-back-to-login": "Go back to login - SPANISH",
-        "incorrect-password": "Incorrect password - SPANISH",
-        "invalid-username-or-email": "Invalid username or email - SPANISH",
-        "email-address": "emails address - SPANISH",
-        "password": "contraseña",
-        "choose-a-languages": "choose a language - SPANISH",
+        "general": {
+            "log-in": "Usuario",
+            "go-back-to-login-link": "Go back to login - SPANISH",
+            "incorrect-email-and/or-password": "Incorrect email and/or password - SPANISH",
+            "incorrect-password": "Incorrect password - SPANISH",
+            "invalid-email": "Invalid email",
+            "enter-email-address": "enter email address",
+            "enter-password": "enter password",
+            "repeat-password": "repeat password",
+            "repeat-password-is-required-error": "Repeat password is required",
+            "password-does-not-match-error": "Password does not match",
+            "choose-a-languages": "choose a language - SPANISH"
+        },
         "user-login": {
-            "title": "Usuario"
+            "title": "Usuario",
+            "forgot-password-link": "forgot password - SPANISH",
+            "reset-password-link": "reset password - SPANISH",
+            "email-sent-link": "email sent - SPANISH",
+            "user-login-button": "Usuario"
         },
         "forgot-password": {
             "title": "Forgot Your Password? - SPANISH",
-            "sub-title": "Enter your e-mail address below to revieve a verification email and reset your account: - SPANISH",
+            "sub-title": "Enter your e-mail address below to recieve a verification email and reset your account: - SPANISH",
             "send-verification-email": "SEND VERIFICATION EMAIL - SPANISH"
         },
         "reset-password": {
             "title": "Reset Password - SPANISH",
-            "sub-title": "You have verified your account successfully. Enter a new password for your account - SPANISH",
+            "sub-title1": "You have verified your account successfully. - SPANISH",
+            "sub-title2": "Enter a new password for your account: - SPANISH",
             "new-password": "NEW PASSWORD - SPANISH",
             "re-enter-new-password": "RE-ENTER NEW PASSWORD - SPANISH",
             "reset-password": "RESET PASSWORD - SPANISH"
         },
         "email-sent": {
             "title": "E-Mail Sent - SPANISH",
-            "sub-title": "Go to your inbox and click the link. Didn't receive the email? - SPANISH",
+            "sub-title1": "Go to your inbox and click the link - SPANISH",
+            "sub-title2": "Didn't receive the email? - SPANISH",
             "send-again": "Send again - SPANISH"
         }
     },
     "team-overview": {
-        "title": "Team Overview - SPANISH",
+        "events-carousel": {
+            "title": "There are {{ eventsNumber }} new sessions - SPANISH",
+            "sub-title": "Validate these session and get the most accurate and updated performance of your team: - SPANISH",
+            "validate-session": "Validate - SPANISH",
+            "toggle-event-type": "Change to",
+            "delete-session": "Delete session",
+            "duration": "duration - SPANISH",
+            "players": "players",
+            "phases": "phases",
+            "error-modal-title": "test",
+            "error-modal-body": "test",
+            "error-modal-confirm": "test",
+            "error-modal-cancel": "test"
+        },
         "load-risk": {
             "title": "Load risk"
         },
@@ -67,18 +90,6 @@
         },
         "leader-board": {
             "title": "Leaderboard"
-        },
-        "events": {
-            "title": "Events"
         }
-    },
-    "training": {
-        "title": "Entrenamientos"
-    },
-    "matches": {
-        "title": "Partidos"
-    },
-    "team-configuration": {
-        "title": "Team Configuration"
     }
 }

@@ -1,1 +1,18 @@
-<h3>performance-overtime works!</h3>
+<mat-card class="">
+  <!-- <mat-card-header *ngIf="true">
+    <h3>performance-overtime works!</h3>
+  </mat-card-header> -->
+
+  <div class="charts-header">
+    <app-team-overview-kpi 
+      *ngFor="let kpiItem of test; let i = index" 
+      [ngClass]="{'active': i===0}"
+      [kpiData]="kpiItem"
+      (selectedKpiEmitter)="onSelectedKpiEmitter($event)">
+    </app-team-overview-kpi>
+  </div>
+
+  <mat-card-content *ngIf="true">
+    <app-team-overview-chart></app-team-overview-chart>
+  </mat-card-content>
+</mat-card>

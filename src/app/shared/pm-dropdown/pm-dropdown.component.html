@@ -1,0 +1,11 @@
+<mat-form-field [appearance]="appearance" style="margin-bottom: -0.75em" [style.width]="dropdownWidth ? dropdownWidth : '120px'">
+    <div class="dropdown-container">
+        <img [src]="selectedItemImgPath" style="vertical-align: middle; margin-right: 8px; width: 20px; height: 20px; border-radius: 50%;" />
+        <mat-select [(value)]="defaultItem" (selectionChange)="useCurrentSelection($event.value)">
+            <mat-option *ngFor="let item of items" [value]="item.value">
+                <img [src]="item.img" style="vertical-align: middle; margin-right: 8px; width: 18px; height: 18px; border-radius: 50%;" />
+                <span>{{ item.viewValue }}</span>
+            </mat-option>
+        </mat-select>
+    </div>
+</mat-form-field>

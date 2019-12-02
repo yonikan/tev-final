@@ -1,26 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
 import { AppRoutingModule } from './app.routes';
-import { ContentLoaderModule } from '@ngneat/content-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { TeamOverviewModule } from './team-overview/team-overview.module';
-import { TrainingModule } from './training/training.module';
-import { MatchesModule } from './matches/matches.module';
 import { AppComponent } from './app.component';
-import { TeamConfigurationModule } from './team-configuration/team-configuration.module';
-
+import { CookieService } from 'ngx-cookie-service';
+import { AuthorizationService, initFeatureToggling, initPlatformFeatureToggling } from './core/services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -33,22 +26,31 @@ import { TeamConfigurationModule } from './team-configuration/team-configuration
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    ContentLoaderModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    }),
     CoreModule,
     LayoutModule,
-    AuthModule,
-    TeamOverviewModule,
-    MatchesModule,
-    TrainingModule,
-    TeamConfigurationModule,
-    TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-        }
-    })
+    AuthModule
+  ],
+  providers: [
+    CookieService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initFeatureToggling,
+      deps: [AuthorizationService],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initPlatformFeatureToggling,
+      deps: [AuthorizationService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,27 +1,36 @@
 
 // pass variables into a sass map ================
 $variables: (
+  --pageBackground: var(--pageBackground),
+
+  --headerColor: var(--headerColor),
+  --headerBackground: var(--headerBackground),
+
   --navColor: var(--navColor),
   --navBackground: var(--navBackground),
+
   --cardColor: var(--cardColor),
   --cardBackground: var(--cardBackground),
-  --buttonColor: var(--buttonColor),
-  --buttonBackground: var(--buttonBackground),
+
   --footerColor: var(--footerColor),
-  --footerBackground: var(--footerBackground),
-  --footerAlignment: var(--footerAlignment)
+  --footerBackground: var(--footerBackground)
 );
+
+
+$pageBackground : #ebebeb;
 
 
 
 // pm app config ================
 $header-height: 55px;
+// $sidenav-width: 220px;
+$sidenav-width: 100px;
 
 // pm app media queries ================
-$media-query-xs: 414px; // 414px is the iphone 8 plus
-$media-query-sm: 600px;
-$media-query-md: 770px;
-$media-query-lg: 1200px;
+$media-query-xs: 375px; // 375px is the iphone 8/7/6
+$media-query-sm: 768px; // 768px is the ipad
+$media-query-md: 1024px; // 1024px is the a desktop
+$media-query-lg: 1200px; // 1200px is the a desktop hi-res
 
 // pm app material colors ================
 $color-primary: #ffffff;
@@ -29,7 +38,8 @@ $color-accent: #ffffff;
 $color-warn: #ffffff;
 
 // pm app colors ================
-$color-pink: #a50740;
+$color-pink: #d31c4c;
+$color-pink-dark: #a50740;
 $color-purple: #17142e;
 $background-color-light-grey: #484848;
 $background-color-dark-grey: #353435;

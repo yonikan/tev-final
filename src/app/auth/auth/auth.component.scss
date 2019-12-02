@@ -1,0 +1,72 @@
+@import '../../../styles/variables';
+@import '~@angular/material/theming';
+
+:host {
+  .login-background-img {
+    height: 100%;
+    display: block;
+    // position: relative;
+
+    &::after {
+      content: '';
+      background-color: rgb(230, 230, 230);
+      background-image: url(../../../assets/img/login-background.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 50%;
+      opacity: 0.7;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
+
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 400px;
+      height: calc(100vh - 70px); // removes the header placeholder from the height
+      padding: 35px;
+      background-color: #fff;
+      box-shadow: 2px 0 5px -2px #000;
+
+      @media (max-width: $media-query-sm) {
+        width: 100%;
+        width: calc(100% - 70px);
+        text-align: center;
+      }
+
+      .login-content {
+        margin-bottom: 32px;
+
+        .logo {
+          margin-top: 10px;
+          margin-bottom: 30px;
+
+          img {
+            width: 200px;
+          }
+        }
+      }
+
+      .login-footer {
+        .login-bottom {
+          text-align: center;
+
+          .copyrights {
+            font-size: 13px;
+            line-height: 2.2;
+          }
+
+          .privacy {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

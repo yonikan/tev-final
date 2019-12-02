@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app.routes';
-
-import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 
 @NgModule({
   declarations: [
-    LoginComponent, 
+    AuthComponent,
     UserLoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
@@ -27,10 +26,11 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
     ShowHidePasswordModule
   ],
   exports: [
-    LoginComponent, 
+    AuthComponent,
     UserLoginComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    EmailSentComponent
   ]
 })
 export class AuthModule {}

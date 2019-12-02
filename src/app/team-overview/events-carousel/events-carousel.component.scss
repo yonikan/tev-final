@@ -1,0 +1,68 @@
+@import '../../../styles/variables';
+@import '~swiper/dist/css/swiper.min.css';
+
+:host {
+    .overview-content-events {
+        background-color: #b5b5b5;
+        padding: 20px;
+        padding-bottom: 0; // the swiper lib adds 20px padding
+        border-bottom: 1px solid #a7a7a7;
+        // width: 900px;
+        // margin: 0 auto;
+        // display: flex;
+
+        @media (max-width: $media-query-sm) {
+          // display: flex;
+          // flex-direction: column;
+        }
+
+        .events-container {
+          display: flex;
+
+          @media (max-width: $media-query-sm) {
+            flex-direction: column;
+          }
+
+          .events-into-text {
+            width: 220px;
+            padding-right: 10px;
+            color: #616161;
+
+            @media (max-width: $media-query-sm) {
+              width: 100%;
+            }
+
+            h3 {
+              margin: 0;
+            }
+
+            p {
+              margin-top: 10px;
+            }
+          }
+
+          .swiper-container {
+              // width: 100%;
+              width: calc(100% - 220px);
+
+              @media (max-width: $media-query-sm) {
+                width: 100%;
+              }
+          }
+
+          // display: flex;
+          // justify-content: space-between;
+
+          // @media (max-width: $media-query-sm) {
+          //   overflow: hidden;
+          // }
+
+          // .swiper-pagination-bullet {
+          //   bottom: -10px !important;
+          // }
+          // .swiper-pagination {
+          //   display: flex;
+          // }
+        }
+    }
+}

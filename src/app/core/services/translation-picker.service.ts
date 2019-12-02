@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from './local-storage.service';
 
@@ -8,15 +8,11 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class TranslationPickerService {
   private currentTranslation = 'en';
-  private currentTranslationUpdated = new Subject<string>();
+  private currentTranslationUpdated = new BehaviorSubject<string>('en');
   
   constructor(private translateService: TranslateService, private localStorageService: LocalStorageService) { }
 
-  getCurrentTranslationUpdateListener() {
-    return this.currentTranslationUpdated.asObservable();
-  }
-
-  getCurrentTranslation() {
+  getCurrentTranslation(): string {
     return this.currentTranslation;
   }
 

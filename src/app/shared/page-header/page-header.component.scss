@@ -1,0 +1,47 @@
+@import '../../../styles/variables';
+
+:host {
+    // display: none;
+
+    @media (max-width: $media-query-sm) {
+      display: none;
+    }
+    
+    .overview-header {
+        border-bottom: solid 1px #a7a7a7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    
+        h3 {
+          padding-left: 15px;
+          text-transform: uppercase;
+        }
+    
+        .overview-actions {
+
+          .primary-actions {
+
+            @media (max-width: $media-query-sm) {
+              display: none;
+            }
+          }
+
+          .secondery-actions {
+            display: none;
+
+            @media (max-width: $media-query-sm) {
+              display: block;
+            }
+          }
+
+          .mat-button {
+            min-width: 14px;
+            padding: 0 10px;
+            margin-right: 10px;
+            // border: solid 1px #555;
+          }
+        }
+    }
+}

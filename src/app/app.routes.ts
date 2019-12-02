@@ -1,24 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { TeamOverviewComponent } from './team-overview/team-overview.component';
-import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
-import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { MatchesComponent } from './matches/matches.component';
-import { TrainingComponent } from './training/training.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { AuthComponent } from './auth/auth/auth.component';
+import { MenuComponent } from './core/components/menu/menu.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'team-overview', component: TeamOverviewComponent, canActivate: [AuthGuard] },
-  { path: 'training', component: TrainingComponent, canActivate: [AuthGuard] },
-  { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard] },
-  { path: 'team-configuration', component: TeamConfigurationComponent, canActivate: [AuthGuard] },
+  { path: 'team-overview', loadChildren: () => import('./team-overview/team-overview.module')
+    .then(m => m.TeamOverviewModule), canLoad: [AuthGuard]},
+  // { path: 'players', loadChildren: () => import('./players/players.module')
+  //   .then(m => m.PlayersModule), canLoad: [AuthGuard]},
+  { path: 'login', component: AuthComponent },
+  { path: 'menu', component: MenuComponent, canActivate: [AuthGuard] },
+  // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  // { path: 'preferences', component: PreferencesComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
-  { path: '**', component: TeamOverviewComponent }
+  { path: '**', redirectTo: '/team-overview', pathMatch: 'full' }
 ];
 
 @NgModule({

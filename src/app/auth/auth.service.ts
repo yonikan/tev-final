@@ -1,112 +1,149 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
-import { AuthData } from './auth-data.model';
-import { BehaviorSubject } from 'rxjs';
-import { UIService } from '../core/services/ui.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LocalStorageService } from '../core/services/local-storage.service';
-const BACKEND_URL = 'https://football-dev.playermaker.co.uk/api/v1/account/login';
+import { AuthorizationService } from '../core/services/authorization.service';
+import { MatDialog } from '@angular/material';
+import { UserLogin } from './user-login.model';
+import { ServerEnvService } from '../core/services/server-env.service';
 
 @Injectable({
    providedIn: 'root' 
 })
 export class AuthService {
   private token = null;
-  private appStore = {};
-  private tokenTimer: any;
   private isAuthenticated = false;
   private authStatusListener = new BehaviorSubject<boolean>(false);
+  private userLoginData: UserLogin;
+  private userLoginDataListener = new BehaviorSubject<any>({});
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private uiService: UIService
+    private authorizationService: AuthorizationService,
+    private dialog: MatDialog,
+    private serverEnvService: ServerEnvService
   ) {}
 
-  getToken() {
+  getToken(): string {
     return this.token;
   }
 
-  getAppStore() {
-    return this.appStore;
-  }
-
-  getIsAuth() {
+  getIsAuth(): boolean {
     return this.isAuthenticated;
   }
 
-  getAuthStatusListener() {
+  getAuthStatusListener(): Observable<boolean> {
     return this.authStatusListener.asObservable();
   }
 
-  login(username: string, password: string) {
-    this.setServerToAccess(username);
-    const authData: AuthData = { username, password };
-    this.http.post<any>(BACKEND_URL, authData).subscribe(
-      response => {
-        const loginData = response;
-        if (response.token) {
-          this.token = response.token;
-          this.appStore = response;
-          this.localStorageService.storeOnLocalStorage('login_data', loginData);
-          const expiresInDuration = 60 * 60; // in seconds
-          this.setAuthTimer(expiresInDuration);
-          this.isAuthenticated = true;
-          this.authStatusListener.next(true);
-          this.router.navigate(['/team-overview']);
-          this.uiService.showSnackbar('User is logged in!', null, 2000);
+  setIsAuth(isAuthenticated) {
+    this.isAuthenticated = isAuthenticated;
+    this.authStatusListener.next(isAuthenticated);
+  }
+
+  getUserLoginData(): UserLogin {
+    return this.userLoginData;
+  }
+
+  getUserLoginDataListener(): Observable<UserLogin> {
+    return this.userLoginDataListener.asObservable();
+  }
+
+  fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const USER_DATA = {
+      email,
+      password
+    };
+    return this.http.post<any>(`${PATH}/login`, USER_DATA);
+  }
+
+  login(email: string, password: string) {
+    this.fetchUserLoginData(email, password)
+      .pipe(
+        map((loginData: any) => loginData.payload),
+      )
+      .subscribe(
+        (userLoginDataResponse: UserLogin) => {
+          if (userLoginDataResponse.token) {
+            this.userLoginData = userLoginDataResponse;
+            this.userLoginDataListener.next(userLoginDataResponse);
+            this.authorizationService.allowedFeatures = userLoginDataResponse.features;
+
+            this.token = userLoginDataResponse.token;
+            this.localStorageService.storeOnCookie('token', this.token);
+            this.isAuthenticated = true;
+            this.authStatusListener.next(true);
+            this.router.navigate(['/team-overview']);
+          }
+        },
+        (error) => {
+          // console.log('error: ', error);
+          // if(error.status === 500) {
+          //   console.log('Server error');
+          // } else {
+          //   console.log('Client error');
+          // }
+          
+          // const modalTitle = 'Error!!!';
+          // let modalMessage = 'An unknown error occurred!';
+          // if (error.error.message) {
+          //   modalMessage = error.error.message;
+          // }
+          // this.dialog.open(ModalComponent, {
+          //   width: '500px',
+          //   height: '200px',
+          //   data: { 
+          //     title: modalTitle,
+          //     message: modalMessage
+          //   }
+          // });
+
+          this.isAuthenticated = false;
+          this.authStatusListener.next(false);
         }
-      },
-      error => {
-        this.isAuthenticated = false;
-        this.authStatusListener.next(false);
-      }
-    );
+      );
   }
 
   logout() {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
-    clearTimeout(this.tokenTimer);
     this.router.navigate(['login']);
-    this.uiService.showSnackbar('You have just logged out!', null, 2000);
   }
 
-  private setAuthTimer(duration: number) {
-    this.tokenTimer = setTimeout(() => {
-      this.logout();
-    }, duration * 1000);
+  postForgotPassword(email: string): Observable<any> {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const USER_DATA = {
+      email
+    };
+    return this.http.post<any>(`${PATH}/forgot-password`, USER_DATA);
   }
 
-  setServerToAccess(username) {
-    if (username.startsWith('$$')) { // Stage
-      // console.log('STAGE');
-      if (window.location.hostname.includes('cn')) {
-        
-      } else {
+  forgotPassword(email: string) {
+    this.postForgotPassword(email)
+     .subscribe((results: any) => { 
+       console.log(results)
+     });
+  }
 
-      }
-      username = username.substr(2)         
-      // console.log('username: ', username);
-    } else if (username.startsWith('@@')) { // DEV
-      // console.log('DEV');
-      if (window.location.hostname.includes('cn')) {
+  putResetPassword(password: string, repeatedPassword: string): Observable<any> {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const USER_DATA = {
+      password,
+      repeatedPassword
+    };
+    return this.http.put<any>(`${PATH}/reset-password`, USER_DATA);
+  }
 
-      } else {
-
-      }
-      username = username.substr(2)
-      // console.log('username: ', username);
-    } else { // PROD
-      // console.log('PROD');
-      if (window.location.hostname.includes('cn')) {
-
-      } else {
-
-      }
-    }
+  resetPassword(password: string, repeatPassword: string) {
+    this.putResetPassword(password, repeatPassword)
+      .subscribe((results: any) => {
+        //  console.log(results)
+      });
   }
 }

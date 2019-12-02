@@ -1,7 +1,14 @@
 <div class="email-sent-container">
+    <div class="login-head">
         <h3>{{ 'auth.email-sent.title' | translate }}</h3>
-        <p>{{ 'auth.email-sent.sub-title' | translate }} <a (click)="null">{{ 'auth.email-sent.send-again' | translate }}</a></p>
-        <div class="user-login">
-            <a (click)="loginMode('user-login')"><< {{ 'auth.go-back-to-login' | translate }}</a>
-        </div>
+        <p>
+            {{ 'auth.email-sent.sub-title1' | translate }}.<br>
+            {{ 'auth.email-sent.sub-title2' | translate }} <a (click)="null">{{ 'auth.email-sent.send-again' | translate }}</a>
+        </p>
+    </div>
+    <div class="auth-links">
+        <a (click)="loginMode('user-login')">
+            <mat-icon>arrow_back</mat-icon> {{ 'auth.general.go-back-to-login-link' | translate }}
+        </a>
+    </div>
 </div>

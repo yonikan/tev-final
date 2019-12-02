@@ -2,17 +2,18 @@
 @import '../../../styles/functions';
 
 :host {
-
   .toolbar {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-    background-color: var(--navBackground);
-    color: var(--navColor);
+    background-color: var(--headerBackground);
+    color: var(--headerColor);
     z-index: 20;
     position: fixed;
+    height: $header-height;
 
-    mat-toolbar-row {
+    .toolbar-container {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      width: 100%;
 
       .mat-button {
         min-width: 14px;
@@ -20,44 +21,41 @@
       }
 
       .toolbar-left {
-        
         .hamburger-menu {
           display: none;
           // border-radius: 50%;
 
-          @media (max-width: $media-query-xs) {
-            display: block;
-          }
-        }
-
-        .teams-menu-container {
-          display: flex;
-          align-items: center;
-
-          @media (max-width: $media-query-xs) {
-            display: none;
-          }
-
-          .team-img {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            margin-right: 10px;
-          }
-  
-          .teams-menu {
-            font-size: 13px;
+          @media (max-width: $media-query-sm) {
+            // display: block;
+            // display: none;
           }
         }
       }
 
       .logo {
-        img {
-          width: 200px;
+        .logo-desktop {
+          height: 35px;
+
+          @media (max-width: $media-query-sm) {
+            display: none;
+          }
+        }
+
+        .logo-mobile {
+          height: 35px;
+          display: none;
+
+          @media (max-width: $media-query-sm) {
+            display: block;
+          }
         }
       }
 
       .toolbar-right {
+        @media (max-width: $media-query-sm) {
+          display: none;
+        }
+
         .actions {
           display: flex;
           flex-direction: row-reverse;
@@ -69,7 +67,7 @@
           .user-button-container {
             .user-button {
               height: 100%;
-              // min-width: 72px;
+              text-transform: capitalize;
 
               .avatar {
                 width: 30px;
@@ -80,7 +78,7 @@
               .name {
                 margin: 0 8px 0 10px;
         
-                @media (max-width: $media-query-xs) {
+                @media (max-width: $media-query-sm) {
                   display: none;
                 }
               }
@@ -92,30 +90,31 @@
                 transform: rotate(0);
                 transition: transform .25s cubic-bezier(.25,.8,.25,1);
         
-                @media (max-width: $media-query-xs) {
+                @media (max-width: $media-query-sm) {
                   display: none;
                 }
               }
+
+
             }
           }
 
           .actions-divider {
             margin: 0 10px;
             
-            @media (max-width: $media-query-xs) {
+            @media (max-width: $media-query-sm) {
               display: none;
             }
           }
 
           .help-button {
-            @media (max-width: $media-query-xs) {
+            @media (max-width: $media-query-sm) {
               display: none;
             }
           }
 
-
           mat-form-field {
-            @media (max-width: $media-query-xs) {
+            @media (max-width: $media-query-sm) {
               display: none;
             }
           }
@@ -123,4 +122,12 @@
       }
     }
   }
+}
+
+.version-container {
+  font-size: 13px;
+  margin-top: 13px;
+  padding: 15px;
+  line-height: 2;
+  // text-align: center;
 }

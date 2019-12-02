@@ -1,0 +1,51 @@
+@import '../../../styles/variables';
+@import '~swiper/dist/css/swiper.min.css';
+
+:host {
+  .page-container {
+    .overview-content {
+      // padding: 15px;
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+      width: 100%;
+
+      .overview-content-main {
+        // width: 75%;
+        // padding-left: 15px;
+        // border-right: solid 1px #555;
+        // padding: 20px;
+        // width: 100%;
+        // margin: 0 20px;
+        width: 96%;
+        margin: 0 auto;
+        padding-bottom: 40px;
+  
+        @media (max-width: $media-query-sm) {
+          width: 94%;
+          padding-bottom: 70px;
+        }
+  
+        .leaderboard-container {
+          .leaderboard-wrapper {
+            display: flex;
+            justify-content: space-between;
+  
+            @media (max-width: $media-query-sm) {
+              flex-direction: column;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .swiper-pagination {
+  bottom: -9px !important;
+}
+
+::ng-deep .swiper-pagination-bullet-active{
+  background: #d31c4c !important;
+  // font-size: 50px;
+}

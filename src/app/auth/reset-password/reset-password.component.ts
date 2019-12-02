@@ -1,51 +1,59 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { RepeatPasswordValidator } from './repeatPassword.validator';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit, OnDestroy {
   @Output() loginModeEmitter = new EventEmitter<string>();
   isLoading = false;
   private authStatusSub: Subscription;
-  resetPassworForm: FormGroup;
-  password = null;
-  reEnterPassword = null;
+  resetPasswordFormGroup: FormGroup;
+  passwordFormGroup: FormGroup;
 
-  constructor(public authService: AuthService) {}
-
-  ngOnInit() {
-    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-      authStatus => {
-        // console.log('authStatus: ', authStatus);
-        this.isLoading = false;
-      }
-    );
-
-    this.resetPassworForm = new FormGroup({
-      passwordText: new FormControl(this.password, {
-        validators: [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-        ]   
-      }),
-      reEnterPasswordText: new FormControl(this.reEnterPassword, Validators.required)
+  constructor(public authService: AuthService, private formBuilder: FormBuilder) {
+    this.passwordFormGroup = this.formBuilder.group({
+      password: ['', 
+      [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+      ]],
+      repeatPassword: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
+      ]]
+    }, {
+      validator: RepeatPasswordValidator.validate.bind(this)
+    });
+    this.resetPasswordFormGroup = this.formBuilder.group({
+      passwordFormGroup: this.passwordFormGroup
     });
   }
 
-  onResetPassword() {
-    if (!this.resetPassworForm.valid) {
-      return;
-    }
-    this.isLoading = true;
-    // this.authService.reset() // NEEDS TO ADD THE RELEVANT METHOD!
+  ngOnInit() {
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe(
+        (authStatus: any) => {
+          this.isLoading = false;
+        }
+      );
   }
 
+  onResetPassword() {
+    if (!this.passwordFormGroup.valid) {
+      return;
+    }
+    // this.isLoading = true;
+    this.authService.resetPassword(this.passwordFormGroup.value.password, this.passwordFormGroup.value.repeatPassword);
+  }
+  
   loginMode(loginModeState) {
     this.loginModeEmitter.emit(loginModeState);
   }

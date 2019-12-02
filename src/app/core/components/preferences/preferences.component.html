@@ -1,0 +1,20 @@
+<div class="settings-container">
+    <app-page-header [pageTitle]="pageName"></app-page-header>
+    <mat-card class="">
+        <mat-card-content>
+            <app-pm-dropdown 
+              [appearance]="'outline'"
+              [itemsType]="'languages'"
+              [items]="languages"
+              [dropdownWidth]="'120px'"
+              [defaultItem]="currentTranslation">
+            </app-pm-dropdown>
+            <!-- <mat-radio-group [(ngModel)]="currentTheme" (change)="themeChange($event)">
+                <mat-radio-button color="primary" class="example-radio-button" *ngFor="let theme of themes; let i = index" [value]="theme">
+                    {{ theme.viewValue }}
+                </mat-radio-button>
+            </mat-radio-group> -->
+        </mat-card-content>
+    </mat-card>
+</div>
+    

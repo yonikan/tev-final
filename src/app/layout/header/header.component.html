@@ -1,58 +1,57 @@
-<mat-toolbar *ngIf="isAuthenticated" class="toolbar">
-    <mat-toolbar-row>
+<mat-toolbar *ngIf="isAuthenticated" class="toolbar mat-elevation-z2">
+    <div class="toolbar-container">
       <div class="toolbar-left">
-          <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
-              <mat-icon>menu</mat-icon>
-          </button>
-
-          <div class="teams-menu-container">
-              <img src=" https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1562149029.png" class="team-img">
-
-              <mat-form-field class="teams-menu">
-                  <!-- <mat-label>Select a team</mat-label> -->
-                  <mat-select [value]="'hull-u18'">
-                    <mat-option *ngFor="let team of teams" [value]="team.value">
-                      {{team.viewValue}}
-                    </mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
+          <app-pm-dropdown 
+             [appearance]="'none'"
+             [itemsType]="'teams'"
+             [items]="teams"
+             [dropdownWidth]="'220px'"
+             [defaultItem]="currentTeam">
+          </app-pm-dropdown>
       </div>
 
       <div class="logo">
-        <a routerLink="/team-overview">
-          <img src="./assets/img/logo-large.jpg">
-        </a>
+          <img src="./assets/img/logo-large.jpg" alt="logo" class="logo-desktop">
+          <img src="./assets/img/logo.png" alt="logo" class="logo-mobile">
       </div>
 
       <div class="toolbar-right">
           <div class="actions">
               <div class="user-button-container">
                 <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
-                  <img class="avatar" [src]="userImgUrl">
+                  <img class="avatar" [src]="userImgUrl || ''">
                   <span class="name">{{ userFirstName }} {{ userLastName }}</span>
                   <mat-icon class="icon">keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #userMenu="matMenu">
-                    <button mat-menu-item (click)="onLogout()">{{ 'layout.header.logout' | translate }}</button>
+                    <!-- <button mat-menu-item routerLink="/profile">
+                      <mat-icon>account_circle</mat-icon>
+                      <span>My Profile</span>
+                    </button>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item routerLink="/preferences">
+                      <mat-icon>settings</mat-icon>
+                      <span>Preferences</span>
+                    </button>
+                    <mat-divider></mat-divider> -->
+                    <button mat-menu-item (click)="onLogout()">
+                      <mat-icon>exit_to_app</mat-icon>
+                      <span>{{ 'layout.header.logout' | translate }}</span>
+                    </button>
                 </mat-menu>
               </div>
 
               <mat-divider [vertical]="true" class="actions-divider"></mat-divider>
 
-              <mat-form-field>
-                  <!-- <mat-label>choose a languages:</mat-label> -->
-                  <mat-select [(value)]="currentTranslation" (selectionChange)="useLanguage($event.value)">
-                    <mat-option *ngFor="let language of languages" [value]="language.value">
-                      {{ language.viewValue }}
-                    </mat-option>
-                  </mat-select>
-              </mat-form-field>
-
-              <!-- <button mat-button class="help-button">
+              <button mat-button class="help-button" [matMenuTriggerFor]="helpMenu" class="user-button">
                 <mat-icon class="icon">help_outline</mat-icon>
-              </button> -->
+              </button>
+              <mat-menu #helpMenu="matMenu">
+                  <div class="version-container">
+                    App v.{{ appVersion}}
+                  </div>
+              </mat-menu>
           </div>
       </div>
-    </mat-toolbar-row>
+    </div>
 </mat-toolbar>

@@ -1,0 +1,29 @@
+
+
+<mat-card class="">
+    <mat-card-content>
+        <mat-nav-list *ngIf="true">
+            <div class="navigation-wrapper">
+                <!-- <a mat-list-item (click)="goToPage('profile')">
+                    <mat-icon>account_circle</mat-icon>
+                    <span class="nav-caption">My Profile</span>
+                </a>
+                <mat-divider></mat-divider>
+                <a mat-list-item (click)="goToPage('preferences')">
+                  <mat-icon>settings_input_component</mat-icon>
+                  <span class="nav-caption">preferences</span>
+                </a>
+                <mat-divider></mat-divider>
+                <a mat-list-item (click)="goToPage('team-configuration')">
+                    <mat-icon>settings</mat-icon>
+                    <span class="nav-caption">{{ 'layout.sidenav.team-configuration' | translate }}</span>
+                </a>
+                <mat-divider></mat-divider> -->
+                <a mat-list-item (click)="onLogout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span class="nav-caption">{{ 'layout.header.logout' | translate }}</span>
+                </a>
+            </div>
+        </mat-nav-list>
+    </mat-card-content>
+</mat-card>
