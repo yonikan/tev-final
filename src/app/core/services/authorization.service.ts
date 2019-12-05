@@ -33,12 +33,9 @@ export class AuthorizationService {
           this.preLoginAllowedFeatures = features as any;
         }),
         mergeMap(param => this.initPlatformFeatureToggling()),
-        tap(results => { 
-          // console.log('this.preLoginAllowedFeatures: ', this.preLoginAllowedFeatures);
-          // console.log('this.preLoginPlatformAllowedFeatures: ', this.preLoginPlatformAllowedFeatures);
+        tap(results => {
           this.allowedFeatures = {...this.preLoginAllowedFeatures};
           this.allowedFeatures = {...this.preLoginPlatformAllowedFeatures};
-          console.log('this.allowedFeatures: ', this.allowedFeatures);
         })
       )
       .toPromise();

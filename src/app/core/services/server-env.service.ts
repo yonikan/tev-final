@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppConsts } from '../../../app/app.consts';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +11,28 @@ export class ServerEnvService {
   constructor() { }
 
   initServerEnv() {
-    const URL_HOSTNAME: string = window.location.hostname.toString();
-    if (URL_HOSTNAME.includes('dev')) {
+    if (!environment.production) {
       this.currentServerEnv = 'dev';
-      // console.log('DEV!!!');
-    } else if (URL_HOSTNAME.includes('stage')) {
-      this.currentServerEnv = 'stage';
-      // console.log('STAGE!!!');
-    } else if (URL_HOSTNAME.includes('prod')) {
-      this.currentServerEnv = 'prod';
-      // console.log('STAGE!!!');
-    } else if (URL_HOSTNAME.includes('cn')) {
+      return;
+    };
+    
+    const URL_HOSTNAME = window.location.hostname;
+    const SUB_DOMAIN = URL_HOSTNAME.split('.')[0];
+    const TOP_LEVEL_DOMAIN = URL_HOSTNAME.split('.')[2];
+
+    if (TOP_LEVEL_DOMAIN.includes('cn')) {
       this.currentServerEnv = 'ch';
-      // console.log('CHINA PROD!!!');
     } else {
-      this.currentServerEnv = '';
-      // console.log('DEV!!!');
-    }
+      if (SUB_DOMAIN.includes('dev')) {
+        this.currentServerEnv = 'dev';
+      } else if (SUB_DOMAIN.includes('stage')) {
+        this.currentServerEnv = 'stage';
+      } else if (SUB_DOMAIN.includes('prod')) {
+        this.currentServerEnv = 'prod';
+      } else {
+        this.currentServerEnv = 'dev';
+      }
+    };
   }
 
   getBaseUrl(serverEnv = 1): string {

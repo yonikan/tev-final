@@ -1,14 +1,14 @@
 {
     "desktop": {
-        "translationPicker": true,
-        "loadRisk": true,
-        "performanceOvertime": false,
-        "leaderBoard": false
+        "loginTranslationPicker": true,
+        "teamOverviewLoadRisk": true,
+        "teamOverviewPerformanceOvertime": false,
+        "teamOverviewLeaderBoard": false
     },
     "mobile": {
-        "translationPicker": true,
-        "loadRisk": false,
-        "performanceOvertime": false,
-        "leaderBoard": false
+        "loginTranslationPicker": true,
+        "teamOverviewLoadRisk": false,
+        "teamOverviewPerformanceOvertime": false,
+        "teamOverviewLeaderBoard": false
     }
 }
