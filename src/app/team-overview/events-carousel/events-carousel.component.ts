@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { EventsCarouselModalComponent } from './events-carousel-modal/events-carousel-modal.component';
 import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
 import { ServerEnvService } from '../../core/services/server-env.service';
+import { TEAM_EVENTS_DATA } from 'server/data/team-events.data';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-events-carousel',
@@ -47,12 +49,13 @@ export class EventsCarouselComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const PATH = this.serverEnvService.getBaseUrl();
-    this.http
-      .get<any>(`${PATH}/team-events`)
-      .pipe(
-        map((loginData: any) => loginData.payload),
-      )
+    // const PATH = this.serverEnvService.getBaseUrl();
+    // this.http
+    //   .get<any>(`${PATH}/team-events`)
+    of(TEAM_EVENTS_DATA)
+      // .pipe(
+      //   map((loginData: any) => loginData.payload),
+      // )
       .subscribe((result: any) => {
         this.teamEvents = result.teamEventsData;
         this.isTeamEventsLoading = false;
