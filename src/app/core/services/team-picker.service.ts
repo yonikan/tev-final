@@ -20,6 +20,7 @@ export class TeamPickerService {
       .subscribe((userLoginData: any) => {
         // console.log('userLoginData after team has changed: ', userLoginData);
         this.authorizationService.allowedFeatures = userLoginData.features;
+        console.log('this.authorizationService.allowedFeatures: ', this.authorizationService.allowedFeatures);
         this.router.navigate(['team-overview']);
       });
   }

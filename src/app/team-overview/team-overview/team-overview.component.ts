@@ -21,10 +21,6 @@ export class TeamOverviewComponent implements OnInit {
     this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('loadRisk') ? true : false;
     this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('performanceOvertime') ? true : false;
     this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('leaderBoard') ? true : false;
-    // this.isLoadRiskFeatureEnabled = false;
-    // this.isPerformanceOvertimeFeatureEnabled = false;
-    // this.isLeaderBoardFeatureEnabled = false;
-
     this.isLoading = false;
   }
 }

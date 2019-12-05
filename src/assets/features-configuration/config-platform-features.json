@@ -1,8 +1,14 @@
 {
     "desktop": {
-        "translationPicker": true
+        "translationPicker": true,
+        "loadRisk": true,
+        "performanceOvertime": false,
+        "leaderBoard": false
     },
     "mobile": {
-        "translationPicker": true
+        "translationPicker": true,
+        "loadRisk": false,
+        "performanceOvertime": false,
+        "leaderBoard": false
     }
 }

@@ -76,7 +76,7 @@ export class AuthService {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);
             this.authorizationService.allowedFeatures = userLoginDataResponse.features;
-
+            console.log('this.authorizationService.allowedFeatures: ', this.authorizationService.allowedFeatures);
             this.token = userLoginDataResponse.token;
             this.localStorageService.storeOnCookie('token', this.token);
             this.isAuthenticated = true;

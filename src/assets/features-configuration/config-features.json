@@ -1,3 +1,6 @@
 {
-    "translationPicker": true
+    "translationPicker": true,
+    "loadRisk": false,
+    "performanceOvertime": false,
+    "leaderBoard": false
 }

@@ -31,7 +31,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     private authorizationService: AuthorizationService,
     private route: ActivatedRoute) {
-      this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('translationPicker', 'preLogin');
+      this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('translationPicker');
   }
 
   ngOnInit() {
