@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { MatDialog } from '@angular/material';
 import { UserLogin } from './user-login.model';
 import { ServerEnvService } from '../core/services/server-env.service';
+
+import { LOGIN_DATA } from 'server/data/login.data';
 
 @Injectable({
    providedIn: 'root' 
@@ -54,26 +56,26 @@ export class AuthService {
   }
 
   fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
-    const PATH = this.serverEnvService.getBaseUrl();
-    const USER_DATA = {
-      email,
-      password
-    };
-    return this.http.post<any>(`${PATH}/login`, USER_DATA);
+    // const PATH = this.serverEnvService.getBaseUrl();
+    // const USER_DATA = {
+    //   email,
+    //   password
+    // };
+    // return this.http.post<any>(`${PATH}/login`, USER_DATA);
+    return of(LOGIN_DATA);
   }
 
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
-      .pipe(
-        map((loginData: any) => loginData.payload),
-      )
+      // .pipe(
+      //   map((loginData: any) => loginData.payload),
+      // )
       .subscribe(
         (userLoginDataResponse: UserLogin) => {
           if (userLoginDataResponse.token) {
             this.userLoginData = userLoginDataResponse;
             this.userLoginDataListener.next(userLoginDataResponse);
             this.authorizationService.allowedFeatures = userLoginDataResponse.features;
-
             this.token = userLoginDataResponse.token;
             this.localStorageService.storeOnCookie('token', this.token);
             this.isAuthenticated = true;

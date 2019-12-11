@@ -18,13 +18,9 @@ export class TeamOverviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('loadRisk') ? true : false;
-    this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('performanceOvertime') ? true : false;
-    this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('leaderBoard') ? true : false;
-    // this.isLoadRiskFeatureEnabled = false;
-    // this.isPerformanceOvertimeFeatureEnabled = false;
-    // this.isLeaderBoardFeatureEnabled = false;
-
+    this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewLoadRisk') ? true : false;
+    this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewPerformanceOvertime') ? true : false;
+    this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewLeaderBoard') ? true : false;
     this.isLoading = false;
   }
 }

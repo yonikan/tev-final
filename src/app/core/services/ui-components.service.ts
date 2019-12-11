@@ -5,7 +5,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 @Injectable({
   providedIn: 'root'
 })
-export class UIService {
+export class UiComponentsService {
   constructor(private snackbar: MatSnackBar, private bottomSheet: MatBottomSheet) {}
 
   showSnackbar(message, action, duration) {

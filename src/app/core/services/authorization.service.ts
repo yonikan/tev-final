@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +13,15 @@ export class AuthorizationService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public isFeatureEnabled(featureName: string, featuresType?: string): boolean {
-    let isFeaturedAllowed: boolean;
-    if (featuresType === 'preLogin') {
-      isFeaturedAllowed = this.preLoginAllowedFeatures[featureName] && this.preLoginPlatformAllowedFeatures[featureName];
-    } else {
-      isFeaturedAllowed = this.allowedFeatures[featureName];
-    }
-    return isFeaturedAllowed;
+  public isFeatureEnabled(featureName: string): boolean {
+    // let isFeaturedAllowed: boolean;
+    // if (featuresType === 'preLogin') {
+    //   isFeaturedAllowed = this.preLoginAllowedFeatures[featureName] && this.preLoginPlatformAllowedFeatures[featureName];
+    // } else {
+    //   isFeaturedAllowed = this.allowedFeatures[featureName];
+    // }
+    // return isFeaturedAllowed;
+    return this.allowedFeatures[featureName];
   }
 
   public initFeatureToggling() {
@@ -30,6 +31,11 @@ export class AuthorizationService {
       .pipe(
         tap(features => { 
           this.preLoginAllowedFeatures = features as any;
+        }),
+        mergeMap(param => this.initPlatformFeatureToggling()),
+        tap(results => {
+          this.allowedFeatures = {...this.preLoginAllowedFeatures};
+          this.allowedFeatures = {...this.preLoginPlatformAllowedFeatures};
         })
       )
       .toPromise();
@@ -52,7 +58,7 @@ export class AuthorizationService {
           // console.log(this.preLoginPlatformAllowedFeatures);
         })
       )
-      .toPromise();
+      // .toPromise();
   }
 };
 
@@ -60,9 +66,9 @@ export class AuthorizationService {
 export const initFeatureToggling = (authorizationService: AuthorizationService) => {
   return () => authorizationService.initFeatureToggling();
 };
-export const initPlatformFeatureToggling = (authorizationService: AuthorizationService) => {
-  return () => authorizationService.initPlatformFeatureToggling();
-};
+// export const initPlatformFeatureToggling = (authorizationService: AuthorizationService) => {
+//   return () => authorizationService.initPlatformFeatureToggling();
+// };
 export interface FeatureTypes {
   feature: boolean
 };

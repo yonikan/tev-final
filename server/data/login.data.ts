@@ -9,9 +9,10 @@ export const LOGIN_DATA: any = {
 	role: 1,
 	user_id: 441,
 	features: {
-		loadRisk: false,
-		performanceOvertime: false,
-		leaderBoard: false
+		loginTranslationPicker: true,
+		teamOverviewLoadRisk: false,
+		teamOverviewPerformanceOvertime: false,
+		teamOverviewLeaderBoard: false
 	},
 	teams: [
 		{

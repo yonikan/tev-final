@@ -4,7 +4,10 @@
             <h3>{{ 'team-overview.events-carousel.title' | translate:{'eventsNumber':teamEvents.length} }}</h3>
             <p>{{ 'team-overview.events-carousel.sub-title' | translate }}</p>
         </div>
-        <mat-spinner *ngIf="isTeamEventsLoading"></mat-spinner>
+
+        <list-content-loader *ngIf="isTeamEventsLoading"></list-content-loader>
+        <!-- <mat-spinner *ngIf="isTeamEventsLoading"></mat-spinner> -->
+
         <swiper *ngIf="!isTeamEventsLoading"
             class="swiper-container" 
             [config]="config"

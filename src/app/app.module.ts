@@ -13,7 +13,7 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthorizationService, initFeatureToggling, initPlatformFeatureToggling } from './core/services/authorization.service';
+import { AuthorizationService, initFeatureToggling } from './core/services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -45,12 +45,12 @@ import { AuthorizationService, initFeatureToggling, initPlatformFeatureToggling 
       deps: [AuthorizationService],
       multi: true
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initPlatformFeatureToggling,
-      deps: [AuthorizationService],
-      multi: true
-    }
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initPlatformFeatureToggling,
+    //   deps: [AuthorizationService],
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

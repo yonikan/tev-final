@@ -15,8 +15,9 @@
                 <input id="password1" matInput type="password" formControlName="passwordText" showHideInput>
                 <i class="material-icons" matSuffix showHideTrigger="password1" [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
             </mat-form-field>
-            <mat-error *ngIf="userLoginFormGroup.get('emailText').invalid || userLoginFormGroup.get('passwordText').invalid">
-                {{ 'auth.general.incorrect-email-and/or-password' | translate }}
+            <mat-error *ngIf="(userLoginFormGroup.value.emailText.length > 3 && userLoginFormGroup.value.passwordText.length > 3) &&
+                    (userLoginFormGroup.get('emailText').invalid || userLoginFormGroup.get('passwordText').invalid)">
+                    {{ 'auth.general.incorrect-email-and/or-password' | translate }}
             </mat-error>
             <button color="primary" [disabled]="!userLoginFormGroup.valid" class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button>
                 {{ 'auth.user-login.user-login-button' | translate }}

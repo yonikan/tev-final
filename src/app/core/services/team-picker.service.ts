@@ -15,10 +15,9 @@ export class TeamPickerService {
   ) { }
 
   setCurrentTeam(selectedTeam: string) {
-    console.log('selectedTeam: ', selectedTeam);
+    // console.log('selectedTeam: ', selectedTeam);
     this.authService.fetchUserLoginData('', '')
       .subscribe((userLoginData: any) => {
-        // console.log('userLoginData after team has changed: ', userLoginData);
         this.authorizationService.allowedFeatures = userLoginData.features;
         this.router.navigate(['team-overview']);
       });

@@ -1,3 +1,6 @@
 {
-    "translationPicker": true
+    "loginTranslationPicker": true,
+    "teamOverviewLoadRisk": false,
+    "teamOverviewPerformanceOvertime": false,
+    "teamOverviewLeaderBoard": false
 }

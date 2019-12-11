@@ -6,6 +6,9 @@
     @include card;
     margin-bottom: 20px;
     flex-direction: column;
+    height: 180px;
+    min-height: 180px;
+    max-height: 180px;
 
     .event-header-container {
       .event-header {
@@ -48,6 +51,11 @@
           margin-left: 7px;
           font-weight: 300;
           text-transform: capitalize;
+
+          white-space: nowrap;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
   
