@@ -14,7 +14,7 @@
         </div>
   
         <div [@fadeInUp] *ngSwitchCase="'reset-password'" class="reset-password-container">
-          <app-reset-password (loginModeEmitter)="onLoginModeEmitter($event)"></app-reset-password>
+          <app-reset-password (loginModeEmitter)="onLoginModeEmitter($event)" [userToken]="userToken"></app-reset-password>
         </div>
   
         <div [@fadeInUp] *ngSwitchCase="'email-sent'" class="email-sent-container">

@@ -29,7 +29,7 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule // for the [(ngModel)]=""
+    FormsModule
   ],
   entryComponents: [
     ErrorModalComponent

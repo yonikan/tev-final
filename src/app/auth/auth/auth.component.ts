@@ -16,6 +16,7 @@ import { AuthorizationService } from '../../core/services/authorization.service'
 })
 export class AuthComponent implements OnInit, OnDestroy {
   loginMode = 'user-login';
+  userToken: string;
   currentTranslation = 'en';
   languages: any[] = [
     { value: 'en', viewValue: 'English', img: './assets/svg/flag-us.svg' },
@@ -40,7 +41,8 @@ export class AuthComponent implements OnInit, OnDestroy {
         filter(params => params.page)
       )
       .subscribe(params => {
-        this.loginMode = params.page; // ?page=reset-password
+        this.loginMode = params.page;
+        this.userToken = params.token;
       });
 
     this.currentTranslation = this.translationPickerService.getCurrentTranslation();
