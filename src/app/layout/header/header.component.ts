@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/cor
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { UserLogin } from '../../../app/auth/user-login.model';
+import { TEAMS_DATA } from 'server/data/teams.data';
+import { LOGIN_DATA } from 'server/data/login.data';
 
 @Component({
   selector: 'app-header',
@@ -32,13 +34,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userLoginDataSub = this.authService
       .getUserLoginDataListener()
       .subscribe((userLoginData: UserLogin) => {
-        this.userImgUrl = userLoginData.image_url;
-        this.userFirstName = userLoginData.first_name;
-        this.userLastName = userLoginData.last_name;
-        this.appVersion = userLoginData.app_version;
+        this.userImgUrl = userLoginData.imgUrl;
+        this.userFirstName = userLoginData.firstName;
+        this.userLastName = userLoginData.lastName;
+        this.appVersion = '3.0.0';
         // this.currentTeam = userLoginData.teams[0].value;
         // console.log('this.currentTeam: ', this.currentTeam);
-        this.teams = userLoginData.teams;
+        // console.log('userLoginData.teams: ', userLoginData.teams);
+        this.teams = LOGIN_DATA.teams;
+        
       });
 
     this.authStatusSub = this.authService

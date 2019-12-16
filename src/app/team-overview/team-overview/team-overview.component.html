@@ -3,26 +3,5 @@
 <div *ngIf="!isLoading" class="page-container">
     <div class="overview-content">
         <app-events-carousel></app-events-carousel>
-
-        <div class="overview-content-main">
-            <div class="load-risk-container" *ngIf="isLoadRiskFeatureEnabled">
-                <h3>{{ 'team-overview.load-risk.title' | translate }}</h3>
-                <app-load-risk></app-load-risk>
-            </div>
-    
-            <div class="performance-overtime-container" *ngIf="isPerformanceOvertimeFeatureEnabled">
-                <h3>{{ 'team-overview.performance-overtime.title' | translate }}</h3>
-                <app-performance-overtime></app-performance-overtime>
-            </div>
-    
-            <div class="leaderboard-container" *ngIf="isLeaderBoardFeatureEnabled">
-                <h3>{{ 'team-overview.leader-board.title' | translate }}</h3>
-                <div class="leaderboard-wrapper">
-                    <app-leader-board></app-leader-board>
-                    <app-leader-board></app-leader-board>
-                    <app-leader-board></app-leader-board>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

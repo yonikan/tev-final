@@ -52,7 +52,8 @@ export class ServerEnvService {
       }
       return AppConsts.prodBaseUrl
     } else { // for a local dev node server
-      return AppConsts.devBaseUrlLocalDevServer;
+      return AppConsts.devBaseUrl2;
+      // return AppConsts.devBaseUrlLocalDevServer;
     }
   }
 }

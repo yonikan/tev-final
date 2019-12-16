@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { TeamOverviewComponent } from './team-overview/team-overview.component';
-import { LoadRiskComponent } from './load-risk/load-risk.component';
 
 import { PerformanceOvertimeComponent } from './performance-overtime/performance-overtime.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
@@ -27,7 +26,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 @NgModule({
   declarations: [
     TeamOverviewComponent,
-    LoadRiskComponent,
     EventComponent,
     PerformanceOvertimeComponent,
     LeaderBoardComponent,
@@ -56,7 +54,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   ],
   exports: [
     TeamOverviewComponent,
-    LoadRiskComponent,
     EventComponent,
     PerformanceOvertimeComponent,
     LeaderBoardComponent
