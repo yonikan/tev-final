@@ -99,20 +99,6 @@
             }
           }
 
-          .actions-divider {
-            margin: 0 10px;
-            
-            @media (max-width: $media-query-sm) {
-              display: none;
-            }
-          }
-
-          .help-button {
-            @media (max-width: $media-query-sm) {
-              display: none;
-            }
-          }
-
           mat-form-field {
             @media (max-width: $media-query-sm) {
               display: none;
@@ -122,12 +108,4 @@
       }
     }
   }
-}
-
-.version-container {
-  font-size: 13px;
-  margin-top: 13px;
-  padding: 15px;
-  line-height: 2;
-  // text-align: center;
 }

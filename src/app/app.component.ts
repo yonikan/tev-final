@@ -33,7 +33,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (!environment.production) {
-      // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
+      this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
+      
       // this.router.navigate(['/team-overview']);
     };
 

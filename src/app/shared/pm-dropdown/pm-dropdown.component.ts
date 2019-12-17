@@ -31,7 +31,7 @@ export class PmDropdownComponent implements OnInit {
       const selectedTeam = this.items.find(team => team.value === itemValue);
       // console.log('selectedTeam: ', selectedTeam);
       // TO-DO fetch new login req and go the team-overview page (needed for the new team package authorization)
-      this.teamPickerService.setCurrentTeam(selectedTeam);
+      // this.teamPickerService.setCurrentTeam(selectedTeam);
     }
   }
 }

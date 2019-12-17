@@ -66,9 +66,9 @@ export class AuthService {
 
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
-      .pipe(
-        tap((loginData: any) => console.log(loginData)),
-      )
+      // .pipe(
+      //   tap((loginData: any) => console.log(loginData)),
+      // )
       // .pipe(
       //   map((loginData: any) => loginData.payload),
       // )

@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.userImgUrl = userLoginData.imgUrl;
         this.userFirstName = userLoginData.firstName;
         this.userLastName = userLoginData.lastName;
-        this.appVersion = '3.0.0';
         // this.currentTeam = userLoginData.teams[0].value;
         // console.log('this.currentTeam: ', this.currentTeam);
         // console.log('userLoginData.teams: ', userLoginData.teams);
