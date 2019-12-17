@@ -35,7 +35,7 @@ export class ServerEnvService {
     };
   }
 
-  getBaseUrl(serverEnv = 1): string {
+  getBaseUrl(serverEnv = 2): string {
     if (this.currentServerEnv === 'dev') {
       if (serverEnv === 2) {
         return AppConsts.devBaseUrl2
@@ -52,7 +52,8 @@ export class ServerEnvService {
       }
       return AppConsts.prodBaseUrl
     } else { // for a local dev node server
-      return AppConsts.devBaseUrlLocalDevServer;
+      return AppConsts.devBaseUrl2;
+      // return AppConsts.devBaseUrlLocalDevServer;
     }
   }
 }

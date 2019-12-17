@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
@@ -11,6 +11,8 @@ import { RepeatPasswordValidator } from './repeatPassword.validator';
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy {
   @Output() loginModeEmitter = new EventEmitter<string>();
+  @Input() userToken: string; 
+
   isLoading = false;
   private authStatusSub: Subscription;
   resetPasswordFormGroup: FormGroup;
@@ -51,9 +53,20 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
       return;
     }
     // this.isLoading = true;
-    this.authService.resetPassword(this.passwordFormGroup.value.password, this.passwordFormGroup.value.repeatPassword);
+    // this.authService.resetPassword(this.passwordFormGroup.value.password, this.passwordFormGroup.value.repeatPassword);
+    this.authService.setPassword(this.passwordFormGroup.value.password, this.passwordFormGroup.value.repeatPassword);
   }
   
+  
+  onSetPassword(userToken) {
+    if (!this.passwordFormGroup.valid) {
+      return;
+    }
+    // this.isLoading = true;
+    // this.authService.resetPassword(this.passwordFormGroup.value.password, this.passwordFormGroup.value.repeatPassword);
+    this.authService.setPassword(userToken, this.passwordFormGroup.value.password);
+  }
+
   loginMode(loginModeState) {
     this.loginModeEmitter.emit(loginModeState);
   }

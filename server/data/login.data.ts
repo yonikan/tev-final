@@ -1,7 +1,5 @@
 export const LOGIN_DATA: any = {
-	app_version: '2.17.0.0',
 	token: 'barb441le5T84eaT741534ec0c9e',
-	is_first_login: false,
 	email: 'yoni.kangun@playermaker.com',
 	first_name: 'Yoni',
 	last_name: 'Kangun',

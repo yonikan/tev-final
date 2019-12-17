@@ -16,11 +16,12 @@ import { AuthorizationService } from '../../core/services/authorization.service'
 })
 export class AuthComponent implements OnInit, OnDestroy {
   loginMode = 'user-login';
+  userToken: string;
   currentTranslation = 'en';
   languages: any[] = [
-    { value: 'en', viewValue: 'English', img: './assets/svg/flag-us.svg' },
-    { value: 'es', viewValue: 'Espanol', img: './assets/svg/flag-es.svg' },
-    { value: 'ch', viewValue: '中文', img: './assets/svg/flag-china.svg' }
+    { value: 'en', viewValue: 'English', img: './assets/svg/flags/flag-us.svg' },
+    { value: 'es', viewValue: 'Espanol', img: './assets/svg/flags/flag-es.svg' },
+    { value: 'ch', viewValue: '中文', img: './assets/svg/flags/flag-china.svg' }
   ];
   isAuthenticated = false;
   private authStatusSub: Subscription;
@@ -33,14 +34,15 @@ export class AuthComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('loginTranslationPicker') ? true : false;
+    // this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('loginTranslationPicker') ? true : false;
 
     this.route.queryParams
       .pipe(
         filter(params => params.page)
       )
       .subscribe(params => {
-        this.loginMode = params.page; // ?page=reset-password
+        this.loginMode = params.page;
+        this.userToken = params.token;
       });
 
     this.currentTranslation = this.translationPickerService.getCurrentTranslation();

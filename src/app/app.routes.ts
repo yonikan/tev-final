@@ -7,12 +7,8 @@ import { MenuComponent } from './core/components/menu/menu.component';
 const routes: Routes = [
   { path: 'team-overview', loadChildren: () => import('./team-overview/team-overview.module')
     .then(m => m.TeamOverviewModule), canLoad: [AuthGuard]},
-  // { path: 'players', loadChildren: () => import('./players/players.module')
-  //   .then(m => m.PlayersModule), canLoad: [AuthGuard]},
   { path: 'login', component: AuthComponent },
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuard] },
-  // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  // { path: 'preferences', component: PreferencesComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
   { path: '**', redirectTo: '/team-overview', pathMatch: 'full' }
 ];

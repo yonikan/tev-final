@@ -11,8 +11,6 @@ import { FadeInRightStaggerElementDirective } from './animations/fade-in-right.a
 import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animation';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { PreferencesComponent } from './components/preferences/preferences.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 @NgModule({
@@ -21,15 +19,13 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     MenuComponent,
-    PreferencesComponent,
-    ProfileComponent,
     ErrorModalComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule // for the [(ngModel)]=""
+    FormsModule
   ],
   entryComponents: [
     ErrorModalComponent
@@ -45,8 +41,6 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     MenuComponent,
-    PreferencesComponent,
-    ProfileComponent,
     ErrorModalComponent
   ]
 })

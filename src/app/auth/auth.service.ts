@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { LocalStorageService } from '../core/services/local-storage.service';
 import { AuthorizationService } from '../core/services/authorization.service';
 import { MatDialog } from '@angular/material';
 import { UserLogin } from './user-login.model';
 import { ServerEnvService } from '../core/services/server-env.service';
-
 import { LOGIN_DATA } from 'server/data/login.data';
 
 @Injectable({
@@ -56,17 +55,20 @@ export class AuthService {
   }
 
   fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
-    // const PATH = this.serverEnvService.getBaseUrl();
-    // const USER_DATA = {
-    //   email,
-    //   password
-    // };
-    // return this.http.post<any>(`${PATH}/login`, USER_DATA);
-    return of(LOGIN_DATA);
+    const PATH = this.serverEnvService.getBaseUrl();
+    const USER_DATA = {
+      email,
+      password
+    };
+    return this.http.post<any>(`${PATH}/account/login`, USER_DATA);
+    // return of(LOGIN_DATA);
   }
 
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
+      // .pipe(
+      //   tap((loginData: any) => console.log(loginData)),
+      // )
       // .pipe(
       //   map((loginData: any) => loginData.payload),
       // )
@@ -84,27 +86,6 @@ export class AuthService {
           }
         },
         (error) => {
-          // console.log('error: ', error);
-          // if(error.status === 500) {
-          //   console.log('Server error');
-          // } else {
-          //   console.log('Client error');
-          // }
-          
-          // const modalTitle = 'Error!!!';
-          // let modalMessage = 'An unknown error occurred!';
-          // if (error.error.message) {
-          //   modalMessage = error.error.message;
-          // }
-          // this.dialog.open(ModalComponent, {
-          //   width: '500px',
-          //   height: '200px',
-          //   data: { 
-          //     title: modalTitle,
-          //     message: modalMessage
-          //   }
-          // });
-
           this.isAuthenticated = false;
           this.authStatusListener.next(false);
         }
@@ -123,7 +104,7 @@ export class AuthService {
     const USER_DATA = {
       email
     };
-    return this.http.post<any>(`${PATH}/forgot-password`, USER_DATA);
+    return this.http.post<any>(`${PATH}/account/forgot-password`, USER_DATA);
   }
 
   forgotPassword(email: string) {
@@ -133,19 +114,35 @@ export class AuthService {
      });
   }
 
-  putResetPassword(password: string, repeatedPassword: string): Observable<any> {
+  postResetPassword(password: string, repeatedPassword: string): Observable<any> {
     const PATH = this.serverEnvService.getBaseUrl();
     const USER_DATA = {
       password,
       repeatedPassword
     };
-    return this.http.put<any>(`${PATH}/reset-password`, USER_DATA);
+    return this.http.post<any>(`${PATH}/account/reset-password`, USER_DATA);
   }
 
   resetPassword(password: string, repeatPassword: string) {
-    this.putResetPassword(password, repeatPassword)
+    this.postResetPassword(password, repeatPassword)
       .subscribe((results: any) => {
         //  console.log(results)
+      });
+  }
+
+  postSetPassword(token: string, password: string): Observable<any> {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const USER_DATA = {
+      token,
+      password
+    };
+    return this.http.post<any>(`${PATH}/account/set-password`, USER_DATA);
+  }
+
+  setPassword(token: string, password: string) {
+    this.postSetPassword(token, password)
+      .subscribe((results: any) => {
+         console.log(results)
       });
   }
 }

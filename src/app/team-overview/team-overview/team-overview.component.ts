@@ -9,18 +9,18 @@ import { AuthorizationService } from '../../core/services/authorization.service'
 export class TeamOverviewComponent implements OnInit {
   pageName = 'team overview';
   isLoading = true;
-  isLoadRiskFeatureEnabled = false;
-  isPerformanceOvertimeFeatureEnabled = false;
-  isLeaderBoardFeatureEnabled = false;
+  // isLoadRiskFeatureEnabled = false;
+  // isPerformanceOvertimeFeatureEnabled = false;
+  // isLeaderBoardFeatureEnabled = false;
 
   constructor(
-    private authorizationService: AuthorizationService
+    // private authorizationService: AuthorizationService
   ) {}
 
   ngOnInit() {
-    this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewLoadRisk') ? true : false;
-    this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewPerformanceOvertime') ? true : false;
-    this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewLeaderBoard') ? true : false;
+    // this.isLoadRiskFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewLoadRisk') ? true : false;
+    // this.isPerformanceOvertimeFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewPerformanceOvertime') ? true : false;
+    // this.isLeaderBoardFeatureEnabled = this.authorizationService.isFeatureEnabled('teamOverviewLeaderBoard') ? true : false;
     this.isLoading = false;
   }
 }
