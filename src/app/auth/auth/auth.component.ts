@@ -19,9 +19,9 @@ export class AuthComponent implements OnInit, OnDestroy {
   userToken: string;
   currentTranslation = 'en';
   languages: any[] = [
-    { value: 'en', viewValue: 'English', img: './assets/svg/flag-us.svg' },
-    { value: 'es', viewValue: 'Espanol', img: './assets/svg/flag-es.svg' },
-    { value: 'ch', viewValue: '中文', img: './assets/svg/flag-china.svg' }
+    { value: 'en', viewValue: 'English', img: './assets/svg/flags/flag-us.svg' },
+    { value: 'es', viewValue: 'Espanol', img: './assets/svg/flags/flag-es.svg' },
+    { value: 'ch', viewValue: '中文', img: './assets/svg/flags/flag-china.svg' }
   ];
   isAuthenticated = false;
   private authStatusSub: Subscription;

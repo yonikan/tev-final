@@ -13,12 +13,12 @@ export class CustomIconsService {
   init() {
     this.matIconRegistry.addSvgIcon(
       'es',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/svg/flag-es.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/svg/flags/flag-es.svg')
     );
 
     this.matIconRegistry.addSvgIcon(
       'us',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/svg/flag-us.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/svg/flags/flag-us.svg')
     );
   }
 }
