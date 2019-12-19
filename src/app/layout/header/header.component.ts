@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         // console.log('this.currentTeam: ', this.currentTeam);
         // console.log('userLoginData.teams: ', userLoginData.teams);
         this.teams = LOGIN_DATA.teams;
-        
+        // this.teams = userLoginData.teams;
       });
 
     this.authStatusSub = this.authService

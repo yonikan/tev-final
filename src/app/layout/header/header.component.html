@@ -1,13 +1,11 @@
 <mat-toolbar *ngIf="isAuthenticated" class="toolbar mat-elevation-z2">
     <div class="toolbar-container">
       <div class="toolbar-left">
-          <app-pm-dropdown 
+          <app-team-picker-dropdown 
              [appearance]="'none'"
-             [itemsType]="'teams'"
              [items]="teams"
-             [dropdownWidth]="'220px'"
-             [defaultItem]="currentTeam">
-          </app-pm-dropdown>
+             [dropdownWidth]="'220px'">
+          </app-team-picker-dropdown>
       </div>
 
       <div class="logo">
