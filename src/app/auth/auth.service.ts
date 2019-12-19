@@ -11,7 +11,7 @@ import { ServerEnvService } from '../core/services/server-env.service';
 import { LOGIN_DATA } from 'server/data/login.data';
 
 @Injectable({
-   providedIn: 'root' 
+   providedIn: 'root'
 })
 export class AuthService {
   private token = null;
@@ -82,7 +82,7 @@ export class AuthService {
             this.localStorageService.storeOnCookie('token', this.token);
             this.isAuthenticated = true;
             this.authStatusListener.next(true);
-            this.router.navigate(['team-event-validation/training/1']);
+            this.router.navigate(['team-event-validation/match/1/step3']);
           }
         },
         (error) => {
@@ -109,7 +109,7 @@ export class AuthService {
 
   forgotPassword(email: string) {
     this.postForgotPassword(email)
-     .subscribe((results: any) => { 
+     .subscribe((results: any) => {
        console.log(results)
      });
   }

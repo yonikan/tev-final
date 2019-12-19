@@ -1,1 +1,14 @@
-<p>step-match-formations works!</p>
+<div class="container">
+    <div class="heading">Starting Formations</div>
+    <div class="content">
+        <app-formation-selection
+            [tabs]="playersData"
+            [tactics]="tactics"
+            [definedSubs]="definedSubs"
+            (onSelectTactic)="selectTactic($event)"
+            (onSelectDefinedSub)="selectDefinedSub($event)">
+        </app-formation-selection>
+        <div class="buffer"></div>
+        <app-formation-field></app-formation-field>
+    </div>
+</div>

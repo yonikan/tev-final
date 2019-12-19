@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+
+:host {
+    .container {
+        .heading {
+            color: #3d4762;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 0fr 1fr;
+            row-gap: 10px;
+            column-gap: 10px;
+
+            .buffer {
+                border-right: 1px dotted rgba(53, 61, 86, 0.3);
+                border-top: 0;
+            }
+
+            @media (max-width: $media-query-lg) {
+                grid-template-columns: 100%;
+                .buffer {
+                    height: 1px;
+                    border-right: 0;
+                    border-top: 1px dotted rgba(53, 61, 86, 0.3);
+                }
+            }
+        }
+    }
+}

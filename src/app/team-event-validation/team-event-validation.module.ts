@@ -12,6 +12,9 @@ import { StepMatchPlayersComponent } from './match-validation/step-match-players
 import { StepMatchFormationsComponent } from './match-validation/step-match-formations/step-match-formations.component';
 import { StepMatchPhasesComponent } from './match-validation/step-match-phases/step-match-phases.component';
 import { StepMatchSubsComponent } from './match-validation/step-match-subs/step-match-subs.component';
+import { FormationFieldComponent } from './match-validation/step-match-formations/formation-field/formation-field.component';
+import { FormationSelectionComponent } from './match-validation/step-match-formations/formation-selection/formation-selection.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,10 +28,13 @@ import { StepMatchSubsComponent } from './match-validation/step-match-subs/step-
     StepMatchFormationsComponent,
     StepMatchPhasesComponent,
     StepMatchSubsComponent,
+    FormationFieldComponent,
+    FormationSelectionComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class TeamEventValidationModule { }
