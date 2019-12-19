@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-formation-field',
@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./formation-field.component.scss']
 })
 export class FormationFieldComponent implements OnInit {
+  @Input() formation;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

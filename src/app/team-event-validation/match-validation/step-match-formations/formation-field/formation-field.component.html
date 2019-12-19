@@ -1,9 +1,13 @@
 <div class="container">
     <div class="field-container">
         <div class="field">
-            <!-- <img src="./assets/svg/formation/field.svg" alt="field"/>
-            <img src="./assets/svg/formation/field-stripes.svg" alt="field stripes"/> -->
-            <!-- <img src="./assets/svg/formation/field-lines.svg" alt="field lines"/> -->
+            <div class="players">
+                <div
+                    *ngFor="let player of formation.positions"
+                    [ngStyle]="{'grid-column': player.posX, 'grid-row': player.posY}">
+                    {{player.name}}
+                </div>
+            </div>
         </div>
     </div>
 

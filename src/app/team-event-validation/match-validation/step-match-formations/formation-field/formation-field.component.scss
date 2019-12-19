@@ -6,16 +6,13 @@
 
         .field-container {
             width: 360px;
-            height: 635px;
+            height: 535px;
 
             .field {
                 display: grid;
                 background-image: url("../../../../../assets/svg/formation/field-lines.svg"), url("../../../../../assets/svg/formation/field-stripes.svg"), url("../../../../../assets/svg/formation/field.svg");
                 height: 100%;
-                // background-position: left top, left top;
                 background-position: left top, 0 105px, 5px 2px;
-                // background-size: contain, 358px 530px;
-                // 362px 533px, 360px 524px
                 background-size: 361px 533px, contain, 348px 524px;
                 background-repeat: no-repeat, no-repeat, no-repeat;
 
@@ -28,9 +25,13 @@
                     }
                 }
 
-                // img {
-                //     width: 100%;
-                // }
+                .players {
+                    display: grid;
+                    grid-template-columns: repeat(7, 50px);
+                    grid-template-rows: repeat(5, 80px);
+                    justify-items: center;
+                    align-items: center;
+                }
             }
         }
     }
