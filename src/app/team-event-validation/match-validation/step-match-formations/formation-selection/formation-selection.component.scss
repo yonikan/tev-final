@@ -1,0 +1,87 @@
+:host {
+    .container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .heading {
+            margin: 0 0 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        h3 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        h4 {
+            color: #96a1ae;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 0;
+        }
+        .define-subs {
+            mat-radio-group {
+                display: grid;
+                grid-template-columns: 0.3fr 0fr;
+                mat-radio-button {
+                    color: #8994a3;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        mat-tab-group {
+            margin-bottom: 20px;
+        }
+
+        .tab-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-rows: 100px;
+            grid-gap:10px;
+            justify-items: center;
+            align-items: center;
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .img-wrapper {
+                    display: grid;
+                    grid-template-rows: 1fr 1fr;
+                    grid-template-columns: 1fr;
+                    justify-content: center;
+                    align-items: center;
+                    .player-image-label {
+                        grid-column-start: 2;
+                        grid-row-start: 2;
+                        grid-row-end: 2;
+                        text-align: center;
+                        font-size: 12px;
+                        font-weight: 500;
+                    }
+                    .player-img {
+                        width: 54px;
+                        grid-row-start: 2;
+                        grid-column-start: 2;
+                    }
+                }
+
+                .player-name {
+                    display: flex;
+                    justify-content: center;
+                    font-size: 14px;
+                    color: #35083a;
+                    border-radius: 2px;
+                    border-radius: 12.5px;
+                    border: solid 1px #35083a;
+                    padding: 4px;
+                    margin-top: -8px;
+                    background-color: #ffffff;
+                    width: 95px;
+                }
+            }
+        }
+    }
+}
