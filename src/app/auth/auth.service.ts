@@ -107,7 +107,7 @@ export class AuthService {
   forgotPassword(email: string) {
     this.postForgotPassword(email)
      .subscribe((results: any) => { 
-
+        // this.router.navigateByUrl('/login?test=testtttt');
      });
   }
 
