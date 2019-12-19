@@ -9,9 +9,9 @@ const app: Application = express();
 
 app.use(bodyParser.json());
 
-app.route('/api/login').post(postLoginData);
-app.route('/api/forgot-password').post(postForgotPassword);
-app.route('/api/reset-password').put(putResetPassword);
+app.route('/api/account/login').post(postLoginData);
+app.route('/api/account/forgot-password').post(postForgotPassword);
+app.route('/api/account/reset-password').put(putResetPassword);
 
 app.route('/api/teams').get(getTeamsData); // for the teams dropdown
 app.route('/api/team-events').get(getTeamEventsData); // for the team-picker

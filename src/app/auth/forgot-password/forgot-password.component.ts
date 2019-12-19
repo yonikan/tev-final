@@ -38,7 +38,6 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     if (!this.forgotPasswordFormGroup.valid) {
       return;
     }
-    // this.isLoading = true;
     this.authService.forgotPassword(this.forgotPasswordFormGroup.value.emailText);
   }
 

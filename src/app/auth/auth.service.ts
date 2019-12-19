@@ -69,9 +69,6 @@ export class AuthService {
       // .pipe(
       //   tap((loginData: any) => console.log(loginData)),
       // )
-      // .pipe(
-      //   map((loginData: any) => loginData.payload),
-      // )
       .subscribe(
         (userLoginDataResponse: UserLogin) => {
           if (userLoginDataResponse.token) {
@@ -110,7 +107,7 @@ export class AuthService {
   forgotPassword(email: string) {
     this.postForgotPassword(email)
      .subscribe((results: any) => { 
-       console.log(results)
+
      });
   }
 
@@ -126,7 +123,7 @@ export class AuthService {
   resetPassword(password: string, repeatPassword: string) {
     this.postResetPassword(password, repeatPassword)
       .subscribe((results: any) => {
-        //  console.log(results)
+
       });
   }
 
@@ -142,7 +139,7 @@ export class AuthService {
   setPassword(token: string, password: string) {
     this.postSetPassword(token, password)
       .subscribe((results: any) => {
-         console.log(results)
+
       });
   }
 }
