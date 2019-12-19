@@ -15,6 +15,7 @@ import { StepMatchSubsComponent } from './match-validation/step-match-subs/step-
 import { FormationFieldComponent } from './match-validation/step-match-formations/formation-field/formation-field.component';
 import { FormationSelectionComponent } from './match-validation/step-match-formations/formation-selection/formation-selection.component';
 import { SharedModule } from '../shared/shared.module';
+import { FieldPlayerComponent } from './match-validation/step-match-formations/field-player/field-player.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SharedModule } from '../shared/shared.module';
     StepMatchPhasesComponent,
     StepMatchSubsComponent,
     FormationFieldComponent,
-    FormationSelectionComponent
+    FormationSelectionComponent,
+    FieldPlayerComponent
   ],
   imports: [
     CommonModule,

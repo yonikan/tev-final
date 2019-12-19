@@ -1,0 +1,24 @@
+:host {
+    .container {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+
+        .player-image-label {
+            color: #ffffff;
+            grid-column-start: 2;
+            grid-row-start: 2;
+            grid-row-end: 2;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        img {
+            width: 54px;
+            grid-row-start: 2;
+            grid-column-start: 2;
+        }
+    }
+}
