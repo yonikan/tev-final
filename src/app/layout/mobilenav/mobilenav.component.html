@@ -1,0 +1,59 @@
+<mat-nav-list *ngIf="isAuthenticated">
+
+
+    <div class="navigation-wrapper">
+        <div class="test">
+          <img class="avatar" [src]="userImgUrl || ''">
+          <div class="user-info">
+              <div class="name-title">
+                {{ userFirstName }} {{ userLastName }}
+              </div>
+              <div class="role-title">
+                {{ userRole }}
+              </div>
+            </div>
+        </div>
+
+        <a matRipple routerLink="/team-overview" routerLinkActive="active">
+          <!-- <mat-icon>home</mat-icon> -->
+          <img src="./assets/svg/navigation/overview.svg">
+          <span class="nav-caption">{{ 'layout.sidenav.team-overview' | translate }}</span>
+        </a>
+        <a matRipple>
+          <!-- <mat-icon>directions_run</mat-icon> -->
+          <img src="./assets/svg/navigation/vlc.svg">
+          <span class="nav-caption">{{ 'layout.sidenav.training' | translate }}</span>
+        </a>
+        <a matRipple>
+          <!-- <mat-icon>directions_run</mat-icon> -->
+          <img src="./assets/svg/navigation/calender.svg">
+          <span class="nav-caption">{{ 'layout.sidenav.matches' | translate }}</span>
+        </a>
+        <a matRipple>
+          <!-- <mat-icon>people_alt</mat-icon> -->
+          <img src="./assets/svg/navigation/shirt.svg">
+          <span class="nav-caption">{{ 'layout.sidenav.players' | translate }}</span>
+        </a>
+        <a matRipple>
+          <!-- <mat-icon>people_alt</mat-icon> -->
+          <img src="./assets/svg/navigation/pie.svg">
+          <span class="nav-caption">data discovery</span>
+        </a>
+
+        <a matRipple>
+            <!-- <mat-icon>people_alt</mat-icon> -->
+            <img src="./assets/svg/navigation/settings.svg">
+            <span class="nav-caption">settings</span>
+        </a>
+
+        <a matRipple>
+            <!-- <mat-icon>people_alt</mat-icon> -->
+            <img src="./assets/svg/navigation/invalid-name.svg">
+            <span class="nav-caption">more info</span>
+        </a>
+
+        <a matRipple (click)="onLogout()">
+            <span class="nav-caption">log-out</span>
+        </a>
+    </div>
+</mat-nav-list>

@@ -3,10 +3,12 @@
 
 :host {
     .overview-content-events {
-        background-color: #b5b5b5;
+        background-color: #35083a;
+        color: #fff;
         padding: 20px;
         padding-bottom: 0; // the swiper lib adds 20px padding
         border-bottom: 1px solid #a7a7a7;
+        box-shadow: -4.9px 7.5px 40px 0 rgba(53, 61, 86, 0.3);
         // width: 900px;
         // margin: 0 auto;
         // display: flex;
@@ -26,7 +28,7 @@
           .events-into-text {
             width: 220px;
             padding-right: 10px;
-            color: #616161;
+            // color: #616161;
 
             @media (max-width: $media-query-sm) {
               width: 100%;

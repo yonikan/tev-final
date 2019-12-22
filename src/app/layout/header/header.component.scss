@@ -8,33 +8,39 @@
     z-index: 20;
     position: fixed;
     height: $header-height;
+    box-shadow: 0 0 16px 0 rgba(53, 61, 86, 0.18);
 
     .toolbar-container {
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
       align-items: center;
       width: 100%;
 
-      .mat-button {
-        min-width: 14px;
-        padding: 0 10px;
-      }
+      // .mat-button {
+      //   min-width: 14px;
+      //   padding: 0 10px;
+      // }
+      
+      .hamburger-menu {
+        display: none;
+        // border-radius: 50%;
 
-      .toolbar-left {
-        .hamburger-menu {
-          display: none;
-          // border-radius: 50%;
-
-          @media (max-width: $media-query-sm) {
-            // display: block;
-            // display: none;
-          }
+        @media (max-width: $media-query-sm) {
+          display: block;
+          // display: none;
         }
       }
 
       .logo {
+        display: flex;
+        align-items: center;
+
         .logo-desktop {
-          height: 35px;
+          // height: 35px;
+          width: 150px;
+          border-right: 2px solid #d8d8d8;
+          padding-right: 15px;
+          margin-right: 15px;
 
           @media (max-width: $media-query-sm) {
             display: none;
@@ -51,7 +57,24 @@
         }
       }
 
+      .toolbar-left {
+        .hamburger-menu {
+          display: none;
+          // border-radius: 50%;
+
+          @media (max-width: $media-query-sm) {
+            // display: block;
+            // display: none;
+          }
+        }
+      }
+
       .toolbar-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        color: #8994a3;
+
         @media (max-width: $media-query-sm) {
           display: none;
         }
@@ -65,18 +88,26 @@
           }
           
           .user-button-container {
+            padding-right: 10px;
+
             .user-button {
               height: 100%;
               text-transform: capitalize;
+              font-size: 16px;
 
               .avatar {
-                width: 30px;
-                height: 30px;
+                width: 35px;
+                height: 35px;
                 border-radius: 50%;
               }
           
+              span {
+                color: #6d7680 !important;
+              }
+
               .name {
                 margin: 0 8px 0 10px;
+                color: #6d7680 !important;
         
                 @media (max-width: $media-query-sm) {
                   display: none;

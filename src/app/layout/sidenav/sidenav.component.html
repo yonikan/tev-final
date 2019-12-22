@@ -1,31 +1,26 @@
 <mat-nav-list *ngIf="isAuthenticated">
     <div class="navigation-wrapper">
         <a matRipple routerLink="/team-overview" routerLinkActive="active">
-          <mat-icon>home</mat-icon>
+          <img src="./assets/svg/navigation/overview.svg">
           <span class="nav-caption">{{ 'layout.sidenav.team-overview' | translate }}</span>
         </a>
-        <mat-divider></mat-divider>
         <a matRipple>
-          <mat-icon>directions_run</mat-icon>
+          <img src="./assets/svg/navigation/vlc.svg">
           <span class="nav-caption">{{ 'layout.sidenav.training' | translate }}</span>
         </a>
-        <mat-divider></mat-divider>
         <a matRipple>
-          <mat-icon>directions_run</mat-icon>
+          <img src="./assets/svg/navigation/calender.svg">
           <span class="nav-caption">{{ 'layout.sidenav.matches' | translate }}</span>
         </a>
-        <mat-divider></mat-divider>
         <a matRipple>
-          <mat-icon>people_alt</mat-icon>
+          <img src="./assets/svg/navigation/shirt.svg">
           <span class="nav-caption">{{ 'layout.sidenav.players' | translate }}</span>
         </a>
-        <mat-divider></mat-divider>
     </div>
     <div class="configuration-wrapper">
-        <mat-divider></mat-divider>
         <a matRipple>
-          <mat-icon>settings</mat-icon>
-          <span class="nav-caption">{{ 'layout.sidenav.team-configuration' | translate }}</span>
+          <img src="./assets/svg/navigation/pie.svg">
+          <span class="nav-caption">data discovery</span>
         </a>
     </div>
 </mat-nav-list>

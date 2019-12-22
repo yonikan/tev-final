@@ -31,7 +31,7 @@
       width: 400px;
       height: calc(100vh - 70px); // removes the header placeholder from the height
       padding: 35px;
-      background-color: #fff;
+      background-color: #eeeeee;
       box-shadow: 2px 0 5px -2px #000;
 
       @media (max-width: $media-query-sm) {
