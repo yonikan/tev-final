@@ -20,8 +20,9 @@
     }
 
     .active {
-      color: $color-purple;
+      // color: $color-purple;
       // filter: invert(43%) 
+      filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
     }
 
     .navigation-wrapper {
