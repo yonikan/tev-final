@@ -57,15 +57,11 @@
         }
       }
 
-      .toolbar-left {
-        .hamburger-menu {
-          display: none;
-          // border-radius: 50%;
-
-          @media (max-width: $media-query-sm) {
-            // display: block;
-            // display: none;
-          }
+      .toolbar-left {     
+        // margin-left: auto;
+   
+        @media (max-width: $media-query-sm) {
+          margin-left: auto;
         }
       }
 

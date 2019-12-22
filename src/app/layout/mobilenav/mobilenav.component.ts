@@ -30,8 +30,7 @@ export class MobilenavComponent implements OnInit {
       this.userImgUrl = userLoginData.imgUrl;
       this.userFirstName = userLoginData.firstName;
       this.userLastName = userLoginData.lastName;
-      // this.userRole = StaffRoles[userLoginData.role];
-      this.userRole = 'head coach';
+      this.userRole = StaffRoles[userLoginData.role];
     });
 
     this.authStatusSub = this.authService

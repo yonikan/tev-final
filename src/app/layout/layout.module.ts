@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app.routes';
 import { HeaderComponent } from './header/header.component';
-import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { TeamPickerDropdownComponent } from './header/team-picker-dropdown/team-picker-dropdown.component';
 import { MobilenavComponent } from './mobilenav/mobilenav.component';
@@ -11,7 +10,6 @@ import { MobilenavComponent } from './mobilenav/mobilenav.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    MobileNavComponent,
     SidenavComponent,
     TeamPickerDropdownComponent,
     MobilenavComponent
@@ -23,7 +21,6 @@ import { MobilenavComponent } from './mobilenav/mobilenav.component';
   ],
   exports: [
     HeaderComponent,
-    MobileNavComponent,
     SidenavComponent,
     MobilenavComponent
   ]
