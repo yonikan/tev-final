@@ -23,12 +23,8 @@
     }
 
     .active {
-      // background-color: rgba(0, 0, 0, 0.2);
-      color: #35083a;
-      // padding: 30px 41px;
+      color: $color-purple;
     }
-
-
 
     .navigation-wrapper {
       margin-top: $header-height; // for the header's placeholder

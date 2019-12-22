@@ -1,29 +1,5 @@
-
-// pass variables into a sass map ================
-$variables: (
-  --pageBackground: var(--pageBackground),
-
-  --headerColor: var(--headerColor),
-  --headerBackground: var(--headerBackground),
-
-  --navColor: var(--navColor),
-  --navBackground: var(--navBackground),
-
-  --cardColor: var(--cardColor),
-  --cardBackground: var(--cardBackground),
-
-  --footerColor: var(--footerColor),
-  --footerBackground: var(--footerBackground)
-);
-
-
-$pageBackground : #ebebeb;
-
-
-
 // pm app config ================
 $header-height: 55px;
-// $sidenav-width: 220px;
 $sidenav-width: 110px;
 
 // pm app media queries ================
@@ -33,13 +9,24 @@ $media-query-md: 1024px; // 1024px is the a desktop
 $media-query-lg: 1200px; // 1200px is the a desktop hi-res
 
 // pm app material colors ================
-$color-primary: #ffffff;
-$color-accent: #ffffff;
-$color-warn: #ffffff;
+// $color-primary: #ffffff;
+// $color-accent: #ffffff;
+// $color-warn: #ffffff;
 
 // pm app colors ================
-$color-pink: #35083a;
-$color-pink-dark: #a50740;
-$color-purple: #17142e;
-$background-color-light-grey: #484848;
-$background-color-dark-grey: #353435;
+$color-purple: #35083a;
+// $background-color-light-grey: #484848;
+// $background-color-dark-grey: #353435;
+
+// pass variables into a sass map ================
+$variables: (
+  --pageBackground: var(--pageBackground),
+  --headerColor: var(--headerColor),
+  --headerBackground: var(--headerBackground),
+  --navColor: var(--navColor),
+  --navBackground: var(--navBackground),
+  --cardColor: var(--cardColor),
+  --cardBackground: var(--cardBackground),
+  --footerColor: var(--footerColor),
+  --footerBackground: var(--footerBackground)
+);

@@ -14,7 +14,7 @@ $pm-app-typography: mat-typography-config(
   $font-family: 'Montserrat'
 );
 @include mat-core($pm-app-typography);
-$playermaker-theme: mat-light-theme(mat-palette($playermaker-primary-pink), mat-palette($playermaker-secondary-dark-blue), mat-palette($playermaker-error-purple));
+$playermaker-theme: mat-light-theme(mat-palette($playermaker-primary-purple), mat-palette($playermaker-secondary-purple), mat-palette($playermaker-error-purple));
 @include angular-material-theme($playermaker-theme);
 
 .mat-dialog-container {
