@@ -2,18 +2,16 @@
 @import './themes';
 @import '~@angular/material/theming';
 
-// @font-face {
-//   font-family: 'Work Sans';
-//   src: url('assets/fonts/Worksans.woff');
-// };
-// @font-face {
-//   font-family: 'Work Sans Bold';
-//   src: url('assets/fonts/Worksanssemibold.woff');
-// };
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat/Montserrat-Regular.ttf');
+};
+
 $pm-app-typography: mat-typography-config(
   $font-family: 'Montserrat'
 );
 @include mat-core($pm-app-typography);
+
 $playermaker-theme: mat-light-theme(mat-palette($playermaker-primary-purple), mat-palette($playermaker-secondary-purple), mat-palette($playermaker-error-purple));
 @include angular-material-theme($playermaker-theme);
 
