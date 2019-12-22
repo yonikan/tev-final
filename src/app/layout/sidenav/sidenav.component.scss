@@ -2,9 +2,6 @@
 @import '../../../styles/functions';
 
 :host {
-  // height: 100%;
-  // width: 100%;
-
   mat-nav-list {
     width: $sidenav-width;
     background-color: var(--headerBackground);
@@ -12,7 +9,7 @@
     height: 100vh;
     position: fixed;
     padding-top: 0; // overrids the default material top padding.
-    border-right: 1px solid #acacac;
+    // border-right: 1px solid #acacac;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,9 +20,7 @@
     }
 
     .active {
-      color: #6d7680 !important;
-      // background-color: rgba(0, 0, 0, 0.2);
-      // color: #fff;
+      color: $color-purple !important;
     }
 
     .navigation-wrapper {
@@ -39,22 +34,23 @@
     a {
       text-decoration: none;
       display: flex;
-      // flex-direction: row;
       flex-direction: column;
       align-items: center;
       padding: 15px;
       text-align: center;
-      // transition: .5s;
+      text-transform: uppercase;
+      color: #cecece;
+      font-size: 14px;
 
-      // &:hover {
-      //   background-color: rgba(3, 3, 3, 0.3);
-      //   color: #fff; 
-      // }
-    }
+      &:first-child {
+        margin-top: 25px;
+      }
 
-    .nav-caption {
-      margin-left: 10px;
-      margin-right: 13px;
+      .nav-caption {
+        margin-top: 11px;
+        margin-left: 10px;
+        margin-right: 13px;
+      }
     }
 
     .nav-badge {

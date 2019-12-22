@@ -12,6 +12,11 @@ export class CustomIconsService {
   ) {}
   init() {
     this.matIconRegistry.addSvgIcon(
+      'overview',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/svg/navigation/overview.svg')
+    );
+
+    this.matIconRegistry.addSvgIcon(
       'es',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/svg/flags/flag-es.svg')
     );
