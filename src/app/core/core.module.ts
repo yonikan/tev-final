@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { UserIdleInterceptor } from './interceptors/user-idle.interceptor';
 import { VersionUpdateInterceptor } from './interceptors/version-update.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
@@ -31,7 +30,6 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     ErrorModalComponent
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: UserIdleInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: VersionUpdateInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
