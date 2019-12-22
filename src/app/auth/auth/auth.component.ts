@@ -26,6 +26,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
   isTranslationPickerFeatureEnabled = true;
+  userEmailAddress = 'test@test.com'; // for the email sent comp
 
   constructor(
     private translationPickerService: TranslationPickerService,
@@ -58,6 +59,10 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   onLoginModeEmitter(loginModeString) {
     this.loginMode = loginModeString;
+  }
+
+  onUserEmailAddressEmitter(userEmailAddressString) {
+    this.userEmailAddress = userEmailAddressString;
   }
 
   ngOnDestroy() {
