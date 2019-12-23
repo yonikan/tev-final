@@ -47,14 +47,14 @@
           }
         }
 
-        .logo-mobile {
-          height: 35px;
-          display: none;
+        // .logo-mobile {
+        //   height: 35px;
+        //   display: none;
 
-          @media (max-width: $media-query-sm) {
-            display: block;
-          }
-        }
+        //   @media (max-width: $media-query-sm) {
+        //     display: block;
+        //   }
+        // }
       }
 
       .toolbar-left {     

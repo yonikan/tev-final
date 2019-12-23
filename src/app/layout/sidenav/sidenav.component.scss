@@ -20,8 +20,8 @@
     }
 
     .active {
-      // color: $color-purple !important;
-      filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
+      color: $color-purple !important;
+      // filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
     }
 
     .navigation-wrapper {
@@ -47,6 +47,10 @@
         margin-top: 25px;
       }
 
+      i {
+        font-size: 28px;
+      }
+      
       .nav-caption {
         margin-top: 11px;
         margin-left: 10px;
