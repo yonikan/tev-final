@@ -9,7 +9,7 @@
 
     &::after {
       content: '';
-      background-color: rgb(230, 230, 230);
+      background-color: $color-purple;
       background-image: url(../../../assets/img/login-background.png);
       background-size: cover;
       background-repeat: no-repeat;
@@ -31,8 +31,14 @@
       width: 400px;
       height: calc(100vh - 70px); // removes the header placeholder from the height
       padding: 35px;
-      background-color: #fff;
       box-shadow: 2px 0 5px -2px #000;
+      background-color: rgb(230, 230, 230);
+      // background-image: url(../../../assets/svg/general/bg-l-og-o.svg);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 50%;
+      // opacity: 0.7;
 
       @media (max-width: $media-query-sm) {
         width: 100%;

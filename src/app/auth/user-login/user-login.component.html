@@ -1,29 +1,28 @@
 <div class="user-login-container">
-    <div class="login-head">
+    <!-- <div class="login-head">
         <h3>{{ 'auth.user-login.title' | translate }}</h3>
-    </div>
+    </div> -->
     <div class="form-container">
         <mat-spinner *ngIf="isLoading"></mat-spinner>
         
         <form [formGroup]="userLoginFormGroup" (submit)="onLogin()" *ngIf="!isLoading">
             <mat-form-field>
-                <mat-label>{{ 'auth.general.enter-email-address' | translate }}</mat-label>
+                <mat-label>Email Address</mat-label>
                 <input matInput type="email" formControlName="emailText">
             </mat-form-field>
             <mat-form-field>
-                <mat-label>{{ 'auth.general.enter-password' | translate }}</mat-label>
+                <mat-label>Password</mat-label>
                 <input id="password1" matInput type="password" formControlName="passwordText" showHideInput>
                 <i class="material-icons" matSuffix showHideTrigger="password1" [showHideStatus]="{ materialIcon: true, id: 'password1' }"></i>
             </mat-form-field>
 
-            <mat-error *ngIf="userLoginFormGroup.get('passwordText').invalid">Please enter a valid password.</mat-error>
             <mat-error *ngIf="(userLoginFormGroup.value.emailText.length > 3 && userLoginFormGroup.value.passwordText.length > 3) &&
                     (userLoginFormGroup.get('emailText').invalid || userLoginFormGroup.get('passwordText').invalid)">
                     {{ 'auth.general.incorrect-email-and/or-password' | translate }}
             </mat-error>
             
-            <button color="primary" [disabled]="!userLoginFormGroup.valid" class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button>
-                {{ 'auth.user-login.user-login-button' | translate }}
+            <button color="accent" [disabled]="!userLoginFormGroup.valid" class="login-button" *ngIf="!isLoading" type="submit" mat-raised-button>
+                login
             </button>
         </form>
     </div>

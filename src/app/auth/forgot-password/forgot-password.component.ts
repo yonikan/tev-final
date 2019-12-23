@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class ForgotPasswordComponent implements OnInit, OnDestroy {
   @Output() loginModeEmitter = new EventEmitter<string>();
+  @Output() userEmailAddressEmitter = new EventEmitter<string>();
   isLoading = false;
   private authStatusSub: Subscription;
   forgotPasswordFormGroup: FormGroup;
@@ -39,6 +40,16 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
       return;
     }
     this.authService.forgotPassword(this.forgotPasswordFormGroup.value.emailText);
+    this.goToEmailSentPage()
+  }
+
+  goToEmailSentPage() {
+    this.loginMode('email-sent');
+    this.userEmailAddress(this.forgotPasswordFormGroup.value.emailText);
+  }
+
+  userEmailAddress(emailAddress) {
+    this.userEmailAddressEmitter.emit(emailAddress);
   }
 
   loginMode(loginModeState) {

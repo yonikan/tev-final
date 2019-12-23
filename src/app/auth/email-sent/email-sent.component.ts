@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-email-sent',
@@ -7,13 +8,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class EmailSentComponent implements OnInit {
   @Output() loginModeEmitter = new EventEmitter<string>();
+  @Input() userEmailAddressInput: string; 
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
+    console.log('userEmailAddressInput: ', this.userEmailAddressInput);
   }
 
   loginMode(loginModeState) {
     this.loginModeEmitter.emit(loginModeState);
+  }
+
+  sendAgain() {
+    this.authService.forgotPassword(this.userEmailAddressInput);
   }
 }

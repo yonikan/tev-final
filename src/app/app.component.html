@@ -1,12 +1,11 @@
 <mat-sidenav-container >
   <mat-sidenav #sidenav role="navigation" class="sidenav">
-    <!-- <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav> -->
+    <app-mobilenav (closeSidenav)="sidenav.close()"></app-mobilenav>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <div class="app-container">
       <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-      <app-mobile-nav></app-mobile-nav>
       <div class="content-container">
           <div class="page-sidenav" *ngIf="isAuthenticated">
              <app-sidenav></app-sidenav>

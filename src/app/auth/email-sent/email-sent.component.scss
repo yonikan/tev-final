@@ -1,11 +1,14 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
-@import '~@angular/material/theming';
 
 :host { 
     @include login-card;
 
     p {
         line-height: 1.4;
+
+        a {
+            color: $color-green;
+        }
     }
 }

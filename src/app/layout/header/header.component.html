@@ -1,5 +1,15 @@
-<mat-toolbar *ngIf="isAuthenticated" class="toolbar mat-elevation-z2">
+<mat-toolbar *ngIf="isAuthenticated" class="toolbar">
     <div class="toolbar-container">
+      <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
+        <!-- <i class="demo-icon icon-overview">&#xe804;</i>  -->
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <div class="logo">
+        <img src="./assets/img/logo-large.jpg" alt="logo" class="logo-desktop">
+        <!-- <img src="./assets/img/logo.png" alt="logo" class="logo-mobile"> -->
+      </div>
+      
       <div class="toolbar-left">
           <app-team-picker-dropdown 
              [appearance]="'none'"
@@ -8,13 +18,37 @@
           </app-team-picker-dropdown>
       </div>
 
-      <div class="logo">
+      <!-- <div class="logo">
           <img src="./assets/img/logo-large.jpg" alt="logo" class="logo-desktop">
           <img src="./assets/img/logo.png" alt="logo" class="logo-mobile">
-      </div>
+      </div> -->
 
       <div class="toolbar-right">
           <div class="actions">
+
+              <div class="">
+                <button mat-button [matMenuTriggerFor]="appMenu" class="">
+                  <mat-icon class="icon">more_vert</mat-icon>
+                </button>
+                <mat-menu #appMenu="matMenu">
+                    <button class="btn-menu" mat-menu-item (click)="null">
+                        <span>support</span>
+                      </button>
+
+                      <button mat-menu-item (click)="null">
+                          <span>contact us</span>
+                        </button>
+
+                        <button mat-menu-item (click)="null">
+                            <span>send feedback</span>
+                          </button>
+
+                          <button mat-menu-item (click)="null">
+                              <span>about playermaker</span>
+                            </button>
+                </mat-menu>
+              </div>
+
               <div class="user-button-container">
                 <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
                   <img class="avatar" [src]="userImgUrl || ''">
@@ -22,6 +56,16 @@
                   <mat-icon class="icon">keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #userMenu="matMenu">
+                    <button mat-menu-item (click)="null">
+                      <mat-icon>settings</mat-icon>
+                      <span>settings</span>
+                    </button>
+
+                    <button mat-menu-item (click)="null">
+                        <mat-icon>settings</mat-icon>
+                        <span>prefernces</span>
+                    </button>
+
                     <button mat-menu-item (click)="onLogout()">
                       <mat-icon>exit_to_app</mat-icon>
                       <span>{{ 'layout.header.logout' | translate }}</span>

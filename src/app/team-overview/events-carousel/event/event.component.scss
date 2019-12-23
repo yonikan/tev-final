@@ -9,6 +9,7 @@
     height: 180px;
     min-height: 180px;
     max-height: 180px;
+    border-radius: 10px;
 
     .event-header-container {
       .event-header {
@@ -78,7 +79,8 @@
         .confirm-button {
           width: 100%;
           margin-top: 20px;
-          background-color: black;
+          background-color: #11cd69;
+          border-radius: 20px;
           color: #fff;
           text-transform: uppercase;
         }

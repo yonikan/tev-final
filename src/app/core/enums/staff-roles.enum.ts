@@ -1,4 +1,4 @@
-export const enum StaffRoles {
+export enum StaffRoles {
 	HeadCoach = 1,
     AssistantCoach,
     Analyst,

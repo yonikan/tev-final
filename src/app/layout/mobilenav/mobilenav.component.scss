@@ -1,0 +1,95 @@
+@import '../../../styles/variables';
+@import '../../../styles/functions';
+
+:host {
+  mat-nav-list {
+    width: 290px;
+    background-color: var(--headerBackground);
+    color: var(--headerColor);
+    height: 100vh;
+    position: fixed;
+    padding-top: 0; // overrids the default material top padding.
+    // border-right: 1px solid #acacac;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: $media-query-sm) {
+      position: static;
+      border-right: 0;
+    }
+
+    .active {
+      color: $color-purple;
+      // filter: invert(43%) 
+      // filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
+    }
+
+    .navigation-wrapper {
+      margin-top: $header-height; // for the header's placeholder
+
+      @media (max-width: $media-query-sm) {
+        margin-top: 0;
+      }
+
+      .user-info-wrapper {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #cecece;
+        margin: 15px;
+        padding-bottom: 20px;
+
+        .avatar {
+          width: 55px;
+          height: 55px;
+          border-radius: 50%;
+          margin-right: 13px;
+        }
+
+        .user-info {
+          .name-title {
+            font-size: 22px;
+          }
+
+          .role-title {
+            font-size: 16px;
+
+          }
+        }
+      }
+    }
+    
+    a {
+      padding: 18px 20px;
+      text-decoration: none;
+      display: flex;
+      text-align: center;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #cecece;
+      font-size: 14px;
+
+      &:first-child {
+        margin-top: 35px;
+      }
+    }
+
+    i {
+      font-size: 28px;
+    }
+    
+    .nav-caption {
+      margin-left: 10px;
+      margin-right: 13px;
+      padding-top: 10px;
+    }
+
+    .nav-badge {
+      margin-left: auto;
+    }
+  }
+}
+
+.mat-badge-medium.mat-badge-after .mat-badge-content { //fix for the badge's -22px
+  right: 0 ;
+}
