@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
     // const authToken = this.authService.getToken();
     const authToken: string = this.localStorageService.getOnCookie('token');
     const authRequest = req.clone({
-      headers: req.headers.set('Authorization', 'bearer ' + authToken)
+      headers: req.headers.set('Authorization', 'berear ' + authToken)
     });
     return next.handle(authRequest);
   }
