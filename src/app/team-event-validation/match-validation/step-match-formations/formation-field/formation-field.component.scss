@@ -29,12 +29,18 @@
 
                 .players {
                     display: grid;
-                    grid-template-columns: repeat(7, 1fr);
-                    grid-template-rows: repeat(5, 80px);
+                    // grid-template-columns: repeat(9, 46.88px);// field columns = 9
+                    // grid-template-columns: repeat(9, auto);// field columns = 9
+                    grid-template-columns: repeat(9, 1fr);// field columns = 9
+                    grid-template-rows: repeat(6, 90.8px);// field rows = 7
                     justify-items: center;
                     align-items: center;
+                    > * {
+                        min-width: 0;
+                    }
                 }
             }
         }
     }
 }
+

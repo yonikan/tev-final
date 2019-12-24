@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import FormationService from './formation.service';
 
 const players = [
-  {id: 1, name: 'John A.'},
-  {id: 2, name: 'John A.'},
-  {id: 3, name: 'John A.'},
-  {id: 4, name: 'John A.'},
-  {id: 5, name: 'John A.'},
-  {id: 6, name: 'John A.'},
-  {id: 7, name: 'John A.'},
+  {id: 1, name: 'John A.', "label": "XX"},
+  {id: 2, name: 'John A.', "label": "XX"},
+  {id: 3, name: 'John A.', "label": "XX"},
+  {id: 4, name: 'John A.', "label": "XX"},
+  {id: 5, name: 'John A.', "label": "XX"},
+  {id: 6, name: 'John A.', "label": "XX"},
+  {id: 7, name: 'John A.', "label": "XX"},
 ];
 
 
@@ -22,7 +22,7 @@ export class StepMatchFormationsComponent implements OnInit {
         {id: 1, name: 'Goalkeepers', players, label: 'GK'},
         {id: 2, name: 'Defenders', players, label: 'DF'},
         {id: 3, name: 'Midfielders', players, label: 'MF'},
-        {id: 4, name: 'Forwards', players, label: 'FR'},
+        {id: 4, name: 'Forwards', players, label: 'FR'}
     ];
 
     tactics = null;

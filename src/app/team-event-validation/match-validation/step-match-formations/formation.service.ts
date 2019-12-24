@@ -10,7 +10,11 @@ class FormationService {
   constructor(private http: HttpClient) { }
 
   getFormations(): Observable<any> {
-    return this.http.get("./assets/formationMock.json");
+    return this.http.get("./assets/mocks/formation.mock.json");
+  }
+
+  getPlayers() {
+    return this.http.get("./assets/mocks/players.mock.json");
   }
 
 }

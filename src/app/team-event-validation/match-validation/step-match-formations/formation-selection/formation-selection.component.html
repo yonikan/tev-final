@@ -3,7 +3,7 @@
   <h4>*Tactics</h4>
   <mat-form-field>
       <mat-label>Select Tactic</mat-label>
-      <mat-select (selectionChange)="selectTactic($event)">
+      <mat-select (selectionChange)="selectTactic($event)" [(value)]="selectedTactic">
         <mat-option *ngFor="let tactic of tactics" [value]="tactic">
           {{tactic.name}}
         </mat-option>

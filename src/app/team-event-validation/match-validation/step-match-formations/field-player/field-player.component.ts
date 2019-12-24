@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FieldPlayerComponent implements OnInit {
   @Input() positionName;
   @Input() playerName;
+  @Input() players;
 
   constructor() { }
 

@@ -5,69 +5,69 @@
         "formationPosition": [
             {
                 "playerId": "5dfb821ad6c086800f74c67b",
-                "positionX": 4,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionX": 5,
+                "positionY": 8,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a3e3ffc96c96b88c6",
-                "positionX": 3,
+                "positionX": 4,
                 "positionY": 2,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ab5ab05a3790eaf43",
-                "positionX": 5,
+                "positionX": 6,
                 "positionY": 2,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac97479524acf3787",
-                "positionX": 3,
+                "positionX": 4,
                 "positionY": 4,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a1d9c688320f4589c",
-                "positionX": 5,
+                "positionX": 6,
                 "positionY": 4,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a1ebb0b841945f392",
-                "positionX": 7,
+                "positionX": 8,
                 "positionY": 4,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a04ec50bcf8f7116b",
-                "positionX": 1,
+                "positionX": 2,
                 "positionY": 4,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a741fc5316501b315",
-                "positionX": 1,
+                "positionX": 2,
                 "positionY": 6,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a3e5b314c6ab84b62",
-                "positionX": 3,
+                "positionX": 4,
                 "positionY": 6,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a0802253bb03b04c0",
-                "positionX": 5,
+                "positionX": 6,
                 "positionY": 6,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aad83b3b83555422b",
-                "positionX": 7,
+                "positionX": 8,
                 "positionY": 6,
-                "positionName": "GK"
+                "positionName": "XX"
             }
         ]
     },
@@ -79,67 +79,67 @@
                 "playerId": "5dfb821a085175ff288c0e5a",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a632e6a3541f7e8e3",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a8bcb46ba6ff16400",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aa0501b1b99362f51",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a8dd858db4cdcd62f",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821acc1a58b5334e425c",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a99b2c6b87d8a338b",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a7e43098e9bd47423",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aa1abbb0695f4855d",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a91c64059d1b46e3d",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a84f7ef6dfaf8d6e6",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             }
         ]
     },
@@ -151,67 +151,67 @@
                 "playerId": "5dfb821af5426b58162d6e78",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a592f041525073b78",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aa187d99f835fb28d",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a97981200a6824e0a",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ae86095537e5dec0c",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac106923f5ea245d1",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a76ff035bf66ce624",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac669e9370e48b2cf",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a3a5f7666a5714c0c",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a438d93bc39f14c05",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a093a87f07ae4b609",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             }
         ]
     },
@@ -221,69 +221,69 @@
         "formationPosition": [
             {
                 "playerId": "5dfb821a6b341e94340bdff9",
-                "positionX": 1,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionX": 5,
+                "positionY": 8,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a2a96b063ce51e7ef",
-                "positionX": 5,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionX": 2,
+                "positionY": 6,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a43ff5cc4749a8da1",
-                "positionX": 1,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionX": 4,
+                "positionY": 6,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821af98fbd9f08b3cf83",
-                "positionX": 1,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac6208b1f92386bfb",
-                "positionX": 1,
-                "positionY": 7,
-                "positionName": "GK"
+                "positionX": 8,
+                "positionY": 6,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a36dd78c83750115c",
                 "positionX": 5,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionY": 5,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a373a1a17f0f92c1b",
-                "positionX": 1,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac237fcbf646f6516",
-                "positionX": 5,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionX": 6,
+                "positionY": 4,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a90be093b21869f6a",
-                "positionX": 1,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionX": 2,
+                "positionY": 2,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a549b7d3a13df98cc",
-                "positionX": 5,
-                "positionY": 1,
-                "positionName": "DF"
+                "positionX": 8,
+                "positionY": 2,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac68009fe26f34b6e",
                 "positionX": 5,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionY": 1,
+                "positionName": "XX"
             }
         ]
     },
@@ -294,68 +294,68 @@
             {
                 "playerId": "5dfb821af0cc17c8ca43bd93",
                 "positionX": 5,
-                "positionY": 1,
-                "positionName": "DF"
+                "positionY": 8,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a11d8308f7a192c46",
-                "positionX": 5,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionX": 4,
+                "positionY": 6,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aaa585af4212baa5a",
                 "positionX": 5,
-                "positionY": 7,
-                "positionName": "GK"
+                "positionY": 6,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ad416f04b4f99ac95",
-                "positionX": 1,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a4c38ab5bb609d52a",
-                "positionX": 5,
-                "positionY": 7,
-                "positionName": "GK"
+                "positionX": 2,
+                "positionY": 5,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ab1d3b3de7eb0c67e",
-                "positionX": 1,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionX": 5,
+                "positionY": 5,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821abe6fc814ac48f5d1",
-                "positionX": 1,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionX": 8,
+                "positionY": 5,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821af051a9a6a960fad7",
-                "positionX": 1,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821af697c3a8ea54115b",
-                "positionX": 1,
-                "positionY": 7,
-                "positionName": "DF"
+                "positionX": 6,
+                "positionY": 4,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac078999ef09f1ba0",
-                "positionX": 1,
-                "positionY": 1,
-                "positionName": "DF"
+                "positionX": 5,
+                "positionY": 3,
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ac1027ffb979936fe",
                 "positionX": 5,
-                "positionY": 1,
-                "positionName": "GK"
+                "positionY": 2,
+                "positionName": "XX"
             }
         ]
     },
@@ -367,67 +367,67 @@
                 "playerId": "5dfb821a9f533092ee4e88ed",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a7f20812cfd465b7a",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821af766bc7a13fe7819",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821acfbf86b5e7ca97e6",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a739a75f8bc966747",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a86b0b9d4ccfbc59e",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ab7428eaa927d8ac9",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a6d0d6b57d1bdfefe",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a63c3b9b55baf8582",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a701f508c7b660359",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a403262a817d0a015",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             }
         ]
     },
@@ -439,67 +439,67 @@
                 "playerId": "5dfb821a3311d5db3cc40d56",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a3c8f552674cb321e",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a057fb1caad324f69",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a71ca3a58d460eaa0",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821afd3cc6467f1e501a",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a997dc42a6dc4c817",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aa5d2e9e2741cc30a",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a20ad5758219d212a",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a3785dfcb6e3bc310",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a6a69d342e47648ce",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a9bdf8624c5204c56",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             }
         ]
     },
@@ -511,67 +511,67 @@
                 "playerId": "5dfb821aba2ca394d7df33b6",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ae3e096d5b3e91782",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a3560847be348eed8",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a76157fa3ff7a29b1",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a4c125f2e16f90b3d",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ae953c25e6a626b49",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ae0aaf3e88a7ddc10",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a38d42a22d5df4cc2",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a520b99dfa33d10ea",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aed841e782d43b4cd",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821af8907bd8ac9b8ad7",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             }
         ]
     },
@@ -583,67 +583,67 @@
                 "playerId": "5dfb821ad08b40728bf6ec84",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a910b771c701a8189",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821af4b13580e79f69df",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a96b08ee699e0a9cc",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a6c941e9b4ec02828",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aa0040efb29528fb8",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ad18b5115cf494eff",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aa4d3bf0626a22a4e",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ad39b3f4f87ec6189",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ae79abbd7e179c58f",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a79cefbfaa7689c4f",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             }
         ]
     },
@@ -655,67 +655,67 @@
                 "playerId": "5dfb821ab4a863b14f4d5eef",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a1167d30e475c20df",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a1a89636666472725",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821af31981a888977847",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a3fd1ae9c3c67b549",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821ad6a93946f6bed6ad",
                 "positionX": 1,
                 "positionY": 7,
-                "positionName": "GK"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a114a49a21702b8ab",
                 "positionX": 1,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a4f081a391753cd42",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821a752866c18271737b",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821acb18fb538cccb403",
                 "positionX": 5,
                 "positionY": 7,
-                "positionName": "DF"
+                "positionName": "XX"
             },
             {
                 "playerId": "5dfb821aae289692b440e2d0",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "GK"
+                "positionName": "XX"
             }
         ]
     }
