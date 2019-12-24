@@ -3,7 +3,7 @@
     <div class="content">
         <app-formation-selection
             [tabs]="playersData"
-            [tactics]="tactics"
+            [tactics]="tactics | async"
             [definedSubs]="definedSubs"
             (onSelectTactic)="selectTactic($event)"
             (onSelectDefinedSub)="selectDefinedSub($event)">

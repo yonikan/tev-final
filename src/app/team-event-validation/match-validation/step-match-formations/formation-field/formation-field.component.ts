@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FormationFieldComponent implements OnInit {
   @Input() formation;
 
-  constructor() {}
+  constructor() {
+    console.log('formation', this.formation);
+  }
 
   ngOnInit() {
   }

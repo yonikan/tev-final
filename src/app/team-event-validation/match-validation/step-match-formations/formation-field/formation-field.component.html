@@ -3,9 +3,9 @@
         <div class="field">
             <div class="players">
                 <div
-                    *ngFor="let player of formation.positions"
-                    [ngStyle]="{'grid-column': player.posX, 'grid-row': player.posY}">
-                    <app-field-player [positionName]="player.name"></app-field-player>
+                    *ngFor="let player of formation.formationPosition"
+                    [ngStyle]="{'grid-column': player.positionX, 'grid-row': player.positionY}">
+                    <app-field-player [positionName]="player.positionName"></app-field-player>
                 </div>
             </div>
         </div>
