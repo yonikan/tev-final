@@ -10,6 +10,7 @@ import { ThemePickerService } from './core/theme-picker/theme-picker.service';
 import { TeamPickerService } from './core/services/team-picker.service';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
+import { UiComponentsService } from './core/services/ui-components.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private localStorageService: LocalStorageService,
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
-    private teamPickerService: TeamPickerService,
+    private uiComponentsService: UiComponentsService,
     public breakpointObserver: BreakpointObserver,
     private router: Router,
     private serverEnvService: ServerEnvService) {
@@ -61,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.isAuthenticated = authStatus;
       });
 
-    this.isLoadingSub = this.teamPickerService
+    this.isLoadingSub = this.uiComponentsService
       .getIsLoadingListener()
       .subscribe((isLoading: boolean) => {
         this.isLoading = isLoading;

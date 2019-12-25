@@ -17,18 +17,19 @@ export class ErrorInterceptor implements HttpInterceptor {
           let modalTitle;
           let modalMessage;
 
-          if(error.status === 401) {
-            modalTitle = 'Session Idle';
-            modalMessage = 'You are logged out because of session idle';
-            this.dialog.open(ErrorModalComponent, {
-              width: '500px',
-              height: '200px',
-              data: { 
-                title: modalTitle,
-                message: modalMessage
-              }
-            });
-            this.authService.logout();
+          if(false) {
+          // if(error.status === 401) {
+            // modalTitle = 'Session Idle';
+            // modalMessage = 'You are logged out because of session idle';
+            // this.dialog.open(ErrorModalComponent, {
+            //   width: '500px',
+            //   height: '200px',
+            //   data: { 
+            //     title: modalTitle,
+            //     message: modalMessage
+            //   }
+            // });
+            // this.authService.logout();
           } else {
             modalMessage = 'An unknown error occurred!';
             if(error.status === 500) {
@@ -37,6 +38,8 @@ export class ErrorInterceptor implements HttpInterceptor {
               modalTitle = 'Error 403';
             } else if (error.status === 404) {
               modalTitle = 'Error 404';
+            } else if (error.status === 401) {
+              modalTitle = 'Error 401';
             } else if (error.status === 412) {
               modalTitle = 'Error 412';
               if (error.error.errorMessageId === 'pmErrorLoginBadLoginDetails') {
