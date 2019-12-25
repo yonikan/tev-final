@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { UiComponentsService } from 'src/app/core/services/ui-components.service';
 
 @Component({
   selector: 'app-event',
@@ -14,29 +12,15 @@ export class EventComponent implements OnInit {
   @Output() convertSessionEmitter = new EventEmitter<string>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
   isValidated = false;
-  // isLoading = false;
-  // private isLoadingListener = new BehaviorSubject<boolean>(false);
 
-
-  constructor(private uiComponentsService: UiComponentsService) { }
+  constructor() { }
 
   ngOnInit() {
     // console.log(this.eventData);
   }
 
   confirmSession(eventId) {
-    console.log('eventId: ', eventId);
-    
-    this.uiComponentsService.setIsLoading(true);
-    setTimeout(() => { 
-      this.uiComponentsService.setIsLoading(false);
-     }, 2000);
-
-    // this.isLoadingListener.next(true);
-    // setTimeout(() => { 
-    //   this.isLoadingListener.next(false);
-    //  }, 2000);
-
+    // console.log('eventId: ', eventId);
     this.confirmSessionEmitter.emit(eventId);
   }
 

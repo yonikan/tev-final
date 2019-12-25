@@ -8,6 +8,7 @@ import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation'
 import { ServerEnvService } from '../../core/services/server-env.service';
 import { TEAM_EVENTS_DATA } from 'server/data/team-events.data';
 import { of } from 'rxjs';
+import { UiComponentsService } from '../../core/services/ui-components.service';
 
 @Component({
   selector: 'app-events-carousel',
@@ -45,6 +46,7 @@ export class EventsCarouselComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private serverEnvService: ServerEnvService,
+    private uiComponentsService: UiComponentsService,
     private dialog: MatDialog
   ) {}
 
@@ -64,6 +66,11 @@ export class EventsCarouselComponent implements OnInit {
 
   onConfirmSession(teamEventId) {
     console.log('teamEventId: ', teamEventId);
+
+    this.uiComponentsService.setIsLoading(true);
+    setTimeout(() => { 
+      this.uiComponentsService.setIsLoading(false);
+     }, 2000);
   }
 
   onConvertSession(teamEventId) {
@@ -82,7 +89,10 @@ export class EventsCarouselComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(modalData => {
         if(modalData) {
-          console.log('Convert Session......................');
+          this.uiComponentsService.setIsLoading(true);
+          setTimeout(() => { 
+            this.uiComponentsService.setIsLoading(false);
+           }, 2000);
         }
       });
   }
@@ -103,8 +113,12 @@ export class EventsCarouselComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(modalData => {
         if(modalData) {
-          const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
-          this.teamEvents.splice(teamIndex, 1);
+          this.uiComponentsService.setIsLoading(true);
+          setTimeout(() => { 
+            this.uiComponentsService.setIsLoading(false);
+              const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
+              this.teamEvents.splice(teamIndex, 1);
+           }, 2000);
         }
       });
   }
