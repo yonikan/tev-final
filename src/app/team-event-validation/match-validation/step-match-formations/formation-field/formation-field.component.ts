@@ -24,26 +24,10 @@ export class FormationFieldComponent implements OnInit {
 
       return `${positionX - 1}`;
     } else if (formationPosition[i-1] && formationPosition[i-1].positionX === positionX - 1) {
-      // return 'start';
       return `${positionX + 1}`
     }
 
     return positionX;
-  }
-
-  getMarginRight(formationPosition, i, positionX) {
-    if (formationPosition[i+1] && (formationPosition[i+1].positionX === positionX + 1)) {
-      if (formationPosition[i-1] && formationPosition[i-1].positionX !== (positionX + 1)) {
-        return '';
-      }
-
-      return 'end';
-    } else if (formationPosition[i-1] && formationPosition[i-1].positionX === positionX - 1) {
-      return 'start';
-    }
-    // return (
-    //   (formationPosition[i+1].positionX === positionX + 1)
-    //   ? 'end' : '')
   }
 
 }

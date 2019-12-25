@@ -4,7 +4,7 @@
   </div>
   <div class="player-image-label">{{positionName}}</div>
   <div class="select">
-    <mat-select>
+    <mat-select [(value)]="selectedPlayer">
       <mat-option *ngFor="let player of players" [value]="player">
         {{player.name}} ({{player.label}})
       </mat-option>
