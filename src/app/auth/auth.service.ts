@@ -37,17 +37,22 @@ export class AuthService {
     return this.isAuthenticated;
   }
 
-  getAuthStatusListener(): Observable<boolean> {
-    return this.authStatusListener.asObservable();
-  }
-
   setIsAuth(isAuthenticated) {
     this.isAuthenticated = isAuthenticated;
     this.authStatusListener.next(isAuthenticated);
   }
 
+  getAuthStatusListener(): Observable<boolean> {
+    return this.authStatusListener.asObservable();
+  }
+
   getUserLoginData(): UserLogin {
     return this.userLoginData;
+  }
+
+  setUserLoginData(data: UserLogin) {
+    this.userLoginData = data;
+    this.userLoginDataListener.next(data);
   }
 
   getUserLoginDataListener(): Observable<UserLogin> {

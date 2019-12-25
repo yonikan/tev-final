@@ -22,8 +22,15 @@ export class TeamPickerDropdownComponent implements OnInit {
   }
 
   useCurrentSelection(itemId: number) {
+    // console.log('itemId: ', itemId);
     // const useDefaultItem = this.items.find(item => item.value === itemValue);
     // this.selectedItemImgPath = this.selectedItemImgPath;
     // const selectedTeam = this.items.find(team => team.value === itemValue);
+    // console.log('this.items: ', this.items);
+    const selectedTeam = this.items.find(team => team.id === itemId);
+    this.selectedItemImgPath = selectedTeam.teamPicture;
+
+    // console.log('selectedTeam: ', selectedTeam);
+    this.teamPickerService.setCurrentTeam(selectedTeam);
   }
 }

@@ -1,16 +1,16 @@
 <mat-card>
-    <div class="event-header-container" *ngIf="true">
+    <div class="event-header-container">
         <div class="event-header">
-            <div class="header-title">
+            <!-- <div class="header-title">
                 <span class="status-bullet"><li></li></span>
                 <h4>{{ eventData.created }}</h4>
-            </div>
+            </div> -->
             <div class="header-actions">
                 <button mat-icon-button [matMenuTriggerFor]="eventMenu">
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #eventMenu="matMenu" class="event-card-menu">
-                    <button mat-menu-item (click)="confirmSession(eventData.id)">
+                    <button *ngIf="!eventData.isValidated" mat-menu-item (click)="confirmSession(eventData.id)">
                         <mat-icon>assignment_turned_in</mat-icon>
                         <span>{{ 'team-overview.events-carousel.validate-session' | translate }} {{ eventData.type }}</span>
                     </button>
@@ -28,18 +28,36 @@
             </div>
         </div>
     </div>
-    <mat-card-content *ngIf="true">
+    <mat-card-content>
         <div class="event-content">
-            <div class="event-content-title">
-                <mat-icon>directions_run</mat-icon>
-                <h4>{{ eventData.title }}</h4>
+            <div class="event-content-header">
+                <div class="event-content-title" [ngClass]="{'validated-event-style':eventData.isValidated}">
+                    <i *ngIf="!eventData.isValidated" class="demo-icon icon-calender">&#xe809;</i> 
+                    <h4 [ngClass]="{'validated-event-style':eventData.isValidated}">{{ eventData.title }}</h4>
+                </div>
+                <div class="event-content-subtitle" [ngClass]="{'validated-event-style':eventData.isValidated}">
+                    <span>{{ eventData.created }}</span>
+                </div>
             </div>
+            
             <div class="event-content-info">
-                <div class="info-duration">
+                <div class="info-titles">
+                    <div>duration</div>
+                    <div>players</div>
+                    <div>phases</div>
+                </div>
+
+                <div class="info-content">
+                    <div>145 <span class="time-unit">Min</span></div>
+                    <div>19/22</div>
+                    <div>N/A</div>
+                </div>
+
+                <!-- <div class="info-duration">
                     <div class="info-title">{{ 'team-overview.events-carousel.duration' | translate }}:</div>
                     {{ eventData.duration }} min
-                </div>
-                <div class="info-players">
+                </div> -->
+                <!-- <div class="info-players">
                     <div class="info-title">{{ 'team-overview.events-carousel.players' | translate }}:</div>
                     {{ eventData.valid_players }} / {{ eventData.activated_players }} 
                     <mat-icon *ngIf="eventData.valid_players !== eventData.activated_players">error_outline</mat-icon>
@@ -47,11 +65,21 @@
                 <div class="info-phases">
                     <div class="info-title">{{ 'team-overview.events-carousel.phases' | translate }}:</div>
                     {{ eventData.phases }}
-                </div>
+                </div> -->
             </div>
         
-            <div class="event-content-confirm">
+            <div *ngIf="!eventData.isValidated" class="event-content-confirm">
                 <button class="confirm-button" mat-raised-button (click)="confirmSession(eventData.id)">{{ 'team-overview.events-carousel.validate-session' | translate }} {{ eventData.type }}</button>
+            </div>
+            <div *ngIf="eventData.isValidated" class="event-content-buttons">
+                <button class="action-btn" mat-button (click)="null">
+                    <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
+                    <span>Team Report</span>
+                </button>
+                <button class="action-btn" mat-button (click)="null">
+                    <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
+                    <span>Individual Report</span>
+                </button>
             </div>
         </div>
     </mat-card-content>

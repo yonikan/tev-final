@@ -11,6 +11,7 @@ export class EventComponent implements OnInit {
   @Output() confirmSessionEmitter = new EventEmitter<string>();
   @Output() convertSessionEmitter = new EventEmitter<string>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
+  isValidated = false;
 
   constructor() { }
 
@@ -19,6 +20,7 @@ export class EventComponent implements OnInit {
   }
 
   confirmSession(eventId) {
+    // console.log('eventId: ', eventId);
     this.confirmSessionEmitter.emit(eventId);
   }
 

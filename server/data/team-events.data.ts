@@ -8,7 +8,8 @@ export const TEAM_EVENTS_DATA: any = {
             duration: 145,
             activated_players: 22,
             valid_players: 19,
-            phases: 'N/A'
+            phases: 'N/A',
+            isValidated: false
         },
         {
             created: 'Yesterday, 08:35-10:3',
@@ -18,7 +19,8 @@ export const TEAM_EVENTS_DATA: any = {
             duration: 145,
             activated_players: 22,
             valid_players: 22,
-            phases: 'N/A'
+            phases: 'N/A',
+            isValidated: false
         },
         {
             created: 'Yesterday, 08:35-10:3',
@@ -28,7 +30,8 @@ export const TEAM_EVENTS_DATA: any = {
             duration: 145,
             activated_players: 22,
             valid_players: 19,
-            phases: 'N/A'
+            phases: 'N/A',
+            isValidated: false
         },
         {
             created: 'Yesterday, 08:35-10:3',
@@ -38,7 +41,8 @@ export const TEAM_EVENTS_DATA: any = {
             duration: 145,
             activated_players: 22,
             valid_players: 19,
-            phases: 'N/A'
+            phases: 'N/A',
+            isValidated: false
         },
         {
             created: 'Yesterday, 08:35-10:3',
@@ -48,7 +52,40 @@ export const TEAM_EVENTS_DATA: any = {
             duration: 145,
             activated_players: 22,
             valid_players: 19,
-            phases: 'N/A'
+            phases: 'N/A',
+            isValidated: false
+        }
+    ],
+    teamEventsValidatedData: [
+        {
+            created: 'Yesterday, 08:35-10:3',
+            id: 20,
+            type: 'training',
+            title: '20 new training session',
+            duration: 145,
+            valid_players: 19,
+            phases: 'N/A',
+            isValidated: true
+        },
+        {
+            created: 'Yesterday, 08:35-10:3',
+            id: 21,
+            type: 'match',
+            title: '21 new match session',
+            duration: 145,
+            valid_players: 22,
+            phases: 'N/A',
+            isValidated: true
+        },
+        {
+            created: 'Yesterday, 08:35-10:3',
+            id: 22,
+            type: 'training',
+            title: '22new training session',
+            duration: 145,
+            valid_players: 19,
+            phases: 'N/A',
+            isValidated: true
         }
     ]
 }

@@ -1,0 +1,10 @@
+<div class="validated-events-container">
+    <app-event *ngFor="let teamEvent of teamEvents"
+        [@fadeInOut]
+        [eventIndex]="index" 
+        (confirmSessionEmitter)="null"
+        (convertSessionEmitter)="null"
+        (deleteSessionEmitter)="null" 
+        [eventData]="teamEvent">
+    </app-event>
+</div>
