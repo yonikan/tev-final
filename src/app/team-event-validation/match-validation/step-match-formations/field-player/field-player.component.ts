@@ -26,4 +26,8 @@ export class FieldPlayerComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
+  onChangePlayer(player) {
+    this.positionName = player.positionName;
+  }
+
 }

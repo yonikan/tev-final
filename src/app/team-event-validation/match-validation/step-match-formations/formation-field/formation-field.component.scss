@@ -34,11 +34,15 @@
                     // grid-template-columns: repeat(9, 46.88px);// field columns = 9
                     // grid-template-columns: repeat(9, auto);// field columns = 9
                     grid-template-columns: repeat(9, 1fr);// field columns = 9
-                    grid-template-rows: repeat(6, 90.8px);// field rows = 7
+                    grid-template-rows: repeat(6, 85.8px);// field rows = 7
                     justify-items: center;
                     align-items: center;
                     > * {
                         min-width: 0;
+                    }
+
+                    @media (max-width: $media-query-sm) {
+                        grid-template-columns: repeat(9, 2.5em);
                     }
                 }
 

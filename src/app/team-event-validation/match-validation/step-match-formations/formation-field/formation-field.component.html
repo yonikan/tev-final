@@ -7,10 +7,9 @@
                     [ngStyle]="
                     {'grid-column': getPositionX(formation.formationPosition, i, player.positionX),
                     'grid-row': player.positionY}">
-                    <app-field-player [playerId]="player.playerId" [positionName]="player.positionName" [players]="playersData[0].players"></app-field-player>
+                    <app-field-player [playerId]="player.playerId" [positionName]="player.positionName" [players]="players"></app-field-player>
                 </div>
             </div>
         </div>
     </div>
-    <!-- , 'justify-self': getMarginRight(formation.formationPosition, i, player.positionX) -->
 </div>

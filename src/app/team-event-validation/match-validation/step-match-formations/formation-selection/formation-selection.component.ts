@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterContentChecked, AfterViewInit, AfterViewChecked, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-formation-selection',

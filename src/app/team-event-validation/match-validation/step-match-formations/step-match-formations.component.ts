@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import FormationService from './formation.service';
 
 const players = [
-  {id: 1, name: 'John A.', "label": "XX"},
-  {id: 2, name: 'John A.', "label": "XX"},
-  {id: 3, name: 'John A.', "label": "XX"},
-  {id: 4, name: 'John A.', "label": "XX"},
-  {id: 5, name: 'John A.', "label": "XX"},
-  {id: 6, name: 'John A.', "label": "XX"},
-  {id: 7, name: 'John A.', "label": "XX"},
+  {id: 1, name: 'John A.', "positionName": "XX"},
+  {id: 2, name: 'John B.', "positionName": "XX"},
+  {id: 3, name: 'John C.', "positionName": "XX"},
+  {id: 4, name: 'John A.', "positionName": "XY"},
+  {id: 5, name: 'John B.', "positionName": "XY"},
+  {id: 6, name: 'John A.', "positionName": "XZ"},
+  {id: 7, name: 'John B.', "positionName": "XZ"},
 ];
 
 
@@ -19,10 +19,10 @@ const players = [
 })
 export class StepMatchFormationsComponent implements OnInit {
     playersData = [
-        {id: 1, name: 'Goalkeepers', players, label: 'GK'},
-        {id: 2, name: 'Defenders', players, label: 'DF'},
-        {id: 3, name: 'Midfielders', players, label: 'MF'},
-        {id: 4, name: 'Forwards', players, label: 'FR'}
+        {id: 1, name: 'Goalkeepers', players, positionName: 'GK'},
+        {id: 2, name: 'Defenders', players, positionName: 'DF'},
+        {id: 3, name: 'Midfielders', players, positionName: 'MF'},
+        {id: 4, name: 'Forwards', players, positionName: 'FR'}
     ];
 
     tactics = null;
