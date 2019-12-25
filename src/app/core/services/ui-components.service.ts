@@ -16,12 +16,14 @@ export class UiComponentsService {
     return this.isLoading;
   }
 
-  getIsLoadingListener() {
-    return this.isLoadingListener;
+  setIsLoading(isLoading) {
+    this.isLoading = isLoading;
+    this.isLoadingListener.next(isLoading);
   }
-  // getIsLoadingListener(): Observable<boolean> {
-  //   return this.isLoadingListener.asObservable();
-  // }
+
+  getIsLoadingListener(): Observable<boolean> {
+    return this.isLoadingListener.asObservable();;
+  }
 
   showSnackbar(message, action, duration) {
     this.snackbar.open(message, action, {

@@ -71,5 +71,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.authStatusSub.unsubscribe();
+    this.isLoadingSub.unsubscribe();
   }
 }

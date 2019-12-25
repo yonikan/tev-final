@@ -5,6 +5,7 @@ import { AuthorizationService } from './authorization.service';
 import { UiComponentsService } from './ui-components.service';
 import { HttpClient } from '@angular/common/http';
 import { ServerEnvService } from './server-env.service';
+import { UserLogin } from '../../auth/user-login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,21 +23,18 @@ export class TeamPickerService {
 
   setCurrentTeam(selectedTeam: any) {
     console.log('selectedTeam: ', selectedTeam);
-    this.uiComponentsService.getIsLoadingListener().next(true);
-
-    // setTimeout(() => { 
-    //   this.uiComponentsService.getIsLoadingListener().next(false);
-    //   this.router.navigate(['team-overview']);
-    //  }, 2000);
+    this.uiComponentsService.setIsLoading(true);
 
     const PATH = this.serverEnvService.getBaseUrl();
-    this.http.get<any>(`${PATH}/staff/26235`)
-      .subscribe((result: any) => {
-        console.log('result: ', result);
-        this.uiComponentsService.getIsLoadingListener().next(false);
+    this.http.get<any>(`${PATH}/user/26235/re-login`)
+      .subscribe((updatedLoginDetails: UserLogin) => {
+        console.log('updated Login Details: ', updatedLoginDetails);
+        this.authService.setUserLoginData(updatedLoginDetails);
+        // this.authService.getUserLoginDataListener().next(updatedLoginDetails);
+        this.uiComponentsService.setIsLoading(false);
         this.router.navigate(['team-overview']);
       }, err => {
-        this.uiComponentsService.getIsLoadingListener().next(false);
+        this.uiComponentsService.setIsLoading(false);
       });
   }
 }

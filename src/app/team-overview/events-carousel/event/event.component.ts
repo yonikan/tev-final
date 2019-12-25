@@ -26,10 +26,10 @@ export class EventComponent implements OnInit {
 
   confirmSession(eventId) {
     console.log('eventId: ', eventId);
-
-    this.uiComponentsService.getIsLoadingListener().next(true);
+    
+    this.uiComponentsService.setIsLoading(true);
     setTimeout(() => { 
-      this.uiComponentsService.getIsLoadingListener().next(false);
+      this.uiComponentsService.setIsLoading(false);
      }, 2000);
 
     // this.isLoadingListener.next(true);
