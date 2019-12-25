@@ -1,3 +1,5 @@
+@import '../../../../../styles/variables';
+
 :host {
     .container {
         padding: 20px;
@@ -30,8 +32,11 @@
             }
         }
 
-        mat-tab-group {
+        .tabs {
             margin-bottom: 20px;
+            @media (max-width: $media-query-sm) {
+                display: none;
+            }
         }
 
         .tab-content {

@@ -43,12 +43,11 @@ export class StepMatchFormationsComponent implements OnInit {
     }
 
     selectTactic(tacticFormation) {
-        console.log('id', tacticFormation);
         this.selectedFormation = tacticFormation;
     }
 
     selectDefinedSub(id) {
-        console.log('selectDefinedSub', id);
+        // console.log('selectDefinedSub', id);
     }
 
 }
