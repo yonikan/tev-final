@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
+  isLoading = false;
 
   constructor( 
     public authService: AuthService, 

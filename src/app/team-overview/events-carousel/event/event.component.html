@@ -1,4 +1,7 @@
 <mat-card>
+    <div [class.show]="isLoading" class="loading-overlay">
+        <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+    </div>
     <div class="event-header-container">
         <div class="event-header">
             <!-- <div class="header-title">
@@ -10,7 +13,7 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #eventMenu="matMenu" class="event-card-menu">
-                    <button mat-menu-item (click)="confirmSession(eventData.id)">
+                    <button *ngIf="!eventData.isValidated" mat-menu-item (click)="confirmSession(eventData.id)">
                         <mat-icon>assignment_turned_in</mat-icon>
                         <span>{{ 'team-overview.events-carousel.validate-session' | translate }} {{ eventData.type }}</span>
                     </button>
