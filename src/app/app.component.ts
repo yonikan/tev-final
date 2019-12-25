@@ -7,6 +7,7 @@ import { LocalStorageService } from './core/services/local-storage.service';
 import { ServerEnvService } from './core/services/server-env.service';
 import { AuthorizationService } from './core/services/authorization.service';
 import { ThemePickerService } from './core/theme-picker/theme-picker.service';
+import { TeamPickerService } from './core/services/team-picker.service';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
 
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
   isLoading = false;
+  private isLoadingSub: Subscription;
 
   constructor( 
     public authService: AuthService, 
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private localStorageService: LocalStorageService,
     private translationPickerService: TranslationPickerService,
     private themePickerService: ThemePickerService,
+    private teamPickerService: TeamPickerService,
     public breakpointObserver: BreakpointObserver,
     private router: Router,
     private serverEnvService: ServerEnvService) {
@@ -56,6 +59,12 @@ export class AppComponent implements OnInit, OnDestroy {
       .getAuthStatusListener()
       .subscribe((authStatus: boolean) => {
         this.isAuthenticated = authStatus;
+      });
+
+    this.isLoadingSub = this.teamPickerService
+      .getIsLoadingListener()
+      .subscribe((isLoading: boolean) => {
+        this.isLoading = isLoading;
       });
   }
 

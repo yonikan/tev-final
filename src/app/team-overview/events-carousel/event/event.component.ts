@@ -21,7 +21,6 @@ export class EventComponent implements OnInit {
   }
 
   confirmSession(eventId) {
-    this.onRefresh();
     this.confirmSessionEmitter.emit(eventId);
   }
 
@@ -31,10 +30,5 @@ export class EventComponent implements OnInit {
 
   deleteSession(eventId) {
     this.deleteSessionEmitter.emit(eventId);
-  }
-
-  onRefresh() {
-    this.isLoading = true;
-    setTimeout(() => { this.isLoading = false; }, 2000);
   }
 }
