@@ -31,21 +31,18 @@
                   <mat-icon class="icon">more_vert</mat-icon>
                 </button>
                 <mat-menu #appMenu="matMenu">
-                    <button class="btn-menu" mat-menu-item (click)="null">
-                        <span>support</span>
-                      </button>
-
-                      <button mat-menu-item (click)="null">
-                          <span>contact us</span>
-                        </button>
-
-                        <button mat-menu-item (click)="null">
-                            <span>send feedback</span>
-                          </button>
-
-                          <button mat-menu-item (click)="null">
-                              <span>about playermaker</span>
-                            </button>
+                    <button class="btn-menu" mat-menu-item disabled (click)="null">
+                        <span>Support</span>
+                    </button>
+                    <button mat-menu-item disabled (click)="null">
+                        <span>Contact us</span>
+                    </button>
+                    <button mat-menu-item disabled (click)="null">
+                        <span>Send feedback</span>
+                    </button>
+                    <button mat-menu-item disabled (click)="null">
+                        <span>About playermaker</span>
+                    </button>
                 </mat-menu>
               </div>
 
@@ -56,16 +53,14 @@
                   <mat-icon class="icon">keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #userMenu="matMenu">
-                    <button mat-menu-item (click)="null">
+                    <button mat-menu-item disabled (click)="null">
                       <mat-icon>settings</mat-icon>
-                      <span>settings</span>
+                      <span>Settings</span>
                     </button>
-
-                    <button mat-menu-item (click)="null">
+                    <button mat-menu-item disabled (click)="null">
                         <mat-icon>settings</mat-icon>
-                        <span>prefernces</span>
+                        <span>Prefernces</span>
                     </button>
-
                     <button mat-menu-item (click)="onLogout()">
                       <mat-icon>exit_to_app</mat-icon>
                       <span>{{ 'layout.header.logout' | translate }}</span>

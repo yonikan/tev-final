@@ -79,6 +79,11 @@
           display: flex;
           flex-direction: row-reverse;
 
+          button {
+            text-transform: capitalize;
+
+          }
+
           mat-form-field {
             font-size: 13px;
           }

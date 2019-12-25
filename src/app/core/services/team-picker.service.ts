@@ -14,12 +14,12 @@ export class TeamPickerService {
     private router: Router
   ) { }
 
-  setCurrentTeam(selectedTeam: string) {
-    // console.log('selectedTeam: ', selectedTeam);
-    this.authService.fetchUserLoginData('', '')
-      .subscribe((userLoginData: any) => {
-        this.authorizationService.allowedFeatures = userLoginData.features;
-        this.router.navigate(['team-overview']);
-      });
+  setCurrentTeam(selectedTeam: any) {
+    console.log('selectedTeam: ', selectedTeam);
+    // this.authService.fetchUserLoginData('', '')
+    //   .subscribe((userLoginData: any) => {
+    //     this.authorizationService.allowedFeatures = userLoginData.features;
+    //     this.router.navigate(['team-overview']);
+    //   });
   }
 }
