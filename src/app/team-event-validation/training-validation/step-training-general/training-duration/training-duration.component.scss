@@ -1,0 +1,8 @@
+@import '../../../../../styles/variables';
+@import '../../../../../styles/mixins';
+
+:host {
+    .duration-container {
+        @include team-event-section;
+    }
+}

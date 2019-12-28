@@ -9,6 +9,7 @@ import { ServerEnvService } from '../../core/services/server-env.service';
 import { TEAM_EVENTS_DATA } from 'server/data/team-events.data';
 import { of } from 'rxjs';
 import { UiComponentsService } from '../../core/services/ui-components.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events-carousel',
@@ -47,6 +48,7 @@ export class EventsCarouselComponent implements OnInit {
     private http: HttpClient,
     private serverEnvService: ServerEnvService,
     private uiComponentsService: UiComponentsService,
+    private router: Router,
     private dialog: MatDialog
   ) {}
 
@@ -64,11 +66,12 @@ export class EventsCarouselComponent implements OnInit {
       });
   }
 
-  onConfirmSession(teamEventId) {
+  onConfirmSession(teamEvent) {
     this.uiComponentsService.setIsLoading(true);
     setTimeout(() => { 
       this.uiComponentsService.setIsLoading(false);
-     }, 2000);
+      this.router.navigate([`/team-event-validation/${teamEvent.teamEventType}/${teamEvent.teamEventId}`]);
+     }, 1000);
   }
 
   onConvertSession(teamEventId) {

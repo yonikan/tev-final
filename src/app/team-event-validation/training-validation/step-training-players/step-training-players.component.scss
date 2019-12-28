@@ -1,0 +1,8 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+:host {
+    .step-training-players-container {
+        @include team-event-step;
+    }
+}
