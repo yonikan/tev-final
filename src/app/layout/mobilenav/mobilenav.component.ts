@@ -1,15 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
-import { UserLogin } from 'src/app/auth/user-login.model';
-import { StaffRoles } from 'src/app/core/enums/staff-roles.enum';
+import { AuthService } from '../../auth/auth.service';
+import { UserLogin } from '../../auth/user-login.model';
+import { StaffRoles } from '../../core/enums/staff-roles.enum';
+import { enumToString } from '../../core/helpers/helper-functions';
 
 @Component({
   selector: 'app-mobilenav',
   templateUrl: './mobilenav.component.html',
   styleUrls: ['./mobilenav.component.scss']
 })
-export class MobilenavComponent implements OnInit {
+export class MobilenavComponent implements OnInit, OnDestroy {
   @Output() closeSidenav = new EventEmitter<void>();
   isAuthenticated = false;
   private authStatusSub: Subscription;
@@ -30,7 +31,7 @@ export class MobilenavComponent implements OnInit {
       this.userImgUrl = userLoginData.imgUrl;
       this.userFirstName = userLoginData.firstName;
       this.userLastName = userLoginData.lastName;
-      this.userRole = StaffRoles[userLoginData.role];
+      this.userRole = enumToString(StaffRoles, 1);
     });
 
     this.authStatusSub = this.authService

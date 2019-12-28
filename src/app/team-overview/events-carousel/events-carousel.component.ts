@@ -65,8 +65,6 @@ export class EventsCarouselComponent implements OnInit {
   }
 
   onConfirmSession(teamEventId) {
-    console.log('teamEventId: ', teamEventId);
-
     this.uiComponentsService.setIsLoading(true);
     setTimeout(() => { 
       this.uiComponentsService.setIsLoading(false);
