@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { TrainingValidation, MatchValidation } from './team-event-validation.model';
+import { TEAM_EVENT_VALIDATION_TRAINING } from 'server/data/team-event-validation-training.data';
+import { TEAM_EVENT_VALIDATION_MATCH } from 'server/data/team-event-validation-match.data';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamEventValidationService {
-  trainingData: TrainingValidation = {
+  trainingData: any = {
     step1GeneralData: {
       test1: 'this is a test'
     },
@@ -17,7 +20,7 @@ export class TeamEventValidationService {
     }
   };
 
-  matchData: MatchValidation = {
+  matchData: any = {
     step1OverviewData: {
       data: 'this is a test'
     },
@@ -58,25 +61,7 @@ export class TeamEventValidationService {
     }
   };
 
-  // matchData: MatchValidation = {
-  //   step1OverviewData: {
-  //     test1: 'this is a test'
-  //   },
-  //   step2PlayersData: {
-  //     test1: 'this is a test'
-  //   },
-  //   step3FormationsData: {
-  //     test1: 'this is a test'
-  //   },
-  //   step4PhasesData: {
-  //     test1: 'this is a test'
-  //   },
-  //   step5SubsData: {
-  //     test1: 'this is a test'
-  //   }
-  // };
-
-  trainingDataOutput: TrainingValidation = {
+  trainingDataOutput: any = {
     step1GeneralData: {
       
     },
@@ -88,7 +73,7 @@ export class TeamEventValidationService {
     }
   };
   
-  matchDataOutput: MatchValidation = {
+  matchDataOutput: any = {
     step1OverviewData: {
 
     },
@@ -107,6 +92,14 @@ export class TeamEventValidationService {
   };
 
   constructor() { }
+
+  getTrainingDataNewModel(): any {
+    return of(TEAM_EVENT_VALIDATION_TRAINING);
+  }
+
+  getMatchDataNewModel(): any {
+    return of(TEAM_EVENT_VALIDATION_MATCH);
+  }
 
   getTrainingData(): any {
     return this.trainingData;
