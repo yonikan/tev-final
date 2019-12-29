@@ -1,0 +1,7 @@
+<div class="time-picker">
+  <input class="input" type="text" value="{{timeForDisplay}}" (input)="handleUserInput($event)" #input>
+  <div class="arrows">
+    <div class="plus-arrow arrow" (click)="useDifference('plus')">+</div>
+    <div class="minus-arrow arrow" (click)="useDifference('minus')">-</div>
+  </div>
+</div>

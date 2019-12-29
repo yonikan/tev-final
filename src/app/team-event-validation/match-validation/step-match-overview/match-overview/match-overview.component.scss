@@ -5,10 +5,88 @@
     .match-overview-container {
         @include team-event-section;
 
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
         .title {
             h3 {
                 font-size: 40px;
             }
         }
+    }
+}
+
+
+.match-overview {
+  width: 700px;
+  padding: 50px 0;
+  display: flex;
+  border-bottom: 1px dotted #35083a;
+  justify-content: space-between;
+
+  .match-overview-inner-container {
+    width: 33%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .team-logo {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  .home-team-container {
+
+  }
+
+  .match-details-container {
+    .match-date {
+      font-size: 18px;
+      color: #3d4762;
+      margin-bottom: 15px;
+    }
+
+    .match-competition {
+      margin-bottom: 75px;
+    }
+
+    .match-host {
+      margin-bottom: 75px;
+    }
+
+    .match-score {
+      display: flex;
+      align-items: center;
+
+      .score-box {
+        // width: 82px;
+        // height: 44px;
+        width: 72px;
+        height: 24px;
+        object-fit: contain;
+        border-radius: 5px;
+        border: 1px solid #e1e0e1;
+        background-color: #ffffff;
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+      }
+    }
+  }
+
+  .away-team-container {
+
+  }
+
+    .team-name {
+      font-size: 30px;
+      font-weight: 500;
+      color: #3d4762;
+      margin-top: 35px;
     }
 }

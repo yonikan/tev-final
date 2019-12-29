@@ -1,0 +1,46 @@
+<div class="substitutions-table">
+  <table style="width: 100%;">
+    <tr class="titles-row">
+      <th
+        class="title-cell"
+        *ngFor="let title of Object.keys(tableSizeConfig)"
+        [ngStyle]="{ width: tableSizeConfig[title] }"
+      >
+        {{ title === 'buttons' ? '' : title }}
+      </th>
+    </tr>
+  </table>
+
+  <substitutions-row
+    *ngFor="let substitution of substitutions; let even = even; let idx = index;"
+    [substitution]="substitution"
+    [rowConfig]="tableSizeConfig"
+    [rowStyle]="{ background: even ? '#ffffff' : '#e8e8e838' }"
+    (removeRow)="removeRow($event, idx)"
+    (editRow)="editRow($event, idx)"
+    ></substitutions-row>
+
+    <!-- add new row -->
+    <substitutions-row 
+    [rowMode]="'EDIT'"
+    [substitution]="emptySubstitution"
+    [rowConfig]="tableSizeConfig"
+    (editRow)="editRow($event, idx)">
+    </substitutions-row>
+    <!----------------->
+    
+    <div style="margin: 50px 0;">  
+      Suggested Subs
+    </div>
+
+    <substitutions-row
+    [rowMode]="'SUGGESTED'"
+    *ngFor="let substitution of substitutions; let even = even; let idx = index;"
+    [substitution]="substitution"
+    [rowConfig]="tableSizeConfig"
+    (removeRow)="removeRow($event, idx)"
+    (editRow)="editRow($event, idx)"
+    ></substitutions-row> 
+
+
+</div>

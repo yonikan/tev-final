@@ -43,7 +43,7 @@ export class EventsCarouselComponent implements OnInit {
       }
     }
   };
-  
+
   constructor(
     private http: HttpClient,
     private serverEnvService: ServerEnvService,
@@ -63,12 +63,13 @@ export class EventsCarouselComponent implements OnInit {
       .subscribe((result: any) => {
         this.teamEvents = result.teamEventsData;
         this.isTeamEventsLoading = false;
+        this.router.navigate([`/team-event-validation/match/21s`]); // to be deleted
       });
   }
 
   onConfirmSession(teamEvent) {
     this.uiComponentsService.setIsLoading(true);
-    setTimeout(() => { 
+    setTimeout(() => {
       this.uiComponentsService.setIsLoading(false);
       this.router.navigate([`/team-event-validation/${teamEvent.teamEventType}/${teamEvent.teamEventId}`]);
      }, 1000);
@@ -80,7 +81,7 @@ export class EventsCarouselComponent implements OnInit {
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
-      data: { 
+      data: {
         title: modalTitle,
         message: modalMessage,
         modalData: teamEventId
@@ -91,7 +92,7 @@ export class EventsCarouselComponent implements OnInit {
       .subscribe(modalData => {
         if(modalData) {
           this.uiComponentsService.setIsLoading(true);
-          setTimeout(() => { 
+          setTimeout(() => {
             this.uiComponentsService.setIsLoading(false);
            }, 2000);
         }
@@ -104,7 +105,7 @@ export class EventsCarouselComponent implements OnInit {
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
-      data: { 
+      data: {
         title: modalTitle,
         message: modalMessage,
         modalData: teamEventId
@@ -115,7 +116,7 @@ export class EventsCarouselComponent implements OnInit {
       .subscribe(modalData => {
         if(modalData) {
           this.uiComponentsService.setIsLoading(true);
-          setTimeout(() => { 
+          setTimeout(() => {
             this.uiComponentsService.setIsLoading(false);
               const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
               this.teamEvents.splice(teamIndex, 1);

@@ -1,0 +1,64 @@
+.substitutions-row {
+  width: 100%;
+  // display: block;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 10px 20px 10px;
+
+
+  .substitutions-cell {
+    font-size: 14px;
+    font-weight: 500;
+    color: #8994a3;
+    text-align: left;
+
+    .buttons {
+      display: flex;
+      align-items: center;
+
+      .btn {
+        cursor: pointer;
+      }
+
+      .separator {
+        width: 1px;
+        height: 21px;
+        margin: 0 15px;
+        background: #e7e8ec;
+      }
+
+      .plus-btn {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin: auto;
+        background: white;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.28);
+      }
+    }
+
+    .edit-input {
+      border-radius: 5px;
+      border: solid 1px #e1e0e1;
+      padding: 5px;
+      width: 100%;
+    }
+
+  }
+
+}
+
+.suggedted-mode {
+  border-radius: 5px;
+  box-shadow: -1px 3.9px 5px 0 rgba(53, 61, 86, 0.05);
+  border: solid 1px #f4f4f4;
+  background-color: #fdfefe;
+  margin-bottom: 12px;
+
+  .substitutions-cell {
+    color: #3d4762;
+  }
+}

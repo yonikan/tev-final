@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UiComponentsService {
   private isLoading = false;
   private isLoadingListener = new BehaviorSubject<boolean>(false);
-  
+
   constructor(private snackbar: MatSnackBar, private bottomSheet: MatBottomSheet) {}
 
   getIsLoading(): boolean {

@@ -5,6 +5,11 @@ import { SharedModule } from '../shared/shared.module';
 import { routes } from './team-event-validation.routes';
 
 import { HighchartsChartModule } from 'highcharts-angular';
+import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 import { MatchValidationComponent } from './match-validation/match-validation.component';
 import { TrainingValidationComponent } from './training-validation/training-validation.component';
 
@@ -22,6 +27,10 @@ import { TagsComponent } from './common/tags/tags.component';
 import { SpeedGraphComponent } from './common/speed-graph/speed-graph.component';
 import { TrainingDurationComponent } from './training-validation/step-training-general/training-duration/training-duration.component';
 import { MatchOverviewComponent } from './match-validation/step-match-overview/match-overview/match-overview.component';
+import { PhasesCardsContainerComponent } from './common/phases-cards-container/phases-cards-container.component';
+import { PhasesCardComponent } from './common/phases-cards-container/phases-card/phases-card.component';
+import { SubstitutionsTableComponent } from './common/substitutions-table/substitutions-table.component';
+import { SubstitutionsRowComponent } from './common/substitutions-table/substitutions-row/substitutions-row.component';
 
 @NgModule({
   declarations: [
@@ -39,12 +48,23 @@ import { MatchOverviewComponent } from './match-validation/step-match-overview/m
     SpeedGraphComponent,
     TrainingDurationComponent,
     MatchOverviewComponent,
+    PhasesCardsContainerComponent,
+    PhasesCardComponent,
+    SubstitutionsTableComponent,
+    SubstitutionsRowComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    HighchartsChartModule
+    HighchartsChartModule,
+    SwiperModule
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ]
 })
 export class TeamEventValidationModule { }

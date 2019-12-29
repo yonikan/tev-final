@@ -1,5 +1,47 @@
 <div class="match-overview-container">
-    <div class="title">
-      <h3>match overview</h3>
+  <div class="title">
+    <h3>match overview</h3>
+  </div>
+
+  <div class="match-overview">
+    <div class="home-team-container match-overview-inner-container">
+      <img src="https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png" alt="team-logo" class="team-logo" />
+      <div class="team-name">Hull City</div>
     </div>
+
+    <div class="match-details-container match-overview-inner-container">
+      <div class="match-date">14/12/2019</div>
+      <div class="match-competition">competition</div>
+      <div class="match-host">
+        <mat-radio-group
+          aria-labelledby="radio-group-label"
+          class="radio-group"
+        >
+          <mat-radio-button
+            [value]="'home'"
+            style="margin-right: 40px;"
+            [checked]="true"
+            >
+            <!-- (change)="onPhaseOptionSelect($event)" -->
+           Home
+
+          </mat-radio-button>
+          <mat-radio-button
+            [value]="'away'"
+            >
+            <!-- (change)="onPhaseOptionSelect($event)" -->
+            Away
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="match-score">
+        <input type="text" class="score-box" placeholder="0"/><span style="margin: 0 20px">:</span><input placeholder="0" type="text" class="score-box"/>
+      </div>
+    </div>
+
+    <div class="away-team-container match-overview-inner-container">
+      <img src="https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png" alt="team-logo" class="team-logo" />
+      <div class="team-name">Opponent</div>
+    </div>
+  </div>
 </div>

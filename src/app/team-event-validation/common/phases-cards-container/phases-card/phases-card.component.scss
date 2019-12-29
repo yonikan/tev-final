@@ -1,0 +1,83 @@
+.card {
+  margin: 0 50px;
+  width: 260px;
+  // width: 288px !important; //to fix
+  height: 391px;
+  min-height: 391px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: -1.8px 0.9px 40px 0 rgba(0, 0, 0, 0.1);
+  border: solid 1px #e0e3e5;
+  background-color: #ffffff;
+  cursor: pointer;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .elapsis {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+    color: #979797;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .card-icon {
+    margin-bottom: 15px;
+  }
+
+  .card-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #3d4762;
+    margin-bottom: 20px;
+  }
+
+  .card-time-details {
+    font-size: 14px;
+    color: #96a1ae;
+    border: 1px solid #e7e8ec;
+    padding: 13px 0;
+    border-left: 0;
+    border-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .card-options {
+    width: 100%;
+    overflow-y: auto;
+
+    .card-option {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .card-option-key {
+      color: #8994a3;
+      font-size: 14px;
+    }
+
+    .card-option-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #3d4762;
+    }
+
+    .add-btn {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      border-radius: 15px;
+      background-color: #eeeeee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}

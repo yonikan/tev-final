@@ -1,0 +1,27 @@
+.time-picker {
+  display: flex;
+  align-items: center;
+
+  .input {
+    width: 82px;
+    height: 44px;
+    border-radius: 5px;
+    border: solid 1px #e1e0e1;
+    background-color: #ffffff;
+    color: #3d4762;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px;
+  }
+
+  .arrows {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin-left: 10px;
+
+    .arrow {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.substitutions-table {
+  width: 853px;
+  margin-top: 50px;
+
+  .titles-row {
+    font-size: 14px;
+    color: #96a1ae;
+    padding: 19px 10px 13px 10px;
+    display: block;
+    border-top: 1px rgba(53, 61, 86, 0.3) solid;
+    border-bottom: 1px rgba(53, 61, 86, 0.3) solid;
+    display: flex;
+    justify-content: space-between;
+
+    .title-cell {
+      text-align: left;
+    }
+  }
+}
