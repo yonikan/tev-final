@@ -27,6 +27,7 @@ export class TrainingValidationComponent implements OnInit {
   }
   
   onValidateTraining(trainingPayload) {
-    this.teamEventValidationService.validateTraining(trainingPayload);
+    console.log('trainingPayload: ', trainingPayload);
+    this.teamEventValidationService.validateTraining();
   }
 }

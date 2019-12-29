@@ -116,11 +116,11 @@ export class TeamEventValidationService {
     return this.matchData;
   }
 
-  validateTraining(trainingPayload) {
+  validateTraining() {
     console.log('trainingDataOutput: ', this.trainingDataOutput);
   }
 
-  validateMatch(matchayload) {
+  validateMatch() {
     console.log('matchDataOutput: ', this.matchDataOutput);
   }
 }

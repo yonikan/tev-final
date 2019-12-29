@@ -17,9 +17,9 @@ export class StepTrainingPhasesComponent implements OnInit {
 
   }
 
-  validateTraining(data) {
+  validateTraining() {
     this.teamEventValidationService.trainingDataOutput.step3PhasesData = 'test-output';
-    this.teamEventValidationService.validateTraining(data);
+    this.teamEventValidationService.validateTraining();
   }
 
   backStep() {

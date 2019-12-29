@@ -18,7 +18,7 @@ export class StepMatchSubsComponent implements OnInit {
   
   validateMatch(data) {
     this.teamEventValidationService.matchDataOutput.step5SubsData = 'test-output';
-    this.teamEventValidationService.validateMatch(data);
+    this.teamEventValidationService.validateMatch();
   }
 
   backStep() {

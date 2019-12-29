@@ -31,6 +31,7 @@ export class MatchValidationComponent implements OnInit {
   }
 
   onValidateMatch(matchPayload) {
-    this.teamEventValidationService.validateMatch(matchPayload);
+    console.log('matchPayload: ', matchPayload);
+    this.teamEventValidationService.validateMatch();
   }
 }
