@@ -18,12 +18,15 @@ export class MatchValidationComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    const matchData = this.teamEventValidationService.getMatchData();
-    this.step1Data = matchData.step1OverviewData;
-    this.step2Data = matchData.step2PlayersData;
-    this.step3Data = matchData.step3FormationsData;
-    this.step4Data = matchData.step4PhasesData;
-    this.step5Data = matchData.step5SubsData;
+    this.teamEventValidationService.getMatchDataNewModel()
+      .subscribe((teamEventValidationData: any) => { 
+        // console.log('teamEventValidationData: ', teamEventValidationData);
+        this.step1Data = teamEventValidationData.metadata;
+        this.step2Data = teamEventValidationData.participatingPlayers;
+        this.step3Data = teamEventValidationData.formation;
+        this.step4Data = teamEventValidationData.phases;
+        this.step5Data = teamEventValidationData.substitutions;
+      });
   }
 
   onStepSelectionEmitter(stepNumber) {

@@ -14,7 +14,7 @@ export class StepTrainingPlayersComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-
+    
   }
 
   nextStep() {
