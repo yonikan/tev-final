@@ -11,37 +11,37 @@
               </div>
             </div>
         </div>
-        <a matRipple routerLink="/team-overview" routerLinkActive="active">
+        <a matRipple (click)="onClose()" routerLink="/team-overview" routerLinkActive="active">
           <i class="demo-icon icon-overview">&#xe804;</i> 
           <span class="nav-caption">{{ 'layout.sidenav.team-overview' | translate }}</span>
         </a>
-        <a matRipple>
+        <a matRipple (click)="onClose()">
           <i class="demo-icon icon-vlc">&#xe808;</i> 
           <span class="nav-caption">{{ 'layout.sidenav.training' | translate }}</span>
         </a>
-        <a matRipple>
+        <a matRipple (click)="onClose()">
           <i class="demo-icon icon-calender">&#xe809;</i> 
           <span class="nav-caption">{{ 'layout.sidenav.matches' | translate }}</span>
         </a>
-        <a matRipple>
+        <a matRipple (click)="onClose()">
           <i class="demo-icon icon-shirt">&#xe807;</i> 
           <span class="nav-caption">{{ 'layout.sidenav.players' | translate }}</span>
         </a>
-        <a matRipple>
+        <a matRipple (click)="onClose()">
           <i class="demo-icon icon-pie">&#xe805;</i> 
           <span class="nav-caption">data discovery</span>
         </a>
-        <a matRipple>
+        <a matRipple (click)="onClose()">
             <i class="demo-icon icon-settings">&#xe806;</i> 
             <span class="nav-caption">settings</span>
         </a>
-        <a matRipple>
+        <a matRipple (click)="onClose()">
             <i class="demo-icon icon-invalid-name">&#xe803;</i> 
             <span class="nav-caption">more info</span>
         </a>
     </div>
     <div class="">
-      <a matRipple (click)="onLogout()">
+      <a matRipple (click)="onClose()" (click)="onLogout()">
         <span class="nav-caption">log-out</span>
      </a>
    </div>

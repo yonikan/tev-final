@@ -7,6 +7,8 @@ import { MenuComponent } from './core/components/menu/menu.component';
 const routes: Routes = [
   { path: 'team-overview', loadChildren: () => import('./team-overview/team-overview.module')
     .then(m => m.TeamOverviewModule), canLoad: [AuthGuard]},
+  { path: 'team-event-validation', loadChildren: () => import('./team-event-validation/team-event-validation.module')
+    .then(m => m.TeamEventValidationModule), canLoad: [AuthGuard]},
   { path: 'login', component: AuthComponent },
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/team-overview', pathMatch: 'full' },

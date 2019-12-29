@@ -1,0 +1,44 @@
+
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+:host {
+    .tags-container {
+        @include team-event-section;
+
+        .title {
+            h3 {
+                font-size: 40px;
+            }
+    
+            p {
+                font-size: 20px;
+                color: #96a1ae;
+            }
+        }
+    
+        .mat-form-field {
+            width: 600px;
+
+            @media (max-width: $media-query-sm) {
+                width: 100%;
+              }
+    
+            mat-chip {
+                background-color: #35083a;
+                 color: #fff;
+                 font-size: 18px;
+            }
+    
+            mat-icon {
+            background-color: #35083a;
+             color: #fff;
+            }
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}

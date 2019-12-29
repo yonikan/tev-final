@@ -1,0 +1,13 @@
+<div class="training-validation-container">
+    <mat-tab-group [selectedIndex]="currentSelectedStep">
+        <mat-tab label="GENERAL">
+            <app-step-training-general [stepTrainingGeneralData]="step1Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-general>
+        </mat-tab>
+        <mat-tab label="PLAYERS">
+            <app-step-training-players [stepTrainingPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-players>
+        </mat-tab>
+        <mat-tab label="PHASES">
+            <app-step-training-phases [stepTrainingPhasesData]="step3Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-phases>
+        </mat-tab>
+    </mat-tab-group>
+</div>

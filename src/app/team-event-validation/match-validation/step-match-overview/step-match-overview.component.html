@@ -1,0 +1,10 @@
+<div class="step-match-overview-container">
+    <p>step-match-overview works!</p>
+
+    <app-match-overview></app-match-overview>
+    <app-tags (tagsEmitter)="onTagsEmitter($event)"></app-tags>
+
+    <div class="step-footer">
+        <button class="step-submit-btn" mat-raised-button (click)="nextStep()">next</button>
+    </div>
+</div>

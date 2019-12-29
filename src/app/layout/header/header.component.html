@@ -1,8 +1,7 @@
 <mat-toolbar *ngIf="isAuthenticated" class="toolbar">
     <div class="toolbar-container">
       <button mat-button class="hamburger-menu" (click)="onToggleSidenav()">
-        <!-- <i class="demo-icon icon-overview">&#xe804;</i>  -->
-        <mat-icon>menu</mat-icon>
+        <img src="./assets/svg/others/hamburger-logo.svg" alt="logo">
       </button>
 
       <div class="logo">
@@ -54,15 +53,15 @@
                 </button>
                 <mat-menu #userMenu="matMenu">
                     <button mat-menu-item disabled (click)="null">
-                      <mat-icon>settings</mat-icon>
+                      <i class="demo-icon icon-overview">&#xe804;</i>
                       <span>Settings</span>
                     </button>
                     <button mat-menu-item disabled (click)="null">
-                        <mat-icon>settings</mat-icon>
-                        <span>Prefernces</span>
+                      <i class="demo-icon icon-overview">&#xe804;</i>
+                      <span>Prefernces</span>
                     </button>
                     <button mat-menu-item (click)="onLogout()">
-                      <mat-icon>exit_to_app</mat-icon>
+                      <i class="demo-icon icon-overview">&#xe804;</i>
                       <span>{{ 'layout.header.logout' | translate }}</span>
                     </button>
                 </mat-menu>

@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class EventComponent implements OnInit {
   @Input() eventIndex: number;
   @Input() eventData: any;
-  @Output() confirmSessionEmitter = new EventEmitter<string>();
+  @Output() confirmSessionEmitter = new EventEmitter<any>();
   @Output() convertSessionEmitter = new EventEmitter<string>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
   isValidated = false;
@@ -16,12 +16,15 @@ export class EventComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // console.log(this.eventData);
+
   }
 
-  confirmSession(eventId) {
-    // console.log('eventId: ', eventId);
-    this.confirmSessionEmitter.emit(eventId);
+  confirmSession() {
+    const event = {
+      teamEventId: this.eventData.id,
+      teamEventType: this.eventData.type
+    };
+    this.confirmSessionEmitter.emit(event);
   }
 
   convertSession(eventId) {
