@@ -16,10 +16,13 @@ export class TrainingValidationComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    const trainingData = this.teamEventValidationService.getTrainingData();
-    this.step1Data = trainingData.step1GeneralData;
-    this.step2Data = trainingData.step2PlayersData;
-    this.step3Data = trainingData.step3PhasesData;
+    this.teamEventValidationService.getTrainingDataNewModel()
+      .subscribe((teamEventValidationData: any) => { 
+        // console.log('teamEventValidationData: ', teamEventValidationData);
+        this.step1Data = teamEventValidationData.metadata;
+        this.step2Data = teamEventValidationData.participatingPlayers;
+        this.step3Data = teamEventValidationData.phases;
+      });
   }
 
   onStepSelectionEmitter(stepNumber) {
