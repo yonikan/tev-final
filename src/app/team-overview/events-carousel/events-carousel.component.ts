@@ -63,7 +63,6 @@ export class EventsCarouselComponent implements OnInit {
       .subscribe((result: any) => {
         this.teamEvents = result.teamEventsData;
         this.isTeamEventsLoading = false;
-        this.router.navigate([`/team-event-validation/match/21s`]); // to be deleted
       });
   }
 
