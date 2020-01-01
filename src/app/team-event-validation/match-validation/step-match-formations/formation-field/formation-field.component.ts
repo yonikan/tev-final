@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-formation-field',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 export class FormationFieldComponent implements OnInit, OnChanges {
   @Input() formation;
   @Input() playersData;
+  @Output() changeFormationPlayer = new EventEmitter();
 
   players = [];
 
@@ -45,6 +46,20 @@ export class FormationFieldComponent implements OnInit, OnChanges {
     }
 
     return positionX;
+  }
+
+  changePlayerInFormation(formationPosition, player) {
+	  this.formation.formationPosition = this.formation.formationPosition.map(formationPos => {
+		if (formationPos.playerId === player.id) {
+			formationPos.playerId = null;
+		}
+		if (formationPos.positionId === formationPosition.positionId) {
+			formationPos.playerId = player.id;
+		}
+		return formationPos;
+	  });
+
+	  this.changeFormationPlayer.emit(player);
   }
 
 }

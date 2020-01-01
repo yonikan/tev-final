@@ -4,67 +4,78 @@
         "name": "4-4-2",
         "formationPosition": [
             {
-                "playerId": "1",
+				"positionId": 1,
+                "playerId": "",
                 "positionX": 5,
                 "positionY": 8,
                 "positionName": "XX"
             },
             {
-                "playerId": "1",
+				"positionId": 2,
+                "playerId": "",
                 "positionX": 4,
                 "positionY": 2,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821ab5ab05a3790eaf43",
+				"positionId": 3,
+                "playerId": "",
                 "positionX": 6,
                 "positionY": 2,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821ac97479524acf3787",
+				"positionId": 4,
+                "playerId": "",
                 "positionX": 4,
                 "positionY": 4,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821a1d9c688320f4589c",
+				"positionId": 5,
+                "playerId": "",
                 "positionX": 6,
                 "positionY": 4,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821a1ebb0b841945f392",
+				"positionId": 6,
+                "playerId": "",
                 "positionX": 8,
                 "positionY": 4,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821a04ec50bcf8f7116b",
+				"positionId": 7,
+                "playerId": "",
                 "positionX": 2,
                 "positionY": 4,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821a741fc5316501b315",
+				"positionId": 8,
+                "playerId": "",
                 "positionX": 2,
                 "positionY": 6,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821a3e5b314c6ab84b62",
+				"positionId": 9,
+                "playerId": "",
                 "positionX": 4,
                 "positionY": 6,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821a0802253bb03b04c0",
+				"positionId": 10,
+                "playerId": "",
                 "positionX": 6,
                 "positionY": 6,
                 "positionName": "XX"
             },
             {
-                "playerId": "5dfb821aad83b3b83555422b",
+				"positionId": 11,
+                "playerId": "",
                 "positionX": 8,
                 "positionY": 6,
                 "positionName": "XX"

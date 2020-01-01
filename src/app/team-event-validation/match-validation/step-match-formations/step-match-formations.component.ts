@@ -53,7 +53,10 @@ export class StepMatchFormationsComponent implements OnInit {
 
     selectDefinedSub(id) {
         // console.log('selectDefinedSub', id);
-    }
+	}
+
+	onChangeFormationPlayer(player) {
+	}
 
     nextStep() {
       this.teamEventValidationService.matchDataOutput.step3FormationsData = 'test-output';

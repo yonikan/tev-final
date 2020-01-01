@@ -5,7 +5,7 @@
   <div class="player-image-label">{{positionName}}</div>
 
   <div class="select">
-    <app-group-select [players]="players" (onChangeSelection)="onChangePlayer($event)"></app-group-select>
+    <app-group-select [players]="players" (onChangeSelection)="onChangePlayer($event)" [currentPlayer]="selectedPlayer"></app-group-select>
   </div>
 
 </div>

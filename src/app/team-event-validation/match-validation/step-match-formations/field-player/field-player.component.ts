@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-field-player',
@@ -10,6 +10,7 @@ export class FieldPlayerComponent implements OnInit, OnChanges {
   @Input() playerName;
   @Input() players;
   @Input() playerId;
+  @Output() changePlayer = new EventEmitter();
 
   selectedPlayer = null;
 
@@ -19,15 +20,19 @@ export class FieldPlayerComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if (this.players) {
-      this.selectedPlayer = this.players.find(({id}) => +this.playerId === id);
+		this.selectedPlayer = this.players.reduce((acc, curr) => {
+			acc = [...acc, ...curr.players]
+			return acc;
+		}, []).find(({id}) => +this.playerId === id);
     }
   }
 
   ngOnInit() {
+
   }
 
   onChangePlayer(player) {
-    this.positionName = player.positionName;
+	this.changePlayer.emit(player);
   }
 
 }

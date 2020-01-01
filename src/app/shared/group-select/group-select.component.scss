@@ -10,7 +10,10 @@
         align-self: baseline;
         display: flex;
         justify-content: center;
-        align-items: center;
+		align-items: center;
+		font-size: 14px;
+		text-align: center;
+		color: #35083a;
 
         @media (max-width: $media-query-sm) {
             width: 65px;
@@ -22,11 +25,6 @@
     // .mat-select-panel {
     // mat-expansion-panel {
     .mat-select-panel-wrap {
-		.mat-select-value {
-			font-size: 14px;
-			text-align: center;
-			color: #35083a;
-		}
 
         /* width */
         ::-webkit-scrollbar {

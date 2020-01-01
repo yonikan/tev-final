@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class GroupSelectComponent implements OnInit {
   @Input() players;
+  @Input() currentPlayer;
   @Output() onChangeSelection = new EventEmitter();
 
   constructor() { }

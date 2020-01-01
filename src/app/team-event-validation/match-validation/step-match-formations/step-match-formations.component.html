@@ -10,7 +10,10 @@
                 (onSelectDefinedSub)="selectDefinedSub($event)">
             </app-formation-selection>
             <div class="buffer"></div>
-            <app-formation-field [formation]="selectedFormation" [playersData]="playersData"></app-formation-field>
+			<app-formation-field
+				[formation]="selectedFormation"
+				[playersData]="playersData"
+				(changeFormationPlayer)="onChangeFormationPlayer($event)"></app-formation-field>
         </div>
     </div>
     <div class="step-footer">
