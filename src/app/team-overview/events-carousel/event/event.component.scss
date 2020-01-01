@@ -123,8 +123,12 @@
         }
     
         .event-content-confirm {
+          display: flex;
+          justify-content: center;
+
           .confirm-button {
             width: 100%;
+            max-width: 220px;
             margin-top: 20px;
             background-color: $color-green;
             border-radius: 20px;
