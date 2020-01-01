@@ -5,8 +5,37 @@
 		height: 80vh;
 		overflow: auto;
 		align-items: center;
+		position: relative;
+
+		/* width */
+		&::-webkit-scrollbar {
+			width: 4px;
+		}
+
+		/* Track */
+		&::-webkit-scrollbar-track {
+			background-color: transparent;
+		}
+
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background-color: #939fac;
+			border-radius: 1.5px;
+		}
+
+		/* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background-color: #757f89;
+		}
 
 		details {
+
+			.details-content {
+				position: absolute;
+				height: 420px;
+				width: 100%;
+				background-color: #e6e9eb;
+			}
 
 			summary {
 				display: grid;

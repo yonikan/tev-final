@@ -13,7 +13,8 @@
         }
 
         .content {
-            @include team-event-step-container;
+			@include team-event-step-container;
+			padding: 5px;
 
             .buffer {
                 @include team-event-buffer;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-participating-column',
@@ -6,20 +6,33 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./participating-column.component.scss']
 })
 export class ParticipatingColumnComponent implements OnInit {
-  @Input() players = [];
-  @Input() actionName = '';
+	@Input() players = [];
+	@Input() actionName = '';
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  preventDetailsOpen(e) {
-	  e.preventDefault();
-  }
+	preventDetailsOpen(e) {
+		e.preventDefault();
+	}
 
-  openSummary() {
+	openSummary() {
 
-  }
+	}
+
+  	scroll(player, el: HTMLElement) {
+		this.players = this.players.map(p => {
+			if (p.id !== player.id)
+				p.isOpen = false;
+			return p;
+		});
+
+		player.isOpen = !player.isOpen;
+		setTimeout(() => {
+			el.scrollIntoView({behavior:"smooth", block: "nearest"});
+		});
+	}
 
 }
