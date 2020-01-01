@@ -12,13 +12,13 @@
                 <mat-menu #eventMenu="matMenu" class="event-card-menu">
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="confirmSession()">
                         <mat-icon>assignment_turned_in</mat-icon>
-                        <span>{{ 'team-overview.events-carousel.validate-session' | translate }} {{ eventData.type }}</span>
+                        <span>{{ 'team-overview.events-carousel.validate-session' | translate }} {{ teamEventTypeString }}</span>
                     </button>
                     <button mat-menu-item (click)="convertSession(eventData.id)">
                         <mat-icon>find_replace</mat-icon>
                         <span>{{ 'team-overview.events-carousel.toggle-event-type' | translate }} </span>
-                        <span *ngIf="eventData.type === 'training'">match</span>
-                        <span *ngIf="eventData.type === 'match'">training</span>
+                        <span *ngIf="eventData.type === 1">match</span>
+                        <span *ngIf="eventData.type === 2">training</span>
                     </button>
                     <button mat-menu-item (click)="deleteSession(eventData.id)">
                         <mat-icon>delete</mat-icon>
@@ -33,10 +33,10 @@
             <div class="event-content-header">
                 <div class="event-content-title" [ngClass]="{'validated-event-style':eventData.isValidated}">
                     <i *ngIf="!eventData.isValidated" class="demo-icon icon-calender">&#xe809;</i> 
-                    <h4 [ngClass]="{'validated-event-style':eventData.isValidated}">{{ eventData.title }}</h4>
+                    <h4 [ngClass]="{'validated-event-style':eventData.isValidated}">new {{ teamEventTypeString }}</h4>
                 </div>
                 <div class="event-content-subtitle" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <span>{{ eventData.created }}</span>
+                    <span>{{ eventData.startTime }} - {{ eventData.endTime }}</span>
                 </div>
             </div>
             
@@ -49,8 +49,8 @@
 
                 <div class="info-content">
                     <div>145 <span class="time-unit">Min</span></div>
-                    <div>19/22</div>
-                    <div>N/A</div>
+                    <div>{{ eventData.validPlayersCount }}/{{ eventData.totalPlayersCount }}</div>
+                    <div>{{ eventData.phasesCount }}</div>
                 </div>
 
                 <!-- <div class="info-duration">
@@ -69,7 +69,7 @@
             </div>
         
             <div *ngIf="!eventData.isValidated" class="event-content-confirm">
-                <button class="confirm-button" mat-raised-button (click)="confirmSession()">{{ 'team-overview.events-carousel.validate-session' | translate }} {{ eventData.type }}</button>
+                <button class="confirm-button" mat-raised-button (click)="confirmSession()">{{ 'team-overview.events-carousel.validate-session' | translate }} {{ teamEventTypeString }}</button>
             </div>
             <div *ngIf="eventData.isValidated" class="event-content-buttons">
                 <button class="action-btn" mat-button (click)="null">

@@ -56,11 +56,17 @@ export class EventsCarouselComponent implements OnInit {
     // const PATH = this.serverEnvService.getBaseUrl();
     // this.http
     //   .get<any>(`${PATH}/team-events`)
+
     of(TEAM_EVENTS_DATA)
       // .pipe(
       //   map((loginData: any) => loginData.payload),
       // )
+
+    // const teamId = 763;
+    // this.http
+    //   .get<any>(`https://footballrest2-dev.playermaker.co.uk/api/v2/team/${teamId}/team-events/unvalidated`)
       .subscribe((result: any) => {
+        console.log('result: ', result);
         this.teamEvents = result.teamEventsData;
         this.isTeamEventsLoading = false;
       });

@@ -1,4 +1,5 @@
 export enum TrainingDrills {
-    Opposed = 1,
+    Undefined = 0,
+    Opposed,
     Unopposed,
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { enumToString } from 'src/app/core/helpers/helper-functions';
+import { teamEvents } from 'src/app/core/enums/team-events.enum';
 
 @Component({
   selector: 'app-event',
@@ -12,11 +14,13 @@ export class EventComponent implements OnInit {
   @Output() convertSessionEmitter = new EventEmitter<string>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
   isValidated = false;
+  teamEventTypeString;
 
   constructor() { }
 
   ngOnInit() {
-
+    // console.log(this.eventData);
+    this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
   }
 
   confirmSession() {
