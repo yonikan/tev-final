@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+:host {
+    .container {
+        .heading {
+            @include team-event-step-heading;
+            display: flex;
+            flex-direction: column;
+            .sub-title {
+                @include small-text;
+            }
+        }
+
+        .content {
+            @include team-event-step-container;
+
+            .buffer {
+                @include team-event-buffer;
+            }
+
+            @media (max-width: $media-query-lg) {
+                grid-template-columns: 100%;
+                .buffer {
+                    height: 1px;
+                    border-right: 0;
+                    border-top: 1px dotted rgba(53, 61, 86, 0.3);
+                }
+            }
+        }
+    }
+}

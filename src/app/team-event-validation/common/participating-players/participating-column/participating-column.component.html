@@ -1,0 +1,14 @@
+<div class="container">
+	<details *ngFor="let player of players">
+		<summary (click)="preventDetailsOpen($event)">
+			<img class="avatar" [src]="player.avatarUrl" alt="player avatar">
+			<div>{{player.name}} - {{player.positionName}}</div>
+			<img class="swap-shirts" src="./assets/svg/swap-shirts.svg" alt="shirts icon"/>
+			<div class="action-name">{{actionName}}</div>
+		</summary>
+		<div>
+			bla bla bla
+		</div>
+	</details>
+</div>
+
