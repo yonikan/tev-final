@@ -1,0 +1,33 @@
+@import '../../../../../styles/variables';
+
+:host {
+    .container {
+        padding: 3px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+
+        .player-image-label {
+            color: #ffffff;
+            grid-column-start: 1;
+            grid-row-start: 1;
+            grid-row-end: 1;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .img {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;            ;
+        }
+        .select {
+            align-self: baseline;
+        }
+    }
+}

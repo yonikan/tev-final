@@ -10,11 +10,11 @@ export class StepTrainingPlayersComponent implements OnInit {
   @Input() stepTrainingPlayersData: any;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
   trainingPlayers;
-  
+
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    
+
   }
 
   nextStep() {

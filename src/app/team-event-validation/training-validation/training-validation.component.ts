@@ -17,7 +17,7 @@ export class TrainingValidationComponent implements OnInit {
 
   ngOnInit() {
     this.teamEventValidationService.getTrainingDataNewModel()
-      .subscribe((teamEventValidationData: any) => { 
+      .subscribe((teamEventValidationData: any) => {
         // console.log('teamEventValidationData: ', teamEventValidationData);
         this.step1Data = teamEventValidationData.metadata;
         this.step2Data = teamEventValidationData.participatingPlayers;
@@ -28,7 +28,7 @@ export class TrainingValidationComponent implements OnInit {
   onStepSelectionEmitter(stepNumber) {
     this.currentSelectedStep = stepNumber;
   }
-  
+
   onValidateTraining(trainingPayload) {
     console.log('trainingPayload: ', trainingPayload);
     this.teamEventValidationService.validateTraining();

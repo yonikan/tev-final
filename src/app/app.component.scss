@@ -1,16 +1,16 @@
 @import '../styles/variables';
 @import '../styles/functions';
 
-:host { 
+:host {
   mat-sidenav-container {
     width: 100%;
     height: 100%;
     background-color: var(--pageBackground);
-  
+
     // .sidenav {
     //   width: 250px;
     // }
-  
+
     mat-sidenav-content {
       .app-container {
         width: 100%;
@@ -41,6 +41,7 @@
             @media (max-width: $media-query-sm) {
               margin-left: 0;
               width: 100%;
+              margin-bottom: 55px;
             }
 
             .loading-overlay {

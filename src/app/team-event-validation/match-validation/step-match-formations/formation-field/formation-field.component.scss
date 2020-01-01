@@ -1,0 +1,61 @@
+@import '../../../../../styles/variables';
+
+:host {
+    .container {
+        display: grid;
+        justify-content: center;
+        padding: 20px;
+
+        .field-container {
+            width: 422px;
+            height: 635px;
+
+            .field {
+                display: grid;
+                background-image: url("../../../../../assets/svg/formation/field-lines.svg"), url("../../../../../assets/svg/formation/field-stripes.svg"), url("../../../../../assets/svg/formation/field.svg");
+                height: 100%;
+                // background-position: left top, 0 105px, 5px 2px;
+                // background-size: 361px 533px, contain, 348px 524px;
+                background-position: left top, 0 105px, 6px 3px;
+                background-size: 422px 633px, contain, 408px 618px;
+                background-repeat: no-repeat, no-repeat, no-repeat;
+
+                img {
+                    grid-row-start: 1;
+                    grid-column-end: 1;
+                    width: 100%;
+                    &:nth-child(2) {
+                        height: 100%;
+                    }
+                }
+
+                .players {
+                    display: grid;
+                    // grid-template-columns: repeat(9, 46.88px);// field columns = 9
+                    // grid-template-columns: repeat(9, auto);// field columns = 9
+                    grid-template-columns: repeat(9, 1fr);// field columns = 9
+                    grid-template-rows: repeat(6, 85.8px);// field rows = 7
+                    justify-items: center;
+                    align-items: center;
+                    > * {
+                        min-width: 0;
+                    }
+
+                    @media (max-width: $media-query-sm) {
+                        grid-template-columns: repeat(9, 2.5em);
+                    }
+                }
+
+                @media (max-width: $media-query-sm) {
+                    background-position: left top, 0 10px, 6px 3px;
+                    background-size: 360px 633px, 352px 610px, 348px 618px;
+                }
+            }
+
+            @media (max-width: $media-query-sm) {
+                width: 365px;
+            }
+        }
+    }
+}
+

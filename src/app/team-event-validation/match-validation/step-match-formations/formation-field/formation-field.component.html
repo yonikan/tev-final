@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="field-container">
+        <div class="field">
+            <div class="players">
+                <div
+                    *ngFor="let player of formation.formationPosition; let i = index"
+                    [ngStyle]="
+                    {'grid-column': getPositionX(formation.formationPosition, i, player.positionX),
+                    'grid-row': player.positionY}">
+                    <app-field-player [playerId]="player.playerId" [positionName]="player.positionName" [players]="players"></app-field-player>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

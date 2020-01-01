@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { routes } from './team-event-validation.routes';
 
-import { HighchartsChartModule } from 'highcharts-angular';
+import { ChartModule } from 'angular-highcharts';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -22,7 +22,6 @@ import { StepMatchPlayersComponent } from './match-validation/step-match-players
 import { StepMatchFormationsComponent } from './match-validation/step-match-formations/step-match-formations.component';
 import { StepMatchPhasesComponent } from './match-validation/step-match-phases/step-match-phases.component';
 import { StepMatchSubsComponent } from './match-validation/step-match-subs/step-match-subs.component';
-
 import { TagsComponent } from './common/tags/tags.component';
 import { SpeedGraphComponent } from './common/speed-graph/speed-graph.component';
 import { TrainingDurationComponent } from './training-validation/step-training-general/training-duration/training-duration.component';
@@ -31,6 +30,9 @@ import { PhasesCardsContainerComponent } from './common/phases-cards-container/p
 import { PhasesCardComponent } from './common/phases-cards-container/phases-card/phases-card.component';
 import { SubstitutionsTableComponent } from './common/substitutions-table/substitutions-table.component';
 import { SubstitutionsRowComponent } from './common/substitutions-table/substitutions-row/substitutions-row.component';
+import { FormationFieldComponent } from './match-validation/step-match-formations/formation-field/formation-field.component';
+import { FormationSelectionComponent } from './match-validation/step-match-formations/formation-selection/formation-selection.component';
+import { FieldPlayerComponent } from './match-validation/step-match-formations/field-player/field-player.component';
 
 @NgModule({
   declarations: [
@@ -51,14 +53,17 @@ import { SubstitutionsRowComponent } from './common/substitutions-table/substitu
     PhasesCardsContainerComponent,
     PhasesCardComponent,
     SubstitutionsTableComponent,
-    SubstitutionsRowComponent
+    SubstitutionsRowComponent,
+    FormationFieldComponent,
+    FormationSelectionComponent,
+    FieldPlayerComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    HighchartsChartModule,
-    SwiperModule
+    ChartModule,
+    SwiperModule,
   ],
   providers: [
     {

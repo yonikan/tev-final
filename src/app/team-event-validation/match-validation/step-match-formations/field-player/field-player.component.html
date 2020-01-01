@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="img">
+    <img src="../../../../../assets/svg/formation/player-shirt-selected.svg" alt="player shirt selected">
+  </div>
+  <div class="player-image-label">{{positionName}}</div>
+
+  <div class="select">
+    <app-group-select [players]="players" (onChangeSelection)="onChangePlayer($event)"></app-group-select>
+  </div>
+
+</div>
