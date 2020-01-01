@@ -38,11 +38,13 @@ export class StepMatchFormationsComponent implements OnInit {
     selectedFormation = {};
 
     constructor(private formationService: FormationService, private teamEventValidationService: TeamEventValidationService) {
-        this.tactics = formationService.getFormations();
+
     }
 
 
     ngOnInit() {
+		this.tactics = this.stepMatchFormationsData;
+		// this.tactics = this.formationService.getFormations();
     }
 
     selectTactic(tacticFormation) {

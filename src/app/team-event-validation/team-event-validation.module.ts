@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { routes } from './team-event-validation.routes';
 
-import { ChartModule } from 'angular-highcharts';
+import { HighchartsChartModule } from 'highcharts-angular';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -62,7 +62,7 @@ import { FieldPlayerComponent } from './match-validation/step-match-formations/f
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    ChartModule,
+    HighchartsChartModule,
     SwiperModule,
   ],
   providers: [

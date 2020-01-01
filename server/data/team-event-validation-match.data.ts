@@ -22,7 +22,7 @@ export const TEAM_EVENT_VALIDATION_MATCH: any = {
 				startTimeInterpMs: 2,
 				timeDtMs: 3,
 				velInterpMs: 4.2
-			}	
+			}
         ]
     },
     participatingPlayers : {
@@ -32,12 +32,12 @@ export const TEAM_EVENT_VALIDATION_MATCH: any = {
 					firstName: 'yossi',
 					lastName: 'levi',
 					defaultPositionId: 4,
-					activeTime: [ 
+					activeTime: [
 						{
 							startTime: 3,
-							endTime: 3, 
+							endTime: 3,
 							error: 4
-						} 
+						}
 					],
 					isParticipated: true,
 			},
@@ -46,15 +46,15 @@ export const TEAM_EVENT_VALIDATION_MATCH: any = {
 					firstName: 'yossi',
 					lastName: 'cohen',
 					defaultPositionId: 4,
-					activeTime: [ 
+					activeTime: [
 						{
 							startTime: 3,
-							endTime: 3, 
+							endTime: 3,
 							error: 4
 						},
 						{
 							startTime: 3,
-							endTime: 3, 
+							endTime: 3,
 							error: 4
 						}
 					],
@@ -74,15 +74,224 @@ export const TEAM_EVENT_VALIDATION_MATCH: any = {
 			}
 		]
     },
-    formation: {
-        name: 'formation name',
-        formationPosition: {
-            positionName: 'position name',
-            playerId: 333,
-            matrixXPosition: 4,
-            matrixYPosition: 5
-        }            
-    },
+    formation: [
+		{
+			"_id": 1,
+			"name": "4-4-2",
+			"formationPosition": [
+				{
+					"playerId": "1",
+					"positionX": 5,
+					"positionY": 8,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "1",
+					"positionX": 4,
+					"positionY": 2,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ab5ab05a3790eaf43",
+					"positionX": 6,
+					"positionY": 2,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ac97479524acf3787",
+					"positionX": 4,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a1d9c688320f4589c",
+					"positionX": 6,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a1ebb0b841945f392",
+					"positionX": 8,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a04ec50bcf8f7116b",
+					"positionX": 2,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a741fc5316501b315",
+					"positionX": 2,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a3e5b314c6ab84b62",
+					"positionX": 4,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a0802253bb03b04c0",
+					"positionX": 6,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821aad83b3b83555422b",
+					"positionX": 8,
+					"positionY": 6,
+					"positionName": "XX"
+				}
+			]
+		},
+		{
+			"_id": 2,
+			"name": "4-1-2-3",
+			"formationPosition": [
+				{
+					"playerId": "5dfb821a6b341e94340bdff9",
+					"positionX": 5,
+					"positionY": 8,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a2a96b063ce51e7ef",
+					"positionX": 2,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a43ff5cc4749a8da1",
+					"positionX": 4,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821af98fbd9f08b3cf83",
+					"positionX": 6,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ac6208b1f92386bfb",
+					"positionX": 8,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a36dd78c83750115c",
+					"positionX": 5,
+					"positionY": 5,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a373a1a17f0f92c1b",
+					"positionX": 4,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ac237fcbf646f6516",
+					"positionX": 6,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a90be093b21869f6a",
+					"positionX": 2,
+					"positionY": 2,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a549b7d3a13df98cc",
+					"positionX": 8,
+					"positionY": 2,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ac68009fe26f34b6e",
+					"positionX": 5,
+					"positionY": 1,
+					"positionName": "XX"
+				}
+			]
+		},
+		{
+			"_id": 3,
+			"name": "4-5-1",
+			"formationPosition": [
+				{
+					"playerId": "5dfb821af0cc17c8ca43bd93",
+					"positionX": 5,
+					"positionY": 8,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a11d8308f7a192c46",
+					"positionX": 4,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821aaa585af4212baa5a",
+					"positionX": 5,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ad416f04b4f99ac95",
+					"positionX": 6,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821a4c38ab5bb609d52a",
+					"positionX": 2,
+					"positionY": 5,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ab1d3b3de7eb0c67e",
+					"positionX": 5,
+					"positionY": 5,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821abe6fc814ac48f5d1",
+					"positionX": 8,
+					"positionY": 5,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821af051a9a6a960fad7",
+					"positionX": 4,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821af697c3a8ea54115b",
+					"positionX": 6,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ac078999ef09f1ba0",
+					"positionX": 5,
+					"positionY": 3,
+					"positionName": "XX"
+				},
+				{
+					"playerId": "5dfb821ac1027ffb979936fe",
+					"positionX": 5,
+					"positionY": 2,
+					"positionName": "XX"
+				}
+			]
+		}
+	  ],
     phases: {
         phasesList: [
             {

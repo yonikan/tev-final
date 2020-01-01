@@ -30,7 +30,8 @@
                 }
 
                 .players {
-                    display: grid;
+					display: grid;
+					column-gap: 35px;
                     // grid-template-columns: repeat(9, 46.88px);// field columns = 9
                     // grid-template-columns: repeat(9, auto);// field columns = 9
                     grid-template-columns: repeat(9, 1fr);// field columns = 9
@@ -42,7 +43,8 @@
                     }
 
                     @media (max-width: $media-query-sm) {
-                        grid-template-columns: repeat(9, 2.5em);
+						grid-template-columns: repeat(9, 2.5em);
+						column-gap: 0;
                     }
                 }
 
