@@ -2,6 +2,10 @@ import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/cor
 import * as Highcharts from 'highcharts';
 // import * as moment from 'moment';
 import * as moment from 'moment-timezone'
+// import * as HighchartsBoost  from 'highcharts/modules/boost';
+let Boost = require('highcharts/modules/boost');
+Boost(Highcharts);
+
 
 @Component({
   selector: 'app-speed-graph',
@@ -17,7 +21,10 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
   runOutsideAngular = false; // optional boolean, defaults to false
   chartOptions: any = {
     chart: {
-      type: 'area',
+      type: 'line',
+      zoomType: 'x',
+      panning: true,
+      panKey: 'shift',
       style: {
         fontFamily: 'Montserrat'
       },
@@ -25,6 +32,9 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
       backgroundColor: '#ffffff',
       color: '#f9b62b'
     },
+    boost: {
+      useGPUTranslations: true
+  },
     title: {
       text: ''
     },
@@ -102,20 +112,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
         color: '#621e6a',
         showInLegend: false,
         name: 'Line 1',
-        data: [
-          [13, 2.4],
-          [13.1, 2.6],
-          [13.2, 3.4],
-          [13.3, 4.4],
-          [13.4, 2.4],
-          [13.5, 5.4],
-          [13.6, 7.4],
-          [13.7, 4.4],
-          [13.8, 5.4],
-          [13.9, 6.4],
-          [14, 7.4],
-          [14.1, 4.4]
-        ]
+        data: []
       }
     ],
     // time: {
@@ -131,10 +128,49 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
     // }
   };
 
+
+  n = 100000;
+  data;
   constructor() { }
 
   ngOnInit() {
+    this.data = this.getData(this.n);
+    this.chartOptions.series[0].data = this.data;
   }
+
+  getData(n) {
+    var arr = [],
+        i,
+        a,
+        b,
+        c,
+        spike;
+    for (i = 0; i < n; i = i + 1) {
+        if (i % 100 === 0) {
+            a = 2 * Math.random();
+        }
+        if (i % 1000 === 0) {
+            b = 2 * Math.random();
+        }
+        if (i % 10000 === 0) {
+            c = 2 * Math.random();
+        }
+        if (i % 50000 === 0) {
+            spike = 10;
+        } else {
+            spike = 0;
+        }
+        arr.push([
+            i,
+            2 * Math.sin(i / 100) + a + b + c + spike + Math.random()
+        ]);
+    }
+    return arr;
+  }
+
+
+
+
 
   ngOnChanges(changes: SimpleChanges) {
     const dateFromDurationComponent = changes.timeDuration.currentValue;
