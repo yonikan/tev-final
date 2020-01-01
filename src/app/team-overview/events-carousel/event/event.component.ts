@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { enumToString } from 'src/app/core/helpers/helper-functions';
 import { teamEvents } from 'src/app/core/enums/team-events.enum';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event',
@@ -15,12 +16,20 @@ export class EventComponent implements OnInit {
   @Output() deleteSessionEmitter = new EventEmitter<string>();
   isValidated = false;
   teamEventTypeString;
+  startTimeHoursFormatted;
+  endTimeHoursFormatted;
+  durationTimeAgo;
+  duration;
 
   constructor() { }
 
   ngOnInit() {
     // console.log(this.eventData);
     this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
+    this.startTimeHoursFormatted = moment(this.eventData.startTime).format('hh:mm');
+    this.endTimeHoursFormatted = moment(this.eventData.endTime).format('hh:mm');
+    this.durationTimeAgo = moment(new Date()).from(moment(this.eventData.startTime));
+    // this.duration = null;
   }
 
   confirmSession() {

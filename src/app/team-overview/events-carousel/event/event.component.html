@@ -36,7 +36,7 @@
                     <h4 [ngClass]="{'validated-event-style':eventData.isValidated}">new {{ teamEventTypeString }}</h4>
                 </div>
                 <div class="event-content-subtitle" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <span>{{ eventData.startTime }} - {{ eventData.endTime }}</span>
+                    <span><span class="duration-time-ago">{{ durationTimeAgo }}</span>   {{ startTimeHoursFormatted }} - {{ endTimeHoursFormatted }}</span>
                 </div>
             </div>
             

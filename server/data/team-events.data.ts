@@ -4,8 +4,8 @@ export const TEAM_EVENTS_DATA: any = {
             id: 20,
             type: 1,
             isValidated: false,
-            startTime: 121212,
-            endTime: 131313,
+            startTime: 1554250906438,
+            endTime: 1554257103746,
             validPlayersCount: 12,
             totalPlayersCount: 22,
             phasesCount: 4
@@ -14,8 +14,8 @@ export const TEAM_EVENTS_DATA: any = {
             id: 21,
             type: 2,
             isValidated: false,
-            startTime: 121212,
-            endTime: 131313,
+            startTime: 1554250906438,
+            endTime: 1554257103746,
             validPlayersCount: 16,
             totalPlayersCount: 22,
             phasesCount: 2
