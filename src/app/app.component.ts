@@ -39,7 +39,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.serverEnvService.initServerEnv();
 
     if (!environment.production) {
-      this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
+      this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111');
+      // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
       // this.router.navigate(['/team-overview']);
     };
 

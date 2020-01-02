@@ -12,7 +12,7 @@ export class ServerEnvService {
 
   initServerEnv() {
     if (!environment.production) {
-      this.currentServerEnv = 'dev';
+      this.currentServerEnv = 'stage';
       return;
     };
     
