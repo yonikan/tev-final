@@ -36,12 +36,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.serverEnvService.initServerEnv();
+
     if (!environment.production) {
       this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
       // this.router.navigate(['/team-overview']);
     };
 
-    this.serverEnvService.initServerEnv();
     this.authorizationService.currentPlatform = this.breakpointObserver.isMatched('(min-width: 769px)') ? 'desktop' : 'mobile';
 
     if (this.localStorageService.getOnLocalStorage('selected_theme')) {

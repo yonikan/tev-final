@@ -30,12 +30,13 @@ export class ServerEnvService {
       } else if (SUB_DOMAIN.includes('prod')) {
         this.currentServerEnv = 'prod';
       } else {
-        this.currentServerEnv = 'dev';
+        // this.currentServerEnv = 'dev';
       }
     };
   }
 
   getBaseUrl(serverEnv = 2): string {
+    console.log('this.currentServerEnv: ', this.currentServerEnv);
     if (this.currentServerEnv === 'dev') {
       if (serverEnv === 2) {
         return AppConsts.devBaseUrl2
