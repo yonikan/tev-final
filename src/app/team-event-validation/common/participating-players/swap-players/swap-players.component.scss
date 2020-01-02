@@ -1,13 +1,19 @@
+@import "../../../../../styles/mixins";
+
 mat-expansion-panel {
 	background-color: transparent;
 	border-radius: 0 !important;
     border: 0;
 	box-shadow: none !important;
-	border-bottom: 1px solid #939fac;
+	// border-bottom: 1px solid #939fac;
 
 	&:first-of-type, &:last-of-type {
 		border-bottom-right-radius: 0 !important;
     	border-bottom-left-radius: 0 !important;
+	}
+
+	mat-list-item {
+		@include selectable-row(alias);
 	}
 
 	mat-panel-title {
@@ -24,5 +30,14 @@ mat-expansion-panel {
 		&.open {
 			transform: rotate(0);
 		}
+	}
+
+	.avatar {
+		@include player-avatar();
+		margin-right: 5px;
+	}
+
+	.player-title {
+		@include player-name-title();
 	}
 }

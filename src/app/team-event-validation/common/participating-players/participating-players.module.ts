@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ParticipatingPlayersComponent } from './participating-players.component';
 import { ParticipatingColumnComponent } from './participating-column/participating-column.component';
 import { SwapPlayersComponent } from './swap-players/swap-players.component';
-import { MatExpansionModule } from '@angular/material';
+import { MatExpansionModule, MatListModule, MatDividerModule } from '@angular/material';
 
 
 @NgModule({
 	imports: [
 		CommonModule,
-		MatExpansionModule
+		MatExpansionModule,
+		MatListModule,
+		MatDividerModule
 	],
 	declarations: [
 	  ParticipatingPlayersComponent,

@@ -32,7 +32,7 @@ export class ParticipatingColumnComponent implements OnInit {
   	scroll(el: HTMLElement) {
 		setTimeout(() => {
 			el.scrollIntoView({behavior:"smooth", block: "nearest"});
-		});
+		}, 500);
 	}
 
 }

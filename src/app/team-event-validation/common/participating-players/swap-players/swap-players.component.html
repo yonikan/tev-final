@@ -16,5 +16,14 @@
 
 			</mat-panel-description>
 		</mat-expansion-panel-header>
+		<mat-list>
+			<div *ngFor="let player of club.players">
+				<mat-list-item matRipple>
+					<img class="avatar" [src]="player.avatarUrl" alt="player avatar">
+					<div class="player-title">{{player.firstName}}</div>
+				</mat-list-item>
+				<mat-divider></mat-divider>
+			</div>
+		  </mat-list>
 	</mat-expansion-panel>
 </mat-accordion>

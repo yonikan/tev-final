@@ -172,3 +172,45 @@
   row-gap: 10px;
   column-gap: 10px;
 }
+
+@mixin  player-avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+@mixin player-name-title {
+	font-size: 16px;
+	color: #3d4762;
+}
+
+@mixin custom-scroll {
+	/* width */
+	&::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background-color: #939fac;
+		border-radius: 1.5px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: #757f89;
+	}
+
+}
+
+@mixin selectable-row($cursor: pointer) {
+	cursor: $cursor;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.04);
+	}
+}
