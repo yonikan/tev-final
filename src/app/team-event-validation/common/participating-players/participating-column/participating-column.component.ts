@@ -18,11 +18,7 @@ export class ParticipatingColumnComponent implements OnInit {
 		e.preventDefault();
 	}
 
-	openSummary() {
-
-	}
-
-  	scroll(player, el: HTMLElement) {
+	openSummary(player, el: HTMLElement) {
 		this.players = this.players.map(p => {
 			if (p.id !== player.id)
 				p.isOpen = false;
@@ -30,6 +26,10 @@ export class ParticipatingColumnComponent implements OnInit {
 		});
 
 		player.isOpen = !player.isOpen;
+		this.scroll(el)
+	}
+
+  	scroll(el: HTMLElement) {
 		setTimeout(() => {
 			el.scrollIntoView({behavior:"smooth", block: "nearest"});
 		});

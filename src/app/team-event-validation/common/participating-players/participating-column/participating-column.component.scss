@@ -33,8 +33,27 @@
 			.details-content {
 				position: absolute;
 				height: 420px;
-				width: 100%;
-				background-color: #e6e9eb;
+				width: 98%;
+				background-color: #f4f4f4;
+				z-index: 1;
+				padding: 5px;
+				border: 1px solid #e0e3e5;
+				border-radius: 5px;
+				box-shadow: 0px 10px 20px 0 rgba(0, 0, 0, 0.05);
+
+				&:before {
+					content: "";
+					display: block;
+					width: 0;
+  					height: 0;
+					border-top: 8px solid transparent;
+					border-right: 8px solid transparent;
+					border-bottom: 8px solid #f4f4f4;
+					border-left: 8px solid transparent;
+					position: absolute;
+					top: -15px;
+					right: 135px;
+				}
 			}
 
 			summary {
@@ -60,10 +79,21 @@
 					font-weight: 500;
 				}
 
-				// TODO: mixins
 				.swap-shirts {
-					&:hover {
-						fill: #11cd69;
+					mask: url("../../../../../assets/svg/swap-shirts.svg");
+					height: 33px;
+					width: 45px;
+					background-color: #8994a3;
+					cursor: pointer;
+
+					&.open, &.highlighted, &.swapped {
+						background-color: #11cd69;
+						mask: url("../../../../../assets/svg/swap-shirts-highlight.svg");
+					}
+
+					&:hover:not(.open) {
+						background-color: #0fb85e;
+						mask: url("../../../../../assets/svg/swap-shirts-highlight.svg");
 					}
 				}
 

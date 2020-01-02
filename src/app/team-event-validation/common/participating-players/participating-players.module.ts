@@ -2,12 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ParticipatingPlayersComponent } from './participating-players.component';
 import { ParticipatingColumnComponent } from './participating-column/participating-column.component';
+import { SwapPlayersComponent } from './swap-players/swap-players.component';
+import { MatExpansionModule } from '@angular/material';
 
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [ParticipatingPlayersComponent, ParticipatingColumnComponent]
+	imports: [
+		CommonModule,
+		MatExpansionModule
+	],
+	declarations: [
+	  ParticipatingPlayersComponent,
+	  ParticipatingColumnComponent,
+	  SwapPlayersComponent
+	]
 })
 export class ParticipatingPlayersModule { }
