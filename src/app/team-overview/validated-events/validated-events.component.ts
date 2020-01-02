@@ -32,6 +32,7 @@ export class ValidatedEventsComponent implements OnInit {
     //   map((loginData: any) => loginData.payload),
     // )
     .subscribe((result: any) => {
+      console.log('result: ', result);
       this.teamEvents = result; // only validated team-events
       this.isTeamEventsLoading = false;
     });

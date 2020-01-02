@@ -30,7 +30,10 @@ export class EventComponent implements OnInit {
     this.startTimeHoursFormatted = moment(this.eventData.startTime).format('hh:mm');
     this.endTimeHoursFormatted = moment(this.eventData.endTime).format('hh:mm');
     this.durationTimeAgo = moment(new Date()).from(moment(this.eventData.startTime));
-    // this.duration = null;
+    const start = moment(this.eventData.startTime);
+    const end = moment(this.eventData.endTime);
+    this.duration = Math.abs(start.diff(end, 'minutes'));
+    // console.log('this.duration: ', this.duration);
   }
 
   confirmSession() {
