@@ -13,6 +13,7 @@ export class EventComponent implements OnInit {
   @Input() eventData: any;
   @Output() confirmSessionEmitter = new EventEmitter<any>();
   @Output() convertSessionEmitter = new EventEmitter<string>();
+  @Output() editSessionEmitter = new EventEmitter<any>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
   isValidated = false;
   teamEventTypeString;
@@ -42,6 +43,14 @@ export class EventComponent implements OnInit {
 
   convertSession(eventId) {
     this.convertSessionEmitter.emit(eventId);
+  }
+
+  editSession() {
+    const event = {
+      teamEventId: this.eventData.id,
+      teamEventType: this.eventData.type
+    };
+    this.editSessionEmitter.emit(event);
   }
 
   deleteSession(eventId) {

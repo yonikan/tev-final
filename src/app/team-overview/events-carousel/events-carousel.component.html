@@ -1,4 +1,7 @@
-<div class="overview-content-events" *ngIf="teamEvents.length > 0">
+
+<mat-spinner *ngIf="!teamEvents"></mat-spinner>
+
+<div class="overview-content-events" *ngIf="teamEvents.length > 0 && teamEvents">
     <div class="events-container">
         <div class="events-into-text">
             <h3>{{ 'team-overview.events-carousel.title' | translate:{'eventsNumber':teamEvents.length} }}</h3>

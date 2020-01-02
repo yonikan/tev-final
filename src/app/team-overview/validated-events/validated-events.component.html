@@ -2,9 +2,8 @@
     <app-event *ngFor="let teamEvent of teamEvents"
         [@fadeInOut]
         [eventIndex]="index" 
-        (confirmSessionEmitter)="null"
-        (convertSessionEmitter)="null"
-        (deleteSessionEmitter)="null" 
+        (editSessionEmitter)="onEditSession($event)"
+        (deleteSessionEmitter)="onDeleteSession($event)" 
         [eventData]="teamEvent">
     </app-event>
 </div>

@@ -10,6 +10,8 @@ import { TEAM_EVENTS_DATA } from 'server/data/team-events.data';
 import { of } from 'rxjs';
 import { UiComponentsService } from '../../core/services/ui-components.service';
 import { Router } from '@angular/router';
+import { enumToString } from '../../core/helpers/helper-functions';
+import { teamEvents } from '../../core/enums/team-events.enum';
 
 @Component({
   selector: 'app-events-carousel',
@@ -58,25 +60,23 @@ export class EventsCarouselComponent implements OnInit {
     //   .get<any>(`${PATH}/team-events`)
 
     of(TEAM_EVENTS_DATA)
-      // .pipe(
-      //   map((loginData: any) => loginData.payload),
-      // )
 
-    // const teamId = 763;
+    // const teamId = 26; // Eli test - QA TEAM
     // this.http
-    //   .get<any>(`https://footballrest2-dev.playermaker.co.uk/api/v2/team/${teamId}/team-events/unvalidated`)
+    //   .get<any>(`https://footballrest2-stage.playermaker.co.uk/api/v2/team/${teamId}/team-events/unvalidated`)
       .subscribe((result: any) => {
-        console.log('result: ', result);
-        this.teamEvents = result.teamEventsData;
+        // console.log('result: ', result);
+        this.teamEvents = result;
         this.isTeamEventsLoading = false;
       });
   }
 
   onConfirmSession(teamEvent) {
+    const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
     this.uiComponentsService.setIsLoading(true);
     setTimeout(() => { 
       this.uiComponentsService.setIsLoading(false);
-      this.router.navigate([`/team-event-validation/${teamEvent.teamEventType}/${teamEvent.teamEventId}`]);
+      this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
      }, 1000);
   }
 

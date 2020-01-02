@@ -20,7 +20,7 @@
                         <span *ngIf="eventData.type === 1">match</span>
                         <span *ngIf="eventData.type === 2">training</span>
                     </button>
-                    <button *ngIf="eventData.isValidated" mat-menu-item (click)="null">
+                    <button *ngIf="eventData.isValidated" mat-menu-item (click)="editSession()">
                         <mat-icon>delete</mat-icon>
                         <span>Edit Session</span>
                     </button>
