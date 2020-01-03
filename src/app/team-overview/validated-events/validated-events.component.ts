@@ -8,6 +8,7 @@ import { UiComponentsService } from 'src/app/core/services/ui-components.service
 import { enumToString } from 'src/app/core/helpers/helper-functions';
 import { teamEvents } from 'src/app/core/enums/team-events.enum';
 import { Router } from '@angular/router';
+import { ValidatedEventsService } from './validated-events.service';
 
 @Component({
   selector: 'app-validated-events',
@@ -23,6 +24,7 @@ export class ValidatedEventsComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
      private uiComponentsService: UiComponentsService,
+     private validatedEventsService: ValidatedEventsService,
      private router: Router
   ) { }
 
@@ -73,5 +75,9 @@ export class ValidatedEventsComponent implements OnInit {
            }, 2000);
         }
       });
+  }
+
+  onDownloadPdfReport(report) {
+    console.log('report: ', report);
   }
 }

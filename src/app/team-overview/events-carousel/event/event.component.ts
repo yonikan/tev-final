@@ -15,12 +15,16 @@ export class EventComponent implements OnInit {
   @Output() convertSessionEmitter = new EventEmitter<string>();
   @Output() editSessionEmitter = new EventEmitter<any>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
+  @Output() downloadPdfReportEmitter = new EventEmitter<any>();
+
   isValidated = false;
   teamEventTypeString;
   startTimeHoursFormatted;
   endTimeHoursFormatted;
   durationTimeAgo;
   duration;
+
+  isPdfReportLoading = false;
 
   constructor() { }
 
@@ -58,5 +62,14 @@ export class EventComponent implements OnInit {
 
   deleteSession(eventId) {
     this.deleteSessionEmitter.emit(eventId);
+  }
+
+  downloadPdfReport(reportType) {
+    // this.isPdfReportLoading = true;
+    // const report = {
+    //   teamEventId: this.eventData.id,
+    //   teamEventType: reportType
+    // };
+    // this.downloadPdfReportEmitter.emit(report);
   }
 }

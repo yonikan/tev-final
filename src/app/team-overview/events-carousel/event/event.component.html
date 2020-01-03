@@ -1,4 +1,5 @@
 <mat-card>
+
     <div class="event-header-container">
         <div class="event-header">
             <!-- <div class="header-title">
@@ -33,7 +34,10 @@
         </div>
     </div>
     <mat-card-content>
-        <div class="event-content">
+
+        <mat-spinner *ngIf="isPdfReportLoading"></mat-spinner>
+
+        <div *ngIf="!isPdfReportLoading" class="event-content">
             <div class="event-content-header">
                 <div class="event-content-title" [ngClass]="{'validated-event-style':eventData.isValidated}">
                     <i *ngIf="!eventData.isValidated" class="demo-icon icon-calender">&#xe809;</i> 
@@ -82,11 +86,11 @@
                 </button>
             </div>
             <div *ngIf="eventData.isValidated" class="event-content-buttons">
-                <button class="action-btn" mat-button (click)="null">
+                <button class="action-btn" mat-button (click)="downloadPdfReport('teamReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
                     <span>Team Report</span>
                 </button>
-                <button class="action-btn" mat-button (click)="null">
+                <button class="action-btn" mat-button (click)="downloadPdfReport('individualReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
                     <span>Individual Report</span>
                 </button>
