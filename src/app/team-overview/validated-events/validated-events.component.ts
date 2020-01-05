@@ -9,6 +9,9 @@ import { enumToString } from '../../core/helpers/helper-functions';
 import { teamEvents } from '../../core/enums/team-events.enum';
 import { Router } from '@angular/router';
 import { ValidatedEventsService } from './validated-events.service';
+import { ServerEnvService } from '../../core/services/server-env.service';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-validated-events',
@@ -23,21 +26,27 @@ export class ValidatedEventsComponent implements OnInit {
   
   constructor(
     private dialog: MatDialog,
-     private uiComponentsService: UiComponentsService,
-     private validatedEventsService: ValidatedEventsService,
-     private router: Router
+    private authService: AuthService,
+    private http: HttpClient,
+    private serverEnvService: ServerEnvService,
+    private uiComponentsService: UiComponentsService,
+    private validatedEventsService: ValidatedEventsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    of(TEAM_EVENTS_VALIDATED_DATA)
-    // .pipe(
-    //   map((loginData: any) => loginData.payload),
-    // )
-    .subscribe((result: any) => {
-      console.log('result: ', result);
-      this.teamEvents = result; // only validated team-events
-      this.isTeamEventsLoading = false;
-    });
+    // of(TEAM_EVENTS_VALIDATED_DATA)
+    const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
+    // console.log('TEAM_ID: ', TEAM_ID);
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
+    this.http
+      .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events`)
+      .subscribe((result: any) => {
+        console.log('result: ', result);
+        this.teamEvents = result; // only validated team-events
+        this.isTeamEventsLoading = false;
+      });
   }
 
   onEditSession(teamEvent) {

@@ -58,7 +58,7 @@ export class EventsCarouselComponent implements OnInit {
 
   ngOnInit() {
     of(TEAM_EVENTS_DATA)
-    // const TEAM_ID = this.authService.getUserLoginData().userId;
+    // const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
     // const BASE_URL = this.serverEnvService.getBaseUrl();
     // const API_VERSION = 'v2';
     // this.http
@@ -108,7 +108,7 @@ export class EventsCarouselComponent implements OnInit {
           const BASE_URL = this.serverEnvService.getBaseUrl();
           const API_VERSION = 'v1';
           this.http
-            .put<any>(`${BASE_URL}/${API_VERSION}/team_event/${teamEventId}`, PAYLOAD)
+            .put<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}`, PAYLOAD)
             .subscribe((result: any) => {
               console.log('result: ', result);
             });
@@ -145,7 +145,7 @@ export class EventsCarouselComponent implements OnInit {
           const BASE_URL = this.serverEnvService.getBaseUrl();
           const API_VERSION = 'v1';
           this.http
-            .put<any>(`${BASE_URL}/${API_VERSION}/team_event/${teamEventId}/?reset_type=true`, PAYLOAD)
+            .put<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}/?reset_type=true`, PAYLOAD)
             .subscribe((result: any) => {
               console.log('result: ', result);
             });
