@@ -40,7 +40,8 @@
         <div *ngIf="!isPdfReportLoading" class="event-content">
             <div class="event-content-header">
                 <div class="event-content-title" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <i *ngIf="!eventData.isValidated" class="demo-icon icon-calender">&#xe809;</i> 
+                    <i *ngIf="!eventData.isValidated && eventData.type === 2" class="demo-icon icon-calender">&#xe809;</i>
+                    <i *ngIf="!eventData.isValidated && eventData.type === 1" class="demo-icon icon-vlc">&#xe808;</i>  
                     <h4 *ngIf="!eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">new {{ teamEventTypeString }}</h4>
                     <h4 *ngIf="eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">
                         <span *ngIf="eventData.type === 2">Match</span>
@@ -61,7 +62,9 @@
 
                 <div class="info-content">
                     <div>{{ duration }} <span class="time-unit">Min</span></div>
-                    <div class="players">{{ eventData.validPlayersCount }}/{{ eventData.totalPlayersCount }}</div>
+                    <div class="players">
+                        {{ eventData.validPlayersCount }}<span *ngIf="!eventData.isValidated">/{{ eventData.totalPlayersCount }}</span>
+                    </div>
                     <div>{{ eventData.phasesCount }}</div>
                 </div>
 
