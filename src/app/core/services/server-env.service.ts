@@ -11,10 +11,10 @@ export class ServerEnvService {
   constructor() { }
 
   initServerEnv() {
-    // if (!environment.production) {
-    //   this.currentServerEnv = 'stage';
-    //   return;
-    // };
+    if (!environment.production) {
+      this.currentServerEnv = 'dev';
+      return;
+    };
     
     const URL_HOSTNAME = window.location.hostname;
     const SUB_DOMAIN = URL_HOSTNAME.split('.')[0];
@@ -27,10 +27,10 @@ export class ServerEnvService {
         this.currentServerEnv = 'dev';
       } else if (SUB_DOMAIN.includes('stage')) {
         this.currentServerEnv = 'stage';
-      } else if (SUB_DOMAIN.includes('prod')) {
-        this.currentServerEnv = 'prod';
+      // } else if (SUB_DOMAIN.includes('prod')) {
+      //   this.currentServerEnv = 'prod';
       } else {
-        this.currentServerEnv = 'dev';
+        this.currentServerEnv = 'prod';
       }
     };
   }
