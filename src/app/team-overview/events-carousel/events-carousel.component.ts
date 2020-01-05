@@ -12,6 +12,7 @@ import { UiComponentsService } from '../../core/services/ui-components.service';
 import { Router } from '@angular/router';
 import { enumToString } from '../../core/helpers/helper-functions';
 import { teamEvents } from '../../core/enums/team-events.enum';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-events-carousel',
@@ -48,6 +49,7 @@ export class EventsCarouselComponent implements OnInit {
   
   constructor(
     private http: HttpClient,
+    private authService: AuthService,
     private serverEnvService: ServerEnvService,
     private uiComponentsService: UiComponentsService,
     private router: Router,
@@ -55,29 +57,27 @@ export class EventsCarouselComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // const PATH = this.serverEnvService.getBaseUrl();
-    // this.http
-    //   .get<any>(`${PATH}/team-events`)
-
     of(TEAM_EVENTS_DATA)
-
-    // const teamId = 26; // Eli test - QA TEAM
+    // const TEAM_ID = this.authService.getUserLoginData().userId;
+    // const BASE_URL = this.serverEnvService.getBaseUrl();
+    // const API_VERSION = 'v2';
     // this.http
-    //   .get<any>(`https://footballrest2-stage.playermaker.co.uk/api/v2/team/${teamId}/team-events/unvalidated`)
+    //   .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events/unvalidated`)
       .subscribe((result: any) => {
-        // console.log('result: ', result);
+        console.log('result: ', result);
         this.teamEvents = result;
         this.isTeamEventsLoading = false;
       });
   }
 
   onConfirmSession(teamEvent) {
-    const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
-    this.uiComponentsService.setIsLoading(true);
-    setTimeout(() => { 
-      this.uiComponentsService.setIsLoading(false);
-      this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
-     }, 1000);
+    console.log('teamEvent: ', teamEvent);
+    // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
+    // this.uiComponentsService.setIsLoading(true);
+    // setTimeout(() => { 
+    //   this.uiComponentsService.setIsLoading(false);
+    //   this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
+    //  }, 1000);
   }
 
   onConvertSession(teamEventId) {
@@ -94,12 +94,24 @@ export class EventsCarouselComponent implements OnInit {
     });
 
     dialogRef.afterClosed()
-      .subscribe(modalData => {
-        if(modalData) {
-          this.uiComponentsService.setIsLoading(true);
-          setTimeout(() => { 
-            this.uiComponentsService.setIsLoading(false);
-           }, 2000);
+      .subscribe(teamEventId => {
+        console.log('teamEventId: ', teamEventId);
+        if(teamEventId) {
+          // this.uiComponentsService.setIsLoading(true);
+          // setTimeout(() => { 
+          //   this.uiComponentsService.setIsLoading(false);
+          //  }, 2000);
+
+          const PAYLOAD = {
+            type: null
+          };
+          const BASE_URL = this.serverEnvService.getBaseUrl();
+          const API_VERSION = 'v1';
+          this.http
+            .put<any>(`${BASE_URL}/${API_VERSION}/team_event/${teamEventId}`, PAYLOAD)
+            .subscribe((result: any) => {
+              console.log('result: ', result);
+            });
         }
       });
   }
@@ -118,14 +130,25 @@ export class EventsCarouselComponent implements OnInit {
     });
 
     dialogRef.afterClosed()
-      .subscribe(modalData => {
-        if(modalData) {
-          this.uiComponentsService.setIsLoading(true);
-          setTimeout(() => { 
-            this.uiComponentsService.setIsLoading(false);
-              const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
-              this.teamEvents.splice(teamIndex, 1);
-           }, 2000);
+      .subscribe(teamEventId => {
+        if(teamEventId) {
+          // this.uiComponentsService.setIsLoading(true);
+          // setTimeout(() => { 
+          //   this.uiComponentsService.setIsLoading(false);
+          //     const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
+          //     this.teamEvents.splice(teamIndex, 1);
+          //  }, 2000);
+
+          const PAYLOAD = {
+            
+          };
+          const BASE_URL = this.serverEnvService.getBaseUrl();
+          const API_VERSION = 'v1';
+          this.http
+            .put<any>(`${BASE_URL}/${API_VERSION}/team_event/${teamEventId}/?reset_type=true`, PAYLOAD)
+            .subscribe((result: any) => {
+              console.log('result: ', result);
+            });
         }
       });
   }

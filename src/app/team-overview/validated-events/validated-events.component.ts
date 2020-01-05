@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { fadeInOutAnimation } from 'src/app/core/animations/fade-in-out.animation';
+import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
 import { TEAM_EVENTS_VALIDATED_DATA } from 'server/data/team-events-validated.data';
 import { EventsCarouselModalComponent } from '../events-carousel/events-carousel-modal/events-carousel-modal.component';
 import { MatDialog } from '@angular/material';
-import { UiComponentsService } from 'src/app/core/services/ui-components.service';
-import { enumToString } from 'src/app/core/helpers/helper-functions';
-import { teamEvents } from 'src/app/core/enums/team-events.enum';
+import { UiComponentsService } from '../../core/services/ui-components.service';
+import { enumToString } from '../../core/helpers/helper-functions';
+import { teamEvents } from '../../core/enums/team-events.enum';
 import { Router } from '@angular/router';
 import { ValidatedEventsService } from './validated-events.service';
 
