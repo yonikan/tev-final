@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { enumToString } from 'src/app/core/helpers/helper-functions';
 import { teamEvents } from 'src/app/core/enums/team-events.enum';
 import * as moment from 'moment';
+import { ValidatedEventsService } from '../../validated-events/validated-events.service';
 
 @Component({
   selector: 'app-event',
@@ -26,7 +27,7 @@ export class EventComponent implements OnInit {
 
   isPdfReportLoading = false;
 
-  constructor() { }
+  constructor(private validatedEventsService: ValidatedEventsService) { }
 
   ngOnInit() {
     // console.log(this.eventData);
@@ -71,5 +72,8 @@ export class EventComponent implements OnInit {
     //   teamEventType: reportType
     // };
     // this.downloadPdfReportEmitter.emit(report);
+
+    this.validatedEventsService.getTeamEventPdfReport(this.eventData.id, reportType);
+
   }
 }

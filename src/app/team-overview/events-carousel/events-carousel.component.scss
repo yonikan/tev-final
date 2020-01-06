@@ -42,6 +42,7 @@
             .text-section {
               @media (max-width: $media-query-sm) {
                 width: 70%;
+                padding-right: 5px;
               }
 
               h3 {
@@ -59,15 +60,6 @@
               }
 
               .notification-bubble {
-                // width: 89px;
-                // width: 80px;
-                // background-color: #bab5bb;
-                // color: $color-purple;
-                // text-transform: uppercase;
-                // padding: 10px;
-                // border-radius: 15px;
-                // margin-bottom: 20px;
-
                 width: 89px;
                 width: 80px;
                 background: #bab5bb;
@@ -81,9 +73,8 @@
                 position: relative;
                 margin-bottom: 30px;
 
-
                 @media (max-width: $media-query-sm) {
-                  margin: 0 10px;;
+                  // margin: 0 10px;
                   // margin-left: 20px;
                   // margin-right: 20px;
                 }

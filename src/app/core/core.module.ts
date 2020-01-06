@@ -11,6 +11,7 @@ import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animati
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
+import { ValidatedEventsToastComponent } from './components/validated-events-toast/validated-events-toast.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     MenuComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
+    ValidatedEventsToastComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     FormsModule
   ],
   entryComponents: [
-    ErrorModalComponent
+    ErrorModalComponent,
+    ValidatedEventsToastComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: VersionUpdateInterceptor, multi: true },
@@ -39,7 +42,8 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     MenuComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
+    ValidatedEventsToastComponent
   ]
 })
 export class CoreModule { }
