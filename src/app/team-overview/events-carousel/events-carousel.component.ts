@@ -103,7 +103,7 @@ export class EventsCarouselComponent implements OnInit {
           //  }, 2000);
 
           const PAYLOAD = {
-            type: null
+            type: 1
           };
           const BASE_URL = this.serverEnvService.getBaseUrl();
           const API_VERSION = 'v1';
