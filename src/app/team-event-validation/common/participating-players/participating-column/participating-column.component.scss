@@ -16,7 +16,6 @@
 			border-bottom: 1px solid #939fac;
 			.details-content {
 				position: absolute;
-				top: 58px;
 				left: -3px;
 				height: 420px;
 				width: 95%;
@@ -69,9 +68,14 @@
 				}
 
 				.action-name {
+					cursor: pointer;
 					font-size: 16px;
 					color: #8994a3;
 					font-weight: 500;
+
+					&:hover {
+						color: #eea92a;
+					}
 				}
 
 				.swap-shirts {

@@ -1,15 +1,15 @@
 <div class="container">
-	<details *ngFor="let player of players" [open]="player.isOpen">
+	<details *ngFor="let player of participatingPlayers" [open]="player.isOpen">
 		<summary (click)="preventDetailsOpen($event)">
 			<img class="avatar" [src]="player.avatarUrl" alt="player avatar">
-			<div class="player-title">{{player.name}} - {{player.positionName}}</div>
+			<div class="player-title">{{player.lastName}}.{{player.firstName[0]}} - {{player.positionName}}</div>
 			<!-- <img class="swap-shirts" src="./assets/svg/swap-shirts.svg" alt="shirts icon" (click)="openSummary(player, target)"/> -->
-			<div [ngClass]="{'swap-shirts': true, open: player.isOpen}" (click)="openSummary(player, target)"></div>
-			<div class="action-name">{{actionName}}</div>
+			<div [ngClass]="{'swap-shirts': true, open: player.isOpen, swapped: player.isSwapped}" (click)="openSummary(player, target)"></div>
+			<div class="action-name" (click)="exclude(player)">{{actionName}}</div>
 		</summary>
 		<div class="details-content" #target>
 			<div>
-				<app-swap-players></app-swap-players>
+				<app-swap-players [clubPlayers]="clubPlayers" (swapPlayer)="doSwapPlayer($event)" [currentPlayer]="currentPlayer"></app-swap-players>
 			</div>
 		</div>
 	</details>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 
 const clubPlayers = [
 	{
@@ -555,12 +555,18 @@ const clubPlayers = [
 })
 export class SwapPlayersComponent implements OnInit {
 	@Input() clubPlayers = [];
+	@Input() currentPlayer = null;
+	@Output() swapPlayer = new EventEmitter();
 	@ViewChild('matExpansionPanel', null) _matExpansionPanel: any
 
 	constructor() { }
 
 	ngOnInit() {
-		this.clubPlayers = clubPlayers;
+		// this.clubPlayers = clubPlayers;
+	}
+
+	onSwapPlayer(value) {
+		this.swapPlayer.emit(value);
 	}
 
 }

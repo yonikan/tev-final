@@ -18,9 +18,9 @@
 		</mat-expansion-panel-header>
 		<mat-list>
 			<div *ngFor="let player of club.players">
-				<mat-list-item matRipple>
+				<mat-list-item [ngClass]="{disabled: player.isParticipated}" (click)="onSwapPlayer(player)" matRipple>
 					<img class="avatar" [src]="player.avatarUrl" alt="player avatar">
-					<div class="player-title">{{player.firstName}}</div>
+					<div class="player-title">{{player.lastName}}.{{player.firstName[0]}} - {{player.positionName}}</div>
 				</mat-list-item>
 				<mat-divider></mat-divider>
 			</div>

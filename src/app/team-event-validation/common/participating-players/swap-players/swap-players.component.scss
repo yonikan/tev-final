@@ -14,6 +14,16 @@ mat-expansion-panel {
 
 	mat-list-item {
 		@include selectable-row(alias);
+		.player-title {
+			@include player-name-title();
+		}
+
+		&.disabled {
+			pointer-events: none;
+			.player-title {
+				color: #cccccc;
+			}
+		}
 	}
 
 	mat-panel-title {
@@ -35,9 +45,5 @@ mat-expansion-panel {
 	.avatar {
 		@include player-avatar();
 		margin-right: 5px;
-	}
-
-	.player-title {
-		@include player-name-title();
 	}
 }

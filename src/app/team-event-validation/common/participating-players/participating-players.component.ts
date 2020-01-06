@@ -2,130 +2,333 @@ import { Component, OnInit } from '@angular/core';
 
 const players = [
 	{
+	  "positionId": 1,
+	  "clubName": "Impulse - U15",
 	  "id": 1,
-	  "name": "Chandra Luna",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Medina",
+	  "lastName": "Rowe",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 2,
+	  "clubName": "GODSENT - U18",
 	  "id": 2,
-	  "name": "Anastasia Bowen",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Aida",
+	  "lastName": "Richard",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 3,
+	  "clubName": "Astrails - U15",
 	  "id": 3,
-	  "name": "Alissa Mathews",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Roman",
+	  "lastName": "Steele",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 4,
+	  "clubName": "Impulse - U15",
 	  "id": 4,
-	  "name": "Melisa Nash",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Jane",
+	  "lastName": "Golden",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 5,
+	  "clubName": "GODSENT - U18",
 	  "id": 5,
-	  "name": "Meagan Wynn",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Ratliff",
+	  "lastName": "Mccray",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 6,
+	  "clubName": "Impulse - U18",
 	  "id": 6,
-	  "name": "Webster Mcfadden",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Audra",
+	  "lastName": "Harris",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 7,
+	  "clubName": "GODSENT - U15",
 	  "id": 7,
-	  "name": "Ella Stafford",
+	  "firstName": "Mcguire",
+	  "lastName": "Maxwell",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
 	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 8,
+	  "clubName": "GODSENT - U18",
 	  "id": 8,
-	  "name": "Weaver Weiss",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Sherman",
+	  "lastName": "Bean",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 9,
+	  "clubName": "GODSENT - U15",
 	  "id": 9,
-	  "name": "Higgins Velez",
+	  "firstName": "Ryan",
+	  "lastName": "Massey",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
 	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
-	},
-	{
-	  "id": 10,
-	  "name": "Wilkinson Cohen",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	}
   ];
 
 const includedPlayers = [
 	{
+	  "positionId": 1,
+	  "clubName": "Astrails - U18",
 	  "id": 1,
-	  "name": "Chandra Luna",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Jones",
+	  "lastName": "Gardner",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "RB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 2,
+	  "clubName": "Impulse - U18",
 	  "id": 2,
-	  "name": "Anastasia Bowen",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Charmaine",
+	  "lastName": "Hodges",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 3,
+	  "clubName": "GODSENT - U15",
 	  "id": 3,
-	  "name": "Alissa Mathews",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Turner",
+	  "lastName": "Ortega",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 4,
+	  "clubName": "Astrails - U15",
 	  "id": 4,
-	  "name": "Melisa Nash",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Roach",
+	  "lastName": "Ramirez",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 5,
+	  "clubName": "GODSENT - U18",
 	  "id": 5,
-	  "name": "Meagan Wynn",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Hunt",
+	  "lastName": "Leblanc",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 6,
+	  "clubName": "Impulse - U18",
 	  "id": 6,
-	  "name": "Webster Mcfadden",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Swanson",
+	  "lastName": "Cooke",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 7,
+	  "clubName": "GODSENT - U18",
 	  "id": 7,
-	  "name": "Ella Stafford",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Elena",
+	  "lastName": "Holman",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 8,
+	  "clubName": "GODSENT - U15",
 	  "id": 8,
-	  "name": "Weaver Weiss",
-	  "positionName": "CB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Gilliam",
+	  "lastName": "Gates",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	},
 	{
+	  "positionId": 9,
+	  "clubName": "GODSENT - U18",
 	  "id": 9,
-	  "name": "Higgins Velez",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
-	},
-	{
-	  "id": 10,
-	  "name": "Wilkinson Cohen",
-	  "positionName": "RB",
-	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"
+	  "firstName": "Carney",
+	  "lastName": "Rosa",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": "13:30",
+		  "endTime": "14:30",
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false
 	}
   ];
-
 @Component({
   selector: 'app-participating-players',
   templateUrl: './participating-players.component.html',
@@ -143,6 +346,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 	ngOnInit() {
 		// this.excludedPlayers = [...this.players];
 		// this.includedPlayers = [...this.players];
+		console.log('excludedPlayers', this.excludedPlayers);
 	}
 
 }
