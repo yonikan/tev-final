@@ -12,21 +12,21 @@
                 </button>
                 <mat-menu #eventMenu="matMenu" class="event-card-menu">
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="confirmSession()">
-                        <mat-icon>assignment_turned_in</mat-icon>
+                        <i class="demo-icon icon-calender">&#xe809;</i>
                         <span>{{ 'team-overview.events-carousel.validate-session' | translate }} {{ teamEventTypeString }}</span>
                     </button>
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="convertSession(eventData.id)">
-                        <mat-icon>find_replace</mat-icon>
+                        <i class="demo-icon icon-calender">&#xe809;</i>
                         <span>{{ 'team-overview.events-carousel.toggle-event-type' | translate }} </span>
                         <span *ngIf="eventData.type === 1">match</span>
                         <span *ngIf="eventData.type === 2">training</span>
                     </button>
                     <button *ngIf="eventData.isValidated" mat-menu-item (click)="editSession()">
-                        <mat-icon>delete</mat-icon>
+                        <i class="demo-icon icon-calender">&#xe809;</i>
                         <span>Edit Session</span>
                     </button>
                     <button mat-menu-item (click)="deleteSession(eventData.id)">
-                        <mat-icon>delete</mat-icon>
+                        <i class="demo-icon icon-calender">&#xe809;</i>
                         <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span>
                     </button>
                 </mat-menu>

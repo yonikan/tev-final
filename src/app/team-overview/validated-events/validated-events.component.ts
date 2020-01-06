@@ -50,12 +50,13 @@ export class ValidatedEventsComponent implements OnInit {
   }
 
   onEditSession(teamEvent) {
-    const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
-    this.uiComponentsService.setIsLoading(true);
-    setTimeout(() => { 
-      this.uiComponentsService.setIsLoading(false);
-      this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
-     }, 1000);
+    console.log('teamEvent: ', teamEvent);
+    // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
+    // this.uiComponentsService.setIsLoading(true);
+    // setTimeout(() => { 
+    //   this.uiComponentsService.setIsLoading(false);
+    //   this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
+    //  }, 1000);
   }
 
   onDeleteSession(teamEventId) {

@@ -9,9 +9,9 @@
     color: var(--headerColor);
     margin-bottom: 20px;
     flex-direction: column;
-    height: 210px;
+    // height: 210px;
     min-height: 210px;
-    max-height: 210px;
+    // max-height: 210px;
     border-radius: 10px;
 
     .event-header-container {
@@ -162,5 +162,15 @@
         }
       }
     }
+  }
+}
+
+::ng-deep .event-card-menu  {
+  i {
+    margin-right: 10px !important;
+  }
+
+  span {
+    text-transform: capitalize !important;
   }
 }
