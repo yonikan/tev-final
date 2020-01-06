@@ -23,8 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoading = false;
   private isLoadingSub: Subscription;
 
-  constructor( 
-    public authService: AuthService, 
+  constructor(
+    public authService: AuthService,
     public authorizationService: AuthorizationService,
     private localStorageService: LocalStorageService,
     private translationPickerService: TranslationPickerService,
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (!environment.production) {
-      this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
+      this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111');
       // this.router.navigate(['/team-overview']);
     };
 

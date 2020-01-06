@@ -65,6 +65,18 @@
 
 				.player-title {
 					@include player-name-title();
+					@include flex-column();
+					.active-time {
+						@include flex-row(center);
+						.bold {
+							@include bold();
+							font-size: 12px;
+						}
+						.light-text {
+							@include light-text();
+						}
+					}
+
 				}
 
 				.action-name {
@@ -100,6 +112,12 @@
 				}
 			}
 		}
+	}
+
+	.brief {
+		font-size: 14px;
+		font-weight: 600;
+		color: #3d4762;
 	}
 }
 

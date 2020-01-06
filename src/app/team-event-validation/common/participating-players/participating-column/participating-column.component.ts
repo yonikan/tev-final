@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-participating-column',
@@ -8,10 +8,15 @@ import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges } from '@ang
 export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	@Input() players = [];
 	@Input() actionName = '';
+	@Output() excludePlayer = new EventEmitter();
 
 	private clubPlayers = [];
 	private participatingPlayers = [];
 	private currentPlayer = null;
+	private HEADLINE = {
+		Exclude: "Included",
+		Include: "Not Included",
+	}
 
 	constructor() { }
 
@@ -22,11 +27,6 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 		this.participatingPlayers = this.players.filter(player => player.isParticipated);
 		this.clubPlayers = this.getClubPlayers();
 	}
-
-	// TODO: change isParticipated for swap
-	// gray isParticipated players and pointless
-	// when clicking a row pass the player object and maybe index
-	// highlight isSwap
 
 	preventDetailsOpen(e) {
 		e.preventDefault();
@@ -82,8 +82,8 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	}
 
 	exclude(player) {
-		player.isParticipated = false;
 		this.participatingPlayers = this.players.filter(player => player.isParticipated);
+		this.excludePlayer.emit(player);
 	}
 
 }

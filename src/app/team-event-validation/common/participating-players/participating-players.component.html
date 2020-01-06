@@ -6,8 +6,14 @@
 		</div>
 	</div>
 	<div class="content">
-		<app-participating-column [players]="excludedPlayers" [actionName]="'Exclude'"></app-participating-column>
+		<app-participating-column
+			[players]="includedPlayers"
+			[actionName]="'Exclude'"
+			(excludePlayer)="doExcludePlayer($event)"></app-participating-column>
 		<div class="buffer"></div>
-		<app-participating-column [players]="includedPlayers" [actionName]="'Include'"></app-participating-column>
+		<app-participating-column
+			[players]="excludedPlayers"
+			[actionName]="'Include'"
+			(excludePlayer)="doIncludePlayer($event)"></app-participating-column>
 	</div>
 </div>

@@ -182,6 +182,7 @@
 @mixin player-name-title {
 	font-size: 16px;
 	color: #3d4762;
+	font-weight: 600;
 }
 
 @mixin custom-scroll {
@@ -213,4 +214,26 @@
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.04);
 	}
+}
+
+@mixin flex-row($align) {
+	display: flex;
+	flex-direction: row;
+	align-items: $align;
+}
+
+@mixin flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+@mixin bold {
+	color: #96a1ae;
+	font-weight: 600;
+}
+
+@mixin light-text {
+	color: #8994a3;
+	font-size: 12px;
+	font-weight: 500;
 }
