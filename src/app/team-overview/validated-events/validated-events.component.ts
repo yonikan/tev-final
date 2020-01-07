@@ -35,17 +35,19 @@ export class ValidatedEventsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    of(TEAM_EVENTS_VALIDATED_DATA)
-    // const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
-    // console.log('TEAM_ID: ', TEAM_ID);
-    // const BASE_URL = this.serverEnvService.getBaseUrl();
-    // const API_VERSION = 'v2';
-    // this.http
-    //   .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events`)
+    // of(TEAM_EVENTS_VALIDATED_DATA)
+    const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
+    console.log('TEAM_ID: ', TEAM_ID);
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
+    this.http
+      .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events`)
       .subscribe((result: any) => {
         console.log('result: ', result);
         this.teamEvents = result; // only validated team-events
         this.isTeamEventsLoading = false;
+      }, (err) => {
+        console.log('err: ', err);
       });
   }
 
@@ -77,12 +79,23 @@ export class ValidatedEventsComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(modalData => {
         if(modalData) {
+          // this.uiComponentsService.setIsLoading(true);
+          // setTimeout(() => { 
+          //   this.uiComponentsService.setIsLoading(false);
+          //     const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
+          //     this.teamEvents.splice(teamIndex, 1);
+          //  }, 2000);
+
           this.uiComponentsService.setIsLoading(true);
-          setTimeout(() => { 
-            this.uiComponentsService.setIsLoading(false);
+          this.http
+            .delete<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}`)
+            .subscribe((result: any) => {
+              this.uiComponentsService.setIsLoading(false);
               const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
               this.teamEvents.splice(teamIndex, 1);
-           }, 2000);
+            }, (err) => {
+              console.log('err: ', err);
+            });
         }
       });
   }

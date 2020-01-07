@@ -13,7 +13,7 @@ export class EventComponent implements OnInit {
   @Input() eventIndex: number;
   @Input() eventData: any;
   @Output() confirmSessionEmitter = new EventEmitter<any>();
-  @Output() convertSessionEmitter = new EventEmitter<string>();
+  @Output() convertSessionEmitter = new EventEmitter<any>();
   @Output() editSessionEmitter = new EventEmitter<any>();
   @Output() deleteSessionEmitter = new EventEmitter<string>();
   @Output() downloadPdfReportEmitter = new EventEmitter<any>();
@@ -50,7 +50,11 @@ export class EventComponent implements OnInit {
   }
 
   convertSession(eventId) {
-    this.convertSessionEmitter.emit(eventId);
+    const event = {
+      teamEventId: this.eventData.id,
+      teamEventType: this.eventData.type
+    };
+    this.convertSessionEmitter.emit(event);
   }
 
   editSession() {

@@ -67,6 +67,8 @@ export class EventsCarouselComponent implements OnInit {
         console.log('result: ', result);
         this.teamEvents = result;
         this.isTeamEventsLoading = false;
+      }, (err) => {
+        console.log('err: ', err);
       });
   }
 
@@ -80,37 +82,44 @@ export class EventsCarouselComponent implements OnInit {
     //  }, 1000);
   }
 
-  onConvertSession(teamEventId) {
+  onConvertSession(teamEvent) {
     const modalTitle = 'Convert Session';
-    const modalMessage = `Are you sure you want to convert ${teamEventId} session?`;
+    const modalMessage = `Are you sure you want to convert ${teamEvent.teamEventId} session?`;
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
       data: { 
         title: modalTitle,
         message: modalMessage,
-        modalData: teamEventId
+        modalData: teamEvent
       }
     });
 
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
-        console.log('teamEventId: ', teamEventId);
-        if(teamEventId) {
+        if(teamEvent) {
           // this.uiComponentsService.setIsLoading(true);
           // setTimeout(() => { 
           //   this.uiComponentsService.setIsLoading(false);
           //  }, 2000);
 
+          this.uiComponentsService.setIsLoading(true);
+          let changeToEventType: number;
+          if(teamEvent.teamEventType === 1) {
+            changeToEventType = 2;
+          } else if(teamEvent.teamEventType === 2) {
+            changeToEventType = 1;
+          }
           const PAYLOAD = {
-            type: 1
+            type: changeToEventType
           };
-          const BASE_URL = this.serverEnvService.getBaseUrl();
-          const API_VERSION = 'v1';
           this.http
-            .put<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}`, PAYLOAD)
+            .put<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEvent.teamEventId}`, PAYLOAD)
             .subscribe((result: any) => {
               console.log('result: ', result);
+              this.uiComponentsService.setIsLoading(false);
+            }, (err) => {
+              this.uiComponentsService.setIsLoading(false);
             });
         }
       });
@@ -132,22 +141,20 @@ export class EventsCarouselComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
         if(teamEventId) {
-          // this.uiComponentsService.setIsLoading(true);
+          this.uiComponentsService.setIsLoading(true);
           // setTimeout(() => { 
-          //   this.uiComponentsService.setIsLoading(false);
+          //     this.uiComponentsService.setIsLoading(false);
           //     const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
           //     this.teamEvents.splice(teamIndex, 1);
           //  }, 2000);
-
-          const PAYLOAD = {
-            
-          };
-          const BASE_URL = this.serverEnvService.getBaseUrl();
-          const API_VERSION = 'v1';
           this.http
-            .put<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}/?reset_type=true`, PAYLOAD)
+            .delete<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}`)
             .subscribe((result: any) => {
-              console.log('result: ', result);
+              this.uiComponentsService.setIsLoading(false);
+              const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
+              this.teamEvents.splice(teamIndex, 1);
+            }, (err) => {
+              this.uiComponentsService.setIsLoading(false);
             });
         }
       });
