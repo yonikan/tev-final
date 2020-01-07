@@ -84,7 +84,7 @@ export class EventsCarouselComponent implements OnInit {
 
   onConvertSession(teamEvent) {
     const modalTitle = 'Convert Session';
-    const modalMessage = `Are you sure you want to convert ${teamEvent.teamEventId} session?`;
+    const modalMessage = `Are you sure you want to convert the session?`;
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
@@ -97,6 +97,7 @@ export class EventsCarouselComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
+        console.log('teamEventId: ', teamEventId);
         if(teamEvent) {
           // this.uiComponentsService.setIsLoading(true);
           // setTimeout(() => { 
@@ -127,7 +128,7 @@ export class EventsCarouselComponent implements OnInit {
 
   onDeleteSession(teamEventId) {
     const modalTitle = 'Delete Session';
-    const modalMessage = `Are you sure you want to delete ${teamEventId} session?`;
+    const modalMessage = `Are you sure you want to delete the session?`;
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
@@ -140,6 +141,7 @@ export class EventsCarouselComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
+        console.log('teamEventId: ', teamEventId);
         if(teamEventId) {
           this.uiComponentsService.setIsLoading(true);
           // setTimeout(() => { 

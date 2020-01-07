@@ -22,11 +22,25 @@
     .dialog-header {
       border-top: 5px solid $color-purple;
       // border-bottom: 1px solid #000;
-      padding: 15px 0;
+      // padding: 15px 0;
+      padding: 13px 15px;
       color: #fff;
       // background-color: $color-purple;
       background-color: #f4f4f4;
       color: #3d4762;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      i {
+        font-size: 12px;
+        // margin-left: 15px;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin: 0;
+      }
     }
   
     .dialog-content {
