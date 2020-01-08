@@ -9,6 +9,8 @@ import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { ContactSupportDialogComponent } from './contact-support-dialog/contact-support-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     PageHeaderComponent,
@@ -16,13 +18,16 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     PmDropdownComponent,
     TimePickerComponent,
 	ProfileImageComponent,
-	ErrorMessageComponent
+	ErrorMessageComponent,
+	ContactSupportDialogComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     ContentLoaderModule,
-    TranslateModule
+	TranslateModule,
+	FormsModule,
+	ReactiveFormsModule
   ],
   exports: [
     MaterialModule,
@@ -34,6 +39,7 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     TimePickerComponent,
 	ProfileImageComponent,
 	ErrorMessageComponent
-  ]
+  ],
+  bootstrap: [ContactSupportDialogComponent]
 })
 export class SharedModule { }
