@@ -18,7 +18,8 @@ const players = [
 	  ],
 	  "isParticipated": true,
 	  "isSwapped": false,
-	  "sensorNum": 4
+	  "sensorNum": 4,
+	  "error": "Player can't be included, sensors were strapped incorretly."
 	},
 	{
 	  "positionId": 2,

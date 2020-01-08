@@ -8,13 +8,15 @@ import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.componen
 import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 @NgModule({
   declarations: [
     PageHeaderComponent,
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-    ProfileImageComponent
+	ProfileImageComponent,
+	ErrorMessageComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-    ProfileImageComponent
+	ProfileImageComponent,
+	ErrorMessageComponent
   ]
 })
 export class SharedModule { }
