@@ -19,26 +19,76 @@ export class EventComponent implements OnInit {
   @Output() downloadPdfReportEmitter = new EventEmitter<any>();
 
   isValidated = false;
-  teamEventTypeString;
+  // teamEventTypeString;
   startTimeHoursFormatted;
   endTimeHoursFormatted;
   durationTimeAgo;
   duration;
 
   isPdfReportLoading = false;
+  cardTitle: string;
 
   constructor(private validatedEventsService: ValidatedEventsService) { }
 
   ngOnInit() {
-    // console.log(this.eventData);
-    this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
+    // this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
     this.startTimeHoursFormatted = moment(this.eventData.startTime).format('hh:mm');
     this.endTimeHoursFormatted = moment(this.eventData.endTime).format('hh:mm');
-    this.durationTimeAgo = moment(new Date()).from(moment(this.eventData.startTime));
+    
     const start = moment(this.eventData.startTime);
     const end = moment(this.eventData.endTime);
     this.duration = Math.abs(start.diff(end, 'minutes'));
-    // console.log('this.duration: ', this.duration);
+
+    if(this.eventData.isValidated) {
+      if(this.eventData.type === 1) {
+        if(this.eventData.tags) {
+          this.cardTitle = this.eventData.tags[0];
+        } else {
+          this.cardTitle = `Training Session`;
+        }
+      } else if(this.eventData.type === 2) {
+        if(this.eventData.opponent) {
+          this.cardTitle = `Vs. ${this.eventData.opponent}`;
+        } else {
+          this.cardTitle = `Match`;
+        }
+      }
+    } else {
+      const teamEventEnumString = enumToString(teamEvents, this.eventData.type);
+      this.cardTitle = `new ${teamEventEnumString}`;
+    }
+
+
+
+
+    // ==============================
+    const now = moment();
+    // console.log('now: ', now);
+    // const today = moment().endOf('day');
+    // console.log('today: ', today);
+    const yesterday = moment().add(-1, 'day');
+    // console.log('yesterday: ', yesterday);
+
+    if(start.diff(now, 'days') === 0) {
+      // console.log('today');
+      this.durationTimeAgo = 'today';
+    } else if (start.diff(yesterday, 'days') === 1) {
+      // console.log('yesterday');
+      this.durationTimeAgo = 'yesterday';
+    } else {
+      // console.log(now.format('dddd, MMMM Do YYYY'));
+      this.durationTimeAgo = now.format('dddd, MMMM Do YYYY');
+    }
+
+
+
+    // if (now < today) {
+    //   console.log('today');
+    // } else if(now < today) {
+    //   console.log('yesterday');
+    // }
+    // this.durationTimeAgo = moment(new Date()).from(moment(this.eventData.startTime));
+    // this.durationTimeAgo = 'yesterday';
   }
 
   confirmSession() {

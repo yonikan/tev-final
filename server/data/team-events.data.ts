@@ -7,7 +7,9 @@ export const TEAM_EVENTS_DATA: any = [
             endTime: 1576156936000,
             validPlayersCount: 0,
             totalPlayersCount: 0,
-            phasesCount: 0
+            phasesCount: 0,
+            trimStartTime: 1554251439284,
+            trimEndTime: 1554256958284
         },
         {
             id: 49392,
@@ -17,6 +19,8 @@ export const TEAM_EVENTS_DATA: any = [
             endTime: 1576156936000,
             validPlayersCount: 0,
             totalPlayersCount: 0,
-            phasesCount: 0
+            phasesCount: 0,
+            trimStartTime: 1554251439284,
+            trimEndTime: 1554256958284
         },
 ];
