@@ -1,354 +1,371 @@
 import { Component, OnInit } from '@angular/core';
-import { of, Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 const excludedPlayersMock = [
 	{
-		"positionId": 1,
-		"clubName": "Astrails - U15",
-		"id": 1,
-		"firstName": "Rosemary",
-		"lastName": "Odonnell",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "QB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 4,
-		"error": "Player can't be included, sensors were strapped incorretly."
+	  "positionId": 1,
+	  "clubName": "Astrails - U15",
+	  "id": 10,
+	  "firstName": "Sosa",
+	  "lastName": "Dalton",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "RB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": "Player can't be included sensors were strapped incorretly."
 	},
 	{
-		"positionId": 2,
-		"clubName": "GODSENT - U15",
-		"id": 2,
-		"firstName": "Eunice",
-		"lastName": "Garza",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "RB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 3
+	  "positionId": 2,
+	  "clubName": "Astrails - U15",
+	  "id": 11,
+	  "firstName": "Kemp",
+	  "lastName": "Battle",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": null
 	},
 	{
-		"positionId": 3,
-		"clubName": "Impulse - U15",
-		"id": 3,
-		"firstName": "Noelle",
-		"lastName": "Waller",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "GK",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 3,
+	  "clubName": "Impulse - U18",
+	  "id": 12,
+	  "firstName": "Garrett",
+	  "lastName": "Quinn",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "RB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": null
 	},
 	{
-		"positionId": 4,
-		"clubName": "Astrails - U15",
-		"id": 4,
-		"firstName": "Polly",
-		"lastName": "Nash",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "QB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 3
+	  "positionId": 4,
+	  "clubName": "Astrails - U18",
+	  "id": 13,
+	  "firstName": "Joyce",
+	  "lastName": "Campbell",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "RB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 5,
-		"clubName": "Astrails - U18",
-		"id": 5,
-		"firstName": "Nita",
-		"lastName": "Molina",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "QB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 3
+	  "positionId": 5,
+	  "clubName": "Astrails - U18",
+	  "id": 14,
+	  "firstName": "Guthrie",
+	  "lastName": "Grimes",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 6,
-		"clubName": "GODSENT - U18",
-		"id": 6,
-		"firstName": "Ray",
-		"lastName": "Trujillo",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "DF",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 6,
+	  "clubName": "Astrails - U18",
+	  "id": 15,
+	  "firstName": "Gwendolyn",
+	  "lastName": "Barnett",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": null
 	},
 	{
-		"positionId": 7,
-		"clubName": "Impulse - U18",
-		"id": 7,
-		"firstName": "Bishop",
-		"lastName": "Nicholson",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "DF",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 7,
+	  "clubName": "Impulse - U15",
+	  "id": 16,
+	  "firstName": "Clemons",
+	  "lastName": "Ayala",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 8,
-		"clubName": "GODSENT - U15",
-		"id": 8,
-		"firstName": "Castillo",
-		"lastName": "Mcbride",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "QB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 3
+	  "positionId": 8,
+	  "clubName": "Astrails - U18",
+	  "id": 17,
+	  "firstName": "Cortez",
+	  "lastName": "Gomez",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": "Player can't be included, sensors were strapped incorretly."
 	},
 	{
-		"positionId": 9,
-		"clubName": "Astrails - U18",
-		"id": 9,
-		"firstName": "Levy",
-		"lastName": "Murphy",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "QB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 3
+	  "positionId": 9,
+	  "clubName": "Impulse - U15",
+	  "id": 18,
+	  "firstName": "Rosella",
+	  "lastName": "Johnston",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	}
-];
+  ];
 
 const includedPlayersMock = [
 	{
-		"positionId": 1,
-		"clubName": "GODSENT - U15",
-		"id": 10,
-		"firstName": "Patrice",
-		"lastName": "Combs",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "DF",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 1,
+	  "clubName": "Astrails - U18",
+	  "id": 10,
+	  "firstName": "Ratliff",
+	  "lastName": "Leonard",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 2,
-		"clubName": "Astrails - U15",
-		"id": 11,
-		"firstName": "Aileen",
-		"lastName": "Dennis",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "RB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 3
+	  "positionId": 2,
+	  "clubName": "GODSENT - U18",
+	  "id": 11,
+	  "firstName": "Shirley",
+	  "lastName": "Donaldson",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": null
 	},
 	{
-		"positionId": 3,
-		"clubName": "GODSENT - U18",
-		"id": 12,
-		"firstName": "Osborne",
-		"lastName": "Sampson",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "QB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 3,
+	  "clubName": "GODSENT - U18",
+	  "id": 12,
+	  "firstName": "Cobb",
+	  "lastName": "Petersen",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 4,
-		"clubName": "GODSENT - U18",
-		"id": 13,
-		"firstName": "Virginia",
-		"lastName": "Lewis",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "DF",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 3
+	  "positionId": 4,
+	  "clubName": "Impulse - U15",
+	  "id": 13,
+	  "firstName": "Tyler",
+	  "lastName": "Valencia",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": null
 	},
 	{
-		"positionId": 5,
-		"clubName": "Impulse - U15",
-		"id": 14,
-		"firstName": "Sharpe",
-		"lastName": "Albert",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "DF",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 5,
+	  "clubName": "GODSENT - U18",
+	  "id": 14,
+	  "firstName": "Briana",
+	  "lastName": "Montoya",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 6,
-		"clubName": "Astrails - U18",
-		"id": 15,
-		"firstName": "Vilma",
-		"lastName": "Torres",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "GK",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 6,
+	  "clubName": "Impulse - U18",
+	  "id": 15,
+	  "firstName": "Kline",
+	  "lastName": "Pope",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "QB",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 4,
+	  "error": null
 	},
 	{
-		"positionId": 7,
-		"clubName": "Astrails - U15",
-		"id": 16,
-		"firstName": "Greene",
-		"lastName": "Atkinson",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "DF",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 7,
+	  "clubName": "Astrails - U15",
+	  "id": 16,
+	  "firstName": "Hewitt",
+	  "lastName": "Pace",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": true,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 8,
-		"clubName": "GODSENT - U18",
-		"id": 17,
-		"firstName": "Kidd",
-		"lastName": "Meadows",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "GK",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": false,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 8,
+	  "clubName": "Impulse - U15",
+	  "id": 17,
+	  "firstName": "Heath",
+	  "lastName": "Aguirre",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "DF",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	},
 	{
-		"positionId": 9,
-		"clubName": "Impulse - U15",
-		"id": 18,
-		"firstName": "Herman",
-		"lastName": "Hooper",
-		"avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
-		"positionName": "RB",
-		"activeTime": [
-			{
-				"startTime": "13:30",
-				"endTime": "14:30",
-				"timeFrameType": "active"
-			}
-		],
-		"isParticipated": true,
-		"isSwapped": false,
-		"sensorNum": 4
+	  "positionId": 9,
+	  "clubName": "Impulse - U15",
+	  "id": 18,
+	  "firstName": "Thomas",
+	  "lastName": "Goodwin",
+	  "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg",
+	  "positionName": "GK",
+	  "activeTime": [
+		{
+		  "startTime": 1578483861613,
+		  "endTime": 1578487461613,
+		  "timeFrameType": "active"
+		}
+	  ],
+	  "isParticipated": false,
+	  "isSwapped": false,
+	  "sensorNum": 3,
+	  "error": null
 	}
-];
+  ];
 
 interface InitialState {
 	excludedPlayers: Array<Object>;
@@ -361,8 +378,6 @@ interface InitialState {
 	styleUrls: ['./participating-players.component.scss']
 })
 export class ParticipatingPlayersComponent implements OnInit {
-	private players = [];
-
 	private state: InitialState = {
 		excludedPlayers: [],
 		includedPlayers: []
@@ -372,7 +387,6 @@ export class ParticipatingPlayersComponent implements OnInit {
 	private includedPlayers = [];
 
 	constructor() {
-		this.players = excludedPlayersMock;
 	}
 
 	ngOnInit() {
@@ -380,14 +394,14 @@ export class ParticipatingPlayersComponent implements OnInit {
 			this.excludedPlayers = excludedPlayers;
 			this.includedPlayers = includedPlayers;
 		});
-		this.state = this.initData();
-		this.store.next(this.state);
+
+		this.store.next(this.initData());
 	}
 
 	initData(): InitialState {
 		return {
-			excludedPlayers: excludedPlayersMock,
-			includedPlayers: includedPlayersMock
+			excludedPlayers: excludedPlayersMock.map(o => ({...o})),
+			includedPlayers: includedPlayersMock.map(o => ({...o}))
 		};
 	}
 
@@ -406,8 +420,8 @@ export class ParticipatingPlayersComponent implements OnInit {
 
 	doSwapPlayer({ player, swappedPlayer }, isIncluded) {
 		const newState = {
-			excludedPlayers: this.excludedPlayers,
-			includedPlayers: this.includedPlayers
+			excludedPlayers: this.excludedPlayers.map(o => ({...o})),
+			includedPlayers: this.includedPlayers.map(o => ({...o}))
 		};
 
 		if (isIncluded) {
@@ -432,18 +446,29 @@ export class ParticipatingPlayersComponent implements OnInit {
 		});
 	}
 
-	resetChanges(isIncluded) {
+	doResetChanges(e, isIncluded) {
 		const newState = {
-			excludedPlayers: this.excludedPlayers,
-			includedPlayers: this.includedPlayers
+			excludedPlayers: this.excludedPlayers.map(o => ({...o})),
+			includedPlayers: this.includedPlayers.map(o => ({...o}))
 		};
 		if (isIncluded) {
-			newState.includedPlayers = includedPlayersMock;
+			newState.includedPlayers = includedPlayersMock.map(o => ({...o}));
+			newState.excludedPlayers = this.filterDuplicated(newState.includedPlayers, excludedPlayersMock);
 		} else {
-			newState.excludedPlayers = excludedPlayersMock;
+			newState.excludedPlayers = excludedPlayersMock.map(o => ({...o}));
+			newState.includedPlayers = this.filterDuplicated(newState.excludedPlayers, includedPlayersMock);
 		}
 
 		this.store.next(newState);
+	}
+
+	filterDuplicated(players, playersOrigin) {
+		return playersOrigin.filter(p => {
+			if (players.includes(includedPlayer => includedPlayer.id === p.id)) {
+				return false;
+			}
+			return true;
+		})
 	}
 }
 

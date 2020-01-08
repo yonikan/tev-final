@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, Output, EventEmitter } from '@angular/core';
+import moment from "moment-timezone";
 
 @Component({
   selector: 'app-participating-column',
@@ -10,6 +11,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	@Input() actionName = '';
 	@Output() excludePlayer = new EventEmitter();
 	@Output() swapPlayer = new EventEmitter();
+	@Output() resetChanges = new EventEmitter();
 
 	private clubPlayers = [];
 	private participatingPlayers = [];
@@ -47,7 +49,6 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 
 	doSwapPlayer(player) {
 		this.swapPlayer.emit({player, swappedPlayer: this.currentPlayer});
-		this.clubPlayers = this.getClubPlayers();
 		this.currentPlayer = null;
 	}
 
@@ -73,6 +74,19 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 
 	exclude(player) {
 		this.excludePlayer.emit(player);
+	}
+
+	onResetChanges() {
+		this.resetChanges.emit();
+	}
+
+	getTimeDiff(startTime, endTime) {
+		return moment(startTime).diff(moment(endTime), "minutes");
+	}
+
+	getTime(timestamp) {
+		const d = new Date(timestamp);
+		return `${(`${d.getHours()}`).padStart(2, '0')}:${(`${d.getMinutes()}`).padStart(2, '0')}`
 	}
 
 }

@@ -6,7 +6,8 @@
         .heading {
             @include team-event-step-heading;
             display: flex;
-            flex-direction: column;
+			flex-direction: column;
+			margin-bottom: 10px;
             .sub-title {
                 @include small-text;
             }

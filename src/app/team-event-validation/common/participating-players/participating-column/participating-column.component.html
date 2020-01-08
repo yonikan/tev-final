@@ -1,5 +1,9 @@
 <div class="brief">
 	<div>{{HEADLINE[actionName]}} ({{participatingPlayers.length}})</div>
+	<div class="reset-changes" (click)="onResetChanges()">
+		<img src="./assets/svg/reset-icon.svg" alt="reset icon"/>
+		<div class="light-text">Reset Changes</div>
+	</div>
 </div>
 <div class="container">
 	<details *ngFor="let player of participatingPlayers" [open]="player.isOpen">
@@ -7,15 +11,15 @@
 			<img class="avatar" [src]="player.avatarUrl" alt="player avatar">
 			<div class="player-title">
 				<div>{{player.lastName}}.{{player.firstName[0]}} - {{player.positionName}}</div>
-				<!-- error-message -->
 				<app-error-message [text]="player.error" *ngIf="player.error"></app-error-message>
 				<div class="active-time" *ngIf="!player.error">
 					<div class="bold">
 						#{{player.sensorNum}}
-						<span>{{' | '}}</span>
+						<span>{{'|'}}</span>
 					</div>
 					<div class="light-text">
-						{{player.activeTime[0].startTime}} - {{player.activeTime[0].endTime}}
+						{{getTime(player.activeTime[0].startTime)}} - {{(getTime(player.activeTime[0].endTime))}}
+						({{getTimeDiff(player.activeTime[0].startTime, player.activeTime[0].endTime)}}m)
 					</div>
 				</div>
 			</div>

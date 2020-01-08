@@ -562,7 +562,7 @@ export class SwapPlayersComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit() {
-		// this.clubPlayers = clubPlayers;
+
 	}
 
 	onSwapPlayer(value) {

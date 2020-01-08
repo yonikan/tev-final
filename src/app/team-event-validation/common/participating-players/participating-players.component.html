@@ -2,7 +2,7 @@
 	<div class="heading">
 		<div>Participating Players - 19/20</div>
 		<div class="sub-title">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  sit amet, consectrtur
+			<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  sit amet, consectrtur -->
 		</div>
 	</div>
 	<div class="content">
@@ -10,12 +10,14 @@
 			[players]="includedPlayers"
 			[actionName]="'Exclude'"
 			(excludePlayer)="doExcludePlayer($event)"
-			(swapPlayer)="doSwapPlayer($event, true)"></app-participating-column>
+			(swapPlayer)="doSwapPlayer($event, true)"
+			(resetChanges)="doResetChanges($event, true)"></app-participating-column>
 		<div class="buffer"></div>
 		<app-participating-column
 			[players]="excludedPlayers"
 			[actionName]="'Include'"
 			(excludePlayer)="doIncludePlayer($event)"
-			(swapPlayer)="doSwapPlayer($event, false)"></app-participating-column>
+			(swapPlayer)="doSwapPlayer($event, false)"
+			(resetChanges)="doResetChanges($event, false)"></app-participating-column>
 	</div>
 </div>

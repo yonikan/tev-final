@@ -68,13 +68,11 @@
 					@include flex-column();
 					.active-time {
 						@include flex-row(center);
-						.bold {
-							@include bold();
-							font-size: 12px;
-						}
-						.light-text {
-							@include light-text();
-						}
+					}
+					.bold {
+						@include bold();
+						font-size: 12px;
+						margin: 0 2px;
 					}
 
 				}
@@ -114,10 +112,28 @@
 		}
 	}
 
+	.light-text {
+		@include light-text();
+	}
+
 	.brief {
+		display: flex;
+		align-items: center;
 		font-size: 14px;
 		font-weight: 600;
 		color: #3d4762;
+		.reset-changes {
+			display: flex;
+			align-items: center;
+			margin-left: 10px;
+			cursor: pointer;
+			.light-text {
+				@include light-text(14px);
+			}
+			img {
+				width: 24px;
+			}
+		}
 	}
 }
 

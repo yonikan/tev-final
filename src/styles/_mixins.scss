@@ -232,8 +232,8 @@
 	font-weight: 600;
 }
 
-@mixin light-text {
+@mixin light-text($fontSize: 12px) {
 	color: #8994a3;
-	font-size: 12px;
+	font-size: $fontSize;
 	font-weight: 500;
 }
