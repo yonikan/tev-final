@@ -67,36 +67,49 @@ export class EventComponent implements OnInit {
     }
 
 
+    const NOW = moment();
+    const TODAY = NOW.clone().startOf('day');
+    const YESTERDAY = NOW.clone().subtract(1, 'days').startOf('day');
 
-
-    // ==============================
-    const now = moment();
-    // console.log('now: ', now);
-    // const today = moment().endOf('day');
-    // console.log('today: ', today);
-    const yesterday = moment().add(-1, 'day');
-    // console.log('yesterday: ', yesterday);
-
-    if(start.diff(now, 'days') === 0) {
-      // console.log('today');
-      this.durationTimeAgo = 'today';
-    } else if (start.diff(yesterday, 'days') === 1) {
-      // console.log('yesterday');
-      this.durationTimeAgo = 'yesterday';
+    if(NOW.isSame(TODAY, 'd')) {
+      this.durationTimeAgo = 'Today';
+    } else if (NOW.isSame(YESTERDAY, 'd')) {
+      this.durationTimeAgo = 'Yesterday';
     } else {
-      // console.log(now.format('dddd, MMMM Do YYYY'));
-      this.durationTimeAgo = now.format('dddd, MMMM Do YYYY');
+      this.durationTimeAgo = NOW.format('dddd, MMMM Do YYYY');
     }
 
 
+    // ==============================
+    // const now = moment();
+    // const yesterday = moment().add(-1, 'day');
 
-    // if (now < today) {
-    //   console.log('today');
-    // } else if(now < today) {
-    //   console.log('yesterday');
+    // if(start.diff(now, 'days') === 0) {
+    //   // console.log('today');
+    //   this.durationTimeAgo = 'today';
+    // } else if (start.diff(yesterday, 'days') === 1) {
+    //   // console.log('yesterday');
+    //   this.durationTimeAgo = 'yesterday';
+    // } else {
+    //   // console.log(now.format('dddd, MMMM Do YYYY'));
+    //   this.durationTimeAgo = now.format('dddd, MMMM Do YYYY');
     // }
-    // this.durationTimeAgo = moment(new Date()).from(moment(this.eventData.startTime));
-    // this.durationTimeAgo = 'yesterday';
+
+
+    // const startNew = start.endOf('day');
+    // const nowNew = moment().endOf('day');
+    // const yesterdayNew = moment().add(-1, 'day').endOf('day');
+
+    // if(startNew.diff(nowNew, 'days') === 0) {
+    //   // console.log('today');
+    //   this.durationTimeAgo = 'today';
+    // } else if (startNew.diff(yesterdayNew, 'days') === 1) {
+    //   // console.log('yesterday');
+    //   this.durationTimeAgo = 'yesterday';
+    // } else {
+    //   // console.log(now.format('dddd, MMMM Do YYYY'));
+    //   this.durationTimeAgo = nowNew.format('dddd, MMMM Do YYYY');
+    // }
   }
 
   confirmSession() {

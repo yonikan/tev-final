@@ -64,7 +64,7 @@ export class EventsCarouselComponent implements OnInit {
     this.http
       .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events/unvalidated`)
       .subscribe((result: any) => {
-        console.log('result: ', result);
+        // console.log('result: ', result);
         this.teamEvents = result;
         this.isTeamEventsLoading = false;
       }, (err) => {
