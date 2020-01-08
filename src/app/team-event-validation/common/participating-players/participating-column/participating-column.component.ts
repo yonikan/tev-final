@@ -9,6 +9,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	@Input() players = [];
 	@Input() actionName = '';
 	@Output() excludePlayer = new EventEmitter();
+	@Output() swapPlayer = new EventEmitter();
 
 	private clubPlayers = [];
 	private participatingPlayers = [];
@@ -45,18 +46,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	}
 
 	doSwapPlayer(player) {
-		player.isParticipated = true;
-		this.players = this.players.map(p => {
-			if (p.id === this.currentPlayer.id) {
-				p.isParticipated = false;
-			}
-			if (p.id === player.id) {
-				p.isParticipated = p.isSwapped = true;
-			}
-			return p;
-		});
-
-		this.participatingPlayers = this.players.filter(player => player.isParticipated);
+		this.swapPlayer.emit({player, swappedPlayer: this.currentPlayer});
 		this.clubPlayers = this.getClubPlayers();
 		this.currentPlayer = null;
 	}
@@ -68,21 +58,20 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	}
 
 	getClubPlayers() {
-		const clubPlyaersGroup = this.players.reduce((acc, curr) => {
+		const clubPlayersGroup = this.players.reduce((acc, curr) => {
 			if (!acc[curr.clubName]) acc[curr.clubName] = [];
 			 acc[curr.clubName] = [...acc[curr.clubName], {...curr}];
 			return acc;
 		}, {});
 
 		return Object
-			.keys(clubPlyaersGroup)
+			.keys(clubPlayersGroup)
 			.map((name, i) => {
-				return {name, players: clubPlyaersGroup[name]}
+				return {name, players: clubPlayersGroup[name]}
 			});
 	}
 
 	exclude(player) {
-		this.participatingPlayers = this.players.filter(player => player.isParticipated);
 		this.excludePlayer.emit(player);
 	}
 

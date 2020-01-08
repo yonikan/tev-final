@@ -9,11 +9,13 @@
 		<app-participating-column
 			[players]="includedPlayers"
 			[actionName]="'Exclude'"
-			(excludePlayer)="doExcludePlayer($event)"></app-participating-column>
+			(excludePlayer)="doExcludePlayer($event)"
+			(swapPlayer)="doSwapPlayer($event, true)"></app-participating-column>
 		<div class="buffer"></div>
 		<app-participating-column
 			[players]="excludedPlayers"
 			[actionName]="'Include'"
-			(excludePlayer)="doIncludePlayer($event)"></app-participating-column>
+			(excludePlayer)="doIncludePlayer($event)"
+			(swapPlayer)="doSwapPlayer($event, false)"></app-participating-column>
 	</div>
 </div>
