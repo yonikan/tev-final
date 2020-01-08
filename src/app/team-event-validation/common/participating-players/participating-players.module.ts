@@ -15,6 +15,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 	  ParticipatingPlayersComponent,
 	  ParticipatingColumnComponent,
 	  SwapPlayersComponent
+	],
+	exports: [
+		ParticipatingPlayersComponent
 	]
 })
 export class ParticipatingPlayersModule { }
