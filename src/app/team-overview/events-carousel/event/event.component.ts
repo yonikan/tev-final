@@ -19,7 +19,7 @@ export class EventComponent implements OnInit {
   @Output() downloadPdfReportEmitter = new EventEmitter<any>();
 
   isValidated = false;
-  // teamEventTypeString;
+  teamEventTypeString;
   startTimeHoursFormatted;
   endTimeHoursFormatted;
   durationTimeAgo;
@@ -31,11 +31,19 @@ export class EventComponent implements OnInit {
   constructor(private validatedEventsService: ValidatedEventsService) { }
 
   ngOnInit() {
-    // this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
-    this.startTimeHoursFormatted = moment(this.eventData.startTime).format('hh:mm');
-    this.endTimeHoursFormatted = moment(this.eventData.endTime).format('hh:mm');
+    // console.log(this.eventData);
+    this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
+    this.startTimeHoursFormatted = moment(this.eventData.startTime).format('HH:mm');
+    this.endTimeHoursFormatted = moment(this.eventData.endTime).format('HH:mm');
     
     const start = moment(this.eventData.startTime);
+    // console.log('start: ', start);
+
+    // const start2 = moment(this.eventData.startTime.utcOffset(8));
+    // console.log('start2: ', start2);
+    // const start3 = moment(this.eventData.startTime);
+    // console.log('start3: ', start3);
+
     const end = moment(this.eventData.endTime);
     this.duration = Math.abs(start.diff(end, 'minutes'));
 
@@ -54,8 +62,8 @@ export class EventComponent implements OnInit {
         }
       }
     } else {
-      const teamEventEnumString = enumToString(teamEvents, this.eventData.type);
-      this.cardTitle = `new ${teamEventEnumString}`;
+       // const teamEventEnumString = enumToString(teamEvents, this.eventData.type);
+       this.cardTitle = `new ${this.teamEventTypeString}`;
     }
 
 
@@ -117,6 +125,13 @@ export class EventComponent implements OnInit {
 
   deleteSession(eventId) {
     this.deleteSessionEmitter.emit(eventId);
+
+    // const event = {
+    //   teamEventId: this.eventData.id,
+    //   teamEventType: this.eventData.type
+    // };
+
+    // this.deleteSessionEmitter.emit(event);
   }
 
   downloadPdfReport(reportType) {

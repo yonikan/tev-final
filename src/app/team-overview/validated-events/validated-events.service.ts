@@ -45,7 +45,7 @@ export class ValidatedEventsService {
 
     let pdfReportType;
     if (reportType === 'teamReport') {
-      pdfReportType = 'possession';
+      pdfReportType = 'teamPdfReport';
     } else if (reportType === 'individualReport') {
       pdfReportType = 'individual';
     };

@@ -57,12 +57,12 @@ export class EventsCarouselComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    of(TEAM_EVENTS_DATA)
-    // const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
-    // const BASE_URL = this.serverEnvService.getBaseUrl();
-    // const API_VERSION = 'v2';
-    // this.http
-    //   .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events/unvalidated`)
+    // of(TEAM_EVENTS_DATA)
+    const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
+    this.http
+      .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events/unvalidated`)
       .subscribe((result: any) => {
         console.log('result: ', result);
         this.teamEvents = result;
@@ -83,8 +83,9 @@ export class EventsCarouselComponent implements OnInit {
   }
 
   onConvertSession(teamEvent) {
-    const modalTitle = 'Convert Session';
-    const modalMessage = `Are you sure you want to convert the session?`;
+    const teamEventEnumString = enumToString(teamEvents, teamEvent.teamEventType);
+    const modalTitle = `Convert ${teamEventEnumString}`;
+    const modalMessage = `Are you sure you want to convert the ${teamEventEnumString}?`;
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
@@ -98,7 +99,7 @@ export class EventsCarouselComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
         console.log('teamEventId: ', teamEventId);
-        if(teamEvent) {
+        if(teamEventId) {
           // this.uiComponentsService.setIsLoading(true);
           // setTimeout(() => { 
           //   this.uiComponentsService.setIsLoading(false);

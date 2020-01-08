@@ -13,23 +13,27 @@
                 <mat-menu #eventMenu="matMenu" class="event-card-menu">
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="confirmSession()">
                         <i class="demo-icon icon-calender">&#xe809;</i>
-                        <span>{{ 'team-overview.events-carousel.validate-session' | translate }}
-                             <!-- {{ teamEventTypeString }} -->
-                        </span>
+                        <span>Validate {{ teamEventTypeString }}</span>
+                        <!-- <span>{{ 'team-overview.events-carousel.validate-session' | translate }}
+                             {{ teamEventTypeString }}
+                        </span> -->
                     </button>
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="convertSession(eventData.id)">
                         <i class="demo-icon">&#xe809;</i>
-                        <span>{{ 'team-overview.events-carousel.toggle-event-type' | translate }} </span>
+                        <span>convert {{ teamEventTypeString }} </span>
+                        <!-- <span>{{ 'team-overview.events-carousel.toggle-event-type' | translate }} </span>
                         <span *ngIf="eventData.type === 1">match</span>
-                        <span *ngIf="eventData.type === 2">training</span>
+                        <span *ngIf="eventData.type === 2">training</span> -->
                     </button>
                     <button *ngIf="eventData.isValidated" mat-menu-item (click)="editSession()">
                         <i class="demo-icon">&#xe80b;</i>
-                        <span>Edit Session</span>
+                        <span>edit {{ teamEventTypeString }} </span>
+                        <!-- <span>Edit Session</span> -->
                     </button>
                     <button mat-menu-item (click)="deleteSession(eventData.id)">
                         <i class="demo-icon">&#xe815;</i>
-                        <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span>
+                        <span>delete {{ teamEventTypeString }}</span>
+                        <!-- <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span> -->
                     </button>
                 </mat-menu>
             </div>
@@ -68,7 +72,10 @@
                     <div class="players">
                         {{ eventData.validPlayersCount }}<span *ngIf="!eventData.isValidated">/{{ eventData.totalPlayersCount }}</span>
                     </div>
-                    <div>{{ eventData.phasesCount }}</div>
+                    <div>
+                        <span *ngIf="!eventData.isValidated && eventData.phasesCount === 0">N/A</span>
+                        <span *ngIf="eventData.isValidated">{{ eventData.phasesCount }}</span>
+                    </div>
                 </div>
 
                 <!-- <div class="info-duration">
@@ -88,8 +95,7 @@
         
             <div *ngIf="!eventData.isValidated" class="event-content-confirm">
                 <button class="confirm-button" mat-raised-button (click)="confirmSession()">
-                    {{ 'team-overview.events-carousel.validate-session' | translate }}
-                     <!-- {{ teamEventTypeString }} -->
+                    {{ 'team-overview.events-carousel.validate-session' | translate }} {{ teamEventTypeString }}
                 </button>
             </div>
             <div *ngIf="eventData.isValidated" class="event-content-buttons">
