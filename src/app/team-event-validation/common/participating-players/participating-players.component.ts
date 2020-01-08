@@ -420,8 +420,8 @@ export class ParticipatingPlayersComponent implements OnInit {
 
 	doSwapPlayer({ player, swappedPlayer }, isIncluded) {
 		const newState = {
-			excludedPlayers: this.excludedPlayers.map(o => ({...o})),
-			includedPlayers: this.includedPlayers.map(o => ({...o}))
+			excludedPlayers: this.excludedPlayers,
+			includedPlayers: this.includedPlayers
 		};
 
 		if (isIncluded) {
@@ -448,8 +448,8 @@ export class ParticipatingPlayersComponent implements OnInit {
 
 	doResetChanges(e, isIncluded) {
 		const newState = {
-			excludedPlayers: this.excludedPlayers.map(o => ({...o})),
-			includedPlayers: this.includedPlayers.map(o => ({...o}))
+			excludedPlayers: this.excludedPlayers,
+			includedPlayers: this.includedPlayers
 		};
 		if (isIncluded) {
 			newState.includedPlayers = includedPlayersMock.map(o => ({...o}));
