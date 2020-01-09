@@ -8,77 +8,77 @@
                 "playerId": "",
                 "positionX": 5,
                 "positionY": 8,
-                "positionName": "XX"
+                "positionName": "GK"
             },
             {
 				"positionId": 2,
                 "playerId": "",
-                "positionX": 4,
+                "positionX": 3,
                 "positionY": 2,
-                "positionName": "XX"
+                "positionName": "ST"
             },
             {
 				"positionId": 3,
                 "playerId": "",
-                "positionX": 6,
+                "positionX": 7,
                 "positionY": 2,
-                "positionName": "XX"
+                "positionName": "ST"
             },
             {
 				"positionId": 4,
                 "playerId": "",
                 "positionX": 4,
                 "positionY": 4,
-                "positionName": "XX"
+                "positionName": "CM"
             },
             {
 				"positionId": 5,
                 "playerId": "",
                 "positionX": 6,
                 "positionY": 4,
-                "positionName": "XX"
+                "positionName": "CM"
             },
             {
 				"positionId": 6,
                 "playerId": "",
                 "positionX": 8,
                 "positionY": 4,
-                "positionName": "XX"
+                "positionName": "RM"
             },
             {
 				"positionId": 7,
                 "playerId": "",
                 "positionX": 2,
                 "positionY": 4,
-                "positionName": "XX"
+                "positionName": "LM"
             },
             {
 				"positionId": 8,
                 "playerId": "",
                 "positionX": 2,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "LB"
             },
             {
 				"positionId": 9,
                 "playerId": "",
                 "positionX": 4,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "CB"
             },
             {
 				"positionId": 10,
                 "playerId": "",
                 "positionX": 6,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "CB"
             },
             {
 				"positionId": 11,
                 "playerId": "",
                 "positionX": 8,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "RB"
             }
         ]
     },
@@ -90,140 +90,555 @@
                 "playerId": "5dfb821a6b341e94340bdff9",
                 "positionX": 5,
                 "positionY": 8,
-                "positionName": "XX"
+                "positionName": "GK"
             },
             {
                 "playerId": "5dfb821a2a96b063ce51e7ef",
                 "positionX": 2,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "LB"
             },
             {
                 "playerId": "5dfb821a43ff5cc4749a8da1",
                 "positionX": 4,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "CB"
             },
             {
                 "playerId": "5dfb821af98fbd9f08b3cf83",
                 "positionX": 6,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "CB"
             },
             {
                 "playerId": "5dfb821ac6208b1f92386bfb",
                 "positionX": 8,
                 "positionY": 6,
-                "positionName": "XX"
+                "positionName": "RB"
             },
             {
                 "playerId": "5dfb821a36dd78c83750115c",
                 "positionX": 5,
                 "positionY": 5,
-                "positionName": "XX"
+                "positionName": "DM"
             },
             {
                 "playerId": "5dfb821a373a1a17f0f92c1b",
                 "positionX": 4,
                 "positionY": 4,
-                "positionName": "XX"
+                "positionName": "CM"
             },
             {
                 "playerId": "5dfb821ac237fcbf646f6516",
                 "positionX": 6,
                 "positionY": 4,
-                "positionName": "XX"
+                "positionName": "CM"
+            },
+            {
+                "playerId": "5dfb821a90be093b21869f6a",
+                "positionX": 2,
+                "positionY": 3,
+                "positionName": "LW"
+            },
+            {
+                "playerId": "5dfb821a549b7d3a13df98cc",
+                "positionX": 8,
+                "positionY": 3,
+                "positionName": "RW"
+            },
+            {
+                "playerId": "5dfb821ac68009fe26f34b6e",
+                "positionX": 5,
+                "positionY": 2,
+                "positionName": "ST"
+            }
+        ]
+    },
+	{
+        "_id": 4,
+        "name": "4-3-3",
+        "formationPosition": [
+            {
+				"positionId": 1,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 8,
+                "positionName": "GK"
+            },
+            {
+				"positionId": 2,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 1,
+                "positionName": "ST"
+            },
+            {
+				"positionId": 3,
+                "playerId": "",
+                "positionX": 8,
+                "positionY": 2,
+                "positionName": "RW"
+            },
+            {
+				"positionId": 4,
+                "playerId": "",
+                "positionX": 2,
+                "positionY": 2,
+                "positionName": "LW"
+            },
+            {
+				"positionId": 5,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 3,
+                "positionName": "AM"
+            },
+            {
+				"positionId": 6,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 7,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 5,
+                "positionName": "DM"
+            },
+            {
+				"positionId": 8,
+                "playerId": "",
+                "positionX": 2,
+                "positionY": 6,
+                "positionName": "LB"
+            },
+            {
+				"positionId": 9,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 10,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 11,
+                "playerId": "",
+                "positionX": 8,
+                "positionY": 6,
+                "positionName": "RB"
+            }
+        ]
+	},
+	{
+        "_id": 5,
+        "name": "4-2-1-3",
+        "formationPosition": [
+            {
+                "playerId": "5dfb821a6b341e94340bdff9",
+                "positionX": 5,
+                "positionY": 8,
+                "positionName": "GK"
+            },
+            {
+                "playerId": "5dfb821a2a96b063ce51e7ef",
+                "positionX": 2,
+                "positionY": 6,
+                "positionName": "LB"
+            },
+            {
+                "playerId": "5dfb821a43ff5cc4749a8da1",
+                "positionX": 4,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+                "playerId": "5dfb821af98fbd9f08b3cf83",
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+                "playerId": "5dfb821ac6208b1f92386bfb",
+                "positionX": 8,
+                "positionY": 6,
+                "positionName": "RB"
+            },
+            {
+                "playerId": "5dfb821a36dd78c83750115c",
+                "positionX": 5,
+                "positionY": 3,
+                "positionName": "AM"
+            },
+            {
+                "playerId": "5dfb821a373a1a17f0f92c1b",
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+                "playerId": "5dfb821ac237fcbf646f6516",
+                "positionX": 6,
+                "positionY": 4,
+                "positionName": "CM"
             },
             {
                 "playerId": "5dfb821a90be093b21869f6a",
                 "positionX": 2,
                 "positionY": 2,
-                "positionName": "XX"
+                "positionName": "LW"
             },
             {
                 "playerId": "5dfb821a549b7d3a13df98cc",
                 "positionX": 8,
                 "positionY": 2,
-                "positionName": "XX"
+                "positionName": "RW"
             },
             {
                 "playerId": "5dfb821ac68009fe26f34b6e",
                 "positionX": 5,
                 "positionY": 1,
-                "positionName": "XX"
+                "positionName": "ST"
             }
         ]
-    },
-    {
-        "_id": 3,
-        "name": "4-5-1",
+	},
+	{
+        "_id": 6,
+        "name": "3-4-3",
         "formationPosition": [
             {
-                "playerId": "5dfb821af0cc17c8ca43bd93",
+				"positionId": 1,
+                "playerId": "",
                 "positionX": 5,
                 "positionY": 8,
-                "positionName": "XX"
+                "positionName": "GK"
             },
             {
-                "playerId": "5dfb821a11d8308f7a192c46",
-                "positionX": 4,
-                "positionY": 6,
-                "positionName": "XX"
-            },
-            {
-                "playerId": "5dfb821aaa585af4212baa5a",
+				"positionId": 2,
+                "playerId": "",
                 "positionX": 5,
-                "positionY": 6,
-                "positionName": "XX"
+                "positionY": 1,
+                "positionName": "ST"
             },
             {
-                "playerId": "5dfb821ad416f04b4f99ac95",
-                "positionX": 6,
-                "positionY": 6,
-                "positionName": "XX"
-            },
-            {
-                "playerId": "5dfb821a4c38ab5bb609d52a",
-                "positionX": 2,
-                "positionY": 5,
-                "positionName": "XX"
-            },
-            {
-                "playerId": "5dfb821ab1d3b3de7eb0c67e",
-                "positionX": 5,
-                "positionY": 5,
-                "positionName": "XX"
-            },
-            {
-                "playerId": "5dfb821abe6fc814ac48f5d1",
+				"positionId": 3,
+                "playerId": "",
                 "positionX": 8,
-                "positionY": 5,
-                "positionName": "XX"
+                "positionY": 2,
+                "positionName": "RW"
             },
             {
-                "playerId": "5dfb821af051a9a6a960fad7",
-                "positionX": 4,
-                "positionY": 4,
-                "positionName": "XX"
+				"positionId": 4,
+                "playerId": "",
+                "positionX": 2,
+                "positionY": 2,
+                "positionName": "LW"
             },
             {
-                "playerId": "5dfb821af697c3a8ea54115b",
-                "positionX": 6,
-                "positionY": 4,
-                "positionName": "XX"
-            },
-            {
-                "playerId": "5dfb821ac078999ef09f1ba0",
+				"positionId": 5,
+                "playerId": "",
                 "positionX": 5,
                 "positionY": 3,
-                "positionName": "XX"
+                "positionName": "AM"
             },
             {
-                "playerId": "5dfb821ac1027ffb979936fe",
+				"positionId": 6,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 7,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 8,
+                "playerId": "",
                 "positionX": 5,
-                "positionY": 2,
-                "positionName": "XX"
+                "positionY": 5,
+                "positionName": "DM"
+            },
+            {
+				"positionId": 9,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 10,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 11,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "CB"
             }
         ]
-    }
+	},
+	{
+        "_id": 7,
+        "name": "5-3-2",
+        "formationPosition": [
+            {
+				"positionId": 1,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 8,
+                "positionName": "GK"
+            },
+            {
+				"positionId": 2,
+                "playerId": "",
+                "positionX": 3,
+                "positionY": 2,
+                "positionName": "ST"
+            },
+            {
+				"positionId": 3,
+                "playerId": "",
+                "positionX": 7,
+                "positionY": 2,
+                "positionName": "ST"
+            },
+            {
+				"positionId": 4,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 3,
+                "positionName": "AM"
+            },
+            {
+				"positionId": 5,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 6,
+                "playerId": "",
+                "positionX": 8,
+                "positionY": 5,
+                "positionName": "RWB"
+            },
+            {
+				"positionId": 7,
+                "playerId": "",
+                "positionX": 2,
+                "positionY": 5,
+                "positionName": "LWB"
+            },
+            {
+				"positionId": 8,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 5,
+                "positionName": "DM"
+            },
+            {
+				"positionId": 9,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 10,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 11,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "CB"
+            }
+        ]
+	},
+	{
+        "_id": 8,
+        "name": "5-2-3",
+        "formationPosition": [
+            {
+				"positionId": 1,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 8,
+                "positionName": "GK"
+            },
+            {
+				"positionId": 2,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 2,
+                "positionName": "ST"
+            },
+            {
+				"positionId": 3,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 3,
+                "positionName": "CF"
+            },
+            {
+				"positionId": 4,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 3,
+                "positionName": "CF"
+            },
+            {
+				"positionId": 5,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 6,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 7,
+                "playerId": "",
+                "positionX": 2,
+                "positionY": 5,
+                "positionName": "LWB"
+            },
+            {
+				"positionId": 8,
+                "playerId": "",
+                "positionX": 8,
+                "positionY": 5,
+                "positionName": "RWB"
+            },
+            {
+				"positionId": 9,
+                "playerId": "",
+                "positionX": 3,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 10,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 11,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "CB"
+            }
+        ]
+	},
+	{
+        "_id": 9,
+        "name": "5-4-1",
+        "formationPosition": [
+            {
+				"positionId": 1,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 8,
+                "positionName": "GK"
+            },
+            {
+				"positionId": 2,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 2,
+                "positionName": "ST"
+            },
+            {
+				"positionId": 3,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 3,
+                "positionName": "AM"
+            },
+            {
+				"positionId": 4,
+                "playerId": "",
+                "positionX": 4,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 5,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 4,
+                "positionName": "CM"
+            },
+            {
+				"positionId": 6,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 5,
+                "positionName": "DM"
+            },
+            {
+				"positionId": 7,
+                "playerId": "",
+                "positionX": 2,
+                "positionY": 5,
+                "positionName": "LWB"
+            },
+            {
+				"positionId": 8,
+                "playerId": "",
+                "positionX": 8,
+                "positionY": 5,
+                "positionName": "RWB"
+            },
+            {
+				"positionId": 9,
+                "playerId": "",
+                "positionX": 3,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 10,
+                "playerId": "",
+                "positionX": 5,
+                "positionY": 6,
+                "positionName": "CB"
+            },
+            {
+				"positionId": 11,
+                "playerId": "",
+                "positionX": 6,
+                "positionY": 6,
+                "positionName": "CB"
+            }
+        ]
+	}
   ]

@@ -22,7 +22,7 @@ export class FormationSelectionComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges() {
-    if (this.tactics && this.tactics.length) {
+    if (this.tactics && this.tactics.length && !this.selectedTactic) {
       this.selectedTactic = this.tactics[0];
       this.selectTactic({value: this.selectedTactic});
     }

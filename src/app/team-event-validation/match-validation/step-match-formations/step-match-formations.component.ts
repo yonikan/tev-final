@@ -43,11 +43,12 @@ export class StepMatchFormationsComponent implements OnInit {
 
 
     ngOnInit() {
-		this.tactics = this.stepMatchFormationsData;
-		// this.tactics = this.formationService.getFormations();
+		// this.tactics = this.stepMatchFormationsData;
+		this.tactics = this.formationService.getFormations();
     }
 
     selectTactic(tacticFormation) {
+		console.log('tacticFormation', tacticFormation);
         this.selectedFormation = tacticFormation;
     }
 

@@ -301,6 +301,89 @@ export const TEAM_EVENT_VALIDATION_MATCH: any = {
 					"positionName": "XX"
 				}
 			]
+		},
+		{
+			"_id": 4,
+			"name": "4-3-3",
+			"formationPosition": [
+				{
+					"positionId": 1,
+					"playerId": "",
+					"positionX": 5,
+					"positionY": 8,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 2,
+					"playerId": "",
+					"positionX": 4,
+					"positionY": 2,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 3,
+					"playerId": "",
+					"positionX": 6,
+					"positionY": 2,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 4,
+					"playerId": "",
+					"positionX": 4,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 5,
+					"playerId": "",
+					"positionX": 6,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 6,
+					"playerId": "",
+					"positionX": 8,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 7,
+					"playerId": "",
+					"positionX": 2,
+					"positionY": 4,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 8,
+					"playerId": "",
+					"positionX": 2,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 9,
+					"playerId": "",
+					"positionX": 4,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 10,
+					"playerId": "",
+					"positionX": 6,
+					"positionY": 6,
+					"positionName": "XX"
+				},
+				{
+					"positionId": 11,
+					"playerId": "",
+					"positionX": 8,
+					"positionY": 6,
+					"positionName": "XX"
+				}
+			]
 		}
 	  ]
 	,

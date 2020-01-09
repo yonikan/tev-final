@@ -37,7 +37,6 @@
                     grid-template-columns: repeat(9, 1fr);// field columns = 9
                     grid-template-rows: repeat(6, 85.8px);// field rows = 7
                     justify-items: center;
-                    align-items: center;
                     > * {
                         min-width: 0;
                     }
