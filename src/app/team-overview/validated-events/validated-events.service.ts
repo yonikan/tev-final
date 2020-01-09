@@ -57,7 +57,7 @@ export class ValidatedEventsService {
       language: 'en'
     };
     const PATH = this.serverEnvService.getBaseUrl();
-    this.http.post<any>(`${PATH}/team-event/${teamEventId}/scheduled-jobs`, payload)
+    this.http.post<any>(`${PATH}/v2/team-event/${teamEventId}/scheduled-jobs`, payload)
       .subscribe(
         (response: any) => {
           if (response.scheduledJobId) {
@@ -81,12 +81,12 @@ export class ValidatedEventsService {
     this.individualPlayersReportPollInterval = setInterval(this.pollPdfReportData.bind(this), 3000, jobId, teamEventId);
     setTimeout(() => { 
       this.clearIntervalEndTimer('failedToRetrieve');
-    }, 9000);
+    }, 120000);
   }
 
   pollPdfReportData(jobId: number, teamEventId: number) {
-    // const PATH = this.serverEnvService.getBaseUrl();
-    this.http.get<any>(`https://footballrest2-stage.playermaker.co.uk/api/v2/team-event/${teamEventId}/scheduled-jobs/status`)
+    const PATH = this.serverEnvService.getBaseUrl();
+    this.http.get<any>(`${PATH}/v2/team-event/${teamEventId}/scheduled-jobs/status`)
       .subscribe(
         (response: any) => {
           if (response.jobStatus === 'succeed') { // check if status is success, if it is stop polling 

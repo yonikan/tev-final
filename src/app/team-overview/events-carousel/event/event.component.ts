@@ -32,22 +32,23 @@ export class EventComponent implements OnInit {
   constructor(private validatedEventsService: ValidatedEventsService) { }
 
   ngOnInit() {
+    // console.log(this.eventData);
     this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
 
-    // // offset times reset
-    // let offset = 2;
-    // if (this.eventData.offset) {
-    //   offset = this.eventData.offset;
-    // }
+    // offset times reset
+    let offset = 2;
+    if (this.eventData.offset) {
+      offset = this.eventData.offset;
+    }
 
     // // offset testing
-    // if (!this.eventData.isValidated) {
-    //   console.log('this.eventData.offset: ', this.eventData.offset);
-    //   let beforeTimeHoursFormatted = moment(this.eventData.startTime).utc();
-    //   console.log('beforeTimeHoursFormatted: ', beforeTimeHoursFormatted.format('HH:mm'));
-    //   let afterTimeHoursFormatted = moment(this.eventData.startTime).utc().utcOffset(offset);
-    //   console.log('afterTimeHoursFormatted: ', afterTimeHoursFormatted.format('HH:mm'));
-    // }
+    if (!this.eventData.isValidated) {
+      console.log('this.eventData.offset: ', this.eventData.offset);
+      let beforeTimeHoursFormatted = moment(this.eventData.startTime).utc();
+      console.log('beforeTimeHoursFormatted: ', beforeTimeHoursFormatted.format('HH:mm'));
+      let afterTimeHoursFormatted = moment(this.eventData.startTime).utc().utcOffset(offset);
+      console.log('afterTimeHoursFormatted: ', afterTimeHoursFormatted.format('HH:mm'));
+    }
 
     // this.eventData.startTime = moment(this.eventData.startTime).utc().utcOffset(offset);
     // this.eventData.endTime = moment(this.eventData.endTime).utc().utcOffset(offset);
@@ -62,7 +63,7 @@ export class EventComponent implements OnInit {
     let start;
     let end;
     if(this.eventData.type === 1) {
-      if (this.eventData.phaseMinStartTime){
+      if (this.eventData.trimStartTime){
         start = moment(this.eventData.trimStartTime);
         end = moment(this.eventData.trimEndTime);
       } else {
@@ -111,14 +112,16 @@ export class EventComponent implements OnInit {
 
     if(this.eventData.isValidated) {
       if(this.eventData.type === 1) {
-        if(this.eventData.tags) {
-          this.cardTitle = this.eventData.tags[0];
+        if(this.eventData.eventTags) {
+          // console.log('this.eventData.eventTags: ', this.eventData.eventTags);
+          this.cardTitle = this.eventData.eventTags[0];
         } else {
           this.cardTitle = `Training Session`;
         }
       } else if(this.eventData.type === 2) {
-        if(this.eventData.opponent) {
-          this.cardTitle = `Vs. ${this.eventData.opponent}`;
+        if(this.eventData.opponentName) {
+          // console.log('this.eventData.opponentName: ', this.eventData.opponentName);
+          this.cardTitle = `Vs. ${this.eventData.opponentName}`;
         } else {
           this.cardTitle = `Match`;
         }
