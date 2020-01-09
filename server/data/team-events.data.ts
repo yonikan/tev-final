@@ -8,8 +8,14 @@ export const TEAM_EVENTS_DATA: any = [
             validPlayersCount: 0,
             totalPlayersCount: 0,
             phasesCount: 0,
+            offset: 2,
             trimStartTime: 1554251439284,
-            trimEndTime: 1554256958284
+            trimEndTime: 1554256958284,
+            phaseMinStartTime: null,
+            phaseMaxEndTime: null,
+            duration: null,
+            eventTags: null,
+            opponentName: null
         },
         {
             id: 49392,
@@ -20,7 +26,13 @@ export const TEAM_EVENTS_DATA: any = [
             validPlayersCount: 0,
             totalPlayersCount: 0,
             phasesCount: 0,
+            offset: 2,
             trimStartTime: 1554251439284,
-            trimEndTime: 1554256958284
+            trimEndTime: 1554256958284,
+            phaseMinStartTime: null,
+            phaseMaxEndTime: null,
+            duration: null,
+            eventTags: null,
+            opponentName: null
         },
 ];

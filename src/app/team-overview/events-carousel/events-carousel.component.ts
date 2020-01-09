@@ -58,6 +58,7 @@ export class EventsCarouselComponent implements OnInit {
 
   ngOnInit() {
     // of(TEAM_EVENTS_DATA)
+
     const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
     const BASE_URL = this.serverEnvService.getBaseUrl();
     const API_VERSION = 'v2';

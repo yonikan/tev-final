@@ -2,7 +2,7 @@
     <div class="login-container">
       <div class="login-content" [ngSwitch]="loginMode">
         <div class="logo">
-            <img src="./assets/img/logo-large.jpg" alt="logo"/>
+          <img src="./assets/svg/others/pm-logo.svg" alt="logo"/>
         </div>
 
         <div [@fadeInUp] *ngSwitchDefault class="user-login-container">
@@ -21,7 +21,7 @@
             <app-email-sent [userEmailAddressInput]="userEmailAddress" (loginModeEmitter)="onLoginModeEmitter($event)"></app-email-sent>
         </div>
 
-        <h4>2.20.0.3</h4>
+        <h4>2.20.0.2</h4>
       </div>
     
       <div class="login-footer">

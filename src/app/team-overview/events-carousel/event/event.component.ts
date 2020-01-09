@@ -37,13 +37,6 @@ export class EventComponent implements OnInit {
     this.endTimeHoursFormatted = moment(this.eventData.endTime).format('HH:mm');
     
     const start = moment(this.eventData.startTime);
-    // console.log('start: ', start);
-
-    // const start2 = moment(this.eventData.startTime.utcOffset(8));
-    // console.log('start2: ', start2);
-    // const start3 = moment(this.eventData.startTime);
-    // console.log('start3: ', start3);
-
     const end = moment(this.eventData.endTime);
     this.duration = Math.abs(start.diff(end, 'minutes'));
 
@@ -68,16 +61,17 @@ export class EventComponent implements OnInit {
 
 
     const NOW = moment();
-    const TODAY = NOW.clone().startOf('day');
-    const YESTERDAY = NOW.clone().subtract(1, 'days').startOf('day');
+    // const TODAY = NOW.clone().startOf('day');
+    // const YESTERDAY = NOW.clone().subtract(1, 'days').startOf('day');
 
-    if(NOW.isSame(TODAY, 'd')) {
-      this.durationTimeAgo = 'Today';
-    } else if (NOW.isSame(YESTERDAY, 'd')) {
-      this.durationTimeAgo = 'Yesterday';
-    } else {
-      this.durationTimeAgo = NOW.format('dddd, MMMM Do YYYY');
-    }
+    // if(NOW.isSame(TODAY, 'd')) {
+    //   this.durationTimeAgo = 'Today';
+    // } else if (NOW.isSame(YESTERDAY, 'd')) {
+    //   this.durationTimeAgo = 'Yesterday';
+    // } else {
+    //   this.durationTimeAgo = NOW.format('dddd, MMMM Do YYYY');
+    // }
+    this.durationTimeAgo = NOW.format('dddd, MMMM Do YYYY');
 
 
     // ==============================

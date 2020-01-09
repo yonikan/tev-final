@@ -36,6 +36,7 @@ export class ValidatedEventsComponent implements OnInit {
 
   ngOnInit() {
     // of(TEAM_EVENTS_VALIDATED_DATA)
+
     const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
     console.log('TEAM_ID: ', TEAM_ID);
     const BASE_URL = this.serverEnvService.getBaseUrl();

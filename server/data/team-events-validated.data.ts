@@ -8,8 +8,14 @@ export const TEAM_EVENTS_VALIDATED_DATA: any = [
             validPlayersCount: 0,
             totalPlayersCount: 0,
             phasesCount: 0,
-            tags: ['tag1', 'tag2'],
-            opponent: 'beitar jerusalem'
+            offset: 2,
+            trimStartTime: null,
+            trimEndTime: null,
+            phaseMinStartTime: null,
+            phaseMaxEndTime: null,
+            duration: null,
+            eventTags: null,
+            opponentName: null
         },
         {
             id: 49392,
@@ -20,7 +26,13 @@ export const TEAM_EVENTS_VALIDATED_DATA: any = [
             validPlayersCount: 0,
             totalPlayersCount: 0,
             phasesCount: 0,
-            tags: ['tag1', 'tag2'],
-            opponent: 'beitar jerusalem'
+            offset: 2,
+            trimStartTime: null,
+            trimEndTime: null,
+            phaseMinStartTime: null,
+            phaseMaxEndTime: null,
+            duration: null,
+            eventTags: null,
+            opponentName: null
         }
 ];
