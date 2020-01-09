@@ -25,15 +25,15 @@
                         <span *ngIf="eventData.type === 1">match</span>
                         <span *ngIf="eventData.type === 2">training</span> -->
                     </button>
-                    <button *ngIf="eventData.isValidated" mat-menu-item (click)="editSession()">
-                        <i class="demo-icon">&#xe80b;</i>
-                        <span>edit {{ teamEventTypeString }} </span>
-                        <!-- <span>Edit Session</span> -->
-                    </button>
                     <button mat-menu-item (click)="deleteSession(eventData.id)">
                         <i class="demo-icon">&#xe815;</i>
                         <span>delete {{ teamEventTypeString }}</span>
                         <!-- <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span> -->
+                    </button>
+                    <button *ngIf="eventData.isValidated" mat-menu-item (click)="editSession()">
+                        <i class="demo-icon">&#xe80b;</i>
+                        <span>edit {{ teamEventTypeString }} </span>
+                        <!-- <span>Edit Session</span> -->
                     </button>
                 </mat-menu>
             </div>

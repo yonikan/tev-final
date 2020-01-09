@@ -32,13 +32,55 @@ export class EventComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.eventData);
+
     this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
-    this.startTimeHoursFormatted = moment(this.eventData.startTime).format('HH:mm');
-    this.endTimeHoursFormatted = moment(this.eventData.endTime).format('HH:mm');
+
+    let start;
+    let end;
+
+    // formatted time
+    if(this.eventData.type === 1) {
+      if (this.eventData.phaseMinStartTime){
+        start = moment(this.eventData.trimStartTime);
+        end = moment(this.eventData.trimEndTime);
+      } else {
+        start = moment(this.eventData.startTime);
+        end = moment(this.eventData.endTime);
+      }
+    } else if(this.eventData.type === 2) {
+      if (this.eventData.phaseMinStartTime){
+        start = moment(this.eventData.phaseMinStartTime);
+        end = moment(this.eventData.phaseMaxEndTime);
+      } else {
+        start = moment(this.eventData.startTime);
+        end = moment(this.eventData.endTime);
+      }
+    } else {
+      start = moment(this.eventData.startTime);
+      end = moment(this.eventData.endTime);
+    }
+
+    this.startTimeHoursFormatted = moment(start).format('HH:mm');
+    this.endTimeHoursFormatted = moment(end).format('HH:mm');
     
-    const start = moment(this.eventData.startTime);
-    const end = moment(this.eventData.endTime);
-    this.duration = Math.abs(start.diff(end, 'minutes'));
+
+
+    // duration
+    let duration;
+    const startForDuration = moment(this.eventData.startTime);
+    const endForDuration = moment(this.eventData.endTime);
+    if(this.eventData.type === 2) {
+      if(this.eventData.duration){
+        duration = Math.abs(this.eventData.duration);
+      } else {
+        duration = Math.abs(startForDuration.diff(endForDuration, 'minutes'));
+      }
+    } else {
+      duration = Math.abs(startForDuration.diff(endForDuration, 'minutes'));
+    }
+    this.duration = Math.floor(duration);
+
+
 
     if(this.eventData.isValidated) {
       if(this.eventData.type === 1) {
