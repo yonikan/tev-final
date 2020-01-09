@@ -10,12 +10,13 @@
     &::after {
       content: '';
       background-color: $color-purple;
-      background-image: url(../../../assets/img/login-background.png);
+      // background-image: url(../../../assets/img/login-background.png);
+      background-image: url(../../../assets/img/login-bg-desktop.jpg);
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-position: 50%;
-      opacity: 0.7;
+      // background-position: 50%;
+      // opacity: 0.7;
       top: 0;
       left: 0;
       bottom: 0;
@@ -33,17 +34,19 @@
       padding: 35px;
       box-shadow: 2px 0 5px -2px #000;
       background-color: rgb(230, 230, 230);
-      background-image: url(../../../assets/svg/others/login-back-small.svg);
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: 50%;
+
       // opacity: 0.7;
 
       @media (max-width: $media-query-sm) {
         // width: 100%;
         width: calc(100% - 70px);
         text-align: center;
+
+        background-image: url(../../../assets/img/login-bg-mobile.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: 50%;
       }
 
       .login-content {

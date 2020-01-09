@@ -3,6 +3,7 @@ import { enumToString } from 'src/app/core/helpers/helper-functions';
 import { teamEvents } from 'src/app/core/enums/team-events.enum';
 import * as moment from 'moment';
 import { ValidatedEventsService } from '../../validated-events/validated-events.service';
+import { offset } from 'highcharts';
 
 @Component({
   selector: 'app-event',
@@ -31,14 +32,35 @@ export class EventComponent implements OnInit {
   constructor(private validatedEventsService: ValidatedEventsService) { }
 
   ngOnInit() {
-    // console.log(this.eventData);
-
     this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
 
-    let start;
-    let end;
+    // // offset times reset
+    // let offset = 2;
+    // if (this.eventData.offset) {
+    //   offset = this.eventData.offset;
+    // }
+
+    // // offset testing
+    // if (!this.eventData.isValidated) {
+    //   console.log('this.eventData.offset: ', this.eventData.offset);
+    //   let beforeTimeHoursFormatted = moment(this.eventData.startTime).utc();
+    //   console.log('beforeTimeHoursFormatted: ', beforeTimeHoursFormatted.format('HH:mm'));
+    //   let afterTimeHoursFormatted = moment(this.eventData.startTime).utc().utcOffset(offset);
+    //   console.log('afterTimeHoursFormatted: ', afterTimeHoursFormatted.format('HH:mm'));
+    // }
+
+    // this.eventData.startTime = moment(this.eventData.startTime).utc().utcOffset(offset);
+    // this.eventData.endTime = moment(this.eventData.endTime).utc().utcOffset(offset);
+    // this.eventData.trimStartTime = moment(this.eventData.trimStartTime).utc().utcOffset(offset);
+    // this.eventData.trimEndTime = moment(this.eventData.trimEndTime).utc().utcOffset(offset);
+    // this.eventData.phaseMinStartTime = moment(this.eventData.phaseMinStartTime).utc().utcOffset(offset);
+    // this.eventData.phaseMaxEndTime = moment(this.eventData.phaseMaxEndTime).utc().utcOffset(offset);
+
+
 
     // formatted time
+    let start;
+    let end;
     if(this.eventData.type === 1) {
       if (this.eventData.phaseMinStartTime){
         start = moment(this.eventData.trimStartTime);
@@ -64,17 +86,22 @@ export class EventComponent implements OnInit {
     this.endTimeHoursFormatted = moment(end).format('HH:mm');
     
 
-
     // duration
     let duration;
     const startForDuration = moment(this.eventData.startTime);
     const endForDuration = moment(this.eventData.endTime);
-    if(this.eventData.type === 2) {
-      if(this.eventData.duration){
-        duration = Math.abs(this.eventData.duration);
-      } else {
-        duration = Math.abs(startForDuration.diff(endForDuration, 'minutes'));
-      }
+    // if(this.eventData.type === 2) {
+    //   if(this.eventData.duration){
+    //     duration = Math.abs(this.eventData.duration);
+    //   } else {
+    //     duration = Math.abs(startForDuration.diff(endForDuration, 'minutes'));
+    //   }
+    // } else {
+    //   duration = Math.abs(startForDuration.diff(endForDuration, 'minutes'));
+    // }
+
+    if(this.eventData.duration){
+      duration = Math.abs(this.eventData.duration);
     } else {
       duration = Math.abs(startForDuration.diff(endForDuration, 'minutes'));
     }
