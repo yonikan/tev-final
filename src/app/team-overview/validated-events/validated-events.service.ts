@@ -86,7 +86,7 @@ export class ValidatedEventsService {
 
   pollPdfReportData(jobId: number, teamEventId: number) {
     const PATH = this.serverEnvService.getBaseUrl();
-    this.http.get<any>(`${PATH}/v2/team-event/${teamEventId}/scheduled-jobs/status`)
+    this.http.get<any>(`${PATH}/v2/team-event/${teamEventId}/scheduled-jobs/${jobId}/status`)
       .subscribe(
         (response: any) => {
           if (response.jobStatus === 'succeed') { // check if status is success, if it is stop polling 
