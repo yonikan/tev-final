@@ -56,7 +56,10 @@
                     <h4>{{ cardTitle }}</h4>
                 </div>
                 <div class="event-content-subtitle" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <span><span class="duration-time-ago">{{ durationTimeAgo }}</span>   {{ startTimeHoursFormatted }} - {{ endTimeHoursFormatted }}</span>
+                    <span>
+                        <span class="duration-time-ago">{{ durationTimeAgo }}</span>
+                        {{ startTimeHoursFormatted }} - {{ endTimeHoursFormatted }}
+                    </span>
                 </div>
             </div>
             
