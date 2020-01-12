@@ -23,6 +23,8 @@ export class ValidatedEventsComponent implements OnInit {
   teamEvents;
   isTeamEventsLoading;
   index = 0;
+
+  isLoading = true;
   
   constructor(
     private dialog: MatDialog,
@@ -46,6 +48,7 @@ export class ValidatedEventsComponent implements OnInit {
       .subscribe((result: any) => {
         // console.log('result: ', result);
         this.teamEvents = result; // only validated team-events
+        this.isLoading = false;
         this.isTeamEventsLoading = false;
       }, (err) => {
         console.log('err: ', err);
