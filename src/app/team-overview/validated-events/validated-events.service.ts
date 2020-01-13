@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { ServerEnvService } from 'src/app/core/services/server-env.service';
+import { ServerEnvService } from '../../core/services/server-env.service';
 import { map } from 'rxjs/operators';
-import { ErrorModalComponent } from 'src/app/core/components/error-modal/error-modal.component';
-import { ValidatedEventsToastComponent } from 'src/app/core/components/validated-events-toast/validated-events-toast.component';
+import { ErrorModalComponent } from '../../core/components/error-modal/error-modal.component';
+import { ValidatedEventsToastComponent } from '../../core/components/validated-events-toast/validated-events-toast.component';
 
 @Injectable({
   providedIn: 'root'
@@ -22,16 +22,12 @@ export class ValidatedEventsService {
     private http: HttpClient,
     public authService: AuthService,
     private dialog: MatDialog,
-    // private uiComponentsService: UiComponentsService,
     private snackbar: MatSnackBar,
     private serverEnvService: ServerEnvService
   ) { }
 
   getTeamEventPdfReport(teamEventId: number, reportType: string) {
-
-    // this.uiComponentsService.showSnackbar('Pdf report is being generated', null);
     this.snackbar.openFromComponent(ValidatedEventsToastComponent);
-    // this.snackbar.open('Download In Progress', null);
     
     this.userLoginDataSub = this.authService
       .getUserLoginDataListener()
@@ -39,7 +35,6 @@ export class ValidatedEventsService {
         map(loginData => loginData.userId)
       )
       .subscribe((userId: number) => {
-        console.log('userId: ', userId);
         this.userId = userId;
       });
 
@@ -65,11 +60,9 @@ export class ValidatedEventsService {
             this.fetchPdfReportData(JOB_ID, teamEventId);
           } else {
             console.log('individual Players Report Error!!!');
-            // this.$refs['individualPlayersReportErrorModal'].show()
           }
         },
         (error) => {
-          console.log('error: ', error);
           this.snackbar.dismiss();
           this.openValidatedEventsModal('errorModal');
         }
@@ -80,8 +73,12 @@ export class ValidatedEventsService {
     // this.pollPdfReportData(jobId, teamEventId);
     this.individualPlayersReportPollInterval = setInterval(this.pollPdfReportData.bind(this), 3000, jobId, teamEventId);
     setTimeout(() => { 
+      // if(this.individualPlayersReportJobStatusSucceed === false) {
+      //   this.clearIntervalEndTimer('failedToRetrieve');
+      // }
+      // this.individualPlayersReportJobStatusSucceed === false;
       this.clearIntervalEndTimer('failedToRetrieve');
-    }, 120000);
+    }, 12000);
   }
 
   pollPdfReportData(jobId: number, teamEventId: number) {
@@ -102,16 +99,14 @@ export class ValidatedEventsService {
   }
 
   clearIntervalEndTimer(retStatus: string) {
-    console.log('=========== retStatus: ', retStatus);
     clearInterval(this.individualPlayersReportPollInterval);
     this.snackbar.dismiss();
 
     if (retStatus === 'succeedToRetrieve') {
-      console.log('succeed To Retrieve!!!');
       this.openValidatedEventsModal('successModal');
-    // } else if (retStatus === 'failedToRetrieve' && this.individualPlayersReportJobStatusSucceed === false) {
     } else if (retStatus === 'failedToRetrieve' && this.individualPlayersReportJobStatusSucceed === false) {
-      console.log('individual Players Report Error!!!');
+      this.openValidatedEventsModal('errorModal');
+    } else if (retStatus === 'failedToRetrieve' && this.individualPlayersReportStatus === 'new') {
       this.openValidatedEventsModal('errorModal');
     }
   }
