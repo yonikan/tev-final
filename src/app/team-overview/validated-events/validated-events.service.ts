@@ -120,7 +120,7 @@ export class ValidatedEventsService {
     let modalTitle;
     let modalMessage;
     if (modalType === 'successModal') {
-      modalTitle = 'File Successfully Downloaded';
+      modalTitle = 'Files Exported Successfully';
       modalMessage = `All the reports were sent to your email.`;
     } else if (modalType === 'errorModal') {
       modalTitle = 'Download Failed';

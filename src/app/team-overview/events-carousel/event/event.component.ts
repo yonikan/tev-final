@@ -111,7 +111,8 @@ export class EventComponent implements OnInit {
     }
 
     let teamEventDate = moment(teamEventStartTime);
-    this.durationTimeAgo = teamEventDate.format('dddd, MMMM Do YYYY');
+    this.durationTimeAgo = teamEventDate.format('ddd, MMM Do YYYY');
+
     let startHours = new Date(teamEventStartTime).toISOString().substring(11, 13);
     let startMinutes = new Date(teamEventStartTime).toISOString().substring(14, 16);
     let endHours = new Date(teamEventStartEnd).toISOString().substring(11, 13);

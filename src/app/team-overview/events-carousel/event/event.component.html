@@ -46,8 +46,8 @@
         <div *ngIf="!isPdfReportLoading" class="event-content">
             <div class="event-content-header">
                 <div class="event-content-title" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <i *ngIf="!eventData.isValidated && eventData.type === 2" class="demo-icon icon-calender">&#xe809;</i>
-                    <i *ngIf="!eventData.isValidated && eventData.type === 1" class="demo-icon icon-vlc">&#xe808;</i>  
+                    <i *ngIf="eventData.type === 2" class="demo-icon icon-calender">&#xe809;</i>
+                    <i *ngIf="eventData.type === 1" class="demo-icon icon-vlc">&#xe808;</i>  
                     <!-- <h4 *ngIf="!eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">new {{ teamEventTypeString }}</h4> -->
                     <!-- <h4 *ngIf="eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">
                         <span *ngIf="eventData.type === 2">Match</span>
@@ -71,13 +71,13 @@
                 </div>
 
                 <div class="info-content">
-                    <div>{{ duration }} <span class="time-unit">Min</span></div>
-                    <div class="players">
+                    <div class="duration-column">{{ duration }} <span class="time-unit">Min</span></div>
+                    <div class="players-column" [ngStyle]="{'margin-right':eventData.isValidated ? '40px' : '0px' }">
                         {{ eventData.validPlayersCount }}<span *ngIf="!eventData.isValidated">/{{ eventData.totalPlayersCount }}</span>
                     </div>
-                    <div>
+                    <div class="phases-count-column">
                         <span *ngIf="!eventData.isValidated && eventData.phasesCount === 0">N/A</span>
-                        <span *ngIf="eventData.isValidated">{{ eventData.phasesCount }}</span>
+                        <span *ngIf="!(!eventData.isValidated && eventData.phasesCount === 0)">{{ eventData.phasesCount }}</span>
                     </div>
                 </div>
 
@@ -104,11 +104,11 @@
             <div *ngIf="eventData.isValidated" class="event-content-buttons">
                 <button class="action-btn" mat-raised-button (click)="downloadPdfReport('teamReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
-                    <span>Team Report</span>
+                    <span>Team Reports</span>
                 </button>
                 <button class="action-btn" mat-raised-button (click)="downloadPdfReport('individualReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
-                    <span>Individual Report</span>
+                    <span>Individual Reports</span>
                 </button>
             </div>
         </div>
