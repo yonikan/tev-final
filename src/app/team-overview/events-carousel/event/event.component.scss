@@ -97,6 +97,11 @@
             color: #96a1ae;
             font-size: 12px;
             text-transform: capitalize;
+
+            div {
+              width: 33%;
+              text-align: center;
+            }
           }
   
           .info-content {
@@ -106,6 +111,11 @@
             color: #3d4762;
             font-size: 24px;
             font-weight: 600;
+
+            div {
+              width: 33%;
+              text-align: center;
+            }
 
             .duration-column {
               .time-unit {
