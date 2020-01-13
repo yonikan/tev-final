@@ -78,7 +78,7 @@ export class ValidatedEventsService {
       // }
       // this.individualPlayersReportJobStatusSucceed === false;
       this.clearIntervalEndTimer('failedToRetrieve');
-    }, 12000);
+    }, 120000);
   }
 
   pollPdfReportData(jobId: number, teamEventId: number) {
