@@ -110,7 +110,7 @@ export class ValidatedEventsService {
       console.log('succeed To Retrieve!!!');
       this.openValidatedEventsModal('successModal');
     // } else if (retStatus === 'failedToRetrieve' && this.individualPlayersReportJobStatusSucceed === false) {
-    } else if (retStatus === 'failedToRetrieve') {
+    } else if (retStatus === 'failedToRetrieve' && this.individualPlayersReportJobStatusSucceed === false) {
       console.log('individual Players Report Error!!!');
       this.openValidatedEventsModal('errorModal');
     }
