@@ -29,50 +29,25 @@ export class EventComponent implements OnInit {
   constructor(private validatedEventsService: ValidatedEventsService) { }
 
   ngOnInit() {
-    this.eventData.startTime = moment(this.eventData.startTime);
-    this.eventData.endTime = moment(this.eventData.endTime);
-    this.eventData.trimStartTime = moment(this.eventData.trimStartTime);
-    this.eventData.trimEndTime = moment(this.eventData.trimEndTime);
-    this.eventData.phaseMinStartTime = moment(this.eventData.phaseMinStartTime);
-    this.eventData.phaseMaxEndTime = moment(this.eventData.phaseMaxEndTime);
-
     let offset = 0;
     if (this.eventData.offset) {
       offset = this.eventData.offset;
     }
 
-    this.eventData.startTime = this.eventData.startTime.add(offset, 'hours');
-    this.eventData.endTime = this.eventData.endTime.add(offset, 'hours');
-    this.eventData.trimStartTime = this.eventData.trimStartTime.add(offset, 'hours');
-    this.eventData.trimEndTime = this.eventData.trimEndTime.add(offset, 'hours');
-    this.eventData.phaseMinStartTime = this.eventData.phaseMinStartTime.add(offset, 'hours');
-    this.eventData.phaseMaxEndTime = this.eventData.phaseMaxEndTime.add(offset, 'hours');
+    this.eventData.startTime = moment(this.eventData.startTime).add(offset, 'hours');
+    this.eventData.endTime = moment(this.eventData.endTime).add(offset, 'hours');
 
-
-    // formatted time ===============================================
-    let start;
-    let end;
-    if(this.eventData.type === 1) {
-      if (this.eventData.trimStartTime){
-        start = moment(this.eventData.trimStartTime);
-        end = moment(this.eventData.trimEndTime);
-      } else {
-        start = moment(this.eventData.startTime);
-        end = moment(this.eventData.endTime);
-      }
-    } else if(this.eventData.type === 2) {
-      if (this.eventData.phaseMinStartTime){
-        start = moment(this.eventData.phaseMinStartTime);
-        end = moment(this.eventData.phaseMaxEndTime);
-      } else {
-        start = moment(this.eventData.startTime);
-        end = moment(this.eventData.endTime);
-      }
-    } else {
-      start = moment(this.eventData.startTime);
-      end = moment(this.eventData.endTime);
+    if(this.eventData.type === 1 && this.eventData.trimStartTime) {
+      this.eventData.trimStartTime = moment(this.eventData.trimStartTime).add(offset, 'hours');
+      this.eventData.trimEndTime = moment(this.eventData.trimEndTime).add(offset, 'hours');
     }
 
+    if(this.eventData.type === 2 && this.eventData.phaseMinStartTime) {
+      this.eventData.phaseMinStartTime = moment(this.eventData.phaseMinStartTime).add(offset, 'hours');
+      this.eventData.phaseMaxEndTime = moment(this.eventData.phaseMaxEndTime).add(offset, 'hours');
+    } 
+
+    
     // duration ===============================================
     let duration;
     const startForDuration = moment(this.eventData.startTime);
@@ -97,7 +72,7 @@ export class EventComponent implements OnInit {
         teamEventStartTime = this.eventData.startTime;
         teamEventStartEnd = this.eventData.endTime;
       }
-    } else if(this.eventData.type === 2) {
+    } else if (this.eventData.type === 2) {
       if (this.eventData.phaseMinStartTime){
         teamEventStartTime = this.eventData.phaseMinStartTime;
         teamEventStartEnd = this.eventData.phaseMaxEndTime;
