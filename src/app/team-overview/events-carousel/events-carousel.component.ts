@@ -74,7 +74,7 @@ export class EventsCarouselComponent implements OnInit {
   }
 
   onConfirmSession(teamEvent) {
-    console.log('teamEvent: ', teamEvent);
+    // console.log('teamEvent: ', teamEvent);
     // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
     // this.uiComponentsService.setIsLoading(true);
     // setTimeout(() => { 
@@ -99,7 +99,7 @@ export class EventsCarouselComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
-        console.log('teamEventId: ', teamEventId);
+        // console.log('teamEventId: ', teamEventId);
         if(teamEventId) {
           // this.uiComponentsService.setIsLoading(true);
           // setTimeout(() => { 
@@ -119,7 +119,7 @@ export class EventsCarouselComponent implements OnInit {
           this.http
             .put<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEvent.teamEventId}`, PAYLOAD)
             .subscribe((result: any) => {
-              console.log('result: ', result);
+              // console.log('result: ', result);
               this.uiComponentsService.setIsLoading(false);
             }, (err) => {
               this.uiComponentsService.setIsLoading(false);
@@ -143,7 +143,7 @@ export class EventsCarouselComponent implements OnInit {
 
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
-        console.log('teamEventId: ', teamEventId);
+        // console.log('teamEventId: ', teamEventId);
         if(teamEventId) {
           this.uiComponentsService.setIsLoading(true);
           // setTimeout(() => { 

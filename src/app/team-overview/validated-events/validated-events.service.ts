@@ -118,8 +118,8 @@ export class ValidatedEventsService {
       modalTitle = 'Files Exported Successfully';
       modalMessage = `All the reports were sent to your email.`;
     } else if (modalType === 'errorModal') {
-      modalTitle = 'Download Failed';
-      modalMessage = `The file you requested could not be downloaded. Please try again later or contact support.`;
+      modalTitle = 'Export Failed';
+      modalMessage = `The files you requested could not be exported. Please try again later or contact support.`;
     }
 
     this.dialog.open(ErrorModalComponent, {
