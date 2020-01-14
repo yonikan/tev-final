@@ -11,7 +11,7 @@ export class AuthorizationService {
   public allowedFeatures: FeatureTypes;
   public currentPlatform = 'desktop';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   public isFeatureEnabled(featureName: string): boolean {
     // let isFeaturedAllowed: boolean;
@@ -25,7 +25,7 @@ export class AuthorizationService {
   }
 
   public initFeatureToggling() {
-    return this.httpClient
+    return this.http
       // .get('https://playermaker-dashboard-ng.s3.amazonaws.com/assets/features-configuration/config-features.json')
       .get('./assets/features-configuration/config-features.json')
       .pipe(
@@ -42,7 +42,7 @@ export class AuthorizationService {
   }
 
   public initPlatformFeatureToggling() {
-    return this.httpClient
+    return this.http
       // .get('https://playermaker-dashboard-ng.s3.amazonaws.com/assets/features-configuration/config-platform-features.json')
       .get('./assets/features-configuration/config-platform-features.json')
       .pipe(

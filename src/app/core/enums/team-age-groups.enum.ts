@@ -1,5 +1,6 @@
 export const enum TeamAgeGroups {
-    U9 = 1,
+    Undefined = 0,
+    U9,
     U10,
     U11
 }

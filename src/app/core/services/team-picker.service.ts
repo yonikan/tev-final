@@ -24,8 +24,9 @@ export class TeamPickerService {
   setCurrentTeam(selectedTeam: any) {
     this.uiComponentsService.setIsLoading(true);
 
-    const PATH = this.serverEnvService.getBaseUrl();
-    this.http.get<any>(`${PATH}/user/26235/re-login`)
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
+    this.http.get<any>(`${BASE_URL}/${API_VERSION}/user/26235/re-login`)
       .subscribe((updatedLoginDetails: UserLogin) => {
         this.authService.setUserLoginData(updatedLoginDetails);
         // this.authService.getUserLoginDataListener().next(updatedLoginDetails);

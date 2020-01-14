@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'pm';
-  src: url('../font/pm.eot?81468949');
-  src: url('../font/pm.eot?81468949#iefix') format('embedded-opentype'),
-       url('../font/pm.woff2?81468949') format('woff2'),
-       url('../font/pm.woff?81468949') format('woff'),
-       url('../font/pm.ttf?81468949') format('truetype'),
-       url('../font/pm.svg?81468949#pm') format('svg');
+  src: url('../font/pm.eot?48084425');
+  src: url('../font/pm.eot?48084425#iefix') format('embedded-opentype'),
+       url('../font/pm.woff2?48084425') format('woff2'),
+       url('../font/pm.woff?48084425') format('woff'),
+       url('../font/pm.ttf?48084425') format('truetype'),
+       url('../font/pm.svg?48084425#pm') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'pm';
-    src: url('../font/pm.svg?81468949#pm') format('svg');
+    src: url('../font/pm.svg?48084425#pm') format('svg');
   }
 }
 */
@@ -77,3 +77,12 @@
 .icon-x:before { content: '\e813'; } /* '' */
 .icon-3-dot:before { content: '\e814'; } /* '' */
 .icon-delete:before { content: '\e815'; } /* '' */
+.icon-v-icon:before { content: '\e816'; } /* '' */
+.icon-vlc-new:before { content: '\e817'; } /* '' */
+.icon-preferences-icon:before { content: '\e818'; } /* '' */
+.icon-logout:before { content: '\e819'; } /* '' */
+.icon-error-icon:before { content: '\e81a'; } /* '' */
+.icon-soccer-ball:before { content: '\e81c'; } /* '' */
+.icon-flag-china-new:before { content: '\e81d'; } /* '' */
+.icon-flag-spanish-new:before { content: '\e81e'; } /* '' */
+.icon-convert-team-event:before { content: '\e81f'; } /* '' */

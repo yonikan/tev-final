@@ -20,37 +20,38 @@ export class ServerEnvService {
     const SUB_DOMAIN = URL_HOSTNAME.split('.')[0];
     const TOP_LEVEL_DOMAIN = URL_HOSTNAME.split('.')[2];
 
-    if (TOP_LEVEL_DOMAIN.includes('cn')) {
+    if (TOP_LEVEL_DOMAIN && TOP_LEVEL_DOMAIN.includes('cn')) {
       this.currentServerEnv = 'ch';
     } else {
       if (SUB_DOMAIN.includes('dev')) {
         this.currentServerEnv = 'dev';
       } else if (SUB_DOMAIN.includes('stage')) {
         this.currentServerEnv = 'stage';
-      } else if (SUB_DOMAIN.includes('prod')) {
-        this.currentServerEnv = 'prod';
+      // } else if (SUB_DOMAIN.includes('prod')) {
+      //   this.currentServerEnv = 'prod';
       } else {
-        this.currentServerEnv = 'dev';
+        this.currentServerEnv = 'prod';
       }
     };
   }
 
   getBaseUrl(serverEnv = 2): string {
+    console.log('this.currentServerEnv: ', this.currentServerEnv);
     if (this.currentServerEnv === 'dev') {
       if (serverEnv === 2) {
-        return AppConsts.devBaseUrl2
+        return AppConsts.devBaseUrl2;
       }
-      return AppConsts.devBaseUrl
+      return AppConsts.devBaseUrl;
     } else if (this.currentServerEnv === 'stage') {
       if (serverEnv === 2) {
-        return AppConsts.stageBaseUrl2
+        return AppConsts.stageBaseUrl2;
       }
-      return AppConsts.stageBaseUrl
+      return AppConsts.stageBaseUrl;
     } else if (this.currentServerEnv === 'prod') {
       if (serverEnv === 2) {
-        return AppConsts.prodBaseUrl2
+        return AppConsts.prodBaseUrl2;
       }
-      return AppConsts.prodBaseUrl
+      return AppConsts.prodBaseUrl;
     } else { // for a local dev node server
       return AppConsts.devBaseUrl2;
       // return AppConsts.devBaseUrlLocalDevServer;
