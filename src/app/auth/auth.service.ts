@@ -60,12 +60,13 @@ export class AuthService {
   }
 
   fetchUserLoginData(email: string, password: string): Observable<UserLogin> {
-    const PATH = this.serverEnvService.getBaseUrl();
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
     const USER_DATA = {
       email,
       password
     };
-    return this.http.post<any>(`${PATH}/account/login`, USER_DATA);
+    return this.http.post<any>(`${BASE_URL}/${API_VERSION}/account/login`, USER_DATA);
     // return of(LOGIN_DATA);
   }
 
@@ -102,11 +103,12 @@ export class AuthService {
   }
 
   postForgotPassword(email: string): Observable<any> {
-    const PATH = this.serverEnvService.getBaseUrl();
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
     const USER_DATA = {
       email
     };
-    return this.http.post<any>(`${PATH}/account/forgot-password`, USER_DATA);
+    return this.http.post<any>(`${BASE_URL}/${API_VERSION}/account/forgot-password`, USER_DATA);
   }
 
   forgotPassword(email: string) {
@@ -117,12 +119,13 @@ export class AuthService {
   }
 
   postResetPassword(password: string, repeatedPassword: string): Observable<any> {
-    const PATH = this.serverEnvService.getBaseUrl();
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
     const USER_DATA = {
       password,
       repeatedPassword
     };
-    return this.http.post<any>(`${PATH}/account/reset-password`, USER_DATA);
+    return this.http.post<any>(`${BASE_URL}/${API_VERSION}/account/reset-password`, USER_DATA);
   }
 
   resetPassword(password: string, repeatPassword: string) {
@@ -133,12 +136,13 @@ export class AuthService {
   }
 
   postSetPassword(token: string, password: string): Observable<any> {
-    const PATH = this.serverEnvService.getBaseUrl();
+    const BASE_URL = this.serverEnvService.getBaseUrl();
+    const API_VERSION = 'v2';
     const USER_DATA = {
       token,
       password
     };
-    return this.http.post<any>(`${PATH}/account/set-password`, USER_DATA);
+    return this.http.post<any>(`${BASE_URL}/${API_VERSION}/account/set-password`, USER_DATA);
   }
 
   setPassword(token: string, password: string) {

@@ -36,11 +36,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (!environment.production) {
-      this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
-      // this.router.navigate(['/team-overview']);
-    };
-
     this.serverEnvService.initServerEnv();
     this.authorizationService.currentPlatform = this.breakpointObserver.isMatched('(min-width: 769px)') ? 'desktop' : 'mobile';
 
@@ -67,6 +62,12 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((isLoading: boolean) => {
         this.isLoading = isLoading;
       });
+
+    if (!environment.production) {
+      // this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
+      // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111'); // dev
+      // this.router.navigate(['/team-overview']);
+    };
   }
 
   ngOnDestroy(){

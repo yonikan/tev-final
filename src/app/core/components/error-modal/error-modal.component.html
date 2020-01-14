@@ -1,17 +1,22 @@
-<div class="">
-        <div class="dialog-header">
-            {{ data.title }}
-        </div>
-      
-        <div class="dialog-content">
-            <p class="mat-body-1">{{ data.message }}</p>
-        </div>
-      
-        <div class="dialog-footer">
-            <div mat-dialog-actions>
-                <button (click)="onCancel()" mat-raised-button>close</button>
-                <!-- <button [mat-dialog-close]="data.modalData" cdkFocusInitial mat-raised-button>OK</button> -->
-            </div>
+<div class="modal-container">
+    <div class="dialog-header">
+        <button mat-icon-button>
+            <i class="demo-icon icon-x" (click)="onCancel()">&#xe813;</i>
+        </button>
+        <h2>{{ data.title }}</h2>
+        <span></span>
+    </div>
+  
+    <div class="dialog-content">
+        <p class="mat-body-1">{{ data.message }}</p>
+    </div>
+  
+    <div class="dialog-footer">
+        <div mat-dialog-actions>
+            <button (click)="onCancel()" mat-raised-button>ok</button>
+            <!-- <button [mat-dialog-close]="data.modalData" cdkFocusInitial mat-raised-button>OK</button> -->
         </div>
     </div>
+</div>
+
     

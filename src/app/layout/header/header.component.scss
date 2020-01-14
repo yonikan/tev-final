@@ -140,3 +140,14 @@
     }
   }
 }
+
+
+::ng-deep .user-menu {
+  i {
+    margin-right: 10px !important;
+  }
+
+  span {
+    text-transform: capitalize !important;
+  }
+}

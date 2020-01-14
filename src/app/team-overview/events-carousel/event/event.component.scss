@@ -9,9 +9,9 @@
     color: var(--headerColor);
     margin-bottom: 20px;
     flex-direction: column;
-    height: 210px;
+    // height: 210px;
     min-height: 210px;
-    max-height: 210px;
+    // max-height: 210px;
     border-radius: 10px;
 
     .event-header-container {
@@ -39,6 +39,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 5px;
     
             &.validated-event-style {
               justify-content: flex-start;
@@ -53,7 +54,7 @@
               font-size: 24px;
               margin: 0;
               font-size: 19px;
-              margin-left: 7px;
+              // margin-left: 7px;
               font-weight: 300;
               text-transform: uppercase;
               white-space: nowrap;
@@ -74,6 +75,11 @@
             &.validated-event-style {
               text-align: left;
             }
+
+            .duration-time-ago {
+              text-transform: capitalize;
+              margin-right: 15px;
+            }
           }
         }
     
@@ -91,6 +97,11 @@
             color: #96a1ae;
             font-size: 12px;
             text-transform: capitalize;
+
+            div {
+              width: 33%;
+              text-align: center;
+            }
           }
   
           .info-content {
@@ -100,9 +111,24 @@
             color: #3d4762;
             font-size: 24px;
             font-weight: 600;
-  
-            .time-unit {
-              font-size: 12px;
+
+            div {
+              width: 33%;
+              text-align: center;
+            }
+
+            .duration-column {
+              .time-unit {
+                font-size: 12px;
+              }
+            }
+
+            .players-column {
+              margin-right: 40px;
+            }
+
+            .phases-count-column {
+
             }
           }
     
@@ -118,8 +144,12 @@
         }
     
         .event-content-confirm {
+          display: flex;
+          justify-content: center;
+
           .confirm-button {
             width: 100%;
+            max-width: 220px;
             margin-top: 20px;
             background-color: $color-green;
             border-radius: 20px;
@@ -130,11 +160,18 @@
   
         .event-content-buttons {
           display: flex;
-          justify-content: space-between;
+          flex-direction: column;
+          // justify-content: space-between;
           text-transform: capitalize;
           margin-top: 20px;
   
           .action-btn {
+            padding: 5px 15px;
+            min-width: 200px;
+            margin: 0 auto;
+            margin-bottom: 15px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
             font-size: 14px;
             white-space: nowrap;
             overflow: hidden;
@@ -148,5 +185,15 @@
         }
       }
     }
+  }
+}
+
+::ng-deep .event-card-menu  {
+  i {
+    margin-right: 10px !important;
+  }
+
+  span {
+    text-transform: capitalize !important;
   }
 }

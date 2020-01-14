@@ -1,8 +1,19 @@
-<div class="overview-content-events" *ngIf="teamEvents.length > 0">
+
+<mat-spinner *ngIf="!teamEvents"></mat-spinner>
+
+<div class="overview-content-events" *ngIf="teamEvents.length > 0 && teamEvents">
     <div class="events-container">
         <div class="events-into-text">
-            <h3>{{ 'team-overview.events-carousel.title' | translate:{'eventsNumber':teamEvents.length} }}</h3>
-            <p>{{ 'team-overview.events-carousel.sub-title' | translate }}</p>
+            <div class="text-section">
+                <!-- <h3>{{ 'team-overview.events-carousel.title' | translate:{'eventsNumber':teamEvents.length} }}</h3> -->
+                <h3>{{ teamEvents.length }} New sessions are ready</h3>
+                <p>{{ 'team-overview.events-carousel.sub-title' | translate }}</p>
+            </div>
+            <!-- <div class="notification-section">
+                <div class="notification-bubble">
+                    {{ teamEvents.length }} New sessions
+                </div>
+            </div> -->
         </div>
 
         <list-content-loader *ngIf="isTeamEventsLoading"></list-content-loader>

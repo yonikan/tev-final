@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
 import { fadeInRightAnimation } from '../../core/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../core/animations/fade-in-up.animation';
 import { AuthorizationService } from '../../core/services/authorization.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-auth',
@@ -27,6 +28,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
   isTranslationPickerFeatureEnabled = true;
   userEmailAddress = 'test@test.com'; // for the email sent comp
+  frontendVersion = '';
 
   constructor(
     private translationPickerService: TranslationPickerService,
@@ -35,6 +37,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute) {}
 
   ngOnInit() {
+    console.log('Front-end v.2.20.0.14');
     // this.isTranslationPickerFeatureEnabled = this.authorizationService.isFeatureEnabled('loginTranslationPicker') ? true : false;
 
     this.route.queryParams
