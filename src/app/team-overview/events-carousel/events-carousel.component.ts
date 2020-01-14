@@ -74,13 +74,13 @@ export class EventsCarouselComponent implements OnInit {
   }
 
   onConfirmSession(teamEvent) {
-    // console.log('teamEvent: ', teamEvent);
-    // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
-    // this.uiComponentsService.setIsLoading(true);
-    // setTimeout(() => { 
-    //   this.uiComponentsService.setIsLoading(false);
-    //   this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
-    //  }, 1000);
+    console.log('teamEvent: ', teamEvent);
+    const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
+    this.uiComponentsService.setIsLoading(true);
+    setTimeout(() => { 
+      this.uiComponentsService.setIsLoading(false);
+      this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
+     }, 1000);
   }
 
   onConvertSession(teamEvent) {
