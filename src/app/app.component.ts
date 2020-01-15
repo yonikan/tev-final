@@ -20,6 +20,11 @@ import { UiComponentsService } from './core/services/ui-components.service';
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
+
+  isSidepanelOpen = true;
+  private sidepanelOpenSub: Subscription;
+  sidepanelOpenTeamEventType: number;
+
   isLoading = false;
   private isLoadingSub: Subscription;
 
@@ -57,6 +62,13 @@ export class AppComponent implements OnInit, OnDestroy {
         this.isAuthenticated = authStatus;
       });
 
+    this.sidepanelOpenSub = this.uiComponentsService
+      .getSidepanelOpenListener()
+      .subscribe((sidepanelOpen: any) => {
+        this.isSidepanelOpen = sidepanelOpen.isOpen;
+        this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType
+      });
+
     this.isLoadingSub = this.uiComponentsService
       .getIsLoadingListener()
       .subscribe((isLoading: boolean) => {
@@ -64,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
       });
 
     if (!environment.production) {
-      // this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
+      this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
       // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111'); // dev
       // this.router.navigate(['/team-overview']);
     };
@@ -72,6 +84,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.authStatusSub.unsubscribe();
+    this.sidepanelOpenSub.unsubscribe();
     this.isLoadingSub.unsubscribe();
   }
 }

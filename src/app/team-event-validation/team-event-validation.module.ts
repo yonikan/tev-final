@@ -45,6 +45,22 @@ import { MatchOverviewComponent } from './match-validation/step-match-overview/m
     SharedModule,
     RouterModule.forChild(routes),
     HighchartsChartModule
+  ],
+  exports: [
+    MatchValidationComponent,
+    TrainingValidationComponent,
+    StepTrainingGeneralComponent,
+    StepTrainingPlayersComponent,
+    StepTrainingPhasesComponent,
+    StepMatchOverviewComponent,
+    StepMatchPlayersComponent,
+    StepMatchFormationsComponent,
+    StepMatchPhasesComponent,
+    StepMatchSubsComponent,
+    TagsComponent,
+    SpeedGraphComponent,
+    TrainingDurationComponent,
+    MatchOverviewComponent,
   ]
 })
 export class TeamEventValidationModule { }

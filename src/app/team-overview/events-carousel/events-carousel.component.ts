@@ -74,6 +74,10 @@ export class EventsCarouselComponent implements OnInit {
   }
 
   onConfirmSession(teamEvent) {
+    console.log('teamEvent: ', teamEvent);
+    this.uiComponentsService.setIsSidepanelOpen({isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId});
+
+
     // console.log('teamEvent: ', teamEvent);
     // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
     // this.uiComponentsService.setIsLoading(true);

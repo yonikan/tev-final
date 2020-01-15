@@ -132,18 +132,19 @@
 
 // Team Event Validation ==========================================================
 @mixin team-event-container() {
-  width: 800px;
+  // width: 800px;
   background-color: #ffffff;
-  padding: 25px;
-  margin: 15px;
+  padding: 20px;
+  // margin: 15px;
   border-radius: 10px;
   border-left: 4px solid #35083a;
   box-shadow: -4.9px 7.5px 50px 0 rgba(53, 61, 86, 0.1);
+  height: 100%;
 
   @media (max-width: $media-query-sm) {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 5px;
+    // width: 90%;
+    // margin: 0 auto;
+    // margin-top: 5px;
   }
 }
 
