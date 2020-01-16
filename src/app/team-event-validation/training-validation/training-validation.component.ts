@@ -16,6 +16,7 @@ export class TrainingValidationComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
+    this.teamEventValidationService.testApi(49609);
     const trainingData = this.teamEventValidationService.getTrainingData();
     this.step1Data = trainingData.step1GeneralData;
     this.step2Data = trainingData.step2PlayersData;

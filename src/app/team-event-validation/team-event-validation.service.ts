@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TrainingValidation, MatchValidation } from './team-event-validation.model';
+import { HttpClient } from '@angular/common/http';
+import { ServerEnvService } from '../core/services/server-env.service';
 
 @Injectable({
   providedIn: 'root'
@@ -106,7 +108,10 @@ export class TeamEventValidationService {
     }
   };
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private serverEnvService: ServerEnvService
+  ) { }
 
   getTrainingData(): any {
     return this.trainingData;
@@ -122,5 +127,18 @@ export class TeamEventValidationService {
 
   validateMatch() {
     console.log('matchDataOutput: ', this.matchDataOutput);
+  }
+
+  testApi(trainingId) {
+    const PATH = this.serverEnvService.getBaseUrl();
+    this.http.get<any>(`${PATH}/v3/training/${trainingId}`)
+      .subscribe(
+        (response: any) => {
+          console.log('response: ', response);
+        },
+        (error) => {
+          console.log('error: ', error);
+        }
+      );
   }
 }

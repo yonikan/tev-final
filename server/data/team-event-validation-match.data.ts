@@ -28,7 +28,7 @@ export const TEAM_EVENT_VALIDATION_MATCH_DATA: any = {
                              lastName: 'cohen',
                              defaultPositionId: 3,
                              activeTime: [
-                                     { startTime: 1576147936000, endTime: 1576156936000 ,  errorId: '12'} 
+                                     { startTime: 1576147936000, endTime: 1576156936000 , timeFrameType: 'active'} 
                              ],
                              isParticipated: true
                      }
