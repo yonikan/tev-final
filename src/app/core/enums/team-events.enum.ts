@@ -1,7 +1,8 @@
-export enum teamEvents {
+export enum TeamEvents {
     Undefined = 0,
 	Training,
     Match,
     Drill,
-    TrainingPhase
+    TrainingPhase,
+    Phase
 }

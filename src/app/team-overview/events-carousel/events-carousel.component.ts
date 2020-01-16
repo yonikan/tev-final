@@ -11,7 +11,7 @@ import { of } from 'rxjs';
 import { UiComponentsService } from '../../core/services/ui-components.service';
 import { Router } from '@angular/router';
 import { enumToString } from '../../core/helpers/helper-functions';
-import { teamEvents } from '../../core/enums/team-events.enum';
+import { TeamEvents } from '../../core/enums/team-events.enum';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -88,7 +88,7 @@ export class EventsCarouselComponent implements OnInit {
   }
 
   onConvertSession(teamEvent) {
-    const teamEventEnumString = enumToString(teamEvents, teamEvent.teamEventType);
+    const teamEventEnumString = enumToString(TeamEvents, teamEvent.teamEventType);
     const modalTitle = `Convert ${teamEventEnumString}`;
     const modalMessage = `Are you sure you want to convert the ${teamEventEnumString}?`;
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
