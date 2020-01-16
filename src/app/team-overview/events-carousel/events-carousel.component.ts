@@ -74,7 +74,7 @@ export class EventsCarouselComponent implements OnInit {
   }
 
   onConfirmSession(teamEvent) {
-    console.log('teamEvent: ', teamEvent);
+    // console.log('teamEvent: ', teamEvent);
     this.uiComponentsService.setIsSidepanelOpen({isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId});
 
 

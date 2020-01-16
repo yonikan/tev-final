@@ -134,10 +134,10 @@ export class TeamEventValidationService {
     this.http.get<any>(`${PATH}/v3/training/${trainingId}`)
       .subscribe(
         (response: any) => {
-          console.log('response: ', response);
+          // console.log('response: ', response);
         },
         (error) => {
-          console.log('error: ', error);
+          // console.log('error: ', error);
         }
       );
   }

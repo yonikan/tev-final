@@ -27,6 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   isLoading = false;
   private isLoadingSub: Subscription;
+  teamEventId: number;
 
   constructor( 
     public authService: AuthService, 
@@ -65,6 +66,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sidepanelOpenSub = this.uiComponentsService
       .getSidepanelOpenListener()
       .subscribe((sidepanelOpen: any) => {
+        // console.log('sidepanelOpen: ', sidepanelOpen);
+        this.teamEventId = sidepanelOpen.teamEventId;
         this.isSidepanelOpen = sidepanelOpen.isOpen;
         this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType
       });

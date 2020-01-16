@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { TeamEventValidationService } from '../team-event-validation.service';
 
 @Component({
@@ -6,7 +6,8 @@ import { TeamEventValidationService } from '../team-event-validation.service';
   templateUrl: './match-validation.component.html',
   styleUrls: ['./match-validation.component.scss']
 })
-export class MatchValidationComponent implements OnInit {
+export class MatchValidationComponent implements OnInit, OnChanges {
+  @Input() matchId: number;
   step1Data: any;
   step2Data: any;
   step3Data: any;
@@ -18,6 +19,7 @@ export class MatchValidationComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
+    console.log(this.matchId);
     const matchData = this.teamEventValidationService.getMatchData();
     this.step1Data = matchData.step1OverviewData;
     this.step2Data = matchData.step2PlayersData;
@@ -26,6 +28,10 @@ export class MatchValidationComponent implements OnInit {
     this.step5Data = matchData.step5SubsData;
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log('changes: ', changes);
+  }
+  
   onStepSelectionEmitter(stepNumber) {
     this.currentSelectedStep = stepNumber;
   }
