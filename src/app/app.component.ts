@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
 
-  isSidepanelOpen = true;
+  isSidepanelOpen = false;
   private sidepanelOpenSub: Subscription;
   sidepanelOpenTeamEventType: number;
 

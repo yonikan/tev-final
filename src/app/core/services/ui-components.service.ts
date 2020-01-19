@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,8 @@ export class UiComponentsService {
   private isLoading = false;
   private isLoadingListener = new BehaviorSubject<boolean>(false);
   private sidepanelOpen = {isOpen: false, teamEventType: 1, teamEventId: 333};
-  private sidepanelOpenListener = new BehaviorSubject<any>({isOpen: false, teamEventType: 1, teamEventId: 333});
+  private sidepanelOpenListener = new Subject<any>();
+  // private sidepanelOpenListener = new BehaviorSubject<any>({isOpen: false, teamEventType: 1, teamEventId: null});
 
   constructor(private snackbar: MatSnackBar, private bottomSheet: MatBottomSheet) {}
 

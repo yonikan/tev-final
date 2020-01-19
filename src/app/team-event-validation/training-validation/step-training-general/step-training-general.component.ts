@@ -15,11 +15,11 @@ export class StepTrainingGeneralComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-
+    console.log('stepTrainingGeneralData: ', this.stepTrainingGeneralData);
   }
 
   nextStep() {
-    this.teamEventValidationService.trainingDataOutput.step1GeneralData = 'test-output';
+    this.teamEventValidationService.trainingDataOutput.step1GeneralData = this.stepTrainingGeneralData;
     this.stepSelectionEmitter.emit(1);
   }
 

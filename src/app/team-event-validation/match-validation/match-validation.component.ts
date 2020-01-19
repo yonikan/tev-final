@@ -20,12 +20,21 @@ export class MatchValidationComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     console.log(this.matchId);
-    const matchData = this.teamEventValidationService.getMatchData();
-    this.step1Data = matchData.step1OverviewData;
-    this.step2Data = matchData.step2PlayersData;
-    this.step3Data = matchData.step3FormationsData;
-    this.step4Data = matchData.step4PhasesData;
-    this.step5Data = matchData.step5SubsData;
+    this.teamEventValidationService.getMatchData(this.matchId)
+    .subscribe(
+      (response: any) => {
+        console.log('response: ', response);
+      },
+      (error) => {
+        console.log('error: ', error);
+      }
+    );
+    // const matchData = this.teamEventValidationService.getMatchData();
+    // this.step1Data = matchData.step1OverviewData;
+    // this.step2Data = matchData.step2PlayersData;
+    // this.step3Data = matchData.step3FormationsData;
+    // this.step4Data = matchData.step4PhasesData;
+    // this.step5Data = matchData.step5SubsData;
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TeamEventValidationService } from '../team-event-validation.service';
 
 @Component({
@@ -6,35 +6,37 @@ import { TeamEventValidationService } from '../team-event-validation.service';
   templateUrl: './training-validation.component.html',
   styleUrls: ['./training-validation.component.scss']
 })
-export class TrainingValidationComponent implements OnInit, OnChanges {
+export class TrainingValidationComponent implements OnInit {
   @Input() trainingId: number;
+  isLoading = true;
+  currentSelectedStep = 0;
   step1Data: any;
   step2Data: any;
   step3Data: any;
-  trainingValidationPayload: any;
-  currentSelectedStep = 0;
 
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    console.log(this.trainingId);
-    this.teamEventValidationService.testApi(49609);
-    const trainingData = this.teamEventValidationService.getTrainingData();
-    this.step1Data = trainingData.step1GeneralData;
-    this.step2Data = trainingData.step2PlayersData;
-    this.step3Data = trainingData.step3PhasesData;
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    // console.log('changes: ', changes);
+    // console.log(this.trainingId);
+    this.teamEventValidationService.getTrainingData(this.trainingId)
+      .subscribe(
+        (trainingResp: any) => {
+          this.isLoading = false;
+          this.step1Data = trainingResp.metadata;
+          this.step2Data = trainingResp.participatingPlayers;
+          this.step3Data = trainingResp.phases;
+        },
+        (error) => {
+          console.log('error: ', error);
+        }
+      );
   }
   
   onStepSelectionEmitter(stepNumber) {
+    // console.log('stepNumber: ', stepNumber);
     this.currentSelectedStep = stepNumber;
-  }
-  
-  onValidateTraining(trainingPayload) {
-    console.log('trainingPayload: ', trainingPayload);
-    this.teamEventValidationService.validateTraining();
+    if(stepNumber === 3) {
+      this.teamEventValidationService.validateTraining(this.trainingId);
+    }
   }
 }

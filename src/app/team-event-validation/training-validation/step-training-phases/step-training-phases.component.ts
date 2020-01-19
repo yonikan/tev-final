@@ -14,12 +14,17 @@ export class StepTrainingPhasesComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-
+    console.log('stepTrainingPhasesData: ', this.stepTrainingPhasesData);
   }
 
-  validateTraining() {
-    this.teamEventValidationService.trainingDataOutput.step3PhasesData = 'test-output';
-    this.teamEventValidationService.validateTraining();
+  // validateTraining() {
+  //   this.teamEventValidationService.trainingDataOutput.step3PhasesData = this.stepTrainingPhasesData;
+  //   this.teamEventValidationService.validateTraining();
+  // }
+
+  nextStep() {
+    this.teamEventValidationService.trainingDataOutput.step3PhasesData = this.stepTrainingPhasesData;
+    this.stepSelectionEmitter.emit(3);
   }
 
   backStep() {
