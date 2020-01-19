@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ServerEnvService } from '../core/services/server-env.service';
-import { UiComponentsService } from '../core/services/ui-components.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,6 @@ export class TeamEventValidationService {
 
   constructor(
     private http: HttpClient,
-    private uiComponentsService: UiComponentsService,
     private serverEnvService: ServerEnvService
   ) { }
 
@@ -29,16 +27,7 @@ export class TeamEventValidationService {
     console.log('trainingDataOutput: ', this.trainingDataOutput);
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
-    this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD)
-      .subscribe(
-        (trainingResp: any) => {
-          this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
-        },
-        (error) => {
-          console.log('error: ', error);
-          this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
-        }
-      );
+    return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
   }
 
   getMatchData(matchId): any {
