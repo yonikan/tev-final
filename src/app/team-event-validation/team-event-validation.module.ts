@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { routes } from './team-event-validation.routes';
+// import { routes } from './team-event-validation.routes';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { MatchValidationComponent } from './match-validation/match-validation.component';
@@ -43,7 +43,7 @@ import { MatchOverviewComponent } from './match-validation/step-match-overview/m
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes),
+    // RouterModule.forChild(routes),
     HighchartsChartModule
   ],
   exports: [

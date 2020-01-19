@@ -9,6 +9,7 @@ import { TeamEventValidationService } from '../../team-event-validation.service'
 export class StepTrainingPhasesComponent implements OnInit {
   @Input() stepTrainingPhasesData: any;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
+  isNextBtnDisabled = false;
   trainingPhases;
   
   constructor(private teamEventValidationService: TeamEventValidationService) { }
