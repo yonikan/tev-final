@@ -13,12 +13,12 @@ export class StepMatchSubsComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-
+    console.log('stepMatchSubsData: ', this.stepMatchSubsData);
   }
   
   validateMatch(data) {
-    // this.teamEventValidationService.matchDataOutput.step5SubsData = 'test-output';
-    this.teamEventValidationService.validateMatch();
+    this.teamEventValidationService.matchDataOutput.step5SubsData = this.stepMatchSubsData;
+    this.stepSelectionEmitter.emit(5);
   }
 
   backStep() {

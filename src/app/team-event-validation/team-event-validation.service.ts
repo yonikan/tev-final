@@ -11,7 +11,13 @@ export class TeamEventValidationService {
     step2PlayersData: null,
     step3PhasesData: null
   };
-  matchDataOutput;
+  matchDataOutput = {
+    step1OverviewData: null,
+    step2PlayersData: null,
+    step3FormationsData: null,
+    step4PhasesData: null,
+    step5SubsData: null
+  };
 
   constructor(
     private http: HttpClient,
@@ -36,7 +42,10 @@ export class TeamEventValidationService {
     return this.http.get<any>(`${PATH}/v3/match/${matchId}`);
   }
 
-  validateMatch() {
+  validateMatch(matchId) {
     console.log('matchDataOutput: ', this.matchDataOutput);
+    const PATH = this.serverEnvService.getBaseUrl();
+    const PAYLOAD = null;
+    return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
   }
 }

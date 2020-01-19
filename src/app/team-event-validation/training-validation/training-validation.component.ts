@@ -21,7 +21,7 @@ export class TrainingValidationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.trainingId);
+    console.log(this.trainingId);
     this.teamEventValidationService.getTrainingData(this.trainingId)
       .subscribe(
         (trainingResp: any) => {

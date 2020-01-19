@@ -3,7 +3,7 @@
     <app-mobilenav (closeSidenav)="sidenav.close()"></app-mobilenav>
   </mat-sidenav>
 
-  <mat-sidenav #sidepanel mode="over" position="end" [opened]="isSidepanelOpen" (closed)="isSidepanelOpen = false" class="sidepanel">
+  <mat-sidenav #sidepanel mode="over" position="end" [opened]="isSidepanelOpen" (closed)="sidePanelCloased()" class="sidepanel">
     <app-training-validation *ngIf="sidepanelOpenTeamEventType === 1" [trainingId]="teamEventId"></app-training-validation>
     <app-match-validation *ngIf="sidepanelOpenTeamEventType === 2" [matchId]="teamEventId"></app-match-validation>
   </mat-sidenav>

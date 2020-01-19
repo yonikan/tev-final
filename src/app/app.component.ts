@@ -66,10 +66,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sidepanelOpenSub = this.uiComponentsService
       .getSidepanelOpenListener()
       .subscribe((sidepanelOpen: any) => {
-        // console.log('sidepanelOpen: ', sidepanelOpen);
         this.teamEventId = sidepanelOpen.teamEventId;
         this.isSidepanelOpen = sidepanelOpen.isOpen;
-        this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType
+        this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType;
       });
 
     this.isLoadingSub = this.uiComponentsService
@@ -83,6 +82,11 @@ export class AppComponent implements OnInit, OnDestroy {
       // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111'); // dev
       // this.router.navigate(['/team-overview']);
     };
+  }
+
+  sidePanelCloased() {
+    this.sidepanelOpenTeamEventType = 0; // needs 0 to reset the ngIf
+    this.isSidepanelOpen = false;
   }
 
   ngOnDestroy(){
