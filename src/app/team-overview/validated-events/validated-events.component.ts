@@ -57,6 +57,8 @@ export class ValidatedEventsComponent implements OnInit {
 
   onEditSession(teamEvent) {
     console.log('teamEvent: ', teamEvent);
+    this.uiComponentsService.setIsSidepanelOpen({isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId});
+
     // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
     // this.uiComponentsService.setIsLoading(true);
     // setTimeout(() => { 
