@@ -8,7 +8,7 @@
   <mat-form-field class="example-chip-list" appearance="outline">
           <mat-chip-list #chipList aria-label="Fruit selection">
             <mat-chip *ngFor="let teamEventTag of teamEventTags" [selectable]="selectable" [removable]="removable" (removed)="remove(teamEventTag)">
-              {{teamEventTag.name}} <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              {{capitalizeString(teamEventTag.name)}} <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
             <input placeholder="Enter Tags..."
                    [matChipInputFor]="chipList"

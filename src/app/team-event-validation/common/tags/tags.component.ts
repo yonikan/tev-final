@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { capitalizeString } from '../../../core/helpers/helper-functions'
 
 @Component({
   selector: 'app-tags',
@@ -34,16 +35,16 @@ export class TagsComponent implements OnInit {
   ];
   filteredTags: Observable<string[]>;
 
+  capitalizeString = capitalizeString;
+
   constructor() {
   }
 
   ngOnInit() {
-    console.log(this.stepMatchOverviewData.tags);
     this.filteredTags = this.tagCtrl.valueChanges
     .pipe(
       startWith(null),
       map((tag: string | null) => {
-        console.log(tag ? this._filter(tag) : this.stepMatchOverviewData.tags.slice());
         return tag ? this._filter(tag) : this.stepMatchOverviewData.tags.slice();
       }));
   }

@@ -67,6 +67,11 @@ export class TechnicalModalComponent implements OnInit {
     if (this.selectedDrill !== event.value) {
       this.selectedDrill = event.value;
       this.lineupTitle = null;
+      for (const team in this.selectedLineup) {
+        if (this.selectedLineup.hasOwnProperty(team)) {
+          this.selectedLineup[team] = [];
+        }
+      }
     }
     console.log(event);
   }
