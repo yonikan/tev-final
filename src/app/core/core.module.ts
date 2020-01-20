@@ -18,7 +18,7 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     MenuComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
   ],
   imports: [
     CommonModule,
@@ -39,7 +39,7 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     FadeInUpStaggerElementDirective,
     ThemePickerComponent,
     MenuComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
   ]
 })
 export class CoreModule { }

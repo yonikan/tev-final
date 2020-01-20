@@ -14,33 +14,47 @@
   <substitutions-row
     *ngFor="let substitution of substitutions; let even = even; let idx = index;"
     [substitution]="substitution"
+    [participationgPlayers]="participationgPlayers"
+    [linup]="linup"
+    [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
     [rowStyle]="{ background: even ? '#ffffff' : '#e8e8e838' }"
-    (removeRow)="removeRow($event, idx)"
-    (editRow)="editRow($event, idx)"
+    (removeRow)="removeRow($event.substitution, idx, $event.rowMode)"
+    (editRow)="editRow($event.substitution, idx, $event.rowMode)"
+    (addRow)="addRow($event.substitution)"
     ></substitutions-row>
 
     <!-- add new row -->
-    <substitutions-row 
-    [rowMode]="'EDIT'"
+    <substitutions-row
+    [rowMode]="'NEW'"
+    [participationgPlayers]="participationgPlayers"
     [substitution]="emptySubstitution"
+    [linup]="linup"
+    [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
-    (editRow)="editRow($event, idx)">
+    (editRow)="editRow($event.substitution, $event.rowMode)"
+    (addRow)="addRow($event.substitution)">
     </substitutions-row>
     <!----------------->
-    
-    <div style="margin: 50px 0;">  
+
+    <div style="margin: 50px 0;">
       Suggested Subs
     </div>
 
     <substitutions-row
     [rowMode]="'SUGGESTED'"
-    *ngFor="let substitution of substitutions; let even = even; let idx = index;"
+    [participationgPlayers]="participationgPlayers"
+    *ngFor="let substitution of suggestedSubs; let even = even; let idx = index;"
     [substitution]="substitution"
+    [linup]="linup"
+    [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
-    (removeRow)="removeRow($event, idx)"
-    (editRow)="editRow($event, idx)"
-    ></substitutions-row> 
+    (removeRow)="removeRow($event.substitution, idx, $event.rowMode)"
+    (editRow)="editRow($event.substitution, idx, $event.rowMode)"
+    (addRow)="addRow($event.substitution)"
+    ></substitutions-row>
 
-
+    <div class="no-subs-container" *ngIf="!suggestedSubs?.length">
+      No Suggested subs for Display.
+    </div>
 </div>

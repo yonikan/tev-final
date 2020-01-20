@@ -13,7 +13,7 @@ export class StepMatchPhasesComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-
+    console.log('stepMatchPhasesData: ', this.stepMatchPhasesData);
   }
 
   nextStep() {

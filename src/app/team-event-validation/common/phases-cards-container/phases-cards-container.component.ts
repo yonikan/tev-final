@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
@@ -8,7 +8,8 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 })
 export class PhasesCardsContainerComponent implements OnInit {
 
-  cards = [];
+  @Input() cards = [];
+
   index = 0;
 
   config: SwiperConfigInterface = {
@@ -35,42 +36,26 @@ export class PhasesCardsContainerComponent implements OnInit {
   };
 
   constructor() {
-    this.setCards();
-   }
+  }
 
   ngOnInit() {
+    if (!this.cards.length) {
+      this.addEmptyCard();
+    }
   }
 
 
-  setCards() {
+  addEmptyCard() {
     this.cards = [
       {
-        id: '1111',
-        type: 'physical',
-        name: '1st Half',
-        startTime: '08:00',
-        endTime: '09:00',
-        offset: '<float>',
-        numberOfSubs: '3'
+        id: '',
+        type: '',
+        name: '',
+        startTime: '',
+        endTime: '',
+        offset: '',
+        numberOfSubs: ''
       },
-      {
-        id: '1111',
-        type: 'physical',
-        name: '1st Half',
-        startTime: '08:00',
-        endTime: '09:00',
-        offset: '<float>',
-        numberOfSubs: '3'
-      },
-      {
-        id: '1111',
-        type: 'physical',
-        name: '1st Half',
-        startTime: '08:00',
-        endTime: '09:00',
-        offset: '<float>',
-        numberOfSubs: null
-      }
     ]
   }
 

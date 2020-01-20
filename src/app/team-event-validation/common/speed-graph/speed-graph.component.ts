@@ -9,7 +9,7 @@ import * as moment from 'moment-timezone'
   styleUrls: ['./speed-graph.component.scss']
 })
 export class SpeedGraphComponent implements OnInit, OnChanges {
-  @Input() timeDuration: any; 
+  @Input() timeDuration: any;
   Highcharts: typeof Highcharts = Highcharts; // required
   chartConstructor = 'chart'; // optional string, defaults to 'chart'
   updateFlag = true; // optional boolean
@@ -17,7 +17,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
   runOutsideAngular = false; // optional boolean, defaults to false
   chartOptions: any = {
     chart: {
-      type: 'area',
+      type: 'areaspline',
       style: {
         fontFamily: 'Montserrat'
       },
@@ -40,7 +40,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
           width: 3,
           zIndex: 3,
           dashStyle: 'ShortDot',
-          label: { 
+          label: {
             text: 'start',
           }
         },
@@ -50,7 +50,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
           width: 3,
           zIndex: 3,
           dashStyle: 'ShortDot',
-          label: { 
+          label: {
             text: 'end',
           }
         },
@@ -72,7 +72,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
           color: '#e7e7e7',
           from: 13.05,
           to: 13.25,
-          label: { 
+          label: {
             text: 'phase 1',
           }
         },
@@ -134,6 +134,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
+    console.error(this.timeDuration)
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -151,7 +152,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
       this.updateData(startedAtUtcToDate, endedAtUtcToDate);
     }
   }
-  
+
   updateData(startTime, endTime) {
     this.chartOptions.xAxis.plotLines =  [
       {

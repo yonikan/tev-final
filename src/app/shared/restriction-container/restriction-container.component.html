@@ -1,0 +1,10 @@
+<div class="restriction-container">
+  <ng-content select="[content]"></ng-content>
+  <div class="errorMassage" *ngIf="showError">    
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13">
+      <path fill="#C07E7E" fill-rule="evenodd" d="M15 13H2c-1.326 0-1.121-.899-.776-1.558L7.17 1.33c.43-.595 2.3-.577 2.642 0l5.946 10.112c.381.604.586 1.558-.758 1.558zM9 2H8L2 12c1.001.015 13 0 13 0L9 2zm0 3.802v2.364c0 1.079-1 1.079-1 0V5.802c0-1.098 1-1.098 1 0zM9 11H8v-1h1v1z"/>
+    </svg>
+
+    {{errorMassage}}
+  </div>
+</div>

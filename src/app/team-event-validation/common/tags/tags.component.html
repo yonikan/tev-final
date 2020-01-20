@@ -6,7 +6,7 @@
     </p>
   </div>
   <mat-form-field class="example-chip-list" appearance="outline">
-          <mat-chip-list #chipList>
+          <mat-chip-list #chipList aria-label="Fruit selection">
             <mat-chip *ngFor="let teamEventTag of teamEventTags" [selectable]="selectable" [removable]="removable" (removed)="remove(teamEventTag)">
               {{teamEventTag.name}} <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
@@ -14,9 +14,18 @@
                    [matChipInputFor]="chipList"
                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                    [matChipInputAddOnBlur]="addOnBlur"
-                   (matChipInputTokenEnd)="add($event)">
+                   (matChipInputTokenEnd)="add($event)"
+                   [matAutocomplete]="auto"
+                   [formControl]="tagCtrl"
+                   #tagInput
+                   >
           </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+              {{tag}}
+            </mat-option>
+          </mat-autocomplete>
   </mat-form-field>
-  
+
   <button mat-raised-button (click)="sendToTeamEvent(teamEventTags)">submit tags</button>
 </div>

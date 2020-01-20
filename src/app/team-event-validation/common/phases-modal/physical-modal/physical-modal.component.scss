@@ -1,0 +1,23 @@
+.physical-modal {
+
+  .row {
+    display: flex;
+    align-items: center;
+    // flex-wrap: wrap;
+    font-weight: 500;
+    color: #8994a3;
+    margin-bottom: 60px;
+
+    .row-title {
+      font-size: 16px;
+      margin-right: 50px;
+    }
+
+    .row-content {
+      font-size: 14px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+}

@@ -20,7 +20,7 @@ export class MatchValidationComponent implements OnInit {
   ngOnInit() {
     this.teamEventValidationService.getMatchDataNewModel()
       .subscribe((teamEventValidationData: any) => { 
-        // console.log('teamEventValidationData: ', teamEventValidationData);
+        console.log('teamEventValidationData: ', teamEventValidationData);
         this.step1Data = teamEventValidationData.metadata;
         this.step2Data = teamEventValidationData.participatingPlayers;
         this.step3Data = teamEventValidationData.formation;

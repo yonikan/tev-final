@@ -1,0 +1,23 @@
+@import '../../../../styles/variables';
+
+:host {
+  border-radius: 10px;
+  text-align: center;
+
+  .dialog-header {
+    border-bottom: 1px solid #000;
+    padding: 12px 0;
+    color: #fff;
+    background-color: $color-purple;
+  }
+
+  .dialog-content {
+
+  }
+
+  .dialog-footer {
+    button {
+      margin: 0 auto;
+    }
+  }
+}

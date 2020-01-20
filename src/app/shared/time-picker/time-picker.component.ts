@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { ThrowStmt } from '@angular/compiler';
 
 @Component({
@@ -12,11 +12,12 @@ export class TimePickerComponent implements OnInit {
 
   @Input() seconds = 0;
   @Input() minutes = 0;
+  @Input() range;
   @Input() difference = '1 seconds';
 
-  @Output() timeChanged;
+  @Output() timeChanged = new EventEmitter();
 
-  // @ViewChild('input') input: ElementRef;
+  @ViewChild('input', { static: false }) input: ElementRef;
 
   constructor() { }
 
@@ -30,37 +31,38 @@ export class TimePickerComponent implements OnInit {
     const secondsForDisplay = this.seconds < 10 ? zero + this.seconds : this.seconds;
     const minutesForDisplay = this.minutes < 10 ? zero + this.minutes : this.minutes;
     this.timeForDisplay = `${minutesForDisplay} : ${secondsForDisplay}`;
-    // this.input.nativeElement.value = this.timeForDisplay;
+    if (this.input) { this.input.nativeElement.value = this.timeForDisplay };
+    this.emitTime();
   }
 
   useDifference(actionType) {
-    if (!this.minutes && !this.seconds && actionType === 'minus') { return };
+    if (!this.minutes && !this.seconds && actionType === 'MINUS') { return };
 
     let time = +this.difference.split(' ')[0];
     let timeUnit = this.difference.split(' ')[1];
 
     switch (actionType) {
-      case 'plus':
+      case 'PLUS':
         if (timeUnit === 'seconds' && this.seconds === 59) { this.minutes++; this.seconds = 0; }
         else { this[timeUnit] = this[timeUnit] + time; }
         break;
 
-      case 'minus':
-          if (timeUnit === 'seconds' && this.seconds === 0) { this.minutes--; this.seconds = 59; }
-          else { this[timeUnit] = this[timeUnit] - time; }
+      case 'MINUS':
+        if (timeUnit === 'seconds' && this.seconds === 0) { this.minutes--; this.seconds = 59; }
+        else { this[timeUnit] = this[timeUnit] - time; }
         break;
     }
 
     this.setTimeForDisplay();
   }
 
-  handleUserInput(event) { // TODO: handle string inputs
-    let userInput = event.target.value.split(':');
+  handleUserInput(event) {
+    const userInput = event.target.value.split(':');
 
     if (userInput.length === 2) {
       if (Number.isInteger(+userInput[0]) && Number.isInteger(+userInput[1])) {
-        this.minutes = +userInput[0];
-        this.seconds = +userInput[1];
+        this.minutes = +userInput[0] < 60 ? +userInput[0] : this.minutes;
+        this.seconds = +userInput[1] < 60 ? +userInput[1] : this.seconds;
       }
     }
     this.setTimeForDisplay();
@@ -68,9 +70,15 @@ export class TimePickerComponent implements OnInit {
     // console.log(typeof +userInput[0]);
   }
 
+  isInRange(time) {
+    time = time.split(':');
+    const range = this.range.split(':');
+    return ((time[0] < range[0]) || (time[0] === range[0] && time[1] <= range[1]));
+  }
+
   emitTime() {
     this.timeChanged.emit({
-      seconds : this.seconds,
+      seconds: this.seconds,
       minutes: this.minutes,
       timeString: this.timeForDisplay
     })

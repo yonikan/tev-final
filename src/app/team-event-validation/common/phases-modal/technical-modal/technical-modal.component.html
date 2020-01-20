@@ -1,0 +1,128 @@
+<div class="physical-modal">
+  <!--------------------- new-row ------------------------>
+  <div class="row">
+    <div class="row-title">Subject</div>
+    <div class="row-content">Text</div>
+  </div>
+  <!------------------------------------------------------>
+
+  <!--------------------- new-row ------------------------>
+  <div class="row">
+    <div class="row-title">Drill Type</div>
+    <div class="row-content">
+      <mat-radio-group aria-labelledby="radio-group-label" class="radio-group">
+        <!-- [(ngModel)]="selectedPhasesOption" -->
+        <mat-radio-button
+          *ngFor="let drill of drillTypes; let first = first; let last = last"
+          [value]="drill"
+          [ngStyle]="{ 'margin-right': last ? '0' : '10px' }"
+          (change)="onDrillSelect($event)"
+          [checked]="first"
+        >
+          <mat-icon>{{ drill.icon }}</mat-icon>
+          {{ drill.name }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <!------------------------------------------------------>
+
+  <!--------------------- new-row ------------------------>
+  <div class="row">
+    <div class="row-title">Line Up</div>
+    <div class="row-content">
+      <pm-content-dropdown>
+        <div dropdown-button>
+          {{lineupTitle || 'Select'}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8">
+            <defs>
+              <filter id="a">
+                <feFlood
+                  flood-color="#35083A"
+                  flood-opacity="1"
+                  result="floodOut"
+                />
+                <feComposite
+                  in="floodOut"
+                  in2="SourceGraphic"
+                  operator="atop"
+                  result="compOut"
+                />
+                <feBlend in="compOut" in2="SourceGraphic" />
+              </filter>
+            </defs>
+            <path
+              fill="#35083A"
+              fill-rule="evenodd"
+              d="M.316 1.862l.003-.002A1.063 1.063 0 0 1 0 1.111C0 .498.538 0 1.2 0c.35 0 .663.141.881.362L2.085.36 7 5.244 11.916.36l.003.002C12.138.141 12.45 0 12.8 0c.663 0 1.2.498 1.2 1.111 0 .289-.122.551-.318.749l.003.002-5.8 5.778A1.25 1.25 0 0 1 7 8c-.337 0-.657-.131-.884-.36l-5.8-5.778z"
+              filter="url(#a)"
+            />
+          </svg>
+        </div>
+        <span dropdown-title>{{selectedDrill.enum === 'OPPOSEED_LINEUP'? 'Create Line - Ups':'Select Player'}}</span>
+        <div class="dropdown-content" dropdown-content>
+          <span class="select-all-btn" (click)="selectAllLineups()" *ngIf="selectedDrill.enum === 'OPPOESED'">Select All</span>
+          <span class="opposeed-lineup-table-titles" *ngIf="selectedDrill.enum === 'OPPOSEED_LINEUP'">
+            <div>Name</div>
+
+            <div class="opposeed-lineup-counters">
+              <div>A({{selectedLineup[1].length}})</div>
+              <div>N({{selectedLineup[2].length}})</div>
+              <div>B({{selectedLineup[3].length}})</div>
+            </div>
+          </span>
+
+          <div class="lineup-dropdown-body" *ngIf="selectedDrill.enum === 'OPPOESED'">
+            <lineup-dropdown-row
+              *ngFor="let player of lineup; let first = first"
+              [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
+              [player]="player"
+              [rowMode]="selectedDrill.enum"
+              (lineupRowClicked)="onLineupRowClicked($event)"
+              [phase]="phase">
+            </lineup-dropdown-row>
+          </div>
+
+            <div class="lineup-dropdown-body" *ngIf="selectedDrill.enum === 'OPPOSEED_LINEUP'">
+              <div class="position-player" *ngFor="let key of Object.keys(getPositionsLineupObj())">
+                <div class="lineup-inner-title">{{key}}</div>
+                <lineup-dropdown-row
+                *ngFor="let player of getPositionsLineupObj()[key]; let first = first"
+                [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
+                [player]="player"
+                [rowMode]="selectedDrill.enum"
+                (lineupRowClicked)="onLineupRowClicked($event)"
+                ></lineup-dropdown-row>
+              </div>
+            </div>
+
+        </div>
+      </pm-content-dropdown>
+    </div>
+  </div>
+  <!------------------------------------------------------>
+
+  <!--------------------- new-row ------------------------>
+  <div class="row" *ngIf="!selectedDrill?.name?.includes('Unopposed')">
+    <div class="row-title">Pitch Size</div>
+    <div class="row-content">
+      <!-- <mat-radio-group> -->
+      <pitch-size-option
+        *ngFor="let pitchSizeOption of pitchSizeOptions; let first = first"
+        [option]="pitchSizeOption"
+        [mode]="pitchSizeOption.type"
+        [checked]="first"
+        [ngStyle]="{ 'margin-left': !first ? '20px' : '0' }"
+        (optionClicked)="onPitchSizeSelect($event)"
+      >
+      </pitch-size-option>
+
+      <pitch-size-option [mode]="'CUSTOM'"
+                         (optionClicked)="onPitchSizeSelect($event)">
+      </pitch-size-option>
+
+      <!-- </mat-radio-group> -->
+    </div>
+  </div>
+  <!------------------------------------------------------>
+</div>

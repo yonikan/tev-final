@@ -1,0 +1,72 @@
+.pitch-size-option {
+  cursor: pointer;
+
+  .option {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .option-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .option-head {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  ::ng-deep {
+    .mat-radio-label {
+      align-items: flex-start;
+    }
+  }
+}
+
+.custom-option {
+  display: flex;
+  align-items: flex-end;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 400px;
+  margin-top: 30px;
+
+  .arrow {
+    align-self: center;
+  }
+
+  .custom-btn {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .custom-input {
+    position: absolute;
+
+    input {
+      border: none;
+      width: 20px;
+    }
+  }
+
+  .pitch-length {
+    margin-left: 45px;
+  }
+}
+
+// <-------remove arrows from input type=number-------->
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+// <--------------------------------------------------->
+

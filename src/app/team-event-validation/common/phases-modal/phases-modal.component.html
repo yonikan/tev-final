@@ -1,0 +1,40 @@
+  <div class="phases-modal">
+
+    <div class="phases-modal-header">
+      <div class="exit-btn" (click)="close()">X</div>
+      <div class="phases-counter">(Phase {{data.idx+1}} of {{data.PhasesCount}})</div>
+      <div class="phase-options">
+          <mat-radio-group
+          aria-labelledby="radio-group-label"
+          class="radio-group">
+          <!-- [(ngModel)]="selectedPhasesOption" -->
+          <mat-radio-button *ngFor="let option of modalOptions; let first = first;" [value]="option"
+                            [ngStyle]="{'margin-left': !first? '75px':'0'}"
+                            (change)="onModalOptionSelect($event)"
+                            [checked]="first">
+            <mat-icon>{{ option.icon }}</mat-icon>
+            {{option.name}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="phase-duration">
+        <time-picker class="start-phase"></time-picker>
+        <time-picker class="end-phase"></time-picker>
+        <div class="phase-duration-total">
+          ({{setPhaseDurationTotal()}})
+        </div>
+      </div>
+    </div>
+
+    <div class="phases-modal-content">
+      <app-match-phase-modal *ngIf="selectedModalOption.name === 'Match Phase'"></app-match-phase-modal>
+      <app-warmup-modal *ngIf="selectedModalOption.name === 'Warmup'"></app-warmup-modal>
+      <app-physical-modal *ngIf="selectedModalOption.name === 'Physical'"></app-physical-modal>
+      <app-technical-modal *ngIf="selectedModalOption.name === 'Technical'" [phase]="data.phase"></app-technical-modal>
+    </div>
+
+    <div class="phases-modal-footer">
+      <button class="save-phase-btn" (click)="savePhase()">SAVE PHASE</button>
+    </div>
+
+  </div>

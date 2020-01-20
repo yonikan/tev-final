@@ -29,7 +29,7 @@
   p {
     margin: 0;
   }
-  
+
   a {
     color: #334455;
     font-size: 17px;
@@ -80,7 +80,7 @@
 
 // Team Event Validation ==========================================================
 @mixin team-event-container() {
-  width: 800px;
+  // width: 800px;
   background-color: #ffffff;
   padding: 25px;
   margin: 15px;

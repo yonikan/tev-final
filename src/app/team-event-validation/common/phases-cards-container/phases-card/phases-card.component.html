@@ -1,5 +1,5 @@
-<div class="card">
-  <button mat-button [matMenuTriggerFor]="menu" class="elapsis">
+<div class="card" (click)="phaseClicked()">
+  <button mat-button [matMenuTriggerFor]="menu" class="elapsis" (click)="$event.stopPropagation(); $event.preventdefault();">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -15,7 +15,7 @@
 
   <mat-icon class="card-icon">account_circle</mat-icon>
 
-  <div class="card-title">
+  <div class="card-title">  
     {{ phase.type }}
   </div>
 
