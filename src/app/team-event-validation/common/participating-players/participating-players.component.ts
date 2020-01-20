@@ -8,6 +8,7 @@ interface InitialState {
 	excludedPlayers: Array<Object>;
 	includedPlayers: Array<Object>;
 	allPlayers: Array<Object>;
+	clubPlayers: Array<Object>;
 }
 
 @Component({
@@ -19,37 +20,52 @@ export class ParticipatingPlayersComponent implements OnInit {
 	private state: InitialState = {
 		excludedPlayers: [],
 		includedPlayers: [],
-		allPlayers: []
+		allPlayers: [],
+		clubPlayers: []
 	}
 	private store = new Subject<InitialState>();
 	private allPlayers: any = [];
+	private clubPlayers: any = [];
 	private excludedPlayers = [];
 	private includedPlayers = [];
 	private initialState: any = {
 		includedPlayersInit: [],
 		excludedPlayersInit: [],
-		allPlayers: []
+		allPlayers: [],
+		clubPlayers: []
 	};
 
 	constructor(public dialog: MatDialog, private teamEventValidationService: TeamEventValidationService) {
 	}
 
 	ngOnInit() {
-		this.store.subscribe(({allPlayers}) => {
-			if (this.allPlayers.length === 0) {
-				// save init state
-				this.initialState.allPlayers = allPlayers.map(p => ({...p}));
+		this.store.subscribe((data: any) => {
+			const {allPlayers, clubPlayers} = data;
+			if (allPlayers) {
+				if (this.allPlayers.length === 0) {
+					// save init state
+					this.initialState.allPlayers = allPlayers.map(p => ({...p}));
+				}
+				this.allPlayers = allPlayers.map(p => ({...p}));
 			}
-			this.allPlayers = allPlayers;
+
+			if (clubPlayers) {
+				if (this.clubPlayers.length === 0) {
+					this.initialState.clubPlayers = clubPlayers.map(p => ({...p}));
+				}
+				this.clubPlayers = clubPlayers.map(p => ({...p}));
+			}
 		});
 
 		this.teamEventValidationService.getParticipatingPlayers(this.store);
+		this.teamEventValidationService.getClubPlayers(this.store);
 	}
 
 	doExcludePlayer(player) {
 		this.store.next({
 			excludedPlayers: [],
 			includedPlayers: [],
+			clubPlayers: this.clubPlayers,
 			allPlayers: this.allPlayers.map(p => {
 				if (p.id === player.id) {
 					p.isParticipated = false;
@@ -62,6 +78,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 		this.store.next({
 			excludedPlayers: [],
 			includedPlayers: [],
+			clubPlayers: this.clubPlayers,
 			allPlayers: this.allPlayers.map(p => {
 				if (p.id === player.id) {
 					p.isParticipated = true;
@@ -72,22 +89,34 @@ export class ParticipatingPlayersComponent implements OnInit {
 	}
 
 	doSwapPlayer({ player, swappedPlayer }, isIncluded) {
+
+		// TODO: API
+		// this.teamEventValidationService.swapPlayer(swappedPlayer.id, player.userId);
+		// TODO: update clubplayers list
+
 		const newState = {
 			excludedPlayers: this.excludedPlayers,
 			includedPlayers: this.includedPlayers,
 			allPlayers: this.allPlayers.map(p => {
-				p.isOpen = false;
-				if (p.id === player.id) {
-					p.isParticipated = isIncluded;
-					p.isSwapped = true;
-
-				}
 				if (p.id === swappedPlayer.id) {
-					p.isParticipated = !isIncluded;
-					p.isSwapped = true;
+					p = {
+						...swappedPlayer,
+						isOpen: false,
+						isSwapped: true,
+						id: player.userId,
+						firstName: player.firstName,
+						lastName: player.lastName,
+						profilePic: player.profilePic
+					}
 				}
 
 				return p;
+			}),
+			clubPlayers: this.clubPlayers.map(cp => {
+				if (cp.userId === player.userId) {
+					cp.isParticipated = true;
+				}
+				return cp;
 			})
 		};
 
@@ -107,18 +136,14 @@ export class ParticipatingPlayersComponent implements OnInit {
 	}
 
 	doResetChanges(e, isIncluded) {
+		// TODO: API
+		// this.teamEventValidationService.revertSwaps();
 		const newState = {
 			excludedPlayers: this.excludedPlayers,
 			includedPlayers: this.includedPlayers,
-			allPlayers: [...this.initialState.allPlayers]
+			allPlayers: [...this.initialState.allPlayers],
+			clubPlayers: [...this.initialState.clubPlayers]
 		};
-		// if (isIncluded) {
-		// 	newState.includedPlayers = this.initialState.includedPlayers.map(o => ({ ...o }));
-		// 	newState.excludedPlayers = this.filterDuplicated(newState.includedPlayers, this.initialState.excludedPlayers);
-		// } else {
-		// 	newState.excludedPlayers = this.initialState.excludedPlayers.map(o => ({ ...o }));
-		// 	newState.includedPlayers = this.filterDuplicated(newState.excludedPlayers, this.initialState.includedPlayers);
-		// }
 
 		this.store.next(newState);
 	}

@@ -5,6 +5,31 @@ import { TEAM_EVENT_VALIDATION_MATCH } from 'server/data/team-event-validation-m
 import { of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+const clubPlayerMock = [
+	{
+		"teamId": 355,
+		"clubName": "U15",
+		"IsAcademy": false,
+		"userId": 19713,
+		"firstName": "sharon",
+		"lastName": "green",
+		"positionName": "Goalkeeper",
+		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
+	},
+	{
+		"teamId": 356,
+		"clubName": "U16",
+		"IsAcademy": false,
+		"userId": 19714,
+		"firstName": "shai",
+		"lastName": "angress",
+		"positionName": "Defender",
+		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
+	}
+]
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -94,14 +119,31 @@ export class TeamEventValidationService {
 
   constructor(private http: HttpClient) { }
 
-  getParticipatingPlayers(subject: Subject<any>) {
+  revertSwaps(teamEventId?) {
+	this.http.post(`api/v3/team-event/${teamEventId}/revert-swaps`, {});
+  }
+
+  swapPlayer(srcId, swapId, teamEventId?) {
+	  this.http.put(`api/v3/team-event/${teamEventId}/swap`, {srcId, swapId})
+  }
+
+  getClubPlayers(subject: Subject<any>, teamEventId?) {
+	  return subject.next({clubPlayers: clubPlayerMock});
+	//   this.http
+	// 	.get(`api/v3/team-event/${teamEventId}/players-for-swap`)
+	// 	.subscribe((data: any) => {
+	// 		console.log('data', data);
+	// 		return subject.next(data);
+	// 	})
+  }
+
+  getParticipatingPlayers(subject: Subject<any>, id?) {
 	this.http
 		.get('https://footballrest2-dev.playermaker.co.uk/api/v3/training/49609')
 		.subscribe((data: any) => {
-			console.log('data', data);
 			// HACK: remove tmp code
 			const players = Object.values(data.participatingPlayers.playersList).map(
-				(p: any) => ({...p, "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"}));
+				(p: any) => ({...p, "profilePic": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"}));
 
 			return subject.next({allPlayers: players});
 		});

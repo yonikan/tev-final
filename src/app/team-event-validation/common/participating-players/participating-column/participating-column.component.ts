@@ -9,11 +9,14 @@ import moment from "moment-timezone";
 export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	@Input() players = [];
 	@Input() actionName = '';
+	@Input() isResetAllowed = false;
+	@Input() isSwapAllowed = false;
+	@Input() clubPlayers = [];
 	@Output() excludePlayer = new EventEmitter();
 	@Output() swapPlayer = new EventEmitter();
 	@Output() resetChanges = new EventEmitter();
 
-	private clubPlayers = [];
+	private clubPlayersGroup = [];
 	private participatingPlayers = [];
 	private currentPlayer = null;
 	private ACTION_NAMES = {
@@ -34,7 +37,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 		this.participatingPlayers = this.players.filter(player =>
 			(this.actionName === this.ACTION_NAMES.EXCLUDE) ? player.isParticipated : !player.isParticipated
 		);
-		this.clubPlayers = this.getClubPlayers();
+		this.clubPlayersGroup = this.getClubPlayers();
 	}
 
 	preventDetailsOpen(e) {
@@ -65,7 +68,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	}
 
 	getClubPlayers() {
-		const clubPlayersGroup = this.players.reduce((acc, curr) => {
+		const clubPlayersGroup = this.clubPlayers.reduce((acc, curr) => {
 			if (!acc[curr.clubName]) acc[curr.clubName] = [];
 			 acc[curr.clubName] = [...acc[curr.clubName], {...curr}];
 			return acc;

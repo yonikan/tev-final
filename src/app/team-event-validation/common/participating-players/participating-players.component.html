@@ -9,6 +9,9 @@
 		<app-participating-column
 			[players]="allPlayers"
 			[actionName]="'Exclude'"
+			[isSwapAllowed]="true"
+			[isResetAllowed]="true"
+			[clubPlayers]="clubPlayers"
 			(excludePlayer)="doExcludePlayer($event)"
 			(swapPlayer)="doSwapPlayer($event, true)"
 			(resetChanges)="doResetChanges($event, true)"></app-participating-column>
@@ -16,6 +19,9 @@
 		<app-participating-column
 			[players]="allPlayers"
 			[actionName]="'Include'"
+			[isSwapAllowed]="false"
+			[isResetAllowed]="false"
+			[clubPlayers]="clubPlayers"
 			(excludePlayer)="doIncludePlayer($event)"
 			(swapPlayer)="doSwapPlayer($event, false)"
 			(resetChanges)="doResetChanges($event, false)"></app-participating-column>
