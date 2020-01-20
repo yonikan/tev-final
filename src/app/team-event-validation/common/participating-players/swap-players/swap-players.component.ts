@@ -556,6 +556,7 @@ const clubPlayers = [
 export class SwapPlayersComponent implements OnInit {
 	@Input() clubPlayers = [];
 	@Input() currentPlayer = null;
+	@Input() isIncluded = false;
 	@Output() swapPlayer = new EventEmitter();
 	@ViewChild('matExpansionPanel', null) _matExpansionPanel: any
 

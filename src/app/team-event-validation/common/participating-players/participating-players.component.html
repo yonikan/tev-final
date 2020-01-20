@@ -7,14 +7,14 @@
 	</div>
 	<div class="content">
 		<app-participating-column
-			[players]="includedPlayers"
+			[players]="allPlayers"
 			[actionName]="'Exclude'"
 			(excludePlayer)="doExcludePlayer($event)"
 			(swapPlayer)="doSwapPlayer($event, true)"
 			(resetChanges)="doResetChanges($event, true)"></app-participating-column>
 		<div class="buffer"></div>
 		<app-participating-column
-			[players]="excludedPlayers"
+			[players]="allPlayers"
 			[actionName]="'Include'"
 			(excludePlayer)="doIncludePlayer($event)"
 			(swapPlayer)="doSwapPlayer($event, false)"

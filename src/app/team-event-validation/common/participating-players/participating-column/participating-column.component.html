@@ -13,11 +13,11 @@
 				<div>{{player.lastName}}.{{player.firstName[0]}} - {{player.positionName}}</div>
 				<app-error-message [text]="player.error" *ngIf="player.error"></app-error-message>
 				<div class="active-time" *ngIf="!player.error">
-					<div class="bold">
+					<!-- <div class="bold">
 						#{{player.sensorNum}}
 						<span>{{'|'}}</span>
-					</div>
-					<div class="light-text">
+					</div> -->
+					<div class="light-text" *ngIf="player.activeTime[0]">
 						{{getTime(player.activeTime[0].startTime)}} - {{(getTime(player.activeTime[0].endTime))}}
 						({{getTimeDiff(player.activeTime[0].startTime, player.activeTime[0].endTime)}}m)
 					</div>
@@ -29,7 +29,7 @@
 		</summary>
 		<div class="details-content" #target>
 			<div>
-				<app-swap-players [clubPlayers]="clubPlayers" (swapPlayer)="doSwapPlayer($event)" [currentPlayer]="currentPlayer"></app-swap-players>
+				<app-swap-players [clubPlayers]="clubPlayers" (swapPlayer)="doSwapPlayer($event)" [currentPlayer]="currentPlayer" [isIncluded]="actionName === ACTION_NAMES.EXCLUDE"></app-swap-players>
 			</div>
 		</div>
 	</details>

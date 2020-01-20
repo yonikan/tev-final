@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { TrainingValidation, MatchValidation } from './team-event-validation.model';
 import { TEAM_EVENT_VALIDATION_TRAINING } from 'server/data/team-event-validation-training.data';
 import { TEAM_EVENT_VALIDATION_MATCH } from 'server/data/team-event-validation-match.data';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class TeamEventValidationService {
         },
         isParticipated: true,
         errorId: 1
-      }        
+      }
     },
     step3FormationsData: {
       data: 'this is a test'
@@ -49,7 +50,7 @@ export class TeamEventValidationService {
         endTime: 1,
         offset: 1,
         numberOfSubs: 1
-      }        
+      }
     },
     step5SubsData: {
       data: {
@@ -63,16 +64,16 @@ export class TeamEventValidationService {
 
   trainingDataOutput: any = {
     step1GeneralData: {
-      
+
     },
     step2PlayersData: {
-      
+
     },
     step3PhasesData: {
-      
+
     }
   };
-  
+
   matchDataOutput: any = {
     step1OverviewData: {
 
@@ -91,7 +92,20 @@ export class TeamEventValidationService {
     }
   };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getParticipatingPlayers(subject: Subject<any>) {
+	this.http
+		.get('https://footballrest2-dev.playermaker.co.uk/api/v3/training/49609')
+		.subscribe((data: any) => {
+			console.log('data', data);
+			// HACK: remove tmp code
+			const players = Object.values(data.participatingPlayers.playersList).map(
+				(p: any) => ({...p, "avatarUrl": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"}));
+
+			return subject.next({allPlayers: players});
+		});
+  }
 
   getTrainingDataNewModel(): any {
     return of(TEAM_EVENT_VALIDATION_TRAINING);
@@ -117,3 +131,4 @@ export class TeamEventValidationService {
     console.log('matchDataOutput: ', this.matchDataOutput);
   }
 }
+

@@ -16,9 +16,13 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	private clubPlayers = [];
 	private participatingPlayers = [];
 	private currentPlayer = null;
+	private ACTION_NAMES = {
+		EXCLUDE: 'Exclude',
+		INCLUDE: 'Include'
+	}
 	private HEADLINE = {
-		Exclude: "Included",
-		Include: "Not Included",
+		[this.ACTION_NAMES.EXCLUDE]: "Included",
+		[this.ACTION_NAMES.INCLUDE]: "Not Included",
 	}
 
 	constructor() { }
@@ -27,7 +31,9 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	}
 
 	ngOnChanges() {
-		this.participatingPlayers = this.players.filter(player => player.isParticipated);
+		this.participatingPlayers = this.players.filter(player =>
+			(this.actionName === this.ACTION_NAMES.EXCLUDE) ? player.isParticipated : !player.isParticipated
+		);
 		this.clubPlayers = this.getClubPlayers();
 	}
 
