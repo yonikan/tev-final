@@ -25,6 +25,26 @@ const clubPlayerMock = [
 		"lastName": "angress",
 		"positionName": "Defender",
 		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
+	},
+	{
+		"teamId": 356,
+		"clubName": "U16",
+		"IsAcademy": false,
+		"userId": 19715,
+		"firstName": "baruch",
+		"lastName": "spinoza",
+		"positionName": "Defender",
+		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
+	},
+	{
+		"teamId": 356,
+		"clubName": "U16",
+		"IsAcademy": false,
+		"userId": 19716,
+		"firstName": "michael",
+		"lastName": "schumacher",
+		"positionName": "Sweeper",
+		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
 	}
 ]
 

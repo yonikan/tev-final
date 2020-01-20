@@ -12,6 +12,10 @@ mat-expansion-panel {
     	border-bottom-left-radius: 0 !important;
 	}
 
+	.small-text {
+		@include small-text;
+	}
+
 	mat-list-item {
 		@include selectable-row(alias);
 		.player-title {

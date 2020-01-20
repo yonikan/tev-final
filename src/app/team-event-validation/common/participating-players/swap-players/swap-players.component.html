@@ -1,6 +1,4 @@
 <mat-accordion>
-	<!-- list of clubs, players. -->
-	<!-- Players will be grouped by teams in the club -->
 	<mat-expansion-panel
 		*ngFor="let club of clubPlayers; let isOpen = false"
 		(opened)="isOpen = true"
@@ -17,10 +15,11 @@
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 		<mat-list>
-			<div *ngFor="let player of club.players">
-				<mat-list-item [ngClass]="{disabled: isIncluded ? player.isParticipated : !player.isParticipated}" (click)="onSwapPlayer(player)" matRipple>
+			<div *ngFor="let playerPositionGroup of club.players">
+				<div class="small-text">{{playerPositionGroup.name}}(s)</div>
+				<mat-list-item *ngFor="let player of playerPositionGroup.players" [ngClass]="{disabled: isIncluded ? player.isParticipated : !player.isParticipated}" (click)="onSwapPlayer(player)" matRipple>
 					<img class="avatar" [src]="player.profilePic" alt="player avatar">
-					<div class="player-title">{{player.lastName}}.{{player.firstName[0]}} - {{player.positionName}}</div>
+					<div class="player-title">{{player.lastName}}.{{player.firstName[0]}}</div>
 				</mat-list-item>
 				<mat-divider></mat-divider>
 			</div>

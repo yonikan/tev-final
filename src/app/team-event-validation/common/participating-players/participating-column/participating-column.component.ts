@@ -67,18 +67,26 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 		}, 500);
 	}
 
-	getClubPlayers() {
-		const clubPlayersGroup = this.clubPlayers.reduce((acc, curr) => {
-			if (!acc[curr.clubName]) acc[curr.clubName] = [];
-			 acc[curr.clubName] = [...acc[curr.clubName], {...curr}];
+	getGrouped(arr, groupProp, subGroupName) {
+		const group = arr.reduce((acc, curr) => {
+			if (!acc[curr[groupProp]]) acc[curr[groupProp]] = [];
+			 acc[curr[groupProp]] = [...acc[curr[groupProp]], {...curr}];
 			return acc;
 		}, {});
 
 		return Object
-			.keys(clubPlayersGroup)
+			.keys(group)
 			.map((name, i) => {
-				return {name, players: clubPlayersGroup[name]}
+				return {name, [subGroupName]: group[name]}
 			});
+	}
+
+	getClubPlayers() {
+		const clubPlayersGroup = this.getGrouped(this.clubPlayers, 'clubName', 'players');
+		return clubPlayersGroup.map((cpg: any) => {
+			cpg.players = this.getGrouped(cpg.players, 'positionName', 'players');
+			return cpg;
+		});
 	}
 
 	exclude(player) {
