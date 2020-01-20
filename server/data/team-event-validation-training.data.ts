@@ -1,107 +1,51 @@
-export const TEAM_EVENT_VALIDATION_TRAINING: any = {
-	id: 1,
-	draft: {
-
-    },
-    metadata: {
-		startTime: 1,
-		endTime: 1,
-		offset: 1,
-		tags: [
-			'tag1',
-			'tag2'
-		],
-		velocityVector: [
-			{
-				startTimeInterpMs: 2,
-				timeDtMs: 3,
-				velInterpMs: 4.2
-			}	
-		]
-    },
-    participatingPlayers : {
-		playersList: {
-			222: {
-					id: 222,
-					firstName: 'yossi',
-					lastName: 'levi',
-					defaultPositionId: 4,
-					activeTime: [ 
-						{
-							startTime: 3,
-							endTime: 3, 
-							error: 4
-						} 
-					],
-					isParticipated: true,
-			},
-			333: {
-					id: 333,
-					firstName: 'yossi',
-					lastName: 'cohen',
-					defaultPositionId: 4,
-					activeTime: [ 
-						{
-							startTime: 3,
-							endTime: 3, 
-							error: 4
-						},
-						{
-							startTime: 3,
-							endTime: 3, 
-							error: 4
-						}
-					],
-					isParticipated: true,
-			}
-		},
-		swapsList: [
-			{
-				id: 3,
-				srcPlayerId: 4,
-				destPlayerId: 5
-			},
-			{
-				id: 4,
-				srcPlayerId: 4,
-				destPlayerId: 5
-			}
-		]
-    },
-    phases: {
-        phasesList: [
-            {
-                id: 1,
-                type: 1,
-                name: 1,
-                startTime: 1,
-				endTime: 1,
-				subject: 'test subject',
-                pitch_size: 'test pitch size',
-				lineup: {
-					subTeam: [
-						333,
-						444,
-						555
-				    ]
-				}
-			},
-			{
-                id: 2,
-                type: 2,
-                name: 2,
-                startTime: 2,
-				endTime: 2,
-				subject: 'test subject',
-                pitch_size: 'test pitch size',
-				lineup: {
-					subTeam: [ 
-						333, 
-						444, 
-						555
-					]
-				}
-            }
-        ]
-    }
-}
+export const TEAM_EVENT_VALIDATION_TRAINING_DATA: any = {
+        id : 22,
+        metadata: {
+                isNew: true,
+                startTime: 1576147936000,
+                endTime: 1576156936000,
+                offset: 3,
+                tags: ['tag1', 'tag2'],
+                velocityVector: {
+                        startTimeInterpMs: 222,
+                        timeDtMs: 333,
+                        velInterpMs: [ 444, 555, 666 ]
+                }
+        },
+        participatingPlayers :{ 
+           playersList: { 
+                444: {
+                        id: 444,
+                        firstName: 'yossi', 
+                        lastName: 'cohen',
+                        defaultPositionId: 3,
+                        activeTime: [
+                                { startTime: 1576147936000, endTime: 1576156936000 , timeFrameType: 'active'} 
+                        ],
+                        isParticipated: true
+                }
+           }
+        },
+        phases:{ 
+                phasesList: [
+                        {
+                                id: 12,
+                                type: 1,
+                                subType: 2,
+                                subTypeAnalysis : 1,
+                                phaseName: 'phase name',
+                                startTime: 1576147936000,
+                                endTime: 1576156936000,
+                                offset: 3,
+                                pitchWidth: 200,
+                                pitchLength: 350,
+                                lineup: {
+                                        1: [321,523],
+                                        2: [532,32],
+                                        0: []
+                                }       
+                        }
+                ] 
+        },
+        draft: false
+};

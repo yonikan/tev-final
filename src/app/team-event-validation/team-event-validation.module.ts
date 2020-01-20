@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { routes } from './team-event-validation.routes';
+// import { routes } from './team-event-validation.routes';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
@@ -56,15 +56,24 @@ import { SubstitutionsRowComponent } from './common/substitutions-table/substitu
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes),
-    HighchartsChartModule,
-    SwiperModule
+    // RouterModule.forChild(routes),
+    HighchartsChartModule
   ],
-  providers: [
-    {
-      provide: SWIPER_CONFIG,
-      useValue: DEFAULT_SWIPER_CONFIG
-    }
+  exports: [
+    MatchValidationComponent,
+    TrainingValidationComponent,
+    StepTrainingGeneralComponent,
+    StepTrainingPlayersComponent,
+    StepTrainingPhasesComponent,
+    StepMatchOverviewComponent,
+    StepMatchPlayersComponent,
+    StepMatchFormationsComponent,
+    StepMatchPhasesComponent,
+    StepMatchSubsComponent,
+    TagsComponent,
+    SpeedGraphComponent,
+    TrainingDurationComponent,
+    MatchOverviewComponent,
   ]
 })
 export class TeamEventValidationModule { }

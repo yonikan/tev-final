@@ -13,11 +13,11 @@ export class StepMatchFormationsComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    
+    console.log('stepMatchFormationsData: ', this.stepMatchFormationsData);
   }
 
   nextStep() {
-    this.teamEventValidationService.matchDataOutput.step3FormationsData = 'test-output';
+    this.teamEventValidationService.matchDataOutput.step3FormationsData = this.stepMatchFormationsData;
     this.stepSelectionEmitter.emit(3);
   }
 

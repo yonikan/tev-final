@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { enumToString } from '../../../core/helpers/helper-functions';
-import { teamEvents } from '../../../core/enums/team-events.enum';
+import { TeamEvents } from '../../../core/enums/team-events.enum';
 import * as moment from 'moment';
 import { ValidatedEventsService } from '../../validated-events/validated-events.service';
 
@@ -106,7 +106,7 @@ export class EventComponent implements OnInit {
 
 
     // card title ===============================================
-    this.teamEventTypeString = enumToString(teamEvents, this.eventData.type);
+    this.teamEventTypeString = enumToString(TeamEvents, this.eventData.type);
 
     if(this.eventData.isValidated) {
       if(this.eventData.type === 1) {

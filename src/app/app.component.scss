@@ -10,6 +10,15 @@
     // .sidenav {
     //   width: 250px;
     // }
+
+    .sidepanel {
+      width: 70%;
+      border-radius: 10px;
+
+      @media (max-width: $media-query-sm) {
+        width: 90%;
+      }
+    }
   
     mat-sidenav-content {
       .app-container {

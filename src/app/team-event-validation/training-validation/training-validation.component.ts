@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TeamEventValidationService } from '../team-event-validation.service';
+import { UiComponentsService } from '../../core/services/ui-components.service';
 
 @Component({
   selector: 'app-training-validation',
@@ -7,30 +8,51 @@ import { TeamEventValidationService } from '../team-event-validation.service';
   styleUrls: ['./training-validation.component.scss']
 })
 export class TrainingValidationComponent implements OnInit {
+  @Input() trainingId: number;
+  isLoading = true;
+  currentSelectedStep = 0;
   step1Data: any;
   step2Data: any;
   step3Data: any;
-  trainingValidationPayload: any;
-  currentSelectedStep = 0;
 
-  constructor(private teamEventValidationService: TeamEventValidationService) { }
+  constructor(
+    private teamEventValidationService: TeamEventValidationService,
+    private uiComponentsService: UiComponentsService
+  ) { }
 
   ngOnInit() {
-    this.teamEventValidationService.getTrainingDataNewModel()
-      .subscribe((teamEventValidationData: any) => { 
-        // console.log('teamEventValidationData: ', teamEventValidationData);
-        this.step1Data = teamEventValidationData.metadata;
-        this.step2Data = teamEventValidationData.participatingPlayers;
-        this.step3Data = teamEventValidationData.phases;
-      });
-  }
-
-  onStepSelectionEmitter(stepNumber) {
-    this.currentSelectedStep = stepNumber;
+    console.log(this.trainingId);
+    this.teamEventValidationService.getTrainingData(this.trainingId)
+      .subscribe(
+        (trainingResp: any) => {
+          this.isLoading = false;
+          this.step1Data = trainingResp.metadata;
+          this.step2Data = trainingResp.participatingPlayers;
+          this.step3Data = trainingResp.phases;
+        },
+        (error) => {
+          console.log('error: ', error);
+        }
+      );
   }
   
-  onValidateTraining(trainingPayload) {
-    console.log('trainingPayload: ', trainingPayload);
-    this.teamEventValidationService.validateTraining();
+  onStepSelectionEmitter(stepNumber) {
+    // console.log('stepNumber: ', stepNumber);
+    this.currentSelectedStep = stepNumber;
+    if(stepNumber === 3) {
+      this.isLoading = true;
+      this.teamEventValidationService.validateTraining(this.trainingId)
+        .subscribe(
+          (trainingResp: any) => {
+            this.isLoading = false;
+            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+          },
+          (error) => {
+            console.log('error: ', error);
+            this.isLoading = false;
+            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+          }
+        );
+    }
   }
 }

@@ -6,7 +6,7 @@ import { EventsCarouselModalComponent } from '../events-carousel/events-carousel
 import { MatDialog } from '@angular/material';
 import { UiComponentsService } from '../../core/services/ui-components.service';
 import { enumToString } from '../../core/helpers/helper-functions';
-import { teamEvents } from '../../core/enums/team-events.enum';
+import { TeamEvents } from '../../core/enums/team-events.enum';
 import { Router } from '@angular/router';
 import { ValidatedEventsService } from './validated-events.service';
 import { ServerEnvService } from '../../core/services/server-env.service';
@@ -57,6 +57,8 @@ export class ValidatedEventsComponent implements OnInit {
 
   onEditSession(teamEvent) {
     console.log('teamEvent: ', teamEvent);
+    this.uiComponentsService.setIsSidepanelOpen({isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId});
+
     // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
     // this.uiComponentsService.setIsLoading(true);
     // setTimeout(() => { 
