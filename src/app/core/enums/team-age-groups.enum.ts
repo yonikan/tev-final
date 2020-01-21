@@ -1,5 +1,29 @@
-export const enum TeamAgeGroups {
-    U9 = 1,
+export enum TeamAgeGroups {
+    Undefined = 0,
+    U9,
     U10,
-    U11
+    U11,
+    U12,
+    U13,
+    U14,
+    U15,
+    U16,
+    U17,
+    U18,
+    U19,
+    U20,
+    FirstTeam,
+    Reserves,
+    U14R,
+    U11R,
+    U14Y,
+    U11Y,
+    U13R,
+    U11B,
+    U13Y,
+    U10R,
+    U12R,
+    U12Y,
+    U10Y,
+    U14N
 }

@@ -1,130 +1,64 @@
 import { Injectable } from '@angular/core';
-import { TrainingValidation, MatchValidation } from './team-event-validation.model';
-import { TEAM_EVENT_VALIDATION_TRAINING } from 'server/data/team-event-validation-training.data';
-import { TEAM_EVENT_VALIDATION_MATCH } from 'server/data/team-event-validation-match.data';
-import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ServerEnvService } from '../core/services/server-env.service';
+// import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamEventValidationService {
 
+  trainingDataOutput = {
+    step1GeneralData: null,
+    step2PlayersData: null,
+    step3PhasesData: null
+  };
+
+  matchDataOutput = {
+    step1OverviewData: null,
+    step2PlayersData: null,
+    step3FormationsData: null,
+    step4PhasesData: null,
+    step5SubsData: null
+  };
+
   linup = [];
   availableForSub = [];
 
-  trainingData: any = {
-    step1GeneralData: {
-      test1: 'this is a test'
-    },
-    step2PlayersData: {
-      test1: 'this is a test'
-    },
-    step3PhasesData: {
-      test1: 'this is a test'
-    }
-  };
-
-  matchData: any = {
-    step1OverviewData: {
-      data: 'this is a test'
-    },
-    step2PlayersData: {
-      data: {
-        id: 1,
-        firstName: 'test',
-        lastName: 'test',
-        defaultPositionId: 1,
-        activeTime: {
-          startTime: 1, endTime: 1
-        },
-        isParticipated: true,
-        errorId: 1
-      }
-    },
-    step3FormationsData: {
-      data: 'this is a test'
-    },
-    step4PhasesData: {
-      data: {
-        id: 1,
-        type: 1,
-        name: 1,
-        startTime: 1,
-        endTime: 1,
-        offset: 1,
-        numberOfSubs: 1
-      }
-    },
-    step5SubsData: {
-      data: {
-        id: 1,
-        inPlayerId: 1,
-        outPlayerId: 1,
-        timeMin: 1
-      }
-    }
-  };
-
-  trainingDataOutput: any = {
-    step1GeneralData: {
-
-    },
-    step2PlayersData: {
-
-    },
-    step3PhasesData: {
-
-    }
-  };
-
-  matchDataOutput: any = {
-    step1OverviewData: {
-
-    },
-    step2PlayersData: {
-
-    },
-    step3FormationsData: {
-
-    },
-    step4PhasesData: {
-
-    },
-    step5SubsData: {
-
-    }
-  };
-
-  constructor() {
+  constructor(
+    private http: HttpClient,
+    private serverEnvService: ServerEnvService
+  ) {
     this.setFormation();
   }
 
-  getTrainingDataNewModel(): any {
-    return of(TEAM_EVENT_VALIDATION_TRAINING);
+  getTrainingData(trainingId): any {
+    const PATH = this.serverEnvService.getBaseUrl();
+    return this.http.get<any>(`${PATH}/v3/training/${trainingId}`);
   }
 
-  getMatchDataNewModel(): any {
-    return of(TEAM_EVENT_VALIDATION_MATCH);
-  }
-
-  getTrainingData(): any {
-    return this.trainingData;
-  }
-
-  getMatchData(): any {
-    return this.matchData;
-  }
-
-  validateTraining() {
+  validateTraining(trainingId) {
     console.log('trainingDataOutput: ', this.trainingDataOutput);
+    const PATH = this.serverEnvService.getBaseUrl();
+    const PAYLOAD = null;
+    return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
   }
 
-  validateMatch() {
+  getMatchData(matchId): any {
+    // return this.matchData;
+    const PATH = this.serverEnvService.getBaseUrl();
+    return this.http.get<any>(`${PATH}/v3/match/${matchId}`);
+  }
+
+  validateMatch(matchId) {
     console.log('matchDataOutput: ', this.matchDataOutput);
+    const PATH = this.serverEnvService.getBaseUrl();
+    const PAYLOAD = null;
+    return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
   }
 
   getPlayerById(playerId) {
-    return TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList[playerId] || {};
+  //   return TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList[playerId] || {};
   }
 
   getPlayersByIds(playerIds, key?) {
@@ -139,17 +73,18 @@ export class TeamEventValidationService {
   }
 
   getAllParticipatingPlayers() {
-    return TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList || [];
+  //   return TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList || [];
   }
 
   setFormation() {
-    const participatingPlayers = TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList;
-    this.linup = TEAM_EVENT_VALIDATION_MATCH.formation.formationPosition;
-    this.availableForSub = { ...participatingPlayers };
-    this.linup.forEach((player) => {
-      const playerId = player.playerId;
-      if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
-    });
+    // const participatingPlayers = TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList;
+    // this.linup = TEAM_EVENT_VALIDATION_MATCH.formation.formationPosition;
+    // this.availableForSub = { ...participatingPlayers };
+    // this.linup.forEach((player) => {
+    //   const playerId = player.playerId;
+    //   if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
+    // });
+
     // console.log(participatingPlayers, this.linup, this.availableForSub)
     // this.availableForSub = participatingPlayers.filter((player) => {
     //   return this.isPlayerInLineup(player);
@@ -163,13 +98,13 @@ export class TeamEventValidationService {
   }
 
   isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
-    TEAM_EVENT_VALIDATION_MATCH.phases.phasesList.forEach((phase)=>{
-      if (this.isTimeRangesOverlap(phaseToCheck, phase)) {
-        return phase.linup.some((player)=>{
-          return player.playerId === playerId;
-        });
-      }
-    });
+  //   TEAM_EVENT_VALIDATION_MATCH.phases.phasesList.forEach((phase)=>{
+  //     if (this.isTimeRangesOverlap(phaseToCheck, phase)) {
+  //       return phase.linup.some((player)=>{
+  //         return player.playerId === playerId;
+  //       });
+  //     }
+  //   });
   }
 
   isTimeRangesOverlap(timescope1, timescope2) {

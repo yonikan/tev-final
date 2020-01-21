@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthorizationService, initFeatureToggling } from './core/services/authorization.service';
+import { TeamEventValidationModule } from './team-event-validation/team-event-validation.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthorizationService, initFeatureToggling } from './core/services/autho
     }),
     CoreModule,
     LayoutModule,
-    AuthModule
+    AuthModule,
+    TeamEventValidationModule
   ],
   providers: [
     CookieService,

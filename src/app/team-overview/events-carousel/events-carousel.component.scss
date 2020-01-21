@@ -29,18 +29,67 @@
             width: 220px;
             padding-right: 10px;
             // color: #616161;
+            // display: flex;
+            // flex-direction: column-reverse;
+            // justify-content: flex-end;
 
             @media (max-width: $media-query-sm) {
               width: 100%;
+              // display: flex;
+              // flex-direction: row;
             }
 
-            h3 {
-              margin: 0;
+            .text-section {
+              @media (max-width: $media-query-sm) {
+                // width: 70%;
+                padding-right: 5px;
+              }
+
+              h3 {
+                margin: 0;
+                text-transform: capitalize;
+              }
+  
+              p {
+                margin-top: 10px;
+              }
             }
 
-            p {
-              margin-top: 10px;
-            }
+            // .notification-section {
+            //   @media (max-width: $media-query-sm) {
+            //     width: 30%;
+            //   }
+
+            //   .notification-bubble {
+            //     width: 89px;
+            //     width: 80px;
+            //     background: #bab5bb;
+            //     color: $color-purple;
+            //     text-transform: uppercase;
+            //     border-radius: 15px;
+            //     border-bottom-left-radius: 0;
+            //     // margin: 0 auto 40px;
+            //     // max-width: 400px;
+            //     padding: 15px;
+            //     position: relative;
+            //     margin-bottom: 30px;
+
+            //     @media (max-width: $media-query-sm) {
+            //       // margin: 0 10px;
+            //       // margin-left: 20px;
+            //       // margin-right: 20px;
+            //     }
+
+            //     &::after {
+            //         border-right: 20px solid transparent;
+            //         border-top: 20px solid #bab5bb;
+            //         bottom: -20px;
+            //         content: "";
+            //         position: absolute;
+            //         left: 0;
+            //     }
+            //   }
+            // }
           }
 
           .swiper-container {

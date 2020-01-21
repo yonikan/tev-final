@@ -14,11 +14,11 @@ export class StepMatchOverviewComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    // console.log(this.stepMatchOverviewData);
+    // console.log('stepMatchOverviewData: ', this.stepMatchOverviewData);
   }
 
   nextStep() {
-    this.teamEventValidationService.matchDataOutput.step1OverviewData = 'test-output';
+    this.teamEventValidationService.matchDataOutput.step1OverviewData = this.stepMatchOverviewData;
     this.stepSelectionEmitter.emit(1);
     console.log(this.stepMatchOverviewData);
   }

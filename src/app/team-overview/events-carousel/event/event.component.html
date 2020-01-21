@@ -1,4 +1,5 @@
 <mat-card>
+
     <div class="event-header-container">
         <div class="event-header">
             <!-- <div class="header-title">
@@ -11,32 +12,54 @@
                 </button>
                 <mat-menu #eventMenu="matMenu" class="event-card-menu">
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="confirmSession()">
-                        <mat-icon>assignment_turned_in</mat-icon>
-                        <span>{{ 'team-overview.events-carousel.validate-session' | translate }} {{ eventData.type }}</span>
+                        <i class="demo-icon icon-v-icon">&#xe816;</i>
+                        <span>Validate {{ teamEventTypeString }}</span>
+                        <!-- <span>{{ 'team-overview.events-carousel.validate-session' | translate }}
+                             {{ teamEventTypeString }}
+                        </span> -->
                     </button>
-                    <button mat-menu-item (click)="convertSession(eventData.id)">
-                        <mat-icon>find_replace</mat-icon>
-                        <span>{{ 'team-overview.events-carousel.toggle-event-type' | translate }} </span>
-                        <span *ngIf="eventData.type === 'training'">match</span>
-                        <span *ngIf="eventData.type === 'match'">training</span>
+                    <button *ngIf="!eventData.isValidated" mat-menu-item (click)="convertSession(eventData.id)">
+                        <i class="demo-icon icon-convert-team-event">&#xe81f;</i>
+                        <!-- <span>convert {{ teamEventTypeString }} </span> -->
+                        <span>change to </span>
+                        <span *ngIf="eventData.type === 1">match</span>
+                        <span *ngIf="eventData.type === 2">training</span>
                     </button>
                     <button mat-menu-item (click)="deleteSession(eventData.id)">
-                        <mat-icon>delete</mat-icon>
-                        <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span>
+                        <i class="demo-icon icon-delete">&#xe815;</i>
+                        <span>delete {{ teamEventTypeString }}</span>
+                        <!-- <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span> -->
+                    </button>
+                    <button *ngIf="eventData.isValidated" mat-menu-item (click)="editSession()">
+                        <i class="demo-icon icon-edit">&#xe80b;</i>
+                        <span>edit {{ teamEventTypeString }} </span>
+                        <!-- <span>Edit Session</span> -->
                     </button>
                 </mat-menu>
             </div>
         </div>
     </div>
     <mat-card-content>
-        <div class="event-content">
+
+        <mat-spinner *ngIf="isPdfReportLoading"></mat-spinner>
+
+        <div *ngIf="!isPdfReportLoading" class="event-content">
             <div class="event-content-header">
                 <div class="event-content-title" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <i *ngIf="!eventData.isValidated" class="demo-icon icon-calender">&#xe809;</i> 
-                    <h4 [ngClass]="{'validated-event-style':eventData.isValidated}">{{ eventData.title }}</h4>
+                    <i *ngIf="eventData.type === 2" class="demo-icon icon-calender">&#xe809;</i>
+                    <i *ngIf="eventData.type === 1" class="demo-icon icon-vlc-new">&#xe817;</i>  
+                    <!-- <h4 *ngIf="!eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">new {{ teamEventTypeString }}</h4> -->
+                    <!-- <h4 *ngIf="eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">
+                        <span *ngIf="eventData.type === 2">Match</span>
+                        <span *ngIf="eventData.type === 1">Training Session</span>
+                    </h4> -->
+                    <h4>{{ cardTitle }}</h4>
                 </div>
                 <div class="event-content-subtitle" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <span>{{ eventData.created }}</span>
+                    <span>
+                        <span class="duration-time-ago">{{ durationTimeAgo }}</span>
+                        {{ startTimeHoursFormatted }} - {{ endTimeHoursFormatted }}
+                    </span>
                 </div>
             </div>
             
@@ -48,9 +71,14 @@
                 </div>
 
                 <div class="info-content">
-                    <div>145 <span class="time-unit">Min</span></div>
-                    <div>19/22</div>
-                    <div>N/A</div>
+                    <div class="duration-column">{{ duration }} <span class="time-unit">Min</span></div>
+                    <div class="players-column" [ngStyle]="{'margin-right':eventData.isValidated ? '0px' : '0px' }">
+                        {{ eventData.validPlayersCount }}<span *ngIf="!eventData.isValidated">/{{ eventData.totalPlayersCount }}</span>
+                    </div>
+                    <div class="phases-count-column">
+                        <span *ngIf="!eventData.isValidated && eventData.phasesCount === 0">N/A</span>
+                        <span *ngIf="!(!eventData.isValidated && eventData.phasesCount === 0)">{{ eventData.phasesCount }}</span>
+                    </div>
                 </div>
 
                 <!-- <div class="info-duration">
@@ -69,16 +97,18 @@
             </div>
         
             <div *ngIf="!eventData.isValidated" class="event-content-confirm">
-                <button class="confirm-button" mat-raised-button (click)="confirmSession()">{{ 'team-overview.events-carousel.validate-session' | translate }} {{ eventData.type }}</button>
+                <button class="confirm-button" mat-raised-button (click)="confirmSession()">
+                    {{ 'team-overview.events-carousel.validate-session' | translate }} {{ teamEventTypeString }}
+                </button>
             </div>
             <div *ngIf="eventData.isValidated" class="event-content-buttons">
-                <button class="action-btn" mat-button (click)="null">
+                <button class="action-btn" mat-raised-button (click)="downloadPdfReport('teamReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
-                    <span>Team Report</span>
+                    <span>Team Reports</span>
                 </button>
-                <button class="action-btn" mat-button (click)="null">
+                <button class="action-btn" mat-raised-button (click)="downloadPdfReport('individualReport')">
                     <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
-                    <span>Individual Report</span>
+                    <span>Individual Reports</span>
                 </button>
             </div>
         </div>

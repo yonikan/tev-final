@@ -17,5 +17,13 @@ $playermaker-theme: mat-light-theme(mat-palette($playermaker-primary-purple), ma
 
 .mat-dialog-container {
   padding: 0 !important;
-  border-radius: 10px !important;
+  border-radius: 6px !important;
 };
+
+.mat-snack-bar-container {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: #ffffff;
+  // background-color: #ffffff !important;
+  background-color: rgba(233, 233, 233, 0.8);
+}

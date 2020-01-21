@@ -1,5 +1,6 @@
 export enum StaffRoles {
-	HeadCoach = 1,
+    Undefined = 0,
+	HeadCoach,
     AssistantCoach,
     Analyst,
     PerformanceAnalyst,

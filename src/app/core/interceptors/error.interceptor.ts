@@ -34,12 +34,17 @@ export class ErrorInterceptor implements HttpInterceptor {
             modalMessage = 'An unknown error occurred!';
             if(error.status === 500) {
               modalTitle = 'Error 500';
+            } else if (error.status === 400) {
+              modalTitle = 'Error 400';
+              return throwError(error);
             } else if (error.status === 403) {
               modalTitle = 'Error 403';
             } else if (error.status === 404) {
               modalTitle = 'Error 404';
+              return throwError(error);
             } else if (error.status === 401) {
               modalTitle = 'Error 401';
+              return throwError(error);
             } else if (error.status === 412) {
               modalTitle = 'Error 412';
               if (error.error.errorMessageId === 'pmErrorLoginBadLoginDetails') {

@@ -9,16 +9,17 @@ import { TeamEventValidationService } from '../../team-event-validation.service'
 export class StepTrainingPlayersComponent implements OnInit {
   @Input() stepTrainingPlayersData: any;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
+  isNextBtnDisabled = false;
   trainingPlayers;
   
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    
+    console.log('stepTrainingPlayersData: ', this.stepTrainingPlayersData);
   }
 
   nextStep() {
-    this.teamEventValidationService.trainingDataOutput.step2PlayersData = 'test-output';
+    this.teamEventValidationService.trainingDataOutput.step2PlayersData = this.stepTrainingPlayersData;
     this.stepSelectionEmitter.emit(2);
   }
 

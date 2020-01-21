@@ -20,8 +20,14 @@ import { UiComponentsService } from './core/services/ui-components.service';
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private authStatusSub: Subscription;
+
+  isSidepanelOpen = false;
+  private sidepanelOpenSub: Subscription;
+  sidepanelOpenTeamEventType: number;
+
   isLoading = false;
   private isLoadingSub: Subscription;
+  teamEventId: number;
 
   constructor( 
     public authService: AuthService, 
@@ -36,11 +42,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (!environment.production) {
-      this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111');
-      // this.router.navigate(['/team-overview']);
-    };
-
     this.serverEnvService.initServerEnv();
     this.authorizationService.currentPlatform = this.breakpointObserver.isMatched('(min-width: 769px)') ? 'desktop' : 'mobile';
 
@@ -62,15 +63,35 @@ export class AppComponent implements OnInit, OnDestroy {
         this.isAuthenticated = authStatus;
       });
 
+    this.sidepanelOpenSub = this.uiComponentsService
+      .getSidepanelOpenListener()
+      .subscribe((sidepanelOpen: any) => {
+        this.teamEventId = sidepanelOpen.teamEventId;
+        this.isSidepanelOpen = sidepanelOpen.isOpen;
+        this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType;
+      });
+
     this.isLoadingSub = this.uiComponentsService
       .getIsLoadingListener()
       .subscribe((isLoading: boolean) => {
         this.isLoading = isLoading;
       });
+
+    if (!environment.production) {
+      // this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
+      // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111'); // dev
+      // this.router.navigate(['/team-overview']);
+    };
+  }
+
+  sidePanelCloased() {
+    this.sidepanelOpenTeamEventType = 0; // needs 0 to reset the ngIf
+    this.isSidepanelOpen = false;
   }
 
   ngOnDestroy(){
     this.authStatusSub.unsubscribe();
+    this.sidepanelOpenSub.unsubscribe();
     this.isLoadingSub.unsubscribe();
   }
 }

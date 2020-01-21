@@ -1,8 +1,8 @@
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 export function enumToString(enumType, enumNumber) {
-  const enumValuesArr = Object.keys(enumType).filter((type) => isNaN(<any>type));
-  return enumValuesArr[enumNumber - 1].replace(/([A-Z]+)*([A-Z][a-z])/g, '$1 $2')
+    const enumValuesArr = Object.keys(enumType).filter((type) => isNaN(<any>type));
+    return enumValuesArr[enumNumber].replace(/([A-Z]+)*([A-Z][a-z])/g, '$1 $2')
 }
 
 export function capitalizeString (str) {
@@ -16,7 +16,7 @@ export function arrayToObj(array, keyName) {
   }, {});
 }
 
-export function objToArray(obj, keyName){
+export function objToArray(obj, keyName) {
   const array = [];
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
