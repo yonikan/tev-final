@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ServerEnvService } from '../core/services/server-env.service';
+import { BehaviorSubject, of, Observable } from 'rxjs';
+import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
 // import * as moment from 'moment';
 
 @Injectable({
@@ -22,6 +24,11 @@ export class TeamEventValidationService {
     step5SubsData: null
   };
 
+  private trainingValidationData: any;
+  private trainingValidationDataListener = new BehaviorSubject<any>({});
+  private matchValidationData: any;
+  private matchValidationDataListener = new BehaviorSubject<any>({});
+
   linup = [];
   availableForSub = [];
 
@@ -32,86 +39,129 @@ export class TeamEventValidationService {
     this.setFormation();
   }
 
-  getTrainingData(trainingId): any {
+  fetchTraining(trainingId): any {
     const PATH = this.serverEnvService.getBaseUrl();
-    return this.http.get<any>(`${PATH}/v3/training/${trainingId}`);
+    this.http.get<any>(`${PATH}/v3/training/${trainingId}`)
+      .subscribe(
+        (trainingResp: any) => {
+          this.trainingValidationData = trainingResp;
+          this.setTrainingValidationData(this.trainingValidationData);
+        },
+        (error) => {
+
+        }
+      );
   }
 
   validateTraining(trainingId) {
-    console.log('trainingDataOutput: ', this.trainingDataOutput);
+
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
   }
 
-  getMatchData(matchId): any {
-    // return this.matchData;
-    const PATH = this.serverEnvService.getBaseUrl();
-    return this.http.get<any>(`${PATH}/v3/match/${matchId}`);
+  fetchMatch(matchId): any {
+    of(TEAM_EVENT_VALIDATION_MATCH_DATA)
+    // this.teamEventValidationService.getMatchData(this.matchId)
+      .subscribe(
+        (matchResp: any) => {
+          this.matchValidationData = matchResp;
+          this.setMatchValidationData(this.matchValidationData);
+        },
+        (error) => {
+
+        }
+      );
   }
 
   validateMatch(matchId) {
-    console.log('matchDataOutput: ', this.matchDataOutput);
+
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
   }
 
+  getTrainingValidationData(): any {
+    return this.trainingValidationData;
+  }
+
+  setTrainingValidationData(data: any) {
+    this.trainingValidationData = data;
+    this.trainingValidationDataListener.next(data);
+  }
+
+  getTrainingValidationDataListener(): Observable<any> {
+    return this.trainingValidationDataListener.asObservable();
+  }
+
+  getMatchValidationData(): any {
+    return this.matchValidationData;
+  }
+
+  setMatchValidationData(data: any) {
+    this.matchValidationData = data;
+    this.matchValidationDataListener.next(data);
+  }
+
+  getMatchValidationDataListener(): Observable<any> {
+    return this.matchValidationDataListener.asObservable();
+  }
+
   getPlayerById(playerId) {
-  //   return TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList[playerId] || {};
-  }
+      // return this.getMatchValidationData().participatingPlayers.playersList[playerId] || {};
+    }
 
-  getPlayersByIds(playerIds, key?) {
-    return playerIds.map((playerId) => {
-      return this.getPlayerById(key ? playerId[key] : playerId);
-    })
-  }
+    getPlayersByIds(playerIds, key?) {
+      return playerIds.map((playerId) => {
+        return this.getPlayerById(key ? playerId[key] : playerId);
+      })
+    }
 
-  getPositionById(positionId) {
-    const positions = { 1: 'Goalkeepers', 2: 'Defenders' }
-    return positions[positionId];
-  }
+    getPositionById(positionId) {
+      const positions = { 1: 'Goalkeepers', 2: 'Defenders' }
+      return positions[positionId];
+    }
 
-  getAllParticipatingPlayers() {
-  //   return TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList || [];
-  }
+    getAllParticipatingPlayers() {
+      // return this.getMatchValidationData().participatingPlayer.playersList || [];
+    }
 
-  setFormation() {
-    // const participatingPlayers = TEAM_EVENT_VALIDATION_MATCH.participatingPlayers.playersList;
-    // this.linup = TEAM_EVENT_VALIDATION_MATCH.formation.formationPosition;
-    // this.availableForSub = { ...participatingPlayers };
-    // this.linup.forEach((player) => {
-    //   const playerId = player.playerId;
-    //   if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
-    // });
+    setFormation() {
+      const participatingPlayers = this.getMatchValidationData().participatingPlayers.playersList;
+      this.linup = this.getMatchValidationData().formation.formationPosition;
+      this.availableForSub = { ...participatingPlayers };
+      this.linup.forEach((player) => {
+        const playerId = player.playerId;
+        if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
+      });
 
-    // console.log(participatingPlayers, this.linup, this.availableForSub)
-    // this.availableForSub = participatingPlayers.filter((player) => {
-    //   return this.isPlayerInLineup(player);
-    // });
-  }
 
-  isPlayerInLineup(player) {
-    return this.linup.some((lineupPlayer) => {
-      return lineupPlayer.playerId === player.playerId;
-    });
-  }
+      this.availableForSub = participatingPlayers.filter((player) => {
+        return this.isPlayerInLineup(player);
+      });
+    }
 
-  isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
-  //   TEAM_EVENT_VALIDATION_MATCH.phases.phasesList.forEach((phase)=>{
-  //     if (this.isTimeRangesOverlap(phaseToCheck, phase)) {
-  //       return phase.linup.some((player)=>{
-  //         return player.playerId === playerId;
-  //       });
-  //     }
-  //   });
-  }
+    isPlayerInLineup(player) {
+      return this.linup.some((lineupPlayer) => {
+        return lineupPlayer.playerId === player.playerId;
+      });
+    }
 
-  isTimeRangesOverlap(timescope1, timescope2) {
-    // const range  = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
-    // const range2 = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
-    // range.overlaps(range2);
-    return true;
-  }
+    isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
+      this.getMatchValidationData().phases.phasesList.forEach((phase)=>{
+        if (this.isTimeRangesOverlap(phaseToCheck, phase)) {
+          return phase.linup.some((player)=>{
+            return player.playerId === playerId;
+          });
+        }
+      });
+    }
+
+    isTimeRangesOverlap(timescope1, timescope2) {
+      // const range  = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
+      // const range2 = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
+      // range.overlaps(range2);
+      return true;
+    }
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { TeamEventValidationService } from '../../team-event-validation.service';
 
 @Component({
@@ -16,7 +16,11 @@ export class StepTrainingGeneralComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    console.log('stepTrainingGeneralData: ', this.stepTrainingGeneralData);
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes: ', changes);
   }
 
   nextStep() {
