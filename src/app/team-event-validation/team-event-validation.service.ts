@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ServerEnvService } from '../core/services/server-env.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
+import { UiComponentsService } from '../core/services/ui-components.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,11 @@ export class TeamEventValidationService {
   private trainingValidationDataListener = new BehaviorSubject<any>({});
   private matchValidationData: any;
   private matchValidationDataListener = new BehaviorSubject<any>({});
+  private currentTeamEventType: number;
 
   constructor(
     private http: HttpClient,
+    private uiComponentsService: UiComponentsService,
     private serverEnvService: ServerEnvService
   ) { }
 
@@ -70,6 +73,11 @@ export class TeamEventValidationService {
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
+  }
+
+  getCurrentTeamEventType(): number {
+    this.currentTeamEventType = this.uiComponentsService.getIsSidepanelOpen().teamEventType;
+    return this.currentTeamEventType;
   }
 
   getTrainingValidationData(): any {
