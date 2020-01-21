@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
-import { map } from 'rxjs/operators';
 import { EventsCarouselModalComponent } from './events-carousel-modal/events-carousel-modal.component';
 import { fadeInOutAnimation } from '../../core/animations/fade-in-out.animation';
 import { ServerEnvService } from '../../core/services/server-env.service';
-import { TEAM_EVENTS_DATA } from 'server/data/team-events.data';
-import { of } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { UiComponentsService } from '../../core/services/ui-components.service';
 import { Router } from '@angular/router';
 import { enumToString } from '../../core/helpers/helper-functions';
 import { TeamEvents } from '../../core/enums/team-events.enum';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
+import { TeamOverviewService } from '../team-overview.service';
 
 @Component({
   selector: 'app-events-carousel',
@@ -20,10 +19,12 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./events-carousel.component.scss'],
   animations: [fadeInOutAnimation]
 })
-export class EventsCarouselComponent implements OnInit {
+export class EventsCarouselComponent implements OnInit, OnDestroy {
   isTeamEventsLoading = true;
   teamEvents = [];
   index = 0;
+  teamEventAfterValidation: any;
+  private teamEventAfterValidationSub: Subscription;
   config: SwiperConfigInterface = {
     direction: 'horizontal',
     keyboard: true,
@@ -53,36 +54,36 @@ export class EventsCarouselComponent implements OnInit {
     private serverEnvService: ServerEnvService,
     private uiComponentsService: UiComponentsService,
     private router: Router,
+    private teamOverviewService: TeamOverviewService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    // of(TEAM_EVENTS_DATA)
-
     const TEAM_ID = this.authService.getUserLoginData().teams[0].id;
     const BASE_URL = this.serverEnvService.getBaseUrl();
     const API_VERSION = 'v2';
     this.http
       .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events/unvalidated`)
       .subscribe((result: any) => {
-        // console.log('result: ', result);
         this.teamEvents = result;
         this.isTeamEventsLoading = false;
       }, (err) => {
         console.log('err: ', err);
       });
+
+    this.teamEventAfterValidationSub = this.teamOverviewService
+      .getTeamEventAfterValidationListener()
+      .subscribe((teamEventId: any) => {
+        console.log('teamEventId: ', teamEventId);
+        const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
+        this.teamEvents.splice(teamIndex, 1);
+      });
   }
 
   onConfirmSession(teamEvent) {
-    this.uiComponentsService.setIsSidepanelOpen({isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId});
-
-    // console.log('teamEvent: ', teamEvent);
-    // const teamEventString = enumToString(teamEvents, teamEvent.teamEventType).toLowerCase().trim();
-    // this.uiComponentsService.setIsLoading(true);
-    // setTimeout(() => { 
-    //   this.uiComponentsService.setIsLoading(false);
-    //   this.router.navigate([`/team-event-validation/${teamEventString}/${teamEvent.teamEventId}`]);
-    //  }, 1000);
+    this.uiComponentsService.setIsSidepanelOpen(
+      {isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId}
+    );
   }
 
   onConvertSession(teamEvent) {
@@ -98,16 +99,9 @@ export class EventsCarouselComponent implements OnInit {
         modalData: teamEvent
       }
     });
-
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
-        // console.log('teamEventId: ', teamEventId);
         if(teamEventId) {
-          // this.uiComponentsService.setIsLoading(true);
-          // setTimeout(() => { 
-          //   this.uiComponentsService.setIsLoading(false);
-          //  }, 2000);
-
           this.uiComponentsService.setIsLoading(true);
           let changeToEventType: number;
           if(teamEvent.teamEventType === 1) {
@@ -121,12 +115,10 @@ export class EventsCarouselComponent implements OnInit {
           this.http
             .put<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEvent.teamEventId}`, PAYLOAD)
             .subscribe((result: any) => {
-              // console.log('result: ', result);
               this.uiComponentsService.setIsLoading(false);
             }, (err) => {
               this.uiComponentsService.setIsLoading(false);
             });
-
         }
       });
   }
@@ -143,17 +135,10 @@ export class EventsCarouselComponent implements OnInit {
         modalData: teamEventId
       }
     });
-
     dialogRef.afterClosed()
       .subscribe(teamEventId => {
-        // console.log('teamEventId: ', teamEventId);
         if(teamEventId) {
           this.uiComponentsService.setIsLoading(true);
-          // setTimeout(() => { 
-          //     this.uiComponentsService.setIsLoading(false);
-          //     const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
-          //     this.teamEvents.splice(teamIndex, 1);
-          //  }, 2000);
           this.http
             .delete<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}`)
             .subscribe((result: any) => {
@@ -165,5 +150,9 @@ export class EventsCarouselComponent implements OnInit {
             });
         }
       });
+  }
+
+  ngOnDestroy() {
+    this.teamEventAfterValidationSub.unsubscribe();
   }
 }

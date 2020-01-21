@@ -69,6 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.teamEventId = sidepanelOpen.teamEventId;
         this.isSidepanelOpen = sidepanelOpen.isOpen;
         this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType;
+        console.log('this.sidepanelOpenTeamEventType: ', this.sidepanelOpenTeamEventType);
       });
 
     this.isLoadingSub = this.uiComponentsService
@@ -78,15 +79,16 @@ export class AppComponent implements OnInit, OnDestroy {
       });
 
     if (!environment.production) {
-      // this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
+      this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
       // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111'); // dev
       // this.router.navigate(['/team-overview']);
     };
   }
 
-  sidePanelCloased() {
+  sidePanelClosed() {
     this.sidepanelOpenTeamEventType = 0; // needs 0 to reset the ngIf
     this.isSidepanelOpen = false;
+    // logic for the draft saving if not completed the validation.
   }
 
   ngOnDestroy(){

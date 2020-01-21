@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TeamEventValidationService } from '../team-event-validation.service';
 import { UiComponentsService } from '../../core/services/ui-components.service';
-import { Subscription } from 'rxjs';
+import { TeamOverviewService } from '../../team-overview/team-overview.service';
 
 @Component({
   selector: 'app-training-validation',
@@ -20,25 +21,23 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 
   constructor(
     private teamEventValidationService: TeamEventValidationService,
-    private uiComponentsService: UiComponentsService
+    private teamOverviewService: TeamOverviewService,
+    private uiComponentsService: UiComponentsService,
   ) { }
 
   ngOnInit() {
-    console.log(this.trainingId);
     this.teamEventValidationService.fetchTraining(this.trainingId);
     this.trainingValidationDataSub = this.teamEventValidationService
       .getTrainingValidationDataListener()
       .subscribe((trainingValidationData: any) => {
-        // console.log('trainingValidationData: ', trainingValidationData);
-          this.isLoading = false;
-          this.step1Data = trainingValidationData.metadata;
-          this.step2Data = trainingValidationData.participatingPlayers;
-          this.step3Data = trainingValidationData.phases;
+        this.isLoading = false;
+        this.step1Data = trainingValidationData.metadata;
+        this.step2Data = trainingValidationData.participatingPlayers;
+        this.step3Data = trainingValidationData.phases;
       });
   }
   
   onStepSelectionEmitter(stepNumber) {
-    // console.log('stepNumber: ', stepNumber);
     this.currentSelectedStep = stepNumber;
     if(stepNumber === 3) {
       this.isLoading = true;
@@ -49,7 +48,7 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
             this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
           },
           (error) => {
-            console.log('error: ', error);
+            this.teamOverviewService.setTeamEventAfterValidation(this.trainingId);
             this.isLoading = false;
             this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
           }

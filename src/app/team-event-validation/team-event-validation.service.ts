@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServerEnvService } from '../core/services/server-env.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
 import { UiComponentsService } from '../core/services/ui-components.service';
+import { ServerEnvService } from '../core/services/server-env.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,13 +42,12 @@ export class TeamEventValidationService {
           this.setTrainingValidationData(this.trainingValidationData);
         },
         (error) => {
-          console.log('error: ', error);
+          
         }
       );
   }
 
   validateTraining(trainingId) {
-    console.log('trainingDataOutput: ', this.trainingDataOutput);
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
@@ -56,20 +55,19 @@ export class TeamEventValidationService {
 
   fetchMatch(matchId): any {
     of(TEAM_EVENT_VALIDATION_MATCH_DATA)
-    // this.teamEventValidationService.getMatchData(this.matchId)
+    // this.http.get<any>(`${PATH}/v3/match/${matchId}`)
       .subscribe(
         (matchResp: any) => {
           this.matchValidationData = matchResp;
           this.setMatchValidationData(this.matchValidationData);
         },
         (error) => {
-          console.log('error: ', error);
+
         }
       );
   }
 
   validateMatch(matchId) {
-    console.log('matchDataOutput: ', this.matchDataOutput);
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
