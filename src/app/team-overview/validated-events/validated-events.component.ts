@@ -43,7 +43,9 @@ export class ValidatedEventsComponent implements OnInit {
   }
 
   onEditSession(teamEvent) {
-    this.uiComponentsService.setIsSidepanelOpen({isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId});
+    this.uiComponentsService.setIsSidepanelOpen(
+      {isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId, isTeamEventValidationFinished: false}
+    );
   }
 
   onDeleteSession(teamEventId) {

@@ -45,12 +45,16 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
         .subscribe(
           (trainingResp: any) => {
             this.isLoading = false;
-            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+            this.uiComponentsService.setIsSidepanelOpen(
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true}
+            );
           },
           (error) => {
             this.teamOverviewService.setTeamEventAfterValidation(this.trainingId);
             this.isLoading = false;
-            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+            this.uiComponentsService.setIsSidepanelOpen(
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false}
+            );
           }
         );
     }

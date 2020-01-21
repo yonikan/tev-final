@@ -82,7 +82,7 @@ export class EventsCarouselComponent implements OnInit, OnDestroy {
 
   onConfirmSession(teamEvent) {
     this.uiComponentsService.setIsSidepanelOpen(
-      {isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId}
+      {isOpen: true, teamEventType: teamEvent.teamEventType, teamEventId: teamEvent.teamEventId, isTeamEventValidationFinished: false}
     );
   }
 

@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoading = false;
   private isLoadingSub: Subscription;
   teamEventId: number;
+  isSidepanelTeamEventValidationFinished = false;
 
   constructor( 
     public authService: AuthService, 
@@ -66,10 +67,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sidepanelOpenSub = this.uiComponentsService
       .getSidepanelOpenListener()
       .subscribe((sidepanelOpen: any) => {
+        console.log('sidepanelOpen: ', sidepanelOpen);
         this.teamEventId = sidepanelOpen.teamEventId;
         this.isSidepanelOpen = sidepanelOpen.isOpen;
         this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType;
-        console.log('this.sidepanelOpenTeamEventType: ', this.sidepanelOpenTeamEventType);
+        this.isSidepanelTeamEventValidationFinished = sidepanelOpen.isTeamEventValidationFinished;
+        // console.log('this.sidepanelOpenTeamEventType: ', this.sidepanelOpenTeamEventType);
       });
 
     this.isLoadingSub = this.uiComponentsService
@@ -88,7 +91,20 @@ export class AppComponent implements OnInit, OnDestroy {
   sidePanelClosed() {
     this.sidepanelOpenTeamEventType = 0; // needs 0 to reset the ngIf
     this.isSidepanelOpen = false;
+
     // logic for the draft saving if not completed the validation.
+    console.log('this.isSidepanelTeamEventValidationFinished: ', this.isSidepanelTeamEventValidationFinished);
+    if (!this.isSidepanelTeamEventValidationFinished) {
+      const PAYLOAD = {};
+      console.log('NEEDS TO ADD THE SAVE DRAFT');
+      // this.http.post<any>(`${PATH}/v3/${this.sidepanelOpenTeamEventType}/${this.teamEventId}/draft`, PAYLOAD);
+        // .subscribe(
+        //   (matchResp: any) => {
+        //   },
+        //   (error) => {
+        //   }
+        // );
+    }
   }
 
   ngOnDestroy(){

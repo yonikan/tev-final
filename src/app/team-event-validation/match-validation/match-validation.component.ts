@@ -49,12 +49,16 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
         .subscribe(
           (matchResp: any) => {
             this.isLoading = false;
-            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+            this.uiComponentsService.setIsSidepanelOpen(
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true}
+            );
           },
           (error) => {
             this.teamOverviewService.setTeamEventAfterValidation(this.matchId);
             this.isLoading = false;
-            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+            this.uiComponentsService.setIsSidepanelOpen(
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false}
+            );
           }
         );
     }
