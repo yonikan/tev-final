@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ServerEnvService } from '../core/services/server-env.service';
 import { BehaviorSubject, of, Observable } from 'rxjs';
 import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
+import { UiComponentsService } from '../core/services/ui-components.service';
 // import * as moment from 'moment';
 
 @Injectable({
@@ -28,15 +29,17 @@ export class TeamEventValidationService {
   private trainingValidationDataListener = new BehaviorSubject<any>({});
   private matchValidationData: any;
   private matchValidationDataListener = new BehaviorSubject<any>({});
+  private currentTeamEventType: number;
 
   linup = [];
   availableForSub = [];
 
   constructor(
     private http: HttpClient,
+    private uiComponentsService: UiComponentsService,
     private serverEnvService: ServerEnvService
   ) {
-    this.setFormation();
+    // this.setFormation();
   }
 
   fetchTraining(trainingId): any {
@@ -62,7 +65,7 @@ export class TeamEventValidationService {
 
   fetchMatch(matchId): any {
     of(TEAM_EVENT_VALIDATION_MATCH_DATA)
-    // this.teamEventValidationService.getMatchData(this.matchId)
+      // this.teamEventValidationService.getMatchData(this.matchId)
       .subscribe(
         (matchResp: any) => {
           this.matchValidationData = matchResp;
@@ -81,11 +84,17 @@ export class TeamEventValidationService {
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
   }
 
+  getCurrentTeamEventType(): number {
+    this.currentTeamEventType = this.uiComponentsService.getIsSidepanelOpen().teamEventType;
+    return this.currentTeamEventType;
+  }
+
   getTrainingValidationData(): any {
     return this.trainingValidationData;
   }
 
   setTrainingValidationData(data: any) {
+    // console.log(data)
     this.trainingValidationData = data;
     this.trainingValidationDataListener.next(data);
   }
@@ -99,6 +108,7 @@ export class TeamEventValidationService {
   }
 
   setMatchValidationData(data: any) {
+    // console.log(data)
     this.matchValidationData = data;
     this.matchValidationDataListener.next(data);
   }
@@ -107,61 +117,74 @@ export class TeamEventValidationService {
     return this.matchValidationDataListener.asObservable();
   }
 
+  getCurrentValitationData() {
+    switch (this.currentTeamEventType) {
+      case 1:
+        console.log(this.getMatchValidationData)
+        return this.getMatchValidationData();
+
+      case 2:
+        return this.getTrainingValidationData();
+    }
+  }
+
   getPlayerById(playerId) {
-      // return this.getMatchValidationData().participatingPlayers.playersList[playerId] || {};
-    }
+    return this.getCurrentValitationData().participatingPlayers.playersList[playerId] || {};
+  }
 
-    getPlayersByIds(playerIds, key?) {
-      return playerIds.map((playerId) => {
-        return this.getPlayerById(key ? playerId[key] : playerId);
-      })
-    }
+  getPlayersByIds(playerIds, key?) {
+    return playerIds.map((playerId) => {
+      return this.getPlayerById(key ? playerId[key] : playerId);
+    })
+  }
 
-    getPositionById(positionId) {
-      const positions = { 1: 'Goalkeepers', 2: 'Defenders' }
-      return positions[positionId];
-    }
+  getPositionById(positionId) {
+    const positions = { 1: 'Goalkeepers', 2: 'Defenders' }
+    return positions[positionId];
+  }
 
-    getAllParticipatingPlayers() {
-      // return this.getMatchValidationData().participatingPlayer.playersList || [];
-    }
+  getAllParticipatingPlayers() {
+    console.log('getCurrentValitationData: ', this.getCurrentValitationData(), this.getMatchValidationData());
+    return this.getCurrentValitationData().participatingPlayer.playersList || [];
+  }
 
-    setFormation() {
-      const participatingPlayers = this.getMatchValidationData().participatingPlayers.playersList;
-      this.linup = this.getMatchValidationData().formation.formationPosition;
-      this.availableForSub = { ...participatingPlayers };
-      this.linup.forEach((player) => {
-        const playerId = player.playerId;
-        if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
-      });
+  setFormation() {
+    console.log(this.getCurrentValitationData())
+    const participatingPlayers = this.getCurrentValitationData().participatingPlayers.playersList;
+    this.linup = this.getCurrentValitationData().formation.formationPosition;
+    this.availableForSub = { ...participatingPlayers };
+    this.linup.forEach((player) => {
+      const playerId = player.playerId;
+      if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
+    });
 
 
-      this.availableForSub = participatingPlayers.filter((player) => {
-        return this.isPlayerInLineup(player);
-      });
-    }
+    this.availableForSub = participatingPlayers.filter((player) => {
+      return this.isPlayerInLineup(player);
+    });
+  }
 
-    isPlayerInLineup(player) {
-      return this.linup.some((lineupPlayer) => {
-        return lineupPlayer.playerId === player.playerId;
-      });
-    }
+  isPlayerInLineup(player) {
+    return this.linup.some((lineupPlayer) => {
+      return lineupPlayer.playerId === player.playerId;
+    });
+  }
 
-    isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
-      this.getMatchValidationData().phases.phasesList.forEach((phase)=>{
-        if (this.isTimeRangesOverlap(phaseToCheck, phase)) {
-          return phase.linup.some((player)=>{
-            return player.playerId === playerId;
-          });
-        }
-      });
-    }
+  isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
+    this.getCurrentValitationData().phases.phasesList.forEach((phase) => {
+      if (this.isTimeRangesOverlap(phaseToCheck, phase)) {
+        return phase.linup.some((player) => {
+          return player.playerId === playerId;
+        });
+      }
+    });
+  }
 
-    isTimeRangesOverlap(timescope1, timescope2) {
-      // const range  = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
-      // const range2 = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
-      // range.overlaps(range2);
-      return true;
-    }
+  isTimeRangesOverlap(timescope1, timescope2) {
+    // const range  = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
+    // const range2 = moment.range(new Date(year, month, day, hours, minutes), new Date(year, month, day, hours, minutes));
+    // range.overlaps(range2);
+    return true;
+  }
 }
 

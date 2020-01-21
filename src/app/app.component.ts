@@ -29,8 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private isLoadingSub: Subscription;
   teamEventId: number;
 
-  constructor( 
-    public authService: AuthService, 
+  constructor(
+    public authService: AuthService,
     public authorizationService: AuthorizationService,
     private localStorageService: LocalStorageService,
     private translationPickerService: TranslationPickerService,
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit, OnDestroy {
       });
 
     if (!environment.production) {
-      // this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
+      this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
       // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111'); // dev
       // this.router.navigate(['/team-overview']);
     };

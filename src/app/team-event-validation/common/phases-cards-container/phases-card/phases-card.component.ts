@@ -2,6 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AreYouSureModalComponent } from '../../../common/are-you-sure-modal/are-you-sure-modal.component';
 import { MatDialog } from '@angular/material';
 import { PhasesModalComponent } from '../../../common/phases-modal/phases-modal.component';
+// import moment = require('moment');
+import * as moment from 'moment';
+import { enumToString } from '../../../../core/helpers/helper-functions';
+import { TrainingDrills } from '../../../../core/enums/training-drills.enum'
 
 @Component({
   selector: 'app-phases-card',
@@ -17,6 +21,9 @@ export class PhasesCardComponent implements OnInit {
 
   mode = 'MATCH';
 
+  enumToString = enumToString;
+  TrainingDrills = TrainingDrills;
+
   elapsisOptions = [
     // { name: 'Duplicate', icon: 'account_circle' },
     { name: 'Delete', icon: 'account_circle', action: 'onDeleteCard' }
@@ -26,11 +33,19 @@ export class PhasesCardComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log(this.phase)
+  }
+
+  translateEnumNumber(enumNumber) {
+    console.log(TrainingDrills, enumNumber);
+    return enumToString(TrainingDrills, enumNumber);
   }
 
   getTimeByFormat(startTime, endTime) {
-    // const diff = startTime.diff(endTime, 'minutes');
-    return `${startTime} - ${endTime} (${'20 min'}) - phase ${this.idx+1}/${this.PhasesCount}`
+    const diff = moment(endTime).diff(startTime, 'minutes');
+    startTime = moment(startTime).format('hh:mm');
+    endTime = moment(endTime).format('hh:mm');
+    return `${startTime} - ${endTime} (${diff} min) - phase ${this.idx + 1}/${this.PhasesCount}`
   }
 
   hundleElapsisAction(elapsisOption) {

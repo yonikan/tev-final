@@ -18,7 +18,7 @@ export class PitchSizeOptionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.mode, this.option)
+    // console.log(this.mode, this.option)
   }
 
   OnOptionClicked(value?, lengthOrWidth?) {

@@ -1,7 +1,7 @@
 <div class="step-training-phases-container">
     <app-speed-graph></app-speed-graph>
 
-    <app-phases-cards-container></app-phases-cards-container>
+    <app-phases-cards-container [cards]="stepTrainingPhasesData?.phasesList"></app-phases-cards-container>
 
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="backStep()">back</button>

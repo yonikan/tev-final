@@ -41,12 +41,18 @@ export class TagsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filteredTags = this.tagCtrl.valueChanges
-    .pipe(
-      startWith(null),
-      map((tag: string | null) => {
-        return tag ? this._filter(tag) : this.stepMatchOverviewData.tags.slice();
-      }));
+  }
+
+
+  ngOnChanges(change) {
+    if (change.stepMatchOverviewData) {
+      this.filteredTags = this.tagCtrl.valueChanges
+      .pipe(
+        startWith(null),
+        map((tag: string | null) => {
+          return tag ? this._filter(tag) : this.stepMatchOverviewData.tags.slice();
+        }));
+    }
   }
 
   add(event): void {
