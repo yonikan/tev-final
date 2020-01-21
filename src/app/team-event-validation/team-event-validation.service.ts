@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ServerEnvService } from '../core/services/server-env.service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +20,28 @@ export class TeamEventValidationService {
     step4PhasesData: null,
     step5SubsData: null
   };
+  private trainingValidationData: any;
+  private trainingValidationDataListener = new BehaviorSubject<any>({});
+  private matchValidationData: any;
+  private matchValidationDataListener = new BehaviorSubject<any>({});
 
   constructor(
     private http: HttpClient,
     private serverEnvService: ServerEnvService
   ) { }
 
-  getTrainingData(trainingId): any {
+  fetchTraining(trainingId): any {
     const PATH = this.serverEnvService.getBaseUrl();
-    return this.http.get<any>(`${PATH}/v3/training/${trainingId}`);
+    this.http.get<any>(`${PATH}/v3/training/${trainingId}`)
+      .subscribe(
+        (trainingResp: any) => {
+          this.trainingValidationData = trainingResp;
+          this.setTrainingValidationData(this.trainingValidationData);
+        },
+        (error) => {
+          console.log('error: ', error);
+        }
+      );
   }
 
   validateTraining(trainingId) {
@@ -36,10 +51,18 @@ export class TeamEventValidationService {
     return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
   }
 
-  getMatchData(matchId): any {
-    // return this.matchData;
-    const PATH = this.serverEnvService.getBaseUrl();
-    return this.http.get<any>(`${PATH}/v3/match/${matchId}`);
+  fetchMatch(matchId): any {
+    of(TEAM_EVENT_VALIDATION_MATCH_DATA)
+    // this.teamEventValidationService.getMatchData(this.matchId)
+      .subscribe(
+        (matchResp: any) => {
+          this.matchValidationData = matchResp;
+          this.setMatchValidationData(this.matchValidationData);
+        },
+        (error) => {
+          console.log('error: ', error);
+        }
+      );
   }
 
   validateMatch(matchId) {
@@ -47,5 +70,31 @@ export class TeamEventValidationService {
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
+  }
+
+  getTrainingValidationData(): any {
+    return this.trainingValidationData;
+  }
+
+  setTrainingValidationData(data: any) {
+    this.trainingValidationData = data;
+    this.trainingValidationDataListener.next(data);
+  }
+
+  getTrainingValidationDataListener(): Observable<any> {
+    return this.trainingValidationDataListener.asObservable();
+  }
+
+  getMatchValidationData(): any {
+    return this.matchValidationData;
+  }
+
+  setMatchValidationData(data: any) {
+    this.matchValidationData = data;
+    this.matchValidationDataListener.next(data);
+  }
+
+  getMatchValidationDataListener(): Observable<any> {
+    return this.matchValidationDataListener.asObservable();
   }
 }
