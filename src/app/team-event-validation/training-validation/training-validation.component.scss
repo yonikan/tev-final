@@ -2,8 +2,11 @@
 @import '../../../styles/mixins';
 
 :host {
-
     .training-validation-container {
         @include team-event-container;
     }
+}
+
+::ng-deep .mat-tab-body-wrapper {
+    height: 90vh;
 }

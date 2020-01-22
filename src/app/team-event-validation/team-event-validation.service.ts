@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ServerEnvService } from '../core/services/server-env.service';
 import { BehaviorSubject, of, Observable } from 'rxjs';
-import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
+// import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
 import { UiComponentsService } from '../core/services/ui-components.service';
 // import * as moment from 'moment';
 
@@ -57,15 +57,14 @@ export class TeamEventValidationService {
   }
 
   validateTraining(trainingId) {
-
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
   }
 
   fetchMatch(matchId): any {
-    of(TEAM_EVENT_VALIDATION_MATCH_DATA)
-      // this.teamEventValidationService.getMatchData(this.matchId)
+    const PATH = this.serverEnvService.getBaseUrl();
+    this.http.get<any>(`${PATH}/v3/match/${matchId}`)
       .subscribe(
         (matchResp: any) => {
           this.matchValidationData = matchResp;
@@ -78,7 +77,6 @@ export class TeamEventValidationService {
   }
 
   validateMatch(matchId) {
-
     const PATH = this.serverEnvService.getBaseUrl();
     const PAYLOAD = null;
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);

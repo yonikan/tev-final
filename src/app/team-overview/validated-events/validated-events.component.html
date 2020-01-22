@@ -3,7 +3,7 @@
         <mat-spinner></mat-spinner>
     </div>
     <div *ngIf="!isLoading">
-      <cdk-virtual-scroll-viewport itemSize="260" style="height: 90vh; width: 90vw; margin: 0 auto;">
+      <!-- <cdk-virtual-scroll-viewport itemSize="260" style="height: 90vh; width: 90vw; margin: 0 auto;">
         <app-event *cdkVirtualFor="let teamEvent of teamEvents"
             [@fadeInOut]
             [eventIndex]="index" 
@@ -12,14 +12,14 @@
             (downloadPdfReportEmitter)="onDownloadPdfReport($event)" 
             [eventData]="teamEvent">
         </app-event>
-      </cdk-virtual-scroll-viewport>
+      </cdk-virtual-scroll-viewport> -->
+      <app-event *ngFor="let teamEvent of teamEvents"
+          [@fadeInOut]
+          [eventIndex]="index" 
+          (editSessionEmitter)="onEditSession($event)"
+          (deleteSessionEmitter)="onDeleteSession($event)"
+          (downloadPdfReportEmitter)="onDownloadPdfReport($event)" 
+          [eventData]="teamEvent">
+      </app-event>
     </div>
-    <!-- <app-event *ngFor="let teamEvent of teamEvents"
-        [@fadeInOut]
-        [eventIndex]="index" 
-        (editSessionEmitter)="onEditSession($event)"
-        (deleteSessionEmitter)="onDeleteSession($event)"
-        (downloadPdfReportEmitter)="onDownloadPdfReport($event)" 
-        [eventData]="teamEvent">
-    </app-event> -->
 </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TeamEventValidationService } from '../team-event-validation.service';
 import { UiComponentsService } from '../../core/services/ui-components.service';
-import { Subscription } from 'rxjs';
+import { TeamOverviewService } from '../../team-overview/team-overview.service';
 
 @Component({
   selector: 'app-match-validation',
@@ -22,16 +23,15 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 
   constructor(
     private teamEventValidationService: TeamEventValidationService,
+    private teamOverviewService: TeamOverviewService,
     private uiComponentsService: UiComponentsService
   ) { }
 
   ngOnInit() {
-    console.log(this.matchId);
     this.teamEventValidationService.fetchMatch(this.matchId);
     this.matchValidationDataSub = this.teamEventValidationService
       .getMatchValidationDataListener()
       .subscribe((matchValidationData: any) => {
-        // console.log('trainingValidationData: ', trainingValidationData);
           this.isLoading = false;
           this.step1Data = matchValidationData.metadata;
           this.step2Data = matchValidationData.participatingPlayers;
@@ -42,7 +42,6 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
   }
 
   onStepSelectionEmitter(stepNumber) {
-    // console.log('stepNumber: ', stepNumber);
     this.currentSelectedStep = stepNumber;
     if(stepNumber === 5) {
       this.isLoading = true;
@@ -50,12 +49,16 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
         .subscribe(
           (matchResp: any) => {
             this.isLoading = false;
-            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+            this.uiComponentsService.setIsSidepanelOpen(
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true}
+            );
           },
           (error) => {
-            console.log('error: ', error);
+            this.teamOverviewService.setTeamEventAfterValidation(this.matchId);
             this.isLoading = false;
-            this.uiComponentsService.setIsSidepanelOpen({isOpen: false, teamEventType: null, teamEventId: null});
+            this.uiComponentsService.setIsSidepanelOpen(
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false}
+            );
           }
         );
     }

@@ -11,6 +11,8 @@ import { TeamPickerService } from './core/services/team-picker.service';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
 import { UiComponentsService } from './core/services/ui-components.service';
+import { TeamEventValidationService } from './team-event-validation/team-event-validation.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoading = false;
   private isLoadingSub: Subscription;
   teamEventId: number;
+  isSidepanelTeamEventValidationFinished = false;
 
   constructor(
     public authService: AuthService,
@@ -37,6 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private themePickerService: ThemePickerService,
     private uiComponentsService: UiComponentsService,
     public breakpointObserver: BreakpointObserver,
+    private teamEventValidationService: TeamEventValidationService,
+    private http: HttpClient,
     private router: Router,
     private serverEnvService: ServerEnvService) {
   }
@@ -66,9 +71,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sidepanelOpenSub = this.uiComponentsService
       .getSidepanelOpenListener()
       .subscribe((sidepanelOpen: any) => {
+        console.log('sidepanelOpen: ', sidepanelOpen);
         this.teamEventId = sidepanelOpen.teamEventId;
         this.isSidepanelOpen = sidepanelOpen.isOpen;
         this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType;
+        this.isSidepanelTeamEventValidationFinished = sidepanelOpen.isTeamEventValidationFinished;
+        // console.log('this.sidepanelOpenTeamEventType: ', this.sidepanelOpenTeamEventType);
       });
 
     this.isLoadingSub = this.uiComponentsService
@@ -84,7 +92,28 @@ export class AppComponent implements OnInit, OnDestroy {
     };
   }
 
-  sidePanelCloased() {
+  sidePanelClosed() {
+    if (!this.isSidepanelTeamEventValidationFinished) {
+      let PAYLOAD;
+      let TEAM_EVENT_TYPE;
+      if(this.sidepanelOpenTeamEventType === 1) {
+        PAYLOAD = this.teamEventValidationService.getTrainingValidationData();
+        TEAM_EVENT_TYPE = 'training';
+      } else if (this.sidepanelOpenTeamEventType === 2) {
+        PAYLOAD = this.teamEventValidationService.getMatchValidationData();
+        TEAM_EVENT_TYPE = 'match';
+      }
+      const PATH = this.serverEnvService.getBaseUrl();
+      this.http.post<any>(`${PATH}/v3/${TEAM_EVENT_TYPE}/${this.teamEventId}/draft`, PAYLOAD)
+        .subscribe(
+          (resp: any) => {
+            
+          },
+          (error) => {
+
+          }
+        );
+    }
     this.sidepanelOpenTeamEventType = 0; // needs 0 to reset the ngIf
     this.isSidepanelOpen = false;
   }

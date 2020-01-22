@@ -19,9 +19,9 @@ export class StepTrainingGeneralComponent implements OnInit {
 
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    // console.log('changes: ', changes);
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   console.log('changes: ', changes);
+  // }
 
   nextStep() {
     this.teamEventValidationService.trainingDataOutput.step1GeneralData = this.stepTrainingGeneralData;

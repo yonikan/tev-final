@@ -134,7 +134,7 @@
 @mixin team-event-container() {
   // width: 800px;
   background-color: #ffffff;
-  padding: 20px;
+  // padding: 20px;
   // margin: 15px;
   border-radius: 10px;
   border-left: 4px solid #35083a;
@@ -155,6 +155,7 @@
   min-height: 600px;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 
   .step-footer {
     border-top: 1px solid #cecece;

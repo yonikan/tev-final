@@ -9,9 +9,8 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class UiComponentsService {
   private isLoading = false;
   private isLoadingListener = new BehaviorSubject<boolean>(false);
-  private sidepanelOpen = {isOpen: false, teamEventType: 1, teamEventId: 333};
+  private sidepanelOpen = {isOpen: false, teamEventType: 1, teamEventId: 333, isTeamEventValidationFinished: false};
   private sidepanelOpenListener = new Subject<any>();
-  // private sidepanelOpenListener = new BehaviorSubject<any>({isOpen: false, teamEventType: 1, teamEventId: null});
 
   constructor(private snackbar: MatSnackBar, private bottomSheet: MatBottomSheet) {}
 
