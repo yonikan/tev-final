@@ -82,7 +82,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	}
 
 	getClubPlayers() {
-		const clubPlayersGroup = this.getGrouped(this.clubPlayers, 'clubName', 'players');
+		const clubPlayersGroup = this.getGrouped(this.clubPlayers, 'teamName', 'players');
 		return clubPlayersGroup.map((cpg: any) => {
 			cpg.players = this.getGrouped(cpg.players, 'positionName', 'players');
 			return cpg;

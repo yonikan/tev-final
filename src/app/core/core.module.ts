@@ -11,6 +11,7 @@ import { FadeInUpStaggerElementDirective } from './animations/fade-in-up.animati
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: VersionUpdateInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+	{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+	DataService
   ],
   exports: [
     FadeInRightStaggerElementDirective,

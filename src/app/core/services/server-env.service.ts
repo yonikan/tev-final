@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ServerEnvService {
   private currentServerEnv;
-  
+
   constructor() { }
 
   initServerEnv() {
@@ -15,7 +15,7 @@ export class ServerEnvService {
       this.currentServerEnv = 'dev';
       return;
     };
-    
+
     const URL_HOSTNAME = window.location.hostname;
     const SUB_DOMAIN = URL_HOSTNAME.split('.')[0];
     const TOP_LEVEL_DOMAIN = URL_HOSTNAME.split('.')[2];
@@ -35,25 +35,19 @@ export class ServerEnvService {
     };
   }
 
+  getUrlVersion(url, v) {
+	  return url.replace(`{version}`, v);
+  }
+
   getBaseUrl(serverEnv = 2): string {
     if (this.currentServerEnv === 'dev') {
-      if (serverEnv === 2) {
-        return AppConsts.devBaseUrl2
-      }
-      return AppConsts.devBaseUrl
+      return this.getUrlVersion(AppConsts.devBaseUrl, serverEnv)
     } else if (this.currentServerEnv === 'stage') {
-      if (serverEnv === 2) {
-        return AppConsts.stageBaseUrl2
-      }
-      return AppConsts.stageBaseUrl
+		return this.getUrlVersion(AppConsts.stageBaseUrl, serverEnv)
     } else if (this.currentServerEnv === 'prod') {
-      if (serverEnv === 2) {
-        return AppConsts.prodBaseUrl2
-      }
-      return AppConsts.prodBaseUrl
-    } else { // for a local dev node server
-      return AppConsts.devBaseUrl2;
-      // return AppConsts.devBaseUrlLocalDevServer;
-    }
+		return this.getUrlVersion(AppConsts.prodBaseUrl, serverEnv)
+	}
+
+	return AppConsts.devBaseUrl2;
   }
 }

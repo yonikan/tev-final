@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthorizationService, initFeatureToggling } from './core/services/authorization.service';
+import { DataService, initMetadata } from './core/services/data.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,13 @@ import { AuthorizationService, initFeatureToggling } from './core/services/autho
       useFactory: initFeatureToggling,
       deps: [AuthorizationService],
       multi: true
-    },
+	},
+	{
+		provide: APP_INITIALIZER,
+		useFactory: initMetadata,
+		deps: [DataService],
+		multi: true
+	}
     // {
     //   provide: APP_INITIALIZER,
     //   useFactory: initPlatformFeatureToggling,

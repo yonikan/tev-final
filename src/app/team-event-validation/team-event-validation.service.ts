@@ -4,51 +4,8 @@ import { TEAM_EVENT_VALIDATION_TRAINING } from 'server/data/team-event-validatio
 import { TEAM_EVENT_VALIDATION_MATCH } from 'server/data/team-event-validation-match.data';
 import { of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
-const clubPlayerMock = [
-	{
-		"teamId": 355,
-		"clubName": "U15",
-		"IsAcademy": false,
-		"userId": 19713,
-		"firstName": "sharon",
-		"lastName": "green",
-		"positionName": "Goalkeeper",
-		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
-	},
-	{
-		"teamId": 356,
-		"clubName": "U16",
-		"IsAcademy": false,
-		"userId": 19714,
-		"firstName": "shai",
-		"lastName": "angress",
-		"positionName": "Defender",
-		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
-	},
-	{
-		"teamId": 356,
-		"clubName": "U16",
-		"IsAcademy": false,
-		"userId": 19715,
-		"firstName": "baruch",
-		"lastName": "spinoza",
-		"positionName": "Defender",
-		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
-	},
-	{
-		"teamId": 356,
-		"clubName": "U16",
-		"IsAcademy": false,
-		"userId": 19716,
-		"firstName": "michael",
-		"lastName": "schumacher",
-		"positionName": "Sweeper",
-		"profilePic": "https://s3.eu-central-1.amazonaws.com/motionizefootball/dashboard_placeholders/user_img_placeholder.png", "gender": 0
-	}
-]
-
-
+import { ServerEnvService } from '../core/services/server-env.service';
+import { DataService } from '../core/services/data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -137,29 +94,36 @@ export class TeamEventValidationService {
     }
   };
 
-  constructor(private http: HttpClient) { }
+  private BASE_URL = '/';
+
+  constructor(private http: HttpClient, private serverEnvService: ServerEnvService, private dataService: DataService) {
+	this.BASE_URL = serverEnvService.getBaseUrl(3);
+  }
 
   revertSwaps(teamEventId=49609, onSuccess) {
-	this.http.post(`api/v3/team-event/${teamEventId}/revert-swaps`, {})
+	this.http.put(`${this.BASE_URL}/team-event/${teamEventId}/revert-swaps`, {})
 		.subscribe(onSuccess);
   }
 
   swapPlayer(srcId, swapId, teamEventId=49609, onSuccess) {
-	  this.http.put(`api/v3/team-event/${teamEventId}/swap`, {srcId, swapId})
+	  this.http.put(`${this.BASE_URL}/team-event/${teamEventId}/swap`, {srcId, swapId})
 	  	.subscribe(onSuccess);
   }
 
   getPlayersForSwap(subject: Subject<any>, teamEventId=49609) {
 		this.http
-			.get(`api/v3/team-event/${teamEventId}/players-for-swap`)
+			.get(`${this.BASE_URL}/team-event/${teamEventId}/players-for-swap`)
 			.subscribe((data: any) => {
-				return subject.next({clubPlayers: data});
+				return subject.next({clubPlayers: data.map(player => ({
+					...player,
+					positionName: this.dataService.metadata.positions[player.positionId] || this.dataService.metadata.positions.default
+				}))});
 			})
   }
 
-  getParticipatingPlayers(subject: Subject<any>, id?) {
+  getParticipatingPlayers(subject: Subject<any>, teamEventId=49609) {
 	this.http
-		.get('https://footballrest2-dev.playermaker.co.uk/api/v3/training/49609')
+		.get(`${this.BASE_URL}/training/${teamEventId}`)
 		.subscribe((data: any) => {
 			// HACK: remove tmp code
 			const players = Object.values(data.participatingPlayers).map(

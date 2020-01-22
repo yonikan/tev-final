@@ -1,9 +1,9 @@
 export const AppConsts = {
-  devBaseUrl: 'https://footballrest2-dev.playermaker.co.uk/api/v1',
+  devBaseUrl: 'https://footballrest2-dev.playermaker.co.uk/api/v{version}',
   devBaseUrl2: 'https://footballrest2-dev.playermaker.co.uk/api/v2',
-  stageBaseUrl: 'https://footballrest2-dev.playermaker.co.uk/api/v1',
+  stageBaseUrl: 'https://footballrest2-dev.playermaker.co.uk/api/v{version}',
   stageBaseUrl2: 'https://footballrest2-dev.playermaker.co.uk/api/v2',
-  prodBaseUrl: 'https://footballrest2-dev.playermaker.co.uk/api/v1',
+  prodBaseUrl: 'https://footballrest2-dev.playermaker.co.uk/api/v{version}',
   prodBaseUrl2: 'https://footballrest2-dev.playermaker.co.uk/api/v2',
 
   devBaseUrlLocalDevServer: '/api',
