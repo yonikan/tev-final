@@ -18,8 +18,8 @@
         </mat-radio-group>
       </div>
       <div class="phase-duration">
-        <time-picker class="start-phase"></time-picker>
-        <time-picker class="end-phase"></time-picker>
+        <time-picker class="start-phase" [defaultTime]="data.phase.startTime"></time-picker>
+        <time-picker class="end-phase" [defaultTime]="data.phase.endTime"></time-picker>
         <div class="phase-duration-total">
           ({{setPhaseDurationTotal()}})
         </div>

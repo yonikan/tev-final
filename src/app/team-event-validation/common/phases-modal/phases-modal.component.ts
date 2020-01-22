@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import * as moment from 'moment';
 
 @Component({
   selector: 'phases-modal',
@@ -15,7 +16,7 @@ export class PhasesModalComponent implements OnInit {
   phaseDurationTotal;
 
   constructor(public dialogRef: MatDialogRef<any>,
-    @Inject(MAT_DIALOG_DATA) public data: { eventType: string, PhasesCount: number, idx: number, phase: object }) {
+    @Inject(MAT_DIALOG_DATA) public data: { eventType: string, PhasesCount: number, idx: number, phase: any }) {
   }
 
   ngOnInit() {
@@ -36,8 +37,9 @@ export class PhasesModalComponent implements OnInit {
     this.selectedModalOption = this.modalOptions[0];
   }
 
-  setPhaseDurationTotal(startTime?, endTime?) {
-    this.phaseDurationTotal = 'Total: 90 MIN';
+  setPhaseDurationTotal() {
+    const diff = moment(this.data.phase.endTime).diff(this.data.phase.startTime, 'minutes');
+    this.phaseDurationTotal = `Total: ${diff} MIN`;
     return this.phaseDurationTotal;
   }
 

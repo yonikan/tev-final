@@ -37,14 +37,15 @@ export class PhasesCardComponent implements OnInit {
   }
 
   translateEnumNumber(enumNumber) {
+    return enumNumber;
     console.log(TrainingDrills, enumNumber);
     return enumToString(TrainingDrills, enumNumber);
   }
 
-  getTimeByFormat(startTime, endTime) {
+  getTimeByFormat(startTime, endTime, offset?) {
     const diff = moment(endTime).diff(startTime, 'minutes');
-    startTime = moment(startTime).format('hh:mm');
-    endTime = moment(endTime).format('hh:mm');
+    startTime = moment(startTime).add(offset, 'hours').format('hh:mm');
+    endTime = moment(endTime).add(offset, 'hours').format('hh:mm');
     return `${startTime} - ${endTime} (${diff} min) - phase ${this.idx + 1}/${this.PhasesCount}`
   }
 
