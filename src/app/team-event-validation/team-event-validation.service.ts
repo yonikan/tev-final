@@ -139,22 +139,22 @@ export class TeamEventValidationService {
 
   constructor(private http: HttpClient) { }
 
-  revertSwaps(teamEventId?) {
-	this.http.post(`api/v3/team-event/${teamEventId}/revert-swaps`, {});
+  revertSwaps(teamEventId=49609, onSuccess) {
+	this.http.post(`api/v3/team-event/${teamEventId}/revert-swaps`, {})
+		.subscribe(onSuccess);
   }
 
-  swapPlayer(srcId, swapId, teamEventId?) {
+  swapPlayer(srcId, swapId, teamEventId=49609, onSuccess) {
 	  this.http.put(`api/v3/team-event/${teamEventId}/swap`, {srcId, swapId})
+	  	.subscribe(onSuccess);
   }
 
-  getClubPlayers(subject: Subject<any>, teamEventId?) {
-	  return subject.next({clubPlayers: clubPlayerMock});
-	//   this.http
-	// 	.get(`api/v3/team-event/${teamEventId}/players-for-swap`)
-	// 	.subscribe((data: any) => {
-	// 		console.log('data', data);
-	// 		return subject.next(data);
-	// 	})
+  getPlayersForSwap(subject: Subject<any>, teamEventId=49609) {
+		this.http
+			.get(`api/v3/team-event/${teamEventId}/players-for-swap`)
+			.subscribe((data: any) => {
+				return subject.next({clubPlayers: data});
+			})
   }
 
   getParticipatingPlayers(subject: Subject<any>, id?) {
@@ -162,7 +162,7 @@ export class TeamEventValidationService {
 		.get('https://footballrest2-dev.playermaker.co.uk/api/v3/training/49609')
 		.subscribe((data: any) => {
 			// HACK: remove tmp code
-			const players = Object.values(data.participatingPlayers.playersList).map(
+			const players = Object.values(data.participatingPlayers).map(
 				(p: any) => ({...p, "profilePic": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"}));
 
 			return subject.next({allPlayers: players});

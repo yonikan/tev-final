@@ -58,7 +58,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 		});
 
 		this.teamEventValidationService.getParticipatingPlayers(this.store);
-		this.teamEventValidationService.getClubPlayers(this.store);
+		this.teamEventValidationService.getPlayersForSwap(this.store);
 	}
 
 	doExcludePlayer(player) {
@@ -91,36 +91,36 @@ export class ParticipatingPlayersComponent implements OnInit {
 	doSwapPlayer({ player, swappedPlayer }, isIncluded) {
 
 		// TODO: API
-		// this.teamEventValidationService.swapPlayer(swappedPlayer.id, player.userId);
-		// TODO: update clubplayers list
-
-		const newState = {
-			excludedPlayers: this.excludedPlayers,
-			includedPlayers: this.includedPlayers,
-			allPlayers: this.allPlayers.map(p => {
-				if (p.id === swappedPlayer.id) {
-					p = {
-						...swappedPlayer,
-						isOpen: false,
-						isSwapped: true,
-						id: player.userId,
-						firstName: player.firstName,
-						lastName: player.lastName,
-						profilePic: player.profilePic
+		this.teamEventValidationService.swapPlayer(swappedPlayer.id, player.userId, 49609, () => {
+			const newState = {
+				excludedPlayers: this.excludedPlayers,
+				includedPlayers: this.includedPlayers,
+				allPlayers: this.allPlayers.map(p => {
+					if (p.id === swappedPlayer.id) {
+						p = {
+							...swappedPlayer,
+							isOpen: false,
+							isSwapped: true,
+							id: player.userId,
+							firstName: player.firstName,
+							lastName: player.lastName,
+							profilePic: player.profilePic
+						}
 					}
-				}
 
-				return p;
-			}),
-			clubPlayers: this.clubPlayers.map(cp => {
-				if (cp.userId === player.userId) {
-					cp.isParticipated = true;
-				}
-				return cp;
-			})
-		};
+					return p;
+				}),
+				clubPlayers: this.clubPlayers.map(cp => {
+					if (cp.userId === player.userId) {
+						cp.isParticipated = true;
+					}
+					return cp;
+				})
+			};
 
-		this.store.next(newState);
+			this.store.next(newState);
+		});
+		// TODO: update clubplayers list
 	}
 
 	mapSwap(player, swappedPlayer, players) {
@@ -137,15 +137,17 @@ export class ParticipatingPlayersComponent implements OnInit {
 
 	doResetChanges(e, isIncluded) {
 		// TODO: API
-		// this.teamEventValidationService.revertSwaps();
-		const newState = {
-			excludedPlayers: this.excludedPlayers,
-			includedPlayers: this.includedPlayers,
-			allPlayers: [...this.initialState.allPlayers],
-			clubPlayers: [...this.initialState.clubPlayers]
-		};
+		this.teamEventValidationService.revertSwaps(49609, () => {
+			const newState = {
+				excludedPlayers: this.excludedPlayers,
+				includedPlayers: this.includedPlayers,
+				allPlayers: [...this.initialState.allPlayers],
+				clubPlayers: [...this.initialState.clubPlayers]
+			};
 
-		this.store.next(newState);
+			this.store.next(newState);
+		});
+
 	}
 
 	filterDuplicated(players, playersOrigin) {
