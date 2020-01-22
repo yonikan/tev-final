@@ -34,7 +34,8 @@ export class ValidatedEventsComponent implements OnInit {
     this.http
       .get<any>(`${BASE_URL}/${API_VERSION}/team/${TEAM_ID}/team-events`)
       .subscribe((result: any) => {
-        this.teamEvents = result; // only validated team-events
+        // this.teamEvents = result; // only validated team-events
+        this.teamEvents = result.splice(0, 20);
         this.isLoading = false;
         this.isTeamEventsLoading = false;
       }, (err) => {

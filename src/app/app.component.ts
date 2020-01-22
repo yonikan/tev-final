@@ -11,6 +11,8 @@ import { TeamPickerService } from './core/services/team-picker.service';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
 import { UiComponentsService } from './core/services/ui-components.service';
+import { TeamEventValidationService } from './team-event-validation/team-event-validation.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private themePickerService: ThemePickerService,
     private uiComponentsService: UiComponentsService,
     public breakpointObserver: BreakpointObserver,
+    private teamEventValidationService: TeamEventValidationService,
+    private http: HttpClient,
     private router: Router,
     private serverEnvService: ServerEnvService) {
   }
@@ -89,22 +93,29 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   sidePanelClosed() {
+    // logic for the draft saving if not completed the validation.
+    if (!this.isSidepanelTeamEventValidationFinished) {
+      console.log('TESTTTTTTTTTTTTTTTTTTTT');
+      let PAYLOAD;
+      if(this.sidepanelOpenTeamEventType === 1) {
+        PAYLOAD = this.teamEventValidationService.getTrainingValidationData();
+      } else if (this.sidepanelOpenTeamEventType === 2) {
+        PAYLOAD = this.teamEventValidationService.getMatchValidationData();
+      }
+      const PATH = this.serverEnvService.getBaseUrl();
+      this.http.post<any>(`${PATH}/v3/${this.sidepanelOpenTeamEventType}/${this.teamEventId}/draft`, PAYLOAD)
+        .subscribe(
+          (matchResp: any) => {
+            console.log('matchResp: ', matchResp);
+          },
+          (error) => {
+
+          }
+        );
+    }
+
     this.sidepanelOpenTeamEventType = 0; // needs 0 to reset the ngIf
     this.isSidepanelOpen = false;
-
-    // logic for the draft saving if not completed the validation.
-    console.log('this.isSidepanelTeamEventValidationFinished: ', this.isSidepanelTeamEventValidationFinished);
-    if (!this.isSidepanelTeamEventValidationFinished) {
-      const PAYLOAD = {};
-      console.log('NEEDS TO ADD THE SAVE DRAFT');
-      // this.http.post<any>(`${PATH}/v3/${this.sidepanelOpenTeamEventType}/${this.teamEventId}/draft`, PAYLOAD);
-        // .subscribe(
-        //   (matchResp: any) => {
-        //   },
-        //   (error) => {
-        //   }
-        // );
-    }
   }
 
   ngOnDestroy(){

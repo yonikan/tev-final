@@ -57,7 +57,7 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
             this.teamOverviewService.setTeamEventAfterValidation(this.matchId);
             this.isLoading = false;
             this.uiComponentsService.setIsSidepanelOpen(
-              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false}
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true}
             );
           }
         );
