@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UiComponentsService } from '../core/services/ui-components.service';
 import { ServerEnvService } from '../core/services/server-env.service';
 
@@ -54,8 +53,8 @@ export class TeamEventValidationService {
   }
 
   fetchMatch(matchId): any {
-    of(TEAM_EVENT_VALIDATION_MATCH_DATA)
-    // this.http.get<any>(`${PATH}/v3/match/${matchId}`)
+    const PATH = this.serverEnvService.getBaseUrl();
+    this.http.get<any>(`${PATH}/v3/match/${matchId}`)
       .subscribe(
         (matchResp: any) => {
           this.matchValidationData = matchResp;

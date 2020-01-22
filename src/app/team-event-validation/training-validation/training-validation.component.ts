@@ -53,7 +53,7 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
             this.teamOverviewService.setTeamEventAfterValidation(this.trainingId);
             this.isLoading = false;
             this.uiComponentsService.setIsSidepanelOpen(
-              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true}
+              {isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false}
             );
           }
         );

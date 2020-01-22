@@ -86,34 +86,34 @@ export class AppComponent implements OnInit, OnDestroy {
       });
 
     if (!environment.production) {
-      this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
+      // this.authService.login('yoni.kangun@playermaker.com', 'aaaAAA111'); // stage
       // this.authService.login('yoni.kangun@playermaker.com', 'AAAaaa111'); // dev
       // this.router.navigate(['/team-overview']);
     };
   }
 
   sidePanelClosed() {
-    // logic for the draft saving if not completed the validation.
     if (!this.isSidepanelTeamEventValidationFinished) {
-      console.log('TESTTTTTTTTTTTTTTTTTTTT');
       let PAYLOAD;
+      let TEAM_EVENT_TYPE;
       if(this.sidepanelOpenTeamEventType === 1) {
         PAYLOAD = this.teamEventValidationService.getTrainingValidationData();
+        TEAM_EVENT_TYPE = 'training';
       } else if (this.sidepanelOpenTeamEventType === 2) {
         PAYLOAD = this.teamEventValidationService.getMatchValidationData();
+        TEAM_EVENT_TYPE = 'match';
       }
       const PATH = this.serverEnvService.getBaseUrl();
-      this.http.post<any>(`${PATH}/v3/${this.sidepanelOpenTeamEventType}/${this.teamEventId}/draft`, PAYLOAD)
+      this.http.post<any>(`${PATH}/v3/${TEAM_EVENT_TYPE}/${this.teamEventId}/draft`, PAYLOAD)
         .subscribe(
-          (matchResp: any) => {
-            console.log('matchResp: ', matchResp);
+          (resp: any) => {
+            
           },
           (error) => {
 
           }
         );
     }
-
     this.sidepanelOpenTeamEventType = 0; // needs 0 to reset the ngIf
     this.isSidepanelOpen = false;
   }
