@@ -6,6 +6,25 @@ import * as moment from 'moment-timezone'
 let Boost = require('highcharts/modules/boost');
 Boost(Highcharts);
 
+const CHART_OPTIONS = {
+	OPACITY: 0.8,
+	PLOT_BAND_COLOR: '#e7e7e7'
+}
+
+const plotLines = [
+	{
+		color: '#11cd69',
+		value: 0,
+		width: 3,
+		zIndex: 5
+	},
+	{
+		color: '#11cd69',
+		value: 0,
+		width: 3,
+		zIndex: 5
+	}
+];
 
 @Component({
   selector: 'app-speed-graph',
@@ -13,194 +32,108 @@ Boost(Highcharts);
   styleUrls: ['./speed-graph.component.scss']
 })
 export class SpeedGraphComponent implements OnInit, OnChanges {
-  @Input() timeDuration: any; 
-  Highcharts: typeof Highcharts = Highcharts; // required
-  chartConstructor = 'chart'; // optional string, defaults to 'chart'
-  updateFlag = true; // optional boolean
-  oneToOneFlag = true; // optional boolean, defaults to false
-  runOutsideAngular = false; // optional boolean, defaults to false
-  chartOptions: any = {
-    chart: {
-      type: 'line',
-      zoomType: 'x',
-      panning: true,
-      panKey: 'shift',
-      style: {
-        fontFamily: 'Montserrat'
-      },
-      height: 210,
-      backgroundColor: '#ffffff',
-      color: '#f9b62b'
-    },
-    boost: {
-      useGPUTranslations: true
-  },
-    title: {
-      text: ''
-    },
-    credits: {
-      enabled: false
-    },
-    xAxis: {
-      // type: 'datetime',
-      plotLines: [
-        {
-          color: '#cccccc',
-          value: 13,
-          width: 3,
-          zIndex: 3,
-          dashStyle: 'ShortDot',
-          label: { 
-            text: 'start',
-          }
-        },
-        {
-          color: '#cccccc',
-          value: 14.1,
-          width: 3,
-          zIndex: 3,
-          dashStyle: 'ShortDot',
-          label: { 
-            text: 'end',
-          }
-        },
-        {
-          color: '#11cd69',
-          value: 13.3,
-          width: 3,
-          zIndex: 3
-        },
-        {
-          color: '#11cd69',
-          value: 13.7,
-          width: 3,
-          zIndex: 3
-        }
-      ],
-      plotBands: [
-        {
-          color: '#e7e7e7',
-          from: 13.05,
-          to: 13.25,
-          label: { 
-            text: 'phase 1',
-          }
-        },
-        {
-          color: '#e7e7e7',
-          from: 13.35,
-          to: 13.55
-        },
-        {
-          color: '#e7e7e7',
-          from: 13.75,
-          to: 13.95
-        }
-    ],
-    },
-    yAxis: {
-      title: false
-    },
-    plotOptions: {
-      series: {
-        fillOpacity: 0.1
-      }
-    },
-    series: [
-      {
-        type: 'area',
-        color: '#621e6a',
-        showInLegend: false,
-        name: 'Line 1',
-        data: []
-      }
-    ],
-    // time: {
-    //     /**
-    //      * Use moment-timezone.js to return the timezone offset for individual
-    //      * timestamps, used in the X axis labels and the tooltip header.
-    //      */
-    //     getTimezoneOffset: (timestamp) => {
-    //         const zone = 'Europe/Oslo';
-    //         const timezoneOffset = moment.tz(timestamp, zone).utcOffset();
-    //         return timezoneOffset;
-    //     }
-    // }
+	@Input() vertices: Array<any> = [];
+	@Input() highlightedRange: { startTime: number, endTime: number };
+	@Input() timeDuration: number;
+	@Input() startTime: number;
+  @Input() plotBands: Array<any> = [];
+  
+	Highcharts: typeof Highcharts = Highcharts; // required
+	chartConstructor = 'chart'; // optional string, defaults to 'chart'
+	updateFlag = true; // optional boolean
+	oneToOneFlag = true; // optional boolean, defaults to false
+	runOutsideAngular = false; // optional boolean, defaults to false
+	chartOptions: any = {
+		chart: {
+			type: 'areaspline',
+			style: {
+				fontFamily: 'Montserrat'
+			},
+			height: 130,
+			backgroundColor: '#ffffff',
+			color: '#f9b62b'
+		},
+		title: {
+			text: ''
+		},
+		credits: {
+			enabled: false
+		},
+		xAxis: {
+			type: 'datetime',
+			labels: {
+				overflow: 'justify'
+			}
+		},
+		yAxis: {
+			minorGridLineWidth: 0,
+			gridLineWidth: 0,
+			title: {
+				text: 'M/S'
+			},
+		},
+		tooltip: {
+			enabled: false
+		},
+		plotOptions: {
+			areaspline: {
+				pointStart: 1550044800000,
+				fillOpacity: CHART_OPTIONS.OPACITY,
+				pointInterval: 1800000
+			},
+			series: {
+				fillOpacity: CHART_OPTIONS.OPACITY,
+				marker: false
+			}
+		},
+		series: [
+			{
+				type: 'areaspline',
+				color: '#621e6a',
+				showInLegend: false,
+				name: 'Line 1',
+				data: []
+			}
+		],
+		time: {
+			useUTC: false
+		}
   };
-
-
-  n = 100000;
-  data;
+  
   constructor() { }
 
   ngOnInit() {
-    this.data = this.getData(this.n);
-    this.chartOptions.series[0].data = this.data;
+		this.chartOptions = this.getUpdatedOptions({...this});
   }
 
-  getData(n) {
-    var arr = [],
-        i,
-        a,
-        b,
-        c,
-        spike;
-    for (i = 0; i < n; i = i + 1) {
-        if (i % 100 === 0) {
-            a = 2 * Math.random();
-        }
-        if (i % 1000 === 0) {
-            b = 2 * Math.random();
-        }
-        if (i % 10000 === 0) {
-            c = 2 * Math.random();
-        }
-        if (i % 50000 === 0) {
-            spike = 10;
-        } else {
-            spike = 0;
-        }
-        arr.push([
-            i,
-            2 * Math.sin(i / 100) + a + b + c + spike + Math.random()
-        ]);
-    }
-    return arr;
-  }
-
-
-
-
-
-  ngOnChanges(changes: SimpleChanges) {
-    const dateFromDurationComponent = changes.timeDuration.currentValue;
-    console.log('dateFromDurationComponent: ', dateFromDurationComponent);
-
-    if(dateFromDurationComponent) {
-      // console.log('not first');
-      const startedAtUtcToDate = moment(dateFromDurationComponent.startedAt).format('HH:mm');
-      const endedAtUtcToDate = moment(dateFromDurationComponent.endedAt).format('HH:mm');
-
-      console.log('start: ', startedAtUtcToDate);
-      console.log('end: ', endedAtUtcToDate);
-
-      this.updateData(startedAtUtcToDate, endedAtUtcToDate);
-    }
-  }
+	ngOnChanges(changes: SimpleChanges) {
+		this.chartOptions = this.getUpdatedOptions({...this, ...Object.values(changes).map(c => c.currentValue)});
+	}
   
-  updateData(startTime, endTime) {
-    this.chartOptions.xAxis.plotLines =  [
-      {
-        color: '#f9b62b',
-        value: 13.6,
-        width: 2
-      },
-      {
-        color: '#f9b62b',
-        value: 14,
-        width: 2
-      }
-    ];
-    this.updateFlag = true;
-  }
+  getUpdatedOptions(newOptions) {
+		return {
+			...this.chartOptions,
+			series: [
+				{...this.chartOptions.series[0], data: newOptions.vertices}
+			],
+			plotOptions: {
+				...this.chartOptions.plotOptions,
+				areaspline: {
+					...this.chartOptions.plotOptions.areaspline,
+					pointStart: newOptions.startTime,
+					pointInterval: newOptions.timeDuration
+				}
+			},
+			xAxis: {
+				...this.chartOptions.xAxis,
+				plotLines: plotLines.map((plotLine, i) => (
+					{ ...plotLine, value: i === 0 ? newOptions.highlightedRange.startTime : newOptions.highlightedRange.endTime }
+				)),
+				plotBands: newOptions.plotBands.map(plotBand => ({...plotBand, color: CHART_OPTIONS.PLOT_BAND_COLOR})),
+				scrollbar: {
+					enabled: true
+				}
+			}
+		}
+	}
 }

@@ -31,6 +31,7 @@ import { PhasesCardsContainerComponent } from './common/phases-cards-container/p
 import { PhasesCardComponent } from './common/phases-cards-container/phases-card/phases-card.component';
 import { SubstitutionsTableComponent } from './common/substitutions-table/substitutions-table.component';
 import { SubstitutionsRowComponent } from './common/substitutions-table/substitutions-row/substitutions-row.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { SubstitutionsRowComponent } from './common/substitutions-table/substitu
     CommonModule,
     SharedModule,
     // RouterModule.forChild(routes),
-    HighchartsChartModule
+    HighchartsChartModule,
+    FormsModule
   ],
   exports: [
     MatchValidationComponent,

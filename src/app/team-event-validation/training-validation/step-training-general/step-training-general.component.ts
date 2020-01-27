@@ -12,11 +12,17 @@ export class StepTrainingGeneralComponent implements OnInit {
   isNextBtnDisabled = false;
   trainingDuration;
   trainingTags;
-
+  verticesData:{vel_interp_ms, time_dt_ms, start_time_interp_ms};
+  highlightedRange = {
+    startTime: 1550041200000,
+    endTime: 1550043000000
+  };
+  
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-
+    this.teamEventValidationService.phasesVerticesData
+      .subscribe(verticesData => this.verticesData = verticesData);
   }
 
   // ngOnChanges(changes: SimpleChanges) {

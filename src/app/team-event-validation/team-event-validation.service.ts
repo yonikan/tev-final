@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { UiComponentsService } from '../core/services/ui-components.service';
 import { ServerEnvService } from '../core/services/server-env.service';
+import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
 
 @Injectable({
   providedIn: 'root'
@@ -101,5 +102,9 @@ export class TeamEventValidationService {
 
   getMatchValidationDataListener(): Observable<any> {
     return this.matchValidationDataListener.asObservable();
+  }
+
+  get phasesVerticesData() {
+	  return of(TEAM_EVENT_VALIDATION_MATCH_DATA.metadata.velocityVector);
   }
 }
