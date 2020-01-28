@@ -8,8 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TrainingDurationComponent implements OnInit {
 	@Input() verticesData: { vel_interp_ms, time_dt_ms, start_time_interp_ms };
 	@Input() highlightedRange;
-	private startTime;
-	private endTime;
+	startTime;
+	endTime;
 
 	constructor() { }
 

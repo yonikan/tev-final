@@ -10,12 +10,12 @@ export class StepMatchPhasesComponent implements OnInit {
   @Input() stepMatchPhasesData: any;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
 
-  private verticesData:{vel_interp_ms, time_dt_ms, start_time_interp_ms};
-  private highlightedRange = {
+  verticesData:{vel_interp_ms, time_dt_ms, start_time_interp_ms};
+  highlightedRange = {
 	  startTime: 1550041200000,
 	  endTime: 1550043000000
   };
-  private plotBands = [
+  plotBands = [
     {
       from: 1550041200000,
       to: 1550043000000
