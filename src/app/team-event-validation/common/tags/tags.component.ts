@@ -28,11 +28,7 @@ export class TagsComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  teamEventTags: any[] = [
-    {name: 'Defending'},
-    {name: 'Recovery'},
-    {name: 'Vertical'},
-  ];
+  teamEventTags: any[] = [];
   filteredTags: Observable<string[]>;
 
   capitalizeString = capitalizeString;

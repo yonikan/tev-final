@@ -43,6 +43,7 @@ export class SubstitutionsRowComponent implements OnInit {
     // console.log(this.availableForSub, this.linup)
     // this.substitutionDraft = { ...this.substitution };
     this.setSubForDisplay();
+    console.log(this.substitutionForDisplay)
   }
 
   // ngOnChanges(change) {
