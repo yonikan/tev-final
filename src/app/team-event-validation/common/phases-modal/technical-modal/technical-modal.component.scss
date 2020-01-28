@@ -34,6 +34,8 @@
 
 .lineup-dropdown-body {
   background-color: #fbfbfb;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .lineup-container {

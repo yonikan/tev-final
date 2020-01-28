@@ -1,7 +1,13 @@
   <div class="phases-modal">
 
     <div class="phases-modal-header">
-      <div class="exit-btn" (click)="close()">X</div>
+
+      <div class="exit-btn" (click)="close()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+          <path fill="#34495E" fill-rule="evenodd" d="M7.281 6.005l3.813 3.814a.9.9 0 1 1-1.273 1.272L6.008 7.278l-3.839 3.839A.908.908 0 0 1 .886 9.834l3.839-3.839L.912 2.182A.901.901 0 0 1 2.185.909l3.813 3.813L9.865.855a.909.909 0 0 1 1.284 0 .91.91 0 0 1 0 1.283L7.281 6.005z"/>
+        </svg>
+      </div>
+
       <div class="phases-counter">(Phase {{data.idx+1}} of {{data.PhasesCount}})</div>
       <div class="phase-options">
           <mat-radio-group
@@ -30,7 +36,7 @@
       <app-match-phase-modal *ngIf="selectedModalOption.name === 'Match Phase'"></app-match-phase-modal>
       <app-warmup-modal *ngIf="selectedModalOption.name === 'Warmup'"></app-warmup-modal>
       <app-physical-modal *ngIf="selectedModalOption.name === 'Physical'"></app-physical-modal>
-      <app-technical-modal *ngIf="selectedModalOption.name === 'Technical'" [phase]="data.phase"></app-technical-modal>
+      <app-technical-modal *ngIf="selectedModalOption.name === 'Technical'" [phase]="data.phase" [selectedLineup]="data.phase.lineup" (pitchSizeSelected)="onPitchSizeSelect($event)"></app-technical-modal>
     </div>
 
     <div class="phases-modal-footer">

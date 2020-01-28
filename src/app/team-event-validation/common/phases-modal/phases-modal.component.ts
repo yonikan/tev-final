@@ -10,16 +10,16 @@ import * as moment from 'moment';
 export class PhasesModalComponent implements OnInit {
 
   modalOptions;
-
   selectedModalOption;
-
   phaseDurationTotal;
+  phaseToEdit;
 
   constructor(public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: { eventType: string, PhasesCount: number, idx: number, phase: any }) {
   }
 
   ngOnInit() {
+    this.phaseToEdit = JSON.parse(JSON.stringify(this.data.phase));
     this.setModalOptions();
   }
 
@@ -30,11 +30,16 @@ export class PhasesModalComponent implements OnInit {
         break;
 
       case 'TRAINING':
-        this.modalOptions = [{ name: 'Technical', icon: 'account_circle' }, { name: 'Physical', icon: 'account_circle' }] //training
+        this.modalOptions = [{ name: 'Technical', icon: 'account_circle' }, { name: 'Physical', icon: 'account_circle' }] // training
         break;
     }
 
     this.selectedModalOption = this.modalOptions[0];
+  }
+
+  onPitchSizeSelect(pitchSize): void {
+    this.phaseToEdit.pitchLength = pitchSize.pitchLength;
+    this.phaseToEdit.pitchWidth = pitchSize.pitchWidth;
   }
 
   setPhaseDurationTotal() {
@@ -45,10 +50,11 @@ export class PhasesModalComponent implements OnInit {
 
   onModalOptionSelect(event) {
     this.selectedModalOption = event.value;
-    console.log(event)
+    // console.log(event)
   }
 
   savePhase() {
+
     console.log('saving phase')
   }
 

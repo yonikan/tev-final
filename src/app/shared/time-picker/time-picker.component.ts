@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { ThrowStmt } from '@angular/compiler';
+import * as moment from 'moment';
 
 @Component({
   selector: 'time-picker',
@@ -23,7 +24,12 @@ export class TimePickerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.setTimeForDisplay();
+    if (this.defaultTime) {
+      const defaultTime = moment(this.defaultTime).format('hh:mm'); // todo: add offset
+      this.handleUserInput(defaultTime)
+    } else {
+      this.setTimeForDisplay();
+    }
   }
 
   setTimeForDisplay() {
@@ -31,7 +37,6 @@ export class TimePickerComponent implements OnInit {
     const zero = '0';
     const minutesForDisplay = this.minutes < 10 ? zero + this.minutes : this.minutes;
     const hoursForDisplay = this.hours < 10 ? zero + this.hours : this.hours;
-    if (this.defaultTime) { console.log('defaultTime: ',this.defaultTime) };
     this.timeForDisplay = `${hoursForDisplay} : ${minutesForDisplay}`;
     if (this.input) { this.input.nativeElement.value = this.timeForDisplay };
     this.emitTime();
@@ -58,8 +63,8 @@ export class TimePickerComponent implements OnInit {
     this.setTimeForDisplay();
   }
 
-  handleUserInput(event) {
-    const userInput = event.target.value.split(':');
+  handleUserInput(value) {
+    const userInput = value.split(':');
 
     if (userInput.length === 2) {
       if (Number.isInteger(+userInput[0]) && Number.isInteger(+userInput[1])) {

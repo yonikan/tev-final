@@ -2,7 +2,9 @@
   <!--------------------- new-row ------------------------>
   <div class="row">
     <div class="row-title">Subject</div>
-    <div class="row-content">Text</div>
+    <div class="row-content">
+      <input value="{{phase.phaseName}}" type="text"/>
+    </div>
   </div>
   <!------------------------------------------------------>
 
@@ -61,14 +63,14 @@
         </div>
         <span dropdown-title>{{selectedDrill.enum === 'OPPOSEED_LINEUP'? 'Create Line - Ups':'Select Player'}}</span>
         <div class="dropdown-content" dropdown-content>
-          <span class="select-all-btn" (click)="selectAllLineups()" *ngIf="selectedDrill.enum === 'OPPOESED'">Select All</span>
+          <span class="select-all-btn" (click)="selectAllLineups($event)" *ngIf="selectedDrill.enum === 'OPPOESED'">Select All</span>
           <span class="opposeed-lineup-table-titles" *ngIf="selectedDrill.enum === 'OPPOSEED_LINEUP'">
             <div>Name</div>
 
             <div class="opposeed-lineup-counters">
-              <div>A({{selectedLineup[1].length}})</div>
-              <div>N({{selectedLineup[2].length}})</div>
-              <div>B({{selectedLineup[3].length}})</div>
+              <div>A({{selectedLineup[0].length}})</div>
+              <div>N({{selectedLineup[1].length}})</div>
+              <div>B({{selectedLineup[2].length}})</div>
             </div>
           </span>
 
@@ -79,7 +81,8 @@
               [player]="player"
               [rowMode]="selectedDrill.enum"
               (lineupRowClicked)="onLineupRowClicked($event)"
-              [phase]="phase">
+              [phase]="phase"
+              [selectedTeam]="isSelected(player.id)">
             </lineup-dropdown-row>
           </div>
 
@@ -92,6 +95,7 @@
                 [player]="player"
                 [rowMode]="selectedDrill.enum"
                 (lineupRowClicked)="onLineupRowClicked($event)"
+                [selectedTeam]="isSelected(player.id)"
                 ></lineup-dropdown-row>
               </div>
             </div>

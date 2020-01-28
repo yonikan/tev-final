@@ -10,48 +10,43 @@ export class LineupDropdownRowComponent implements OnInit {
 
   @Input() player: any = {};
   @Input() rowMode = 'OPPOESED'; //OPPOSEED_LINEUP
-  @Input() selected = false;
+  @Input() selectedTeam: number;
   @Input() disable: any = false;
   @Input() phase;
 
   @Output() lineupRowClicked = new EventEmitter();
 
-  selectedTeam;
-
   constructor(private service: TeamEventValidationService) { }
 
   ngOnInit() {
+    console.log('row: ', this.selectedTeam);
     this.disable = this.isDisabeled();
   }
 
-  onLineupRowClicked(team?) {
-    if (this.rowMode === 'OPPOSEED_LINEUP' && !team) { return };
-    this.selected = !this.selected;
+  toggleSelectRow(team) {
+    if (this.selectedTeam === 0) {
+      this.selectedTeam = null;
+      this.emit(this.selectedTeam);
+    } else {
+      this.emit(team)
+      this.selectedTeam = team
+    }
+  }
+
+  selectRow(event: MouseEvent, team: number) {
+    if (team === this.selectedTeam) { return };
+    event.stopPropagation();
     this.emit(team);
-    if (team) { this.selectedTeam = team };
+    this.selectedTeam = team;
   }
 
-  selectRow(team?) {
-    if (this.selected) { return };
-    this.selected = true;
-    this.emit(team);
+  emit(team) {
+    this.lineupRowClicked.emit({ player: this.player, rowMode: this.rowMode, team, prevTeam: this.selectedTeam });
   }
 
-  unSelectRow(team?) {
-    if (!this.selected) { return };
-    this.selected = false;
-    this.emit(team);
-  }
-
-  emit(team?) {
-    this.lineupRowClicked.emit({ selected: this.selected, player: this.player, rowMode: this.rowMode, team, prevTeam: this.selectedTeam });
-  }
-
-  toggleSelected() {
-    this.selected = !this.selected;
-  }
 
   isDisabeled() {
-    // return this.service.isPlayerPartitpateInOverlapPhase(this.player.playerId, this.phase);
+    // console.log('isPlayerPartitpateInOverlapPhase: ', this.service.isPlayerPartitpateInOverlapPhase(this.player.playerId, this.phase))
+    return this.service.isPlayerPartitpateInOverlapPhase(this.player.playerId, this.phase);
   }
 }

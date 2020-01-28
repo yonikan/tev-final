@@ -39,7 +39,7 @@ export class PhasesCardsContainerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.cards.length) {
+    if (this.cards&&!this.cards.length) {
       this.addEmptyCard();
     }
   }

@@ -23,6 +23,7 @@ export function objToArray(obj, keyName) {
       array.push({...obj[key], [keyName]: key});
     }
   }
+
   return array;
 }
 

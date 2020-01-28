@@ -21,14 +21,15 @@ export class PitchSizeOptionComponent implements OnInit {
     // console.log(this.mode, this.option)
   }
 
-  OnOptionClicked(value?, lengthOrWidth?) {
-    // this.checked = !this.checked;
-    if (this.mode === 'GENERAL') { this.optionClicked.emit(this.option); }
-    if (this.mode === 'CUSTOM') {
-      this[lengthOrWidth] = value;
-      if (!this.customWidth || !this.customLength) { return }
-      // tslint:disable-next-line: max-line-length
-      this.optionClicked.emit({ name: 'custom', iconName: 'account_circle', type: 'CUSTOM', size: `${this.customWidth}/${this.customLength}` })
-    };
+  OnOptionClicked(event) {
+    this.optionClicked.emit(event.value)
+    // // this.checked = !this.checked;
+    // if (this.mode === 'GENERAL') { this.optionClicked.emit(this.option); }
+    // if (this.mode === 'CUSTOM') {
+    //   this[lengthOrWidth] = value;
+    //   if (!this.customWidth || !this.customLength) { return }
+    //   // tslint:disable-next-line: max-line-length
+    //   this.optionClicked.emit({ name: 'custom', iconName: 'account_circle', type: 'CUSTOM', size: `${this.customWidth}/${this.customLength}` })
+    // };
   }
 }

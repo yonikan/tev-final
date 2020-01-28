@@ -28,7 +28,6 @@ export class RestrictionContainerDirective {
 
   ngOnChanges(change) {
     if (change.showError && this.showError) {
-      console.log(this.errorMassage)
       this.showError ? this.addError() : this.removeError();
     }
   }

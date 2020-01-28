@@ -23,7 +23,7 @@ export class PhysicalModalComponent implements OnInit {
 
   onDrillSelect(event) {
     this.selectedDrill = event.value;
-    console.log(event);
+    // console.log(event);
   }
 
 }

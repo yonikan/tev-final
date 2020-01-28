@@ -27,7 +27,6 @@ export class StepMatchOverviewComponent implements OnInit {
   }
 
   onTagsEmitter(tags) {
-    console.log(tags);
     this.matchesTags = tags;
   }
 }

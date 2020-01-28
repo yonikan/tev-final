@@ -33,12 +33,12 @@ export class PhasesCardComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-    console.log(this.phase)
+    // console.log(this.phase)
   }
 
   translateEnumNumber(enumNumber) {
     return enumNumber;
-    console.log(TrainingDrills, enumNumber);
+    // console.log(TrainingDrills, enumNumber);
     return enumToString(TrainingDrills, enumNumber);
   }
 

@@ -17,8 +17,9 @@
   .arrows {
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: space-between;
     margin-left: 10px;
+    height: 30px;
 
     .arrow {
       cursor: pointer;
