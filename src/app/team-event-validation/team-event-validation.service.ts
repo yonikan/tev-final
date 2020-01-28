@@ -49,7 +49,7 @@ export class TeamEventValidationService {
 
   validateTraining(trainingId) {
     const PATH = this.serverEnvService.getBaseUrl();
-    const PAYLOAD = null;
+    const PAYLOAD = this.trainingValidationData;
     return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
   }
 
@@ -69,7 +69,7 @@ export class TeamEventValidationService {
 
   validateMatch(matchId) {
     const PATH = this.serverEnvService.getBaseUrl();
-    const PAYLOAD = null;
+    const PAYLOAD = this.matchValidationData;
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
   }
 

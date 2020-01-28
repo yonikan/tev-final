@@ -21,6 +21,7 @@ export class StepTrainingGeneralComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
+    console.log('stepTrainingGeneralData: ', this.stepTrainingGeneralData);
     this.teamEventValidationService.phasesVerticesData
       .subscribe(verticesData => this.verticesData = verticesData);
   }

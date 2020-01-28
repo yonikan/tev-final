@@ -36,7 +36,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 	@Input() highlightedRange: { startTime: number, endTime: number };
 	@Input() timeDuration: number;
 	@Input() startTime: number;
-  @Input() plotBands: Array<any> = [];
+    @Input() plotBands: Array<any> = [];
   
 	Highcharts: typeof Highcharts = Highcharts; // required
 	chartConstructor = 'chart'; // optional string, defaults to 'chart'
@@ -106,9 +106,9 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 		this.chartOptions = this.getUpdatedOptions({...this});
   }
 
-	ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
 		this.chartOptions = this.getUpdatedOptions({...this, ...Object.values(changes).map(c => c.currentValue)});
-	}
+  }
   
   getUpdatedOptions(newOptions) {
 		return {
