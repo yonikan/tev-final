@@ -34,6 +34,7 @@ import { SubstitutionsTableComponent } from './common/substitutions-table/substi
 import { SubstitutionsRowComponent } from './common/substitutions-table/substitutions-row/substitutions-row.component';
 import { AreYouSureModalComponent } from './common/are-you-sure-modal/are-you-sure-modal.component';
 import { PhasesModalComponent } from './common/phases-modal/phases-modal.component';
+import { FormsModule } from '@angular/forms';
 
 import { MatchPhaseModalComponent } from './common/phases-modal/match-phase-modal/match-phase-modal.component';
 import { PhysicalModalComponent } from './common/phases-modal/physical-modal/physical-modal.component';
@@ -78,7 +79,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     // RouterModule.forChild(routes),
     HighchartsChartModule,
-    SwiperModule
+    SwiperModule,
+    FormsModule
   ],
   entryComponents: [
     AreYouSureModalComponent,

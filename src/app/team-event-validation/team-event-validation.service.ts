@@ -8,6 +8,7 @@ import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
+import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +62,7 @@ export class TeamEventValidationService {
 
   validateTraining(trainingId) {
     const PATH = this.serverEnvService.getBaseUrl();
-    const PAYLOAD = null;
+    const PAYLOAD = this.trainingValidationData;
     return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
   }
 
@@ -81,7 +82,7 @@ export class TeamEventValidationService {
 
   validateMatch(matchId) {
     const PATH = this.serverEnvService.getBaseUrl();
-    const PAYLOAD = null;
+    const PAYLOAD = this.matchValidationData;
     return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
   }
 
@@ -117,6 +118,10 @@ export class TeamEventValidationService {
 
   getMatchValidationDataListener(): Observable<any> {
     return this.matchValidationDataListener.asObservable();
+  }
+
+  get phasesVerticesData() {
+    return of(TEAM_EVENT_VALIDATION_MATCH_DATA.metadata.velocityVector);
   }
 
   getCurrentValitationData() {
@@ -187,8 +192,8 @@ export class TeamEventValidationService {
     // return true;
     const range = moment.range(timescope1.startTime, timescope1.endTime);
     const range2 = moment.range(timescope2.startTime, timescope2.endTime);
-    console.log(range,range2,range.overlaps(range2))
+    console.log(range, range2, range.overlaps(range2))
     return range.overlaps(range2);
   }
-}
 
+}

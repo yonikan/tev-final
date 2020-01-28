@@ -10,10 +10,32 @@ export class StepMatchPhasesComponent implements OnInit {
   @Input() stepMatchPhasesData: any;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
 
+  private verticesData:{vel_interp_ms, time_dt_ms, start_time_interp_ms};
+  private highlightedRange = {
+	  startTime: 1550041200000,
+	  endTime: 1550043000000
+  };
+  private plotBands = [
+    {
+      from: 1550041200000,
+      to: 1550043000000
+    },
+    {
+      from: 1550038800000,
+      to: 1550040000000
+    },
+    {
+      from: 1550031000000,
+      to: 1550031900000
+    }
+  ];
+
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
     console.log('stepMatchPhasesData: ', this.stepMatchPhasesData);
+    this.teamEventValidationService.phasesVerticesData
+      .subscribe(verticesData => this.verticesData = verticesData);
   }
 
   nextStep() {

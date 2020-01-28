@@ -11,11 +11,32 @@ export class StepTrainingPhasesComponent implements OnInit {
   @Output() stepSelectionEmitter = new EventEmitter<number>();
   isNextBtnDisabled = false;
   trainingPhases;
-  
+  verticesData:{vel_interp_ms, time_dt_ms, start_time_interp_ms};
+  highlightedRange = {
+	  startTime: 1550041200000,
+	  endTime: 1550043000000
+  };
+  plotBands = [
+    {
+      from: 1550041200000,
+      to: 1550043000000
+    },
+    {
+      from: 1550038800000,
+      to: 1550040000000
+    },
+    {
+      from: 1550031000000,
+      to: 1550031900000
+    }
+  ];
+
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-
+    console.log('stepTrainingPhasesData: ', this.stepTrainingPhasesData);
+    this.teamEventValidationService.phasesVerticesData
+      .subscribe(verticesData => this.verticesData = verticesData);
   }
 
   // validateTraining() {

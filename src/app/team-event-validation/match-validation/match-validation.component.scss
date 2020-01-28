@@ -10,3 +10,7 @@
 ::ng-deep .mat-tab-body-wrapper {
     height: 90vh;
 }
+
+::ng-deep .mat-tab-label {
+    color:$color-purple !important;
+}

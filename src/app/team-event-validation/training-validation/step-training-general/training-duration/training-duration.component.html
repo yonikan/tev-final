@@ -1,8 +1,24 @@
 <div class="duration-container">
-    <h3>training duration</h3>
-    <p>
-        Configure the sesssion duration by selecting the start and <br>
-        time according to your team's speed activity
-    </p>
-    <app-speed-graph></app-speed-graph>
+	<h3>training duration</h3>
+	<p>
+		Configure the sesssion duration by selecting the start and <br>
+		time according to your team's speed activity
+	</p>
+	<div class="time-fields">
+		<div>
+			<div>From</div>
+			<input type="time" matInput placeholder="0" max="getTimeStr(highlightedRange.endTime)"
+			[ngModel]="highlightedRange.startTime | date: 'HH:mm'" (ngModelChange)="updateTime($event, 'startTime')" />
+		</div>
+		<div>
+			<div>To</div>
+			<input placeholder="0" type="time" matInput min="getTimeStr(highlightedRange.startTime)"
+			[ngModel]="highlightedRange.endTime | date: 'HH:mm'" (ngModelChange)="updateTime($event, 'endTime')" />
+		</div>
+	</div>
+	<app-speed-graph
+		[vertices]="verticesData.vel_interp_ms"
+		[highlightedRange]="{startTime: startTime, endTime: endTime}"
+		[timeDuration]="verticesData.time_dt_ms"
+		[startTime]="verticesData.start_time_interp_ms" [plotBands]="[]"></app-speed-graph>
 </div>
