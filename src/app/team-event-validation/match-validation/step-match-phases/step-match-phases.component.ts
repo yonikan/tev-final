@@ -1,49 +1,58 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { TeamEventValidationService } from '../../team-event-validation.service';
+import { VerticesData } from '../../team-event-validation.interface';
 
 @Component({
-  selector: 'app-step-match-phases',
-  templateUrl: './step-match-phases.component.html',
-  styleUrls: ['./step-match-phases.component.scss']
+	selector: 'app-step-match-phases',
+	templateUrl: './step-match-phases.component.html',
+	styleUrls: ['./step-match-phases.component.scss']
 })
-export class StepMatchPhasesComponent implements OnInit {
-  @Input() stepMatchPhasesData: any;
-  @Output() stepSelectionEmitter = new EventEmitter<number>();
+export class StepMatchPhasesComponent implements OnInit, OnChanges {
+	@Input() stepMatchPhasesData: any;
+	@Output() stepSelectionEmitter = new EventEmitter<number>();
 
-  verticesData:{vel_interp_ms, time_dt_ms, start_time_interp_ms};
-  highlightedRange = {
-	  startTime: 1550041200000,
-	  endTime: 1550043000000
-  };
-  plotBands = [
-    {
-      from: 1550041200000,
-      to: 1550043000000
-    },
-    {
-      from: 1550038800000,
-      to: 1550040000000
-    },
-    {
-      from: 1550031000000,
-      to: 1550031900000
-    }
-  ];
+	verticesData: VerticesData;
+	highlightedRange = {
+		startTime: 0,
+		endTime: 0
+	};
+	plotBands = [
+		{
+			from: 1550041200000,
+			to: 1550043000000
+		},
+		{
+			from: 1550038800000,
+			to: 1550040000000
+		},
+		{
+			from: 1550031000000,
+			to: 1550031900000
+		}
+	];
 
-  constructor(private teamEventValidationService: TeamEventValidationService) { }
+	constructor(private teamEventValidationService: TeamEventValidationService) { }
 
-  ngOnInit() {
-    console.log('stepMatchPhasesData: ', this.stepMatchPhasesData);
-    this.teamEventValidationService.phasesVerticesData
-      .subscribe(verticesData => this.verticesData = verticesData);
-  }
+	ngOnInit() {
+	}
 
-  nextStep() {
-    this.teamEventValidationService.matchDataOutput.step4PhasesData = this.stepMatchPhasesData;
-    this.stepSelectionEmitter.emit(4);
-  }
+	ngOnChanges() {
+		if (this.stepMatchPhasesData && 'velocityVector' in this.stepMatchPhasesData) {
+			this.verticesData = this.stepMatchPhasesData.velocityVector;
+			const d = new Date(this.stepMatchPhasesData.velocityVector.startTimeInterpMs + 30 * 60000);
+			this.highlightedRange = {
+				startTime: this.stepMatchPhasesData.velocityVector.startTimeInterpMs,
+				endTime: d.getTime()
+			}
+		}
+	}
 
-  backStep() {
-    this.stepSelectionEmitter.emit(2);
-  }
+	nextStep() {
+		this.teamEventValidationService.matchDataOutput.step4PhasesData = this.stepMatchPhasesData;
+		this.stepSelectionEmitter.emit(4);
+	}
+
+	backStep() {
+		this.stepSelectionEmitter.emit(2);
+	}
 }

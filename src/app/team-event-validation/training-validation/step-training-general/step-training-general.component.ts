@@ -1,42 +1,47 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { TeamEventValidationService } from '../../team-event-validation.service';
+import { VerticesData } from '../../team-event-validation.interface';
 
 @Component({
-  selector: 'app-step-training-general',
-  templateUrl: './step-training-general.component.html',
-  styleUrls: ['./step-training-general.component.scss']
+	selector: 'app-step-training-general',
+	templateUrl: './step-training-general.component.html',
+	styleUrls: ['./step-training-general.component.scss']
 })
-export class StepTrainingGeneralComponent implements OnInit {
-  @Input() stepTrainingGeneralData: any;
-  @Output() stepSelectionEmitter = new EventEmitter<number>();
-  isNextBtnDisabled = false;
-  trainingDuration;
-  trainingTags;
-  verticesData:{vel_interp_ms, time_dt_ms, start_time_interp_ms};
-  highlightedRange = {
-    startTime: 1550041200000,
-    endTime: 1550043000000
-  };
-  
-  constructor(private teamEventValidationService: TeamEventValidationService) { }
+export class StepTrainingGeneralComponent implements OnInit, OnChanges {
+	@Input() stepTrainingGeneralData: any;
+	@Output() stepSelectionEmitter = new EventEmitter<number>();
+	isNextBtnDisabled = false;
+	trainingDuration;
+	trainingTags;
+	verticesData: VerticesData = {velInterpMs: 0, timeDtMs: 0, startTimeInterpMs: 0};
+	highlightedRange = {
+		startTime: 0,
+		endTime: 0
+	};
 
-  ngOnInit() {
-    console.log('stepTrainingGeneralData: ', this.stepTrainingGeneralData);
-    this.teamEventValidationService.phasesVerticesData
-      .subscribe(verticesData => this.verticesData = verticesData);
-  }
+	constructor(private teamEventValidationService: TeamEventValidationService) { }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log('changes: ', changes);
-  // }
+	ngOnInit() {}
 
-  nextStep() {
-    this.teamEventValidationService.trainingDataOutput.step1GeneralData = this.stepTrainingGeneralData;
-    this.stepSelectionEmitter.emit(1);
-  }
+	ngOnChanges() {
+		if (this.stepTrainingGeneralData && 'velocityVectors' in this.stepTrainingGeneralData) {
+			this.verticesData = this.stepTrainingGeneralData.velocityVectors;
 
-  onTagsEmitter(tags) {
-    console.log(tags);
-    this.trainingTags = tags;
-  }
+			const d = new Date(this.stepTrainingGeneralData.velocityVectors.startTimeInterpMs + 30 * 60000);
+			this.highlightedRange = {
+				startTime: this.stepTrainingGeneralData.velocityVectors.startTimeInterpMs,
+				endTime: d.getTime()
+			}
+		}
+	}
+
+	nextStep() {
+		this.teamEventValidationService.trainingDataOutput.step1GeneralData = this.stepTrainingGeneralData;
+		this.stepSelectionEmitter.emit(1);
+	}
+
+	onTagsEmitter(tags) {
+		console.log(tags);
+		this.trainingTags = tags;
+	}
 }

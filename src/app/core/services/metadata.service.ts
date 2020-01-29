@@ -1,0 +1,28 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+	providedIn: 'root'
+})
+export class MetaDataService {
+	private _metadata: any = {};
+	get metadata() {
+		return this._metadata;
+	}
+	set metadata(metadata) {
+		this._metadata = metadata;
+	}
+
+	constructor(private http: HttpClient) { }
+
+	getMetadata() {
+		return this.http
+			.get('./assets/features-configuration/metadata.json')
+			.subscribe(data => {
+				this.metadata = data;
+			});
+	}
+
+}
+
+export const initMetadata = (dataService: MetaDataService) => () => dataService.getMetadata()

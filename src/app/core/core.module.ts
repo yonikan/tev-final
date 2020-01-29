@@ -12,6 +12,7 @@ import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 import { ValidatedEventsToastComponent } from './components/validated-events-toast/validated-events-toast.component';
+import { MetaDataService } from './services/metadata.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ValidatedEventsToastComponent } from './components/validated-events-toa
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: VersionUpdateInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+	{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+	MetaDataService
   ],
   exports: [
     FadeInRightStaggerElementDirective,

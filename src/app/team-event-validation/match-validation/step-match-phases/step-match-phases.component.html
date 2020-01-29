@@ -1,11 +1,11 @@
 <div class="step-match-phases-container">
-    <app-speed-graph
-        [vertices]="verticesData.vel_interp_ms"
-        [highlightedRange]="highlightedRange"
-        [timeDuration]="verticesData.time_dt_ms"
-        [startTime]="verticesData.start_time_interp_ms"
-        [plotBands]="plotBands">
-    </app-speed-graph>
+	<app-speed-graph
+		*ngIf="verticesData"
+		[vertices]="verticesData.velInterpMs"
+		[highlightedRange]="highlightedRange"
+		[timeDuration]="verticesData.timeDtMs"
+		[startTime]="verticesData.start_timeInterpMs"
+		[plotBands]="plotBands"></app-speed-graph>
     <app-phases-cards-container></app-phases-cards-container>
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="backStep()">back</button>

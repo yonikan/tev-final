@@ -33,10 +33,10 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.step1Data = trainingValidationData.metadata;
         this.step2Data = trainingValidationData.participatingPlayers;
-        this.step3Data = trainingValidationData.phases;
+        this.step3Data = {...trainingValidationData.phases, ...trainingValidationData.metadata};
       });
   }
-  
+
   onStepSelectionEmitter(stepNumber) {
     this.currentSelectedStep = stepNumber;
     if(stepNumber === 3) {
