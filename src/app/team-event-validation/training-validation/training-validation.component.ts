@@ -30,6 +30,7 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
     this.trainingValidationDataSub = this.teamEventValidationService
       .getTrainingValidationDataListener()
       .subscribe((trainingValidationData: any) => {
+        const trainingValidationDataCopy = JSON.parse(JSON.stringify(trainingValidationData));
         this.isLoading = false;
         this.step1Data = trainingValidationData.metadata;
         this.step2Data = trainingValidationData.participatingPlayers;

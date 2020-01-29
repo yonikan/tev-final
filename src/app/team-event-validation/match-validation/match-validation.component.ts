@@ -32,6 +32,7 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
     this.matchValidationDataSub = this.teamEventValidationService
       .getMatchValidationDataListener()
       .subscribe((matchValidationData: any) => {
+          const matchValidationDataCopy = JSON.parse(JSON.stringify(matchValidationData));
           this.isLoading = false;
           this.step1Data = matchValidationData.metadata;
           this.step2Data = matchValidationData.participatingPlayers;
