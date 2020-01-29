@@ -19,7 +19,7 @@ export class LineupDropdownRowComponent implements OnInit {
   constructor(private service: TeamEventValidationService) { }
 
   ngOnInit() {
-    console.log('row: ', this.selectedTeam);
+    // console.log('row: ', this.selectedTeam);
     this.disable = this.isDisabeled();
   }
 

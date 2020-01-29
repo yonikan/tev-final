@@ -53,9 +53,30 @@ export class PhasesModalComponent implements OnInit {
     // console.log(event)
   }
 
-  savePhase() {
+  // onUpdateField({ value, filedPathToUpdate }) {
+  //   let fieldToUpdate = this.phaseToEdit;
+  //   filedPathToUpdate.forEach(pathItem => {
+  //     fieldToUpdate = fieldToUpdate[pathItem];
+  //     if (!filedPathToUpdate) { return fieldToUpdate };
+  //   });
+  //   fieldToUpdate = value;
+  // }
 
-    console.log('saving phase')
+  onUpdateField({ value, filedPathToUpdate }) {
+    let fieldToUpdate = this.phaseToEdit;
+
+    filedPathToUpdate.forEach((pathItem, i) => {
+      if (i < filedPathToUpdate.length - 1) {
+        fieldToUpdate = fieldToUpdate[pathItem];
+      } else {
+        fieldToUpdate[pathItem] = value;
+      }
+    });
+      console.log(this.data.phase);
+  }
+
+  savePhase() {
+    console.log('saving phase');
   }
 
   close() {

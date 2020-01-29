@@ -192,7 +192,7 @@ export class TeamEventValidationService {
     // return true;
     const range = moment.range(timescope1.startTime, timescope1.endTime);
     const range2 = moment.range(timescope2.startTime, timescope2.endTime);
-    console.log(range, range2, range.overlaps(range2))
+    // console.log(range, range2, range.overlaps(range2))
     return range.overlaps(range2);
   }
 

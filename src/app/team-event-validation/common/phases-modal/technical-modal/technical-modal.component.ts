@@ -10,8 +10,9 @@ import { objToArray } from '../../../../core/helpers/helper-functions';
 export class TechnicalModalComponent implements OnInit {
 
   @Input() phase;
-  @Input() selectedLineup;
+  @Input() selectedLineup = {};
   @Output() pitchSizeSelected = new EventEmitter();
+  @Output() updateField = new EventEmitter();
   @ViewChildren(LineupDropdownRowComponent) lineupDropdownRows: LineupDropdownRowComponent[];
 
   lineup = [];
@@ -71,7 +72,7 @@ export class TechnicalModalComponent implements OnInit {
   onPitchSizeSelect(optionName) {
     const selectedPitchSize = this.pitchSizeOptions.find(({ name }) => { return name === optionName });
     if (selectedPitchSize) {
-      this.pitchSizeSelected.emit(selectedPitchSize)
+      this.pitchSizeSelected.emit(selectedPitchSize);
     }
 
   }
@@ -125,6 +126,10 @@ export class TechnicalModalComponent implements OnInit {
       acc[positionName].push(player);
       return acc;
     }, {});
+  }
+
+  changePhaseName(value) {
+    this.updateField.emit({value, filedPathToUpdate: ['phaseName']});
   }
 
 }
