@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { UiComponentsService } from '../core/services/ui-components.service';
 import { ServerEnvService } from '../core/services/server-env.service';
 import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
-import { MetaDataService } from '../core/services/metadata.service';
+import { StaticDataService } from '../core/services/static-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class TeamEventValidationService {
     private http: HttpClient,
     private uiComponentsService: UiComponentsService,
 	private serverEnvService: ServerEnvService,
-	private metaDataService: MetaDataService
+	private staticDataService: StaticDataService
   ) {
 	this.BASE_URL = serverEnvService.getBaseUrl(3);
    }
@@ -103,7 +103,7 @@ export class TeamEventValidationService {
 			.subscribe((data: any) => {
 				return subject.next({clubPlayers: data.map(player => ({
 					...player,
-					positionName: this.metaDataService.metadata.positions[player.positionId] || this.metaDataService.metadata.positions.default
+					positionName: this.getPlayerPositionName(player.positionId, 'category')
 				}))});
 			})
   }
@@ -112,12 +112,21 @@ export class TeamEventValidationService {
 	this.http
 		.get(`${this.BASE_URL}/v3/${type}/${teamEventId}`)
 		.subscribe((data: any) => {
-			// HACK: remove tmp code
 			const players = Object.values(data.participatingPlayers).map(
-				(p: any) => ({...p, "profilePic": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"}));
+				(p: any) => ({
+					...p,
+					positionName: this.getPlayerPositionName(p.defaultPositionId, 'shortName')
+				}));
 
 			return subject.next({allPlayers: players});
 		});
+  }
+
+  getPlayerPositionName(positionId, prop) {
+	  const playerPosition = this.staticDataService.staticData.positions[positionId];
+	  return playerPosition
+	  ? playerPosition[prop]
+	  : playerPosition["0"][prop]
   }
 
   setTrainingValidationData(data: any) {

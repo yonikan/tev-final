@@ -5,11 +5,23 @@ import { HttpClient } from '@angular/common/http';
 	providedIn: 'root'
 })
 export class StaticDataService {
-	private staticData = {};
+	private _staticData: any = {};
+	get staticData() {
+		return this._staticData;
+	}
+	set staticData(data) {
+		this._staticData = data;
+	}
 
 	constructor(private http: HttpClient) { }
 
 	getStaticData() {
-		return this.http.get('./assets/configs/config-static-data.json');
+		return this.http
+			.get('./assets/configs/config-static-data.json')
+			.subscribe(data => {
+				this.staticData = data;
+			});
 	}
 }
+
+export const initStaticData = (staticDataService: StaticDataService) => () => staticDataService.getStaticData()
