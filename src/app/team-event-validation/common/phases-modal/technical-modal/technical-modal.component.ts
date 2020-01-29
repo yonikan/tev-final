@@ -80,10 +80,10 @@ export class TechnicalModalComponent implements OnInit {
   onLineupRowClicked(rowData) {
     if (rowData.rowMode === 'OPPOESED') {
       if (rowData.team === 0) {
-        this.selectedLineup[0].push(rowData.player.playerId);
+        this.selectedLineup[1].push(rowData.player.playerId);
       } else {
-        const idxToDelete = this.selectedLineup[0].findIndex(playerId => rowData.player.playerId === playerId);
-        this.selectedLineup[0].splice(idxToDelete, 1);
+        const idxToDelete = this.selectedLineup[1].findIndex(playerId => rowData.player.playerId === playerId);
+        this.selectedLineup[1].splice(idxToDelete, 1);
       }
     }
 
@@ -103,7 +103,7 @@ export class TechnicalModalComponent implements OnInit {
   setLineupTitle() {
     switch (this.selectedDrill.enum) {
       case 'OPPOESED':
-        this.lineupTitle = this.selectedLineup[0].length;
+        this.lineupTitle = this.selectedLineup[1].length;
         break;
 
       case 'OPPOSEED_LINEUP':

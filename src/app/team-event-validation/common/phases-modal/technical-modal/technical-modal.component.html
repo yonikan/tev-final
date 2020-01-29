@@ -68,14 +68,14 @@
             <div>Name</div>
 
             <div class="opposeed-lineup-counters">
-              <div>A({{selectedLineup[0].length}})</div>
-              <div>N({{selectedLineup[1].length}})</div>
-              <div>B({{selectedLineup[2].length}})</div>
+              <div>A({{selectedLineup[1].length}})</div>
+              <div>N({{selectedLineup[2].length}})</div>
+              <div>B({{selectedLineup[3].length}})</div>
             </div>
           </span>
 
           <div class="lineup-dropdown-body" *ngIf="selectedDrill.enum === 'OPPOESED'">
-            <lineup-dropdown-row
+            <app-lineup-dropdown-row
               *ngFor="let player of lineup; let first = first"
               [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
               [player]="player"
@@ -83,20 +83,20 @@
               (lineupRowClicked)="onLineupRowClicked($event)"
               [phase]="phase"
               [selectedTeam]="isSelected(player.id)">
-            </lineup-dropdown-row>
+            </app-lineup-dropdown-row>
           </div>
 
             <div class="lineup-dropdown-body" *ngIf="selectedDrill.enum === 'OPPOSEED_LINEUP'">
               <div class="position-player" *ngFor="let key of Object.keys(getPositionsLineupObj())">
                 <div class="lineup-inner-title">{{key}}</div>
-                <lineup-dropdown-row
+                <app-lineup-dropdown-row
                 *ngFor="let player of getPositionsLineupObj()[key]; let first = first"
                 [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
                 [player]="player"
                 [rowMode]="selectedDrill.enum"
                 (lineupRowClicked)="onLineupRowClicked($event)"
                 [selectedTeam]="isSelected(player.id)"
-                ></lineup-dropdown-row>
+                ></app-lineup-dropdown-row>
               </div>
             </div>
 

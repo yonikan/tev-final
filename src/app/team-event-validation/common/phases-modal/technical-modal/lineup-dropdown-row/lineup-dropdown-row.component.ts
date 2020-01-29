@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { TeamEventValidationService } from 'src/app/team-event-validation/team-event-validation.service';
+import { TeamEventValidationService } from '../../../../team-event-validation.service';
 
 @Component({
-  selector: 'lineup-dropdown-row',
+  selector: 'app-lineup-dropdown-row',
   templateUrl: './lineup-dropdown-row.component.html',
   styleUrls: ['./lineup-dropdown-row.component.scss']
 })
@@ -24,12 +24,12 @@ export class LineupDropdownRowComponent implements OnInit {
   }
 
   toggleSelectRow(team) {
-    if (this.selectedTeam === 0) {
+    if (this.selectedTeam === 1) {
       this.selectedTeam = null;
       this.emit(this.selectedTeam);
     } else {
       this.emit(team)
-      this.selectedTeam = team
+      this.selectedTeam = team;
     }
   }
 
