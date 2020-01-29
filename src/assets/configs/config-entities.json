@@ -1,0 +1,10 @@
+{
+	"positions": {
+		"1": "Goalkeeper",
+		"2": "Defender",
+		"default": "Goalkeeper"
+    },
+    "competitions": {
+
+    }
+}
