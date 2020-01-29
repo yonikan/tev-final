@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TeamEventValidationService } from '../../team-event-validation.service';
 import { UiComponentsService } from 'src/app/core/services/ui-components.service';
-import { ContactSupportDialogComponent } from 'src/app/shared/contact-support-dialog/contact-support-dialog.component';
+import { ContactSupportModalComponent } from 'src/app/shared/contact-support-modal/contact-support-modal.component';
 
 interface InitialState {
 	excludedPlayers: Array<Object>;
@@ -170,7 +170,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 	}
 
 	openDialog() {
-		const dialogRef = this.dialog.open(ContactSupportDialogComponent, {
+		const dialogRef = this.dialog.open(ContactSupportModalComponent, {
 			width: '415px',
 			data: {subject: '', message: ''}
 		});

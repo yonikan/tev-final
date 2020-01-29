@@ -31,10 +31,11 @@ import { PhasesCardsContainerComponent } from './common/phases-cards-container/p
 import { PhasesCardComponent } from './common/phases-cards-container/phases-card/phases-card.component';
 import { SubstitutionsTableComponent } from './common/substitutions-table/substitutions-table.component';
 import { SubstitutionsRowComponent } from './common/substitutions-table/substitutions-row/substitutions-row.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParticipatingPlayersComponent } from './common/participating-players/participating-players.component';
 import { ParticipatingColumnComponent } from './common/participating-players/participating-column/participating-column.component';
 import { SwapPlayersComponent } from './common/participating-players/swap-players/swap-players.component';
+import { ContactSupportModalComponent } from '../shared/contact-support-modal/contact-support-modal.component';
 
 @NgModule({
   declarations: [
@@ -58,14 +59,16 @@ import { SwapPlayersComponent } from './common/participating-players/swap-player
 	SubstitutionsRowComponent,
 	ParticipatingPlayersComponent,
 	ParticipatingColumnComponent,
-	SwapPlayersComponent
+	SwapPlayersComponent,
+	ContactSupportModalComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     // RouterModule.forChild(routes),
     HighchartsChartModule,
-    FormsModule
+	FormsModule,
+	ReactiveFormsModule
   ],
   exports: [
     MatchValidationComponent,
@@ -83,6 +86,7 @@ import { SwapPlayersComponent } from './common/participating-players/swap-player
     TrainingDurationComponent,
 	MatchOverviewComponent,
 	ParticipatingPlayersComponent
-  ]
+  ],
+  entryComponents: [ContactSupportModalComponent]
 })
 export class TeamEventValidationModule { }

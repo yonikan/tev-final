@@ -8,8 +8,6 @@ import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.componen
 import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
-import { ErrorMessageComponent } from './error-message/error-message.component';
-import { ContactSupportDialogComponent } from './contact-support-dialog/contact-support-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -17,9 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-	ProfileImageComponent,
-	ErrorMessageComponent,
-	ContactSupportDialogComponent
+	ProfileImageComponent
   ],
   imports: [
     CommonModule,
@@ -37,9 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-	ProfileImageComponent,
-	ErrorMessageComponent
-  ],
-  bootstrap: [ContactSupportDialogComponent]
+	ProfileImageComponent
+  ]
 })
 export class SharedModule { }

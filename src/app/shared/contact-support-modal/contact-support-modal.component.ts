@@ -3,15 +3,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
-	selector: 'app-contact-support-dialog',
-	templateUrl: './contact-support-dialog.component.html',
-	styleUrls: ['./contact-support-dialog.component.scss']
+	selector: 'app-contact-support-modal',
+	templateUrl: './contact-support-modal.component.html',
+	styleUrls: ['./contact-support-modal.component.scss']
 })
-export class ContactSupportDialogComponent implements OnInit {
+export class ContactSupportModalComponent implements OnInit {
 	private form: FormGroup;
 
 	constructor(
-		public dialogRef: MatDialogRef<ContactSupportDialogComponent>,
+		public dialogRef: MatDialogRef<ContactSupportModalComponent>,
 		@Inject(MAT_DIALOG_DATA) public data, fb: FormBuilder) {
 
 			this.form = fb.group({
