@@ -79,7 +79,7 @@ export class TechnicalModalComponent implements OnInit {
 
   onLineupRowClicked(rowData) {
     if (rowData.rowMode === 'OPPOESED') {
-      if (rowData.team === 0) {
+      if (rowData.team === 1) {
         this.selectedLineup[1].push(rowData.player.playerId);
       } else {
         const idxToDelete = this.selectedLineup[1].findIndex(playerId => rowData.player.playerId === playerId);
@@ -108,7 +108,7 @@ export class TechnicalModalComponent implements OnInit {
 
       case 'OPPOSEED_LINEUP':
         this.lineupTitle = `${this.selectedLineup[1].length}V${this.selectedLineup[2].length}`;
-        if (this.selectedLineup[2].length) { this.lineupTitle += `+${this.selectedLineup[1].length}` };
+        if (this.selectedLineup[0].length) { this.lineupTitle += `+${this.selectedLineup[0].length}` };
         break;
     }
   }

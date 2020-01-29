@@ -69,8 +69,8 @@
 
             <div class="opposeed-lineup-counters">
               <div>A({{selectedLineup[1].length}})</div>
-              <div>N({{selectedLineup[2].length}})</div>
-              <div>B({{selectedLineup[3].length}})</div>
+              <div>N({{selectedLineup[0].length}})</div>
+              <div>B({{selectedLineup[2].length}})</div>
             </div>
           </span>
 
@@ -90,12 +90,12 @@
               <div class="position-player" *ngFor="let key of Object.keys(getPositionsLineupObj())">
                 <div class="lineup-inner-title">{{key}}</div>
                 <app-lineup-dropdown-row
-                *ngFor="let player of getPositionsLineupObj()[key]; let first = first"
-                [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
-                [player]="player"
-                [rowMode]="selectedDrill.enum"
-                (lineupRowClicked)="onLineupRowClicked($event)"
-                [selectedTeam]="isSelected(player.id)"
+                  *ngFor="let player of getPositionsLineupObj()[key]; let first = first"
+                  [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
+                  [player]="player"
+                  [rowMode]="selectedDrill.enum"
+                  (lineupRowClicked)="onLineupRowClicked($event)"
+                  [selectedTeam]="isSelected(player.id)"
                 ></app-lineup-dropdown-row>
               </div>
             </div>

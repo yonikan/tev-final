@@ -17,8 +17,8 @@
 
     <div class="opposeed-mode-buttons" *ngIf="rowMode === 'OPPOSEED_LINEUP'">
        <div class="circle" (click)="selectRow($event, 1)" [ngClass]="{'selectedTeam': selectedTeam === 1}">A</div>
-       <div class="circle" (click)="selectRow($event, 2)" [ngClass]="{'selectedTeam': selectedTeam === 2}" style="margin: 0 17px;">N</div>
-       <div class="circle" (click)="selectRow($event, 3)" [ngClass]="{'selectedTeam': selectedTeam === 3}">B</div>
+       <div class="circle" (click)="selectRow($event, 0)" [ngClass]="{'selectedTeam': selectedTeam === 0}" style="margin: 0 17px;">N</div>
+       <div class="circle" (click)="selectRow($event, 2)" [ngClass]="{'selectedTeam': selectedTeam === 2}">B</div>
     </div>
 
   </div>
