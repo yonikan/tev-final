@@ -10,7 +10,9 @@ export class StepMatchPlayersComponent implements OnInit {
   @Input() stepMatchPlayersData: any;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
 
-  constructor(private teamEventValidationService: TeamEventValidationService) { }
+  constructor(private teamEventValidationService: TeamEventValidationService) {
+	teamEventValidationService.getTrainingDataNewModel();
+   }
 
   ngOnInit() {
     console.log('stepMatchPlayersData: ', this.stepMatchPlayersData);

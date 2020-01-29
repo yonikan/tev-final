@@ -1,0 +1,28 @@
+<mat-accordion>
+	<mat-expansion-panel
+		*ngFor="let club of clubPlayers; let isOpen = false"
+		(opened)="isOpen = true"
+		(closed)="isOpen = false"
+		hideToggle="true"
+		#matExpansionPanel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<img [ngClass]="{'expand-arrow': true, open: isOpen}" src="./assets/svg/expand-arrow.svg" alt="expansion arrow">
+				{{club.name}}
+			</mat-panel-title>
+			<mat-panel-description>
+
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		<mat-list>
+			<div *ngFor="let playerPositionGroup of club.players">
+				<div class="small-text">{{playerPositionGroup.name}}(s)</div>
+				<mat-list-item *ngFor="let player of playerPositionGroup.players" [ngClass]="{disabled: isIncluded ? player.isParticipated : !player.isParticipated}" (click)="onSwapPlayer(player)" matRipple>
+					<img class="avatar" [src]="player.profilePic" alt="player avatar">
+					<div class="player-title">{{player.lastName}}.{{player.firstName[0]}}</div>
+				</mat-list-item>
+				<mat-divider></mat-divider>
+			</div>
+		  </mat-list>
+	</mat-expansion-panel>
+</mat-accordion>

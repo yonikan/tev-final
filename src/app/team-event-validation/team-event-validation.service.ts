@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { UiComponentsService } from '../core/services/ui-components.service';
 import { ServerEnvService } from '../core/services/server-env.service';
 import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validation-match.data';
+import { MetaDataService } from '../core/services/metadata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,11 @@ export class TeamEventValidationService {
   constructor(
     private http: HttpClient,
     private uiComponentsService: UiComponentsService,
-    private serverEnvService: ServerEnvService
-  ) { }
+	private serverEnvService: ServerEnvService,
+	private metaDataService: MetaDataService
+  ) {
+	this.BASE_URL = serverEnvService.getBaseUrl(3);
+   }
 
   fetchTraining(trainingId): any {
     const PATH = this.serverEnvService.getBaseUrl();
@@ -42,7 +46,7 @@ export class TeamEventValidationService {
           this.setTrainingValidationData(this.trainingValidationData);
         },
         (error) => {
-          
+
         }
       );
   }
@@ -81,6 +85,41 @@ export class TeamEventValidationService {
   getTrainingValidationData(): any {
     return this.trainingValidationData;
   }
+  private BASE_URL = '/';
+
+  revertSwaps(teamEventId, onSuccess) {
+	this.http.put(`${this.BASE_URL}/v3/team-event/${teamEventId}/revert-swaps`, {})
+		.subscribe(onSuccess);
+  }
+
+  swapPlayer(srcId, swapId, teamEventId, onSuccess) {
+	  this.http.put(`${this.BASE_URL}/v3/team-event/${teamEventId}/swap`, {srcId, swapId})
+	  	.subscribe(onSuccess);
+  }
+
+  getPlayersForSwap(subject: Subject<any>, teamEventId) {
+		this.http
+			.get(`${this.BASE_URL}/v3/team-event/${teamEventId}/players-for-swap`)
+			.subscribe((data: any) => {
+				return subject.next({clubPlayers: data.map(player => ({
+					...player,
+					positionName: this.metaDataService.metadata.positions[player.positionId] || this.metaDataService.metadata.positions.default
+				}))});
+			})
+  }
+
+  getParticipatingPlayers(subject: Subject<any>, teamEventId) {
+	console.log('id', teamEventId);
+	this.http
+		.get(`${this.BASE_URL}/v3/training/${teamEventId}`)
+		.subscribe((data: any) => {
+			// HACK: remove tmp code
+			const players = Object.values(data.participatingPlayers).map(
+				(p: any) => ({...p, "profilePic": "https://s3.eu-west-2.amazonaws.com/playermaker-user-images/public/1573040414.jpg"}));
+
+			return subject.next({allPlayers: players});
+		});
+  }
 
   setTrainingValidationData(data: any) {
     this.trainingValidationData = data;
@@ -108,3 +147,4 @@ export class TeamEventValidationService {
 	  return of(TEAM_EVENT_VALIDATION_MATCH_DATA.metadata.velocityVector);
   }
 }
+

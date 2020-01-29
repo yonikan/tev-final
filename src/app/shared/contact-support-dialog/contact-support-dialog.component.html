@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="heading">
+		<img src="./assets/svg/close-icon.svg" alt="close icon" (click)="cancel()">
+		<div>Contact Support</div>
+	</div>
+	<div class="content">
+		<form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
+			<mat-form-field>
+				<input required matInput placeholder="Subject" formControlName="subject">
+			</mat-form-field>
+
+			<mat-form-field>
+				<textarea rows="5" required matInput placeholder="Youre message" formControlName="message"></textarea>
+			</mat-form-field>
+
+			<button mat-button cdkFocusInitial>SEND</button>
+		</form>
+	</div>
+</div>

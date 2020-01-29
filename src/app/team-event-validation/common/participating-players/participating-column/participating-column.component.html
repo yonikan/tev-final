@@ -1,0 +1,37 @@
+<div class="brief">
+	<div>{{HEADLINE[actionName]}} ({{participatingPlayers.length}})</div>
+	<div class="reset-changes" (click)="onResetChanges()" *ngIf="isResetAllowed">
+		<img src="./assets/svg/reset-icon.svg" alt="reset icon"/>
+		<div class="light-text">Reset Changes</div>
+	</div>
+</div>
+<div class="container">
+	<details *ngFor="let player of participatingPlayers" [open]="player.isOpen">
+		<summary (click)="preventDetailsOpen($event)">
+			<img class="avatar" [src]="player.profilePic" alt="player avatar">
+			<div class="player-title">
+				<div>{{player.lastName}}.{{player.firstName[0]}} - {{player.positionName}}</div>
+
+				<div class="active-time" *ngIf="!player.error">
+					<!-- <div class="bold">
+						#{{player.sensorNum}}
+						<span>{{'|'}}</span>
+					</div> -->
+					<div class="light-text" *ngIf="player.activeTime[0]">
+						{{getTime(player.activeTime[0].startTime)}} - {{(getTime(player.activeTime[0].endTime))}}
+						({{getTimeDiff(player.activeTime[0].startTime, player.activeTime[0].endTime)}}m)
+					</div>
+				</div>
+			</div>
+			<!-- <img class="swap-shirts" src="./assets/svg/swap-shirts.svg" alt="shirts icon" (click)="openSummary(player, target)"/> -->
+			<div  *ngIf="!player.error && isSwapAllowed" [ngClass]="{'swap-shirts': true, open: player.isOpen, swapped: player.isSwapped}" (click)="openSummary(player, target)"></div>
+			<div  *ngIf="!player.error" class="action-name" (click)="exclude(player)">{{actionName}}</div>
+		</summary>
+		<div class="details-content" #target>
+			<div>
+				<app-swap-players [clubPlayers]="clubPlayersGroup" (swapPlayer)="doSwapPlayer($event)" [currentPlayer]="currentPlayer" [isIncluded]="actionName === ACTION_NAMES.EXCLUDE"></app-swap-players>
+			</div>
+		</div>
+	</details>
+</div>
+

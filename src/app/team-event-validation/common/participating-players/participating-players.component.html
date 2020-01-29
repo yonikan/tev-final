@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="heading">
+		<div>Participating Players - 19/20</div>
+		<div class="sub-title">
+			<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  sit amet, consectrtur -->
+		</div>
+	</div>
+	<div class="content">
+		<app-participating-column
+			[players]="allPlayers"
+			[actionName]="'Exclude'"
+			[isSwapAllowed]="true"
+			[isResetAllowed]="true"
+			[clubPlayers]="clubPlayers"
+			(excludePlayer)="doExcludePlayer($event)"
+			(swapPlayer)="doSwapPlayer($event, true)"
+			(resetChanges)="doResetChanges($event, true)"></app-participating-column>
+		<div class="buffer"></div>
+		<app-participating-column
+			[players]="allPlayers"
+			[actionName]="'Include'"
+			[isSwapAllowed]="false"
+			[isResetAllowed]="false"
+			[clubPlayers]="clubPlayers"
+			(excludePlayer)="doIncludePlayer($event)"
+			(swapPlayer)="doSwapPlayer($event, false)"
+			(resetChanges)="doResetChanges($event, false)"></app-participating-column>
+	</div>
+	<div (click)="openDialog()" class="bold">
+		Contact Support
+	</div>
+</div>

@@ -1,0 +1,53 @@
+@import "../../../../../styles/mixins";
+
+mat-expansion-panel {
+	background-color: transparent;
+	border-radius: 0 !important;
+    border: 0;
+	box-shadow: none !important;
+	// border-bottom: 1px solid #939fac;
+
+	&:first-of-type, &:last-of-type {
+		border-bottom-right-radius: 0 !important;
+    	border-bottom-left-radius: 0 !important;
+	}
+
+	.small-text {
+		@include small-text;
+	}
+
+	mat-list-item {
+		@include selectable-row(alias);
+		.player-title {
+			@include player-name-title();
+		}
+
+		&.disabled {
+			pointer-events: none;
+			.player-title {
+				color: #cccccc;
+			}
+		}
+	}
+
+	mat-panel-title {
+		font-size: 16px;
+		color: #8994a3;
+	}
+
+	.expand-arrow {
+		transform: rotate(180deg);
+		width: 14px;
+		height: 15px;
+		margin-right: 10px;
+
+		&.open {
+			transform: rotate(0);
+		}
+	}
+
+	.avatar {
+		@include player-avatar();
+		margin-right: 5px;
+	}
+}

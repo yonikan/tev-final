@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthorizationService, initFeatureToggling } from './core/services/authorization.service';
 import { TeamEventValidationModule } from './team-event-validation/team-event-validation.module';
+import { initMetadata, MetaDataService } from './core/services/metadata.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,13 @@ import { TeamEventValidationModule } from './team-event-validation/team-event-va
       useFactory: initFeatureToggling,
       deps: [AuthorizationService],
       multi: true
-    },
+	},
+	{
+		provide: APP_INITIALIZER,
+		useFactory: initMetadata,
+		deps: [MetaDataService],
+		multi: true
+	}
     // {
     //   provide: APP_INITIALIZER,
     //   useFactory: initPlatformFeatureToggling,

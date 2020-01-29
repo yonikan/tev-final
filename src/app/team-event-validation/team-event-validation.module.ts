@@ -32,6 +32,9 @@ import { PhasesCardComponent } from './common/phases-cards-container/phases-card
 import { SubstitutionsTableComponent } from './common/substitutions-table/substitutions-table.component';
 import { SubstitutionsRowComponent } from './common/substitutions-table/substitutions-row/substitutions-row.component';
 import { FormsModule } from '@angular/forms';
+import { ParticipatingPlayersComponent } from './common/participating-players/participating-players.component';
+import { ParticipatingColumnComponent } from './common/participating-players/participating-column/participating-column.component';
+import { SwapPlayersComponent } from './common/participating-players/swap-players/swap-players.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { FormsModule } from '@angular/forms';
     PhasesCardsContainerComponent,
     PhasesCardComponent,
     SubstitutionsTableComponent,
-    SubstitutionsRowComponent
+	SubstitutionsRowComponent,
+	ParticipatingPlayersComponent,
+	ParticipatingColumnComponent,
+	SwapPlayersComponent
   ],
   imports: [
     CommonModule,
@@ -75,7 +81,8 @@ import { FormsModule } from '@angular/forms';
     TagsComponent,
     SpeedGraphComponent,
     TrainingDurationComponent,
-    MatchOverviewComponent,
+	MatchOverviewComponent,
+	ParticipatingPlayersComponent
   ]
 })
 export class TeamEventValidationModule { }
