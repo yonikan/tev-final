@@ -19,6 +19,7 @@ interface InitialState {
 })
 export class ParticipatingPlayersComponent implements OnInit {
 	@Input() teamEventId: any;
+	@Input() type = 'training';
 
 	private state: InitialState = {
 		excludedPlayers: [],
@@ -66,7 +67,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 			}
 		});
 
-		this.teamEventValidationService.getParticipatingPlayers(this.store, this.teamEventId);
+		this.teamEventValidationService.getParticipatingPlayers(this.store, this.teamEventId, this.type);
 		this.teamEventValidationService.getPlayersForSwap(this.store, this.teamEventId);
 	}
 

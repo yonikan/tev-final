@@ -5,7 +5,7 @@
             <app-step-match-overview [stepMatchOverviewData]="step1Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-overview>
         </mat-tab>
         <mat-tab label="PLAYERS" [disabled]="true">
-            <app-step-match-players [stepMatchPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-players>
+            <app-step-match-players [teamEventId]="matchId" [stepMatchPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-players>
         </mat-tab>
         <mat-tab label="FORMATIONS" [disabled]="true">
             <app-step-match-formations [stepMatchFormationsData]="step3Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-formations>

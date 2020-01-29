@@ -1,5 +1,5 @@
 <div class="step-match-players-container">
-    <app-participating-players></app-participating-players>
+    <app-participating-players [teamEventId]="teamEventId" [type]="'match'"></app-participating-players>
 
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="backStep()">back</button>

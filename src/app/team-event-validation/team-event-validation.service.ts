@@ -108,10 +108,9 @@ export class TeamEventValidationService {
 			})
   }
 
-  getParticipatingPlayers(subject: Subject<any>, teamEventId) {
-	console.log('id', teamEventId);
+  getParticipatingPlayers(subject: Subject<any>, teamEventId, type='training') {
 	this.http
-		.get(`${this.BASE_URL}/v3/training/${teamEventId}`)
+		.get(`${this.BASE_URL}/v3/${type}/${teamEventId}`)
 		.subscribe((data: any) => {
 			// HACK: remove tmp code
 			const players = Object.values(data.participatingPlayers).map(
