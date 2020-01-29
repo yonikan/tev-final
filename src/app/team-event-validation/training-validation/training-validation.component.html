@@ -2,13 +2,13 @@
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <mat-tab-group [selectedIndex]="currentSelectedStep" *ngIf="!isLoading">
         <mat-tab label="GENERAL" [disabled]="true">
-            <app-step-training-general [stepTrainingGeneralData]="step1Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-general>
+            <app-step-training-general *ngIf="currentSelectedStep === 0" [stepTrainingGeneralData]="step1Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-general>
         </mat-tab>
         <mat-tab label="PLAYERS" [disabled]="true">
-            <app-step-training-players [stepTrainingPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-players>
+            <app-step-training-players *ngIf="currentSelectedStep === 1" [stepTrainingPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-players>
         </mat-tab>
         <mat-tab label="PHASES" [disabled]="true">
-            <app-step-training-phases [stepTrainingPhasesData]="step3Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-phases>
+            <app-step-training-phases *ngIf="currentSelectedStep === 2" [stepTrainingPhasesData]="step3Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-training-phases>
         </mat-tab>
     </mat-tab-group>
 </div>
