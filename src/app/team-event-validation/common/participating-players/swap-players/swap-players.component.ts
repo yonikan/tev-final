@@ -22,4 +22,16 @@ export class SwapPlayersComponent implements OnInit {
 		this.swapPlayer.emit(value);
 	}
 
+	trackClubByFn(i, club) {
+		return club.name;
+	}
+
+	trackPlayerByFn(i, player) {
+		return player.userId;
+	}
+
+	trackPlayerGroupByFn(i, playerGroup) {
+		return playerGroup.name;
+	}
+
 }

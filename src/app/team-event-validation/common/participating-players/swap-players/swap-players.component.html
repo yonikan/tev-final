@@ -1,6 +1,6 @@
 <mat-accordion>
 	<mat-expansion-panel
-		*ngFor="let club of clubPlayers; let isOpen = false"
+		*ngFor="let club of clubPlayers; trackBy: trackClubByFn; let isOpen = false"
 		(opened)="isOpen = true"
 		(closed)="isOpen = false"
 		hideToggle="true"
@@ -15,9 +15,9 @@
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 		<mat-list>
-			<div *ngFor="let playerPositionGroup of club.players">
+			<div *ngFor="let playerPositionGroup of club.players; trackBy: trackPlayerGroupByFn">
 				<div class="small-text">{{playerPositionGroup.name}}</div>
-				<mat-list-item *ngFor="let player of playerPositionGroup.players" [ngClass]="{disabled: isIncluded ? player.isParticipated : !player.isParticipated}" (click)="onSwapPlayer(player)" matRipple>
+				<mat-list-item *ngFor="let player of playerPositionGroup.players; trackBy: trackPlayerByFn" [ngClass]="{disabled: isIncluded ? player.isParticipated : !player.isParticipated}" (click)="onSwapPlayer(player)" matRipple>
 					<img class="avatar" [src]="player.profilePic" alt="player avatar">
 					<div class="player-title">{{player.lastName}}.{{player.firstName[0]}}</div>
 				</mat-list-item>

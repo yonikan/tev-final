@@ -6,7 +6,7 @@
 	</div>
 </div>
 <div class="container">
-	<details *ngFor="let player of participatingPlayers" [open]="player.isOpen">
+	<details *ngFor="let player of participatingPlayers; trackBy: trackByFn" [open]="player.isOpen">
 		<summary (click)="preventDetailsOpen($event)">
 			<img class="avatar" [src]="player.profilePic" alt="player avatar">
 			<div class="player-title">

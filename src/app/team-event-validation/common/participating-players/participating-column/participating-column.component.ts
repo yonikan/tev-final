@@ -106,4 +106,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 		return `${(`${d.getHours()}`).padStart(2, '0')}:${(`${d.getMinutes()}`).padStart(2, '0')}`
 	}
 
+	trackByFn(i, item) {
+		return item.id;
+	}
 }
