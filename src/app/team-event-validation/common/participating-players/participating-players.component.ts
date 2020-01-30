@@ -38,6 +38,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 		allPlayers: [],
 		clubPlayers: []
 	};
+	activePlayers = 0;
 
 	constructor(public dialog: MatDialog, private teamEventValidationService: TeamEventValidationService, private uiComponentService: UiComponentsService) {
 	}
@@ -56,6 +57,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 					// save init state
 					this.initialState.allPlayers = allPlayers.map(p => ({...p}));
 				}
+				this.activePlayers = allPlayers.filter(player => player.activeTime.length).length;
 				this.allPlayers = allPlayers.map(p => ({...p}));
 			}
 

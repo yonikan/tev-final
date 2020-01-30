@@ -36,6 +36,8 @@ import { ParticipatingPlayersComponent } from './common/participating-players/pa
 import { ParticipatingColumnComponent } from './common/participating-players/participating-column/participating-column.component';
 import { SwapPlayersComponent } from './common/participating-players/swap-players/swap-players.component';
 import { ContactSupportModalComponent } from '../shared/contact-support-modal/contact-support-modal.component';
+import { GetTimePipe } from './common/participating-players/participating-column/get-time.pipe';
+import { TimeDiffPipe } from './common/participating-players/participating-column/time-diff.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { ContactSupportModalComponent } from '../shared/contact-support-modal/co
 	ParticipatingPlayersComponent,
 	ParticipatingColumnComponent,
 	SwapPlayersComponent,
-	ContactSupportModalComponent
+	ContactSupportModalComponent,
+	GetTimePipe,
+	TimeDiffPipe
   ],
   imports: [
     CommonModule,

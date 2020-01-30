@@ -16,14 +16,14 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	@Output() swapPlayer = new EventEmitter();
 	@Output() resetChanges = new EventEmitter();
 
-	private clubPlayersGroup = [];
-	private participatingPlayers = [];
-	private currentPlayer = null;
-	private ACTION_NAMES = {
+	clubPlayersGroup = [];
+	participatingPlayers = [];
+	currentPlayer = null;
+	ACTION_NAMES = {
 		EXCLUDE: 'Exclude',
 		INCLUDE: 'Include'
 	}
-	private HEADLINE = {
+	HEADLINE = {
 		[this.ACTION_NAMES.EXCLUDE]: "Included",
 		[this.ACTION_NAMES.INCLUDE]: "Not Included",
 	}

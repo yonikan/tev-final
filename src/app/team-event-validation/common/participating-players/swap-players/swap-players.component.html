@@ -1,13 +1,13 @@
 <mat-accordion>
 	<mat-expansion-panel
-		*ngFor="let club of clubPlayers; trackBy: trackClubByFn; let isOpen = false"
-		(opened)="isOpen = true"
-		(closed)="isOpen = false"
+		*ngFor="let club of clubPlayers; trackBy: trackClubByFn;"
+		(opened)="club.isOpen = true"
+		(closed)="club.isOpen = false"
 		hideToggle="true"
 		#matExpansionPanel>
 		<mat-expansion-panel-header>
 			<mat-panel-title>
-				<img [ngClass]="{'expand-arrow': true, open: isOpen}" src="./assets/svg/expand-arrow.svg" alt="expansion arrow">
+				<img [ngClass]="{'expand-arrow': true, open: club.isOpen}" src="./assets/svg/expand-arrow.svg" alt="expansion arrow">
 				{{club.name}}
 			</mat-panel-title>
 			<mat-panel-description>

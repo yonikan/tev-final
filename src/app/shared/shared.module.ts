@@ -8,7 +8,7 @@ import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.componen
 import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     PageHeaderComponent,
@@ -21,9 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     ContentLoaderModule,
-	TranslateModule,
-	FormsModule,
-	ReactiveFormsModule
+	TranslateModule
   ],
   exports: [
     MaterialModule,

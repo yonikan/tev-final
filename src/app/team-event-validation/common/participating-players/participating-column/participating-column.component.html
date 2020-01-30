@@ -21,8 +21,8 @@
 						<span>{{'|'}}</span>
 					</div> -->
 					<div class="light-text" *ngIf="player.activeTime[0]">
-						{{getTime(player.activeTime[0].startTime)}} - {{(getTime(player.activeTime[0].endTime))}}
-						({{getTimeDiff(player.activeTime[0].startTime, player.activeTime[0].endTime)}}m)
+						{{player.activeTime[0].startTime | getTime}} - {{player.activeTime[0].endTime | getTime}}
+						{{player.activeTime[0].startTime | timeDiff: player.activeTime[0].endTime : 'm'}}
 					</div>
 				</div>
 			</div>

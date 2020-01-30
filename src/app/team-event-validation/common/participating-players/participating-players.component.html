@@ -1,11 +1,12 @@
 <div class="container">
 	<div class="heading">
-		<div>Participating Players - 19/20</div>
+		<div>Participating Players - {{activePlayers}}/{{allPlayers.length}}</div>
 		<div class="sub-title">
+			<mat-spinner *ngIf="!allPlayers.length"></mat-spinner>
 			<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  sit amet, consectrtur -->
 		</div>
 	</div>
-	<div class="content">
+	<div class="content" *ngIf="allPlayers.length">
 		<app-participating-column
 			[players]="allPlayers"
 			[actionName]="'Exclude'"
@@ -26,7 +27,7 @@
 			(swapPlayer)="doSwapPlayer($event, false)"
 			(resetChanges)="doResetChanges($event, false)"></app-participating-column>
 	</div>
-	<div (click)="openDialog()" class="bold">
+	<div *ngIf="allPlayers.length" (click)="openDialog()" class="bold">
 		Contact Support
 	</div>
 </div>
