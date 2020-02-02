@@ -1,0 +1,42 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+:host {
+    .container {
+        .heading {
+            @include team-event-step-heading;
+            display: flex;
+			flex-direction: column;
+			margin-bottom: 10px;
+			align-items: center;
+            .sub-title {
+				margin-top: 15px;
+                @include small-text;
+            }
+        }
+
+        .content {
+			@include team-event-step-container;
+			padding: 5px;
+
+            .buffer {
+                @include team-event-buffer;
+            }
+
+            @media (max-width: $media-query-lg) {
+                grid-template-columns: 100%;
+                .buffer {
+                    height: 1px;
+                    border-right: 0;
+                    border-top: 1px dotted rgba(53, 61, 86, 0.3);
+                }
+            }
+		}
+
+		.bold {
+			@include bold();
+			font-size: 16px;
+			cursor: pointer;
+		}
+    }
+}

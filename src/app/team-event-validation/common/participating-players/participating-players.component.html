@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="heading">
+		<div>Participating Players - {{activePlayers}}/{{allPlayers.length}}</div>
+		<div class="sub-title">
+			<mat-spinner *ngIf="!allPlayers.length"></mat-spinner>
+			<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  sit amet, consectrtur -->
+		</div>
+	</div>
+	<div class="content" *ngIf="allPlayers.length">
+		<app-participating-column
+			[players]="allPlayers"
+			[actionName]="'Exclude'"
+			[isSwapAllowed]="true"
+			[isResetAllowed]="true"
+			[clubPlayers]="clubPlayers"
+			(excludePlayer)="doExcludePlayer($event)"
+			(swapPlayer)="doSwapPlayer($event, true)"
+			(resetChanges)="doResetChanges($event, true)"></app-participating-column>
+		<div class="buffer"></div>
+		<app-participating-column
+			[players]="allPlayers"
+			[actionName]="'Include'"
+			[isSwapAllowed]="false"
+			[isResetAllowed]="false"
+			[clubPlayers]="clubPlayers"
+			(excludePlayer)="doIncludePlayer($event)"
+			(swapPlayer)="doSwapPlayer($event, false)"
+			(resetChanges)="doResetChanges($event, false)"></app-participating-column>
+	</div>
+	<div *ngIf="allPlayers.length" (click)="openDialog()" class="bold">
+		Contact Support
+	</div>
+</div>

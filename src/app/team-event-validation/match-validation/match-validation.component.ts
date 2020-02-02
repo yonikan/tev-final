@@ -37,7 +37,7 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
           this.step1Data = matchValidationDataCopy.metadata;
           this.step2Data = matchValidationDataCopy.participatingPlayers;
           this.step3Data = matchValidationDataCopy.formation;
-          this.step4Data = matchValidationDataCopy.phases;
+          this.step4Data = {...matchValidationDataCopy.phases, ...matchValidationDataCopy.metadata};
           this.step5Data = matchValidationDataCopy.substitutions;
       });
   }

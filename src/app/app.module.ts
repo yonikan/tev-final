@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthorizationService, initFeatureToggling } from './core/services/authorization.service';
 import { TeamEventValidationModule } from './team-event-validation/team-event-validation.module';
+import { StaticDataService, initStaticData } from './core/services/static-data.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,13 @@ import { TeamEventValidationModule } from './team-event-validation/team-event-va
     //   useFactory: initPlatformFeatureToggling,
     //   deps: [AuthorizationService],
     //   multi: true
-    // }
+    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initStaticData,
+      deps: [StaticDataService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

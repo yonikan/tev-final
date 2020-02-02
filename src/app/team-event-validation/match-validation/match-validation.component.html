@@ -5,7 +5,7 @@
             <app-step-match-overview *ngIf="currentSelectedStep === 0" [stepMatchOverviewData]="step1Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-overview>
         </mat-tab>
         <mat-tab label="PLAYERS" [disabled]="true">
-            <app-step-match-players *ngIf="currentSelectedStep === 1" [stepMatchPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-players>
+            <app-step-match-players *ngIf="currentSelectedStep === 1" [teamEventId]="matchId" [stepMatchPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-players>
         </mat-tab>
         <mat-tab label="FORMATIONS" [disabled]="true">
             <app-step-match-formations *ngIf="currentSelectedStep === 2" [stepMatchFormationsData]="step3Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-formations>

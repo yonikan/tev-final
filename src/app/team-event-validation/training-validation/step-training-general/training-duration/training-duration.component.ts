@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { VerticesData } from 'src/app/team-event-validation/team-event-validation.interface';
 
 @Component({
   selector: 'app-training-duration',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./training-duration.component.scss']
 })
 export class TrainingDurationComponent implements OnInit {
-	@Input() verticesData: { vel_interp_ms, time_dt_ms, start_time_interp_ms };
+	@Input() verticesData: VerticesData = {velInterpMs: 0, timeDtMs: 0, startTimeInterpMs: 0};
 	@Input() highlightedRange;
 	startTime;
 	endTime;

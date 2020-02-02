@@ -27,22 +27,23 @@ const plotLines = [
 ];
 
 @Component({
-  selector: 'app-speed-graph',
-  templateUrl: './speed-graph.component.html',
-  styleUrls: ['./speed-graph.component.scss']
+	selector: 'app-speed-graph',
+	templateUrl: './speed-graph.component.html',
+	styleUrls: ['./speed-graph.component.scss']
 })
 export class SpeedGraphComponent implements OnInit, OnChanges {
 	@Input() vertices: Array<any> = [];
 	@Input() highlightedRange: { startTime: number, endTime: number };
 	@Input() timeDuration: number;
 	@Input() startTime: number;
-    @Input() plotBands: Array<any> = [];
+	@Input() plotBands: Array<any> = [];
 
 	Highcharts: typeof Highcharts = Highcharts; // required
 	chartConstructor = 'chart'; // optional string, defaults to 'chart'
 	updateFlag = true; // optional boolean
 	oneToOneFlag = true; // optional boolean, defaults to false
 	runOutsideAngular = false; // optional boolean, defaults to false
+	chart;
 	chartOptions: any = {
 		chart: {
 			type: 'areaspline',
@@ -51,7 +52,8 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 			},
 			height: 130,
 			backgroundColor: '#ffffff',
-			color: '#f9b62b'
+			color: '#f9b62b',
+			zoomType: 'x'
 		},
 		title: {
 			text: ''
@@ -98,19 +100,26 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 		time: {
 			useUTC: false
 		}
-  };
+	};
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-		this.chartOptions = this.getUpdatedOptions({...this});
-  }
+	ngOnInit() {
+		this.chartOptions = this.getUpdatedOptions({ ...this });
+	}
 
-  ngOnChanges(changes: SimpleChanges) {
-		this.chartOptions = this.getUpdatedOptions({...this, ...Object.values(changes).map(c => c.currentValue)});
-  }
+	ngOnChanges(changes: SimpleChanges) {
+		this.chartOptions = this.getUpdatedOptions({ ...this, ...Object.values(changes).map(c => c.currentValue) });
+		if (this.chart) {
+			this.chart.reflow();
+		}
+	}
 
-  getUpdatedOptions(newOptions) {
+	chartCallback(chart) {
+		this.chart = chart;
+	}
+
+	getUpdatedOptions(newOptions) {
 		return {
 			...this.chartOptions,
 			series: [

@@ -71,7 +71,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sidepanelOpenSub = this.uiComponentsService
       .getSidepanelOpenListener()
       .subscribe((sidepanelOpen: any) => {
-        // console.log('sidepanelOpen: ', sidepanelOpen);
         this.teamEventId = sidepanelOpen.teamEventId;
         this.isSidepanelOpen = sidepanelOpen.isOpen;
         this.sidepanelOpenTeamEventType = sidepanelOpen.teamEventType;
@@ -107,7 +106,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.http.post<any>(`${PATH}/v3/${TEAM_EVENT_TYPE}/${this.teamEventId}/draft`, PAYLOAD)
         .subscribe(
           (resp: any) => {
-            
+
           },
           (error) => {
 

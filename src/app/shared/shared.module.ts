@@ -25,7 +25,7 @@ import { RestrictionContainerDirective } from './directives/restriction-containe
     CommonModule,
     MaterialModule,
     ContentLoaderModule,
-    TranslateModule
+	  TranslateModule
   ],
   exports: [
     MaterialModule,

@@ -35,6 +35,12 @@ import { SubstitutionsRowComponent } from './common/substitutions-table/substitu
 import { AreYouSureModalComponent } from './common/are-you-sure-modal/are-you-sure-modal.component';
 import { PhasesModalComponent } from './common/phases-modal/phases-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ParticipatingPlayersComponent } from './common/participating-players/participating-players.component';
+import { ParticipatingColumnComponent } from './common/participating-players/participating-column/participating-column.component';
+import { SwapPlayersComponent } from './common/participating-players/swap-players/swap-players.component';
+import { ContactSupportModalComponent } from '../shared/contact-support-modal/contact-support-modal.component';
+import { GetTimePipe } from './common/participating-players/participating-column/get-time.pipe';
+import { TimeDiffPipe } from './common/participating-players/participating-column/time-diff.pipe';
 
 import { MatchPhaseModalComponent } from './common/phases-modal/match-phase-modal/match-phase-modal.component';
 import { PhysicalModalComponent } from './common/phases-modal/physical-modal/physical-modal.component';
@@ -69,7 +75,13 @@ import { LineupDropdownRowComponent } from './common/phases-modal/technical-moda
     WarmupModalComponent,
     TechnicalModalComponent,
     PitchSizeOptionComponent,
-    LineupDropdownRowComponent
+    LineupDropdownRowComponent,
+    ParticipatingPlayersComponent,
+    ParticipatingColumnComponent,
+    SwapPlayersComponent,
+    ContactSupportModalComponent,
+    GetTimePipe,
+    TimeDiffPipe
   ],
   imports: [
     CommonModule,
@@ -79,11 +91,8 @@ import { LineupDropdownRowComponent } from './common/phases-modal/technical-moda
     // RouterModule.forChild(routes),
     HighchartsChartModule,
     SwiperModule,
-    FormsModule
-  ],
-  entryComponents: [
-    AreYouSureModalComponent,
-    PhasesModalComponent
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -106,6 +115,12 @@ import { LineupDropdownRowComponent } from './common/phases-modal/technical-moda
     SpeedGraphComponent,
     TrainingDurationComponent,
     MatchOverviewComponent,
-  ]
+    ParticipatingPlayersComponent
+  ],
+  entryComponents: [
+    AreYouSureModalComponent,
+    PhasesModalComponent,
+    ContactSupportModalComponent
+  ],
 })
 export class TeamEventValidationModule { }
