@@ -81,7 +81,7 @@
   p {
     margin: 0;
   }
-  
+
   a {
     color: #334455;
     font-size: 17px;
@@ -215,4 +215,92 @@
       margin: 0;
       margin-bottom: 20px;
   }
+}
+
+@mixin small-text {
+  font-size: 14px;
+  color: #96a1ae;
+}
+
+@mixin team-event-step-heading {
+  color: #3d4762;
+  font-size: 30px;
+  text-align: center;
+}
+
+@mixin team-event-buffer {
+  border-right: 1px dotted rgba(53, 61, 86, 0.3);
+  border-top: 0;
+}
+
+@mixin team-event-step-container {
+  display: grid;
+  grid-template-columns: 1fr 0fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+@mixin  player-avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+@mixin player-name-title {
+	font-size: 16px;
+	color: #3d4762;
+	font-weight: 600;
+}
+
+@mixin custom-scroll {
+	/* width */
+	&::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background-color: #939fac;
+		border-radius: 1.5px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: #757f89;
+	}
+
+}
+
+@mixin selectable-row($cursor: pointer) {
+	cursor: $cursor;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.04);
+	}
+}
+
+@mixin flex-row($align) {
+	display: flex;
+	flex-direction: row;
+	align-items: $align;
+}
+
+@mixin flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+@mixin bold {
+	color: #96a1ae;
+	font-weight: 600;
+}
+
+@mixin light-text($fontSize: 12px) {
+	color: #8994a3;
+	font-size: $fontSize;
+	font-weight: 500;
 }

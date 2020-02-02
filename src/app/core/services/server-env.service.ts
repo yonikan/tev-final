@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ServerEnvService {
   private currentServerEnv;
-  
+
   constructor() { }
 
   initServerEnv() {
@@ -15,7 +15,7 @@ export class ServerEnvService {
       this.currentServerEnv = 'dev';
       return;
     };
-    
+
     const URL_HOSTNAME = window.location.hostname;
     const SUB_DOMAIN = URL_HOSTNAME.split('.')[0];
     const TOP_LEVEL_DOMAIN = URL_HOSTNAME.split('.')[2];
@@ -33,6 +33,10 @@ export class ServerEnvService {
         this.currentServerEnv = 'prod';
       }
     };
+  }
+
+  getUrlVersion(url, v) {
+	  return url.replace(`{version}`, v);
   }
 
   getBaseUrl(serverEnv = 2): string {

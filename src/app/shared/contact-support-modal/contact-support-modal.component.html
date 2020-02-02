@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="heading">
+		<i class="demo-icon icon-x" (click)="cancel()">&#xe813;</i>
+		<div>Contact Support</div>
+	</div>
+	<div class="content">
+		<form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
+			<mat-form-field>
+				<input required matInput placeholder="Subject" formControlName="subject">
+			</mat-form-field>
+
+			<mat-form-field>
+				<textarea rows="5" required matInput placeholder="Youre message" formControlName="message"></textarea>
+			</mat-form-field>
+
+			<button mat-button cdkFocusInitial>SEND</button>
+		</form>
+	</div>
+</div>

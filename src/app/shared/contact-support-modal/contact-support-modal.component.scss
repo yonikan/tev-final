@@ -1,0 +1,30 @@
+@import "../../../styles/mixins";
+
+.container {
+	height: 100%;
+	border-top: 8px solid #35083a;
+	.heading {
+		display: grid;
+		grid-auto-flow: column;
+    	align-items: center;
+
+		height: 67px;
+		padding: 5px;
+		background-color: #e0e3e5;
+		@include bold();
+		font-size: 20px;
+
+		.icon-x {
+			cursor: pointer;
+			align-self: flex-start;
+		}
+	}
+	.content {
+		padding: 24px;
+
+		.form {
+			display: flex;
+    		flex-direction: column;
+		}
+	}
+}
