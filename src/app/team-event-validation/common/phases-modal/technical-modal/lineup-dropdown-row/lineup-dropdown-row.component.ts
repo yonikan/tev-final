@@ -24,29 +24,33 @@ export class LineupDropdownRowComponent implements OnInit {
   }
 
   toggleSelectRow(team) {
+    if ( this.rowMode === 'OPPOSEED_LINEUP' ) { return };
     if (this.selectedTeam === 1) {
-      this.selectedTeam = null;
-      this.emit(this.selectedTeam);
+      this.unSelectRow();
     } else {
-      this.emit(team)
-      this.selectedTeam = team;
+      this.selectRow(team);
     }
   }
 
-  selectRow(event: MouseEvent, team: number) {
+  selectRow(team: number, event?: MouseEvent) {
     if (team === this.selectedTeam) { return };
-    event.stopPropagation();
+    if (event) { event.stopPropagation(); };
     this.emit(team);
     this.selectedTeam = team;
   }
 
-  emit(team) {
-    this.lineupRowClicked.emit({ player: this.player, rowMode: this.rowMode, team, prevTeam: this.selectedTeam });
+  unSelectRow() {
+    this.selectedTeam = null;
+    this.emit(this.selectedTeam, true);
+  }
+
+  emit(team, remove = false) {
+    this.lineupRowClicked.emit({ player: this.player, rowMode: this.rowMode, team, prevTeam: this.selectedTeam, remove });
   }
 
 
   isDisabeled() {
     // console.log('isPlayerPartitpateInOverlapPhase: ', this.service.isPlayerPartitpateInOverlapPhase(this.player.playerId, this.phase))
-    return this.service.isPlayerPartitpateInOverlapPhase(this.player.playerId, this.phase);
+    return this.service.isPlayerPartitpateInOverlapPhase(this.player.id, this.phase);
   }
 }

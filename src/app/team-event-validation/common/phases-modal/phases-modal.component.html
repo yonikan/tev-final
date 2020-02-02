@@ -11,7 +11,7 @@
     </div>
 
     <div class="phases-counter">
-      (Phase {{ data.idx + 1 }} of {{ data.PhasesCount }})
+      (Phase {{ data.index + 1 }} of {{ data.PhasesCount }})
     </div>
     <div class="phase-options">
       <mat-radio-group aria-labelledby="radio-group-label" class="radio-group">
@@ -20,8 +20,8 @@
           *ngFor="let option of modalOptions; let first = first"
           [value]="option"
           [ngStyle]="{ 'margin-left': !first ? '75px' : '0' }"
-          (change)="onModalOptionSelect($event)"
-          [checked]="first"
+          (change)="onUpdateField({value: option.id, filedPathToUpdate: ['type']})"
+          [checked]="option.id === phaseToEdit.type"
         >
           <mat-icon>{{ option.icon }}</mat-icon>
           {{ option.name }}
@@ -31,33 +31,41 @@
     <div class="phase-duration">
       <time-picker
         class="start-phase"
-        [defaultTime]="data.phase.startTime"
+        [defaultTime]="phaseToEdit.startTime"
+        (timeChanged)="onUpdateField({value: $event.timeUnix, filedPathToUpdate: ['startTime']}); setPhaseDurationTotal();"
       ></time-picker>
       <time-picker
         class="end-phase"
-        [defaultTime]="data.phase.endTime"
+        [defaultTime]="phaseToEdit.endTime"
+        (timeChanged)="onUpdateField({value: $event.timeUnix, filedPathToUpdate: ['endTime']}); setPhaseDurationTotal();"
       ></time-picker>
       <div class="phase-duration-total">({{ setPhaseDurationTotal() }})</div>
     </div>
   </div>
-
   <div class="phases-modal-content">
+
     <app-match-phase-modal
-      *ngIf="selectedModalOption.name === 'Match Phase'"
+      *ngIf="phaseToEdit.type === 2"
+      (updateField)="onUpdateField($event)"
     ></app-match-phase-modal>
+
     <app-warmup-modal
-      *ngIf="selectedModalOption.name === 'Warmup'"
+      *ngIf="phaseToEdit.type === 4"
+      (updateField)="onUpdateField($event)"
     ></app-warmup-modal>
+
     <app-physical-modal
-      *ngIf="selectedModalOption.name === 'Physical'"
+      *ngIf="phaseToEdit.type === 1"
+      (updateField)="onUpdateField($event)"
     ></app-physical-modal>
+
     <app-technical-modal
-      *ngIf="selectedModalOption.name === 'Technical'"
+      *ngIf="phaseToEdit.type === 3"
       [phase]="data.phase"
-      [selectedLineup]="data.phase.lineup"
-      (pitchSizeSelected)="onPitchSizeSelect($event)"
+      [selectedLineup]="phaseToEdit.lineup"
       (updateField)="onUpdateField($event)"
     ></app-technical-modal>
+
   </div>
 
   <div class="phases-modal-footer">

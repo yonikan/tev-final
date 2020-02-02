@@ -62,8 +62,8 @@
     font-size: 14px;
     color: #8994a3;
     padding: 5px 10px;
-    margin: 5px 10px;
-    border-bottom: S1px solid #e6e9eb;
+    margin: 30px 10px 5px 10px;
+    border-bottom: 1px solid #e6e9eb;
   }
 }
 
@@ -73,11 +73,11 @@
   font-size: 12px;
   color: #8994a3;
   margin-bottom: 7px;
-  padding: 0 25px 0 20px;
+  padding: 0 42px 0 20px;
 
   .opposeed-lineup-counters {
     display: flex;
     justify-content: space-between;
-    width: 110px;
+    width: 116px;
   }
 }

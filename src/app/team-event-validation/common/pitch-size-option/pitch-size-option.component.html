@@ -2,13 +2,13 @@
   <div class="general-option option" *ngIf="mode === 'GENERAL'">
     <mat-radio-button
       [value]="option.name"
-      (change)="OnOptionClicked($event)"
+      (change)="OnOptionClicked()"
       [checked]="checked"
       id="{{ 'pitchSizeOption' + option.name }}"
     >
       <div class="option-container">
         <div class="option-head">
-          <mat-icon>{{ option.iconName }}</mat-icon>
+          <!-- <mat-icon>{{ option.iconName }}</mat-icon> -->
           <span>{{ option.name }}</span>
         </div>
 
@@ -32,7 +32,7 @@
     <mat-radio-button [value]="'custom'" (change)="OnOptionClicked($event)">
       <div class="custom-btn option">
         <div class="option-head">
-          <mat-icon>{{ 'delete' }}</mat-icon>
+          <!-- <mat-icon>{{ 'delete' }}</mat-icon> -->
           Custom
         </div>
 
@@ -79,7 +79,6 @@
           Pitch Wide
           <input
             type="number"
-            placeholder="20"
             min="1"
             max="999"
           />m
@@ -103,7 +102,6 @@
           Pitch Length
           <input
             type="number"
-            placeholder="45"
             min="1"
             max="999"
           />m

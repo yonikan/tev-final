@@ -1,15 +1,16 @@
 <div class="card" (click)="phaseClicked()">
-  <button mat-button [matMenuTriggerFor]="menu" class="elapsis" (click)="$event.stopPropagation(); $event.preventdefault();">
+  <button mat-button [matMenuTriggerFor]="menu" class="ellipsis" (click)="$event.stopPropagation();">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button
       mat-menu-item
-      *ngFor="let elapsisOption of elapsisOptions; let cardIdx = index"
-      (click)="hundleElapsisAction(elapsisOption)"
+      *ngFor="let ellipsisOption of ellipsisOptions; let cardIndex = index"
+      (click)="hundleEllipsisAction(ellipsisOption)"
     >
-      <mat-icon class="elapsis">{{ elapsisOption.icon }}</mat-icon>
-      {{ elapsisOption.name }}
+      <i class="demo-icon icon-delete">&#xe815;</i>
+      <!-- <i class="demo-icon icon-delete">{{ ellipsisOption.icon }}</i> -->
+      {{ ellipsisOption.name }}
     </button>
   </mat-menu>
 

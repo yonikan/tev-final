@@ -41,12 +41,12 @@ export class TagsComponent implements OnInit {
 
 
   ngOnChanges(change) {
-    if (change.stepMatchOverviewData) {
+    if (change.stepMatchOverviewData && this.stepMatchOverviewData) {
       this.filteredTags = this.tagCtrl.valueChanges
       .pipe(
         startWith(null),
         map((tag: string | null) => {
-          return tag ? this._filter(tag) : this.stepMatchOverviewData.tags.slice();
+          return tag ? this._filter(tag) : this.stepMatchOverviewData.availableTagsList.slice();
         }));
     }
   }
@@ -89,6 +89,6 @@ export class TagsComponent implements OnInit {
   _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.stepMatchOverviewData.tags.filter(option => option.toLowerCase().includes(filterValue));
+    return this.stepMatchOverviewData.availableTagsList.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

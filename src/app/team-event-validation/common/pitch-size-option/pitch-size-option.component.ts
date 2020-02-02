@@ -21,8 +21,8 @@ export class PitchSizeOptionComponent implements OnInit {
     // console.log(this.mode, this.option)
   }
 
-  OnOptionClicked(event) {
-    this.optionClicked.emit(event.value)
+  OnOptionClicked() {
+    this.optionClicked.emit(this.option)
     // // this.checked = !this.checked;
     // if (this.mode === 'GENERAL') { this.optionClicked.emit(this.option); }
     // if (this.mode === 'CUSTOM') {

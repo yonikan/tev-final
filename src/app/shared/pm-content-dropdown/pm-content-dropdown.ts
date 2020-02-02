@@ -79,7 +79,7 @@ export class PmContentDropdownComponent {
   onOptionSelect = (option, index, event) => {
     if (option.isDisabled) { return };
     const value = option; //this.getTitleToShow(option)
-    this.optionClicked.emit({ value, idx: index, event });
+    this.optionClicked.emit({ value, index: index, event });
     this.hide();
   }
 

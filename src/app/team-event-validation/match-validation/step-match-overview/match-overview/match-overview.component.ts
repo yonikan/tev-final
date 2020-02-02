@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StaffRoles } from '../../../../core/enums/staff-roles.enum';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-match-overview',
@@ -10,7 +11,6 @@ export class MatchOverviewComponent implements OnInit {
 
   @Input() stepMatchOverviewData: any;
 
-
   competitionOptions = ['National league', ' National cup', 'TOTO cup'];
 
   // selectedCompetition;
@@ -18,8 +18,11 @@ export class MatchOverviewComponent implements OnInit {
     selectedCompetition: null,
     selecedHost: null,
     selectedScore: null,
+    selectedOpponentScore: null,
     selectedOpponent: null
   }
+
+  moment = moment;
 
   constructor() { }
 
@@ -29,11 +32,9 @@ export class MatchOverviewComponent implements OnInit {
 
   populateData(value, keyToUpdate) {
     this.stepMatchOverviewData[keyToUpdate] = value;
-    // console.log(this.stepMatchOverviewData);
   }
 
   setGameData(value, dataManagerKey, stepDataKey) {
-    // console.log(value)
     this.dataManager[dataManagerKey] = value;
     this.populateData(value, stepDataKey);
     console.log(this.stepMatchOverviewData);
@@ -41,8 +42,8 @@ export class MatchOverviewComponent implements OnInit {
 
   updateScore(score = 0, side) {
     if (score < 0 || score > 99) { score = 0 };
-      if (side === 'HOME') { this.populateData(+score, 'myScore') };
-    if (side === 'AWAY') { this.populateData(+score, 'opponentScore') };
+    if (side === 'HOME') { this.setGameData(+score,'selectedScore' ,'myScore') };
+    if (side === 'AWAY') { this.setGameData(+score,'selectedOpponentScore' ,'opponentScore') };
   }
 
 }

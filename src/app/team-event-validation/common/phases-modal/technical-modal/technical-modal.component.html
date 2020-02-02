@@ -19,9 +19,9 @@
           [value]="drill"
           [ngStyle]="{ 'margin-right': last ? '0' : '10px' }"
           (change)="onDrillSelect($event)"
-          [checked]="first"
+          [checked]="selectedDrill.enum === drill.enum"
         >
-          <mat-icon>{{ drill.icon }}</mat-icon>
+          <!-- <mat-icon>{{ drill.icon }}</mat-icon> -->
           {{ drill.name }}
         </mat-radio-button>
       </mat-radio-group>
@@ -63,7 +63,7 @@
         </div>
         <span dropdown-title>{{selectedDrill.enum === 'OPPOSEED_LINEUP'? 'Create Line - Ups':'Select Player'}}</span>
         <div class="dropdown-content" dropdown-content>
-          <span class="select-all-btn" (click)="selectAllLineups($event)" *ngIf="selectedDrill.enum === 'OPPOESED'">Select All</span>
+          <span class="select-all-btn" (click)="selectAllLineups($event)" *ngIf="selectedDrill.enum !== 'OPPOSEED_LINEUP'">Select All</span>
           <span class="opposeed-lineup-table-titles" *ngIf="selectedDrill.enum === 'OPPOSEED_LINEUP'">
             <div>Name</div>
 
@@ -74,7 +74,7 @@
             </div>
           </span>
 
-          <div class="lineup-dropdown-body" *ngIf="selectedDrill.enum === 'OPPOESED'">
+          <div class="lineup-dropdown-body" *ngIf="selectedDrill.enum !== 'OPPOSEED_LINEUP'">
             <app-lineup-dropdown-row
               *ngFor="let player of lineup; let first = first"
               [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
@@ -95,6 +95,7 @@
                   [player]="player"
                   [rowMode]="selectedDrill.enum"
                   (lineupRowClicked)="onLineupRowClicked($event)"
+                  [phase]="phase"
                   [selectedTeam]="isSelected(player.id)"
                 ></app-lineup-dropdown-row>
               </div>

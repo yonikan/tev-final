@@ -16,15 +16,16 @@ export class PhasesCardComponent implements OnInit {
 
   @Input() phase;
   @Input() PhasesCount;
-  @Input() idx;
+  @Input() index;
   @Output() deleteCard = new EventEmitter();
+  @Output() savePhaseChanges = new EventEmitter();
 
   mode = 'MATCH';
 
   enumToString = enumToString;
   TrainingDrills = TrainingDrills;
 
-  elapsisOptions = [
+  ellipsisOptions = [
     // { name: 'Duplicate', icon: 'account_circle' },
     { name: 'Delete', icon: 'account_circle', action: 'onDeleteCard' }
   ];
@@ -46,11 +47,11 @@ export class PhasesCardComponent implements OnInit {
     const diff = moment(endTime).diff(startTime, 'minutes');
     startTime = moment(startTime).add(offset, 'hours').format('hh:mm');
     endTime = moment(endTime).add(offset, 'hours').format('hh:mm');
-    return `${startTime} - ${endTime} (${diff} min) - phase ${this.idx + 1}/${this.PhasesCount}`
+    return `${startTime} - ${endTime} (${diff} min) - phase ${this.index + 1}/${this.PhasesCount}`
   }
 
-  hundleElapsisAction(elapsisOption) {
-    this[elapsisOption.action]();
+  hundleEllipsisAction(ellipsisOption) {
+    this[ellipsisOption.action]();
   }
 
   onDeleteCard() {
@@ -67,9 +68,9 @@ export class PhasesCardComponent implements OnInit {
     });
 
     dialogRef.afterClosed()
-      .subscribe(modalData => {
-        if (modalData) {
-          this.deleteCard.emit();
+      .subscribe(isUserSure => {
+        if (isUserSure) {
+          this.deleteCard.emit(this.phase.id);
         }
       });
   }
@@ -82,15 +83,16 @@ export class PhasesCardComponent implements OnInit {
       data: {
         eventType: 'TRAINING',
         PhasesCount: this.PhasesCount,
-        idx: this.idx,
+        index: this.index,
         phase: this.phase
       }
     });
 
     dialogRef.afterClosed()
       .subscribe(modalData => {
-        if (modalData) {
-        }
+        // if (modalData.savePhase) {
+        //   this.savePhaseChanges.emit(modalData.phaseToEdit);
+        // }
       });
   }
 

@@ -9,16 +9,16 @@
   </div>
 
   <div class="row-buttons">
-    <div class="oppoesed-mode-buttons" *ngIf="rowMode === 'OPPOESED'">
+    <div class="oppoesed-mode-buttons" *ngIf="rowMode !== 'OPPOSEED_LINEUP'">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15">
         <path [ngStyle]="{'fill': selectedTeam === 1? '#35083A':'#D6D6D6'}" fill-rule="evenodd" d="M17.408 3.035L6.737 13.625c-.302.3-.694.45-1.056.45-.361 0-.783-.15-1.055-.45L.587 9.635a1.48 1.48 0 0 1 0-2.13c.603-.6 1.537-.6 2.14 0l2.924 2.91 9.587-9.54c.603-.6 1.537-.6 2.14 0 .603.6.603 1.56.03 2.16z"/>
       </svg>
     </div>
 
     <div class="opposeed-mode-buttons" *ngIf="rowMode === 'OPPOSEED_LINEUP'">
-       <div class="circle" (click)="selectRow($event, 1)" [ngClass]="{'selectedTeam': selectedTeam === 1}">A</div>
-       <div class="circle" (click)="selectRow($event, 0)" [ngClass]="{'selectedTeam': selectedTeam === 0}" style="margin: 0 17px;">N</div>
-       <div class="circle" (click)="selectRow($event, 2)" [ngClass]="{'selectedTeam': selectedTeam === 2}">B</div>
+       <div class="circle" (click)="selectRow(1, $event)" [ngClass]="{'selectedTeam': selectedTeam === 1}">A</div>
+       <div class="circle" (click)="selectRow(0, $event)" [ngClass]="{'selectedTeam': selectedTeam === 0}" style="margin: 0 17px;">N</div>
+       <div class="circle" (click)="selectRow(2, $event)" [ngClass]="{'selectedTeam': selectedTeam === 2}">B</div>
     </div>
 
   </div>

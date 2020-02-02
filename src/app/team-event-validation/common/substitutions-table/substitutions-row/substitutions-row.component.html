@@ -61,7 +61,7 @@
         </button>
         <mat-menu #menu="matMenu" class="">
           <button mat-menu-item
-                  *ngFor="let player of (cell === 'In'? availableForSub : linup); let cardIdx = index"
+                  *ngFor="let player of (cell === 'In'? availableForSub : linup); let cardIndex = index"
                   (click)="populateCell(player.playerId, cell, $event)">
                   {{showPlayerNameByFormat(player.firstName + ' ' + player.lastName)}}
           </button>
@@ -84,7 +84,7 @@
         </button>
         <mat-menu #menu="matMenu" class="">
           <button mat-menu-item
-                  *ngFor="let position of positions; let cardIdx = index"
+                  *ngFor="let position of positions; let cardIndex = index"
                   (click)="populateCell(position, cell, $event)">
                   {{position}}
           </button>

@@ -10,12 +10,11 @@ import * as moment from 'moment';
 export class PhasesModalComponent implements OnInit {
 
   modalOptions;
-  selectedModalOption;
   phaseDurationTotal;
   phaseToEdit;
 
   constructor(public dialogRef: MatDialogRef<any>,
-    @Inject(MAT_DIALOG_DATA) public data: { eventType: string, PhasesCount: number, idx: number, phase: any }) {
+    @Inject(MAT_DIALOG_DATA) public data: { eventType: string, PhasesCount: number, index: number, phase: any }) {
   }
 
   ngOnInit() {
@@ -26,57 +25,37 @@ export class PhasesModalComponent implements OnInit {
   setModalOptions() {
     switch (this.data.eventType) {
       case 'MATCH':
-        this.modalOptions = [{ name: 'Match Phase', icon: 'account_circle' }, { name: 'Warmup', icon: 'account_circle' }] // match
+        this.modalOptions = [{ name: 'Match Phase', icon: 'account_circle', id: 2 }, { name: 'Warmup', icon: 'account_circle', id: 4 }] // match
         break;
 
       case 'TRAINING':
-        this.modalOptions = [{ name: 'Technical', icon: 'account_circle' }, { name: 'Physical', icon: 'account_circle' }] // training
+        this.modalOptions = [{ name: 'Technical', icon: 'account_circle', id: 3 }, { name: 'Physical', icon: 'account_circle', id: 1 }] // training
         break;
     }
-
-    this.selectedModalOption = this.modalOptions[0];
-  }
-
-  onPitchSizeSelect(pitchSize): void {
-    this.phaseToEdit.pitchLength = pitchSize.pitchLength;
-    this.phaseToEdit.pitchWidth = pitchSize.pitchWidth;
   }
 
   setPhaseDurationTotal() {
-    const diff = moment(this.data.phase.endTime).diff(this.data.phase.startTime, 'minutes');
+    const diff = moment(this.phaseToEdit.endTime).diff(this.phaseToEdit.startTime, 'minutes');
     this.phaseDurationTotal = `Total: ${diff} MIN`;
     return this.phaseDurationTotal;
   }
 
-  onModalOptionSelect(event) {
-    this.selectedModalOption = event.value;
-    // console.log(event)
-  }
-
-  // onUpdateField({ value, filedPathToUpdate }) {
-  //   let fieldToUpdate = this.phaseToEdit;
-  //   filedPathToUpdate.forEach(pathItem => {
-  //     fieldToUpdate = fieldToUpdate[pathItem];
-  //     if (!filedPathToUpdate) { return fieldToUpdate };
-  //   });
-  //   fieldToUpdate = value;
-  // }
-
   onUpdateField({ value, filedPathToUpdate }) {
-    let fieldToUpdate = this.phaseToEdit;
-
-    filedPathToUpdate.forEach((pathItem, i) => {
-      if (i < filedPathToUpdate.length - 1) {
-        fieldToUpdate = fieldToUpdate[pathItem];
-      } else {
-        fieldToUpdate[pathItem] = value;
-      }
-    });
-      console.log(this.data.phase);
+    console.log(value, filedPathToUpdate);
+    this.phaseToEdit[filedPathToUpdate[0]] = value; //TODO: add generic array logic;
+    // let fieldToUpdate = this.phaseToEdit;
+    // filedPathToUpdate.forEach((pathItem, index) => {
+    //   fieldToUpdate = fieldToUpdate[pathItem];
+    // });
+    // fieldToUpdate = value;
+    console.log(this.phaseToEdit);
   }
 
   savePhase() {
-    console.log('saving phase');
+    // TODO: check restrictions before saving
+    // TODO: replce phaseToEdit with original phase
+    console.log('saving phase', this.phaseToEdit);
+    this.close();
   }
 
   close() {

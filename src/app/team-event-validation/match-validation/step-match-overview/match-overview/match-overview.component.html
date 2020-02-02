@@ -1,9 +1,9 @@
-<div class="match-overview-container">
+<div class="match-overview-container" *ngIf="stepMatchOverviewData">
   <div class="title">
     <h3>match overview</h3>
   </div>
 
-  <div class="match-date">14/12/2019</div>
+  <div class="match-date">{{moment(stepMatchOverviewData.startTime).format('DD/MM/YYYY')}}</div>
 
   <button
     mat-button
@@ -47,15 +47,8 @@
       <mat-menu #menu="matMenu" class="">
         <button
           mat-menu-item
-          *ngFor="let competition of competitionOptions; let cardIdx = index"
-          (click)="
-            setGameData(
-              $event.target.textContent,
-              'selectedCompetition',
-              'competition'
-            )
-          "
-        >
+          *ngFor="let competition of competitionOptions; let cardIndex = index"
+          (click)="setGameData($event.target.textContent,'selectedCompetition', 'competition')">
           {{ competition }}
         </button>
       </mat-menu>
@@ -81,19 +74,17 @@
           aria-labelledby="radio-group-label"
           class="radio-group"
           (change)="setGameData($event.value, 'selecedHost', 'vanue')"
-          (optionClicked)="
-            setGameData($event.value, 'selectedCompetition', 'competition')
-          "
+          (optionClicked)="setGameData($event.value, 'selectedCompetition', 'competition')"
         >
           <mat-radio-button
-            [value]="'home'"
+            [value]="1"
             style="margin-right: 40px;"
-            [checked]="true"
+            [checked]="stepMatchOverviewData.vanue === 1"
           >
             <!-- (change)="onPhaseOptionSelect($event)" -->
             Home
           </mat-radio-button>
-          <mat-radio-button [value]="'away'">
+          <mat-radio-button [value]="2" [checked]="stepMatchOverviewData.vanue === 2">
             <!-- (change)="onPhaseOptionSelect($event)" -->
             Away
           </mat-radio-button>
@@ -142,7 +133,7 @@
         class="opponent-input"
         type="text"
         placeholder="Opponent"
-        (blur)="populateData($event.target.value, 'opponentName')"
+        (blur)="setGameData($event.target.value,'selectedOpponent' ,'opponentName')"
       />
       <!-- <div class="team-name dropdown-btn">
         Opponent

@@ -4,8 +4,14 @@
     [config]="config"
     [(index)]="index"
   >
-    <div class="card" *ngFor="let phase of cards; let idx = index">
-      <app-phases-card [phase]="phase" [PhasesCount]="cards.length" [idx]="idx"></app-phases-card>
+    <div class="card" *ngFor="let phase of cards; let index = index">
+      <app-phases-card
+        [phase]="phase"
+        [PhasesCount]="cards.length"
+        [index]="index"
+        (savePhaseChanges)="updatePhase($event)"
+        (deleteCard)="onDeleteCard($event)"
+      ></app-phases-card>
     </div>
   </swiper>
 </div>

@@ -12,15 +12,15 @@
   </table>
 
   <substitutions-row
-    *ngFor="let substitution of substitutions; let even = even; let idx = index;"
+    *ngFor="let substitution of substitutions; let even = even; let index = index;"
     [substitution]="substitution"
     [participationgPlayers]="participationgPlayers"
     [linup]="linup"
     [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
     [rowStyle]="{ background: even ? '#ffffff' : '#e8e8e838' }"
-    (removeRow)="removeRow($event.substitution, idx, $event.rowMode)"
-    (editRow)="editRow($event.substitution, idx, $event.rowMode)"
+    (removeRow)="removeRow($event.substitution, index, $event.rowMode)"
+    (editRow)="editRow($event.substitution, index, $event.rowMode)"
     (addRow)="addRow($event.substitution)"
     ></substitutions-row>
 
@@ -44,13 +44,13 @@
     <substitutions-row
     [rowMode]="'SUGGESTED'"
     [participationgPlayers]="participationgPlayers"
-    *ngFor="let substitution of suggestedSubs; let even = even; let idx = index;"
+    *ngFor="let substitution of suggestedSubs; let even = even; let index = index;"
     [substitution]="substitution"
     [linup]="linup"
     [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
-    (removeRow)="removeRow($event.substitution, idx, $event.rowMode)"
-    (editRow)="editRow($event.substitution, idx, $event.rowMode)"
+    (removeRow)="removeRow($event.substitution, index, $event.rowMode)"
+    (editRow)="editRow($event.substitution, index, $event.rowMode)"
     (addRow)="addRow($event.substitution)"
     ></substitutions-row>
 

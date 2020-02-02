@@ -50,11 +50,11 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     });
   }
 
-  removeRow(substitutionToRemove, substitutionIdx, mode) { // TODO: remove player from availableForSub to lineup
-  //  const substitutionIdx = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
-   if (mode === 'GENERAL') { this.substitutions.splice(substitutionIdx,1); }
+  removeRow(substitutionToRemove, substitutionIndex, mode) { // TODO: remove player from availableForSub to lineup
+  //  const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
+   if (mode === 'GENERAL') { this.substitutions.splice(substitutionIndex,1); }
   //  if (mode === 'NEW') { }
-   if (mode === 'SUGGESTED') { this.suggestedSubs.splice(substitutionIdx,1); }
+   if (mode === 'SUGGESTED') { this.suggestedSubs.splice(substitutionIndex,1); }
   //  if (mode === 'EDIT') {  }
   }
 
@@ -64,12 +64,12 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     // console.log(this.substitutions);
   }
 
-  editRow(substitutionToEdit, substitutionIdx, mode) {
+  editRow(substitutionToEdit, substitutionIndex, mode) {
     if (!substitutionToEdit) { return };
-  //  const substitutionIdx = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
-    if (substitutionIdx || substitutionIdx === 0) {
-      this.substitutions[substitutionIdx] = substitutionToEdit;
-    } else { // if idx not exist in substitutions -> add as new substitution *(for new rows)*
+  //  const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
+    if (substitutionIndex || substitutionIndex === 0) {
+      this.substitutions[substitutionIndex] = substitutionToEdit;
+    } else { // if Index not exist in substitutions -> add as new substitution *(for new rows)*
       this.addRow(substitutionToEdit, mode);
     }
   }

@@ -39,7 +39,7 @@ export class PhasesCardsContainerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.cards&&!this.cards.length) {
+    if (this.cards && !this.cards.length) {
       this.addEmptyCard();
     }
   }
@@ -59,8 +59,13 @@ export class PhasesCardsContainerComponent implements OnInit {
     ]
   }
 
-  deleteCard(cardToDelete, cardIdx) {
-    //  const cardIdx = this.cards.findIndex(card => card.id === cardToDelete.id);
-    this.cards.splice(cardIdx,1);
+  onDeleteCard(cardIdToDelete) {
+    const cardIndex = this.cards.findIndex(card => card.id === cardIdToDelete);
+    this.cards.splice(cardIndex, 1);
+  }
+
+  updatePhase(updatedPhase) {
+    const index = this.cards.findIndex((card) => { return card.id === updatedPhase.id });
+    this.cards[index] = updatedPhase;
   }
 }

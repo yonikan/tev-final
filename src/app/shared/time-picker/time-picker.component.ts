@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
 import * as moment from 'moment';
 
 @Component({
@@ -85,10 +84,11 @@ export class TimePickerComponent implements OnInit {
 
   emitTime() {
     this.timeChanged.emit({
+      timeUnix: +moment(this.timeForDisplay, 'HH:mm').format('x'),
       minutes: this.minutes,
       hours: this.hours,
       timeString: this.timeForDisplay
-    })
+    });
   }
 
 }
