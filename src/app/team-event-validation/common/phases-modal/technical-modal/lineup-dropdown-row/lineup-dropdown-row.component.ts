@@ -16,7 +16,7 @@ export class LineupDropdownRowComponent implements OnInit {
 
   @Output() lineupRowClicked = new EventEmitter();
 
-  constructor(public service: TeamEventValidationService) { }
+  constructor(public teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
     // console.log('row: ', this.selectedTeam);
@@ -51,6 +51,6 @@ export class LineupDropdownRowComponent implements OnInit {
 
   isDisabeled() {
     // console.log('isPlayerPartitpateInOverlapPhase: ', this.service.isPlayerPartitpateInOverlapPhase(this.player.playerId, this.phase))
-    return this.service.isPlayerPartitpateInOverlapPhase(this.player.id, this.phase);
+    return this.teamEventValidationService.isPlayerPartitpateInOverlapPhase(this.player.id, this.phase);
   }
 }
