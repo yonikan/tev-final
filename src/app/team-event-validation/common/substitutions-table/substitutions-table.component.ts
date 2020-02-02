@@ -31,10 +31,10 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
   constructor(private service: TeamEventValidationService) { }
 
   ngOnInit() {
-   this.participationgPlayers = Object.values(this.service.getAllParticipatingPlayers());
-   this.linup = this.service.getPlayersByIds(this.service.linup, 'playerId');
-   this.availableForSub = objToArray(this.service.availableForSub,'playerId');
-  //  console.log('SubstitutionsTableComponent: ',this.linup, this.availableForSub);
+    this.participationgPlayers = Object.values(this.service.getAllParticipatingPlayers());
+    this.linup = this.service.getPlayersByIds(this.service.linup, 'playerId');
+    this.availableForSub = objToArray(this.service.availableForSub, 'playerId');
+    //  console.log('SubstitutionsTableComponent: ',this.linup, this.availableForSub);
   }
 
   ngOnChanges(change) {
@@ -50,27 +50,26 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     });
   }
 
-  removeRow(substitutionToRemove, substitutionIndex, mode) { // TODO: remove player from availableForSub to lineup
-  //  const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
-   if (mode === 'GENERAL') { this.substitutions.splice(substitutionIndex,1); }
-  //  if (mode === 'NEW') { }
-   if (mode === 'SUGGESTED') { this.suggestedSubs.splice(substitutionIndex,1); }
-  //  if (mode === 'EDIT') {  }
+  removeRow(substitutionToRemove, mode) { // TODO: remove player from availableForSub to lineup
+     const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
+    if (mode === 'GENERAL') { this.substitutions.splice(substitutionIndex, 1); }
+    //  if (mode === 'NEW') { }
+    if (mode === 'SUGGESTED') { this.suggestedSubs.splice(substitutionIndex, 1); }
+    //  if (mode === 'EDIT') {  }
   }
 
-  addRow(substitutionToAdd, mode) { // TODO: remove player from lineup to availableForSub
+  addRow(substitutionToAdd) { // TODO: remove player from lineup to availableForSub
     this.substitutions.push(substitutionToAdd);
     this.sortSubstitutions();
     // console.log(this.substitutions);
   }
 
-  editRow(substitutionToEdit, substitutionIndex, mode) {
-    if (!substitutionToEdit) { return };
-  //  const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
+  editRow(substitutionToEdit) {
+    const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToEdit.id);
     if (substitutionIndex || substitutionIndex === 0) {
       this.substitutions[substitutionIndex] = substitutionToEdit;
     } else { // if Index not exist in substitutions -> add as new substitution *(for new rows)*
-      this.addRow(substitutionToEdit, mode);
+      this.addRow(substitutionToEdit);
     }
   }
 }

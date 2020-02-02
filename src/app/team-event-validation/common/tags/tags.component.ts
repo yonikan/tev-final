@@ -18,7 +18,7 @@ export class TagsComponent implements OnInit {
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
 
-  @Input() stepMatchOverviewData: any;
+  @Input() stepData: any;
 
   @Output() tagsEmitter = new EventEmitter<any>();
 
@@ -41,12 +41,12 @@ export class TagsComponent implements OnInit {
 
 
   ngOnChanges(change) {
-    if (change.stepMatchOverviewData && this.stepMatchOverviewData) {
+    if (change.stepData && this.stepData) {
       this.filteredTags = this.tagCtrl.valueChanges
       .pipe(
         startWith(null),
         map((tag: string | null) => {
-          return tag ? this._filter(tag) : this.stepMatchOverviewData.availableTagsList.slice();
+          return tag ? this._filter(tag) : this.stepData.availableTagsList.slice();
         }));
     }
   }
@@ -89,6 +89,6 @@ export class TagsComponent implements OnInit {
   _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.stepMatchOverviewData.availableTagsList.filter(option => option.toLowerCase().includes(filterValue));
+    return this.stepData.availableTagsList.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

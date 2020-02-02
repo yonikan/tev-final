@@ -16,7 +16,7 @@ export class LineupDropdownRowComponent implements OnInit {
 
   @Output() lineupRowClicked = new EventEmitter();
 
-  constructor(private service: TeamEventValidationService) { }
+  constructor(public service: TeamEventValidationService) { }
 
   ngOnInit() {
     // console.log('row: ', this.selectedTeam);

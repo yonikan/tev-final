@@ -19,8 +19,8 @@
     [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
     [rowStyle]="{ background: even ? '#ffffff' : '#e8e8e838' }"
-    (removeRow)="removeRow($event.substitution, index, $event.rowMode)"
-    (editRow)="editRow($event.substitution, index, $event.rowMode)"
+    (removeRow)="removeRow($event.substitution, $event.rowMode)"
+    (editRow)="editRow($event.substitution)"
     (addRow)="addRow($event.substitution)"
     ></substitutions-row>
 
@@ -32,7 +32,7 @@
     [linup]="linup"
     [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
-    (editRow)="editRow($event.substitution, $event.rowMode)"
+    (editRow)="editRow($event.substitution)"
     (addRow)="addRow($event.substitution)">
     </substitutions-row>
     <!----------------->
@@ -49,8 +49,8 @@
     [linup]="linup"
     [availableForSub]="availableForSub"
     [rowConfig]="tableSizeConfig"
-    (removeRow)="removeRow($event.substitution, index, $event.rowMode)"
-    (editRow)="editRow($event.substitution, index, $event.rowMode)"
+    (removeRow)="removeRow($event.substitution, $event.rowMode)"
+    (editRow)="editRow($event.substitution)"
     (addRow)="addRow($event.substitution)"
     ></substitutions-row>
 
