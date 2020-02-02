@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 	styleUrls: ['./contact-support-modal.component.scss']
 })
 export class ContactSupportModalComponent implements OnInit {
-	private form: FormGroup;
+	form: FormGroup;
 
 	constructor(
 		public dialogRef: MatDialogRef<ContactSupportModalComponent>,

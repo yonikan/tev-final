@@ -15,13 +15,13 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-	ProfileImageComponent
+	  ProfileImageComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     ContentLoaderModule,
-	TranslateModule
+	  TranslateModule
   ],
   exports: [
     MaterialModule,
@@ -31,7 +31,7 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-	ProfileImageComponent
+   	ProfileImageComponent
   ]
 })
 export class SharedModule { }

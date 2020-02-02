@@ -34,7 +34,11 @@ export class StepTrainingPhasesComponent implements OnInit, OnChanges {
 
 	constructor(private teamEventValidationService: TeamEventValidationService) { }
 
-	ngOnInit() {}
+	ngOnInit() {
+		console.log('stepTrainingPhasesData: ', this.stepTrainingPhasesData);
+		// this.teamEventValidationService.phasesVerticesData
+		//   .subscribe(verticesData => this.verticesData = verticesData);
+	}
 
 	ngOnChanges() {
 		if (this.stepTrainingPhasesData && 'velocityVectors' in this.stepTrainingPhasesData) {

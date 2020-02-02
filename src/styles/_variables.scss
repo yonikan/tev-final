@@ -19,6 +19,7 @@ $color-green: #11cd69;
 $color-pink: #c07e7e;
 // $background-color-light-grey: #484848;
 // $background-color-dark-grey: #353435;
+$color-danger: #c07e7e;
 
 // pass variables into a sass map ================
 $variables: (
@@ -32,5 +33,3 @@ $variables: (
   --footerColor: var(--footerColor),
   --footerBackground: var(--footerBackground)
 );
-
-$color-danger: #c07e7e;

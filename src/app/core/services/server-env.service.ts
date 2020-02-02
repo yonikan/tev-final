@@ -35,10 +35,6 @@ export class ServerEnvService {
     };
   }
 
-  getUrlVersion(url, v) {
-	  return url.replace(`{version}`, v);
-  }
-
   getBaseUrl(serverEnv = 2): string {
     // console.log('this.currentServerEnv: ', this.currentServerEnv);
     if (this.currentServerEnv === 'dev') {

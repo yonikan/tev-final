@@ -36,7 +36,7 @@ import { StaticDataService } from './services/static-data.service';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: VersionUpdateInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-	{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+	  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   exports: [
     FadeInRightStaggerElementDirective,

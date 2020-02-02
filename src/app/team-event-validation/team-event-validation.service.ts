@@ -27,6 +27,7 @@ export class TeamEventValidationService {
 	private matchValidationData: any;
 	private matchValidationDataListener = new BehaviorSubject<any>({});
 	private currentTeamEventType: number;
+	BASE_URL;
 
 	constructor(
 		private http: HttpClient,
@@ -85,7 +86,34 @@ export class TeamEventValidationService {
 	getTrainingValidationData(): any {
 		return this.trainingValidationData;
 	}
-	private BASE_URL = '/';
+
+	setTrainingValidationData(data: any) {
+		this.trainingValidationData = data;
+		this.trainingValidationDataListener.next(data);
+	}
+
+	getTrainingValidationDataListener(): Observable<any> {
+		return this.trainingValidationDataListener.asObservable();
+	}
+
+	getMatchValidationData(): any {
+		return this.matchValidationData;
+	}
+
+	setMatchValidationData(data: any) {
+		this.matchValidationData = data;
+		this.matchValidationDataListener.next(data);
+	}
+
+	getMatchValidationDataListener(): Observable<any> {
+		return this.matchValidationDataListener.asObservable();
+	}
+
+
+	// Speed graph & participating players methods =========================================================================================
+	get phasesVerticesData() {
+		return of(TEAM_EVENT_VALIDATION_MATCH_DATA.metadata.velocityVector);
+	}
 
 	revertSwaps(teamEventId, onSuccess) {
 		this.http.put(`${this.BASE_URL}/v3/team-event/${teamEventId}/revert-swaps`, {})
@@ -130,31 +158,4 @@ export class TeamEventValidationService {
 			? playerPosition[prop]
 			: playerPosition["0"][prop]
 	}
-
-	setTrainingValidationData(data: any) {
-		this.trainingValidationData = data;
-		this.trainingValidationDataListener.next(data);
-	}
-
-	getTrainingValidationDataListener(): Observable<any> {
-		return this.trainingValidationDataListener.asObservable();
-	}
-
-	getMatchValidationData(): any {
-		return this.matchValidationData;
-	}
-
-	setMatchValidationData(data: any) {
-		this.matchValidationData = data;
-		this.matchValidationDataListener.next(data);
-	}
-
-	getMatchValidationDataListener(): Observable<any> {
-		return this.matchValidationDataListener.asObservable();
-	}
-
-	get phasesVerticesData() {
-		return of(TEAM_EVENT_VALIDATION_MATCH_DATA.metadata.velocityVector);
-	}
 }
-

@@ -106,8 +106,6 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 
 	ngOnInit() {
 		this.chartOptions = this.getUpdatedOptions({ ...this });
-
-
 	}
 
 	ngOnChanges(changes: SimpleChanges) {

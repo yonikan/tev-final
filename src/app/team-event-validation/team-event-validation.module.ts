@@ -58,21 +58,21 @@ import { TimeDiffPipe } from './common/participating-players/participating-colum
     PhasesCardsContainerComponent,
     PhasesCardComponent,
     SubstitutionsTableComponent,
-	SubstitutionsRowComponent,
-	ParticipatingPlayersComponent,
-	ParticipatingColumnComponent,
-	SwapPlayersComponent,
-	ContactSupportModalComponent,
-	GetTimePipe,
-	TimeDiffPipe
+    SubstitutionsRowComponent,
+    ParticipatingPlayersComponent,
+    ParticipatingColumnComponent,
+    SwapPlayersComponent,
+    ContactSupportModalComponent,
+    GetTimePipe,
+    TimeDiffPipe
   ],
   imports: [
     CommonModule,
     SharedModule,
     // RouterModule.forChild(routes),
     HighchartsChartModule,
-	FormsModule,
-	ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatchValidationComponent,
@@ -88,8 +88,8 @@ import { TimeDiffPipe } from './common/participating-players/participating-colum
     TagsComponent,
     SpeedGraphComponent,
     TrainingDurationComponent,
-	MatchOverviewComponent,
-	ParticipatingPlayersComponent
+    MatchOverviewComponent,
+    ParticipatingPlayersComponent
   ],
   entryComponents: [ContactSupportModalComponent]
 })

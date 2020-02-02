@@ -21,7 +21,11 @@ export class StepTrainingGeneralComponent implements OnInit, OnChanges {
 
 	constructor(private teamEventValidationService: TeamEventValidationService) { }
 
-	ngOnInit() {}
+	ngOnInit() {
+		console.log('stepTrainingGeneralData: ', this.stepTrainingGeneralData);
+		// this.teamEventValidationService.phasesVerticesData
+		//   .subscribe(verticesData => this.verticesData = verticesData);
+	}
 
 	ngOnChanges() {
 		if (this.stepTrainingGeneralData && 'velocityVectors' in this.stepTrainingGeneralData) {

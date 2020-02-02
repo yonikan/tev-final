@@ -47,13 +47,19 @@ import { StaticDataService, initStaticData } from './core/services/static-data.s
       useFactory: initFeatureToggling,
       deps: [AuthorizationService],
       multi: true
-	},
-	{
-		provide: APP_INITIALIZER,
-		useFactory: initStaticData,
-		deps: [StaticDataService],
-		multi: true
-	}
+    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initPlatformFeatureToggling,
+    //   deps: [AuthorizationService],
+    //   multi: true
+    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initStaticData,
+      deps: [StaticDataService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

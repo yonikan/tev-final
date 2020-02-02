@@ -34,6 +34,9 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 	constructor(private teamEventValidationService: TeamEventValidationService) { }
 
 	ngOnInit() {
+		console.log('stepMatchPhasesData: ', this.stepMatchPhasesData);
+		// this.teamEventValidationService.phasesVerticesData
+		//   .subscribe(verticesData => this.verticesData = verticesData);
 	}
 
 	ngOnChanges() {
