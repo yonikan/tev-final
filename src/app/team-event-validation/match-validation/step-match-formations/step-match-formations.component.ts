@@ -22,12 +22,7 @@ export class StepMatchFormationsComponent implements OnInit {
 	@Input() stepMatchFormationsData: any;
 	@Output() stepSelectionEmitter = new EventEmitter<number>();
 
-	playersData = [
-		{ id: 1, name: 'Goalkeepers', players, positionName: 'GK' },
-		{ id: 2, name: 'Defenders', players, positionName: 'DF' },
-		{ id: 3, name: 'Midfielders', players, positionName: 'MF' },
-		{ id: 4, name: 'Forwards', players, positionName: 'FR' }
-	];
+	playersData: any = [];
 
 	tactics = null;
 
@@ -37,6 +32,9 @@ export class StepMatchFormationsComponent implements OnInit {
 	];
 
 	selectedFormation = {};
+	positions: any;
+	formationData: any = [];
+	participatingPlayers:any = [];
 
 	constructor(
 		private formationService: FormationService,
@@ -47,13 +45,26 @@ export class StepMatchFormationsComponent implements OnInit {
 
 
 	ngOnInit() {
+		this.participatingPlayers = this.stepMatchFormationsData.participatingPlayers;
+		this.formationData = this.stepMatchFormationsData.formation;
+		this.positions = this.staticDataService.getStaticData().positions;
+		this.playersData = Object.values(this.stepMatchFormationsData.participatingPlayers)
+		.reduce((acc: any, val: any) => {
+			const position = this.positions[val.defaultPositionId];
+			const categoryPlayers = acc.find(v => v.category === position.category);
+			if (!categoryPlayers) {
+				acc = [...acc, {category: position.category, players: [val]}];
+			} else {
+				categoryPlayers.players = [...categoryPlayers.players, val]
+			}
+			return acc
+		}, []);
 		this.staticDataService.getData('formations').subscribe(data => {
 			this.tactics = data;
 		})
 	}
 
 	selectTactic(tacticFormation) {
-		console.log('tacticFormation', tacticFormation);
 		this.selectedFormation = tacticFormation;
 	}
 

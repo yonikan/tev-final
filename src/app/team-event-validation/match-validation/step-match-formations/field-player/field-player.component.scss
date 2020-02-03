@@ -27,7 +27,23 @@
             align-items: center;            ;
         }
         .select {
-            align-self: baseline;
+			align-self: baseline;
+			width: 93px;
+			height: 23px;
+			border-radius: 12.5px;
+			border: solid 1px #80b89b;
+			background-color: #82bd9e;
+			align-self: baseline;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 14px;
+			text-align: center;
+			color: #35083a;
+
+			@media (max-width: $media-query-sm) {
+				width: 65px;
+			}
         }
-    }
+	}
 }

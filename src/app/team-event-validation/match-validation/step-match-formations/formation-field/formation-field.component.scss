@@ -1,10 +1,13 @@
 @import '../../../../../styles/variables';
+@import '../../../../../styles/mixins';
+@import '../../../team-event-validation.mixins.scss';
 
 :host {
     .container {
         display: grid;
         justify-content: center;
-        padding: 20px;
+		padding: 20px;
+		position: relative;
 
         .field-container {
             width: 422px;
@@ -20,7 +23,7 @@
                 background-size: 422px 633px, contain, 408px 618px;
                 background-repeat: no-repeat, no-repeat, no-repeat;
 
-                img {
+                > img {
                     grid-row-start: 1;
                     grid-column-end: 1;
                     width: 100%;
@@ -57,6 +60,13 @@
                 width: 365px;
             }
         }
-    }
+	}
+
+	.swap-players-list {
+		@include swap-players-list();
+		width: 100%;
+	}
+
+	@include swap-players-panel();
 }
 

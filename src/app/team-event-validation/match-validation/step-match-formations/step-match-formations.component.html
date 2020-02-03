@@ -2,17 +2,20 @@
     <div class="container">
         <div class="heading">Starting Formations</div>
         <div class="content">
-            <app-formation-selection
+			<app-formation-selection
+				[positions]="positions"
                 [tabs]="playersData"
-                [tactics]="tactics | async"
+                [tactics]="tactics"
                 [definedSubs]="definedSubs"
                 (onSelectTactic)="selectTactic($event)"
                 (onSelectDefinedSub)="selectDefinedSub($event)">
             </app-formation-selection>
             <div class="buffer"></div>
 			<app-formation-field
-				[formation]="selectedFormation"
+				[formationTemplate]="selectedFormation"
+				[formation]="formationData"
 				[playersData]="playersData"
+				[participatingPlayers]="participatingPlayers"
 				(changeFormationPlayer)="onChangeFormationPlayer($event)"></app-formation-field>
         </div>
     </div>

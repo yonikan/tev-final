@@ -1,0 +1,89 @@
+@import '../../styles/mixins';
+
+@mixin swap-players-panel {
+	mat-expansion-panel {
+		background-color: transparent;
+		border-radius: 0 !important;
+		border: 0;
+		box-shadow: none !important;
+		// border-bottom: 1px solid #939fac;
+
+		&:first-of-type, &:last-of-type {
+			border-bottom-right-radius: 0 !important;
+			border-bottom-left-radius: 0 !important;
+		}
+
+		.small-text {
+			@include small-text;
+		}
+
+		mat-list-item {
+			@include selectable-row(alias);
+			.player-title {
+				@include player-name-title();
+			}
+
+			&.disabled {
+				pointer-events: none;
+				.player-title {
+					color: #cccccc;
+				}
+			}
+		}
+
+		mat-panel-title {
+			font-size: 16px;
+			color: #8994a3;
+		}
+
+		.expand-arrow {
+			transform: rotate(180deg);
+			width: 14px;
+			height: 15px;
+			margin-right: 10px;
+
+			&.open {
+				transform: rotate(0);
+			}
+		}
+
+		.avatar {
+			@include player-avatar();
+			margin-right: 5px;
+		}
+	}
+}
+
+@mixin swap-players-list {
+	position: absolute;
+	left: -3px;
+	height: 420px;
+	width: 95%;
+	background-color: #f4f4f4;
+	z-index: 1001;
+	padding: 5px;
+	border: 1px solid #e0e3e5;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px 0 rgba(0, 0, 0, 0.05);
+	animation: open .5s ease-in-out;
+
+	> div {
+		height: 100%;
+		overflow: auto;
+		@include custom-scroll();
+	}
+
+	.before {
+		content: "";
+		display: block;
+		width: 0;
+		height: 0;
+		border-top: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-bottom: 8px solid #f4f4f4;
+		border-left: 8px solid transparent;
+		position: absolute;
+		top: -15px;
+		left: 0;
+	}
+}

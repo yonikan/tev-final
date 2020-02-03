@@ -16,3 +16,10 @@ export interface MatchValidation {
     step4PhasesData: any;
     step5SubsData: any;
 }
+
+export interface Formation {
+	playerId: number,
+	positionId: number,
+	matrixXPosition: number
+	matrixYPosition: number,
+}

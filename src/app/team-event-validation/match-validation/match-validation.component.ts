@@ -35,8 +35,9 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
           const matchValidationDataCopy = JSON.parse(JSON.stringify(matchValidationData));
           this.isLoading = false;
           this.step1Data = matchValidationDataCopy.metadata;
-          this.step2Data = matchValidationDataCopy.participatingPlayers;
-          this.step3Data = {...matchValidationDataCopy.formation, ...matchValidationDataCopy.participatingPlayers};
+		  this.step2Data = matchValidationDataCopy.participatingPlayers;
+		//   console.log('matchValidationDataCopy.participatingPlayers', matchValidationDataCopy.participatingPlayers, matchValidationDataCopy.formation);
+          this.step3Data = {formation: matchValidationDataCopy.formation, participatingPlayers: matchValidationDataCopy.participatingPlayers};
           this.step4Data = {...matchValidationDataCopy.phases, ...matchValidationDataCopy.metadata};
           this.step5Data = matchValidationDataCopy.substitutions;
       });

@@ -5,7 +5,9 @@
   <div class="player-image-label">{{positionName}}</div>
 
   <div class="select">
-    <app-group-select [players]="players" (onChangeSelection)="onChangePlayer($event)" [currentPlayer]="selectedPlayer"></app-group-select>
+	  <mat-select [(value)]="player" (openedChange)="onOpen($event)" #select>
+		<mat-option *ngFor="let currPlayer of players" [value]="currPlayer">{{currPlayer.firstName}} {{currPlayer.lastName[0]}}.</mat-option>
+	  </mat-select>
   </div>
 
 </div>

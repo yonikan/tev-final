@@ -9,6 +9,7 @@ export class FormationSelectionComponent implements OnInit, OnChanges {
   @Input() tabs;
   @Input() tactics;
   @Input() definedSubs;
+  @Input() positions;
 
   @Output() onSelectTactic = new EventEmitter();
   @Output() onSelectDefinedSub = new EventEmitter();
@@ -19,7 +20,8 @@ export class FormationSelectionComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   ngOnChanges() {
     if (this.tactics && this.tactics.length && !this.selectedTactic) {

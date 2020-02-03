@@ -12,15 +12,15 @@
   <div class="tabs">
     <h3>Subs - Max 11</h3>
     <mat-tab-group>
-      <mat-tab *ngFor="let tab of tabs" [label]="tab.name">
+      <mat-tab *ngFor="let tab of tabs" [label]="tab.category">
         <div class="tab-content">
           <div *ngFor="let player of tab.players" class="item">
             <!-- TODO: GK - initials inside shirt -->
             <div class="img-wrapper">
-                <div class="player-image-label">{{tab.label}}</div>
+                <div class="player-image-label">{{positions[player.defaultPositionId].shortName}}</div>
                 <img class="player-img" src="./assets/svg/formation/player-shirt.svg" alt="player-shirt"/>
             </div>
-            <div class="player-name">{{player.name}}</div>
+            <div class="player-name">{{player.firstName}} {{player.lastName[0]}}.</div>
           </div>
         </div>
       </mat-tab>
