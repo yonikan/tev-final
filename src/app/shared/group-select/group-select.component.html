@@ -1,0 +1,18 @@
+<div class="select" >
+  <mat-select (selectionChange)="onChange($event)" [(value)]="currentPlayer"><!-- [(value)]="selectedPlayer" -->
+    <mat-accordion>
+    <mat-expansion-panel *ngFor="let playerGroup of players">
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{playerGroup.positionName}}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-option *ngFor="let player of playerGroup.players" [value]="player">
+        {{player.name}}
+        </mat-option>
+    </mat-expansion-panel>
+    </mat-accordion>
+  </mat-select>
+</div>

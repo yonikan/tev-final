@@ -11,8 +11,8 @@ const routes: Routes = [
   //   .then(m => m.TeamEventValidationModule), canLoad: [AuthGuard]},
   { path: 'login', component: AuthComponent },
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/team-overview', pathMatch: 'full' },
-  { path: '**', redirectTo: '/team-overview', pathMatch: 'full' }
+  // { path: '', redirectTo: '/team-event-validation', pathMatch: 'full' },
+  // { path: '**', redirectTo: '/team-event-validation', pathMatch: 'full' }
 ];
 
 @NgModule({

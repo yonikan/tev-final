@@ -30,15 +30,15 @@ export const TEAM_EVENT_VALIDATION_MATCH_DATA: any = {
                         ]
                 }
         },
-        participatingPlayers :{ 
-                playersList: { 
+        participatingPlayers :{
+                playersList: {
                      444: {
                              id: 444,
-                             firstName: 'yossi', 
+                             firstName: 'yossi',
                              lastName: 'cohen',
                              defaultPositionId: 3,
                              activeTime: [
-                                     { startTime: 1576147936000, endTime: 1576156936000 , timeFrameType: 'active'} 
+                                     { startTime: 1576147936000, endTime: 1576156936000 , timeFrameType: 'active'}
                              ],
                              isParticipated: true
                      }
@@ -47,7 +47,7 @@ export const TEAM_EVENT_VALIDATION_MATCH_DATA: any = {
         formation: [
                 {
                         name: 'formation 1',
-                        formationPosition: [ 
+                        formationPosition: [
                                 {
                                         positionName: 'pos name',
                                         positionX: 2,
@@ -64,7 +64,7 @@ export const TEAM_EVENT_VALIDATION_MATCH_DATA: any = {
                 }
         ],
         phases: {
-          phasesList: [ 
+          phasesList: [
                 {
                         id: 2,
                         type: 1,
@@ -77,7 +77,7 @@ export const TEAM_EVENT_VALIDATION_MATCH_DATA: any = {
            ]
         },
         substitutions: {
-          subList: [ 
+          subList: [
                 {
                         id: 3,
                         inPlayerId: 44,
@@ -85,7 +85,7 @@ export const TEAM_EVENT_VALIDATION_MATCH_DATA: any = {
                         timeMin: 33
                 }
           ],
-          suggestedSubs: [ 
+          suggestedSubs: [
                 {
                         id: 3,
                         inPlayerId: 44,
@@ -95,4 +95,4 @@ export const TEAM_EVENT_VALIDATION_MATCH_DATA: any = {
           ]
         },
         draft: false
-};        
+};
