@@ -31,7 +31,6 @@ export class FieldPlayerComponent implements OnInit {
   }
 
   onOpen(e) {
-	this._select.close();
 	this.openSelection.emit({isOpen: e, select: this._select, player: this.player, positionId: this.positionId});
   }
 

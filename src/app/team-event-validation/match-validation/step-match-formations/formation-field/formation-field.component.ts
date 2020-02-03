@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ViewChild, HostListener, Inject } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, ViewChild, HostListener, Inject, SimpleChanges } from '@angular/core';
 import { Formation } from 'src/app/team-event-validation/team-event-validation.model';
 import { StaticDataService } from 'src/app/core/services/static-data.service';
 import { DOCUMENT } from '@angular/common';
@@ -22,11 +22,13 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	positionIdForSwap: any;
 	positions;
 	document: Document;
+	select;
 
 	@HostListener('document:click', ['$event'])
 	clickOut(e) {
 		if (!this._swapPlayers.nativeElement.contains(e.target)) {
 			this.isShowSwapPlayers = false;
+			this.closeSelect();
 		}
 	}
 
@@ -72,6 +74,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	showSwapPlayers(e) {
+		this.select = e.select;
 		if (e.isOpen) {
 			this.isShowSwapPlayers = e.isOpen;
 			const overlayContainer:any = this.document.querySelector('.cdk-overlay-container');
@@ -99,10 +102,8 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 		return formation
 	}
 
-	// TODO: change to -> changePlayerInFormation
 	changePlayerInFormation(value) {
 		if (!this.formation.find(({positionId}) => positionId === this.positionIdForSwap)) {
-			// TODO: new Formation
 			this.formation = [...this.formation.map((formation: Formation) => {
 				return this.checkIsPlaced(formation, value.id);
 			}), {
@@ -122,6 +123,12 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 		}
 
 		this.isShowSwapPlayers = false;
+		this.closeSelect();
+	}
+
+	closeSelect() {
+		if (this.select)
+			this.select.close();
 	}
 
 	trackPlayersDataFn(i, playersData) {
