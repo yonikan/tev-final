@@ -1,4 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AreYouSureModalComponent } from '../../../common/are-you-sure-modal/are-you-sure-modal.component';
+import { MatDialog } from '@angular/material';
+import { PhasesModalComponent } from '../../../common/phases-modal/phases-modal.component';
+// import moment = require('moment');
+import * as moment from 'moment';
+import { enumToString } from '../../../../core/helpers/helper-functions';
+import { TrainingDrills } from '../../../../core/enums/training-drills.enum'
 
 @Component({
   selector: 'app-phases-card',
@@ -8,32 +15,85 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PhasesCardComponent implements OnInit {
 
   @Input() phase;
+  @Input() PhasesCount;
+  @Input() index;
   @Output() deleteCard = new EventEmitter();
+  @Output() savePhaseChanges = new EventEmitter();
 
   mode = 'MATCH';
 
-  elapsisOptions = [
+  enumToString = enumToString;
+  TrainingDrills = TrainingDrills;
+
+  ellipsisOptions = [
     // { name: 'Duplicate', icon: 'account_circle' },
     { name: 'Delete', icon: 'account_circle', action: 'onDeleteCard' }
   ];
 
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+    // console.log(this.phase)
   }
 
-  getTimeByFormat(startTime, endTime) {
-    // const diff = startTime.diff(endTime, 'minutes');
-    return `${startTime} - ${endTime} (${'20 min'}) - phase ${'1'}/${'3'}`
+  translateEnumNumber(enumNumber) {
+    return enumNumber;
+    // console.log(TrainingDrills, enumNumber);
+    return enumToString(TrainingDrills, enumNumber);
   }
 
-  hundleElapsisAction(elapsisOption) {
-    this[elapsisOption.action]();
+  getTimeByFormat(startTime, endTime, offset?) {
+    const diff = moment(endTime).diff(startTime, 'minutes');
+    startTime = moment(startTime).add(offset, 'hours').format('hh:mm');
+    endTime = moment(endTime).add(offset, 'hours').format('hh:mm');
+    return `${startTime} - ${endTime} (${diff} min) - phase ${this.index + 1}/${this.PhasesCount}`
+  }
+
+  hundleEllipsisAction(ellipsisOption) {
+    this[ellipsisOption.action]();
   }
 
   onDeleteCard() {
-    this.deleteCard.emit();
+    const modalTitle = 'Delete Phase';
+    const modalMessage = `Are you sure you want to delete ${this.phase.name} phase?`;
+    const dialogRef = this.dialog.open(AreYouSureModalComponent, {
+      width: '500px',
+      height: '200px',
+      data: {
+        title: modalTitle,
+        message: modalMessage,
+        modalData: this.phase.name
+      }
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(isUserSure => {
+        if (isUserSure) {
+          this.deleteCard.emit(this.phase.id);
+        }
+      });
+  }
+
+  phaseClicked() {
+
+    const dialogRef = this.dialog.open(PhasesModalComponent, {
+      width: '870px',
+      // height: '200px',
+      data: {
+        eventType: 'TRAINING',
+        PhasesCount: this.PhasesCount,
+        index: this.index,
+        phase: this.phase
+      }
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(modalData => {
+        // if (modalData.savePhase) {
+        //   this.savePhaseChanges.emit(modalData.phaseToEdit);
+        // }
+      });
   }
 
 }

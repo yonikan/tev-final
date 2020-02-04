@@ -3,8 +3,8 @@ import * as Highcharts from 'highcharts';
 // import * as moment from 'moment';
 import * as moment from 'moment-timezone'
 // import * as HighchartsBoost  from 'highcharts/modules/boost';
-let Boost = require('highcharts/modules/boost');
-Boost(Highcharts);
+// let Boost = require('highcharts/modules/boost');
+// Boost(Highcharts);
 
 const CHART_OPTIONS = {
 	OPACITY: 0.8,

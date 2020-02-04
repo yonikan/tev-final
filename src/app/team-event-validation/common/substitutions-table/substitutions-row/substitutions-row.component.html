@@ -2,8 +2,8 @@
 <tr class="substitutions-row" [ngStyle]="rowStyle" *ngIf="rowMode === 'GENERAL'" (dblclick)="changeRowMode('EDIT')">
 
   <th class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}">
-    
-    <span *ngIf="substitution[cell]">{{substitution[cell]}}</span>
+
+    <span *ngIf="substitutionForDisplay[cell]">{{cell === 'In' || cell === 'Out'? showPlayerNameByFormat(substitutionForDisplay[cell]) : substitutionForDisplay[cell]}} {{cell==='Minute'?"'":''}}</span>
 
     <div class="buttons" *ngIf="cell === 'buttons'">
 
@@ -18,7 +18,7 @@
       </svg>
 
     </div>
-    
+
   </th>
 
 </tr>
@@ -26,16 +26,75 @@
 
 
 
-<!------------------------- EDIT MODE ------------------------>
-<tr class="substitutions-row" [ngStyle]="rowStyle" *ngIf="rowMode === 'EDIT'" (keyup.enter)="editRowEmit()">
-  
-  <th class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}">
+<!------------------------- EDIT/NEW MODE ------------------------>
+<tr class="substitutions-row" [ngStyle]="rowStyle" *ngIf="rowMode === 'EDIT' || rowMode === 'NEW'" (keyup.enter)="editRowEmit()" (dblclick)="changeRowMode('GENERAL')">
 
-    <input class="edit-input" *ngIf="cell !== 'buttons'" type="text" value="{{substitution[cell]}}" (input)="populateCell($event?.target?.value, cell)"/>
+  <th class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}"
+  restrictionContainer
+  [showError]="errorsManager[cell]?.showError"
+  [errorMassage]="errorsManager[cell]?.errorMassage">
+
+    <!-- <input class="edit-input" *ngIf="cell !== 'buttons'" type="text" value="{{substitutionForDisplay[cell]}}" (input)="populateCell($event?.target?.value, cell)"/> -->
+
+    <div *ngIf="cell !== 'buttons'">
+      <input class="edit-row-input"
+             *ngIf="cell === 'Minute'"
+             type="number" min="0" max="125" placeholder="0"
+             value="{{substitutionForDisplay['Minute'] || 0}}"
+             (input)="populateCell($event?.target?.value, 'Minute', $event, true)"
+             (dblclick)="stopPropagation($event)">
+
+
+      <div *ngIf="cell === 'In' || cell === 'Out'" class="edit-row-input">
+        <button mat-button [matMenuTriggerFor]="menu" class="playerName-dropdwon">
+          {{showPlayerNameByFormat(substitutionForDisplay[cell]) || 'Select'}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8">
+            <defs>
+                <filter id="a">
+                    <feFlood flood-color="#35083A" flood-opacity="1" result="floodOut"/>
+                    <feComposite in="floodOut" in2="SourceGraphic" operator="atop" result="compOut"/>
+                    <feBlend in="compOut" in2="SourceGraphic"/>
+                </filter>
+            </defs>
+            <path fill="#35083A" fill-rule="evenodd" d="M.316 1.862l.003-.002A1.063 1.063 0 0 1 0 1.111C0 .498.538 0 1.2 0c.35 0 .663.141.881.362L2.085.36 7 5.244 11.916.36l.003.002C12.138.141 12.45 0 12.8 0c.663 0 1.2.498 1.2 1.111 0 .289-.122.551-.318.749l.003.002-5.8 5.778A1.25 1.25 0 0 1 7 8c-.337 0-.657-.131-.884-.36l-5.8-5.778z" filter="url(#a)"/>
+          </svg>
+        </button>
+        <mat-menu #menu="matMenu" class="">
+          <button mat-menu-item
+                  *ngFor="let player of (cell === 'In'? availableForSub : linup); let cardIndex = index"
+                  (click)="populateCell(player.playerId, cell, $event)">
+                  {{showPlayerNameByFormat(player.firstName + ' ' + player.lastName)}}
+          </button>
+        </mat-menu>
+      </div>
+
+      <div *ngIf="cell === 'Position'" class="edit-row-input">
+        <button mat-button [matMenuTriggerFor]="menu" class="playerName-dropdwon">
+          {{substitutionForDisplay[cell] || 'Select'}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8">
+            <defs>
+                <filter id="a">
+                    <feFlood flood-color="#35083A" flood-opacity="1" result="floodOut"/>
+                    <feComposite in="floodOut" in2="SourceGraphic" operator="atop" result="compOut"/>
+                    <feBlend in="compOut" in2="SourceGraphic"/>
+                </filter>
+            </defs>
+            <path fill="#35083A" fill-rule="evenodd" d="M.316 1.862l.003-.002A1.063 1.063 0 0 1 0 1.111C0 .498.538 0 1.2 0c.35 0 .663.141.881.362L2.085.36 7 5.244 11.916.36l.003.002C12.138.141 12.45 0 12.8 0c.663 0 1.2.498 1.2 1.111 0 .289-.122.551-.318.749l.003.002-5.8 5.778A1.25 1.25 0 0 1 7 8c-.337 0-.657-.131-.884-.36l-5.8-5.778z" filter="url(#a)"/>
+          </svg>
+        </button>
+        <mat-menu #menu="matMenu" class="">
+          <button mat-menu-item
+                  *ngFor="let position of positions; let cardIndex = index"
+                  (click)="populateCell(position, cell, $event)">
+                  {{position}}
+          </button>
+        </mat-menu>
+      </div>
+    </div>
 
     <div class="buttons" *ngIf="cell === 'buttons'">
 
-      <div class="plus-btn" (click)="editRowEmit()">
+      <div class="plus-btn" (click)="rowMode === 'EDIT'? editRowEmit():addRowEmit()">
         <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29">
           <path fill="#11CD69" fill-rule="evenodd" d="M17 13h-3v3c0 .386-.613 1-1 1s-1-.614-1-1v-3H9c-.387 0-1-.613-1-1s.613-1 1-1h3V8c0-.387.613-1 1-1s1 .613 1 1v3h3c.387 0 1 .613 1 1s-.613 1-1 1z"/>
         </svg>
@@ -50,23 +109,27 @@
 
 
 
+
+
+
+
 <!---------------------- SUGGESTED MODE ---------------------->
 <tr class="substitutions-row suggedted-mode" [ngStyle]="rowStyle" *ngIf="rowMode === 'SUGGESTED'">
 
   <th class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}">
-    <span *ngIf="substitution[cell]">{{substitution[cell]}}</span>
+    <span *ngIf="substitutionForDisplay[cell]">{{cell === 'In' || cell === 'Out'? showPlayerNameByFormat(substitutionForDisplay[cell]) : substitutionForDisplay[cell]}} {{cell==='Minute'?"'":''}}</span>
 
     <div class="buttons" *ngIf="cell === 'buttons'">
 
-      
+
       <svg class="delete-btn btn" (click)="removeRowEmit()" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
         <path fill="#8994A3" fill-rule="evenodd" d="M7.281 6.005l3.813 3.814a.9.9 0 1 1-1.273 1.272L6.008 7.278l-3.839 3.839A.908.908 0 0 1 .886 9.834l3.839-3.839L.912 2.182A.9.9 0 1 1 2.185.909l3.813 3.813L9.866.855a.907.907 0 1 1 1.282 1.283L7.281 6.005z"/>
       </svg>
 
       <div class="separator"></div>
 
-      
-      <svg class="approve-btn btn" (click)="addRowEmit()" xmlns="http://www.w3.org/2000/svg" width="18" height="15">
+
+      <svg class="approve-btn btn" (click)="addRowEmit(); removeRowEmit()" xmlns="http://www.w3.org/2000/svg" width="18" height="15">
         <path fill="#10DB6F" fill-rule="evenodd" d="M17.408 3.035L6.736 13.625c-.301.3-.693.45-1.055.45-.361 0-.783-.15-1.055-.45L.587 9.635a1.48 1.48 0 0 1 0-2.13c.603-.6 1.537-.6 2.14 0l2.924 2.91 9.587-9.54c.603-.6 1.537-.6 2.14 0 .603.6.603 1.56.03 2.16z"/>
       </svg>
 

@@ -2,31 +2,44 @@
 @import '../../../../../styles/mixins';
 
 :host {
-    .match-overview-container {
-        @include team-event-section;
+  .match-overview-container {
+    @include team-event-section;
 
-        display: flex;
-        flex-flow: column;
-        align-items: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 
-        .title {
-            h3 {
-                font-size: 40px;
-            }
-        }
+    .title {
+      h3 {
+        font-size: 40px;
+        margin-bottom: 50px;
+      }
     }
+
+    .match-date {
+      font-size: 18px;
+      color: #3d4762;
+      margin-bottom: 15px;
+    }
+  }
+
 }
 
-
 .match-overview {
-  width: 700px;
-  padding: 50px 0;
+  width: 70%;
+  padding: 35px 0 65px;
   display: flex;
+  align-items: flex-end;
   border-bottom: 1px dotted #35083a;
   justify-content: space-between;
 
+  @media screen and (max-width: 780px) {
+    width: 100%;
+    border-bottom: none;
+  }
+
   .match-overview-inner-container {
-    width: 33%;
+    // width: 33%;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -35,23 +48,16 @@
     .team-logo {
       width: 120px;
       height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
   .home-team-container {
-
   }
 
   .match-details-container {
-    .match-date {
-      font-size: 18px;
-      color: #3d4762;
-      margin-bottom: 15px;
-    }
-
-    .match-competition {
-      margin-bottom: 75px;
-    }
 
     .match-host {
       margin-bottom: 75px;
@@ -80,13 +86,63 @@
   }
 
   .away-team-container {
-
-  }
-
-    .team-name {
-      font-size: 30px;
-      font-weight: 500;
-      color: #3d4762;
+    .opponent-input {
+      width: 150px;
+      height: 30px;
+      border-radius: 5px;
+      padding: 5px;
       margin-top: 35px;
     }
+  }
+
+  .team-name {
+    font-size: 30px;
+    font-weight: 500;
+    color: #3d4762;
+    margin-top: 35px;
+  }
+}
+
+.dropdown-btn {
+  width: 260px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 5px;
+  border: solid 1px #e1e0e1;
+  background-color: #ffffff;
+  // box-shadow: -4.9px 7.5px 50px 0 rgba(53, 61, 86, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #96a1ae;
+  font-size: 14px;
+  border: solid 1px #e1e0e1;
+  span {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+
+::ng-deep {
+  .cdk-overlay-connected-position-bounding-box {
+    width: 260px !important;
+  }
+
+  .cdk-overlay-pane {
+    width: 100%;
+  }
+
+  .mat-menu-panel {
+    width: 100%;
+  }
+
+  .mat-button-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 }

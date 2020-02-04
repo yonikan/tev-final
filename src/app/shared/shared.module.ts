@@ -8,6 +8,8 @@ import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.componen
 import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
+import { PmContentDropdownComponent } from './pm-content-dropdown/pm-content-dropdown';
+import { RestrictionContainerDirective } from './directives/restriction-container.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-	  ProfileImageComponent
+    ProfileImageComponent,
+    PmContentDropdownComponent,
+    RestrictionContainerDirective
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,9 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
     LoaderSpinnerComponent,
     PmDropdownComponent,
     TimePickerComponent,
-   	ProfileImageComponent
+    ProfileImageComponent,
+    PmContentDropdownComponent,
+    RestrictionContainerDirective
   ]
 })
 export class SharedModule { }

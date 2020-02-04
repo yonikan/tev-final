@@ -1,0 +1,18 @@
+<div class="dropdown-button" (click)="toggle()">
+  <ng-content select="[dropdown-button]"></ng-content>
+</div>
+
+
+<div class="dropdown-content" *ngIf="(optionsOpen||showOptions) && optionsMode==='GENERAL'"
+  [ngClass]="{'pointy':pointy}"> <!-- [@myAnimation] -->
+  <p class="dropdown-title"><ng-content select="[dropdown-title]"></ng-content></p>
+  <ng-content select="[dropdown-content]"></ng-content>
+</div>
+
+
+
+<!-- <pm-content-dropdown [options]="" [path]="['']" (optionClicked)="">
+    <div dropdown-button>
+
+    </div>
+  </pm-content-dropdown> -->

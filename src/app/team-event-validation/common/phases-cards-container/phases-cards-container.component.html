@@ -1,3 +1,17 @@
 <div class="container">
-
+  <swiper
+    class="swiper-container container"
+    [config]="config"
+    [(index)]="index"
+  >
+    <div class="card" *ngFor="let phase of cards; let index = index">
+      <app-phases-card
+        [phase]="phase"
+        [PhasesCount]="cards.length"
+        [index]="index"
+        (savePhaseChanges)="updatePhase($event)"
+        (deleteCard)="onDeleteCard($event)"
+      ></app-phases-card>
+    </div>
+  </swiper>
 </div>

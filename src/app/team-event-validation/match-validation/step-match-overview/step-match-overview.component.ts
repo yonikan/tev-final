@@ -16,18 +16,18 @@ export class StepMatchOverviewComponent implements OnInit {
   ngOnInit() {
     console.log('stepMatchOverviewData: ', this.stepMatchOverviewData);
   }
-  
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log('changes: ', changes);
-  // }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes: ', changes);
+  }
 
   nextStep() {
     this.teamEventValidationService.matchDataOutput.step1OverviewData = this.stepMatchOverviewData;
     this.stepSelectionEmitter.emit(1);
+    console.log(this.stepMatchOverviewData);
   }
 
   onTagsEmitter(tags) {
-    console.log(tags);
     this.matchesTags = tags;
   }
 }

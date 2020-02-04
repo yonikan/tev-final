@@ -16,7 +16,11 @@
   align-items: center;
   position: relative;
 
-  .elapsis {
+  @media screen and (max-width: 780px) {
+    margin: 0 10px;
+  }
+
+  .ellipsis {
     position: absolute;
     right: 16px;
     top: 16px;
