@@ -49,6 +49,14 @@
 				margin-right: 8px;
 			}
 
+			.title {
+				div {
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+				}
+			}
+
 			@media (max-width: $media-query-sm) {
 				width: 65px;
 			}
