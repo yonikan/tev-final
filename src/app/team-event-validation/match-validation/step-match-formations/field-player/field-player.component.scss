@@ -40,6 +40,14 @@
 			font-size: 14px;
 			text-align: center;
 			color: #35083a;
+			display: grid;
+			grid-template-columns: 65px 10px;
+
+			cursor: pointer;
+
+			> img {
+				margin-right: 8px;
+			}
 
 			@media (max-width: $media-query-sm) {
 				width: 65px;

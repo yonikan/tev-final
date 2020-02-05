@@ -22,11 +22,12 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	positionIdForSwap: any;
 	positions;
 	document: Document;
+	closeSelect;
 	select;
 
 	@HostListener('document:click', ['$event'])
 	clickOut(e) {
-		if (!this._swapPlayers.nativeElement.contains(e.target)) {
+		if (this._swapPlayers && !this._swapPlayers.nativeElement.contains(e.target) && !this.select.nativeElement.contains(e.target)) {
 			this.isShowSwapPlayers = false;
 			this.closeSelect();
 		}
@@ -44,10 +45,6 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 	ngOnInit() {
 		this.positions = this.staticDataService.getStaticData().positions;
-		const overlayContainer:any = this.document.querySelector('.cdk-overlay-container');
-		if (overlayContainer) {
-			overlayContainer.hidden = true;
-		}
 	}
 
 	sameRow = (y1, y2) => y1 === y2;
@@ -74,19 +71,18 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	showSwapPlayers(e) {
+		this.closeSelect = e.close;
+		this.isShowSwapPlayers = e.isOpen;
 		this.select = e.select;
 		if (e.isOpen) {
-			this.isShowSwapPlayers = e.isOpen;
-			const overlayContainer:any = this.document.querySelector('.cdk-overlay-container');
-			overlayContainer.hidden = true;
 			this.positionIdForSwap = e.positionId;
-			const {height} = e.select._elementRef.nativeElement.getBoundingClientRect();
-			const y = e.select._elementRef.nativeElement.offsetTop + height;
-			const x = e.select._elementRef.nativeElement.offsetLeft + (e.select._elementRef.nativeElement.offsetWidth / 2);
-			this.swapPlayersPosition.y = y;
-			this.swapPlayersPosition.x = x;
+			const {height} = e.select.nativeElement.getBoundingClientRect();
+			const y = e.select.nativeElement.offsetTop + height;
+			const x = e.select.nativeElement.offsetLeft + (e.select.nativeElement.offsetWidth / 2);
+			this.swapPlayersPosition = {x, y};
 			setTimeout(() => {
-				this._swapPlayers.nativeElement.scrollIntoView({behavior:"smooth", block: "nearest"});
+				if (this._swapPlayers)
+					this._swapPlayers.nativeElement.scrollIntoView({behavior:"smooth", block: "nearest"});
 			}, 500);
 		} else {
 			this.positionIdForSwap = null;
@@ -124,11 +120,6 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 		this.isShowSwapPlayers = false;
 		this.closeSelect();
-	}
-
-	closeSelect() {
-		if (this.select)
-			this.select.close();
 	}
 
 	trackPlayersDataFn(i, playersData) {

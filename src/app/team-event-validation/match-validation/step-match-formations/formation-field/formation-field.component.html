@@ -19,7 +19,7 @@
 			<div
 				class="swap-players-list"
 				[style.top.px]="swapPlayersPosition.y"
-				[hidden]="!isShowSwapPlayers" #swapPlayers>
+				*ngIf="isShowSwapPlayers" #swapPlayers>
 				<div class="before" [style.left.px]="swapPlayersPosition.x"></div>
 				<div>
 					<mat-accordion>

@@ -4,10 +4,13 @@
   </div>
   <div class="player-image-label">{{positionName}}</div>
 
-  <div class="select">
-	  <mat-select [(value)]="player" (openedChange)="onOpen($event)" #select>
-		<mat-option *ngFor="let currPlayer of players" [value]="currPlayer">{{currPlayer.firstName}} {{currPlayer.lastName[0]}}.</mat-option>
-	  </mat-select>
+  <div class="select" (click)="onOpen(isOpen)" #select>
+	  <div>
+		  <div *ngIf="player">
+			{{player.firstName}} {{player.lastName[0]}}.
+		  </div>
+	  </div>
+	  <img src="./assets/svg/icon-open-single.svg" alt="icon-open">
   </div>
 
 </div>
