@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 	styleUrls: ['./formation-field.component.scss']
 })
 export class FormationFieldComponent implements OnInit, OnChanges {
-	@Input() formationTemplate:any = {};
+	@Input() formationTemplate: any = {};
 	@Input() formation;
 	@Input() playersData;
 	@Input() participatingPlayers;
@@ -18,7 +18,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 	players = [];
 	isShowSwapPlayers;
-	swapPlayersPosition = {x: 0, y: 0};
+	swapPlayersPosition = { x: 0, y: 0 };
 	positionIdForSwap: any;
 	positions;
 	document: Document;
@@ -76,13 +76,13 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 		this.select = e.select;
 		if (e.isOpen) {
 			this.positionIdForSwap = e.positionId;
-			const {height} = e.select.nativeElement.getBoundingClientRect();
+			const { height } = e.select.nativeElement.getBoundingClientRect();
 			const y = e.select.nativeElement.offsetTop + height;
 			const x = e.select.nativeElement.offsetLeft + (e.select.nativeElement.offsetWidth / 2);
-			this.swapPlayersPosition = {x, y};
+			this.swapPlayersPosition = { x, y };
 			setTimeout(() => {
 				if (this._swapPlayers)
-					this._swapPlayers.nativeElement.scrollIntoView({behavior:"smooth", block: "nearest"});
+					this._swapPlayers.nativeElement.scrollIntoView({ behavior: "smooth", block: "nearest" });
 			}, 500);
 		} else {
 			this.positionIdForSwap = null;
@@ -99,7 +99,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	changePlayerInFormation(value) {
-		if (!this.formation.find(({positionId}) => positionId === this.positionIdForSwap)) {
+		if (!this.formation.find(({ positionId }) => positionId === this.positionIdForSwap)) {
 			this.formation = [...this.formation.map((formation: Formation) => {
 				return this.checkIsPlaced(formation, value.id);
 			}), {

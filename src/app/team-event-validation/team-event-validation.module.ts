@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-// import { routes } from './team-event-validation.routes';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
@@ -74,7 +73,6 @@ import { FieldPlayerComponent } from './match-validation/step-match-formations/f
   imports: [
     CommonModule,
     SharedModule,
-    // RouterModule.forChild(routes),
     HighchartsChartModule,
     FormsModule,
     ReactiveFormsModule,

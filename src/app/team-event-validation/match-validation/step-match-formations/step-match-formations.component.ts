@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TeamEventValidationService } from '../../team-event-validation.service';
-import FormationService from './formation.service';
 import { StaticDataService } from 'src/app/core/services/static-data.service';
 
 const players = [
@@ -37,7 +36,6 @@ export class StepMatchFormationsComponent implements OnInit {
 	participatingPlayers:any = [];
 
 	constructor(
-		private formationService: FormationService,
 		private teamEventValidationService: TeamEventValidationService,
 		private staticDataService: StaticDataService) {
 

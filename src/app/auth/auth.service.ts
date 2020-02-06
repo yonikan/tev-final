@@ -84,7 +84,8 @@ export class AuthService {
             this.token = userLoginDataResponse.token;
             this.localStorageService.storeOnCookie('token', this.token);
             this.isAuthenticated = true;
-            this.authStatusListener.next(true);
+			this.authStatusListener.next(true);
+			this.router.navigate(['/team-overview']);
           }
         },
         (error) => {

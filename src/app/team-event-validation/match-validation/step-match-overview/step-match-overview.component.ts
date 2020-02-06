@@ -14,7 +14,6 @@ export class StepMatchOverviewComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    console.log('stepMatchOverviewData: ', this.stepMatchOverviewData);
   }
 
   nextStep() {
