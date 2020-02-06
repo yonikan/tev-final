@@ -11,12 +11,11 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 	@Input() actionName = '';
 	@Input() isResetAllowed = false;
 	@Input() isSwapAllowed = false;
-	@Input() clubPlayers = [];
 	@Output() excludePlayer = new EventEmitter();
 	@Output() swapPlayer = new EventEmitter();
 	@Output() resetChanges = new EventEmitter();
+	@Output() openSummaryPanel = new EventEmitter();
 
-	clubPlayersGroup = [];
 	participatingPlayers = [];
 	currentPlayer = null;
 	ACTION_NAMES = {
@@ -37,7 +36,6 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 		this.participatingPlayers = this.players.filter(player =>
 			(this.actionName === this.ACTION_NAMES.EXCLUDE) ? player.isParticipated : !player.isParticipated
 		);
-		this.clubPlayersGroup = this.getClubPlayers();
 	}
 
 	preventDetailsOpen(e) {
@@ -53,40 +51,7 @@ export class ParticipatingColumnComponent implements OnInit, OnChanges {
 
 		player.isOpen = !player.isOpen;
 		this.currentPlayer = player.isOpen ? player : null;
-		this.scroll(el)
-	}
-
-	doSwapPlayer(player) {
-		this.swapPlayer.emit({player, swappedPlayer: this.currentPlayer});
-		this.currentPlayer = null;
-	}
-
-  	scroll(el: HTMLElement) {
-		setTimeout(() => {
-			el.scrollIntoView({behavior:"smooth", block: "nearest"});
-		}, 500);
-	}
-
-	getGrouped(arr, groupProp, subGroupName) {
-		const group = arr.reduce((acc, curr) => {
-			if (!acc[curr[groupProp]]) acc[curr[groupProp]] = [];
-			 acc[curr[groupProp]] = [...acc[curr[groupProp]], {...curr}];
-			return acc;
-		}, {});
-
-		return Object
-			.keys(group)
-			.map((name, i) => {
-				return {name, [subGroupName]: group[name]}
-			});
-	}
-
-	getClubPlayers() {
-		const clubPlayersGroup = this.getGrouped(this.clubPlayers, 'teamName', 'players');
-		return clubPlayersGroup.map((cpg: any) => {
-			cpg.players = this.getGrouped(cpg.players, 'positionName', 'players');
-			return cpg;
-		});
+		this.openSummaryPanel.emit({el, player, isIncluded: this.actionName === this.ACTION_NAMES.EXCLUDE});
 	}
 
 	exclude(player) {

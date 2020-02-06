@@ -31,11 +31,7 @@
 				<div  *ngIf="!player.error" class="action-name" (click)="exclude(player)">{{actionName}}</div>
 			</div>
 		</summary>
-		<div class="details-content" #target>
-			<div>
-				<app-swap-players [clubPlayers]="clubPlayersGroup" (swapPlayer)="doSwapPlayer($event)" [currentPlayer]="currentPlayer" [isIncluded]="actionName === ACTION_NAMES.EXCLUDE"></app-swap-players>
-			</div>
-		</div>
+		<div class="details-content" #target></div>
 	</details>
 </div>
 
