@@ -15,7 +15,6 @@ export class SwapPlayersComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit() {
-
 	}
 
 	onSwapPlayer(value) {

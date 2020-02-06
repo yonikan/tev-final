@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TeamEventValidationService } from '../../team-event-validation.service';
@@ -20,6 +20,7 @@ interface InitialState {
 export class ParticipatingPlayersComponent implements OnInit {
 	@Input() teamEventId: any;
 	@Input() type = 'training';
+	@ViewChild('swapPlayersPanel', null) _swapPlayersPanel: ElementRef;
 
 	private state: InitialState = {
 		excludedPlayers: [],
@@ -39,6 +40,9 @@ export class ParticipatingPlayersComponent implements OnInit {
 		clubPlayers: []
 	};
 	activePlayers = 0;
+	clubPlayersGroup: any[];
+	currentPlayer;
+	isIncluded;
 
 	constructor(public dialog: MatDialog, private teamEventValidationService: TeamEventValidationService, private uiComponentService: UiComponentsService) {
 	}
@@ -66,6 +70,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 					this.initialState.clubPlayers = clubPlayers.map(p => ({...p}));
 				}
 				this.clubPlayers = clubPlayers.map(p => ({...p}));
+				this.clubPlayersGroup = this.getClubPlayers();
 			}
 		});
 
@@ -100,17 +105,15 @@ export class ParticipatingPlayersComponent implements OnInit {
 		});
 	}
 
-	doSwapPlayer({ player, swappedPlayer }, isIncluded) {
-
-		// TODO: API
-		this.teamEventValidationService.swapPlayer(swappedPlayer.id, player.userId, this.teamEventId, () => {
+	doSwapPlayer(player, isIncluded) {
+		this.teamEventValidationService.swapPlayer(this.currentPlayer.id, player.userId, this.teamEventId, () => {
 			const newState = {
 				excludedPlayers: this.excludedPlayers,
 				includedPlayers: this.includedPlayers,
 				allPlayers: this.allPlayers.map(p => {
-					if (p.id === swappedPlayer.id) {
+					if (p.id === this.currentPlayer.id) {
 						p = {
-							...swappedPlayer,
+							...this.currentPlayer,
 							isOpen: false,
 							isSwapped: true,
 							id: player.userId,
@@ -179,6 +182,41 @@ export class ParticipatingPlayersComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			console.log('The dialog was closed', result);
+		});
+	}
+
+	openSwapPlayersPanel({el, player, isIncluded}) {
+		this.isIncluded = isIncluded;
+		this.currentPlayer = player;
+		this.scrollTo(el);
+	}
+
+	scrollTo(el: HTMLElement) {
+		setTimeout(() => {
+			el.appendChild(this._swapPlayersPanel.nativeElement)
+			el.scrollIntoView({behavior:"smooth", block: "nearest"});
+		}, 500);
+	}
+
+	getGrouped(arr, groupProp, subGroupName) {
+		const group = arr.reduce((acc, curr) => {
+			if (!acc[curr[groupProp]]) acc[curr[groupProp]] = [];
+			 acc[curr[groupProp]] = [...acc[curr[groupProp]], {...curr}];
+			return acc;
+		}, {});
+
+		return Object
+			.keys(group)
+			.map((name, i) => {
+				return {name, [subGroupName]: group[name]}
+			});
+	}
+
+	getClubPlayers() {
+		const clubPlayersGroup = this.getGrouped(this.clubPlayers, 'teamName', 'players');
+		return clubPlayersGroup.map((cpg: any) => {
+			cpg.players = this.getGrouped(cpg.players, 'positionName', 'players');
+			return cpg;
 		});
 	}
 }
