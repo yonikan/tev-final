@@ -24,7 +24,7 @@
 			(excludePlayer)="doIncludePlayer($event)"
 			(resetChanges)="doResetChanges($event, false)"></app-participating-column>
 	</div>
-	<div class="details-content" #swapPlayersPanel>
+	<div class="details-content" [hidden]="!currentPlayer" #swapPlayersPanel>
 		<div>
 			<app-swap-players [clubPlayers]="clubPlayersGroup" (swapPlayer)="doSwapPlayer($event, true)" [currentPlayer]="currentPlayer" [isIncluded]="isIncluded"></app-swap-players>
 		</div>
