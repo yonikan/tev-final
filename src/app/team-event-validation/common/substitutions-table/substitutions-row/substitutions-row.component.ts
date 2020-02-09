@@ -25,17 +25,17 @@ export class SubstitutionsRowComponent implements OnInit {
 
   Object = Object;
   substitutionForDisplay;
-  positions = ['ST', 'CF', 'CAM', 'LW', 'RW', 'CB']
+  positions;
 
   objToArray = objToArray;
 
   minTimeForSub = 0;
 
   errorsManager = {
-    Minute: {showError: false, errorMassage: 'Invalid match min'}
+    Minute: { showError: false, errorMassage: 'Invalid match min' }
   }
 
-  constructor(private service: TeamEventValidationService) {
+  constructor(private teamEventValidationService: TeamEventValidationService) {
   }
 
   ngOnInit() {
@@ -43,7 +43,8 @@ export class SubstitutionsRowComponent implements OnInit {
     // console.log(this.availableForSub, this.linup)
     // this.substitutionDraft = { ...this.substitution };
     this.setSubForDisplay();
-    console.log(this.substitutionForDisplay)
+    this.positions = this.teamEventValidationService.getStaticPositionsList();
+    console.log(this.positions)
   }
 
   // ngOnChanges(change) {
@@ -53,13 +54,13 @@ export class SubstitutionsRowComponent implements OnInit {
   // }
 
   setSubForDisplay() {
-    const inPlayer = this.service.getPlayerById(this.substitution['inPlayerId']);
-    const outPlayer = this.service.getPlayerById(this.substitution['outPlayerId']);
+    const inPlayer = this.teamEventValidationService.getPlayerById(this.substitution['inPlayerId']);
+    const outPlayer = this.teamEventValidationService.getPlayerById(this.substitution['outPlayerId']);
     this.substitutionForDisplay = {
       Minute: this.substitution['timeMin'] || '',
       In: `${inPlayer.firstName || ''} ${inPlayer.lastName || ''}`,
       Out: `${outPlayer.firstName || ''} ${outPlayer.firstName || ''}`,
-      Position: this.substitution['defaultPositionId'] || '',
+      Position: inPlayer.defaultPositionId && this.teamEventValidationService.getPlayerPositionName(inPlayer.defaultPositionId, 'shortName') || '',
     }
     // console.log({substitutionForDisplay: this.substitutionForDisplay, inPlayer, outPlayer})
   }
@@ -103,16 +104,12 @@ export class SubstitutionsRowComponent implements OnInit {
   populateCell(value, cell, event, valueIsNum = false) {
     if (valueIsNum) { value = +value };
     const map = { Minute: 'timeMin', In: 'inPlayerId', Out: 'outPlayerId', Position: 'defaultPositionId' };
-    // if(cell === 'In' || cell === 'Out') {
-    //   let player = value.split(' ');
-    //   player = {firstName:player[0], lastName: player[1]};
-    //   this.substitution[map[cell]] = player;
-    // } else {  }
+
     this.substitution[map[cell]] = value;
-    // this.substitutionForDisplay[cell] = value;
+
     if (cell === 'Minute') {
       if (value > this.minTimeForSub) { this.minTimeForSub = value };
-      (value > 125 || value <= 0 || !Number.isInteger(value))?  this.errorsManager.Minute.showError = true : this.errorsManager.Minute.showError = false;
+      (value > 125 || value <= 0 || !Number.isInteger(value)) ? this.errorsManager.Minute.showError = true : this.errorsManager.Minute.showError = false;
     }
     this.setSubForDisplay();
     // this.stopPropagation(event);
@@ -140,15 +137,6 @@ export class SubstitutionsRowComponent implements OnInit {
   }
 
   resetSubstitution() {
-    // const substitutionsTypesToReset = ['substitution','substitutionForDisplay'];
-
-    // substitutionsTypesToReset.forEach((substitutionType)=>{
-    //   for (const key in this[substitutionType]) {
-    //     if (this[substitutionType].hasOwnProperty(key)) {
-    //       this[substitutionType][key] = '';
-    //     }
-    //   };
-    // });
     this.substitution = {
       id: '',
       inPlayerId: '',

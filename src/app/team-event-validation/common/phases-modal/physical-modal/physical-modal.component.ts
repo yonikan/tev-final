@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-physical-modal',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./physical-modal.component.scss']
 })
 export class PhysicalModalComponent implements OnInit {
+
+  @Input() phase;
+  @Input() selectedLineup = {};
+  @Output() updateField = new EventEmitter();
 
    drillTypes = [
    {name: 'Oppoesed', icon: 'account_circle'},
@@ -26,4 +30,7 @@ export class PhysicalModalComponent implements OnInit {
     // console.log(event);
   }
 
+  changePhaseName(value) {
+    this.updateField.emit({ value, filedPathToUpdate: ['phaseName'] });
+  }
 }

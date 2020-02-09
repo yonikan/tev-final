@@ -34,6 +34,7 @@ export class TechnicalModalComponent implements OnInit {
     { name: '3/4', iconName: 'account_circle', type: 'GENERAL', pitchLength: 3, pitchWidth: 4 },
     { name: '2/3', iconName: 'account_circle', type: 'GENERAL', pitchLength: 2, pitchWidth: 3 },
     { name: '1/3', iconName: 'account_circle', type: 'GENERAL', pitchLength: 1, pitchWidth: 3 },
+    { name: 'custom', iconName: 'account_circle', type: 'CUSTOM', pitchLength: 1, pitchWidth: 3 },
   ];
 
   constructor(private teamEventValidationService: TeamEventValidationService) { }
@@ -101,7 +102,7 @@ export class TechnicalModalComponent implements OnInit {
     if (rowData.rowMode === 'OPPOSEED_LINEUP') {
       this.selectedLineup[rowData.team].push(+rowData.player.id);
       if (rowData.prevTeam || rowData.prevTeam === 0) {
-        console.log(this.selectedLineup,rowData);
+        // console.log(this.selectedLineup,rowData);
         const indexToDelete = this.selectedLineup[rowData.prevTeam].findIndex(playerId => +rowData.player.id === playerId);
         this.selectedLineup[rowData.prevTeam].splice(indexToDelete, 1);
       };
@@ -142,7 +143,7 @@ export class TechnicalModalComponent implements OnInit {
 
   getPositionsLineupObj() {
     return this.lineup.reduce((acc = {}, player) => {
-      const positionName = this.teamEventValidationService.getPositionById(player.defaultPositionId);
+      const positionName = this.teamEventValidationService.getPositionById(player.defaultPositionId).category;
       if (!acc.hasOwnProperty(positionName)) { acc[positionName] = [] };
       acc[positionName].push(player);
       return acc;

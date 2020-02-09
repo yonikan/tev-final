@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StaffRoles } from '../../../../core/enums/staff-roles.enum';
 import * as moment from 'moment';
+import { TeamEventValidationService } from 'src/app/team-event-validation/team-event-validation.service';
 
 @Component({
   selector: 'app-match-overview',
@@ -20,13 +21,15 @@ export class MatchOverviewComponent implements OnInit {
     selectedScore: null,
     selectedOpponentScore: null,
     selectedOpponent: null
-  }
+  };
 
   moment = moment;
 
-  constructor() { }
+  constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
+    console.log('getStaticPositionsList: ', this.teamEventValidationService.getStaticPositionsList());
+    this.competitionOptions = this.teamEventValidationService.getStaticCompetitionsList();
     // console.log(this.stepMatchOverviewData);
   }
 

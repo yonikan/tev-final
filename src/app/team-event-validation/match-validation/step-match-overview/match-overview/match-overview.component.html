@@ -10,7 +10,7 @@
     [matMenuTriggerFor]="menu"
     class="match-competition dropdown-btn"
   >
-    {{ dataManager.selectedCompetition || 'Competition' }}
+    {{ teamEventValidationService.getCompetitionNameById(dataManager.selectedCompetition)?.name || 'Competition' }}
 
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8">
       <defs>
@@ -48,8 +48,8 @@
         <button
           mat-menu-item
           *ngFor="let competition of competitionOptions; let cardIndex = index"
-          (click)="setGameData($event.target.textContent,'selectedCompetition', 'competition')">
-          {{ competition }}
+          (click)="setGameData(+competition.id,'selectedCompetition', 'competition')">
+          {{ competition.name }}
         </button>
       </mat-menu>
       <!-- <pm-content-dropdown [options]="competitionOptions" (optionClicked)="setGameData($event.value, 'selectedCompetition', 'competition')" [pointy]="true">
@@ -81,11 +81,9 @@
             style="margin-right: 40px;"
             [checked]="stepMatchOverviewData.vanue === 1"
           >
-            <!-- (change)="onPhaseOptionSelect($event)" -->
             Home
           </mat-radio-button>
           <mat-radio-button [value]="2" [checked]="stepMatchOverviewData.vanue === 2">
-            <!-- (change)="onPhaseOptionSelect($event)" -->
             Away
           </mat-radio-button>
         </mat-radio-group>
@@ -115,7 +113,6 @@
     </div>
 
     <div class="away-team-container match-overview-inner-container">
-      <!-- <img src="https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png" alt="team-logo" class="team-logo" /> -->
 
       <svg
         class="team-logo"

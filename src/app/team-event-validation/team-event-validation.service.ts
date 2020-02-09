@@ -7,6 +7,7 @@ import { TEAM_EVENT_VALIDATION_MATCH_DATA } from 'server/data/team-event-validat
 import { StaticDataService } from '../core/services/static-data.service';
 import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
+import { objToArray } from '../core/helpers/helper-functions';
 
 const moment = extendMoment(Moment);
 @Injectable({
@@ -39,7 +40,7 @@ export class TeamEventValidationService {
 		private http: HttpClient,
 		private uiComponentsService: UiComponentsService,
 		private serverEnvService: ServerEnvService,
-		private staticDataService: StaticDataService
+    private staticDataService: StaticDataService,
 	) {
 		this.BASE_URL = serverEnvService.getBaseUrl(3);
 	}
@@ -159,10 +160,10 @@ export class TeamEventValidationService {
 	}
 
 	getPlayerPositionName(positionId, prop) {
-		const playerPosition = this.staticDataService.getStaticData().positions[positionId];
+    const playerPosition = this.staticDataService.getStaticData().positions[positionId];
 		return playerPosition
 			? playerPosition[prop]
-			: playerPosition["0"][prop]
+			: playerPosition['0'][prop]
   }
 
 	// ofir's methods =========================================================================================
@@ -189,13 +190,12 @@ export class TeamEventValidationService {
   }
 
   getPositionById(positionId) {
-    const positions = { 1: 'Goalkeepers', 2: 'Defenders' }
-    return positions[positionId];
+    return this.getStaticData().positions[positionId];
   }
 
   getAllParticipatingPlayers() {
     // console.log('getCurrentValitationData: ', this.getCurrentValitationData(), this.getMatchValidationData());
-    return this.getCurrentValitationData().participatingPlayers || [];
+    return this.getCurrentValitationData().participatingPlayers || {};
   }
 
   setFormation() {
@@ -236,5 +236,21 @@ export class TeamEventValidationService {
     const range2 = moment.range(timescope2.startTime, timescope2.endTime);
     // console.log(range, range2, range.overlaps(range2))
     return range.overlaps(range2);
+  }
+
+  getStaticData() {
+   return this.staticDataService.getStaticData()
+  }
+
+  getStaticPositionsList() {
+    return objToArray(this.getStaticData().positions, 'id');
+  }
+
+  getStaticCompetitionsList() {
+    return objToArray(this.getStaticData().competitions , 'id');
+  }
+
+  getCompetitionNameById(id) {
+    return this.getStaticData().competitions[id];
   }
 }

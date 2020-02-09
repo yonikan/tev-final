@@ -85,8 +85,8 @@
         <mat-menu #menu="matMenu" class="">
           <button mat-menu-item
                   *ngFor="let position of positions; let cardIndex = index"
-                  (click)="populateCell(position, cell, $event)">
-                  {{position}}
+                  (click)="populateCell(position.id, cell, $event)">
+                  {{position.shortName}}
           </button>
         </mat-menu>
       </div>

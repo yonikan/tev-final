@@ -1,20 +1,34 @@
 .match-phase-modal {
-  .phase-name {
-    display: flex;
-    align-items: center;
-    margin-bottom: 93px;
-
-    .key {
-      font-size: 14px;
+    .row {
+      display: flex;
+      align-items: center;
+      // flex-wrap: wrap;
       font-weight: 500;
       color: #8994a3;
-      margin-right: 50px;
-    }
+      margin-bottom: 60px;
 
-    .value {
-      font-size: 14px;
-      font-weight: 500;
-      color: #3d4762;
+      .row-title {
+        font-size: 16px;
+        margin-right: 50px;
+        width: 80px;
+      }
+
+      .row-content {
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        .subject-input {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          padding: 10px;
+          border: solid 1px #e1e0e1;
+          font-size: 14px;
+          font-weight: 500;
+          color: #3d4762;
+        }
     }
   }
 

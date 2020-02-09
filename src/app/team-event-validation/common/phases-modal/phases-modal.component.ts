@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import * as moment from 'moment';
 
@@ -14,7 +14,7 @@ export class PhasesModalComponent implements OnInit {
   phaseToEdit;
 
   constructor(public dialogRef: MatDialogRef<any>,
-    @Inject(MAT_DIALOG_DATA) public data: { eventType: string, PhasesCount: number, index: number, phase: any }) {
+    @Inject(MAT_DIALOG_DATA) public data: { eventType: number, phasesCount: number, index: number, phase: any }) {
   }
 
   ngOnInit() {
@@ -23,14 +23,10 @@ export class PhasesModalComponent implements OnInit {
   }
 
   setModalOptions() {
-    switch (this.data.eventType) {
-      case 'MATCH':
-        this.modalOptions = [{ name: 'Match Phase', icon: 'account_circle', id: 2 }, { name: 'Warmup', icon: 'account_circle', id: 4 }] // match
-        break;
-
-      case 'TRAINING':
-        this.modalOptions = [{ name: 'Technical', icon: 'account_circle', id: 3 }, { name: 'Physical', icon: 'account_circle', id: 1 }] // training
-        break;
+    if (this.data.eventType === 1) {
+      this.modalOptions = [{ name: 'Technical', icon: 'account_circle', id: 3 }, { name: 'Physical', icon: 'account_circle', id: 1 }] // training
+    } else if (this.data.eventType === 2) {
+      this.modalOptions = [{ name: 'Match Phase', icon: 'account_circle', id: 5 }, { name: 'Warmup', icon: 'account_circle', id: 4 }] // match
     }
   }
 
