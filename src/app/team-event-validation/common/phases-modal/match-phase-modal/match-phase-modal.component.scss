@@ -46,3 +46,33 @@
     border: none;
   }
 }
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-all-btn {
+  align-self: flex-end;
+  color: #96a1ae;
+  margin-bottom: 7px;
+}
+
+.lineup-dropdown-body {
+  background-color: #fbfbfb;
+  max-height: 400px;
+  overflow-y: auto;
+
+  .lineup-dropdown-row {
+    border-top: 1px solid #e6e9eb;
+    &:first-child {
+      border-top: none;
+    }
+  }
+}
+
+.lineup-container {
+  width: 454px;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+}

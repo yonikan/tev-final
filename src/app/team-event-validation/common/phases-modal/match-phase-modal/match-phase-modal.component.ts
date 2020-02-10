@@ -18,34 +18,34 @@ export class MatchPhaseModalComponent implements OnInit {
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    this.setSelectedLineup();
-    this.lineup = objToArray(this.teamEventValidationService.getAllParticipatingPlayers(), 'id');
-    this.setLineupTitle();
+    // this.setSelectedLineup();
+    // this.lineup = objToArray(this.teamEventValidationService.getAllParticipatingPlayers(), 'id');
+    // this.setLineupTitle();
   }
 
-  changePhaseName(value) {
-    this.updateField.emit({ value, filedPathToUpdate: ['phaseName'] });
-  }
+  // changePhaseName(value) {
+  //   this.updateField.emit({ value, filedPathToUpdate: ['phaseName'] });
+  // }
 
 
-  setSelectedLineup() {
-    [0, 1, 2].forEach(team => {
-      if (!this.selectedLineup.hasOwnProperty(team)) { this.selectedLineup[team] = [] };
-    });
-  }
+  // setSelectedLineup() {
+  //   [0, 1, 2].forEach(team => {
+  //     if (!this.selectedLineup.hasOwnProperty(team)) { this.selectedLineup[team] = [] };
+  //   });
+  // }
 
-  isSelected(id) {
+  // isSelected(id) {
     // id = +id;
-    let res: any;
-    Object.keys(this.selectedLineup).forEach((teamId) => {
-      if (this.selectedLineup[+teamId].includes(+id)) { res = +teamId; };
-    });
-    return res;
-  }
+  //   let res: any;
+  //   Object.keys(this.selectedLineup).forEach((teamId) => {
+  //     if (this.selectedLineup[+teamId].includes(+id)) { res = +teamId; };
+  //   });
+  //   return res;
+  // }
 
-  setLineupTitle() {
-    this.lineupTitle = this.selectedLineup[1].length;
-  }
+  // setLineupTitle() {
+  //   this.lineupTitle = this.selectedLineup[1].length;
+  // }
 
 
 }

@@ -26,7 +26,7 @@ export class PhasesModalComponent implements OnInit {
     if (this.data.eventType === 1) {
       this.modalOptions = [{ name: 'Technical', icon: 'account_circle', id: 3 }, { name: 'Physical', icon: 'account_circle', id: 1 }] // training
     } else if (this.data.eventType === 2) {
-      this.modalOptions = [{ name: 'Match Phase', icon: 'account_circle', id: 5 }, { name: 'Warmup', icon: 'account_circle', id: 4 }] // match
+      this.modalOptions = [{ name: 'Match Phase', icon: 'account_circle', id: 5 }, { name: 'Warmup', icon: 'account_circle', id: 6 }] // match
     }
   }
 
