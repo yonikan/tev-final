@@ -50,13 +50,22 @@
 					}
 
 					.action-name {
+						width: 23px;
+						height: 23px;
+						mask: url("../../../../../assets/svg/swap-icon.svg");
+						background-color: #35083a;
 						cursor: pointer;
 						font-size: 16px;
 						color: #8994a3;
 						font-weight: 500;
+						transition: background-color ease-in 0.2s;
+
+						&.include {
+							transform: rotate(180deg);
+						}
 
 						&:hover {
-							// color: #eea92a;
+							background-color: lighten(#35083a, 20%);
 						}
 					}
 
