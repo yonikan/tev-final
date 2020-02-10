@@ -23,7 +23,7 @@ export class StaticDataService {
 
 	getData(name: string): Observable<Object> {
 		return this.http
-			.get(`./assets/configs/${name}.json`)
+			.get(`./assets/configs/config-${name}.json`)
 	}
 }
 
