@@ -23,7 +23,6 @@ import { StepMatchPlayersComponent } from './match-validation/step-match-players
 import { StepMatchFormationsComponent } from './match-validation/step-match-formations/step-match-formations.component';
 import { StepMatchPhasesComponent } from './match-validation/step-match-phases/step-match-phases.component';
 import { StepMatchSubsComponent } from './match-validation/step-match-subs/step-match-subs.component';
-
 import { TagsComponent } from './common/tags/tags.component';
 import { SpeedGraphComponent } from './common/speed-graph/speed-graph.component';
 import { TrainingDurationComponent } from './training-validation/step-training-general/training-duration/training-duration.component';
@@ -41,6 +40,9 @@ import { SwapPlayersComponent } from './common/participating-players/swap-player
 import { ContactSupportModalComponent } from '../shared/contact-support-modal/contact-support-modal.component';
 import { GetTimePipe } from './common/participating-players/participating-column/get-time.pipe';
 import { TimeDiffPipe } from './common/participating-players/participating-column/time-diff.pipe';
+import { FormationFieldComponent } from './match-validation/step-match-formations/formation-field/formation-field.component';
+import { FormationSelectionComponent } from './match-validation/step-match-formations/formation-selection/formation-selection.component';
+import { FieldPlayerComponent } from './match-validation/step-match-formations/field-player/field-player.component';
 
 import { MatchPhaseModalComponent } from './common/phases-modal/match-phase-modal/match-phase-modal.component';
 import { PhysicalModalComponent } from './common/phases-modal/physical-modal/physical-modal.component';
@@ -81,7 +83,10 @@ import { LineupDropdownRowComponent } from './common/phases-modal/technical-moda
     SwapPlayersComponent,
     ContactSupportModalComponent,
     GetTimePipe,
-    TimeDiffPipe
+    TimeDiffPipe,
+    FormationFieldComponent,
+    FormationSelectionComponent,
+    FieldPlayerComponent
   ],
   imports: [
     CommonModule,
@@ -92,7 +97,8 @@ import { LineupDropdownRowComponent } from './common/phases-modal/technical-moda
     HighchartsChartModule,
     SwiperModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SwiperModule
   ],
   providers: [
     {
