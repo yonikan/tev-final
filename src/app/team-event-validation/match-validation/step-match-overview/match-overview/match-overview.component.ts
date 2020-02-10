@@ -25,7 +25,7 @@ export class MatchOverviewComponent implements OnInit {
 
   moment = moment;
 
-  constructor(private teamEventValidationService: TeamEventValidationService) { }
+  constructor(public teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
     // console.log('getStaticPositionsList: ', this.teamEventValidationService.getStaticPositionsList());
