@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="heading">Select Starting Formation</div>
+  <mat-form-field>
+      <mat-label>Select Tactic</mat-label>
+      <mat-select (selectionChange)="selectTactic($event)" [(value)]="selectedTactic">
+        <mat-option *ngFor="let tactic of tactics" [value]="tactic">
+          {{tactic.name}}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  <div class="tabs">
+    <h3>Subs - Max 11</h3>
+    <mat-tab-group>
+      <mat-tab *ngFor="let tab of tabs" [label]="tab.category">
+        <div class="tab-content">
+          <div *ngFor="let player of tab.players" class="item">
+            <!-- TODO: GK - initials inside shirt -->
+            <div class="img-wrapper">
+                <div class="player-image-label">{{positions[player.defaultPositionId].shortName}}</div>
+                <img class="player-img" src="./assets/svg/formation/player-shirt.svg" alt="player-shirt"/>
+            </div>
+            <div class="player-name">{{player.firstName}} {{player.lastName[0]}}.</div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- <div class="define-subs">
+    <div class="heading">Define subs by </div>
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button
+          *ngFor="let sub of definedSubs"
+          [value]="sub.id"
+          [checked]="sub.isSelected"
+          (change)="selectSub($event)">
+          {{sub.name}}
+        </mat-radio-button>
+    </mat-radio-group>
+  </div> -->
+</div>

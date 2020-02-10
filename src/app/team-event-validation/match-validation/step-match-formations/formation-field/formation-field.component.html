@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="field-container">
+        <div class="field">
+            <div class="players">
+                <div
+                    *ngFor="let player of formationTemplate.formationPosition; let i = index"
+                    [ngStyle]="
+                    {'grid-column': getPositionX(formationTemplate.formationPosition, i, player.matrixXPosition),
+                    'grid-row': player.matrixYPosition}">
+					<app-field-player
+						[positionId]="player.positionId"
+						[player]="getPlayerInPosition(player)"
+						[playerId]="player.playerId"
+						[positionName]="player.positionName"
+						[players]="players"
+						(openSelection)="showSwapPlayers($event)"></app-field-player>
+                </div>
+			</div>
+			<div
+				class="swap-players-list"
+				[style.top.px]="swapPlayersPosition.y"
+				*ngIf="isShowSwapPlayers" #swapPlayers>
+				<div class="before" [style.left.px]="swapPlayersPosition.x"></div>
+				<div>
+					<mat-accordion>
+						<mat-expansion-panel
+							*ngFor="let data of playersData; trackBy: trackPlayersDataFn;"
+							(opened)="data.isOpen = true"
+							(closed)="data.isOpen = false"
+							hideToggle="true"
+							#matExpansionPanel>
+							<mat-expansion-panel-header>
+								<mat-panel-title>
+									<img [ngClass]="{'expand-arrow': true, open: data.isOpen}" src="./assets/svg/expand-arrow.svg" alt="expansion arrow">
+									{{data.category}}
+								</mat-panel-title>
+								<mat-panel-description>
+
+								</mat-panel-description>
+							</mat-expansion-panel-header>
+							<mat-list>
+								<mat-list-item
+									*ngFor="let player of data.players; trackBy: trackPlayersFn"
+									(click)="changePlayerInFormation(player)"
+									matRiffle>
+									<img class="avatar" [src]="player.profilePic" alt="player avatar">
+									<div class="player-title">{{player.lastName}} {{player.firstName}} {{positions[player.defaultPositionId].shortName}}</div>
+								</mat-list-item>
+								<mat-divider></mat-divider>
+							  </mat-list>
+						</mat-expansion-panel>
+					</mat-accordion>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
