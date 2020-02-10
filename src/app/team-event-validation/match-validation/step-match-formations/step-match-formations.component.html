@@ -1,6 +1,23 @@
 <div class="step-match-formations-container">
-    <p>step-match-formations works!</p>
-
+    <div class="container">
+        <div class="heading">Starting Formations</div>
+        <div class="content">
+			<app-formation-selection
+				[positions]="positions"
+                [tabs]="playersData"
+                [tactics]="tactics"
+                [definedSubs]="definedSubs"
+                (onSelectTactic)="selectTactic($event)"
+                (onSelectDefinedSub)="selectDefinedSub($event)">
+            </app-formation-selection>
+            <div class="buffer"></div>
+			<app-formation-field
+				[formationTemplate]="selectedFormation"
+				[formation]="formationData"
+				[playersData]="playersData"
+				[participatingPlayers]="participatingPlayers"></app-formation-field>
+        </div>
+    </div>
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="backStep()">back</button>
         <button class="step-submit-btn" mat-raised-button (click)="nextStep()">next</button>

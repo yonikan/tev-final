@@ -12,22 +12,24 @@
 			[actionName]="'Exclude'"
 			[isSwapAllowed]="true"
 			[isResetAllowed]="true"
-			[clubPlayers]="clubPlayers"
 			(excludePlayer)="doExcludePlayer($event)"
-			(swapPlayer)="doSwapPlayer($event, true)"
-			(resetChanges)="doResetChanges($event, true)"></app-participating-column>
+			(resetChanges)="doResetChanges($event, true)"
+			(openSummaryPanel)="openSwapPlayersPanel($event)"></app-participating-column>
 		<div class="buffer"></div>
 		<app-participating-column
 			[players]="allPlayers"
 			[actionName]="'Include'"
 			[isSwapAllowed]="false"
 			[isResetAllowed]="false"
-			[clubPlayers]="clubPlayers"
 			(excludePlayer)="doIncludePlayer($event)"
-			(swapPlayer)="doSwapPlayer($event, false)"
 			(resetChanges)="doResetChanges($event, false)"></app-participating-column>
 	</div>
-	<div *ngIf="allPlayers.length" (click)="openDialog()" class="bold">
+	<div class="details-content" [hidden]="!currentPlayer" #swapPlayersPanel>
+		<div>
+			<app-swap-players [clubPlayers]="clubPlayersGroup" (swapPlayer)="doSwapPlayer($event, true)" [currentPlayer]="currentPlayer" [isIncluded]="isIncluded"></app-swap-players>
+		</div>
+	</div>
+	<div *ngIf="allPlayers.length" (click)="openDialog()" class="contact-support-button">
 		Contact Support
 	</div>
 </div>

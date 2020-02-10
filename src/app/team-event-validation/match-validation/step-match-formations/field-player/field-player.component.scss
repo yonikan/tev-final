@@ -1,0 +1,65 @@
+@import '../../../../../styles/variables';
+
+:host {
+    .container {
+        padding: 3px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+
+        .player-image-label {
+            color: #ffffff;
+            grid-column-start: 1;
+            grid-row-start: 1;
+            grid-row-end: 1;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .img {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;            ;
+        }
+        .select {
+			align-self: baseline;
+			width: 93px;
+			height: 23px;
+			border-radius: 12.5px;
+			border: solid 1px #80b89b;
+			background-color: #82bd9e;
+			align-self: baseline;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 14px;
+			text-align: center;
+			color: #35083a;
+			display: grid;
+			grid-template-columns: 65px 10px;
+
+			cursor: pointer;
+
+			> img {
+				margin-right: 8px;
+			}
+
+			.title {
+				div {
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+				}
+			}
+
+			@media (max-width: $media-query-sm) {
+				width: 65px;
+			}
+        }
+	}
+}

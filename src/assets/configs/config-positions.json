@@ -1,0 +1,20 @@
+{
+	"0": {"shortName": "Any", "category": "Any", "categoryShortName": "Any"},
+	"1": {"shortName": "GK", "category": "Goalkeepers", "categoryShortName": "GK"},
+	"2": {"shortName": "CB", "category": "Defenders", "categoryShortName": "DF"},
+	"3": {"shortName": "RCB", "category": "Defenders", "categoryShortName": "DF"},
+	"4": {"shortName": "LCB", "category": "Defenders", "categoryShortName": "DF"},
+	"5": {"shortName": "RB", "category": "Defenders", "categoryShortName": "DF"},
+	"6": {"shortName": "LB", "category": "Defenders", "categoryShortName": "DF"},
+	"7": {"shortName": "LWB", "category": "Defenders", "categoryShortName": "DF"},
+	"8": {"shortName": "RWB", "category": "Defenders", "categoryShortName": "DF"},
+	"9": {"shortName": "DM", "category": "Midfielders", "categoryShortName": "MF"},
+	"10": {"shortName": "CM", "category": "Midfielders", "categoryShortName": "MF"},
+	"11": {"shortName": "RM", "category": "Midfielders", "categoryShortName": "MF"},
+	"12": {"shortName": "LM", "category": "Midfielders", "categoryShortName": "MF"},
+	"13": {"shortName": "AM", "category": "Midfielders", "categoryShortName": "MF"},
+	"14": {"shortName": "RW", "category": "Forwards", "categoryShortName": "FW"},
+	"15": {"shortName": "LW", "category": "Forwards", "categoryShortName": "FW"},
+	"16": {"shortName": "CF", "category": "Forwards", "categoryShortName": "FW"},
+	"17": {"shortName": "ST", "category": "Forwards", "categoryShortName": "FW"}
+}

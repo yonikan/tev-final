@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="img">
+    <img src="../../../../../assets/svg/formation/player-shirt-selected.svg" alt="player shirt selected">
+  </div>
+  <div class="player-image-label">{{positionName}}</div>
+
+  <div class="select" (click)="onOpen(isOpen)" #select>
+	  <div class="title">
+		  <div *ngIf="player">
+			{{player.firstName}} {{player.lastName[0]}}.
+		  </div>
+	  </div>
+	  <img src="./assets/svg/icon-open-single.svg" alt="icon-open">
+  </div>
+
+</div>

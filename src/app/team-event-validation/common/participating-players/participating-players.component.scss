@@ -33,10 +33,11 @@
             }
 		}
 
-		.bold {
+		.contact-support-button {
 			@include bold();
 			font-size: 16px;
 			cursor: pointer;
+			margin-top: 15px;
 		}
     }
 }

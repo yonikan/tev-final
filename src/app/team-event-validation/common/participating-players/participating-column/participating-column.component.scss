@@ -1,113 +1,87 @@
 @import "../../../../../styles/mixins";
+@import '../../../team-event-validation.mixins.scss';
 
 :host {
 	.container {
 		display: grid;
 		grid-auto-rows: 70px;
-		height: 80vh;
+		// height: 80vh;
 		overflow: auto;
 		align-items: center;
 		position: relative;
-		padding-right: 50px;
+		// padding-right: 50px;
 
 		@include custom-scroll();
 
 		details {
 			border-bottom: 1px solid #939fac;
 			.details-content {
-				position: absolute;
-				left: -3px;
-				height: 420px;
-				width: 95%;
-				background-color: #f4f4f4;
-				z-index: 1;
-				padding: 5px;
-				border: 1px solid #e0e3e5;
-				border-radius: 5px;
-				box-shadow: 0px 10px 20px 0 rgba(0, 0, 0, 0.05);
-				animation: open .5s ease-in-out;
-
-				> div {
-					height: 100%;
-					overflow: auto;
-					@include custom-scroll();
-				}
-
-				&:before {
-					content: "";
-					display: block;
-					width: 0;
-  					height: 0;
-					border-top: 8px solid transparent;
-					border-right: 8px solid transparent;
-					border-bottom: 8px solid #f4f4f4;
-					border-left: 8px solid transparent;
-					position: absolute;
-					top: -15px;
-					right: 160px;
-				}
+				@include swap-players-list();
 			}
 
 			summary {
-				display: grid;
-				outline: none;
-				align-items: center;
-				grid-auto-flow: column;
-				grid-template-columns: 50px 1fr 100px;
-				padding: 4px;
-				font-size: 16px;
-				color: #3d4762;
-				font-weight: 500;
-
-				.avatar {
-					@include player-avatar();
-				}
-
-				.player-title {
-					@include player-name-title();
-					@include flex-column();
-					.active-time {
-						@include flex-row(center);
-					}
-					.bold {
-						@include bold();
-						font-size: 12px;
-						margin: 0 2px;
-					}
-
-				}
-
-				.action-name {
-					cursor: pointer;
+				.summary {
+					display: grid;
+					outline: none;
+					align-items: center;
+					grid-auto-flow: column;
+					grid-template-columns: 50px 1fr 60px;
+					padding: 4px;
 					font-size: 16px;
-					color: #8994a3;
+					color: #3d4762;
 					font-weight: 500;
 
-					&:hover {
-						color: #eea92a;
-					}
-				}
-
-				.swap-shirts {
-					mask: url("../../../../../assets/svg/swap-shirts.svg");
-					height: 33px;
-					width: 45px;
-					background-color: #8994a3;
-					cursor: pointer;
-
-					&.open, &.highlighted, &.swapped {
-						background-color: #11cd69;
-						mask: url("../../../../../assets/svg/swap-shirts-highlight.svg");
+					.avatar {
+						@include player-avatar();
 					}
 
-					&:hover:not(.open) {
-						background-color: #0fb85e;
+					.player-title {
+						@include player-name-title();
+						@include flex-column();
+						.active-time {
+							@include flex-row(center);
+						}
+						.bold {
+							@include bold();
+							font-size: 12px;
+							margin: 0 2px;
+						}
+
+					}
+
+					.action-name {
+						cursor: pointer;
+						font-size: 16px;
+						color: #8994a3;
+						font-weight: 500;
+
+						&:hover {
+							// color: #eea92a;
+						}
+					}
+
+					.swap-shirts {
+						mask: url("../../../../../assets/svg/swap-shirts.svg");
+						height: 33px;
+						width: 45px;
+						background-color: #8994a3;
+						cursor: pointer;
+
+						&.open, &.highlighted, &.swapped {
+							background-color: #11cd69;
+							mask: url("../../../../../assets/svg/swap-shirts-highlight.svg");
+						}
+
+						&:hover:not(.open) {
+							background-color: #0fb85e;
+						}
 					}
 				}
 
 				&::-webkit-details-marker {
 					display: none;
 				}
+
 			}
 		}
 	}
