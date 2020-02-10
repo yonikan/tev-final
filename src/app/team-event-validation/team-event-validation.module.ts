@@ -8,8 +8,8 @@ import { CoreModule } from '../core/core.module';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
-  direction: 'horizontal',
-  slidesPerView: 'auto'
+	direction: 'horizontal',
+	slidesPerView: 'auto'
 };
 import { MatchValidationComponent } from './match-validation/match-validation.component';
 import { TrainingValidationComponent } from './training-validation/training-validation.component';
@@ -48,79 +48,82 @@ import { WarmupModalComponent } from './common/phases-modal/warmup-modal/warmup-
 import { TechnicalModalComponent } from './common/phases-modal/technical-modal/technical-modal.component';
 import { PitchSizeOptionComponent } from './common/pitch-size-option/pitch-size-option.component';
 import { LineupDropdownRowComponent } from './common/phases-modal/technical-modal/lineup-dropdown-row/lineup-dropdown-row.component'
+import { SimpleTimePickerComponent } from './common/simple-time-picker/simple-time-picker.component';
 @NgModule({
-  declarations: [
-    MatchValidationComponent,
-    TrainingValidationComponent,
-    StepTrainingGeneralComponent,
-    StepTrainingPlayersComponent,
-    StepTrainingPhasesComponent,
-    StepMatchOverviewComponent,
-    StepMatchPlayersComponent,
-    StepMatchFormationsComponent,
-    StepMatchPhasesComponent,
-    StepMatchSubsComponent,
-    TagsComponent,
-    SpeedGraphComponent,
-    TrainingDurationComponent,
-    MatchOverviewComponent,
-    PhasesCardsContainerComponent,
-    PhasesCardComponent,
-    SubstitutionsTableComponent,
-    SubstitutionsRowComponent,
-    AreYouSureModalComponent,
-    PhasesModalComponent,
-    MatchPhaseModalComponent,
-    PhysicalModalComponent,
-    WarmupModalComponent,
-    TechnicalModalComponent,
-    PitchSizeOptionComponent,
-    LineupDropdownRowComponent,
-    ParticipatingPlayersComponent,
-    ParticipatingColumnComponent,
-    SwapPlayersComponent,
-    ContactSupportModalComponent,
-    GetTimePipe,
-    TimeDiffPipe
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ReactiveFormsModule,
-    // CoreModule,
-    // RouterModule.forChild(routes),
-    HighchartsChartModule,
-    SwiperModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    {
-      provide: SWIPER_CONFIG,
-      useValue: DEFAULT_SWIPER_CONFIG
-    }
-  ],
-  exports: [
-    MatchValidationComponent,
-    TrainingValidationComponent,
-    StepTrainingGeneralComponent,
-    StepTrainingPlayersComponent,
-    StepTrainingPhasesComponent,
-    StepMatchOverviewComponent,
-    StepMatchPlayersComponent,
-    StepMatchFormationsComponent,
-    StepMatchPhasesComponent,
-    StepMatchSubsComponent,
-    TagsComponent,
-    SpeedGraphComponent,
-    TrainingDurationComponent,
-    MatchOverviewComponent,
-    ParticipatingPlayersComponent
-  ],
-  entryComponents: [
-    AreYouSureModalComponent,
-    PhasesModalComponent,
-    ContactSupportModalComponent
-  ],
+	declarations: [
+		MatchValidationComponent,
+		TrainingValidationComponent,
+		StepTrainingGeneralComponent,
+		StepTrainingPlayersComponent,
+		StepTrainingPhasesComponent,
+		StepMatchOverviewComponent,
+		StepMatchPlayersComponent,
+		StepMatchFormationsComponent,
+		StepMatchPhasesComponent,
+		StepMatchSubsComponent,
+		TagsComponent,
+		SpeedGraphComponent,
+		TrainingDurationComponent,
+		MatchOverviewComponent,
+		PhasesCardsContainerComponent,
+		PhasesCardComponent,
+		SubstitutionsTableComponent,
+		SubstitutionsRowComponent,
+		AreYouSureModalComponent,
+		PhasesModalComponent,
+		MatchPhaseModalComponent,
+		PhysicalModalComponent,
+		WarmupModalComponent,
+		TechnicalModalComponent,
+		PitchSizeOptionComponent,
+		LineupDropdownRowComponent,
+		ParticipatingPlayersComponent,
+		ParticipatingColumnComponent,
+		SwapPlayersComponent,
+		ContactSupportModalComponent,
+		GetTimePipe,
+		TimeDiffPipe,
+		SimpleTimePickerComponent
+	],
+	imports: [
+		CommonModule,
+		SharedModule,
+		ReactiveFormsModule,
+		// CoreModule,
+		// RouterModule.forChild(routes),
+		HighchartsChartModule,
+		SwiperModule,
+		FormsModule,
+		ReactiveFormsModule
+	],
+	providers: [
+		{
+			provide: SWIPER_CONFIG,
+			useValue: DEFAULT_SWIPER_CONFIG
+		}
+	],
+	exports: [
+		MatchValidationComponent,
+		TrainingValidationComponent,
+		StepTrainingGeneralComponent,
+		StepTrainingPlayersComponent,
+		StepTrainingPhasesComponent,
+		StepMatchOverviewComponent,
+		StepMatchPlayersComponent,
+		StepMatchFormationsComponent,
+		StepMatchPhasesComponent,
+		StepMatchSubsComponent,
+		TagsComponent,
+		SpeedGraphComponent,
+		TrainingDurationComponent,
+		MatchOverviewComponent,
+		ParticipatingPlayersComponent,
+		SimpleTimePickerComponent
+	],
+	entryComponents: [
+		AreYouSureModalComponent,
+		PhasesModalComponent,
+		ContactSupportModalComponent
+	],
 })
 export class TeamEventValidationModule { }

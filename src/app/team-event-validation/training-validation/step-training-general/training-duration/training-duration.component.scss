@@ -4,17 +4,12 @@
 :host {
     .duration-container {
         @include team-event-section;
-        
+
 		.time-fields {
-			display: flex;
+			display: grid;
+			grid-auto-flow: column;
 			align-items: center;
 			justify-content: center;
-			> div {
-				display: grid;
-				grid-auto-flow: column;
-				align-items: center;
-				margin: 0 10px;
-			}
 		}
     }
 }
