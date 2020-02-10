@@ -1,0 +1,51 @@
+.lineup-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  margin: 0px 18px;
+  border-bottom: 1px solid #e6e9eb;
+  color: #96a1ae;
+  justify-content: space-between;
+  width: 450px;
+  cursor: pointer;
+
+  .row-content {
+    display: flex;
+    align-items: center;
+    .player-name {
+      color: #3d4762;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .row-buttons {
+
+    .opposeed-mode-buttons {
+      display: flex;
+      align-items: center;
+      color: white;
+
+      .circle {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        border-radius: 15px;
+        background-color: #b7b5b5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .10s ease-in-out;
+      }
+
+      .selectedTeam {
+        background-color: #35083a;
+      }
+    }
+  }
+}
+
+.disable{
+  opacity: 0.5;
+  pointer-events: none;
+}

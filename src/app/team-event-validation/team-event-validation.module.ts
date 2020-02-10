@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
+// import { routes } from './team-event-validation.routes';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
@@ -29,6 +31,8 @@ import { PhasesCardsContainerComponent } from './common/phases-cards-container/p
 import { PhasesCardComponent } from './common/phases-cards-container/phases-card/phases-card.component';
 import { SubstitutionsTableComponent } from './common/substitutions-table/substitutions-table.component';
 import { SubstitutionsRowComponent } from './common/substitutions-table/substitutions-row/substitutions-row.component';
+import { AreYouSureModalComponent } from './common/are-you-sure-modal/are-you-sure-modal.component';
+import { PhasesModalComponent } from './common/phases-modal/phases-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParticipatingPlayersComponent } from './common/participating-players/participating-players.component';
 import { ParticipatingColumnComponent } from './common/participating-players/participating-column/participating-column.component';
@@ -40,6 +44,12 @@ import { FormationFieldComponent } from './match-validation/step-match-formation
 import { FormationSelectionComponent } from './match-validation/step-match-formations/formation-selection/formation-selection.component';
 import { FieldPlayerComponent } from './match-validation/step-match-formations/field-player/field-player.component';
 
+import { MatchPhaseModalComponent } from './common/phases-modal/match-phase-modal/match-phase-modal.component';
+import { PhysicalModalComponent } from './common/phases-modal/physical-modal/physical-modal.component';
+import { WarmupModalComponent } from './common/phases-modal/warmup-modal/warmup-modal.component';
+import { TechnicalModalComponent } from './common/phases-modal/technical-modal/technical-modal.component';
+import { PitchSizeOptionComponent } from './common/pitch-size-option/pitch-size-option.component';
+import { LineupDropdownRowComponent } from './common/phases-modal/technical-modal/lineup-dropdown-row/lineup-dropdown-row.component'
 @NgModule({
   declarations: [
     MatchValidationComponent,
@@ -60,6 +70,14 @@ import { FieldPlayerComponent } from './match-validation/step-match-formations/f
     PhasesCardComponent,
     SubstitutionsTableComponent,
     SubstitutionsRowComponent,
+    AreYouSureModalComponent,
+    PhasesModalComponent,
+    MatchPhaseModalComponent,
+    PhysicalModalComponent,
+    WarmupModalComponent,
+    TechnicalModalComponent,
+    PitchSizeOptionComponent,
+    LineupDropdownRowComponent,
     ParticipatingPlayersComponent,
     ParticipatingColumnComponent,
     SwapPlayersComponent,
@@ -73,10 +91,20 @@ import { FieldPlayerComponent } from './match-validation/step-match-formations/f
   imports: [
     CommonModule,
     SharedModule,
+    ReactiveFormsModule,
+    // CoreModule,
+    // RouterModule.forChild(routes),
     HighchartsChartModule,
+    SwiperModule,
     FormsModule,
     ReactiveFormsModule,
     SwiperModule
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ],
   exports: [
     MatchValidationComponent,
@@ -95,6 +123,10 @@ import { FieldPlayerComponent } from './match-validation/step-match-formations/f
     MatchOverviewComponent,
     ParticipatingPlayersComponent
   ],
-  entryComponents: [ContactSupportModalComponent]
+  entryComponents: [
+    AreYouSureModalComponent,
+    PhasesModalComponent,
+    ContactSupportModalComponent
+  ],
 })
 export class TeamEventValidationModule { }

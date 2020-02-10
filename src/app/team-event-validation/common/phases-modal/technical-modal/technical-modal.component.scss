@@ -1,0 +1,83 @@
+.physical-modal {
+  .row {
+    display: flex;
+    align-items: center;
+    // flex-wrap: wrap;
+    font-weight: 500;
+    color: #8994a3;
+    margin-bottom: 60px;
+
+    .row-title {
+      font-size: 16px;
+      margin-right: 50px;
+      width: 80px;
+    }
+
+    .row-content {
+      font-size: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .subject-input {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        padding: 10px;
+        border: solid 1px #e1e0e1;
+        font-size: 14px;
+        font-weight: 500;
+        color: #3d4762;
+      }
+    }
+  }
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-all-btn {
+  align-self: flex-end;
+  color: #96a1ae;
+  margin-bottom: 7px;
+}
+
+.lineup-dropdown-body {
+  background-color: #fbfbfb;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.lineup-container {
+  width: 454px;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+}
+
+.position-player {
+  .lineup-inner-title {
+    width: 450px;
+    font-size: 14px;
+    color: #8994a3;
+    padding: 5px 10px;
+    margin: 30px 10px 5px 10px;
+    border-bottom: 1px solid #e6e9eb;
+  }
+}
+
+.opposeed-lineup-table-titles {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #8994a3;
+  margin-bottom: 7px;
+  padding: 0 42px 0 20px;
+
+  .opposeed-lineup-counters {
+    display: flex;
+    justify-content: space-between;
+    width: 116px;
+  }
+}

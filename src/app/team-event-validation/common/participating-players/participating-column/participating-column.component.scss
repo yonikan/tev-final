@@ -20,65 +20,68 @@
 			}
 
 			summary {
-				display: grid;
-				outline: none;
-				align-items: center;
-				grid-auto-flow: column;
-				grid-template-columns: 50px 1fr 100px;
-				padding: 4px;
-				font-size: 16px;
-				color: #3d4762;
-				font-weight: 500;
-
-				.avatar {
-					@include player-avatar();
-				}
-
-				.player-title {
-					@include player-name-title();
-					@include flex-column();
-					.active-time {
-						@include flex-row(center);
-					}
-					.bold {
-						@include bold();
-						font-size: 12px;
-						margin: 0 2px;
-					}
-
-				}
-
-				.action-name {
-					cursor: pointer;
+				.summary {
+					display: grid;
+					outline: none;
+					align-items: center;
+					grid-auto-flow: column;
+					grid-template-columns: 50px 1fr 100px;
+					padding: 4px;
 					font-size: 16px;
-					color: #8994a3;
+					color: #3d4762;
 					font-weight: 500;
 
-					&:hover {
-						color: #eea92a;
-					}
-				}
-
-				.swap-shirts {
-					mask: url("../../../../../assets/svg/swap-shirts.svg");
-					height: 33px;
-					width: 45px;
-					background-color: #8994a3;
-					cursor: pointer;
-
-					&.open, &.highlighted, &.swapped {
-						background-color: #11cd69;
-						mask: url("../../../../../assets/svg/swap-shirts-highlight.svg");
+					.avatar {
+						@include player-avatar();
 					}
 
-					&:hover:not(.open) {
-						background-color: #0fb85e;
+					.player-title {
+						@include player-name-title();
+						@include flex-column();
+						.active-time {
+							@include flex-row(center);
+						}
+						.bold {
+							@include bold();
+							font-size: 12px;
+							margin: 0 2px;
+						}
+
+					}
+
+					.action-name {
+						cursor: pointer;
+						font-size: 16px;
+						color: #8994a3;
+						font-weight: 500;
+
+						&:hover {
+							color: #eea92a;
+						}
+					}
+
+					.swap-shirts {
+						mask: url("../../../../../assets/svg/swap-shirts.svg");
+						height: 33px;
+						width: 45px;
+						background-color: #8994a3;
+						cursor: pointer;
+
+						&.open, &.highlighted, &.swapped {
+							background-color: #11cd69;
+							mask: url("../../../../../assets/svg/swap-shirts-highlight.svg");
+						}
+
+						&:hover:not(.open) {
+							background-color: #0fb85e;
+						}
 					}
 				}
 
 				&::-webkit-details-marker {
 					display: none;
 				}
+
 			}
 		}
 	}

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, ViewChild, ElementRef } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
+import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'time-picker',
@@ -10,57 +10,65 @@ export class TimePickerComponent implements OnInit {
 
   timeForDisplay;
 
-  @Input() seconds = 0;
+  @Input() defaultTime;
   @Input() minutes = 0;
-  @Input() difference = '1 seconds';
+  @Input() hours = 0;
+  @Input() range;
+  @Input() difference = '1 minutes';
 
-  @Output() timeChanged;
+  @Output() timeChanged = new EventEmitter();
 
-  // @ViewChild('input') input: ElementRef;
+  @ViewChild('input', { static: false }) input: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
-    this.setTimeForDisplay();
+    if (this.defaultTime) {
+      const defaultTime = moment(this.defaultTime).format('hh:mm'); // todo: add offset
+      this.handleUserInput(defaultTime)
+    } else {
+      this.setTimeForDisplay();
+    }
   }
 
   setTimeForDisplay() {
     this.timeForDisplay = null;
     const zero = '0';
-    const secondsForDisplay = this.seconds < 10 ? zero + this.seconds : this.seconds;
     const minutesForDisplay = this.minutes < 10 ? zero + this.minutes : this.minutes;
-    this.timeForDisplay = `${minutesForDisplay} : ${secondsForDisplay}`;
-    // this.input.nativeElement.value = this.timeForDisplay;
+    const hoursForDisplay = this.hours < 10 ? zero + this.hours : this.hours;
+    this.timeForDisplay = `${hoursForDisplay} : ${minutesForDisplay}`;
+    if (this.input) { this.input.nativeElement.value = this.timeForDisplay };
+    this.emitTime();
   }
 
   useDifference(actionType) {
-    if (!this.minutes && !this.seconds && actionType === 'minus') { return };
+    if (!this.hours && !this.minutes && actionType === 'MINUS') { return };
 
     let time = +this.difference.split(' ')[0];
     let timeUnit = this.difference.split(' ')[1];
 
     switch (actionType) {
-      case 'plus':
-        if (timeUnit === 'seconds' && this.seconds === 59) { this.minutes++; this.seconds = 0; }
+      case 'PLUS':
+        if (timeUnit === 'minutes' && this.minutes === 59) { this.hours++; this.minutes = 0; }
         else { this[timeUnit] = this[timeUnit] + time; }
         break;
 
-      case 'minus':
-          if (timeUnit === 'seconds' && this.seconds === 0) { this.minutes--; this.seconds = 59; }
-          else { this[timeUnit] = this[timeUnit] - time; }
+      case 'MINUS':
+        if (timeUnit === 'minutes' && this.minutes === 0) { this.hours--; this.minutes = 59; }
+        else { this[timeUnit] = this[timeUnit] - time; }
         break;
     }
 
     this.setTimeForDisplay();
   }
 
-  handleUserInput(event) { // TODO: handle string inputs
-    let userInput = event.target.value.split(':');
+  handleUserInput(value) {
+    const userInput = value.split(':');
 
     if (userInput.length === 2) {
       if (Number.isInteger(+userInput[0]) && Number.isInteger(+userInput[1])) {
-        this.minutes = +userInput[0];
-        this.seconds = +userInput[1];
+        this.hours = +userInput[0] < 60 ? +userInput[0] : this.hours;
+        this.minutes = +userInput[1] < 60 ? +userInput[1] : this.minutes;
       }
     }
     this.setTimeForDisplay();
@@ -68,12 +76,19 @@ export class TimePickerComponent implements OnInit {
     // console.log(typeof +userInput[0]);
   }
 
+  isInRange(time) {
+    time = time.split(':');
+    const range = this.range.split(':');
+    return ((time[0] < range[0]) || (time[0] === range[0] && time[1] <= range[1]));
+  }
+
   emitTime() {
     this.timeChanged.emit({
-      seconds : this.seconds,
+      timeUnix: +moment(this.timeForDisplay, 'HH:mm').format('x'),
       minutes: this.minutes,
+      hours: this.hours,
       timeString: this.timeForDisplay
-    })
+    });
   }
 
 }

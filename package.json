@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config ./proxy.json",
+    "start": "ng serve --host 0.0.0.0 --proxy-config ./proxy.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -38,6 +38,7 @@
     "highcharts-angular": "^2.4.0",
     "material-design-icons": "^3.0.1",
     "moment": "^2.24.0",
+    "moment-range": "^4.0.2",
     "moment-timezone": "^0.5.27",
     "ngx-cookie-service": "^2.2.0",
     "ngx-show-hide-password": "^2.1.0",

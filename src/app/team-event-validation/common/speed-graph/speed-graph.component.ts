@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
-// import * as moment from 'moment';
-import * as moment from 'moment-timezone'
-// import * as HighchartsBoost  from 'highcharts/modules/boost';
-let Boost = require('highcharts/modules/boost');
+const Boost = require('highcharts/modules/boost');
 Boost(Highcharts);
 
 const CHART_OPTIONS = {
@@ -53,11 +50,16 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 			height: 130,
 			backgroundColor: '#ffffff',
 			color: '#f9b62b',
-			zoomType: 'x'
+			zoomType: 'x',
+			animation: false
 		},
 		title: {
 			text: ''
 		},
+        boost: {
+            useGPUTranslations: true,
+			usePreAllocated: true
+        },
 		credits: {
 			enabled: false
 		},
@@ -73,6 +75,8 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 			title: {
 				text: 'M/S'
 			},
+			min: 0
+
 		},
 		tooltip: {
 			enabled: false
@@ -94,7 +98,8 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 				color: '#621e6a',
 				showInLegend: false,
 				name: 'Line 1',
-				data: []
+				data: [],
+				animation: false
 			}
 		],
 		time: {

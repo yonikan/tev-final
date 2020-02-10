@@ -1,7 +1,13 @@
 <div class="time-picker">
-  <input class="input" type="text" value="{{timeForDisplay}}" (input)="handleUserInput($event)" #input>
+  <input class="input" type="text" [value]="timeForDisplay" (input)="handleUserInput($event.target.value)" #input>
   <div class="arrows">
-    <div class="plus-arrow arrow" (click)="useDifference('plus')">+</div>
-    <div class="minus-arrow arrow" (click)="useDifference('minus')">-</div>
+    
+    <svg class="plus-arrow arrow" (click)="useDifference('PLUS')" xmlns="http://www.w3.org/2000/svg" width="12" height="8">
+      <path fill="#35083A" fill-rule="evenodd" d="M6.983 1.183A1.096 1.096 0 0 0 5.982.878a1.096 1.096 0 0 0-1.001.305L.816 5.473a1.199 1.199 0 0 0 0 1.66 1.116 1.116 0 0 0 1.611 0L5.982 3.47v.001l3.556 3.662a1.116 1.116 0 0 0 1.611 0 1.199 1.199 0 0 0 0-1.66l-4.166-4.29z"/>
+    </svg>
+    
+    <svg class="minus-arrow arrow" (click)="useDifference('MINUS')" xmlns="http://www.w3.org/2000/svg" width="12" height="7">
+      <path fill="#35083A" fill-rule="evenodd" d="M6.966 6.647A1.075 1.075 0 0 1 6 6.932a1.077 1.077 0 0 1-.967-.285L1.011 2.624a1.098 1.098 0 1 1 1.555-1.555L6 4.502l3.433-3.433a1.1 1.1 0 1 1 1.556 1.555L6.966 6.647z"/>
+    </svg>
   </div>
 </div>
