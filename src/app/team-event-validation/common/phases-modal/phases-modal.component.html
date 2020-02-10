@@ -29,16 +29,18 @@
       </mat-radio-group>
     </div>
     <div class="phase-duration">
-      <time-picker
-        class="start-phase"
-        [defaultTime]="phaseToEdit.startTime"
-        (timeChanged)="onUpdateField({value: $event.timeUnix, filedPathToUpdate: ['startTime']}); setPhaseDurationTotal();"
-      ></time-picker>
-      <time-picker
-        class="end-phase"
-        [defaultTime]="phaseToEdit.endTime"
-        (timeChanged)="onUpdateField({value: $event.timeUnix, filedPathToUpdate: ['endTime']}); setPhaseDurationTotal();"
-      ></time-picker>
+		<app-simple-time-picker
+			[propName]="'startTime'"
+			[maxPropName]="'endTime'"
+			[(range)]="phaseToEdit"
+			(updateTime)="updateTime($event, 'startTime');setPhaseDurationTotal();">
+		</app-simple-time-picker>
+		<app-simple-time-picker
+			[propName]="'endTime'"
+			[maxPropName]="'startTime'"
+			[(range)]="phaseToEdit"
+			(updateTime)="updateTime($event, 'endTime');setPhaseDurationTotal();">
+		</app-simple-time-picker>
       <div class="phase-duration-total">({{ setPhaseDurationTotal() }})</div>
     </div>
   </div>

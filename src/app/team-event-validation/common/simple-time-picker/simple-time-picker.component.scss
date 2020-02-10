@@ -3,7 +3,7 @@
 	grid-auto-flow: column;
 	font-size: 18px;
 	align-items: center;
-	grid-template-columns: 50px 100px;
+	grid-template-columns: 50px 115px;
 	grid-gap: 10px;
 
 	.label {
@@ -24,7 +24,7 @@
 			font-family: monospace;
 			font-weight: 500;
 
-			::-webkit-clear-button {
+			&::-webkit-clear-button {
 				display: none;
 			}
 		}
