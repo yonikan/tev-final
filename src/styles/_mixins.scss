@@ -144,6 +144,12 @@
   // justify-content: center;
   // align-items: center;
 
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;;
+  }
+
   @media (max-width: $media-query-sm) {
     // width: 90%;
     // margin: 0 auto;
@@ -200,13 +206,18 @@
 
 @mixin team-event-section() {
   text-align: center;
-  margin: 55px 0;
+  // margin: 55px 0;
 
   h3 {
       font-size: 40px;
       margin: 35px 0 10px;
       text-transform: capitalize;
       color: #3d4762;
+
+      @media (max-width: $media-query-sm) {
+        font-size: 30px;
+        margin: 20px 0 10px;
+      }
   }
 
   p {
