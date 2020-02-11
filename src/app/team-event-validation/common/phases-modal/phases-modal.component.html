@@ -1,3 +1,26 @@
+<div class="modal-container">
+  <div class="dialog-header">
+      <button mat-icon-button>
+          <i class="demo-icon icon-x" (click)="close()">&#xe813;</i>
+      </button>
+      <div class="phases-counter">
+        (Phase {{ data.index + 1 }} of {{ data.phasesCount }})
+      </div>
+  </div>
+
+  <div class="dialog-content">
+    
+  </div>
+
+  <div class="dialog-footer">
+      <div mat-dialog-actions>
+          <button (click)="savePhase()" mat-raised-button>save phase</button>
+      </div>
+  </div>
+</div>
+
+
+<!-- offir's modal ====================================================================== -->
 <div class="phases-modal">
   <div class="phases-modal-header">
     <div class="exit-btn" (click)="close()">

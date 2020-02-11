@@ -1,5 +1,15 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+:host {
+  border-radius: 10px;
+  text-align: center;
+  @include modal;
+}
 
 
+
+  // offir's modal ======================================================================
   .phases-modal {
     background-color: #ffffff;
     // min-height: 1080px;
