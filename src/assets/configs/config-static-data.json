@@ -19,7 +19,11 @@
 		"16": {"shortName": "CF", "category": "Forwards", "categoryShortName": "FW"},
 		"17": {"shortName": "ST", "category": "Forwards", "categoryShortName": "FW"}
     },
-    "competitions": {
-
-    }
+  "competitions": {
+    "1": {"name": "League"},
+    "2": {"name": "Cup"},
+    "3": {"name": "Tournament"},
+    "4": {"name": "Friendly Match"},
+    "6": {"name": "Internal Friendly Match"}
+  }
 }

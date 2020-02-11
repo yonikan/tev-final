@@ -14,6 +14,7 @@ export class TimePickerComponent implements OnInit {
   @Input() minutes = 0;
   @Input() hours = 0;
   @Input() range;
+  @Input() offset;
   @Input() difference = '1 minutes';
 
   @Output() timeChanged = new EventEmitter();
@@ -24,7 +25,7 @@ export class TimePickerComponent implements OnInit {
 
   ngOnInit() {
     if (this.defaultTime) {
-      const defaultTime = moment(this.defaultTime).format('hh:mm'); // todo: add offset
+      const defaultTime = moment(this.defaultTime).add(this.offset, 'hours').format('hh:mm');
       this.handleUserInput(defaultTime)
     } else {
       this.setTimeForDisplay();
@@ -47,16 +48,13 @@ export class TimePickerComponent implements OnInit {
     let time = +this.difference.split(' ')[0];
     let timeUnit = this.difference.split(' ')[1];
 
-    switch (actionType) {
-      case 'PLUS':
-        if (timeUnit === 'minutes' && this.minutes === 59) { this.hours++; this.minutes = 0; }
-        else { this[timeUnit] = this[timeUnit] + time; }
-        break;
-
-      case 'MINUS':
-        if (timeUnit === 'minutes' && this.minutes === 0) { this.hours--; this.minutes = 59; }
-        else { this[timeUnit] = this[timeUnit] - time; }
-        break;
+    if (actionType === 'PLUS') {
+      if (timeUnit === 'minutes' && this.minutes === 59) { this.hours++; this.minutes = 0; }
+      else { this[timeUnit] = this[timeUnit] + time; }
+    }
+    else if (actionType === 'MINUS') {
+      if (timeUnit === 'minutes' && this.minutes === 0) { this.hours--; this.minutes = 59; }
+      else { this[timeUnit] = this[timeUnit] - time; }
     }
 
     this.setTimeForDisplay();
@@ -76,11 +74,11 @@ export class TimePickerComponent implements OnInit {
     // console.log(typeof +userInput[0]);
   }
 
-  isInRange(time) {
-    time = time.split(':');
-    const range = this.range.split(':');
-    return ((time[0] < range[0]) || (time[0] === range[0] && time[1] <= range[1]));
-  }
+  // isInRange(time) { TODO: use this function for restrictions
+  //   time = time.split(':');
+  //   const range = this.range.split(':');
+  //   return ((time[0] < range[0]) || (time[0] === range[0] && time[1] <= range[1]));
+  // }
 
   emitTime() {
     this.timeChanged.emit({

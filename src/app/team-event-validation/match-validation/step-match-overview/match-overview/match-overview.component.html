@@ -4,13 +4,13 @@
   </div>
 
   <div class="match-date">{{moment(stepMatchOverviewData.startTime).format('DD/MM/YYYY')}}</div>
-
+  <!-- .add(stepMatchOverviewData.offset, 'hours') -->
   <button
     mat-button
     [matMenuTriggerFor]="menu"
     class="match-competition dropdown-btn"
   >
-    {{ dataManager.selectedCompetition || 'Competition' }}
+    {{ teamEventValidationService.getCompetitionNameById(stepMatchOverviewData.competition)?.name || 'Competition' }}
 
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8">
       <defs>
@@ -48,8 +48,8 @@
         <button
           mat-menu-item
           *ngFor="let competition of competitionOptions; let cardIndex = index"
-          (click)="setGameData($event.target.textContent,'selectedCompetition', 'competition')">
-          {{ competition }}
+          (click)="setGameData(+competition.id,'selectedCompetition', 'competition')">
+          {{ competition.name }}
         </button>
       </mat-menu>
       <!-- <pm-content-dropdown [options]="competitionOptions" (optionClicked)="setGameData($event.value, 'selectedCompetition', 'competition')" [pointy]="true">
@@ -81,11 +81,9 @@
             style="margin-right: 40px;"
             [checked]="stepMatchOverviewData.vanue === 1"
           >
-            <!-- (change)="onPhaseOptionSelect($event)" -->
             Home
           </mat-radio-button>
           <mat-radio-button [value]="2" [checked]="stepMatchOverviewData.vanue === 2">
-            <!-- (change)="onPhaseOptionSelect($event)" -->
             Away
           </mat-radio-button>
         </mat-radio-group>
@@ -96,7 +94,7 @@
       [showError]="true"
       [errorMassage]="'please enter a valid score'">
         <input
-          (input)="updateScore($event.target.value, 'HOME')"
+          (input)="updateScore($event, 'HOME')"
           type="number"
           min="0"
           max="99"
@@ -104,18 +102,17 @@
           placeholder="0"
         /><span style="margin: 0 20px">:</span
         ><input
-          (input)="updateScore($event.target.value, 'AWAY')"
-          placeholder="0"
+          (input)="updateScore($event, 'AWAY')"
           type="number"
           min="0"
           max="99"
           class="score-box"
+          placeholder="0"
         />
       </div>
     </div>
 
     <div class="away-team-container match-overview-inner-container">
-      <!-- <img src="https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png" alt="team-logo" class="team-logo" /> -->
 
       <svg
         class="team-logo"
