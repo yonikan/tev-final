@@ -177,6 +177,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 	openDialog() {
 		const dialogRef = this.dialog.open(ContactSupportModalComponent, {
 			width: '415px',
+			height: '426px',
 			data: {subject: '', message: ''}
 		});
 
