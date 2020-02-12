@@ -8,11 +8,11 @@
   color: var(--headerColor);
 }
 
-@mixin button() {
+@mixin button($background-color: $color-green) {
   width: 100%;
   margin-top: 8px;
   border-radius: 20px;
-  background-color: $color-purple;
+  background-color: $background-color;
   color: white;
   text-transform: uppercase;
 }
