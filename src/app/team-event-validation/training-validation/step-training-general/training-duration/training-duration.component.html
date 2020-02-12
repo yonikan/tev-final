@@ -5,16 +5,20 @@
 		time according to your team's speed activity
 	</p>
 	<div class="time-fields">
-		<div>
-			<div>From</div>
-			<input type="time" matInput placeholder="0" max="getTimeStr(highlightedRange.endTime)"
-			[ngModel]="highlightedRange.startTime | date: 'HH:mm'" (ngModelChange)="updateTime($event, 'startTime')" />
-		</div>
-		<div>
-			<div>To</div>
-			<input placeholder="0" type="time" matInput min="getTimeStr(highlightedRange.startTime)"
-			[ngModel]="highlightedRange.endTime | date: 'HH:mm'" (ngModelChange)="updateTime($event, 'endTime')" />
-		</div>
+		<app-simple-time-picker
+			[label]="'From'"
+			[propName]="'startTime'"
+			[maxPropName]="'endTime'"
+			[(range)]="highlightedRange"
+			(updateTime)="updateTime($event, 'startTime')">
+		</app-simple-time-picker>
+		<app-simple-time-picker
+			[label]="'To'"
+			[propName]="'endTime'"
+			[maxPropName]="'startTime'"
+			[(range)]="highlightedRange"
+			(updateTime)="updateTime($event, 'endTime')">
+		</app-simple-time-picker>
 	</div>
 	<app-speed-graph
 		[vertices]="verticesData.velInterpMs"
