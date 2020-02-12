@@ -1,3 +1,4 @@
+import { TeamEventValidationService } from 'src/app/team-event-validation/team-event-validation.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import * as moment from 'moment';
@@ -13,7 +14,10 @@ export class PhasesModalComponent implements OnInit {
   phaseDurationTotal;
   phaseToEdit;
 
-  constructor(public dialogRef: MatDialogRef<any>,
+  startTimeError;
+  endTimeError;
+
+  constructor(private teamEventValidationService: TeamEventValidationService, public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: { eventType: number, phasesCount: number, index: number, phase: any }) {
   }
 
@@ -59,18 +63,31 @@ export class PhasesModalComponent implements OnInit {
   }
 
   updateTime(timeStr, prop) {
-	const d = new Date(this.phaseToEdit[prop]);
-	timeStr
-		.split(':')
-		.map((v, i) => {
-			if (i === 0) {
-				return d.setHours(v);
-			}
-			return d.setMinutes(v);
-		});
+    const d = new Date(this.phaseToEdit[prop]);
+    timeStr
+      .split(':')
+      .map((v, i) => {
+        if (i === 0) {
+          return d.setHours(v);
+        }
+        return d.setMinutes(v);
+      });
 
-	this.phaseToEdit[prop] = d.getTime();
-	this[prop] = d.getTime();// HACK: for change detection
-}
+    if (this.isValidTime(d.getTime())) {
+      this.startTimeError = 'warmup phase can be only first or last phase'
+      return;
+    }
+
+    this.phaseToEdit[prop] = d.getTime();
+    this[prop] = d.getTime();// HACK: for change detection
+
+    this.startTimeError = '';
+    this.endTimeError = '';
+  }
+
+  isValidTime(time) {
+    const phases = this.teamEventValidationService.getAllPhases()
+    return time < phases[0].startTime || time > phases[phases.length - 1].endTime
+  }
 
 }

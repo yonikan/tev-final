@@ -9,72 +9,72 @@
 
 
 
-  // offir's modal ======================================================================
-  // .phases-modal {
-  //   background-color: #ffffff;
-  //   // min-height: 1080px;
-  //   position: relative;
-  //   transition: all .25s ease-in-out;
+  // ofir's modal ======================================================================
+  .phases-modal {
+    background-color: #ffffff;
+    // min-height: 1080px;
+    position: relative;
+    transition: all .25s ease-in-out;
 
-  //   .phases-modal-header {
-  //     // height: 197px;
-  //     background-color: #f1f1f1;
-  //     padding: 65px 30px 30px 30px;
-  //     display: flex;
-  //     flex-flow: column;
-  //     align-items: center;
+    .phases-modal-header {
+      // height: 197px;
+      background-color: #f1f1f1;
+      padding: 65px 30px 30px 30px;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
 
-  //     .exit-btn {
-  //       position: absolute;
-  //       top: 12px;
-  //       left: 12px;
-  //       cursor: pointer;
-  //     }
+      .exit-btn {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        cursor: pointer;
+      }
 
-  //     .phases-counter {
-  //       position: absolute;
-  //       top: 18px;
-  //       right: 28px;
-  //       font-size: 16px;
-  //       color: #8994a3;
-  //     }
+      .phases-counter {
+        position: absolute;
+        top: 18px;
+        right: 28px;
+        font-size: 16px;
+        color: #8994a3;
+      }
 
-  //     .phase-options {
-  //       margin-bottom: 39px;
-  //     }
+      .phase-options {
+        margin-bottom: 39px;
+      }
 
-  //     .phase-duration {
-  //       display: flex;
-  //       align-items: center;
-  //       .end-phase {
-  //         margin-left: 47px;
-  //       }
+      .phase-duration {
+        display: flex;
+        align-items: center;
+        .end-phase {
+          margin-left: 47px;
+        }
 
-  //       .phase-duration-total {
-  //         font-size: 14px;
-  //         color: #96a1ae;
-  //         margin-left: 23px;
-  //       }
-  //     }
-  //   }
+        .phase-duration-total {
+          font-size: 14px;
+          color: #96a1ae;
+          margin-left: 23px;
+        }
+      }
+    }
 
-  //   .phases-modal-content {
-  //     padding: 20px 30px;
-  //   }
+    .phases-modal-content {
+      padding: 20px 30px;
+    }
 
-  //   .phases-modal-footer {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     padding: 20px 0;
+    .phases-modal-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
 
-  //     .save-phase-btn {
-  //       width: 205px;
-  //       height: 43px;
-  //       object-fit: contain;
-  //       border-radius: 21.5px;
-  //       background-color: #11cd69;
-  //       color: #ffffff;
-  //     }
-  //   }
-  // }
+      .save-phase-btn {
+        width: 205px;
+        height: 43px;
+        object-fit: contain;
+        border-radius: 21.5px;
+        background-color: #11cd69;
+        color: #ffffff;
+      }
+    }
+  }

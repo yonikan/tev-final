@@ -9,7 +9,7 @@
   </div>
 
   <div class="dialog-content">
-    
+
   </div>
 
   <div class="dialog-footer">
@@ -20,8 +20,8 @@
 </div>
 
 
-<!-- offir's modal ====================================================================== -->
-<!-- <div class="phases-modal">
+<!-- ofir's modal ====================================================================== -->
+<div class="phases-modal">
   <div class="phases-modal-header">
     <div class="exit-btn" (click)="close()">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
@@ -56,13 +56,15 @@
 			[maxPropName]="'endTime'"
 			[(range)]="phaseToEdit"
 			(updateTime)="updateTime($event, 'startTime');setPhaseDurationTotal();">
-		</app-simple-time-picker>
+    </app-simple-time-picker>
+    <mat-error *ngIf="endTimeError">{{endTimeError}}</mat-error>
 		<app-simple-time-picker
 			[propName]="'endTime'"
 			[maxPropName]="'startTime'"
 			[(range)]="phaseToEdit"
 			(updateTime)="updateTime($event, 'endTime');setPhaseDurationTotal();">
-		</app-simple-time-picker>
+    </app-simple-time-picker>
+    <mat-error *ngIf="startTimeError">{{startTimeError}}</mat-error>
       <div class="phase-duration-total">({{ setPhaseDurationTotal() }})</div>
     </div>
   </div>
@@ -101,4 +103,4 @@
   <div class="phases-modal-footer">
     <button class="save-phase-btn" (click)="savePhase()">SAVE PHASE</button>
   </div>
-</div> -->
+</div>
