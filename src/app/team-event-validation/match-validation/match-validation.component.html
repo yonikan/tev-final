@@ -4,7 +4,7 @@
     </div>
     <mat-tab-group [selectedIndex]="currentSelectedStep" *ngIf="!isLoading">
         <mat-tab label="OVERVIEW" [disabled]="true">
-            <app-step-match-overview *ngIf="currentSelectedStep === 0" [stepMatchOverviewData]="step1Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-overview>
+            <app-step-match-overview *ngIf="currentSelectedStep === 0" [teamEventId]="matchId" [stepMatchOverviewData]="step1Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-overview>
         </mat-tab>
         <mat-tab label="PLAYERS" [disabled]="true">
             <app-step-match-players *ngIf="currentSelectedStep === 1" [teamEventId]="matchId" [stepMatchPlayersData]="step2Data" (stepSelectionEmitter)="onStepSelectionEmitter($event)"></app-step-match-players>

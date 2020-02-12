@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TeamEventValidationService } from '../../team-event-validation.service';
 import { UiComponentsService } from 'src/app/core/services/ui-components.service';
 import { ContactSupportModalComponent } from 'src/app/shared/contact-support-modal/contact-support-modal.component';
+import { ParticipatingPlayersService } from './participating-players.service';
 
 interface InitialState {
 	excludedPlayers: Array<Object>;
@@ -28,7 +29,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 		allPlayers: [],
 		clubPlayers: []
 	}
-	private store = new Subject<InitialState>();
+	private store;
 	allPlayers: any = [];
 	clubPlayers: any = [];
 	private excludedPlayers = [];
@@ -44,7 +45,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 	currentPlayer;
 	isIncluded;
 
-	constructor(public dialog: MatDialog, private teamEventValidationService: TeamEventValidationService, private uiComponentService: UiComponentsService) {
+	constructor(private participatingPlayersService: ParticipatingPlayersService, public dialog: MatDialog, private teamEventValidationService: TeamEventValidationService, private uiComponentService: UiComponentsService) {
 	}
 
 	ngOnInit() {
@@ -54,28 +55,17 @@ export class ParticipatingPlayersComponent implements OnInit {
 		// 		console.log('data' ,data);
 
 		// 	});
-		this.store.subscribe((data: any) => {
+		this.store = this.participatingPlayersService.getStore();
+		this.participatingPlayersService.getState().subscribe(data => {
 			const {allPlayers, clubPlayers} = data;
 			if (allPlayers) {
-				if (this.allPlayers.length === 0) {
-					// save init state
-					this.initialState.allPlayers = allPlayers.map(p => ({...p}));
-				}
-				this.activePlayers = allPlayers.filter(player => player.activeTime.length).length;
-				this.allPlayers = allPlayers.map(p => ({...p}));
+				this.allPlayers = allPlayers;
 			}
-
 			if (clubPlayers) {
-				if (this.clubPlayers.length === 0) {
-					this.initialState.clubPlayers = clubPlayers.map(p => ({...p}));
-				}
-				this.clubPlayers = clubPlayers.map(p => ({...p}));
+				this.clubPlayers = clubPlayers;
 				this.clubPlayersGroup = this.getClubPlayers();
 			}
 		});
-
-		this.teamEventValidationService.getParticipatingPlayers(this.store, this.teamEventId, this.type);
-		this.teamEventValidationService.getPlayersForSwap(this.store, this.teamEventId);
 	}
 
 	doExcludePlayer(player) {
@@ -108,8 +98,6 @@ export class ParticipatingPlayersComponent implements OnInit {
 	doSwapPlayer(player, isIncluded) {
 		this.teamEventValidationService.swapPlayer(this.currentPlayer.id, player.userId, this.teamEventId, () => {
 			const newState = {
-				excludedPlayers: this.excludedPlayers,
-				includedPlayers: this.includedPlayers,
 				allPlayers: this.allPlayers.map(p => {
 					if (p.id === this.currentPlayer.id) {
 						p = {
@@ -135,7 +123,6 @@ export class ParticipatingPlayersComponent implements OnInit {
 
 			this.store.next(newState);
 		});
-		// TODO: update clubplayers list
 	}
 
 	mapSwap(player, swappedPlayer, players) {
