@@ -6,6 +6,7 @@ import { PhasesModalComponent } from '../../../common/phases-modal/phases-modal.
 import * as moment from 'moment';
 import { enumToString } from '../../../../core/helpers/helper-functions';
 import { TrainingDrills } from '../../../../core/enums/training-drills.enum'
+import { TeamEventValidationService } from 'src/app/team-event-validation/team-event-validation.service';
 
 @Component({
   selector: 'app-phases-card',
@@ -15,15 +16,12 @@ import { TrainingDrills } from '../../../../core/enums/training-drills.enum'
 export class PhasesCardComponent implements OnInit {
 
   @Input() phase;
-  @Input() PhasesCount;
+  @Input() phasesCount;
   @Input() index;
   @Output() deleteCard = new EventEmitter();
   @Output() savePhaseChanges = new EventEmitter();
 
   mode = 'MATCH';
-
-  enumToString = enumToString;
-  TrainingDrills = TrainingDrills;
 
   ellipsisOptions = [
     // { name: 'Duplicate', icon: 'account_circle' },
@@ -31,7 +29,7 @@ export class PhasesCardComponent implements OnInit {
   ];
 
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
     // console.log(this.phase)
@@ -47,7 +45,7 @@ export class PhasesCardComponent implements OnInit {
     const diff = moment(endTime).diff(startTime, 'minutes');
     startTime = moment(startTime).add(offset, 'hours').format('hh:mm');
     endTime = moment(endTime).add(offset, 'hours').format('hh:mm');
-    return `${startTime} - ${endTime} (${diff} min) - phase ${this.index + 1}/${this.PhasesCount}`
+    return `${startTime} - ${endTime} (${diff} min) - phase ${this.index + 1}/${this.phasesCount}`
   }
 
   hundleEllipsisAction(ellipsisOption) {
@@ -81,8 +79,8 @@ export class PhasesCardComponent implements OnInit {
       width: '870px',
       // height: '200px',
       data: {
-        eventType: 'TRAINING',
-        PhasesCount: this.PhasesCount,
+        eventType: this.teamEventValidationService.getCurrentTeamEventType(),
+        phasesCount: this.phasesCount,
         index: this.index,
         phase: this.phase
       }

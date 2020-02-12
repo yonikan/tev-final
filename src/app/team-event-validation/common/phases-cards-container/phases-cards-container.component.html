@@ -7,7 +7,7 @@
     <div class="card" *ngFor="let phase of cards; let index = index">
       <app-phases-card
         [phase]="phase"
-        [PhasesCount]="cards.length"
+        [phasesCount]="cards.length"
         [index]="index"
         (savePhaseChanges)="updatePhase($event)"
         (deleteCard)="onDeleteCard($event)"

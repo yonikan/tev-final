@@ -11,10 +11,10 @@
     </div>
 
     <div class="phases-counter">
-      (Phase {{ data.index + 1 }} of {{ data.PhasesCount }})
+      (Phase {{ data.index + 1 }} of {{ data.phasesCount }})
     </div>
     <div class="phase-options">
-      <mat-radio-group aria-labelledby="radio-group-label" class="radio-group">
+      <mat-radio-group class="radio-group">
         <!-- [(ngModel)]="selectedPhasesOption" -->
         <mat-radio-button
           *ngFor="let option of modalOptions; let first = first"
@@ -47,24 +47,30 @@
   <div class="phases-modal-content">
 
     <app-match-phase-modal
-      *ngIf="phaseToEdit.type === 2"
+      *ngIf="phaseToEdit.type === 5"
+      [phase]="data.phase"
+      [selectedLineup]="phaseToEdit.lineup || {}"
       (updateField)="onUpdateField($event)"
     ></app-match-phase-modal>
 
     <app-warmup-modal
       *ngIf="phaseToEdit.type === 4"
+      [phase]="data.phase"
+      [selectedLineup]="phaseToEdit.lineup || {}"
       (updateField)="onUpdateField($event)"
     ></app-warmup-modal>
 
     <app-physical-modal
       *ngIf="phaseToEdit.type === 1"
+      [phase]="data.phase"
+      [selectedLineup]="phaseToEdit.lineup || {}"
       (updateField)="onUpdateField($event)"
     ></app-physical-modal>
 
     <app-technical-modal
       *ngIf="phaseToEdit.type === 3"
       [phase]="data.phase"
-      [selectedLineup]="phaseToEdit.lineup"
+      [selectedLineup]="phaseToEdit.lineup || {}"
       (updateField)="onUpdateField($event)"
     ></app-technical-modal>
 

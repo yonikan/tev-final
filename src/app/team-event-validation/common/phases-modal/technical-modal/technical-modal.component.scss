@@ -29,6 +29,21 @@
         font-weight: 500;
         color: #3d4762;
       }
+
+      .drill-radio-btn {
+        margin-right: 10px;
+        &:last-child {
+          margin-right: 0px;
+
+        }
+      }
+
+      .pitch-size-option {
+        margin-left: 20px;
+        &:first-child {
+          margin-left: 0px;
+        }
+      }
     }
   }
 }
@@ -48,6 +63,13 @@
   background-color: #fbfbfb;
   max-height: 400px;
   overflow-y: auto;
+
+  .lineup-dropdown-row {
+    border-top: 1px solid #e6e9eb;
+    &:first-child {
+      border-top: none;
+    }
+  }
 }
 
 .lineup-container {

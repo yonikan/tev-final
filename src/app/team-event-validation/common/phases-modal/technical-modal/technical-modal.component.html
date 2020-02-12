@@ -12,12 +12,12 @@
   <div class="row">
     <div class="row-title">Drill Type</div>
     <div class="row-content">
-      <mat-radio-group aria-labelledby="radio-group-label" class="radio-group">
+      <mat-radio-group class="radio-group">
         <!-- [(ngModel)]="selectedPhasesOption" -->
         <mat-radio-button
+          class="drill-radio-btn"
           *ngFor="let drill of drillTypes; let first = first; let last = last"
           [value]="drill"
-          [ngStyle]="{ 'margin-right': last ? '0' : '10px' }"
           (change)="onDrillSelect($event)"
           [checked]="selectedDrill.enum === drill.enum"
         >
@@ -76,8 +76,8 @@
 
           <div class="lineup-dropdown-body" *ngIf="selectedDrill.enum !== 'OPPOSEED_LINEUP'">
             <app-lineup-dropdown-row
+              class="lineup-dropdown-row"
               *ngFor="let player of lineup; let first = first"
-              [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
               [player]="player"
               [rowMode]="selectedDrill.enum"
               (lineupRowClicked)="onLineupRowClicked($event)"
@@ -90,8 +90,8 @@
               <div class="position-player" *ngFor="let key of Object.keys(getPositionsLineupObj())">
                 <div class="lineup-inner-title">{{key}}</div>
                 <app-lineup-dropdown-row
+                  class="lineup-dropdown-row"
                   *ngFor="let player of getPositionsLineupObj()[key]; let first = first"
-                  [ngStyle]="{ 'border-top': first ? '' : '1px solid #e6e9eb' }"
                   [player]="player"
                   [rowMode]="selectedDrill.enum"
                   (lineupRowClicked)="onLineupRowClicked($event)"
@@ -113,17 +113,13 @@
     <div class="row-content">
       <!-- <mat-radio-group> -->
       <pitch-size-option
+        class="pitch-size-option"
         *ngFor="let pitchSizeOption of pitchSizeOptions; let first = first"
         [option]="pitchSizeOption"
         [mode]="pitchSizeOption.type"
         [checked]="first"
-        [ngStyle]="{ 'margin-left': !first ? '20px' : '0' }"
         (optionClicked)="onPitchSizeSelect($event)"
       >
-      </pitch-size-option>
-
-      <pitch-size-option [mode]="'CUSTOM'"
-                         (optionClicked)="onPitchSizeSelect($event)">
       </pitch-size-option>
 
       <!-- </mat-radio-group> -->

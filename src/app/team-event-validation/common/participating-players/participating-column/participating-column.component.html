@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div  *ngIf="!player.error && isSwapAllowed" [ngClass]="{'swap-shirts': true, open: player.isOpen, swapped: player.isSwapped}" (click)="openSummary(player, target)"></div>
-				<div  *ngIf="!player.error" class="action-name" (click)="exclude(player)">{{actionName}}</div>
+				<div  *ngIf="!player.error" [ngClass]="{'action-name': true, include: actionName === ACTION_NAMES.INCLUDE}" (click)="exclude(player)"></div>
 			</div>
 		</summary>
 		<div class="details-content" #target></div>

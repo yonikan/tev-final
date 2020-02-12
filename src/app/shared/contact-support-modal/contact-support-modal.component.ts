@@ -33,5 +33,4 @@ export class ContactSupportModalComponent implements OnInit {
 		}
 		this.dialogRef.close(this.form.value);
 	}
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-warmup-modal',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WarmupModalComponent implements OnInit {
 
+  @Input() phase;
+  @Input() selectedLineup = {};
+  @Output() updateField = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  changePhaseName(value) {
+    this.updateField.emit({ value, filedPathToUpdate: ['phaseName'] });
+  }
 }

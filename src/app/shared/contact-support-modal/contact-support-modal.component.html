@@ -1,9 +1,13 @@
-<div class="container">
-	<div class="heading">
-		<i class="demo-icon icon-x" (click)="cancel()">&#xe813;</i>
-		<div>Contact Support</div>
+<div class="modal-container">
+	<div class="dialog-header">
+		<button mat-icon-button>
+			<i class="demo-icon icon-x" (click)="cancel()">&#xe813;</i>
+		</button>
+		<h2>Contact Support</h2>
+		<span></span>
 	</div>
-	<div class="content">
+	
+	<div class="dialog-content">
 		<form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
 			<mat-form-field>
 				<input required matInput placeholder="Subject" formControlName="subject">
@@ -12,8 +16,12 @@
 			<mat-form-field>
 				<textarea rows="5" required matInput placeholder="Youre message" formControlName="message"></textarea>
 			</mat-form-field>
-
-			<button mat-button cdkFocusInitial>SEND</button>
 		</form>
+	</div>
+	
+	<div class="dialog-footer">
+		<div mat-dialog-actions>
+			<button (click)="null" mat-raised-button>send</button>
+		</div>
 	</div>
 </div>
