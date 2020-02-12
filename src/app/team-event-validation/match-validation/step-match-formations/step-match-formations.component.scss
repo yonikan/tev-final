@@ -4,10 +4,10 @@
 
 :host {
     .step-match-formations-container {
-        @include team-event-step;
+		@include team-event-step;
+		padding: 0;
     }
     .container {
-        padding: 20px;
         .heading {
             color: #3d4762;
             font-size: 30px;
