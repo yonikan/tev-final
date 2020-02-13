@@ -21,7 +21,7 @@ export class StepMatchPlayersComponent implements OnInit {
 		this.stepSelectionEmitter.emit(2);
 	}
 
-	backStep() {
-		this.stepSelectionEmitter.emit(0);
+	previousStep() {
+		this.stepSelectionEmitter.emit(-1);
 	}
 }

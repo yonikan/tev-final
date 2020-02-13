@@ -55,7 +55,7 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 		this.stepSelectionEmitter.emit(4);
 	}
 
-	backStep() {
-		this.stepSelectionEmitter.emit(2);
+	previousStep() {
+		this.stepSelectionEmitter.emit(-1);
 	}
 }

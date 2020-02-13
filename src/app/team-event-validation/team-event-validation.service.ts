@@ -254,4 +254,20 @@ export class TeamEventValidationService {
   getCompetitionNameById(id) {
     return this.getStaticData().competitions[id];
   }
+
+  onStepSelection(stepNumber, step, stepper, validateCallback) {
+	if (stepNumber) {
+		step.isCompleted = true;
+		stepper.selected.completed = true;
+		if (stepNumber == -1) {
+			step.isCompleted = false;
+			stepper.selected.completed = false;
+			stepper.previous();
+		} else if (step.isLastStep) {
+			validateCallback();
+		} else {
+			stepper.next();
+		}
+	}
+}
 }
