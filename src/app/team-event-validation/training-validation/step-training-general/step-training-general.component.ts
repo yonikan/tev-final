@@ -40,12 +40,18 @@ export class StepTrainingGeneralComponent implements OnInit, OnChanges {
 	}
 
 	nextStep() {
-		this.teamEventValidationService.trainingDataOutput.step1GeneralData = this.stepTrainingGeneralData;
+		// this.teamEventValidationService.setTrainingValidationData({...this.stepTrainingGeneralData, });
+		// this.teamEventValidationService.trainingDataOutput.step1GeneralData = this.stepTrainingGeneralData;
 		this.stepSelectionEmitter.emit(1);
 	}
 
 	onTagsEmitter(tags) {
-		console.log(tags);
-		this.trainingTags = tags;
+		let trimmedTags = [];
+		tags.forEach(tag => {
+			trimmedTags.push(tag.name);
+		});
+		let trainingData = this.teamEventValidationService.getTrainingValidationData();
+		trainingData.metadata.tags = trimmedTags;
+		this.teamEventValidationService.setTrainingValidationData(trainingData);
 	}
 }

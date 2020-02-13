@@ -20,7 +20,7 @@ export class StepTrainingPlayersComponent implements OnInit {
 	}
 
 	nextStep() {
-		this.teamEventValidationService.trainingDataOutput.step2PlayersData = this.stepTrainingPlayersData;
+		// this.teamEventValidationService.trainingDataOutput.step2PlayersData = this.stepTrainingPlayersData;
 		this.stepSelectionEmitter.emit(2);
 	}
 
