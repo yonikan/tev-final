@@ -58,4 +58,19 @@ export class PhasesModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  updateTime(timeStr, prop) {
+	const d = new Date(this.phaseToEdit[prop]);
+	timeStr
+		.split(':')
+		.map((v, i) => {
+			if (i === 0) {
+				return d.setHours(v);
+			}
+			return d.setMinutes(v);
+		});
+
+	this.phaseToEdit[prop] = d.getTime();
+	this[prop] = d.getTime();// HACK: for change detection
+}
+
 }

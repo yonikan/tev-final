@@ -19,6 +19,10 @@ export class PhasesCardsContainerComponent implements OnInit {
     observer: true,
     spaceBetween: 30,
     slidesPerView: 5.2,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     breakpoints: {
       1025: {
         slidesPerView: 1.2

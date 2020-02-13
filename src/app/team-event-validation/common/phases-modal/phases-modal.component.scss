@@ -1,71 +1,80 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+:host {
+  border-radius: 10px;
+  text-align: center;
+  @include modal;
+}
 
 
-  .phases-modal {
-    background-color: #ffffff;
-    // min-height: 1080px;
-    position: relative;
-    transition: all .25s ease-in-out;
 
-    .phases-modal-header {
-      // height: 197px;
-      background-color: #f1f1f1;
-      padding: 65px 30px 30px 30px;
-      display: flex;
-      flex-flow: column;
-      align-items: center;
+  // offir's modal ======================================================================
+  // .phases-modal {
+  //   background-color: #ffffff;
+  //   // min-height: 1080px;
+  //   position: relative;
+  //   transition: all .25s ease-in-out;
 
-      .exit-btn {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        cursor: pointer;
-      }
+  //   .phases-modal-header {
+  //     // height: 197px;
+  //     background-color: #f1f1f1;
+  //     padding: 65px 30px 30px 30px;
+  //     display: flex;
+  //     flex-flow: column;
+  //     align-items: center;
 
-      .phases-counter {
-        position: absolute;
-        top: 18px;
-        right: 28px;
-        font-size: 16px;
-        color: #8994a3;
-      }
+  //     .exit-btn {
+  //       position: absolute;
+  //       top: 12px;
+  //       left: 12px;
+  //       cursor: pointer;
+  //     }
 
-      .phase-options {
-        margin-bottom: 39px;
-      }
+  //     .phases-counter {
+  //       position: absolute;
+  //       top: 18px;
+  //       right: 28px;
+  //       font-size: 16px;
+  //       color: #8994a3;
+  //     }
 
-      .phase-duration {
-        display: flex;
-        align-items: center;
-        .end-phase {
-          margin-left: 47px;
-        }
+  //     .phase-options {
+  //       margin-bottom: 39px;
+  //     }
 
-        .phase-duration-total {
-          font-size: 14px;
-          color: #96a1ae;
-          margin-left: 23px;
-        }
-      }
-    }
+  //     .phase-duration {
+  //       display: flex;
+  //       align-items: center;
+  //       .end-phase {
+  //         margin-left: 47px;
+  //       }
 
-    .phases-modal-content {
-      padding: 20px 30px;
-    }
+  //       .phase-duration-total {
+  //         font-size: 14px;
+  //         color: #96a1ae;
+  //         margin-left: 23px;
+  //       }
+  //     }
+  //   }
 
-    .phases-modal-footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px 0;
+  //   .phases-modal-content {
+  //     padding: 20px 30px;
+  //   }
 
-      .save-phase-btn {
-        width: 205px;
-        height: 43px;
-        object-fit: contain;
-        border-radius: 21.5px;
-        background-color: #11cd69;
-        color: #ffffff;
-      }
-    }
-  }
+  //   .phases-modal-footer {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     padding: 20px 0;
 
+  //     .save-phase-btn {
+  //       width: 205px;
+  //       height: 43px;
+  //       object-fit: contain;
+  //       border-radius: 21.5px;
+  //       background-color: #11cd69;
+  //       color: #ffffff;
+  //     }
+  //   }
+  // }

@@ -1,4 +1,27 @@
-<div class="phases-modal">
+<div class="modal-container">
+  <div class="dialog-header">
+      <button mat-icon-button>
+          <i class="demo-icon icon-x" (click)="close()">&#xe813;</i>
+      </button>
+      <div class="phases-counter">
+        (Phase {{ data.index + 1 }} of {{ data.phasesCount }})
+      </div>
+  </div>
+
+  <div class="dialog-content">
+    
+  </div>
+
+  <div class="dialog-footer">
+      <div mat-dialog-actions>
+          <button (click)="savePhase()" mat-raised-button>save phase</button>
+      </div>
+  </div>
+</div>
+
+
+<!-- offir's modal ====================================================================== -->
+<!-- <div class="phases-modal">
   <div class="phases-modal-header">
     <div class="exit-btn" (click)="close()">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
@@ -15,7 +38,6 @@
     </div>
     <div class="phase-options">
       <mat-radio-group class="radio-group">
-        <!-- [(ngModel)]="selectedPhasesOption" -->
         <mat-radio-button
           *ngFor="let option of modalOptions; let first = first"
           [value]="option"
@@ -29,19 +51,19 @@
       </mat-radio-group>
     </div>
     <div class="phase-duration">
-      <time-picker
-        class="start-phase"
-        [defaultTime]="phaseToEdit.startTime"
-        [offset]="phaseToEdit.offset"
-        (timeChanged)="onUpdateField({value: $event.timeUnix, filedPathToUpdate: ['startTime']}); setPhaseDurationTotal();"
-      ></time-picker>
-      <time-picker
-        class="end-phase"
-        [defaultTime]="phaseToEdit.endTime"
-        [offset]="phaseToEdit.offset"
-        (timeChanged)="onUpdateField({value: $event.timeUnix, filedPathToUpdate: ['endTime']}); setPhaseDurationTotal();"
-      ></time-picker>
-      <div class="phase-duration-total">({{ phaseDurationTotal }})</div>
+		<app-simple-time-picker
+			[propName]="'startTime'"
+			[maxPropName]="'endTime'"
+			[(range)]="phaseToEdit"
+			(updateTime)="updateTime($event, 'startTime');setPhaseDurationTotal();">
+		</app-simple-time-picker>
+		<app-simple-time-picker
+			[propName]="'endTime'"
+			[maxPropName]="'startTime'"
+			[(range)]="phaseToEdit"
+			(updateTime)="updateTime($event, 'endTime');setPhaseDurationTotal();">
+		</app-simple-time-picker>
+      <div class="phase-duration-total">({{ setPhaseDurationTotal() }})</div>
     </div>
   </div>
   <div class="phases-modal-content">
@@ -79,4 +101,4 @@
   <div class="phases-modal-footer">
     <button class="save-phase-btn" (click)="savePhase()">SAVE PHASE</button>
   </div>
-</div>
+</div> -->

@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ServerEnvService } from 'src/app/core/services/server-env.service';
 
 @Component({
 	selector: 'app-contact-support-modal',
@@ -8,29 +10,43 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 	styleUrls: ['./contact-support-modal.component.scss']
 })
 export class ContactSupportModalComponent implements OnInit {
-	form: FormGroup;
+	contactSupportFormGroup: FormGroup;
+	subject = null;
+	message = null;
 
 	constructor(
 		public dialogRef: MatDialogRef<ContactSupportModalComponent>,
-		@Inject(MAT_DIALOG_DATA) public data, fb: FormBuilder) {
-
-			this.form = fb.group({
-				subject: '',
-				message: ''
-			});
-		}
+		private formBuilder: FormBuilder,
+		private http: HttpClient,
+		private serverEnvService: ServerEnvService
+	){}
 
 	ngOnInit() {
+		this.contactSupportFormGroup = this.formBuilder.group({
+			subjectText: ['', []],
+			messageText: ['', []]
+		  });
 	}
 
-	cancel() {
+	onCancel() {
 		this.dialogRef.close();
 	}
 
 	onSubmit() {
-		if (this.form.invalid) {
-			return false;
+		if (!this.contactSupportFormGroup.valid) {
+			return;
 		}
-		this.dialogRef.close(this.form.value);
+		const PATH = this.serverEnvService.getBaseUrl();
+		const PAYLOAD = this.contactSupportFormGroup.value;
+		this.http.post<any>(`${PATH}/v3/support`, PAYLOAD)
+			.subscribe(
+				(resp: any) => {
+					console.log('the mail has been sent!');
+				},
+				(error) => {
+					console.log('the mail has NOT been sent!');
+				}
+			);
+		this.dialogRef.close(this.contactSupportFormGroup.value);
 	}
 }

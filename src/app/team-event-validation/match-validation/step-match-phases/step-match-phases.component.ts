@@ -34,7 +34,7 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 	constructor(private teamEventValidationService: TeamEventValidationService) { }
 
 	ngOnInit() {
-		console.log('stepMatchPhasesData: ', this.stepMatchPhasesData);
+		this.plotBands = this.stepMatchPhasesData.phasesList.map(({startTime, endTime}) => ({from: startTime, to: endTime}));
 		// this.teamEventValidationService.phasesVerticesData
 		//   .subscribe(verticesData => this.verticesData = verticesData);
 	}
@@ -42,11 +42,11 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 	ngOnChanges() {
 		if (this.stepMatchPhasesData && 'velocityVector' in this.stepMatchPhasesData) {
 			this.verticesData = this.stepMatchPhasesData.velocityVector;
-			const d = new Date(this.stepMatchPhasesData.velocityVector.startTimeInterpMs + 30 * 60000);
-			this.highlightedRange = {
-				startTime: this.stepMatchPhasesData.velocityVector.startTimeInterpMs,
-				endTime: d.getTime()
-			}
+			// const d = new Date(this.stepMatchPhasesData.velocityVector.startTimeInterpMs + 30 * 60000);
+			// this.highlightedRange = {
+			// 	startTime: this.stepMatchPhasesData.velocityVector.startTimeInterpMs,
+			// 	endTime: d.getTime()
+			// }
 		}
 	}
 

@@ -8,11 +8,11 @@
   color: var(--headerColor);
 }
 
-@mixin button() {
+@mixin button($background-color: $color-green) {
   width: 100%;
   margin-top: 8px;
   border-radius: 20px;
-  background-color: $color-purple;
+  background-color: $background-color;
   color: white;
   text-transform: uppercase;
 }
@@ -166,8 +166,9 @@
   .step-footer {
     border-top: 1px solid #cecece;
     display: flex;
-    margin: 20px 0;
-    margin-top: auto;
+    margin-bottom: 20px;
+    // margin-top: auto;
+    margin-top: 40px;
     padding: 15px 0;
 
     // bottom: 0;
@@ -225,6 +226,10 @@
       color: #96a1ae;
       margin: 0;
       margin-bottom: 20px;
+
+      @media (max-width: $media-query-sm) {
+        font-size: 17px;
+      }
   }
 }
 

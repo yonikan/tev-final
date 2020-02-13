@@ -1,27 +1,24 @@
 <div class="modal-container">
 	<div class="dialog-header">
 		<button mat-icon-button>
-			<i class="demo-icon icon-x" (click)="cancel()">&#xe813;</i>
+			<i class="demo-icon icon-x" (click)="onCancel()">&#xe813;</i>
 		</button>
 		<h2>Contact Support</h2>
 		<span></span>
 	</div>
-	
 	<div class="dialog-content">
-		<form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
-			<mat-form-field>
-				<input required matInput placeholder="Subject" formControlName="subject">
+		<form [formGroup]="contactSupportFormGroup" (submit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>subject</mat-label>
+                <input matInput type="text" formControlName="subjectText">
 			</mat-form-field>
-
-			<mat-form-field>
-				<textarea rows="5" required matInput placeholder="Youre message" formControlName="message"></textarea>
+            <mat-form-field>
+				<mat-label>message</mat-label>
+				<textarea rows="5" required matInput placeholder="Youre message" formControlName="messageText"></textarea>
 			</mat-form-field>
+			<button [disabled]="!contactSupportFormGroup.valid" type="submit" mat-raised-button>
+                send
+            </button>
 		</form>
-	</div>
-	
-	<div class="dialog-footer">
-		<div mat-dialog-actions>
-			<button (click)="null" mat-raised-button>send</button>
-		</div>
 	</div>
 </div>

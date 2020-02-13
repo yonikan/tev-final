@@ -50,6 +50,7 @@ import { WarmupModalComponent } from './common/phases-modal/warmup-modal/warmup-
 import { TechnicalModalComponent } from './common/phases-modal/technical-modal/technical-modal.component';
 import { PitchSizeOptionComponent } from './common/pitch-size-option/pitch-size-option.component';
 import { LineupDropdownRowComponent } from './common/phases-modal/technical-modal/lineup-dropdown-row/lineup-dropdown-row.component'
+import { SimpleTimePickerComponent } from './common/simple-time-picker/simple-time-picker.component';
 @NgModule({
   declarations: [
     MatchValidationComponent,
@@ -86,7 +87,8 @@ import { LineupDropdownRowComponent } from './common/phases-modal/technical-moda
     TimeDiffPipe,
     FormationFieldComponent,
     FormationSelectionComponent,
-    FieldPlayerComponent
+	FieldPlayerComponent,
+	SimpleTimePickerComponent
   ],
   imports: [
     CommonModule,
@@ -121,7 +123,8 @@ import { LineupDropdownRowComponent } from './common/phases-modal/technical-moda
     SpeedGraphComponent,
     TrainingDurationComponent,
     MatchOverviewComponent,
-    ParticipatingPlayersComponent
+	ParticipatingPlayersComponent,
+	SimpleTimePickerComponent
   ],
   entryComponents: [
     AreYouSureModalComponent,

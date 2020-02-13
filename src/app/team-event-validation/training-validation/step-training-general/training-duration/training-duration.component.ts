@@ -33,9 +33,4 @@ export class TrainingDurationComponent implements OnInit {
 		this.highlightedRange[prop] = d.getTime();
 		this[prop] = d.getTime();// HACK: for change detection
 	}
-
-	getTimeStr(time) {
-		const d = new Date(time);
-		return `${`${d.getHours()}`.padStart(2, '0')}:${`${d.getMinutes()}`.padStart(2, '0')}`
-	}
 }
