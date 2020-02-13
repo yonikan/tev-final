@@ -120,6 +120,12 @@
 			.mat-step-icon {
 				justify-self: center;
 				margin: 0;
+				&.mat-step-icon-selected {
+					background-color: transparent;
+					border: 6px solid #35083a;
+					width: 12px;
+					height: 12px;
+				}
 			}
 			.mat-step-icon-content {
 				visibility: hidden;
@@ -127,6 +133,7 @@
 			&[ng-reflect-state=edit] {
 					+ .mat-stepper-horizontal-line {
 							border-top-color: #35083a !important;
+							transition: 0.5s;
 					}
 			}
 		}
