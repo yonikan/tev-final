@@ -31,18 +31,18 @@ export class TeamEventValidationService {
 	private matchValidationData: any;
 	private matchValidationDataListener = new BehaviorSubject<any>({});
 	private currentTeamEventType: number;
-  BASE_URL;
 
-  linup = [];
-  availableForSub = [];
+  	BASE_URL;
+	linup = [];
+	availableForSub = [];
 
 	constructor(
 		private http: HttpClient,
 		private uiComponentsService: UiComponentsService,
 		private serverEnvService: ServerEnvService,
-    private staticDataService: StaticDataService,
+        private staticDataService: StaticDataService,
 	) {
-		this.BASE_URL = serverEnvService.getBaseUrl(3);
+		this.BASE_URL = serverEnvService.getBaseUrl(3) 
 	}
 
 	fetchTraining(trainingId): any {
@@ -166,7 +166,8 @@ export class TeamEventValidationService {
 			: playerPosition['0'][prop]
   }
 
-	// ofir's methods =========================================================================================
+
+  // Phases & subs methods =========================================================================================
   getCurrentValitationData() {
     switch (this.getCurrentTeamEventType()) {
       case 1:
