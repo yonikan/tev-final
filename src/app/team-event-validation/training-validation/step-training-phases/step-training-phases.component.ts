@@ -47,7 +47,6 @@ export class StepTrainingPhasesComponent implements OnInit, OnChanges {
 	}
 
 	nextStep() {
-		// this.teamEventValidationService.trainingDataOutput.step3PhasesData = this.stepTrainingPhasesData;
 		this.stepSelectionEmitter.emit(3);
 	}
 

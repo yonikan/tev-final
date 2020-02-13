@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { VerticesData } from 'src/app/team-event-validation/team-event-validation.interface';
 
 @Component({
@@ -9,6 +9,7 @@ import { VerticesData } from 'src/app/team-event-validation/team-event-validatio
 export class TrainingDurationComponent implements OnInit {
 	@Input() verticesData: VerticesData = {velInterpMs: 0, timeDtMs: 0, startTimeInterpMs: 0};
 	@Input() highlightedRange;
+	@Output() trainingDurationEmitter = new EventEmitter<any>();
 	startTime;
 	endTime;
 
@@ -32,5 +33,6 @@ export class TrainingDurationComponent implements OnInit {
 
 		this.highlightedRange[prop] = d.getTime();
 		this[prop] = d.getTime();// HACK: for change detection
+		this.trainingDurationEmitter.emit({startTime: this.startTime, endTime: this.endTime});
 	}
 }
