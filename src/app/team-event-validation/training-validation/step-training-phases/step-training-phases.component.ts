@@ -53,4 +53,8 @@ export class StepTrainingPhasesComponent implements OnInit, OnChanges {
 	backStep() {
 		this.stepSelectionEmitter.emit(1);
 	}
+
+	onTrainingPhasesEmitter(data) {
+		console.log('data: ', data);
+	}
 }
