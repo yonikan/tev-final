@@ -19,6 +19,11 @@ export class StepTrainingPlayersComponent implements OnInit {
 		console.log('stepTrainingPlayersData: ', this.stepTrainingPlayersData);
 	}
 
+	onParticipatingPlayersEmitter(data) {
+		console.log('data: ', data);
+
+	}
+
 	nextStep() {
 		this.stepSelectionEmitter.emit(2);
 	}
