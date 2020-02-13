@@ -1,5 +1,6 @@
 <div class="step-training-phases-container">
-    <app-speed-graph
+	<app-speed-graph
+		*ngIf="verticesData"
 		[vertices]="verticesData.velInterpMs"
 		[highlightedRange]="highlightedRange"
 		[timeDuration]="verticesData.timeDtMs"

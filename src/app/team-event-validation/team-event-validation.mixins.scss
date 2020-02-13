@@ -90,3 +90,46 @@
 		left: 0;
 	}
 }
+
+@mixin stepper-style {
+	::ng-deep .mat-horizontal-stepper-header-container {
+		display: grid !important;
+		grid-auto-flow: column;
+		grid-auto-columns: 70px 100px;
+		justify-content: center;
+		overflow: auto;
+		@media (max-width: $media-query-sm) {
+			justify-content: normal;
+		}
+		.mat-stepper-horizontal-line {
+				border-top-width: 4px !important;
+				margin: 0 -24px;
+				max-width: 148px;
+				min-width: 148px;
+		}
+		.mat-horizontal-stepper-header {
+			display: grid;
+			grid-auto-rows: 48px 20px;
+			align-items: end;
+			padding: 0;
+			.mat-step-label {
+				font-size: 0.6em;
+				justify-self: center;
+				min-width: unset;
+			}
+			.mat-step-icon {
+				justify-self: center;
+				margin: 0;
+			}
+			.mat-step-icon-content {
+				visibility: hidden;
+			}
+			&[ng-reflect-state=edit] {
+					+ .mat-stepper-horizontal-line {
+							border-top-color: #35083a !important;
+					}
+			}
+		}
+	}
+
+}

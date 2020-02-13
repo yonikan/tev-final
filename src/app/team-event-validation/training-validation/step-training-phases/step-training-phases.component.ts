@@ -35,7 +35,9 @@ export class StepTrainingPhasesComponent implements OnInit, OnChanges {
 	constructor(private teamEventValidationService: TeamEventValidationService) { }
 
 	ngOnInit() {
-		this.plotBands = this.stepTrainingPhasesData.phasesList.map(({startTime, endTime}) => ({from: startTime, to: endTime}));
+		if (this.stepTrainingPhasesData && this.stepTrainingPhasesData.phasesList) {
+			this.plotBands = this.stepTrainingPhasesData.phasesList.map(({startTime, endTime}) => ({from: startTime, to: endTime}));
+		}
 		// this.teamEventValidationService.phasesVerticesData
 		//   .subscribe(verticesData => this.verticesData = verticesData);
 	}
@@ -52,6 +54,6 @@ export class StepTrainingPhasesComponent implements OnInit, OnChanges {
 	}
 
 	backStep() {
-		this.stepSelectionEmitter.emit(1);
+		this.stepSelectionEmitter.emit(-1);
 	}
 }

@@ -53,36 +53,26 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 	}
 
 	onStepSelectionEmitter(stepNumber, step, stepper) {
-		if (stepNumber) {
-			step.isCompleted = true;
-			stepper.selected.completed = true;
-			if (stepNumber == -1) {
-				step.isCompleted = false;
-				stepper.selected.completed = false;
-				stepper.previous();
-			} else if (step.isLastStep) {
-				this.isLoading = true;
-				this.teamEventValidationService.validateMatch(this.matchId)
-					.subscribe(
-						(matchResp: any) => {
-							this.isLoading = false;
-							this.uiComponentsService.setIsSidepanelOpen(
-								{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true }
-							);
-						},
-						(error) => {
-							this.teamOverviewService.setTeamEventAfterValidation(this.matchId);
-							this.isLoading = false;
-							this.uiComponentsService.setIsSidepanelOpen(
-								{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false }
-							);
-						}
-					);
-			} else {
-				stepper.next();
-			}
-			this.currentStep = stepper._selectedIndex;
-		}
+		this.teamEventValidationService.onStepSelection(stepNumber, step, stepper, () => {
+			this.isLoading = true;
+			this.teamEventValidationService.validateMatch(this.matchId)
+				.subscribe(
+					(matchResp: any) => {
+						this.isLoading = false;
+						this.uiComponentsService.setIsSidepanelOpen(
+							{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true }
+						);
+					},
+					(error) => {
+						this.teamOverviewService.setTeamEventAfterValidation(this.matchId);
+						this.isLoading = false;
+						this.uiComponentsService.setIsSidepanelOpen(
+							{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false }
+						);
+					}
+				);
+		});
+		this.currentStep = stepper._selectedIndex;
 	}
 
 	ngOnDestroy() {

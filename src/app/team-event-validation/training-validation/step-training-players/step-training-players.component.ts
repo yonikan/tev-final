@@ -25,6 +25,6 @@ export class StepTrainingPlayersComponent implements OnInit {
 	}
 
 	backStep() {
-		this.stepSelectionEmitter.emit(0);
+		this.stepSelectionEmitter.emit(-1);
 	}
 }
