@@ -22,16 +22,17 @@
 
             @media (max-width: $media-query-sm) {
                 width: 100%;
-              }
+            }
 
             mat-chip {
                 background-color: #35083a;
-                 color: #fff;
-                 font-size: 18px;
+                color: #fff;
+                font-size: 18px;
+                text-transform: capitalize;
             }
 
             mat-icon {
-            background-color: #35083a;
+             background-color: #35083a;
              color: #fff;
             }
         }
@@ -47,5 +48,9 @@
   .cdk-overlay-pane {
     max-width: none !important;
   }
+
+  // .mat-chip {
+  //   text-transform: capitalize;
+  // }
 }
 

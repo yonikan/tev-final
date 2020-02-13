@@ -9,7 +9,6 @@ import { TeamEventValidationService } from '../../team-event-validation.service'
 export class StepMatchOverviewComponent implements OnInit {
   @Input() stepMatchOverviewData: any;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
-  matchesTags;
 
   constructor(private teamEventValidationService: TeamEventValidationService) { }
 
@@ -23,6 +22,12 @@ export class StepMatchOverviewComponent implements OnInit {
   }
 
   onTagsEmitter(tags) {
-    this.matchesTags = tags;
+		let trimmedTags = [];
+		tags.forEach(tag => {
+			trimmedTags.push(tag.name);
+		});
+		let matchData = this.teamEventValidationService.getMatchValidationData();
+		matchData.metadata.tags = trimmedTags;
+		this.teamEventValidationService.setMatchValidationData(matchData);
   }
 }

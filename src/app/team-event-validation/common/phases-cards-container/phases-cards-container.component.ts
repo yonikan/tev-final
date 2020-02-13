@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
@@ -9,6 +9,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class PhasesCardsContainerComponent implements OnInit {
 
   @Input() cards = [];
+  @Output() trainingPhasesEmitter = new EventEmitter<any>();
 
   index = 0;
 
