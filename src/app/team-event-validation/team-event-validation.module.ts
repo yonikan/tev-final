@@ -51,6 +51,7 @@ import { TechnicalModalComponent } from './common/phases-modal/technical-modal/t
 import { PitchSizeOptionComponent } from './common/pitch-size-option/pitch-size-option.component';
 import { LineupDropdownRowComponent } from './common/phases-modal/technical-modal/lineup-dropdown-row/lineup-dropdown-row.component'
 import { SimpleTimePickerComponent } from './common/simple-time-picker/simple-time-picker.component';
+import { MatStepperModule } from '@angular/material';
 @NgModule({
   declarations: [
     MatchValidationComponent,
@@ -100,7 +101,8 @@ import { SimpleTimePickerComponent } from './common/simple-time-picker/simple-ti
     SwiperModule,
     FormsModule,
     ReactiveFormsModule,
-    SwiperModule
+	SwiperModule,
+	MatStepperModule
   ],
   providers: [
     {

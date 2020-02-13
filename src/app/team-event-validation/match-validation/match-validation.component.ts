@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TeamEventValidationService } from '../team-event-validation.service';
 import { UiComponentsService } from '../../core/services/ui-components.service';
@@ -11,6 +11,7 @@ import { TeamOverviewService } from '../../team-overview/team-overview.service';
 })
 export class MatchValidationComponent implements OnInit, OnDestroy {
 	@Input() matchId: number;
+	@ViewChild('stepper', null) stepper: ElementRef;
 	isLoading = true;
 	currentSelectedStep = 0;
 	step1Data: any;
@@ -20,6 +21,15 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 	step5Data: any;
 	matchValidationData: any;
 	private matchValidationDataSub: Subscription;
+
+	steps = [
+		{name: 'OVERVIEW', isCompleted: false, isLastStep: false},
+		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
+		{name: 'FORMATIONS', isCompleted: false, isLastStep: false},
+		{name: 'PHASES', isCompleted: false, isLastStep: false},
+		{name: 'SUBS', isCompleted: false, isLastStep: true}
+	];
+	currentStep: any = 0;
 
 	constructor(
 		private teamEventValidationService: TeamEventValidationService,
@@ -42,26 +52,36 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 			});
 	}
 
-	onStepSelectionEmitter(stepNumber) {
-		this.currentSelectedStep = stepNumber;
-		if (stepNumber === 5) {
-			this.isLoading = true;
-			this.teamEventValidationService.validateMatch(this.matchId)
-				.subscribe(
-					(matchResp: any) => {
-						this.isLoading = false;
-						this.uiComponentsService.setIsSidepanelOpen(
-							{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true }
-						);
-					},
-					(error) => {
-						this.teamOverviewService.setTeamEventAfterValidation(this.matchId);
-						this.isLoading = false;
-						this.uiComponentsService.setIsSidepanelOpen(
-							{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false }
-						);
-					}
-				);
+	onStepSelectionEmitter(stepNumber, step, stepper) {
+		if (stepNumber) {
+			step.isCompleted = true;
+			stepper.selected.completed = true;
+			if (stepNumber == -1) {
+				step.isCompleted = false;
+				stepper.selected.completed = false;
+				stepper.previous();
+			} else if (step.isLastStep) {
+				this.isLoading = true;
+				this.teamEventValidationService.validateMatch(this.matchId)
+					.subscribe(
+						(matchResp: any) => {
+							this.isLoading = false;
+							this.uiComponentsService.setIsSidepanelOpen(
+								{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: true }
+							);
+						},
+						(error) => {
+							this.teamOverviewService.setTeamEventAfterValidation(this.matchId);
+							this.isLoading = false;
+							this.uiComponentsService.setIsSidepanelOpen(
+								{ isOpen: false, teamEventType: null, teamEventId: null, isTeamEventValidationFinished: false }
+							);
+						}
+					);
+			} else {
+				stepper.next();
+			}
+			this.currentStep = stepper._selectedIndex;
 		}
 	}
 
