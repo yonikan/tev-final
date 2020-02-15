@@ -87,10 +87,11 @@ export class PhasesCardComponent implements OnInit {
     });
 
     dialogRef.afterClosed()
-      .subscribe(modalData => {
-        // if (modalData.savePhase) {
-        //   this.savePhaseChanges.emit(modalData.phaseToEdit);
-        // }
+      .subscribe(updatedPhase => {
+        console.log(updatedPhase)
+        if (updatedPhase) {
+          this.savePhaseChanges.emit(updatedPhase);
+        }
       });
   }
 

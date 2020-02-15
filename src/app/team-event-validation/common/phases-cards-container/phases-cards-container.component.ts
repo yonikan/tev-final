@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
@@ -9,6 +9,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class PhasesCardsContainerComponent implements OnInit {
 
   @Input() cards = [];
+  @Output() updatePhases = new EventEmitter();
 
   index = 0;
 
@@ -71,5 +72,7 @@ export class PhasesCardsContainerComponent implements OnInit {
   updatePhase(updatedPhase) {
     const index = this.cards.findIndex((card) => { return card.id === updatedPhase.id });
     this.cards[index] = updatedPhase;
+    // TODO: sort by time
+    this.updatePhases.emit(this.cards);
   }
 }
