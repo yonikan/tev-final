@@ -7,16 +7,18 @@
   @include modal;
 }
 
-// ::ng-deep {
-// }
+::ng-deep {
+  .demo-icon {
+    font-size: 24px;
+  }
+}
 
 .modal-container {
-
   .dialog-header {
     position: relative;
     flex-direction: column;
     padding: 65px 30px 30px 30px !important;
-    
+
     .exit-btn {
       position: absolute;
       top: 12px;

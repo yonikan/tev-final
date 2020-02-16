@@ -15,8 +15,10 @@
             (change)="onUpdateField({value: option.id, filedPathToUpdate: ['type']})"
             [checked]="option.id === phaseToEdit.type"
           >
-            <mat-icon>{{ option.icon }}</mat-icon>
-            {{ option.name }}
+
+          <i class="demo-icon icon-calender" *ngIf="option.id === 5">&#xe809;</i>
+          <i class="demo-icon icon-vlc-new" *ngIf="option.id === 6">&#xe817;</i>
+          {{ option.name }}
           </mat-radio-button>
         </mat-radio-group>
       </div>
