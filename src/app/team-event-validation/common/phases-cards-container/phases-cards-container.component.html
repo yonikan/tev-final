@@ -13,5 +13,11 @@
         (deleteCard)="onDeleteCard($event)"
       ></app-phases-card>
     </div>
+
+    <app-phases-card
+    [phase]="addEmptyCard()"
+    [phasesCount]="cards.length"
+    (savePhaseChanges)="updatePhase($event)"
+  ></app-phases-card>
   </swiper>
 </div>

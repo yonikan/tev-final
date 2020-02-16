@@ -30,7 +30,7 @@ export class MatchOverviewComponent implements OnInit {
   ngOnInit() {
     // console.log('getStaticPositionsList: ', this.teamEventValidationService.getStaticPositionsList());
     this.competitionOptions = this.teamEventValidationService.getStaticCompetitionsList();
-    this.setDefaults()
+    this.setDefaults();
     // console.log(this.stepMatchOverviewData);
   }
 
