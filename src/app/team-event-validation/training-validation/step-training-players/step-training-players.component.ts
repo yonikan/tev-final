@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { StaticDataService } from 'src/app/core/services/static-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-step-training-players',
@@ -10,11 +12,12 @@ export class StepTrainingPlayersComponent implements OnInit {
 	@Input() stepTrainingPlayersData: any;
 	@Output() stepSelectionEmitter = new EventEmitter<number>();
 	isNextBtnDisabled = false;
+	playerTimeframeErrors: Observable<Object>;
 
-	constructor() { }
+	constructor(private staticDataService: StaticDataService) { }
 
 	ngOnInit() {
-		console.log('stepTrainingPlayersData: ', this.stepTrainingPlayersData);
+		this.playerTimeframeErrors = this.staticDataService.getData('team-event-validation', 'player-timeframe-errors')
 	}
 
 	nextStep() {

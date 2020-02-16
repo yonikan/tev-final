@@ -1,5 +1,9 @@
 <div class="step-match-players-container">
-    <app-participating-players (participatingPlayersEmitter)="onParticipatingPlayersEmitter($event)" [teamEventId]="teamEventId" [type]="'match'"></app-participating-players>
+	<app-participating-players
+		[playerTimeframeErrors]="playerTimeframeErrors | async"
+		[teamEventId]="teamEventId"
+		[type]="'match'">
+	</app-participating-players>
 
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="previousStep()">back</button>

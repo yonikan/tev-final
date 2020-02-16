@@ -6,32 +6,32 @@
 		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
 			<ng-template matStepLabel>{{step.name}}</ng-template>
 			<app-step-match-overview
-				*ngIf="currentStep === 0"
+				*ngIf="step.name === 'OVERVIEW'"
 				[teamEventId]="matchId"
 				[stepMatchOverviewData]="step1Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-overview>
 			<app-step-match-players
-				*ngIf="currentStep === 1"
+				*ngIf="step.name === 'PLAYERS'"
 				[teamEventId]="matchId"
 				[stepMatchPlayersData]="step2Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-players>
 			<app-step-match-formations
-				*ngIf="currentStep === 2"
+				*ngIf="step.name === 'FORMATIONS' && step3Data.formation"
 				[stepMatchFormationsData]="step3Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-formations>
-			<app-step-match-phases
-				*ngIf="currentStep === 3"
+			<!-- <app-step-match-phases
+				*ngIf="step.name === 'PHASES' && step4Data.phasesList"
 				[stepMatchPhasesData]="step4Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
-			</app-step-match-phases>
-			<app-step-match-subs
-				*ngIf="currentStep === 4"
+			</app-step-match-phases> -->
+			<!-- <app-step-match-subs
+				*ngIf="step.name === 'SUBS'"
 				[stepMatchSubsData]="step5Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
-			</app-step-match-subs>
+			</app-step-match-subs> -->
 		</mat-step>
 	</mat-horizontal-stepper>
 </div>

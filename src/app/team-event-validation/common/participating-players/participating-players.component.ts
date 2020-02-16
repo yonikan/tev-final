@@ -20,6 +20,7 @@ interface InitialState {
 export class ParticipatingPlayersComponent implements OnInit {
 	@Input() teamEventId: any;
 	@Input() type = 'training';
+	@Input() playerTimeframeErrors = [];
 	@Output() participatingPlayersEmitter = new EventEmitter<any>();
 	@ViewChild('swapPlayersPanel', null) _swapPlayersPanel: ElementRef;
 
@@ -63,8 +64,15 @@ export class ParticipatingPlayersComponent implements OnInit {
 					// save init state
 					this.initialState.allPlayers = allPlayers.map(p => ({...p}));
 				}
-				this.activePlayers = allPlayers.filter((player: any) => player.isParticipated && player.activeTime.length).length;
-				this.allPlayers = allPlayers.map(p => ({...p}));
+				this.activePlayers = allPlayers.filter((player: any) => player.isParticipated).length;
+				this.allPlayers = allPlayers.map((player: any) => {
+					const err = player.activeTime.find(activeTime => activeTime.timeFrameType !== 'active');
+					if (err) {
+						player.isParticipated = false;
+						player.error = this.playerTimeframeErrors[player.activeTime[0].timeFrameType];
+					}
+					return {...player};
+				});
 			}
 			if (clubPlayers) {
 				this.clubPlayers = clubPlayers;
