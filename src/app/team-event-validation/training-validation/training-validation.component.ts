@@ -20,7 +20,7 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 	step3Data: any;
 	trainingValidationData: any;
 	private trainingValidationDataSub: Subscription;
-	currentStep: any;
+	currentStep: any = 0;
 	steps = [
 		{name: 'GENERAL', isCompleted: false, isLastStep: false},
 		{name: 'PLAYERS', isCompleted: false, isLastStep: false},

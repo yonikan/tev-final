@@ -14,6 +14,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	@Input() playersData;
 	@Input() participatingPlayers;
 	@Output() changeFormationPlayer = new EventEmitter();
+	@Output() formationFieldEmitter = new EventEmitter<any>();
 	@ViewChild('swapPlayers', null) _swapPlayers: any;
 
 	players = [];
@@ -38,7 +39,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	ngOnChanges() {
-		if (this.playersData) {
+		if (this.participatingPlayers && this.formationTemplate.formationPosition) {
 			this.players = Object.values(this.participatingPlayers);
 			this.setRandomPositions();
 		}
@@ -69,6 +70,10 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	setRandomPositions() {
+		this.formation = this.formation.reduce((unique, item) => {
+			return unique.some(o => o.positionId === item.positionId) ? [...unique, {...item, positionId: null}] : [...unique, item]
+		}, []);
+
 		const positionIdMap = this.mapPositionIds();
 		if (this.formationTemplate.formationPosition) {
 			this.formationTemplate.formationPosition = this.formationTemplate.formationPosition.map(formationPosition => {
@@ -76,7 +81,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 				formationPosition.playerId = player ? player.playerId : null;
 				return formationPosition;
 			}).map(formationPosition => {
-				if (!formationPosition.playerId) {
+				if (!formationPosition.playerId && positionIdMap.empty) {
 					const randPlayer = this.getRandomPlayer(positionIdMap.empty);
 					if (randPlayer) {
 						positionIdMap.empty = positionIdMap.empty.filter(positionMap => positionMap.playerId !== randPlayer.playerId);
@@ -146,8 +151,8 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	changePlayerInFormation(value) {
-		if (!this.formation.find(({ positionId }) => positionId === this.positionIdForSwap)) {
-			this.formation = [...this.formation.map((formation: Formation) => {
+		if (!this.formationTemplate.formationPosition.find(({ positionId }) => positionId === this.positionIdForSwap)) {
+			this.formationTemplate.formationPosition = [...this.formationTemplate.formationPosition.map((formation: Formation) => {
 				return this.checkIsPlaced(formation, value.id);
 			}), {
 				playerId: value.id,
@@ -156,7 +161,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 				matrixYPosition: null,
 			}]
 		} else {
-			this.formation = this.formation.map((formation: Formation) => {
+			this.formationTemplate.formationPosition = this.formationTemplate.formationPosition.map((formation: Formation) => {
 				formation = this.checkIsPlaced(formation, value.id);
 				if (formation.positionId === this.positionIdForSwap) {
 					formation.playerId = value.id;
@@ -175,5 +180,9 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 	trackPlayersFn(i, player) {
 		return player.id;
+	}
+
+	sendToTeamEvent(data) {
+		this.formationFieldEmitter.emit(data);
 	}
 }

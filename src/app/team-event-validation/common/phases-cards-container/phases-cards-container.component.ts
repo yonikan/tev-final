@@ -9,7 +9,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class PhasesCardsContainerComponent implements OnInit {
 
   @Input() cards = [];
-  @Output() trainingPhasesEmitter = new EventEmitter<any>();
+  @Output() teamEventPhasesEmitter = new EventEmitter<any>();
 
   index = 0;
 

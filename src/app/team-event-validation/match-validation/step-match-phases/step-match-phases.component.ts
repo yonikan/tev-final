@@ -58,4 +58,8 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 	previousStep() {
 		this.stepSelectionEmitter.emit(-1);
 	}
+
+	onMatchPhasesEmitter(data) {
+		console.log('data: ', data);
+	}
 }

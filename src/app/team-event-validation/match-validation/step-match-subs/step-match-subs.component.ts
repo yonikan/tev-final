@@ -24,4 +24,8 @@ export class StepMatchSubsComponent implements OnInit {
 	previousStep() {
 		this.stepSelectionEmitter.emit(-1);
 	}
+
+	onMatchSubsEmitter(data) {
+		console.log('data: ', data);
+	}
 }

@@ -33,4 +33,8 @@ export class StepMatchOverviewComponent implements OnInit {
 		matchData.metadata.tags = trimmedTags;
 		this.teamEventValidationService.setMatchValidationData(matchData);
   }
+
+  onMatchOverviewEmitter(data) {
+
+  }
 }
