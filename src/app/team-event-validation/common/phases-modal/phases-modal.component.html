@@ -12,12 +12,12 @@
             *ngFor="let option of modalOptions; let first = first"
             [value]="option"
             [ngStyle]="{ 'margin-left': !first ? '75px' : '0' }"
-            (change)="onUpdateField({value: option.id, filedPathToUpdate: ['type']})"
-            [checked]="option.id === phaseToEdit.type"
-          >
+            (change)="onUpdateField({value: option.subType, filedPathToUpdate: ['subType']})"
+            [checked]="(phaseToEdit.subType === 7 && option.subType === 7) || (phaseToEdit.subType !== 5 && !option.subType)"
+          > <!-- [checked]="phaseToEdit.subType === option.subType" -->
 
-          <i class="demo-icon icon-calender" *ngIf="option.id === 5">&#xe809;</i>
-          <i class="demo-icon icon-vlc-new" *ngIf="option.id === 6">&#xe817;</i>
+          <i class="demo-icon icon-calender" *ngIf="option.type === 5">&#xe809;</i>
+          <i class="demo-icon icon-vlc-new" *ngIf="option.type === 6">&#xe817;</i>
           {{ option.name }}
           </mat-radio-button>
         </mat-radio-group>

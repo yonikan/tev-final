@@ -21,20 +21,22 @@ export class PhasesModalComponent implements OnInit {
 
   ngOnInit() {
     this.phaseToEdit = JSON.parse(JSON.stringify(this.data.phase));
+    this.phaseToEdit['originalSubType'] = this.phaseToEdit.subType;
     this.setModalOptions();
+    console.log(this.modalOptions, this.phaseToEdit)
   }
 
   setModalOptions() {
     if (this.data.eventType === 1) { // training
       this.modalOptions = [
-        { name: 'Technical', icon: 'account_circle', id: 3 },
-        { name: 'Physical', icon: 'account_circle', id: 1 },
+        { name: 'Technical', icon: 'account_circle', type: 3 },
+        { name: 'Physical', icon: 'account_circle', type: 1 },
       ]
     } else if (this.data.eventType === 2) { // match
       this.modalOptions = [
-        { name: 'Match Phase', icon: 'account_circle', id: 5 },
-        { name: 'Warmup', icon: 'account_circle', id: 6 },
-      ] 
+        { name: 'Match Phase', icon: 'account_circle', type: 5, subType: null },
+        { name: 'Warmup', icon: 'account_circle', type: 5 , subType: 7},
+      ]
     }
   }
 
