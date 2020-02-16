@@ -212,4 +212,8 @@ export class ParticipatingPlayersComponent implements OnInit {
 			return cpg;
 		});
 	}
+
+	sendToTeamEvent(data) {
+		this.participatingPlayersEmitter.emit(data);
+	}
 }

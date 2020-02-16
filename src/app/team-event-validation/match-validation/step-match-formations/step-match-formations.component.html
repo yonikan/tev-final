@@ -7,15 +7,20 @@
                 [tabs]="playersData"
                 [tactics]="tactics"
                 [definedSubs]="definedSubs"
+                (formationSelectionEmitter)="onFormationSelectionEmitter($event)" 
                 (onSelectTactic)="selectTactic($event)"
                 (onSelectDefinedSub)="selectDefinedSub($event)">
             </app-formation-selection>
+
             <div class="buffer"></div>
+
 			<app-formation-field
 				[formationTemplate]="selectedFormation"
 				[formation]="formationData"
 				[playersData]="playersData"
-				[participatingPlayers]="participatingPlayers"></app-formation-field>
+                [participatingPlayers]="participatingPlayers"
+                (formationFieldEmitter)="onFormationFieldEmitter($event)">
+            </app-formation-field>
         </div>
     </div>
     <div class="step-footer">

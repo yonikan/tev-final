@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StaffRoles } from '../../../../core/enums/staff-roles.enum';
 import * as moment from 'moment';
 import { TeamEventValidationService } from 'src/app/team-event-validation/team-event-validation.service';
@@ -11,6 +11,7 @@ import { TeamEventValidationService } from 'src/app/team-event-validation/team-e
 export class MatchOverviewComponent implements OnInit {
 
   @Input() stepMatchOverviewData: any;
+  @Output() matchOverviewEmitter = new EventEmitter<any>();
 
   competitionOptions;
 
@@ -59,4 +60,7 @@ export class MatchOverviewComponent implements OnInit {
     event.target.value = score;
   }
 
+  sendToTeamEvent(data) {
+    this.matchOverviewEmitter.emit(data);
+  }
 }
