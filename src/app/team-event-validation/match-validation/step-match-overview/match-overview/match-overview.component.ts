@@ -35,6 +35,7 @@ export class MatchOverviewComponent implements OnInit {
   }
 
   setDefaults() {
+    if (!this.stepMatchOverviewData) { return; };
     if (!this.stepMatchOverviewData.competition) { this.setGameData(1, 'selectedCompetition', 'competition') };
     if (!this.stepMatchOverviewData.vanue) { this.setGameData(1, 'selecedHost', 'vanue') };
     if (!this.stepMatchOverviewData.myScore && this.stepMatchOverviewData.myScore !== 0) { this.setGameData(0, 'selectedScore', 'myScore') };

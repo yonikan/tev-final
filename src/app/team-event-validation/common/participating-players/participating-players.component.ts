@@ -61,7 +61,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 					// save init state
 					this.initialState.allPlayers = allPlayers.map(p => ({...p}));
 				}
-				this.activePlayers = allPlayers.filter(player => player.activeTime.length).length;
+				this.activePlayers = allPlayers.filter(player => player.isParticipated && player.activeTime.length).length;
 				this.allPlayers = allPlayers.map(p => ({...p}));
 			}
 
@@ -177,12 +177,13 @@ export class ParticipatingPlayersComponent implements OnInit {
 	openDialog() {
 		const dialogRef = this.dialog.open(ContactSupportModalComponent, {
 			width: '415px',
-			data: {subject: '', message: ''}
+			height: '426px'
 		});
 
-		dialogRef.afterClosed().subscribe(result => {
-			console.log('The dialog was closed', result);
-		});
+		dialogRef.afterClosed()
+			.subscribe(result => {
+				console.log('The dialog was closed', result);
+			});
 	}
 
 	openSwapPlayersPanel({el, player, isIncluded}) {

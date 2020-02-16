@@ -253,4 +253,8 @@ export class TeamEventValidationService {
   getCompetitionNameById(id) {
     return this.getStaticData().competitions[id];
   }
+
+  getAllPhases() {
+    return this.getCurrentValitationData().phases.phasesList;
+  }
 }

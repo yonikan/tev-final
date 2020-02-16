@@ -1,19 +1,24 @@
-<div class="container">
-	<div class="heading">
-		<i class="demo-icon icon-x" (click)="cancel()">&#xe813;</i>
-		<div>Contact Support</div>
+<div class="modal-container">
+	<div class="dialog-header">
+		<button mat-icon-button>
+			<i class="demo-icon icon-x" (click)="onCancel()">&#xe813;</i>
+		</button>
+		<h2>Contact Support</h2>
+		<span></span>
 	</div>
-	<div class="content">
-		<form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
-			<mat-form-field>
-				<input required matInput placeholder="Subject" formControlName="subject">
+	<div class="dialog-content">
+		<form [formGroup]="contactSupportFormGroup" (submit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>subject</mat-label>
+                <input matInput type="text" formControlName="subjectText">
 			</mat-form-field>
-
-			<mat-form-field>
-				<textarea rows="5" required matInput placeholder="Youre message" formControlName="message"></textarea>
+            <mat-form-field>
+				<mat-label>message</mat-label>
+				<textarea rows="5" required matInput placeholder="Youre message" formControlName="messageText"></textarea>
 			</mat-form-field>
-
-			<button mat-button cdkFocusInitial>SEND</button>
+			<button [disabled]="!contactSupportFormGroup.valid" type="submit" mat-raised-button>
+                send
+            </button>
 		</form>
 	</div>
 </div>

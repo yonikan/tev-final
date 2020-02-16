@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { TeamEventValidationService } from '../../team-event-validation.service';
 import { objToArray, sortFunction } from '../../../core/helpers/helper-functions';
+import { TeamEventValidationService } from '../../team-event-validation.service';
 
 @Component({
   selector: 'substitutions-table',
@@ -28,12 +28,13 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
 
   Object = Object;
 
-  constructor(private service: TeamEventValidationService) { }
+  constructor(private teamEventValidationService: TeamEventValidationService) { }
 
   ngOnInit() {
-    this.participationgPlayers = Object.values(this.service.getAllParticipatingPlayers());
-    this.linup = this.service.getPlayersByIds(this.service.linup, 'playerId');
-    this.availableForSub = objToArray(this.service.availableForSub, 'playerId');
+    this.participationgPlayers = Object.values(this.teamEventValidationService.getAllParticipatingPlayers());
+    this.linup = this.teamEventValidationService.getPlayersByIds(this.teamEventValidationService.linup, 'id');
+    this.availableForSub = objToArray(this.teamEventValidationService.availableForSub, 'id');
+    console.log(this.participationgPlayers, this.linup, this.availableForSub);
     //  console.log('SubstitutionsTableComponent: ',this.linup, this.availableForSub);
   }
 

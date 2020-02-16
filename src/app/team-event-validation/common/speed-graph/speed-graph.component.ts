@@ -50,7 +50,7 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 			height: 130,
 			backgroundColor: '#ffffff',
 			color: '#f9b62b',
-			zoomType: 'x',
+			// zoomType: 'x',
 			animation: false
 		},
 		title: {
