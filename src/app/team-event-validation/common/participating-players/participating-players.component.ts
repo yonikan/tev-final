@@ -64,7 +64,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 					// save init state
 					this.initialState.allPlayers = allPlayers.map(p => ({...p}));
 				}
-				this.activePlayers = allPlayers.filter(player => player.isParticipated).length;
+				this.activePlayers = allPlayers.filter((player: any) => player.isParticipated).length;
 				this.allPlayers = allPlayers.map((player: any) => {
 					const err = player.activeTime.find(activeTime => activeTime.timeFrameType !== 'active');
 					if (err) {
