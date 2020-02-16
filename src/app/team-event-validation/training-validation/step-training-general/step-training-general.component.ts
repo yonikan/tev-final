@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { TeamEventValidationService } from '../../team-event-validation.service';
 import { VerticesData } from '../../team-event-validation.interface';
+import { ParticipatingPlayersService } from '../../common/participating-players/participating-players.service';
 
 @Component({
 	selector: 'app-step-training-general',
@@ -8,6 +9,7 @@ import { VerticesData } from '../../team-event-validation.interface';
 	styleUrls: ['./step-training-general.component.scss']
 })
 export class StepTrainingGeneralComponent implements OnInit, OnChanges {
+	@Input() teamEventId: any;
 	@Input() stepTrainingGeneralData: any;
 	@Output() stepSelectionEmitter = new EventEmitter<number>();
 	isNextBtnDisabled = false;
@@ -19,10 +21,10 @@ export class StepTrainingGeneralComponent implements OnInit, OnChanges {
 		endTime: 0
 	};
 
-	constructor(private teamEventValidationService: TeamEventValidationService) { }
+	constructor(private teamEventValidationService: TeamEventValidationService, private participatingPlayersService: ParticipatingPlayersService) { }
 
 	ngOnInit() {
-		console.log('stepTrainingGeneralData: ', this.stepTrainingGeneralData);
+		this.participatingPlayersService.getData(this.teamEventId, 'training');
 		// this.teamEventValidationService.phasesVerticesData
 		//   .subscribe(verticesData => this.verticesData = verticesData);
 	}
@@ -40,12 +42,23 @@ export class StepTrainingGeneralComponent implements OnInit, OnChanges {
 	}
 
 	nextStep() {
-		this.teamEventValidationService.trainingDataOutput.step1GeneralData = this.stepTrainingGeneralData;
 		this.stepSelectionEmitter.emit(1);
 	}
 
+	onTrainingDurationEmitter(duration) {
+		let trainingData = this.teamEventValidationService.getTrainingValidationData();
+		trainingData.metadata.startTime = duration.startTime;
+		trainingData.metadata.endTime = duration.endTime;
+		this.teamEventValidationService.setTrainingValidationData(trainingData);
+	}
+
 	onTagsEmitter(tags) {
-		console.log(tags);
-		this.trainingTags = tags;
+		let trimmedTags = [];
+		tags.forEach(tag => {
+			trimmedTags.push(tag.name);
+		});
+		let trainingData = this.teamEventValidationService.getTrainingValidationData();
+		trainingData.metadata.tags = trimmedTags;
+		this.teamEventValidationService.setTrainingValidationData(trainingData);
 	}
 }

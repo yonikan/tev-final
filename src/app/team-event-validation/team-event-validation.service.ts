@@ -31,18 +31,18 @@ export class TeamEventValidationService {
 	private matchValidationData: any;
 	private matchValidationDataListener = new BehaviorSubject<any>({});
 	private currentTeamEventType: number;
-  BASE_URL;
 
-  linup = [];
-  availableForSub = [];
+  	BASE_URL;
+	linup = [];
+	availableForSub = [];
 
 	constructor(
 		private http: HttpClient,
 		private uiComponentsService: UiComponentsService,
 		private serverEnvService: ServerEnvService,
-    private staticDataService: StaticDataService,
+        private staticDataService: StaticDataService,
 	) {
-		this.BASE_URL = serverEnvService.getBaseUrl(3);
+		this.BASE_URL = serverEnvService.getBaseUrl(3)
 	}
 
 	fetchTraining(trainingId): any {
@@ -132,7 +132,7 @@ export class TeamEventValidationService {
 			.subscribe(onSuccess);
 	}
 
-	getPlayersForSwap(subject: Subject<any>, teamEventId) {
+	getPlayersForSwap(subject: BehaviorSubject<any>, teamEventId) {
 		this.http
 			.get(`${this.BASE_URL}/v3/team-event/${teamEventId}/players-for-swap`)
 			.subscribe((data: any) => {
@@ -145,7 +145,7 @@ export class TeamEventValidationService {
 			})
 	}
 
-	getParticipatingPlayers(subject: Subject<any>, teamEventId, type = 'training') {
+	getParticipatingPlayers(subject: BehaviorSubject<any>, teamEventId, type = 'training') {
 		this.http
 			.get(`${this.BASE_URL}/v3/${type}/${teamEventId}`)
 			.subscribe((data: any) => {
@@ -166,7 +166,8 @@ export class TeamEventValidationService {
 			: playerPosition['0'][prop]
   }
 
-	// ofir's methods =========================================================================================
+
+  // Phases & subs methods =========================================================================================
   getCurrentValitationData() {
     switch (this.getCurrentTeamEventType()) {
       case 1:
@@ -257,4 +258,20 @@ export class TeamEventValidationService {
   getAllPhases() {
     return this.getCurrentValitationData().phases.phasesList;
   }
+
+  onStepSelection(stepNumber, step, stepper, validateCallback) {
+	if (stepNumber) {
+		step.isCompleted = true;
+		stepper.selected.completed = true;
+		if (stepNumber == -1) {
+			step.isCompleted = false;
+			stepper.selected.completed = false;
+			stepper.previous();
+		} else if (step.isLastStep) {
+			validateCallback();
+		} else {
+			stepper.next();
+		}
+	}
+}
 }

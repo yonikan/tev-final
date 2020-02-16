@@ -5,10 +5,6 @@ export function enumToString(enumType, enumNumber) {
     return enumValuesArr[enumNumber].replace(/([A-Z]+)*([A-Z][a-z])/g, '$1 $2')
 }
 
-export function capitalizeString (str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 export function arrayToObj(array, keyName) {
   return array.reduce((acc, item)=>{
     acc[item[keyName]] = item;

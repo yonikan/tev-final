@@ -75,7 +75,15 @@ export class StepMatchFormationsComponent implements OnInit {
 		this.stepSelectionEmitter.emit(3);
 	}
 
-	backStep() {
-		this.stepSelectionEmitter.emit(1);
+	previousStep() {
+		this.stepSelectionEmitter.emit(-1);
+	}
+
+	onFormationSelectionEmitter(data) {
+		console.log('data: ', data);
+	}
+
+	onFormationFieldEmitter(data) {
+		console.log('data: ', data);
 	}
 }

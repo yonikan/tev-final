@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { objToArray, sortFunction } from '../../../core/helpers/helper-functions';
 import { TeamEventValidationService } from '../../team-event-validation.service';
 
@@ -19,6 +19,8 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
 
   @Input() substitutions = [];
   @Input() suggestedSubs = [];
+  @Output() subsEmitter = new EventEmitter<any>();
+
   linup;
   availableForSub;
 
@@ -72,5 +74,9 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     } else { // if Index not exist in substitutions -> add as new substitution *(for new rows)*
       this.addRow(substitutionToEdit);
     }
+  }
+
+  sendToTeamEvent(data) {
+    this.subsEmitter.emit(data);
   }
 }

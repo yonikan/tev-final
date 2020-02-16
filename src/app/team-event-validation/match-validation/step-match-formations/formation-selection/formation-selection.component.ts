@@ -13,6 +13,7 @@ export class FormationSelectionComponent implements OnInit, OnChanges {
 
   @Output() onSelectTactic = new EventEmitter();
   @Output() onSelectDefinedSub = new EventEmitter();
+  @Output() formationSelectionEmitter = new EventEmitter<any>();
 
   selectedTactic = null;
 
@@ -38,4 +39,7 @@ export class FormationSelectionComponent implements OnInit, OnChanges {
     this.onSelectDefinedSub.emit(value);
   }
 
+  sendToTeamEvent(data) {
+    this.formationSelectionEmitter.emit(data);
+  }
 }

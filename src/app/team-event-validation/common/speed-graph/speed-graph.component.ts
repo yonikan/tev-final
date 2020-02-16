@@ -89,7 +89,12 @@ export class SpeedGraphComponent implements OnInit, OnChanges {
 			},
 			series: {
 				fillOpacity: CHART_OPTIONS.OPACITY,
-				marker: false
+				marker: false,
+				states: {
+					hover: {
+						enabled: false
+					}
+				}
 			}
 		},
 		series: [
