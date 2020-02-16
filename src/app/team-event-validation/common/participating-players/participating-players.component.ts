@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Component, OnInit, Input, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TeamEventValidationService } from '../../team-event-validation.service';
 import { UiComponentsService } from 'src/app/core/services/ui-components.service';
@@ -21,6 +20,7 @@ interface InitialState {
 export class ParticipatingPlayersComponent implements OnInit {
 	@Input() teamEventId: any;
 	@Input() type = 'training';
+	@Output() participatingPlayersEmitter = new EventEmitter<any>();
 	@ViewChild('swapPlayersPanel', null) _swapPlayersPanel: ElementRef;
 
 	private state: InitialState = {

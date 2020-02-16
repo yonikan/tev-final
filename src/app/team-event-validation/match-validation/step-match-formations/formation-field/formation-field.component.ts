@@ -40,11 +40,52 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	ngOnChanges() {
 		if (this.playersData) {
 			this.players = Object.values(this.participatingPlayers);
+			this.setRandomPositions();
 		}
 	}
 
 	ngOnInit() {
 		this.positions = this.staticDataService.getStaticData().positions;
+
+	}
+
+	isExistInFormation(id) {
+		return this.formationTemplate.formationPosition.some(({positionId}) => positionId === id);
+	}
+
+	mapPositionIds() {
+		return this.formation.reduce((acc, val) => {
+			if (val.positionId && this.isExistInFormation(val.positionId)) {
+				acc[val.positionId] = val;
+			} else {
+				if (!acc['empty']) {
+					acc['empty'] = [];
+				}
+				acc['empty'] = [...acc['empty'], val];
+			}
+
+			return acc;
+		}, {});
+	}
+
+	setRandomPositions() {
+		const positionIdMap = this.mapPositionIds();
+		if (this.formationTemplate.formationPosition) {
+			this.formationTemplate.formationPosition = this.formationTemplate.formationPosition.map(formationPosition => {
+				const player = positionIdMap[formationPosition.positionId];
+				formationPosition.playerId = player ? player.playerId : null;
+				return formationPosition;
+			}).map(formationPosition => {
+				if (!formationPosition.playerId) {
+					const randPlayer = this.getRandomPlayer(positionIdMap.empty);
+					if (randPlayer) {
+						positionIdMap.empty = positionIdMap.empty.filter(positionMap => positionMap.playerId !== randPlayer.playerId);
+						formationPosition.playerId = randPlayer.playerId;
+					}
+				}
+				return formationPosition;
+			});
+		}
 	}
 
 	sameRow = (y1, y2) => y1 === y2;
@@ -64,10 +105,16 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	getPlayerInPosition(player) {
-		const p = this.formation.find(p => p.positionId === player.positionId);
-		if (p)
+		const p = this.formationTemplate.formationPosition.find(p => p.positionId === player.positionId);
+
+		if (p && p.playerId) {
 			return this.participatingPlayers[p.playerId];
+		}
 		return null;
+	}
+
+	getRandomPlayer(players) {
+		return players[Math.floor(Math.random() * players.length)];
 	}
 
 	showSwapPlayers(e) {

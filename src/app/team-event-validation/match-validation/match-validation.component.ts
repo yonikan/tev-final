@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TeamEventValidationService } from '../team-event-validation.service';
 import { UiComponentsService } from '../../core/services/ui-components.service';
@@ -11,6 +11,7 @@ import { TeamOverviewService } from '../../team-overview/team-overview.service';
 })
 export class MatchValidationComponent implements OnInit, OnDestroy {
 	@Input() matchId: number;
+	@ViewChild('stepper', null) stepper: ElementRef;
 	isLoading = true;
 	currentSelectedStep = 0;
 	step1Data: any;
@@ -20,6 +21,15 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 	step5Data: any;
 	matchValidationData: any;
 	private matchValidationDataSub: Subscription;
+
+	steps = [
+		{name: 'OVERVIEW', isCompleted: false, isLastStep: false},
+		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
+		{name: 'FORMATIONS', isCompleted: false, isLastStep: false},
+		{name: 'PHASES', isCompleted: false, isLastStep: false},
+		{name: 'SUBS', isCompleted: false, isLastStep: true}
+	];
+	currentStep: any = 0;
 
 	constructor(
 		private teamEventValidationService: TeamEventValidationService,
@@ -42,9 +52,8 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 			});
 	}
 
-	onStepSelectionEmitter(stepNumber) {
-		this.currentSelectedStep = stepNumber;
-		if (stepNumber === 5) {
+	onStepSelectionEmitter(stepNumber, step, stepper) {
+		this.teamEventValidationService.onStepSelection(stepNumber, step, stepper, () => {
 			this.isLoading = true;
 			this.teamEventValidationService.validateMatch(this.matchId)
 				.subscribe(
@@ -62,7 +71,8 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 						);
 					}
 				);
-		}
+		});
+		this.currentStep = stepper._selectedIndex;
 	}
 
 	ngOnDestroy() {
