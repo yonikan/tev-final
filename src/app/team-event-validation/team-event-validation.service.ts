@@ -132,7 +132,7 @@ export class TeamEventValidationService {
 			.subscribe(onSuccess);
 	}
 
-	getPlayersForSwap(subject: Subject<any>, teamEventId) {
+	getPlayersForSwap(subject: BehaviorSubject<any>, teamEventId) {
 		this.http
 			.get(`${this.BASE_URL}/v3/team-event/${teamEventId}/players-for-swap`)
 			.subscribe((data: any) => {
@@ -145,7 +145,7 @@ export class TeamEventValidationService {
 			})
 	}
 
-	getParticipatingPlayers(subject: Subject<any>, teamEventId, type = 'training') {
+	getParticipatingPlayers(subject: BehaviorSubject<any>, teamEventId, type = 'training') {
 		this.http
 			.get(`${this.BASE_URL}/v3/${type}/${teamEventId}`)
 			.subscribe((data: any) => {
