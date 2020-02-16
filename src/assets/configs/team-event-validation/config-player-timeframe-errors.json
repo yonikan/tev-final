@@ -1,0 +1,11 @@
+{
+	"invensenseStuck": "Left/Right/Both Sensor(s) Failure",
+	"wrongMounting": "Sensors were strapped incorrectly",
+	"badData": "Left/Right/Both Sensor(s) Failure",
+	"missingSyncPoint": "Left/Right/Both Sensor(s) Failure",
+	"reportFull": "Left/Right/Both Sensor(s) Failure",
+	"manualSensOrShutdown": "Left/Right/Both Sensor(s) was(were) shut down manually",
+	"batteryEnd": "Left/Right/Both Sensor(s) battery ended",
+	"notActive": "Left/Right/Both Sensor(s) didn’t start session",
+	"missingReport": "Left/Right/Both Sensor(s) is(are) missing"
+}

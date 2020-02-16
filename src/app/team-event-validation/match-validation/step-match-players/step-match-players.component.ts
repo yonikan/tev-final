@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { TeamEventValidationService } from '../../team-event-validation.service';
+import { Observable } from 'rxjs';
+import { StaticDataService } from 'src/app/core/services/static-data.service';
 
 @Component({
 	selector: 'app-step-match-players',
@@ -10,10 +12,12 @@ export class StepMatchPlayersComponent implements OnInit {
 	@Input() teamEventId: any;
 	@Input() stepMatchPlayersData: any;
 	@Output() stepSelectionEmitter = new EventEmitter<number>();
+	playerTimeframeErrors: Observable<object>;
 
-	constructor(private teamEventValidationService: TeamEventValidationService) { }
+	constructor(private teamEventValidationService: TeamEventValidationService, private staticDataService: StaticDataService) { }
 
 	ngOnInit() {
+		this.playerTimeframeErrors = this.staticDataService.getData('team-event-validation', 'player-timeframe-errors')
 	}
 
 	nextStep() {

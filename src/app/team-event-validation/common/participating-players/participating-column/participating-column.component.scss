@@ -47,6 +47,15 @@
 							margin: 0 2px;
 						}
 
+						&.error {
+							color: #8994a3;
+						}
+
+						.player-error {
+							font-size: 12px;
+							color: #c07e7e;
+						}
+
 					}
 
 					.action-name {
@@ -114,7 +123,7 @@
 				@include light-text(14px);
 			}
 			img {
-				width: 24px;
+				width: 14px;
 			}
 		}
 	}
