@@ -1,6 +1,6 @@
 <div class="step-match-overview-container">
 
-    <app-match-overview [stepMatchOverviewData]="stepMatchOverviewData"></app-match-overview>
+    <app-match-overview (matchOverviewEmitter)="onMatchOverviewEmitter($event)" [stepMatchOverviewData]="stepMatchOverviewData"></app-match-overview>
     <app-tags (tagsEmitter)="onTagsEmitter($event)" [stepData]="stepMatchOverviewData"></app-tags>
 
     <div class="step-footer">

@@ -14,6 +14,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	@Input() playersData;
 	@Input() participatingPlayers;
 	@Output() changeFormationPlayer = new EventEmitter();
+	@Output() formationFieldEmitter = new EventEmitter<any>();
 	@ViewChild('swapPlayers', null) _swapPlayers: any;
 
 	players = [];
@@ -175,5 +176,9 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 	trackPlayersFn(i, player) {
 		return player.id;
+	}
+
+	sendToTeamEvent(data) {
+		this.formationFieldEmitter.emit(data);
 	}
 }

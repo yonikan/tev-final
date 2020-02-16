@@ -3,7 +3,7 @@
       <h3>Substitution Players</h3>
     </div>
 
-    <substitutions-table [substitutions]="stepMatchSubsData?.subList" [suggestedSubs]="stepMatchSubsData?.suggestedSubs"></substitutions-table>
+    <substitutions-table (matchSubsEmitter)="onMatchSubsEmitter($event)" [substitutions]="stepMatchSubsData?.subList" [suggestedSubs]="stepMatchSubsData?.suggestedSubs"></substitutions-table>
 
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="previousStep()">back</button>

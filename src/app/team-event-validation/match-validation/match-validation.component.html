@@ -9,28 +9,19 @@
 				*ngIf="step.name === 'OVERVIEW'"
 				[teamEventId]="matchId"
 				[stepMatchOverviewData]="step1Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"></app-step-match-overview>
+				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+			</app-step-match-overview>
 			<app-step-match-players
 				*ngIf="step.name === 'PLAYERS'"
 				[teamEventId]="matchId"
 				[stepMatchPlayersData]="step2Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-players>
+				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+			</app-step-match-players>
 			<app-step-match-formations
 				*ngIf="step.name === 'FORMATIONS'"
 				[stepMatchFormationsData]="step3Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-formations>
-			<app-step-match-phases
-				*ngIf="step.name === 'PHASES'"
-				[stepMatchPhasesData]="step4Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-phases>
-			<app-step-match-subs
-				*ngIf="step.name === 'SUBS'"
-				[stepMatchSubsData]="step5Data"
-				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)"
-				(stepBack)="previousStep(stepper)"></app-step-match-subs>
+				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+			</app-step-match-formations>
 		</mat-step>
 	</mat-horizontal-stepper>
 </div>

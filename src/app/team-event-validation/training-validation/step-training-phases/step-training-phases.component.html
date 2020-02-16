@@ -7,7 +7,7 @@
       [plotBands]="plotBands">
     </app-speed-graph>
 
-    <app-phases-cards-container (trainingPhasesEmitter)="onTrainingPhasesEmitter($event)" [cards]="stepTrainingPhasesData?.phasesList"></app-phases-cards-container>
+    <app-phases-cards-container (teamEventPhasesEmitter)="onTrainingPhasesEmitter($event)" [cards]="stepTrainingPhasesData?.phasesList"></app-phases-cards-container>
 
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="backStep()">back</button>

@@ -24,4 +24,8 @@ export class StepMatchPlayersComponent implements OnInit {
 	previousStep() {
 		this.stepSelectionEmitter.emit(-1);
 	}
+	
+	onParticipatingPlayersEmitter(data) {
+		console.log('data: ', data);
+	}
 }
