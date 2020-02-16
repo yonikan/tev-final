@@ -2,6 +2,7 @@
 	<app-participating-players
 		(participatingPlayersEmitter)="onParticipatingPlayersEmitter($event)"
 		[teamEventId]="teamEventId"
+		[type]="'training'"
 		[playerTimeframeErrors]="playerTimeframeErrors | async">
 	</app-participating-players>
     <div class="step-footer">
