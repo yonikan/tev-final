@@ -6,19 +6,19 @@
 		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
 			<ng-template matStepLabel>{{step.name}}</ng-template>
 			<app-step-training-general
-				*ngIf="currentStep === 0"
+				*ngIf="step.name === 'GENERAL'"
 				[teamEventId]="trainingId"
 				[stepTrainingGeneralData]="step1Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-training-general>
 			<app-step-training-players
-				*ngIf="currentStep === 1"
+				*ngIf="step.name === 'PLAYERS'"
 				[teamEventId]="trainingId"
 				[stepTrainingPlayersData]="step2Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-training-players>
 			<app-step-training-phases
-				*ngIf="currentStep === 2"
+				*ngIf="step.name === 'PHASES'"
 				[stepTrainingPhasesData]="step3Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-training-phases>

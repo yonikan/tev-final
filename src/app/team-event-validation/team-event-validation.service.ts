@@ -136,7 +136,7 @@ export class TeamEventValidationService {
 		this.http
 			.get(`${this.BASE_URL}/v3/team-event/${teamEventId}/players-for-swap`)
 			.subscribe((data: any) => {
-				return subject.next({
+				subject.next({
 					clubPlayers: data.map(player => ({
 						...player,
 						positionName: this.getPlayerPositionName(player.positionId, 'category')
@@ -155,7 +155,7 @@ export class TeamEventValidationService {
 						positionName: this.getPlayerPositionName(p.defaultPositionId, 'shortName')
 					}));
 
-				return subject.next({ allPlayers: players });
+				subject.next({ allPlayers: players });
 			});
 	}
 
