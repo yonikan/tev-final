@@ -22,6 +22,16 @@
 				[stepMatchFormationsData]="step3Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-formations>
+			<app-step-match-phases
+				*ngIf="step.name === 'PHASES'"
+				[stepMatchPhasesData]="step4Data"
+				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+			</app-step-match-phases>
+			<app-step-match-subs
+				*ngIf="step.name === 'SUBS'"
+				[stepMatchSubsData]="step5Data"
+				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
+			</app-step-match-subs>
 		</mat-step>
 	</mat-horizontal-stepper>
 </div>
