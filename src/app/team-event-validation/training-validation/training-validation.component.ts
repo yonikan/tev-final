@@ -22,9 +22,9 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 	private trainingValidationDataSub: Subscription;
 	currentStep: any = 0;
 	steps = [
-		{name: 'GENERAL', isCompleted: false, isLastStep: false},
-		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
-		{name: 'PHASES', isCompleted: false, isLastStep: true}
+		{name: 'GENERAL', isCompleted: false, isLastStep: false, id: 0},
+		{name: 'PLAYERS', isCompleted: false, isLastStep: false, id: 1},
+		{name: 'PHASES', isCompleted: false, isLastStep: true, id: 2}
 	];
 
 	constructor(
@@ -39,6 +39,9 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 			.getTrainingValidationDataListener()
 			.subscribe((trainingValidationData: any) => {
 				const trainingValidationDataCopy = JSON.parse(JSON.stringify(trainingValidationData));
+				if(!this.teamEventValidationService.getTrainingValidationData()) {
+					this.teamEventValidationService.setTrainingValidationData(trainingValidationDataCopy);
+				}
 				this.isLoading = false;
 				this.step1Data = trainingValidationDataCopy.metadata;
 				this.step2Data = trainingValidationDataCopy.participatingPlayers;

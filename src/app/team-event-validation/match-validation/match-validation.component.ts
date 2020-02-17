@@ -23,11 +23,11 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 	private matchValidationDataSub: Subscription;
 
 	steps = [
-		{name: 'OVERVIEW', isCompleted: false, isLastStep: false},
-		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
-		{name: 'FORMATIONS', isCompleted: false, isLastStep: false},
-		{name: 'PHASES', isCompleted: false, isLastStep: false},
-		// {name: 'SUBS', isCompleted: false, isLastStep: true}
+		{name: 'OVERVIEW', isCompleted: false, isLastStep: false, id: 0},
+		{name: 'PLAYERS', isCompleted: false, isLastStep: false, id: 1},
+		{name: 'FORMATIONS', isCompleted: false, isLastStep: false, id: 2},
+		{name: 'PHASES', isCompleted: false, isLastStep: false, id: 3},
+		// {name: 'SUBS', isCompleted: false, isLastStep: true, id: 4}
 	];
 	currentStep: any = 0;
 
@@ -43,6 +43,9 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 			.getMatchValidationDataListener()
 			.subscribe((matchValidationData: any) => {
 				const matchValidationDataCopy = JSON.parse(JSON.stringify(matchValidationData));
+				if(!this.teamEventValidationService.getMatchValidationData()) {
+					this.teamEventValidationService.setMatchValidationData(matchValidationDataCopy);
+				}
 				this.isLoading = false;
 				this.step1Data = matchValidationDataCopy.metadata;
 				this.step2Data = matchValidationDataCopy.participatingPlayers;
