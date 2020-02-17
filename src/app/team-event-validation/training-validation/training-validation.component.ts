@@ -11,7 +11,7 @@ import { TeamOverviewService } from '../../team-overview/team-overview.service';
 })
 export class TrainingValidationComponent implements OnInit, OnDestroy {
 	@Input() trainingId: number;
-	@ViewChild('stepper', null) stepper: ElementRef;
+	@ViewChild('stepper', { static: false }) stepper: ElementRef;
 
 	currentSelectedStep = 0;
 	isLoading = true;

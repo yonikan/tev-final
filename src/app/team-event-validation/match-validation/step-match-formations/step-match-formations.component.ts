@@ -34,6 +34,7 @@ export class StepMatchFormationsComponent implements OnInit {
 	positions: any;
 	formationData: any = [];
 	participatingPlayers:any = [];
+	isValidated = true;
 
 	constructor(
 		private teamEventValidationService: TeamEventValidationService,
@@ -89,5 +90,9 @@ export class StepMatchFormationsComponent implements OnInit {
 		// let matchDataCopy = {...matchData};
 		// matchDataCopy.formation = formationFieldData;
 		// this.teamEventValidationService.setMatchValidationData(matchDataCopy);
+	}
+
+	checkValidation(isValidated) {
+		this.isValidated = isValidated;
 	}
 }

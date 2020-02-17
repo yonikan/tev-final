@@ -14,7 +14,7 @@ export class FieldPlayerComponent implements OnInit {
 	@Input() player;
 	@Output() changePlayer = new EventEmitter();
 	@Output() openSelection = new EventEmitter();
-	@ViewChild('select', null) _select: any;
+	@ViewChild('select', { static: false }) _select: any;
 
 	selectedPlayer = null;
 	isOpen = false;

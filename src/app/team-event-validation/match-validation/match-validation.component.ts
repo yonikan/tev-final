@@ -11,7 +11,7 @@ import { TeamOverviewService } from '../../team-overview/team-overview.service';
 })
 export class MatchValidationComponent implements OnInit, OnDestroy {
 	@Input() matchId: number;
-	@ViewChild('stepper', null) stepper: ElementRef;
+	@ViewChild('stepper', { static: false }) stepper: ElementRef;
 	isLoading = true;
 	currentSelectedStep = 0;
 	step1Data: any;
