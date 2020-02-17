@@ -24,6 +24,18 @@ export class StepMatchOverviewComponent implements OnInit {
     console.log(this.stepMatchOverviewData);
   }
 
+  onMatchOverviewEmitter(matchOverviewData) {
+    console.log('matchOverviewData: ', matchOverviewData);
+		// const matchData = this.teamEventValidationService.getMatchValidationData();
+		// let matchDataCopy = {...matchData};
+    // matchDataCopy.metadata.vanue = matchOverviewData;
+    // matchDataCopy.metadata.myScore = matchOverviewData;
+    // matchDataCopy.metadata.opponentScore = matchOverviewData;
+    // matchDataCopy.metadata.competition = matchOverviewData;
+    // matchDataCopy.metadata.availableOpponentList = matchOverviewData;
+		// this.teamEventValidationService.setMatchValidationData(matchDataCopy);
+  }
+
   onTagsEmitter(tags) {
 		let trimmedTags = [];
 		tags.forEach(tag => {
@@ -32,9 +44,5 @@ export class StepMatchOverviewComponent implements OnInit {
 		let matchData = this.teamEventValidationService.getMatchValidationData();
 		matchData.metadata.tags = trimmedTags;
 		this.teamEventValidationService.setMatchValidationData(matchData);
-  }
-
-  onMatchOverviewEmitter(data) {
-
   }
 }

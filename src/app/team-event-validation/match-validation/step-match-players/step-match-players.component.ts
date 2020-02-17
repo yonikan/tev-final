@@ -29,7 +29,11 @@ export class StepMatchPlayersComponent implements OnInit {
 		this.stepSelectionEmitter.emit(-1);
 	}
 
-	onParticipatingPlayersEmitter(data) {
-		console.log('data: ', data);
+	onParticipatingPlayersEmitter(participatingPlayersData) {
+		console.log('participatingPlayersData: ', participatingPlayersData);
+		// const matchData = this.teamEventValidationService.getMatchValidationData();
+		// let matchDataCopy = {...matchData};
+		// matchDataCopy.participatingPlayers = participatingPlayersData;
+		// this.teamEventValidationService.setMatchValidationData(matchDataCopy);
 	}
 }

@@ -83,7 +83,11 @@ export class StepMatchFormationsComponent implements OnInit {
 		console.log('data: ', data);
 	}
 
-	onFormationFieldEmitter(data) {
-		console.log('data: ', data);
+	onFormationFieldEmitter(formationFieldData) {
+		console.log('formationFieldData: ', formationFieldData);
+		// const matchData = this.teamEventValidationService.getMatchValidationData();
+		// let matchDataCopy = {...matchData};
+		// matchDataCopy.formation = formationFieldData;
+		// this.teamEventValidationService.setMatchValidationData(matchDataCopy);
 	}
 }

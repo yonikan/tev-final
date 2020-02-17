@@ -25,7 +25,11 @@ export class StepMatchSubsComponent implements OnInit {
 		this.stepSelectionEmitter.emit(-1);
 	}
 
-	onMatchSubsEmitter(data) {
-		console.log('data: ', data);
+	onMatchSubsEmitter(matchSubsData) {
+		console.log('matchSubsData: ', matchSubsData);
+		// const matchData = this.teamEventValidationService.getMatchValidationData();
+		// let matchDataCopy = {...matchData};
+		// matchDataCopy.substitutions = matchSubsData;
+		// this.teamEventValidationService.setMatchValidationData(matchDataCopy);
 	}
 }

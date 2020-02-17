@@ -34,10 +34,10 @@ export class StepTrainingPlayersComponent implements OnInit {
 
 	onParticipatingPlayersEmitter(participatingPlayersData) {
 		console.log('participatingPlayersData: ', participatingPlayersData);
-		const trainingData = this.teamEventValidationService.getTrainingValidationData();
-		let trainingDataCopy = {...trainingData};
-		console.log('trainingDataCopy: ', trainingDataCopy);
-		trainingDataCopy.participatingPlayers = participatingPlayersData;
-		this.teamEventValidationService.setTrainingValidationData(trainingDataCopy);
+		// const trainingData = this.teamEventValidationService.getTrainingValidationData();
+		// let trainingDataCopy = {...trainingData};
+		// console.log('trainingDataCopy: ', trainingDataCopy);
+		// trainingDataCopy.participatingPlayers = participatingPlayersData;
+		// this.teamEventValidationService.setTrainingValidationData(trainingDataCopy);
 	}
 }
