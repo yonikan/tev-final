@@ -225,6 +225,9 @@ export class ParticipatingPlayersComponent implements OnInit {
 	}
 
 	sendToTeamEvent(data) {
-		this.participatingPlayersEmitter.emit(data);
+		this.participatingPlayersEmitter.emit(data.reduce((acc, val) => {
+			acc[val.id] = val;
+			return acc;
+		}, {}));
 	}
 }
