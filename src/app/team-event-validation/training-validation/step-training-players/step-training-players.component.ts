@@ -17,7 +17,7 @@ export class StepTrainingPlayersComponent implements OnInit {
 	constructor(private staticDataService: StaticDataService) { }
 
 	ngOnInit() {
-		this.playerTimeframeErrors = this.staticDataService.getData('team-event-validation', 'player-timeframe-errors')
+		this.playerTimeframeErrors = this.staticDataService.getData('player-timeframe-errors', 'team-event-validation')
 	}
 
 	nextStep() {
