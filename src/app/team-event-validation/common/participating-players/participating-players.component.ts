@@ -78,7 +78,6 @@ export class ParticipatingPlayersComponent implements OnInit {
 			if (clubPlayers) {
 				this.clubPlayers = clubPlayers;
 				this.clubPlayersGroup = this.getClubPlayers();
-				this.sendToTeamEvent(this.clubPlayers);
 			}
 		});
 	}
