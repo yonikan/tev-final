@@ -1,8 +1,8 @@
 <div class="match-validation-container">
-	<div *ngIf="isLoading" class="loader-container">
+	<div *ngIf="isLoading || !step1Data" class="loader-container">
         <mat-spinner></mat-spinner>
     </div>
-	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading" #stepper>
+	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data" #stepper>
 		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
 			<ng-template matStepLabel>{{step.name}}</ng-template>
 			<app-step-match-overview
