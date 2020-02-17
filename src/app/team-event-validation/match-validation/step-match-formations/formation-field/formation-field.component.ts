@@ -78,10 +78,9 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	setRandomPositions() {
-		// this.formation = this.formation.reduce((unique, item) => {
-		// 	return unique.some(o => o.positionId === item.positionId) ? [...unique, {...item, positionId: null}] : [...unique, item]
-		// }, []);
-		this.formation = [];
+		this.formation = this.formation.reduce((unique, item) => {
+			return unique.some(o => o.positionId === item.positionId) ? [...unique, {...item, positionId: null}] : [...unique, item]
+		}, []);
 
 		const positionIdMap = this.mapPositionIds();
 		if (this.formationTemplate.formationPosition) {
