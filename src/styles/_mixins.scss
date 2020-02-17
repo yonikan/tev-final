@@ -200,7 +200,11 @@
 
     .step-submit-btn {
       background-color: $color-green;
-      color: white;
+	  color: white;
+	  &[disabled] {
+		  cursor: not-allowed;
+		  background-color: #828282;
+	  }
     }
   }
 }

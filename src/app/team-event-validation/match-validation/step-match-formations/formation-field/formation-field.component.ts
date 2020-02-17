@@ -15,6 +15,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	@Input() participatingPlayers;
 	@Output() changeFormationPlayer = new EventEmitter();
 	@Output() formationFieldEmitter = new EventEmitter<any>();
+	@Output() updateValidationStatus = new EventEmitter<any>();
 	@ViewChild('swapPlayers', null) _swapPlayers: any;
 
 	players = [];
@@ -25,6 +26,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	document: Document;
 	closeSelect;
 	select;
+	isError = false;
 
 	@HostListener('document:click', ['$event'])
 	clickOut(e) {
@@ -42,12 +44,18 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 		if (this.participatingPlayers && this.formationTemplate.formationPosition) {
 			this.players = Object.values(this.participatingPlayers);
 			this.setRandomPositions();
+			this.checkIsError();
 		}
 	}
 
 	ngOnInit() {
 		this.positions = this.staticDataService.getStaticData().positions;
 
+	}
+
+	checkIsError() {
+		this.isError = this.formationTemplate.formationPosition.filter(({playerId}) => !!playerId).length < 3;
+		this.updateValidationStatus.emit(!this.isError);
 	}
 
 	isExistInFormation(id) {
@@ -70,9 +78,10 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	}
 
 	setRandomPositions() {
-		this.formation = this.formation.reduce((unique, item) => {
-			return unique.some(o => o.positionId === item.positionId) ? [...unique, {...item, positionId: null}] : [...unique, item]
-		}, []);
+		// this.formation = this.formation.reduce((unique, item) => {
+		// 	return unique.some(o => o.positionId === item.positionId) ? [...unique, {...item, positionId: null}] : [...unique, item]
+		// }, []);
+		this.formation = [];
 
 		const positionIdMap = this.mapPositionIds();
 		if (this.formationTemplate.formationPosition) {
@@ -172,6 +181,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 		this.isShowSwapPlayers = false;
 		this.closeSelect();
+		this.checkIsError();
 	}
 
 	trackPlayersDataFn(i, playersData) {

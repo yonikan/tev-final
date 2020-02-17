@@ -6,8 +6,8 @@
 				[positions]="positions"
                 [tabs]="playersData"
                 [tactics]="tactics"
-                [definedSubs]="definedSubs"
-                (formationSelectionEmitter)="onFormationSelectionEmitter($event)" 
+				[definedSubs]="definedSubs"
+                (formationSelectionEmitter)="onFormationSelectionEmitter($event)"
                 (onSelectTactic)="selectTactic($event)"
                 (onSelectDefinedSub)="selectDefinedSub($event)">
             </app-formation-selection>
@@ -18,13 +18,14 @@
 				[formationTemplate]="selectedFormation"
 				[formation]="formationData"
 				[playersData]="playersData"
-                [participatingPlayers]="participatingPlayers"
+				[participatingPlayers]="participatingPlayers"
+				(updateValidationStatus)="checkValidation($event)"
                 (formationFieldEmitter)="onFormationFieldEmitter($event)">
             </app-formation-field>
         </div>
     </div>
     <div class="step-footer">
         <button class="step-back-btn" mat-button (click)="previousStep()">back</button>
-        <button class="step-submit-btn" mat-raised-button (click)="nextStep()">next</button>
+        <button class="step-submit-btn" mat-raised-button (click)="nextStep()" [disabled]="!isValidated">next</button>
     </div>
 </div>
