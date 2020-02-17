@@ -10,18 +10,16 @@
 		position: relative;
 
         .field-container {
-            width: 422px;
-            height: 635px;
 
             .field {
                 display: grid;
                 background-image: url("../../../../../assets/svg/formation/field-lines.svg"), url("../../../../../assets/svg/formation/field-stripes.svg"), url("../../../../../assets/svg/formation/field.svg");
                 height: 100%;
-                // background-position: left top, 0 105px, 5px 2px;
-                // background-size: 361px 533px, contain, 348px 524px;
-                background-position: left top, 0 105px, 6px 3px;
-                background-size: 422px 633px, contain, 408px 618px;
-                background-repeat: no-repeat, no-repeat, no-repeat;
+				background-position: left top, 0 105px, 6px 3px;
+				background-size: 380px 500px, contain, 368px 490px;
+				background-repeat: no-repeat, no-repeat, no-repeat;
+				width: 380px;
+				height: 500px;
 
                 > img {
                     grid-row-start: 1;
@@ -38,7 +36,7 @@
                     // grid-template-columns: repeat(9, 46.88px);// field columns = 9
                     // grid-template-columns: repeat(9, auto);// field columns = 9
                     grid-template-columns: repeat(9, 1fr);// field columns = 9
-                    grid-template-rows: repeat(6, 85.8px);// field rows = 7
+					grid-template-rows: repeat(6, 63.8px);
                     justify-items: center;
                     > * {
                         min-width: 0;
@@ -51,8 +49,8 @@
                 }
 
                 @media (max-width: $media-query-sm) {
-                    background-position: left top, 0 10px, 6px 3px;
-                    background-size: 360px 633px, 352px 610px, 348px 618px;
+					background-size: 350px 500px, contain, 340px 490px;
+					background-position: 4px top, 5px 105px, 10px 3px;
                 }
             }
 

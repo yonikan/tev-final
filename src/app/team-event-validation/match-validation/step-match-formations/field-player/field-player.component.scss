@@ -24,11 +24,14 @@
             align-items: center;
             display: flex;
             justify-content: center;
-            align-items: center;            ;
+			align-items: center;
+			img {
+				width: 42px;
+			}
         }
         .select {
 			align-self: baseline;
-			width: 93px;
+			width: 80px;
 			height: 23px;
 			border-radius: 12.5px;
 			border: solid 1px #80b89b;
@@ -41,7 +44,7 @@
 			text-align: center;
 			color: #35083a;
 			display: grid;
-			grid-template-columns: 65px 10px;
+			grid-template-columns: 1fr 0fr;
 
 			cursor: pointer;
 
