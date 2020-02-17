@@ -21,7 +21,10 @@ export class StepTrainingGeneralComponent implements OnInit, OnChanges {
 		endTime: 0
 	};
 
-	constructor(private teamEventValidationService: TeamEventValidationService, private participatingPlayersService: ParticipatingPlayersService) { }
+	constructor(
+		private teamEventValidationService: TeamEventValidationService,
+		private participatingPlayersService: ParticipatingPlayersService
+	) { }
 
 	ngOnInit() {
 		this.participatingPlayersService.getData(this.teamEventId, 'training');
@@ -57,8 +60,9 @@ export class StepTrainingGeneralComponent implements OnInit, OnChanges {
 		tags.forEach(tag => {
 			trimmedTags.push(tag.name);
 		});
-		let trainingData = this.teamEventValidationService.getTrainingValidationData();
-		trainingData.metadata.tags = trimmedTags;
-		this.teamEventValidationService.setTrainingValidationData(trainingData);
+		const trainingData = this.teamEventValidationService.getTrainingValidationData();
+		let trainingDataCopy = {...trainingData};
+		trainingDataCopy.metadata.tags = trimmedTags;
+		this.teamEventValidationService.setTrainingValidationData(trainingDataCopy);
 	}
 }

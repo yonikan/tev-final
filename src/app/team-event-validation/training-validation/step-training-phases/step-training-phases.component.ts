@@ -56,7 +56,11 @@ export class StepTrainingPhasesComponent implements OnInit, OnChanges {
 		this.stepSelectionEmitter.emit(-1);
 	}
 
-	onTrainingPhasesEmitter(data) {
-		console.log('data: ', data);
+	onTrainingPhasesEmitter(trainingPhasesData) {
+		console.log('trainingPhasesData: ', trainingPhasesData);
+		const trainingData = this.teamEventValidationService.getTrainingValidationData();
+		let trainingDataCopy = {...trainingData};
+		trainingDataCopy.phases = trainingPhasesData;
+		this.teamEventValidationService.setTrainingValidationData(trainingDataCopy);
 	}
 }

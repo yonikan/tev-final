@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StaticDataService } from 'src/app/core/services/static-data.service';
 import { Observable } from 'rxjs';
+import { TeamEventValidationService } from '../../team-event-validation.service';
 
 @Component({
 	selector: 'app-step-training-players',
@@ -14,10 +15,13 @@ export class StepTrainingPlayersComponent implements OnInit {
 	isNextBtnDisabled = false;
 	playerTimeframeErrors: Observable<Object>;
 
-	constructor(private staticDataService: StaticDataService) { }
+	constructor(
+		private teamEventValidationService: TeamEventValidationService,
+		private staticDataService: StaticDataService
+	) { }
 
 	ngOnInit() {
-		this.playerTimeframeErrors = this.staticDataService.getData('team-event-validation', 'player-timeframe-errors')
+		this.playerTimeframeErrors = this.staticDataService.getData('player-timeframe-errors', 'team-event-validation')
 	}
 
 	nextStep() {
@@ -28,7 +32,12 @@ export class StepTrainingPlayersComponent implements OnInit {
 		this.stepSelectionEmitter.emit(-1);
 	}
 
-	onParticipatingPlayersEmitter(data) {
-		console.log('data: ', data);
+	onParticipatingPlayersEmitter(participatingPlayersData) {
+		console.log('participatingPlayersData: ', participatingPlayersData);
+		// const trainingData = this.teamEventValidationService.getTrainingValidationData();
+		// let trainingDataCopy = {...trainingData};
+		// console.log('trainingDataCopy: ', trainingDataCopy);
+		// trainingDataCopy.participatingPlayers = participatingPlayersData;
+		// this.teamEventValidationService.setTrainingValidationData(trainingDataCopy);
 	}
 }

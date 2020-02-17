@@ -27,7 +27,7 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
 		{name: 'FORMATIONS', isCompleted: false, isLastStep: false},
 		{name: 'PHASES', isCompleted: false, isLastStep: false},
-		{name: 'SUBS', isCompleted: false, isLastStep: true}
+		// {name: 'SUBS', isCompleted: false, isLastStep: true}
 	];
 	currentStep: any = 0;
 

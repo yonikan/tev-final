@@ -6,13 +6,13 @@
 		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
 			<ng-template matStepLabel>{{step.name}}</ng-template>
 			<app-step-match-overview
-				*ngIf="step.name === 'OVERVIEW'"
+				*ngIf="step.name === 'OVERVIEW' && step1Data"
 				[teamEventId]="matchId"
 				[stepMatchOverviewData]="step1Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-overview>
 			<app-step-match-players
-				*ngIf="step.name === 'PLAYERS'"
+				*ngIf="step.name === 'PLAYERS' && step2Data"
 				[teamEventId]="matchId"
 				[stepMatchPlayersData]="step2Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">

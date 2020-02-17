@@ -73,6 +73,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 					}
 					return {...player};
 				});
+				this.sendToTeamEvent(this.allPlayers);
 			}
 			if (clubPlayers) {
 				this.clubPlayers = clubPlayers;
@@ -135,6 +136,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 			};
 
 			this.store.next(newState);
+			this.sendToTeamEvent(newState);
 		});
 	}
 
@@ -161,6 +163,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 			};
 
 			this.store.next(newState);
+			this.sendToTeamEvent(newState);
 		});
 
 	}
