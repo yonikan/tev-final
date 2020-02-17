@@ -17,7 +17,7 @@ export class StepMatchPlayersComponent implements OnInit {
 	constructor(private teamEventValidationService: TeamEventValidationService, private staticDataService: StaticDataService) { }
 
 	ngOnInit() {
-		this.playerTimeframeErrors = this.staticDataService.getData('team-event-validation', 'player-timeframe-errors')
+		this.playerTimeframeErrors = this.staticDataService.getData('player-timeframe-errors', 'team-event-validation')
 	}
 
 	nextStep() {
@@ -28,7 +28,7 @@ export class StepMatchPlayersComponent implements OnInit {
 	previousStep() {
 		this.stepSelectionEmitter.emit(-1);
 	}
-	
+
 	onParticipatingPlayersEmitter(data) {
 		console.log('data: ', data);
 	}
