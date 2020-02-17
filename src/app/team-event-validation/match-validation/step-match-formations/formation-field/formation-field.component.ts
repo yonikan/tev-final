@@ -172,6 +172,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 		this.isShowSwapPlayers = false;
 		this.closeSelect();
+		this.sendToTeamEvent(this.formationTemplate.formationPosition);
 	}
 
 	trackPlayersDataFn(i, playersData) {

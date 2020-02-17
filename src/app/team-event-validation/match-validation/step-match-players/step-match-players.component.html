@@ -1,5 +1,6 @@
 <div class="step-match-players-container">
 	<app-participating-players
+		(participatingPlayersEmitter)="onParticipatingPlayersEmitter($event)"
 		[playerTimeframeErrors]="playerTimeframeErrors | async"
 		[teamEventId]="teamEventId"
 		[type]="'match'">
