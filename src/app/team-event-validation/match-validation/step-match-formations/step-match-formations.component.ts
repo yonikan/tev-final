@@ -57,7 +57,7 @@ export class StepMatchFormationsComponent implements OnInit {
 			}
 			return acc
 		}, []);
-		this.staticDataService.getData('team-event-validation', 'formations').subscribe(data => {
+		this.staticDataService.getData('formations', 'team-event-validation').subscribe(data => {
 			this.tactics = data;
 		})
 	}
