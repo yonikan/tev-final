@@ -21,9 +21,12 @@ export class StaticDataService {
 			});
 	}
 
-	getData(category: string, name: string): Observable<Object> {
-		return this.http
-			.get(`./assets/configs/${category}/config-${name}.json`)
+	getData(name: string, category?: string): Observable<Object> {
+		let url = `./assets/configs/config-${name}.json`;
+		if (category)
+			url = `./assets/configs/${category}/config-${name}.json`;
+
+		return this.http.get(url);
 	}
 }
 
