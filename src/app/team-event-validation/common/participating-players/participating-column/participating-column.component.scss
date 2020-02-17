@@ -20,9 +20,9 @@
 			}
 
 			summary {
+				outline: none;
 				.summary {
 					display: grid;
-					outline: none;
 					align-items: center;
 					grid-auto-flow: column;
 					grid-template-columns: 50px 1fr 60px;
