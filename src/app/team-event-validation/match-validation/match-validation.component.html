@@ -18,20 +18,20 @@
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-players>
 			<app-step-match-formations
-				*ngIf="step.name === 'FORMATIONS' && step3Data.formation"
+				*ngIf="step.name === 'FORMATIONS' && step3Data?.formation"
 				[stepMatchFormationsData]="step3Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-formations>
-			<!-- <app-step-match-phases
-				*ngIf="step.name === 'PHASES' && step4Data.phasesList"
+			<app-step-match-phases
+				*ngIf="step.name === 'PHASES' && step4Data"
 				[stepMatchPhasesData]="step4Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
-			</app-step-match-phases> -->
-			<!-- <app-step-match-subs
-				*ngIf="step.name === 'SUBS'"
+			</app-step-match-phases>
+			<app-step-match-subs
+				*ngIf="step.name === 'SUBS' && step5Data"
 				[stepMatchSubsData]="step5Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
-			</app-step-match-subs> -->
+			</app-step-match-subs>
 		</mat-step>
 	</mat-horizontal-stepper>
 </div>
