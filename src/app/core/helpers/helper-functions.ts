@@ -63,8 +63,9 @@ export function sortFunction(a, b, keyNamePath = ['date']) {
     fieldType: String,
     direction: String
   }]
+
   if (!answer && sortBy !== 'date') {
-    answer = this.sortFunction(a, b);
+    answer = sortFunction(a, b);
   }
 
   return answer;

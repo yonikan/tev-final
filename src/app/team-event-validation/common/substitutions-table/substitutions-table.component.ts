@@ -24,6 +24,8 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
   linup;
   availableForSub;
 
+  subFormationPerMinute = {};
+
   emptySubstitution = { timeMin: '', inPlayerId: '', outPlayerId: '', defaultPositionId: '', type: '', id: '' };
 
   participationgPlayers
@@ -34,9 +36,9 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.participationgPlayers = Object.values(this.teamEventValidationService.getAllParticipatingPlayers());
-    this.linup = this.teamEventValidationService.getPlayersByIds(this.teamEventValidationService.linup, 'id');
-    this.availableForSub = objToArray(this.teamEventValidationService.availableForSub, 'id');
-    console.log(this.participationgPlayers, this.linup, this.availableForSub);
+
+    this.buildSubFormationByMinute(0);
+    console.log('subFormationPerMinute: ', this.subFormationPerMinute);
     //  console.log('SubstitutionsTableComponent: ',this.linup, this.availableForSub);
   }
 
@@ -47,6 +49,24 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     }
   }
 
+  buildSubFormationByMinute(minute) {
+    if (minute === 0) {
+      this.subFormationPerMinute[minute] = {
+        linup: this.teamEventValidationService.getPlayersByIds(this.teamEventValidationService.linup, 'id'),
+        availableForSub: objToArray(this.teamEventValidationService.availableForSub, 'id')
+      }
+      console.log('getPlayersByIds: ', this.teamEventValidationService.getPlayersByIds(this.teamEventValidationService.linup, 'id'))
+    } else {
+      const lastSub = this.substitutions[length - 1];
+      this.subFormationPerMinute[minute] = this.participationgPlayers.reduce((playerId, acc) => {
+        if (lastSub.inPlayerId === playerId) { acc.linup.push(playerId); return acc; };
+        if (lastSub.outPlayerId === playerId) { acc.availableForSub.push(playerId); return acc; };
+        this.subFormationPerMinute[lastSub.timeMin].lineup.include(playerId) ? acc.linup.push(playerId) : acc.availableForSub.push(playerId);
+        return acc;
+      }, { linup: [], availableForSub: [] });
+    }
+  }
+
   sortSubstitutions() {
     this.substitutions = this.substitutions.sort((a, b) => {
       return sortFunction(b, a, ['timeMin']);
@@ -54,7 +74,7 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
   }
 
   removeRow(substitutionToRemove, mode) { // TODO: remove player from availableForSub to lineup
-     const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
+    const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
     if (mode === 'GENERAL') { this.substitutions.splice(substitutionIndex, 1); }
     //  if (mode === 'NEW') { }
     if (mode === 'SUGGESTED') { this.suggestedSubs.splice(substitutionIndex, 1); }

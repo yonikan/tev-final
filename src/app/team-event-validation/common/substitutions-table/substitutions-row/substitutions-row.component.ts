@@ -44,7 +44,6 @@ export class SubstitutionsRowComponent implements OnInit {
     // this.substitutionDraft = { ...this.substitution };
     this.setSubForDisplay();
     this.positions = this.teamEventValidationService.getStaticPositionsList();
-    console.log(this.positions)
   }
 
   // ngOnChanges(change) {
