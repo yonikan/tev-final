@@ -22,7 +22,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 	@Input() type = 'training';
 	@Input() playerTimeframeErrors = [];
 	@Output() participatingPlayersEmitter = new EventEmitter<any>();
-	@ViewChild('swapPlayersPanel', null) _swapPlayersPanel: ElementRef;
+	@ViewChild('swapPlayersPanel', { static: false }) _swapPlayersPanel: ElementRef;
 
 	private state: InitialState = {
 		excludedPlayers: [],

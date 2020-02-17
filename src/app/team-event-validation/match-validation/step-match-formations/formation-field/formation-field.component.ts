@@ -16,7 +16,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	@Output() changeFormationPlayer = new EventEmitter();
 	@Output() formationFieldEmitter = new EventEmitter<any>();
 	@Output() updateValidationStatus = new EventEmitter<any>();
-	@ViewChild('swapPlayers', null) _swapPlayers: any;
+	@ViewChild('swapPlayers', { static: false }) _swapPlayers: any;
 
 	players = [];
 	isShowSwapPlayers;
