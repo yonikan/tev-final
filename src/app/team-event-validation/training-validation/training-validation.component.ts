@@ -22,9 +22,9 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 	private trainingValidationDataSub: Subscription;
 	currentStep: any = 0;
 	steps = [
-		{name: 'GENERAL', isCompleted: false, isLastStep: false, id: 0},
-		{name: 'PLAYERS', isCompleted: false, isLastStep: false, id: 1},
-		{name: 'PHASES', isCompleted: false, isLastStep: true, id: 2}
+		{name: 'GENERAL', isCompleted: false, isLastStep: false},
+		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
+		{name: 'PHASES', isCompleted: false, isLastStep: true}
 	];
 
 	constructor(

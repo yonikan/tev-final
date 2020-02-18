@@ -23,11 +23,11 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 	private matchValidationDataSub: Subscription;
 
 	steps = [
-		{name: 'OVERVIEW', isCompleted: false, isLastStep: false, id: 0},
-		{name: 'PLAYERS', isCompleted: false, isLastStep: false, id: 1},
-		{name: 'FORMATIONS', isCompleted: false, isLastStep: false, id: 2},
-		{name: 'PHASES', isCompleted: false, isLastStep: false, id: 3},
-		// {name: 'SUBS', isCompleted: false, isLastStep: true, id: 4}
+		{name: 'OVERVIEW', isCompleted: false, isLastStep: false},
+		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
+		{name: 'FORMATIONS', isCompleted: false, isLastStep: false},
+		{name: 'PHASES', isCompleted: false, isLastStep: false},
+		{name: 'SUBS', isCompleted: false, isLastStep: true}
 	];
 	currentStep: any = 0;
 
