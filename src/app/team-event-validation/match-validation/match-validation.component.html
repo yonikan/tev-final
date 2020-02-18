@@ -28,7 +28,7 @@
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-phases>
 			<app-step-match-subs
-				*ngIf="step.name === 'SUBS' && step5Data"
+				*ngIf="step.name === 'SUBS' && step5Data && currentStep === step.id"
 				[stepMatchSubsData]="step5Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-subs>
