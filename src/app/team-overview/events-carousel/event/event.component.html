@@ -12,26 +12,26 @@
                 </button>
                 <mat-menu #eventMenu="matMenu" class="event-card-menu">
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="confirmSession()">
-                        <i class="demo-icon icon-v-icon">&#xe816;</i>
+                        <i class="demo-icon icon-v-icon">&#xe827;</i>
                         <span>Validate {{ teamEventTypeString }}</span>
                         <!-- <span>{{ 'team-overview.events-carousel.validate-session' | translate }}
                              {{ teamEventTypeString }}
                         </span> -->
                     </button>
                     <button *ngIf="!eventData.isValidated" mat-menu-item (click)="convertSession(eventData.id)">
-                        <i class="demo-icon icon-convert-team-event">&#xe81f;</i>
+                        <i class="demo-icon icon-convert-team-event">&#xe82a;</i>
                         <!-- <span>convert {{ teamEventTypeString }} </span> -->
                         <span>change to </span>
                         <span *ngIf="eventData.type === 1">match</span>
                         <span *ngIf="eventData.type === 2">training</span>
                     </button>
                     <button mat-menu-item (click)="deleteSession(eventData.id)">
-                        <i class="demo-icon icon-delete">&#xe815;</i>
+                        <i class="demo-icon icon-delete">&#xe82b;</i>
                         <span>delete {{ teamEventTypeString }}</span>
                         <!-- <span>{{ 'team-overview.events-carousel.delete-session' | translate }}</span> -->
                     </button>
                     <button *ngIf="eventData.isValidated" mat-menu-item (click)="editSession()">
-                        <i class="demo-icon icon-edit">&#xe80b;</i>
+                        <i class="demo-icon icon-edit">&#xe82d;</i>
                         <span>edit {{ teamEventTypeString }} </span>
                         <!-- <span>Edit Session</span> -->
                     </button>
@@ -46,8 +46,8 @@
         <div *ngIf="!isPdfReportLoading" class="event-content">
             <div class="event-content-header">
                 <div class="event-content-title" [ngClass]="{'validated-event-style':eventData.isValidated}">
-                    <i *ngIf="eventData.type === 2" class="demo-icon icon-calender">&#xe809;</i>
-                    <i *ngIf="eventData.type === 1" class="demo-icon icon-vlc-new">&#xe817;</i>  
+                    <i *ngIf="eventData.type === 2" class="demo-icon icon-calender">&#xe816;</i>
+                    <i *ngIf="eventData.type === 1" class="demo-icon icon-vlc-new">&#xe815;</i>  
                     <!-- <h4 *ngIf="!eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">new {{ teamEventTypeString }}</h4> -->
                     <!-- <h4 *ngIf="eventData.isValidated" [ngClass]="{'validated-event-style':eventData.isValidated}">
                         <span *ngIf="eventData.type === 2">Match</span>
@@ -103,11 +103,11 @@
             </div>
             <div *ngIf="eventData.isValidated" class="event-content-buttons">
                 <button class="action-btn" mat-raised-button (click)="downloadPdfReport('teamReport')">
-                    <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
+                    <i class="demo-icon icon-pdf-icon">&#xe821;</i> 
                     <span>Team Reports</span>
                 </button>
                 <button class="action-btn" mat-raised-button (click)="downloadPdfReport('individualReport')">
-                    <i class="demo-icon icon-pdf-icon">&#xe80f;</i> 
+                    <i class="demo-icon icon-pdf-icon">&#xe821;</i> 
                     <span>Individual Reports</span>
                 </button>
             </div>
