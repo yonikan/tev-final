@@ -27,6 +27,11 @@ export class TagsComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit() {
+    if(this.stepData.tags && this.stepData.tags.length > 0) {
+      this.stepData.tags.forEach(tag => {
+        this.teamEventTags.push({name: tag})
+      });
+    }
   }
 
   ngOnChanges(change) {
