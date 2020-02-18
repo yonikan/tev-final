@@ -30,10 +30,9 @@ export class StepMatchPlayersComponent implements OnInit {
 	}
 
 	onParticipatingPlayersEmitter(participatingPlayersData) {
-		console.log('participatingPlayersData: ', participatingPlayersData);
-		// const matchData = this.teamEventValidationService.getMatchValidationData();
-		// let matchDataCopy = {...matchData};
-		// matchDataCopy.participatingPlayers = participatingPlayersData;
-		// this.teamEventValidationService.setMatchValidationData(matchDataCopy);
+		const matchData = this.teamEventValidationService.getMatchValidationData();
+		let matchDataCopy = {...matchData};
+		matchDataCopy.participatingPlayers = participatingPlayersData;
+		this.teamEventValidationService.setMatchValidationData(matchDataCopy);
 	}
 }
