@@ -11,7 +11,7 @@ import { TeamOverviewService } from '../../team-overview/team-overview.service';
 })
 export class MatchValidationComponent implements OnInit, OnDestroy {
 	@Input() matchId: number;
-	@ViewChild('stepper', null) stepper: ElementRef;
+	@ViewChild('stepper', { static: false }) stepper: ElementRef;
 	isLoading = true;
 	currentSelectedStep = 0;
 	step1Data: any;
@@ -43,12 +43,17 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 			.getMatchValidationDataListener()
 			.subscribe((matchValidationData: any) => {
 				const matchValidationDataCopy = JSON.parse(JSON.stringify(matchValidationData));
+        console.log(this.teamEventValidationService.getMatchValidationData())
+				if(!this.teamEventValidationService.getMatchValidationData()) {
+          this.teamEventValidationService.setMatchValidationData(matchValidationDataCopy);
+          // this.teamEventValidationService.setFormation();
+				}
 				this.isLoading = false;
 				this.step1Data = matchValidationDataCopy.metadata;
 				this.step2Data = matchValidationDataCopy.participatingPlayers;
 				this.step3Data = { formation: matchValidationDataCopy.formation, participatingPlayers: matchValidationDataCopy.participatingPlayers };
 				this.step4Data = { ...matchValidationDataCopy.phases, ...matchValidationDataCopy.metadata };
-				this.step5Data = matchValidationDataCopy.substitutions;
+        this.step5Data = matchValidationDataCopy.substitutions;
 			});
 	}
 

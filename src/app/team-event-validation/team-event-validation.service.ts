@@ -202,7 +202,7 @@ export class TeamEventValidationService {
   setFormation() {
     // console.log(this.getCurrentValitationData())
     const participatingPlayers = this.getCurrentValitationData().participatingPlayers;
-    this.linup = this.getCurrentValitationData().formation.formationPosition;
+    this.linup = this.getCurrentValitationData().formation;
     this.availableForSub = { ...participatingPlayers };
     this.linup.forEach((player) => {
       const playerId = player.playerId;

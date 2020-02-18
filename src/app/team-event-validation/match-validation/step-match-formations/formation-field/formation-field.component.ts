@@ -15,7 +15,8 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	@Input() participatingPlayers;
 	@Output() changeFormationPlayer = new EventEmitter();
 	@Output() formationFieldEmitter = new EventEmitter<any>();
-	@ViewChild('swapPlayers', null) _swapPlayers: any;
+	@Output() updateValidationStatus = new EventEmitter<any>();
+	@ViewChild('swapPlayers', { static: false }) _swapPlayers: any;
 
 	players = [];
 	isShowSwapPlayers;
@@ -25,6 +26,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 	document: Document;
 	closeSelect;
 	select;
+	isError = false;
 
 	@HostListener('document:click', ['$event'])
 	clickOut(e) {
@@ -42,12 +44,18 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 		if (this.participatingPlayers && this.formationTemplate.formationPosition) {
 			this.players = Object.values(this.participatingPlayers);
 			this.setRandomPositions();
+			this.checkIsError();
 		}
 	}
 
 	ngOnInit() {
 		this.positions = this.staticDataService.getStaticData().positions;
 
+	}
+
+	checkIsError() {
+		this.isError = this.formationTemplate.formationPosition.filter(({playerId}) => !!playerId).length < 3;
+		this.updateValidationStatus.emit(!this.isError);
 	}
 
 	isExistInFormation(id) {
@@ -172,6 +180,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 
 		this.isShowSwapPlayers = false;
 		this.closeSelect();
+		this.checkIsError();
 		this.sendToTeamEvent(this.formationTemplate.formationPosition);
 	}
 

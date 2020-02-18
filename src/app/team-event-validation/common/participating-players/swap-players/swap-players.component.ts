@@ -10,7 +10,7 @@ export class SwapPlayersComponent implements OnInit {
 	@Input() currentPlayer = null;
 	@Input() isIncluded = false;
 	@Output() swapPlayer = new EventEmitter();
-	@ViewChild('matExpansionPanel', null) _matExpansionPanel: any
+	@ViewChild('matExpansionPanel', { static: false }) _matExpansionPanel: any
 
 	constructor() { }
 
