@@ -6,7 +6,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'phases-modal',
   templateUrl: './phases-modal.component.html',
-  styleUrls: ['./phases-modal.component.scss'],
+  styleUrls: ['./phases-modal.component.scss']
 })
 export class PhasesModalComponent implements OnInit {
   modalOptions;

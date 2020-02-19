@@ -50,6 +50,7 @@ export class MatchOverviewComponent implements OnInit {
   setGameData(value, dataManagerKey, stepDataKey) {
     this.dataManager[dataManagerKey] = value;
     this.populateData(value, stepDataKey);
+    this.matchOverviewEmitter.emit(this.stepMatchOverviewData);
     console.log(this.stepMatchOverviewData);
   }
 

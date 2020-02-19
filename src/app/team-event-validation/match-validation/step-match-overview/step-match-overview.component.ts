@@ -21,7 +21,6 @@ export class StepMatchOverviewComponent implements OnInit {
   nextStep() {
     this.teamEventValidationService.matchDataOutput.step1OverviewData = this.stepMatchOverviewData;
     this.stepSelectionEmitter.emit(1);
-    console.log(this.stepMatchOverviewData);
   }
 
   onMatchOverviewEmitter(matchOverviewData) {

@@ -33,11 +33,6 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 		}
 	}
 
-	onUpdatePhases(updatedPhases) {
-		this.stepMatchPhasesData.phases = updatedPhases;
-		//TODO: replace in step data
-	}
-
 	nextStep() {
 		this.teamEventValidationService.matchDataOutput.step4PhasesData = this.stepMatchPhasesData;
 		this.stepSelectionEmitter.emit(4);
@@ -47,8 +42,11 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 		this.stepSelectionEmitter.emit(-1);
 	}
 
-	onMatchPhasesEmitter(matchPhasesData) {
-		console.log('matchPhasesData: ', matchPhasesData);
+	onMatchPhasesEmitter(updatedPhases) {
+    this.stepMatchPhasesData.phases = updatedPhases;
+    //TODO: replace in step data
+
+		console.log('matchPhasesData: ', updatedPhases);
 		// const matchData = this.teamEventValidationService.getMatchValidationData();
 		// let matchDataCopy = {...matchData};
 		// matchDataCopy.phases = matchPhasesData;
