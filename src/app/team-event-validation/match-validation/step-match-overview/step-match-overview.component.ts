@@ -25,16 +25,15 @@ export class StepMatchOverviewComponent implements OnInit {
   }
 
   onMatchOverviewEmitter(matchOverviewData) {
-    console.log('matchOverviewData: ', matchOverviewData);
-		// const matchData = this.teamEventValidationService.getMatchValidationData();
-		// let matchDataCopy = {...matchData};
-    // matchDataCopy.metadata.vanue = matchOverviewData.metadata.vanue;
-    // matchDataCopy.metadata.myScore = matchOverviewData.metadata.myScore;
-    // matchDataCopy.metadata.opponentScore = matchOverviewData.metadata.opponentScore;
-    // matchDataCopy.metadata.opponentName = matchOverviewData.metadata.opponentName;
-    // matchDataCopy.metadata.competition = matchOverviewData.metadata.competition;
-    // matchDataCopy.metadata.availableOpponentList = matchOverviewData.metadata.availableOpponentList;
-		// this.teamEventValidationService.setMatchValidationData(matchDataCopy);
+		const matchData = this.teamEventValidationService.getMatchValidationData();
+		let matchDataCopy = {...matchData};
+    matchDataCopy.metadata.vanue = matchOverviewData.vanue;
+    matchDataCopy.metadata.myScore = matchOverviewData.myScore;
+    matchDataCopy.metadata.opponentScore = matchOverviewData.opponentScore;
+    matchDataCopy.metadata.opponentName = matchOverviewData.opponentName;
+    matchDataCopy.metadata.competition = matchOverviewData.competition;
+    matchDataCopy.metadata.availableOpponentList = matchOverviewData.availableOpponentList;
+		this.teamEventValidationService.setMatchValidationData(matchDataCopy);
   }
 
   onTagsEmitter(tags) {
