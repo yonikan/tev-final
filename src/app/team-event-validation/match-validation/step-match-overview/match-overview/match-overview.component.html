@@ -89,10 +89,7 @@
         </mat-radio-group>
       </div>
 
-      <div class="match-score"
-      restrictionContainer
-      [showError]="true"
-      [errorMassage]="'please enter a valid score'">
+      <div class="match-score">
         <input
           (input)="updateScore($event, 'HOME')"
           type="number"

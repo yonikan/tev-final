@@ -31,30 +31,9 @@ a {
   // }
 }
 
-.restriction-container {
-
-  .errorMassage {
-    font-size: 12px;
-    color: #c07e7e;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    margin-top: 10px;
-  }
-}
-
 ::selection {
   color: #fff;
   background-color: $color-purple;
-}
-
-.mat-radio-label-content { // for material radio buttons
-  display: flex !important;
-  align-items: center !important;
-
-  .mat-icon {
-    margin-right: 5px !important;
-  }
 }
 
 mat-error {
