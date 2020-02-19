@@ -77,7 +77,7 @@ export class PhasesCardComponent implements OnInit {
 
     const dialogRef = this.dialog.open(PhasesModalComponent, {
       width: '870px',
-      height: '300px',
+      height: '290px',
       data: {
         eventType: this.teamEventValidationService.getCurrentTeamEventType(),
         phasesCount: this.phasesCount,

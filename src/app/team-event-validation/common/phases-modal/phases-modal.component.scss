@@ -11,7 +11,7 @@
   background-color: #f4f4f4;
   padding: 10px;
 
-  .test {
+  .phase-wrapper {
     .phase-options {
       margin-bottom: 39px;
     }
@@ -20,6 +20,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-bottom: 30px;
 
       .end-phase {
         margin-left: 47px;
@@ -35,13 +36,13 @@
 }
 
 .dialog-footer {
-  // background-color: $color-green;
-  // color: white;
-  // margin: 0 auto;
-  // margin-bottom: 20px;
-  // width: 100px;
-  // text-transform: uppercase;
-  // border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  
+  button {
+    margin: 0 !important;
+    width: 205px !important;
+  }
 }
 
 ::ng-deep {
