@@ -4,18 +4,11 @@
 
 :host {
     .tags-container {
-        @include team-event-section;
+        text-align: center;
 
         .title {
-            h3 {
-                font-size: 40px;
-            }
-
-            p {
-                font-size: 20px;
-                color: #96a1ae;
-            }
-        }
+			@include team-event-section-title;
+		}
 
         .mat-form-field {
             width: 600px;

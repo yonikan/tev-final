@@ -3,7 +3,11 @@
 
 :host {
     .duration-container {
-        @include team-event-section;
+		// @include team-event-section;
+		
+		.title {
+			@include team-event-section-title;
+		}
 
 		.time-fields {
 			display: grid;
