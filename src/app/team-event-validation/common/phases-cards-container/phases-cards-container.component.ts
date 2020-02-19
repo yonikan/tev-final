@@ -18,12 +18,13 @@ export class PhasesCardsContainerComponent implements OnInit {
     keyboard: true,
     grabCursor: true,
     observer: true,
-    spaceBetween: 30,
-    slidesPerView: 5.2,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    spaceBetween: 20,
+    slidesPerView: 4.2,
+    navigation: false,
+    // navigation: {
+    //   nextEl: '.swiper-button-next',
+    //   prevEl: '.swiper-button-prev',
+    // },
     breakpoints: {
       1025: {
         slidesPerView: 1.2
@@ -31,10 +32,10 @@ export class PhasesCardsContainerComponent implements OnInit {
       1441: {
         slidesPerView: 2.2
       },
-      1921: {
+      1741: {
         slidesPerView: 3.2
       },
-      2300: {
+      1921: {
         slidesPerView: 4.2
       }
     }
