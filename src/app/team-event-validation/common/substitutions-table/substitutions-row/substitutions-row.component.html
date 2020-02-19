@@ -1,7 +1,7 @@
 <!---------------------- GENERAL MODE ---------------------->
 <tr class="substitutions-row" [ngStyle]="rowStyle" *ngIf="rowMode === 'GENERAL'" (dblclick)="changeRowMode('EDIT')">
 
-  <th class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}">
+  <td class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}">
 
     <span *ngIf="substitutionForDisplay[cell]">{{cell === 'In' || cell === 'Out'? showPlayerNameByFormat(substitutionForDisplay[cell]) : substitutionForDisplay[cell]}} {{cell==='Minute'?"'":''}}</span>
 
@@ -19,7 +19,8 @@
 
     </div>
 
-  </th>
+  </td>
+  <mat-error *ngIf="substitution.errorMassage">{{substitution.errorMassage}}</mat-error>
 
 </tr>
 <!------------------------------------------------------------>
@@ -29,10 +30,7 @@
 <!------------------------- EDIT/NEW MODE ------------------------>
 <tr class="substitutions-row" [ngStyle]="rowStyle" *ngIf="rowMode === 'EDIT' || rowMode === 'NEW'" (keyup.enter)="editRowEmit()" (dblclick)="changeRowMode('GENERAL')">
 
-  <th class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}"
-  restrictionContainer
-  [showError]="errorsManager[cell]?.showError"
-  [errorMassage]="errorsManager[cell]?.errorMassage">
+  <td class="substitutions-cell" *ngFor="let cell of Object.keys(rowConfig);" [ngStyle]="{'width': rowConfig[cell]}">
 
     <!-- <input class="edit-input" *ngIf="cell !== 'buttons'" type="text" value="{{substitutionForDisplay[cell]}}" (input)="populateCell($event?.target?.value, cell)"/> -->
 
@@ -61,8 +59,8 @@
         </button>
         <mat-menu #menu="matMenu" class="">
           <button mat-menu-item
-                  *ngFor="let player of (cell === 'In'? availableForSub : linup); let cardIndex = index"
-                  (click)="populateCell(player.playerId, cell, $event)">
+                  *ngFor="let player of (cell === 'In'? availableForSub : lineup); let cardIndex = index"
+                  (click)="populateCell(player.id, cell, $event)">
                   {{showPlayerNameByFormat(player.firstName + ' ' + player.lastName)}}
           </button>
         </mat-menu>
@@ -102,7 +100,7 @@
 
     </div>
 
-  </th>
+  </td>
 
 </tr>
 <!------------------------------------------------------------>
