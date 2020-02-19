@@ -7,52 +7,89 @@
   @include modal;
 }
 
-::ng-deep {
-  .demo-icon {
-    font-size: 24px;
-  }
-}
+.dialog-content {
+  background-color: #f4f4f4;
+  padding: 10px;
 
-.modal-container {
-  .dialog-header {
-    position: relative;
-    flex-direction: column;
-    padding: 65px 30px 30px 30px !important;
-
-    .exit-btn {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      cursor: pointer;
-    }
-
-    .phases-counter {
-      position: absolute;
-      top: 18px;
-      right: 28px;
-      font-size: 16px;
-      color: #8994a3;
-    }
-
+  .test {
     .phase-options {
       margin-bottom: 39px;
     }
 
     .phase-duration {
       display: flex;
+      justify-content: center;
       align-items: center;
+
       .end-phase {
         margin-left: 47px;
       }
 
       .phase-duration-total {
-        font-size: 14px;
-        color: #96a1ae;
-        margin-left: 23px;
+          font-size: 14px;
+          color: #96a1ae;
+          margin-left: 23px;
       }
     }
   }
 }
+
+.dialog-footer {
+  // background-color: $color-green;
+  // color: white;
+  // margin: 0 auto;
+  // margin-bottom: 20px;
+  // width: 100px;
+  // text-transform: uppercase;
+  // border-radius: 20px;
+}
+
+::ng-deep {
+  .demo-icon {
+    font-size: 24px;
+  }
+}
+
+// .modal-container {
+//   .dialog-header {
+//     position: relative;
+//     flex-direction: column;
+//     padding: 65px 30px 30px 30px !important;
+
+//     .exit-btn {
+//       position: absolute;
+//       top: 12px;
+//       left: 12px;
+//       cursor: pointer;
+//     }
+
+//     .phases-counter {
+//       position: absolute;
+//       top: 18px;
+//       right: 28px;
+//       font-size: 16px;
+//       color: #8994a3;
+//     }
+
+//     .phase-options {
+//       margin-bottom: 39px;
+//     }
+
+//     .phase-duration {
+//       display: flex;
+//       align-items: center;
+//       .end-phase {
+//         margin-left: 47px;
+//       }
+
+//       .phase-duration-total {
+//         font-size: 14px;
+//         color: #96a1ae;
+//         margin-left: 23px;
+//       }
+//     }
+//   }
+// }
 
 // ofir's modal ======================================================================
 // .phases-modal {

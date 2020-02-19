@@ -12,7 +12,10 @@ export class StepMatchOverviewComponent implements OnInit {
   @Input() teamEventId;
   @Output() stepSelectionEmitter = new EventEmitter<number>();
 
-  constructor(private teamEventValidationService: TeamEventValidationService, private participatingPlayersService: ParticipatingPlayersService) { }
+  constructor(
+    private teamEventValidationService: TeamEventValidationService,
+    private participatingPlayersService: ParticipatingPlayersService
+  ) { }
 
   ngOnInit() {
 	  this.participatingPlayersService.getData(this.teamEventId, 'match');

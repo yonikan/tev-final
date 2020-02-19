@@ -6,6 +6,10 @@
       <div class="phases-counter">
         (Phase {{ data.index + 1 }} of {{ data.phasesCount }})
       </div>
+  </div>
+
+  <div class="dialog-content">
+    <div class="test">
       <div class="phase-options">
         <mat-radio-group class="radio-group">
           <mat-radio-button
@@ -38,9 +42,8 @@
         <div class="phase-duration-total">({{ setPhaseDurationTotal() }})</div>
       </div>
       <mat-error *ngIf="durationError">{{durationError}}</mat-error>
-  </div>
+    </div>
 
-  <div class="dialog-content">
     <app-match-phase-modal
       *ngIf="phaseToEdit.type === 5"
       [phase]="data.phase"
