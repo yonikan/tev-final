@@ -5,7 +5,7 @@
 
   <div class="match-date">{{moment(stepMatchOverviewData.startTime).format('DD/MM/YYYY')}}</div>
   <!-- .add(stepMatchOverviewData.offset, 'hours') -->
-  
+
   <button mat-button [matMenuTriggerFor]="menu" class="match-competition dropdown-btn">
     {{ teamEventValidationService.getCompetitionNameById(stepMatchOverviewData.competition)?.name || 'Competition' }}
     <i class="demo-icon icon-icon-open-single">&#xe803;</i>
@@ -14,7 +14,7 @@
   <div class="match-overview">
     <div class="home-team-container match-overview-inner-container">
       <img
-        src="stepMatchOverviewData.myTeamImage"
+        src="{{stepMatchOverviewData.myTeamImage}}"
         alt="team-logo"
         class="team-logo"
       />
