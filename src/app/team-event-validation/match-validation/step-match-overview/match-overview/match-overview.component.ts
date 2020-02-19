@@ -51,7 +51,6 @@ export class MatchOverviewComponent implements OnInit {
     this.dataManager[dataManagerKey] = value;
     this.populateData(value, stepDataKey);
     this.matchOverviewEmitter.emit(this.stepMatchOverviewData);
-    console.log(this.stepMatchOverviewData);
   }
 
   updateScore(event, side) {
