@@ -3,17 +3,24 @@
 
 :host {
     .container {
-        .heading {
-            @include team-event-step-heading;
+        .title {
+            @include team-event-section-title;
             display: flex;
-			flex-direction: column;
-			margin-bottom: 10px;
-			align-items: center;
-            .sub-title {
-				margin-top: 15px;
-                @include small-text;
-            }
+            flex-direction: column;
+            align-items: center;
         }
+        
+        // .heading {
+        //     @include team-event-step-heading;
+        //     display: flex;
+		// 	flex-direction: column;
+		// 	margin-bottom: 10px;
+		// 	align-items: center;
+        //     .sub-title {
+		// 		margin-top: 15px;
+        //         @include small-text;
+        //     }
+        // }
 
         .content {
 			@include team-event-step-container;

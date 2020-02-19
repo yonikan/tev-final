@@ -1,10 +1,8 @@
 <div class="container">
-	<div class="heading">
-		<div>Participating Players - {{activePlayers}}/{{allPlayers.length}}</div>
-		<div class="sub-title">
-			<mat-spinner *ngIf="!allPlayers.length"></mat-spinner>
-			<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  sit amet, consectrtur -->
-		</div>
+	<div class="title">
+		<h3>Participating Players - {{activePlayers}}/{{allPlayers.length}}</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+		<mat-spinner *ngIf="!allPlayers.length"></mat-spinner>
 	</div>
 	<div class="content" *ngIf="allPlayers.length">
 		<app-participating-column
