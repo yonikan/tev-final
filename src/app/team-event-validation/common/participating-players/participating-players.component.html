@@ -2,8 +2,7 @@
 	<div class="heading">
 		<div>Participating Players - {{activePlayers}}/{{allPlayers.length}}</div>
 		<div class="sub-title">
-			<mat-spinner *ngIf="!allPlayers.length"></mat-spinner>
-			<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  sit amet, consectrtur -->
+			<div *ngIf="!allPlayers.length">No participating players found</div>
 		</div>
 	</div>
 	<div class="content" *ngIf="allPlayers.length">

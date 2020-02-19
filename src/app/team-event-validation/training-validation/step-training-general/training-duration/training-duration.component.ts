@@ -9,6 +9,7 @@ import { VerticesData } from 'src/app/team-event-validation/team-event-validatio
 export class TrainingDurationComponent implements OnInit {
 	@Input() verticesData: VerticesData = {velInterpMs: 0, timeDtMs: 0, startTimeInterpMs: 0};
 	@Input() highlightedRange;
+	@Input() offset = 0;
 	@Output() trainingDurationEmitter = new EventEmitter<any>();
 	startTime;
 	endTime;

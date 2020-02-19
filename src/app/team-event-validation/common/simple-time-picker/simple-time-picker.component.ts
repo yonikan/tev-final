@@ -10,6 +10,7 @@ export class SimpleTimePickerComponent implements OnInit {
 	@Input() propName = '';
 	@Input() maxPropName = '';
 	@Input() range = {};
+	@Input() offset = 0;
 	@Output() updateTime = new EventEmitter<any>();
 
 	constructor() { }
