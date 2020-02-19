@@ -4,5 +4,9 @@
 :host {
     .step-match-phases-container {
         @include team-event-step;
+
+        .title {
+            @include team-event-section-title;
+        }
     }
 }

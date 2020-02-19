@@ -4,12 +4,16 @@
 :host {
     .step-match-subs-container {
         @include team-event-step;
+
+        .title {
+          @include team-event-section-title;
+        }
     }
 }
 
-.title {
-  font-size: 30px;
-  font-weight: 500;
-  color: #3d4762;
-  text-align: center;
-}
+// .title {
+//   font-size: 30px;
+//   font-weight: 500;
+//   color: #3d4762;
+//   text-align: center;
+// }
