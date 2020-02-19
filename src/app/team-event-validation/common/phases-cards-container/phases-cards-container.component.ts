@@ -73,5 +73,7 @@ export class PhasesCardsContainerComponent implements OnInit {
   updatePhase(updatedPhase) {
     const index = this.cards.findIndex((card) => { return card.id === updatedPhase.id });
     this.cards[index] = updatedPhase;
+    // TODO: sort by time
+    this.teamEventPhasesEmitter.emit(this.cards);
   }
 }

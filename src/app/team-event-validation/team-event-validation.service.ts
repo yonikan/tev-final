@@ -33,7 +33,7 @@ export class TeamEventValidationService {
 	private currentTeamEventType: number;
 
   	BASE_URL;
-	linup = [];
+	lineup = [];
 	availableForSub = [];
 
 	constructor(
@@ -70,8 +70,10 @@ export class TeamEventValidationService {
 		this.http.get<any>(`${PATH}/v3/match/${matchId}`)
 			.subscribe(
 				(matchResp: any) => {
-					this.matchValidationData = matchResp;
-					this.setMatchValidationData(this.matchValidationData);
+          this.matchValidationData = matchResp;
+          this.setMatchValidationData(this.matchValidationData);
+          // this.setFormation();
+
 				},
 				(error) => {
 
@@ -202,29 +204,29 @@ export class TeamEventValidationService {
   setFormation() {
     // console.log(this.getCurrentValitationData())
     const participatingPlayers = this.getCurrentValitationData().participatingPlayers;
-    this.linup = this.getCurrentValitationData().formation.formationPosition;
-    this.availableForSub = { ...participatingPlayers };
-    this.linup.forEach((player) => {
-      const playerId = player.playerId;
-      if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
-    });
+    this.lineup = this.getPlayersByIds(this.getCurrentValitationData().formation, 'playerId');
+    // this.availableForSub = { ...participatingPlayers };
+    // this.lineup.forEach((player) => {
+    //   const playerId = player.playerId;
+    //   if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
+    // });
 
 
-    this.availableForSub = participatingPlayers.filter((player) => {
-      return this.isPlayerInLineup(player);
+    this.availableForSub = Object.values(participatingPlayers).filter((player) => {
+      return !this.isPlayerInLineup(player);
     });
   }
 
   isPlayerInLineup(player) {
-    return this.linup.some((lineupPlayer) => {
-      return lineupPlayer.playerId === player.playerId;
+    return this.lineup.some((lineupPlayer) => {
+      return lineupPlayer.id === player.id;
     });
   }
 
   isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
     this.getCurrentValitationData().phases.phasesList.forEach((phase) => {
       if (phase.id !== phaseToCheck.id && this.isTimeRangesOverlap(phaseToCheck, phase)) {
-        // return phase.linup.some((player) => {
+        // return phase.lineup.some((player) => {
         //   return player.playerId === playerId;
         // });
       }
@@ -253,6 +255,30 @@ export class TeamEventValidationService {
 
   getCompetitionNameById(id) {
     return this.getStaticData().competitions[id];
+  }
+
+  getAllPhases() {
+    return this.getCurrentValitationData().phases.phasesList;
+  }
+
+  getMatchDuraiton() {
+    const matchDuraiton = this.getAllPhases().reduce((acc, phase)=>{
+      if (phase.subType !== 7) {
+        acc += (phase.endTime - phase.startTime) / 60000;
+      }
+      return acc;
+    }, 0);
+
+    return parseInt(matchDuraiton);
+  }
+
+  swapPlayerIdInSubstitutions(inPlayerId, outPlayerId) {
+    this.getMatchValidationData().substitutions.subList = this.getMatchValidationData().substitutions.subList.map((substitution) => {
+      if (outPlayerId === substitution.inPlayerId) { substitution.inPlayerId = inPlayerId };
+      if (outPlayerId === substitution.outPlayerId) { substitution.outPlayerId = inPlayerId };
+      return substitution;
+    });
+    this.setMatchValidationData(this.getMatchValidationData());
   }
 
   onStepSelection(stepNumber, step, stepper, validateCallback) {

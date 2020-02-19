@@ -6,68 +6,41 @@
       <div class="phases-counter">
         (Phase {{ data.index + 1 }} of {{ data.phasesCount }})
       </div>
+      <div class="phase-options">
+        <mat-radio-group class="radio-group">
+          <mat-radio-button
+            *ngFor="let option of modalOptions; let first = first"
+            [value]="option"
+            [ngStyle]="{ 'margin-left': !first ? '75px' : '0' }"
+            (change)="onUpdateField({value: option.subType, filedPathToUpdate: ['subType']})"
+            [checked]="(phaseToEdit.subType === 7 && option.subType === 7) || (phaseToEdit.subType !== 5 && !option.subType)"
+          > <!-- [checked]="phaseToEdit.subType === option.subType" -->
+
+          <i class="demo-icon icon-calender" *ngIf="option.type === 5">&#xe809;</i>
+          <i class="demo-icon icon-vlc-new" *ngIf="option.type === 6">&#xe817;</i>
+          {{ option.name }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="phase-duration">
+      <app-simple-time-picker
+        [propName]="'startTime'"
+        [maxPropName]="'endTime'"
+        [(range)]="phaseToEdit"
+        (updateTime)="updateTime($event, 'startTime');setPhaseDurationTotal();">
+      </app-simple-time-picker>
+      <app-simple-time-picker
+        [propName]="'endTime'"
+        [maxPropName]="'startTime'"
+        [(range)]="phaseToEdit"
+        (updateTime)="updateTime($event, 'endTime');setPhaseDurationTotal();">
+      </app-simple-time-picker>
+        <div class="phase-duration-total">({{ setPhaseDurationTotal() }})</div>
+      </div>
+      <mat-error *ngIf="durationError">{{durationError}}</mat-error>
   </div>
 
   <div class="dialog-content">
-    
-  </div>
-
-  <div class="dialog-footer">
-      <div mat-dialog-actions>
-          <button (click)="savePhase()" mat-raised-button>save phase</button>
-      </div>
-  </div>
-</div>
-
-
-<!-- offir's modal ====================================================================== -->
-<!-- <div class="phases-modal">
-  <div class="phases-modal-header">
-    <div class="exit-btn" (click)="close()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
-        <path
-          fill="#34495E"
-          fill-rule="evenodd"
-          d="M7.281 6.005l3.813 3.814a.9.9 0 1 1-1.273 1.272L6.008 7.278l-3.839 3.839A.908.908 0 0 1 .886 9.834l3.839-3.839L.912 2.182A.901.901 0 0 1 2.185.909l3.813 3.813L9.865.855a.909.909 0 0 1 1.284 0 .91.91 0 0 1 0 1.283L7.281 6.005z"
-        />
-      </svg>
-    </div>
-
-    <div class="phases-counter">
-      (Phase {{ data.index + 1 }} of {{ data.phasesCount }})
-    </div>
-    <div class="phase-options">
-      <mat-radio-group class="radio-group">
-        <mat-radio-button
-          *ngFor="let option of modalOptions; let first = first"
-          [value]="option"
-          [ngStyle]="{ 'margin-left': !first ? '75px' : '0' }"
-          (change)="onUpdateField({value: option.id, filedPathToUpdate: ['type']})"
-          [checked]="option.id === phaseToEdit.type"
-        >
-          <mat-icon>{{ option.icon }}</mat-icon>
-          {{ option.name }}
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="phase-duration">
-		<app-simple-time-picker
-			[propName]="'startTime'"
-			[maxPropName]="'endTime'"
-			[(range)]="phaseToEdit"
-			(updateTime)="updateTime($event, 'startTime');setPhaseDurationTotal();">
-		</app-simple-time-picker>
-		<app-simple-time-picker
-			[propName]="'endTime'"
-			[maxPropName]="'startTime'"
-			[(range)]="phaseToEdit"
-			(updateTime)="updateTime($event, 'endTime');setPhaseDurationTotal();">
-		</app-simple-time-picker>
-      <div class="phase-duration-total">({{ setPhaseDurationTotal() }})</div>
-    </div>
-  </div>
-  <div class="phases-modal-content">
-
     <app-match-phase-modal
       *ngIf="phaseToEdit.type === 5"
       [phase]="data.phase"
@@ -95,10 +68,11 @@
       [selectedLineup]="phaseToEdit.lineup || {}"
       (updateField)="onUpdateField($event)"
     ></app-technical-modal>
-
   </div>
 
-  <div class="phases-modal-footer">
-    <button class="save-phase-btn" (click)="savePhase()">SAVE PHASE</button>
+  <div class="dialog-footer">
+      <div mat-dialog-actions>
+          <button (click)="savePhase()" mat-raised-button>save phase</button>
+      </div>
   </div>
-</div> -->
+</div>

@@ -31,11 +31,12 @@ export class MatchOverviewComponent implements OnInit {
   ngOnInit() {
     // console.log('getStaticPositionsList: ', this.teamEventValidationService.getStaticPositionsList());
     this.competitionOptions = this.teamEventValidationService.getStaticCompetitionsList();
-    this.setDefaults()
+    this.setDefaults();
     // console.log(this.stepMatchOverviewData);
   }
 
   setDefaults() {
+    if (!this.stepMatchOverviewData) { return; };
     if (!this.stepMatchOverviewData.competition) { this.setGameData(1, 'selectedCompetition', 'competition') };
     if (!this.stepMatchOverviewData.vanue) { this.setGameData(1, 'selecedHost', 'vanue') };
     if (!this.stepMatchOverviewData.myScore && this.stepMatchOverviewData.myScore !== 0) { this.setGameData(0, 'selectedScore', 'myScore') };
@@ -49,7 +50,7 @@ export class MatchOverviewComponent implements OnInit {
   setGameData(value, dataManagerKey, stepDataKey) {
     this.dataManager[dataManagerKey] = value;
     this.populateData(value, stepDataKey);
-    console.log(this.stepMatchOverviewData);
+    this.matchOverviewEmitter.emit(this.stepMatchOverviewData);
   }
 
   updateScore(event, side) {

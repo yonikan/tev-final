@@ -15,7 +15,7 @@ export class SubstitutionsRowComponent implements OnInit {
   @Input() rowStyle;
   @Input() rowMode = 'GENERAL';
   @Input() availableForSub;
-  @Input() linup;
+  @Input() lineup;
 
   @Output() removeRow = new EventEmitter();
   @Output() addRow = new EventEmitter();
@@ -26,13 +26,10 @@ export class SubstitutionsRowComponent implements OnInit {
   Object = Object;
   substitutionForDisplay;
   positions;
-
   objToArray = objToArray;
-
   minTimeForSub = 0;
-
   errorsManager = {
-    Minute: { showError: false, errorMassage: 'Invalid match min' }
+    showError: false, errorMassage: ''
   }
 
   constructor(private teamEventValidationService: TeamEventValidationService) {
@@ -40,11 +37,11 @@ export class SubstitutionsRowComponent implements OnInit {
 
   ngOnInit() {
     // console.log(`${this.rowMode}: `,this.substitution)
-    // console.log(this.availableForSub, this.linup)
+    // console.log(this.availableForSub, this.lineup)
     // this.substitutionDraft = { ...this.substitution };
     this.setSubForDisplay();
     this.positions = this.teamEventValidationService.getStaticPositionsList();
-    console.log(this.positions)
+    if(this.rowMode === 'GENERAL') { this.validateRow(); };
   }
 
   // ngOnChanges(change) {
@@ -59,7 +56,7 @@ export class SubstitutionsRowComponent implements OnInit {
     this.substitutionForDisplay = {
       Minute: this.substitution['timeMin'] || '',
       In: `${inPlayer.firstName || ''} ${inPlayer.lastName || ''}`,
-      Out: `${outPlayer.firstName || ''} ${outPlayer.firstName || ''}`,
+      Out: `${outPlayer.firstName || ''} ${outPlayer.lastName || ''}`,
       Position: inPlayer.defaultPositionId && this.teamEventValidationService.getPlayerPositionName(inPlayer.defaultPositionId, 'shortName') || '',
     }
     // console.log({substitutionForDisplay: this.substitutionForDisplay, inPlayer, outPlayer})
@@ -109,7 +106,7 @@ export class SubstitutionsRowComponent implements OnInit {
 
     if (cell === 'Minute') {
       if (value > this.minTimeForSub) { this.minTimeForSub = value };
-      (value > 125 || value <= 0 || !Number.isInteger(value)) ? this.errorsManager.Minute.showError = true : this.errorsManager.Minute.showError = false;
+      (value > 125 || value <= 0 || !Number.isInteger(value)) ? this.errorsManager.showError = true : this.errorsManager.showError = false;
     }
     this.setSubForDisplay();
     // this.stopPropagation(event);
@@ -122,8 +119,8 @@ export class SubstitutionsRowComponent implements OnInit {
   }
 
   validateRow() {
-    const keysToDisclude = ['id', 'type'];
 
+    const keysToDisclude = ['id', 'type'];
     for (const key in this.substitution) {
       if (this.substitution.hasOwnProperty(key)) {
         if (!this.substitution[key] && !keysToDisclude.includes(key)) { return false };
@@ -134,6 +131,9 @@ export class SubstitutionsRowComponent implements OnInit {
     this.minTimeForSub = this.substitution.timeMin;
 
     return true;
+
+    // if row not valid change mode to "EDIT" and show error massage
+    // if error massage[-1] === ',' => delete last char
   }
 
   resetSubstitution() {

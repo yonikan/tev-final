@@ -43,15 +43,17 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 			.getMatchValidationDataListener()
 			.subscribe((matchValidationData: any) => {
 				const matchValidationDataCopy = JSON.parse(JSON.stringify(matchValidationData));
-				if(!this.teamEventValidationService.getMatchValidationData()) {
-					this.teamEventValidationService.setMatchValidationData(matchValidationDataCopy);
+        const currMatchValidationData = this.teamEventValidationService.getMatchValidationData();
+				if(currMatchValidationData && Object.keys(currMatchValidationData).length) {
+        //   this.teamEventValidationService.setMatchValidationData(matchValidationDataCopy);
+          this.teamEventValidationService.setFormation();
 				}
 				this.isLoading = false;
 				this.step1Data = matchValidationDataCopy.metadata;
 				this.step2Data = matchValidationDataCopy.participatingPlayers;
 				this.step3Data = { formation: matchValidationDataCopy.formation, participatingPlayers: matchValidationDataCopy.participatingPlayers };
 				this.step4Data = { ...matchValidationDataCopy.phases, ...matchValidationDataCopy.metadata };
-				this.step5Data = matchValidationDataCopy.substitutions;
+        this.step5Data = matchValidationDataCopy.substitutions;
 			});
 	}
 
@@ -75,7 +77,7 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 					}
 				);
 		});
-		this.currentStep = stepper._selectedIndex;
+    this.currentStep = stepper._selectedIndex;
 	}
 
 	ngOnDestroy() {
