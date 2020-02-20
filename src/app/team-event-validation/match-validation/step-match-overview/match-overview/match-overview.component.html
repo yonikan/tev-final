@@ -75,6 +75,7 @@
           max="99"
           class="score-box"
           placeholder="0"
+          [value]="stepMatchOverviewData.myScore"
         /><span style="margin: 0 20px">:</span
         ><input
           (input)="updateScore($event, 'AWAY')"
@@ -83,6 +84,7 @@
           max="99"
           class="score-box"
           placeholder="0"
+          [value]="stepMatchOverviewData.opponentScore"
         />
       </div>
     </div>
@@ -105,6 +107,7 @@
         class="opponent-input"
         type="text"
         placeholder="Opponent"
+        [value]="stepMatchOverviewData.opponentName"
         (blur)="setGameData($event.target.value,'selectedOpponent' ,'opponentName')"
       />
       <!-- <div class="team-name dropdown-btn">
