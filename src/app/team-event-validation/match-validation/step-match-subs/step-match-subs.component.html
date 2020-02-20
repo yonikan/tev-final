@@ -1,7 +1,7 @@
 <div class="step-match-subs-container">
     <div class="title">
       <h3>Substitution Players</h3>
-      <p>Match Duration - 90 min</p>
+      <p>Match Duration - {{teamEventValidationService.getMatchDuraiton()}} min</p>
     </div>
 
     <substitutions-table (matchSubsEmitter)="onMatchSubsEmitter($event)" [substitutions]="stepMatchSubsData?.subList" [suggestedSubs]="stepMatchSubsData?.suggestedSubs"></substitutions-table>

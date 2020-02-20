@@ -253,6 +253,10 @@ export class TeamEventValidationService {
     return objToArray(this.getStaticData().competitions , 'id');
   }
 
+  getStaticMatchPhasesList() {
+    return objToArray(this.getStaticData().matchPhases , 'id');
+  }
+
   getCompetitionNameById(id) {
     return this.getStaticData().competitions[id];
   }
@@ -270,6 +274,12 @@ export class TeamEventValidationService {
     }, 0);
 
     return parseInt(matchDuraiton);
+  }
+
+  checkIfAllSubsAreValid() {
+    return this.getCurrentValitationData().substitutions.subList.every((sub) => {
+      return !sub.errorMassage;
+    });
   }
 
   swapPlayerIdInSubstitutions(inPlayerId, outPlayerId) {

@@ -10,7 +10,7 @@ export class StepMatchSubsComponent implements OnInit {
 	@Input() stepMatchSubsData: any;
 	@Output() stepSelectionEmitter = new EventEmitter<number>();
 
-	constructor(private teamEventValidationService: TeamEventValidationService) { }
+	constructor(public teamEventValidationService: TeamEventValidationService) { }
 
 	ngOnInit() {
 		// console.log('stepMatchSubsData: ', this.stepMatchSubsData);
