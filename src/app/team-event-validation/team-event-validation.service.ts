@@ -32,7 +32,7 @@ export class TeamEventValidationService {
 	private matchValidationDataListener = new BehaviorSubject<any>({});
 	private currentTeamEventType: number;
 
-  	BASE_URL;
+	BASE_URL;
 	lineup = [];
 	availableForSub = [];
 
@@ -40,7 +40,7 @@ export class TeamEventValidationService {
 		private http: HttpClient,
 		private uiComponentsService: UiComponentsService,
 		private serverEnvService: ServerEnvService,
-        private staticDataService: StaticDataService,
+		private staticDataService: StaticDataService,
 	) {
 		this.BASE_URL = serverEnvService.getBaseUrl(3)
 	}
@@ -70,9 +70,9 @@ export class TeamEventValidationService {
 		this.http.get<any>(`${PATH}/v3/match/${matchId}`)
 			.subscribe(
 				(matchResp: any) => {
-          this.matchValidationData = matchResp;
-          this.setMatchValidationData(this.matchValidationData);
-          // this.setFormation();
+					this.matchValidationData = matchResp;
+					this.setMatchValidationData(this.matchValidationData);
+					// this.setFormation();
 
 				},
 				(error) => {
@@ -162,138 +162,163 @@ export class TeamEventValidationService {
 	}
 
 	getPlayerPositionName(positionId, prop) {
-    const playerPosition = this.staticDataService.getStaticData().positions[positionId];
+		const playerPosition = this.staticDataService.getStaticData().positions[positionId];
 		return playerPosition
 			? playerPosition[prop]
 			: playerPosition['0'][prop]
-  }
+	}
 
 
-  // Phases & subs methods =========================================================================================
-  getCurrentValitationData() {
-    switch (this.getCurrentTeamEventType()) {
-      case 1:
-        // console.log('getCurrentValitationData: ', this.getTrainingValidationData(), this.currentTeamEventType)
-        return this.getTrainingValidationData();
+	// Phases & subs methods =========================================================================================
+	getCurrentValitationData() {
+		switch (this.getCurrentTeamEventType()) {
+			case 1:
+				// console.log('getCurrentValitationData: ', this.getTrainingValidationData(), this.currentTeamEventType)
+				return this.getTrainingValidationData();
 
-      case 2:
-        // console.log('getCurrentValitationData: ', this.getMatchValidationData(), this.currentTeamEventType)
-        return this.getMatchValidationData();
-    }
-  }
-
-  getPlayerById(playerId) {
-    return this.getCurrentValitationData().participatingPlayers[playerId] || {};
-  }
-
-  getPlayersByIds(playerIds, key?) {
-    return playerIds.map((playerId) => {
-      return this.getPlayerById(key ? playerId[key] : playerId);
-    })
-  }
-
-  getPositionById(positionId) {
-    return this.getStaticData().positions[positionId];
-  }
-
-  getAllParticipatingPlayers() {
-    // console.log('getCurrentValitationData: ', this.getCurrentValitationData(), this.getMatchValidationData());
-    return this.getCurrentValitationData().participatingPlayers || {};
-  }
-
-  setFormation() {
-    // console.log(this.getCurrentValitationData())
-    const participatingPlayers = this.getCurrentValitationData().participatingPlayers;
-    this.lineup = this.getPlayersByIds(this.getCurrentValitationData().formation, 'playerId');
-    // this.availableForSub = { ...participatingPlayers };
-    // this.lineup.forEach((player) => {
-    //   const playerId = player.playerId;
-    //   if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
-    // });
-
-
-    this.availableForSub = Object.values(participatingPlayers).filter((player) => {
-      return !this.isPlayerInLineup(player);
-    });
-  }
-
-  isPlayerInLineup(player) {
-    return this.lineup.some((lineupPlayer) => {
-      return lineupPlayer.id === player.id;
-    });
-  }
-
-  isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
-    this.getCurrentValitationData().phases.phasesList.forEach((phase) => {
-      if (phase.id !== phaseToCheck.id && this.isTimeRangesOverlap(phaseToCheck, phase)) {
-        // return phase.lineup.some((player) => {
-        //   return player.playerId === playerId;
-        // });
-      }
-    });
-  }
-
-  isTimeRangesOverlap(timescope1, timescope2) { // npm install --save moment-range
-    // return true;
-    const range = moment.range(timescope1.startTime, timescope1.endTime);
-    const range2 = moment.range(timescope2.startTime, timescope2.endTime);
-    // console.log(range, range2, range.overlaps(range2))
-    return range.overlaps(range2);
-  }
-
-  getStaticData() {
-   return this.staticDataService.getStaticData()
-  }
-
-  getStaticPositionsList() {
-    return objToArray(this.getStaticData().positions, 'id');
-  }
-
-  getStaticCompetitionsList() {
-    return objToArray(this.getStaticData().competitions , 'id');
-  }
-
-  getCompetitionNameById(id) {
-    return this.getStaticData().competitions[id];
-  }
-
-  getAllPhases() {
-    return this.getCurrentValitationData().phases.phasesList;
-  }
-
-  getMatchDuraiton() {
-    const matchDuraiton = this.getAllPhases().reduce((acc, phase)=>{
-      if (phase.subType !== 7) {
-        acc += (phase.endTime - phase.startTime) / 60000;
-      }
-      return acc;
-    }, 0);
-
-    return parseInt(matchDuraiton);
-  }
-
-  swapPlayerIdInSubstitutions(inPlayerId, outPlayerId) {
-    this.getMatchValidationData().substitutions.subList = this.getMatchValidationData().substitutions.subList.map((substitution) => {
-      if (outPlayerId === substitution.inPlayerId) { substitution.inPlayerId = inPlayerId };
-      if (outPlayerId === substitution.outPlayerId) { substitution.outPlayerId = inPlayerId };
-      return substitution;
-    });
-    this.setMatchValidationData(this.getMatchValidationData());
-  }
-
-  onStepSelection(stepNumber, step, stepper, validateCallback) {
-	if (stepNumber) {
-		step.isCompleted = true;
-		stepper.selected.completed = true;
-		if (stepNumber == -1) {
-			step.isCompleted = false;
-			stepper.selected.completed = false;
-			stepper.previous();
-		} else if (step.isLastStep) {
-			validateCallback();
-		} else {
-			stepper.next();
+			case 2:
+				// console.log('getCurrentValitationData: ', this.getMatchValidationData(), this.currentTeamEventType)
+				return this.getMatchValidationData();
 		}
 	}
-}
+
+	getPlayerById(playerId) {
+		return this.getCurrentValitationData().participatingPlayers[playerId] || {};
+	}
+
+	getPlayersByIds(playerIds, key?) {
+		return playerIds.map((playerId) => {
+			return this.getPlayerById(key ? playerId[key] : playerId);
+		})
+	}
+
+	getPositionById(positionId) {
+		return this.getStaticData().positions[positionId];
+	}
+
+	getAllParticipatingPlayers() {
+		// console.log('getCurrentValitationData: ', this.getCurrentValitationData(), this.getMatchValidationData());
+		return this.getCurrentValitationData().participatingPlayers || {};
+	}
+
+	setFormation() {
+		// console.log(this.getCurrentValitationData())
+		const participatingPlayers = this.getCurrentValitationData().participatingPlayers;
+		this.lineup = this.getPlayersByIds(this.getCurrentValitationData().formation, 'playerId');
+		// this.availableForSub = { ...participatingPlayers };
+		// this.lineup.forEach((player) => {
+		//   const playerId = player.playerId;
+		//   if (participatingPlayers.hasOwnProperty(playerId) && participatingPlayers[playerId]) { delete this.availableForSub[playerId] };
+		// });
+
+
+		this.availableForSub = Object.values(participatingPlayers).filter((player) => {
+			return !this.isPlayerInLineup(player);
+		});
+	}
+
+	isPlayerInLineup(player) {
+		return this.lineup.some((lineupPlayer) => {
+			return lineupPlayer.id === player.id;
+		});
+	}
+
+	isPlayerPartitpateInOverlapPhase(playerId, phaseToCheck) {
+		this.getCurrentValitationData().phases.phasesList.forEach((phase) => {
+			if (phase.id !== phaseToCheck.id && this.isTimeRangesOverlap(phaseToCheck, phase)) {
+				// return phase.lineup.some((player) => {
+				//   return player.playerId === playerId;
+				// });
+			}
+		});
+	}
+
+	isTimeRangesOverlap(timescope1, timescope2) { // npm install --save moment-range
+		// return true;
+		const range = moment.range(timescope1.startTime, timescope1.endTime);
+		const range2 = moment.range(timescope2.startTime, timescope2.endTime);
+		// console.log(range, range2, range.overlaps(range2))
+		return range.overlaps(range2);
+	}
+
+	getStaticData() {
+		return this.staticDataService.getStaticData()
+	}
+
+	getStaticPositionsList() {
+		return objToArray(this.getStaticData().positions, 'id');
+	}
+
+	getStaticCompetitionsList() {
+		return objToArray(this.getStaticData().competitions, 'id');
+	}
+
+	getCompetitionNameById(id) {
+		return this.getStaticData().competitions[id];
+	}
+
+	getAllPhases() {
+		return this.getCurrentValitationData().phases.phasesList;
+	}
+
+	getMatchDuraiton() {
+		const matchDuraiton = this.getAllPhases().reduce((acc, phase) => {
+			if (phase.subType !== 7) {
+				acc += (phase.endTime - phase.startTime) / 60000;
+			}
+			return acc;
+		}, 0);
+
+		return parseInt(matchDuraiton);
+	}
+
+	swapPlayerIdInSubstitutions(inPlayerId, outPlayerId) {
+		this.getMatchValidationData().substitutions.subList = this.getMatchValidationData().substitutions.subList.map((substitution) => {
+			if (outPlayerId === substitution.inPlayerId) { substitution.inPlayerId = inPlayerId };
+			if (outPlayerId === substitution.outPlayerId) { substitution.outPlayerId = inPlayerId };
+			return substitution;
+		});
+		this.setMatchValidationData(this.getMatchValidationData());
+	}
+
+	onStepSelection(stepNumber, step, stepper, validateCallback) {
+		if (stepNumber) {
+			step.isCompleted = true;
+			stepper.selected.completed = true;
+			if (stepNumber == -1) {
+				step.isCompleted = false;
+				stepper.selected.completed = false;
+				stepper.previous();
+			} else if (step.isLastStep) {
+				validateCallback();
+			} else {
+				stepper.next();
+			}
+		}
+	}
+
+	onNextStep(currentStepNum, steps, callback) {
+		const nextStep = currentStepNum + 1;
+		const currentStep = steps[currentStepNum];
+		if (steps[nextStep] || currentStep.isLastStep) {
+			callback(nextStep, currentStep);
+		}
+	}
+
+	onPreviousStep(currentStep, steps, callback) {
+		const prevStep = currentStep - 1;
+		if (steps[prevStep]) {
+			callback(-1, steps[prevStep]);
+		}
+	}
+
+	onStepChange(selectedStep, steps): {currentStep, steps} {
+		steps = [...steps.map((step, i) => {
+			if (i > selectedStep.selectedIndex) {
+				step.isCompleted = false;
+			}
+			return step;
+		})];
+		return {currentStep: selectedStep.selectedIndex, steps};
+	}
 }

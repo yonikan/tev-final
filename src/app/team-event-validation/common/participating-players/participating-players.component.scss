@@ -7,9 +7,13 @@
             @include team-event-section-title;
             display: flex;
             flex-direction: column;
-            align-items: center;
+			align-items: center;
+			.sub-title {
+				margin-top: 15px;
+				@include small-text;
+			}
         }
-        
+
         // .heading {
         //     @include team-event-step-heading;
         //     display: flex;

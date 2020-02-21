@@ -52,6 +52,7 @@ import { PitchSizeOptionComponent } from './common/pitch-size-option/pitch-size-
 import { LineupDropdownRowComponent } from './common/phases-modal/technical-modal/lineup-dropdown-row/lineup-dropdown-row.component'
 import { SimpleTimePickerComponent } from './common/simple-time-picker/simple-time-picker.component';
 import { MatStepperModule } from '@angular/material';
+import { ConvertedDatePipe } from './common/convertedDate.pipe';
 @NgModule({
   declarations: [
     MatchValidationComponent,
@@ -89,7 +90,8 @@ import { MatStepperModule } from '@angular/material';
     FormationFieldComponent,
     FormationSelectionComponent,
 	FieldPlayerComponent,
-	SimpleTimePickerComponent
+	SimpleTimePickerComponent,
+	ConvertedDatePipe
   ],
   imports: [
     CommonModule,

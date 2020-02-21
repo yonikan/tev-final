@@ -1,8 +1,9 @@
 <div class="container">
 	<div class="title">
-		<h3>Participating Players - {{activePlayers}}/{{allPlayers.length}}</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-		<mat-spinner *ngIf="!allPlayers.length"></mat-spinner>
+		<div>Participating Players - {{activePlayers}}/{{allPlayers.length}}</div>
+		<div class="sub-title">
+			<div *ngIf="!allPlayers.length">No participating players found</div>
+		</div>
 	</div>
 	<div class="content" *ngIf="allPlayers.length">
 		<app-participating-column

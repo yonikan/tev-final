@@ -1,7 +1,9 @@
 <div class="step-training-general-container">
-        <app-training-duration (trainingDurationEmitter)="onTrainingDurationEmitter($event)" [verticesData]="verticesData" [highlightedRange]="highlightedRange"></app-training-duration>
+		<app-training-duration
+			(trainingDurationEmitter)="onTrainingDurationEmitter($event)"
+			[verticesData]="verticesData"
+			[offset]="stepTrainingGeneralData.offset"
+			[highlightedRange]="highlightedRange">
+		</app-training-duration>
         <app-tags (tagsEmitter)="onTagsEmitter($event)" [stepData]="stepTrainingGeneralData"></app-tags>
-        <div class="step-footer">
-            <button class="step-submit-btn" mat-raised-button (click)="nextStep()" [disabled]="isNextBtnDisabled">next</button>
-        </div>
 </div>

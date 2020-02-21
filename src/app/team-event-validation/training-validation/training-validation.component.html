@@ -2,7 +2,7 @@
 	<div *ngIf="isLoading || !step1Data" class="loader-container">
         <mat-spinner></mat-spinner>
     </div>
-	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data" #stepper>
+	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data" (selectionChange)="onStepChange($event)" #stepper>
 		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
 			<ng-template matStepLabel>{{step.name}}</ng-template>
 			<app-step-training-general
@@ -24,4 +24,10 @@
 			</app-step-training-phases>
 		</mat-step>
 	</mat-horizontal-stepper>
+	<div class="step-footer" *ngIf="!isLoading && step1Data">
+        <button class="step-back-btn" mat-button (click)="previousStep()" *ngIf="currentStep !== 0">back</button>
+		<button class="step-submit-btn" mat-raised-button (click)="nextStep()" [disabled]="!stepValidation[currentStep]">
+			{{steps[currentStep].isLastStep ? 'Validate' : 'Next'}}
+		</button>
+    </div>
 </div>
