@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TeamEventValidationService } from 'src/app/team-event-validation/team-event-validation.service';
-import { objToArray } from '../../../../core/helpers/helper-functions';
 
 @Component({
   selector: 'substitutions-row',
@@ -9,25 +8,24 @@ import { objToArray } from '../../../../core/helpers/helper-functions';
 })
 export class SubstitutionsRowComponent implements OnInit {
 
-  @Input() substitution;
-  @Input() rowConfig;
-  @Input() rowStyle;
-  @Input() rowMode = 'GENERAL';
-  @Input() availableForSub;
-  @Input() lineup;
+  @Input() substitution; // Substitution
+  @Input() rowConfig; // RowConfig
+  @Input() rowStyle; // RowStyle
+  @Input() rowMode: string = 'GENERAL';
+  @Input() availableForSub; // Player[]
+  @Input() lineup; // Player[]
 
   @Output() removeRow = new EventEmitter();
   @Output() addRow = new EventEmitter();
   @Output() editRow = new EventEmitter();
   @Output() setSubsList = new EventEmitter();
 
-  substitutionDraft;
+  substitutionDraft; // Substitution
 
-  Object = Object;
-  substitutionForDisplay;
-  positions;
-  objToArray = objToArray;
-  minTimeForSub = 0;
+  Object: ObjectConstructor = Object;
+  substitutionForDisplay; // Substitution
+  positions; // ?
+  minTimeForSub: number | string = 0;
   errorsManager = {
     showError: false, errorMassage: ''
   }
@@ -36,55 +34,60 @@ export class SubstitutionsRowComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.substitutionDraft = { ...this.substitution };
+    this.setSubId(this.substitution);
     this.setSubForDisplay();
     this.positions = this.teamEventValidationService.getStaticPositionsList();
   }
 
-  setSubForDisplay() {
+  setSubId(sub /* Substitution */): void {
+    sub['subId'] = Date.now();
+    this.substitutionDraft = { ...this.substitution };
+  }
+
+  setSubForDisplay(): void {
     const inPlayer = this.teamEventValidationService.getPlayerById(this.substitutionDraft['inPlayerId']);
     const outPlayer = this.teamEventValidationService.getPlayerById(this.substitutionDraft['outPlayerId']);
     this.substitutionForDisplay = {
       Minute: this.substitutionDraft['timeMin'] || '',
       In: `${inPlayer.firstName || ''} ${inPlayer.lastName || ''}`,
       Out: `${outPlayer.firstName || ''} ${outPlayer.lastName || ''}`,
-      Position:this.substitutionDraft['positionId']? this.teamEventValidationService.getPlayerPositionName(this.substitutionDraft['positionId'], 'shortName') : (inPlayer.defaultPositionId && this.teamEventValidationService.getPlayerPositionName(inPlayer.defaultPositionId, 'shortName')) || '',
+      Position: this.substitutionDraft['positionId'] ? this.teamEventValidationService.getPlayerPositionName(this.substitutionDraft['positionId'], 'shortName') : (inPlayer.defaultPositionId && this.teamEventValidationService.getPlayerPositionName(inPlayer.defaultPositionId, 'shortName')) || '',
     }
   }
 
-  showPlayerNameByFormat(playerName) {
+  showPlayerNameByFormat(playerName: string): void {
     if (!playerName) { return };
-    let nameByFormat = playerName.split(' ');
+    let nameByFormat: any = playerName.split(' ');
     if (!nameByFormat[0] || !nameByFormat[1]) { return };
     nameByFormat = `${nameByFormat[0][0].toUpperCase()}.${nameByFormat[1].toLowerCase()}`;
     return nameByFormat;
   }
 
-  addRowEmit() {
-      this.addRow.emit({ substitution: this.substitutionDraft, rowMode: this.rowMode });
-      if (this.rowMode === 'EDIT') { this.changeRowMode('GENERAL'); }
-      if (this.rowMode === 'NEW') { this.resetSubstitution(); }
+  addRowEmit(): void {
+    this.addRow.emit({ substitution: this.substitutionDraft, rowMode: this.rowMode });
+    if (this.rowMode === 'EDIT') { this.changeRowMode('GENERAL'); }
+    if (this.rowMode === 'NEW') { this.resetSubstitution(); }
   }
 
-  setSubsListEmit() {
-    this.setSubsList.emit({substitution: this.substitutionDraft});
+  setSubsListEmit(): void {
+    this.setSubsList.emit({ substitution: this.substitutionDraft });
   }
 
-  removeRowEmit() {
+  removeRowEmit(): void {
     this.removeRow.emit({ substitution: this.substitutionDraft, rowMode: this.rowMode });
   }
 
-  editRowEmit() {
-      this.editRow.emit({ substitution: this.substitutionDraft, rowMode: this.rowMode });
-      this.changeRowMode('GENERAL');
+  editRowEmit(): void {
+    this.editRow.emit({ substitution: this.substitutionDraft, rowMode: this.rowMode });
+    this.changeRowMode('GENERAL');
   }
 
-  changeRowMode(newMode) {
+  changeRowMode(newMode): void {
     if (this.rowMode === 'NEW') { return };
     this.rowMode = newMode;
   }
 
-  populateCell(value, cell, event, valueIsNum = false) {
+  populateCell(value: any, cell: string, valueIsNum: boolean = false): void {
     if (valueIsNum) { value = +value };
     const map = { Minute: 'timeMin', In: 'inPlayerId', Out: 'outPlayerId', Position: 'positionId' };
 
@@ -97,11 +100,7 @@ export class SubstitutionsRowComponent implements OnInit {
     this.setSubForDisplay();
   }
 
-  stopPropagation(event) {
-    event.stopPropagation();
-  }
-
-  resetSubstitution() {
+  resetSubstitution(): void {
     this.substitution = {
       id: '',
       inPlayerId: '',

@@ -9,7 +9,7 @@ import { TeamEventValidationService } from '../../team-event-validation.service'
 })
 export class SubstitutionsTableComponent implements OnInit, OnChanges {
 
-  tableSizeConfig = {
+  tableSizeConfig = { // TableSizeConfig
     Minute: '9%',
     In: '14%',
     Out: '14%',
@@ -17,16 +17,17 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     buttons: '9%'
   }
 
-  @Input() substitutions = [];
-  @Input() suggestedSubs = [];
+  @Input() substitutions = []; // Substitution[]
+  @Input() suggestedSubs = []; // Substitutions
   @Output() subsEmitter = new EventEmitter<any>();
+  @Output() isAllSubsValid = new EventEmitter<any>();
 
-  lineup;
-  availableForSub;
-  subFormationPerMinute = {};
-  emptySubstitution = { timeMin: '', inPlayerId: '', outPlayerId: '', defaultPositionId: '', type: '', id: '' };
-  Object = Object;
-  Math = Math;
+  lineup; // Player[]
+  availableForSub; // Player[]
+  subFormationPerMinute = {}; // SubstiutionFormationPerMinute
+  emptySubstitution = { timeMin: '', inPlayerId: '', outPlayerId: '', defaultPositionId: '', type: '', id: '' }; // Substitution
+  Object: ObjectConstructor = Object;
+  Math: Math = Math;
 
   constructor(private teamEventValidationService: TeamEventValidationService, private cd: ChangeDetectorRef) { }
 
@@ -40,14 +41,10 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
       this.buildSubFormationForAllSubs();
       this.validateAllSubs();
       this.cd.detectChanges();
-      // if (this.teamEventValidationService.checkIfAllSubsAreValid()) { this.sendToTeamEvent(this.substitutions) };
-      console.log('subFormationPerMinute: ', this.subFormationPerMinute);
-      console.log('substitutions: ', this.substitutions);
-      console.log('checkIfAllSubsAreValid: ', this.teamEventValidationService.checkIfAllSubsAreValid());
     }
   }
 
-  initSubFormationByMinute() {
+  initSubFormationByMinute(): void {
     this.subFormationPerMinute[0] = {
       lineup: this.teamEventValidationService.lineup,
       availableForSub: this.teamEventValidationService.availableForSub
@@ -56,42 +53,43 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     this.ngOnChanges({ substitutions: this.substitutions });
   }
 
-  buildSubFormationForAllSubs() {
-    this.substitutions.forEach((sub, i) => {
+  buildSubFormationForAllSubs(): void {
+    this.substitutions.forEach((sub /* Substitution*/, i: number) => {
       this.buildSubFormationByMinute(sub, i);
     })
   }
-  sortSubstitutions() {
+
+  sortSubstitutions(): void {
     this.substitutions = this.substitutions.sort((a, b) => {
       return sortFunction(b, a, ['timeMin']);
     });
-    console.log(this.substitutions)
   }
 
-  removeRow(substitutionToRemove, mode) {
-    const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToRemove.id);
+  removeRow(substitutionToRemove /* Substitution */, mode: string): void {
+    const substitutionIndex = this.substitutions.findIndex(substitution => substitution.subId === substitutionToRemove.subId);
     if (mode === 'GENERAL') { this.substitutions.splice(substitutionIndex, 1); }
     if (mode === 'SUGGESTED') { this.suggestedSubs.splice(substitutionIndex, 1); }
+    delete this.subFormationPerMinute[substitutionToRemove.timeMin];
   }
 
-  addRow(substitutionToAdd) {
+  addRow(substitutionToAdd /* Substitution */) {
     this.substitutions.push(substitutionToAdd);
     this.ngOnChanges({ substitutions: this.substitutions });
   }
 
-  editRow(substitutionToEdit) {
-    const substitutionIndex = this.substitutions.findIndex(substitution => substitution.id === substitutionToEdit.id);
+  editRow(substitutionToEdit /* Substitution */): void {
+    const substitutionIndex = this.substitutions.findIndex(substitution => substitution.subId === substitutionToEdit.subId);
     if (substitutionIndex !== -1) {
       this.substitutions[substitutionIndex] = substitutionToEdit;
       this.ngOnChanges({ substitutions: this.substitutions });
     }
   }
 
-  sendToTeamEvent(data) {
+  sendToTeamEvent(data /* Substitution[] */): void {
     this.subsEmitter.emit(data);
   }
 
-  buildSubFormationByMinute(sub, index?) {
+  buildSubFormationByMinute(sub/* Substitution */, index?: number) {
     index = index || index === 0 ? index : this.getSubIndex(sub.timeMin);
     const prevSub = index > 0 ? this.subFormationPerMinute[this.substitutions[index - 1].timeMin] : this.subFormationPerMinute[0];
     const currSub = JSON.parse(JSON.stringify(prevSub));
@@ -109,7 +107,7 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     this.cd.detectChanges();
   }
 
-  getSubIndex(minute) {
+  getSubIndex(minute: number): number {
     let max = -Infinity
     let prevIdx = 0;
     this.substitutions.forEach((sub, i) => {
@@ -121,13 +119,16 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     return prevIdx + 1
   }
 
-  validateAllSubs() {
+  validateAllSubs(): void {
+    let isValid = true;
     this.substitutions.forEach((substitution, i) => {
       this.validateSubtitution(substitution, i);
+      if (substitution.errorMassage) { isValid = false };
     });
+    this.isAllSubsValid.emit({ isValid, substitutions: this.substitutions });
   }
 
-  validateSubtitution(substitutionForCheck, index) {
+  validateSubtitution(substitutionForCheck /* Substitution */, index: number): void {
     let errorMassage = '';
 
     const matchDuraiton = this.teamEventValidationService.getMatchDuraiton();
@@ -145,12 +146,10 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
     // check sub playeres are valid
     {
       const prevSubFormation = index > 0 ? this.subFormationPerMinute[this.substitutions[index - 1].timeMin] : this.subFormationPerMinute[0]
-      console.log('this.substitutions[index - 1].timeMin: ', this.substitutions[index > 0? index - 1:0].timeMin, 'substitutionForCheck: ', substitutionForCheck);
       const inPlayerIdx = prevSubFormation.availableForSub.findIndex(({ id }) => id === substitutionForCheck.inPlayerId)
       const outPlayerIdx = prevSubFormation.lineup.findIndex(({ id }) => id === substitutionForCheck.outPlayerId)
-      if (inPlayerIdx === -1 || outPlayerIdx === -1) {
-        errorMassage += `Invalid subbed ${inPlayerIdx === -1 ? 'in' : 'out'} Player, `;
-      }
+      if (inPlayerIdx === -1) { errorMassage += 'Invalid subbed in player' }
+      if (outPlayerIdx === -1) { errorMassage += 'Invalid subbed out player' }
     }
 
     // check all fields are full

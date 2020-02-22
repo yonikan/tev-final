@@ -35,8 +35,8 @@
       *ngIf="cell === 'Minute'"
       type="number" min="0" max="125" placeholder="0"
       value="{{substitutionForDisplay['Minute'] || 0}}"
-      (input)="populateCell($event?.target?.value, 'Minute', $event, true)"
-      (dblclick)="stopPropagation($event)"
+      (input)="populateCell($event?.target?.value, 'Minute', true)"
+      (dblclick)="$event.stopPropagation"
       (blur)="setSubsListEmit()">
 
 
@@ -57,7 +57,7 @@
         <mat-menu #menu="matMenu" class="">
           <button mat-menu-item
           *ngFor="let player of (cell === 'In'? availableForSub : lineup); let cardIndex = index"
-          (click)="populateCell(player.id, cell, $event)">
+          (click)="populateCell(player.id, cell)">
           {{showPlayerNameByFormat(player.firstName + ' ' + player.lastName)}}
         </button>
       </mat-menu>
@@ -80,7 +80,7 @@
         <mat-menu #menu="matMenu" class="">
           <button mat-menu-item
           *ngFor="let position of positions; let cardIndex = index"
-          (click)="populateCell(position.id, cell, $event)">
+          (click)="populateCell(position.id, cell)">
           {{position.shortName}}
         </button>
       </mat-menu>
