@@ -19,6 +19,7 @@
 @include stepper-style;
 
 .step-footer {
+    z-index: 1;
     border-top: 1px solid #cecece;
     display: flex;
     // margin-bottom: 20px;
