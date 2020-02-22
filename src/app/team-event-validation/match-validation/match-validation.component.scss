@@ -17,3 +17,53 @@
 }
 
 @include stepper-style;
+
+.step-footer {
+    z-index: 1;
+    border-top: 1px solid #cecece;
+    display: flex;
+    // margin-bottom: 20px;
+    margin-top: auto;
+    // margin-top: 40px;
+    padding: 15px 0;
+
+    position: fixed;
+    bottom: 0;
+    width: 79%;
+    // z-index: 200;
+    background-color: #fff;
+
+    // border-bottom-left-radius: 10px;
+    // border-left: 4px solid #35083a;
+    // box-shadow: -4.9px 7.5px 50px 0 rgba(53, 61, 86, 0.1);
+
+    @media (max-width: $media-query-sm) {
+        width: 94%;
+    }
+
+    button {
+      width: 205px;
+      margin-top: 8px;
+      padding: 0 5px;
+      border-radius: 20px;
+      text-transform: uppercase;
+
+      &:first-child {
+        margin-left: auto;
+      }
+    }
+
+    .step-back-btn {
+      margin-right: 12px;
+      color: #828282;
+    }
+
+    .step-submit-btn {
+      background-color: $color-green;
+	  color: white;
+
+	  &[disabled] {
+		background-color: #828282;
+	  }
+    }
+  }

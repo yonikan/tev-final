@@ -26,6 +26,12 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 		{name: 'PLAYERS', isCompleted: false, isLastStep: false},
 		{name: 'PHASES', isCompleted: false, isLastStep: true}
 	];
+	isValid: boolean;
+	stepValidation = {
+		0: true,
+		1: true,
+		2: true
+	}
 
 	constructor(
 		private teamEventValidationService: TeamEventValidationService,
@@ -97,5 +103,23 @@ export class TrainingValidationComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.trainingValidationDataSub.unsubscribe();
+	}
+
+	nextStep() {
+		this.teamEventValidationService.onNextStep(this.currentStep, this.steps, (nextStep, currentStep) => {
+			this.onStepSelectionEmitter(nextStep, currentStep, this.stepper);
+		});
+	}
+
+	previousStep() {
+		this.teamEventValidationService.onPreviousStep(this.currentStep, this.steps, (stepNum, step) => {
+			this.onStepSelectionEmitter(stepNum, step, this.stepper);
+		});
+	}
+
+	onStepChange(selectedStep) {
+		const {currentStep, steps} = this.teamEventValidationService.onStepChange(selectedStep, this.steps)
+		this.steps = steps;
+		this.currentStep = currentStep;
 	}
 }

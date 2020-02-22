@@ -30,6 +30,14 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 		{name: 'SUBS', isCompleted: false, isLastStep: true, id: 4}
 	];
 	currentStep: any = 0;
+	isValid: boolean;
+	stepValidation = {
+		0: true,
+		1: true,
+		2: true,
+		3: true,
+		4: true,
+	}
 
 	constructor(
 		private teamEventValidationService: TeamEventValidationService,
@@ -77,10 +85,32 @@ export class MatchValidationComponent implements OnInit, OnDestroy {
 					}
 				);
 		});
-    this.currentStep = stepper._selectedIndex;
+		this.currentStep = stepper._selectedIndex;
 	}
 
 	ngOnDestroy() {
 		this.matchValidationDataSub.unsubscribe();
+	}
+
+	nextStep() {
+		this.teamEventValidationService.onNextStep(this.currentStep, this.steps, (nextStep, currentStep) => {
+			this.onStepSelectionEmitter(nextStep, currentStep, this.stepper);
+		});
+	}
+
+	previousStep() {
+		this.teamEventValidationService.onPreviousStep(this.currentStep, this.steps, (stepNum, step) => {
+			this.onStepSelectionEmitter(stepNum, step, this.stepper);
+		});
+	}
+
+	validateStep(isValid, stepNum) {
+		this.stepValidation[stepNum] = isValid;
+	}
+
+	onStepChange(selectedStep) {
+		const {currentStep, steps} = this.teamEventValidationService.onStepChange(selectedStep, this.steps)
+		this.steps = steps;
+		this.currentStep = currentStep;
 	}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { TeamEventValidationService } from '../../team-event-validation.service';
 import { StaticDataService } from 'src/app/core/services/static-data.service';
 
@@ -17,9 +17,10 @@ const players = [
 	templateUrl: './step-match-formations.component.html',
 	styleUrls: ['./step-match-formations.component.scss']
 })
-export class StepMatchFormationsComponent implements OnInit {
+export class StepMatchFormationsComponent implements OnInit, OnChanges {
 	@Input() stepMatchFormationsData: any;
 	@Output() stepSelectionEmitter = new EventEmitter<number>();
+	@Output() onValidate = new EventEmitter<boolean>();
 
 	playersData: any = [];
 
@@ -44,9 +45,15 @@ export class StepMatchFormationsComponent implements OnInit {
 
 
 	ngOnInit() {
+		this.positions = this.staticDataService.getStaticData().positions;
+		this.staticDataService.getData('formations', 'team-event-validation').subscribe(data => {
+			this.tactics = data;
+		})
+	}
+
+	ngOnChanges() {
 		this.participatingPlayers = this.stepMatchFormationsData.participatingPlayers;
 		this.formationData = this.stepMatchFormationsData.formation;
-		this.positions = this.staticDataService.getStaticData().positions;
 		this.playersData = Object.values(this.stepMatchFormationsData.participatingPlayers)
 		.reduce((acc: any, val: any) => {
 			const position = this.positions[val.defaultPositionId];
@@ -58,9 +65,6 @@ export class StepMatchFormationsComponent implements OnInit {
 			}
 			return acc
 		}, []);
-		this.staticDataService.getData('formations', 'team-event-validation').subscribe(data => {
-			this.tactics = data;
-		})
 	}
 
 	selectTactic(tacticFormation) {
@@ -93,5 +97,6 @@ export class StepMatchFormationsComponent implements OnInit {
 
 	checkValidation(isValidated) {
 		this.isValidated = isValidated;
+		this.onValidate.emit(this.isValidated);
 	}
 }

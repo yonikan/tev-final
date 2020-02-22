@@ -2,8 +2,8 @@
 	<div *ngIf="isLoading || !step1Data" class="loader-container">
         <mat-spinner></mat-spinner>
     </div>
-	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data" #stepper>
-		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
+	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data"  (selectionChange)="onStepChange($event)" #stepper>
+		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted">
 			<ng-template matStepLabel>{{step.name}}</ng-template>
 			<app-step-match-overview
 				*ngIf="step.name === 'OVERVIEW' && step1Data"
@@ -19,6 +19,7 @@
 			</app-step-match-players>
 			<app-step-match-formations
 				*ngIf="step.name === 'FORMATIONS' && step3Data?.formation"
+				(onValidate)="validateStep($event, 2)"
 				[stepMatchFormationsData]="step3Data"
 				(stepSelectionEmitter)="onStepSelectionEmitter($event, step, stepper)">
 			</app-step-match-formations>
@@ -34,4 +35,10 @@
 			</app-step-match-subs>
 		</mat-step>
 	</mat-horizontal-stepper>
+	<div class="step-footer" *ngIf="!isLoading && step1Data">
+        <button class="step-back-btn" mat-button (click)="previousStep()" *ngIf="currentStep !== 0">back</button>
+		<button class="step-submit-btn" mat-raised-button (click)="nextStep()" [disabled]="!stepValidation[currentStep]">
+			{{steps[currentStep].isLastStep ? 'Validate' : 'Next'}}
+		</button>
+    </div>
 </div>

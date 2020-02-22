@@ -11,161 +11,161 @@ import { objToArray } from '../core/helpers/helper-functions';
 
 const moment = extendMoment(Moment);
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class TeamEventValidationService {
-	trainingDataOutput = {
-		step1GeneralData: null,
-		step2PlayersData: null,
-		step3PhasesData: null
-	};
-	matchDataOutput = {
-		step1OverviewData: null,
-		step2PlayersData: null,
-		step3FormationsData: null,
-		step4PhasesData: null,
-		step5SubsData: null
-	};
-	private trainingValidationData: any;
-	private trainingValidationDataListener = new BehaviorSubject<any>({});
-	private matchValidationData: any;
-	private matchValidationDataListener = new BehaviorSubject<any>({});
-	private currentTeamEventType: number;
+  trainingDataOutput = {
+    step1GeneralData: null,
+    step2PlayersData: null,
+    step3PhasesData: null
+  };
+  matchDataOutput = {
+    step1OverviewData: null,
+    step2PlayersData: null,
+    step3FormationsData: null,
+    step4PhasesData: null,
+    step5SubsData: null
+  };
+  private trainingValidationData: any;
+  private trainingValidationDataListener = new BehaviorSubject<any>({});
+  private matchValidationData: any;
+  private matchValidationDataListener = new BehaviorSubject<any>({});
+  private currentTeamEventType: number;
 
-  	BASE_URL;
-	lineup = [];
-	availableForSub = [];
+  BASE_URL;
+  lineup = [];
+  availableForSub = [];
 
-	constructor(
-		private http: HttpClient,
-		private uiComponentsService: UiComponentsService,
-		private serverEnvService: ServerEnvService,
-        private staticDataService: StaticDataService,
-	) {
-		this.BASE_URL = serverEnvService.getBaseUrl(3)
-	}
+  constructor(
+    private http: HttpClient,
+    private uiComponentsService: UiComponentsService,
+    private serverEnvService: ServerEnvService,
+    private staticDataService: StaticDataService,
+  ) {
+    this.BASE_URL = serverEnvService.getBaseUrl(3)
+  }
 
-	fetchTraining(trainingId): any {
-		const PATH = this.serverEnvService.getBaseUrl();
-		this.http.get<any>(`${PATH}/v3/training/${trainingId}`)
-			.subscribe(
-				(trainingResp: any) => {
-					this.trainingValidationData = trainingResp;
-					this.setTrainingValidationData(this.trainingValidationData);
-				},
-				(error) => {
+  fetchTraining(trainingId): any {
+    const PATH = this.serverEnvService.getBaseUrl();
+    this.http.get<any>(`${PATH}/v3/training/${trainingId}`)
+      .subscribe(
+        (trainingResp: any) => {
+          this.trainingValidationData = trainingResp;
+          this.setTrainingValidationData(this.trainingValidationData);
+        },
+        (error) => {
 
-				}
-			);
-	}
+        }
+      );
+  }
 
-	validateTraining(trainingId) {
-		const PATH = this.serverEnvService.getBaseUrl();
-		const PAYLOAD = this.trainingValidationData;
-		return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
-	}
+  validateTraining(trainingId) {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const PAYLOAD = this.trainingValidationData;
+    return this.http.post<any>(`${PATH}/v3/training/${trainingId}`, PAYLOAD);
+  }
 
-	fetchMatch(matchId): any {
-		const PATH = this.serverEnvService.getBaseUrl();
-		this.http.get<any>(`${PATH}/v3/match/${matchId}`)
-			.subscribe(
-				(matchResp: any) => {
+  fetchMatch(matchId): any {
+    const PATH = this.serverEnvService.getBaseUrl();
+    this.http.get<any>(`${PATH}/v3/match/${matchId}`)
+      .subscribe(
+        (matchResp: any) => {
           this.matchValidationData = matchResp;
           this.setMatchValidationData(this.matchValidationData);
           // this.setFormation();
 
-				},
-				(error) => {
+        },
+        (error) => {
 
-				}
-			);
-	}
+        }
+      );
+  }
 
-	validateMatch(matchId) {
-		const PATH = this.serverEnvService.getBaseUrl();
-		const PAYLOAD = this.matchValidationData;
-		return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
-	}
+  validateMatch(matchId) {
+    const PATH = this.serverEnvService.getBaseUrl();
+    const PAYLOAD = this.matchValidationData;
+    return this.http.post<any>(`${PATH}/v3/match/${matchId}`, PAYLOAD);
+  }
 
-	getCurrentTeamEventType(): number {
-		this.currentTeamEventType = this.uiComponentsService.getIsSidepanelOpen().teamEventType;
-		return this.currentTeamEventType;
-	}
+  getCurrentTeamEventType(): number {
+    this.currentTeamEventType = this.uiComponentsService.getIsSidepanelOpen().teamEventType;
+    return this.currentTeamEventType;
+  }
 
-	getTrainingValidationData(): any {
-		return this.trainingValidationData;
-	}
+  getTrainingValidationData(): any {
+    return this.trainingValidationData;
+  }
 
-	setTrainingValidationData(data: any) {
-		this.trainingValidationData = data;
-		this.trainingValidationDataListener.next(data);
-	}
+  setTrainingValidationData(data: any) {
+    this.trainingValidationData = data;
+    this.trainingValidationDataListener.next(data);
+  }
 
-	getTrainingValidationDataListener(): Observable<any> {
-		return this.trainingValidationDataListener.asObservable();
-	}
+  getTrainingValidationDataListener(): Observable<any> {
+    return this.trainingValidationDataListener.asObservable();
+  }
 
-	getMatchValidationData(): any {
-		return this.matchValidationData;
-	}
+  getMatchValidationData(): any {
+    return this.matchValidationData;
+  }
 
-	setMatchValidationData(data: any) {
-		this.matchValidationData = data;
-		this.matchValidationDataListener.next(data);
-	}
+  setMatchValidationData(data: any) {
+    this.matchValidationData = data;
+    this.matchValidationDataListener.next(data);
+  }
 
-	getMatchValidationDataListener(): Observable<any> {
-		return this.matchValidationDataListener.asObservable();
-	}
+  getMatchValidationDataListener(): Observable<any> {
+    return this.matchValidationDataListener.asObservable();
+  }
 
 
-	// Speed graph & participating players methods =========================================================================================
-	get phasesVerticesData() {
-		return of(TEAM_EVENT_VALIDATION_MATCH_DATA.metadata.velocityVector);
-	}
+  // Speed graph & participating players methods =========================================================================================
+  get phasesVerticesData() {
+    return of(TEAM_EVENT_VALIDATION_MATCH_DATA.metadata.velocityVector);
+  }
 
-	revertSwaps(teamEventId, onSuccess) {
-		this.http.put(`${this.BASE_URL}/v3/team-event/${teamEventId}/revert-swaps`, {})
-			.subscribe(onSuccess);
-	}
+  revertSwaps(teamEventId, onSuccess) {
+    this.http.put(`${this.BASE_URL}/v3/team-event/${teamEventId}/revert-swaps`, {})
+      .subscribe(onSuccess);
+  }
 
-	swapPlayer(srcId, swapId, teamEventId, onSuccess) {
-		this.http.put(`${this.BASE_URL}/v3/team-event/${teamEventId}/swap`, { srcId, swapId })
-			.subscribe(onSuccess);
-	}
+  swapPlayer(srcId, swapId, teamEventId, onSuccess) {
+    this.http.put(`${this.BASE_URL}/v3/team-event/${teamEventId}/swap`, { srcId, swapId })
+      .subscribe(onSuccess);
+  }
 
-	getPlayersForSwap(subject: BehaviorSubject<any>, teamEventId) {
-		this.http
-			.get(`${this.BASE_URL}/v3/team-event/${teamEventId}/players-for-swap`)
-			.subscribe((data: any) => {
-				subject.next({
-					clubPlayers: data.map(player => ({
-						...player,
-						positionName: this.getPlayerPositionName(player.positionId, 'category')
-					}))
-				});
-			})
-	}
+  getPlayersForSwap(subject: BehaviorSubject<any>, teamEventId) {
+    this.http
+      .get(`${this.BASE_URL}/v3/team-event/${teamEventId}/players-for-swap`)
+      .subscribe((data: any) => {
+        subject.next({
+          clubPlayers: data.map(player => ({
+            ...player,
+            positionName: this.getPlayerPositionName(player.positionId, 'category')
+          }))
+        });
+      })
+  }
 
-	getParticipatingPlayers(subject: BehaviorSubject<any>, teamEventId, type = 'training') {
-		this.http
-			.get(`${this.BASE_URL}/v3/${type}/${teamEventId}`)
-			.subscribe((data: any) => {
-				const players = Object.values(data.participatingPlayers).map(
-					(p: any) => ({
-						...p,
-						positionName: this.getPlayerPositionName(p.defaultPositionId, 'shortName')
-					}));
+  getParticipatingPlayers(subject: BehaviorSubject<any>, teamEventId, type = 'training') {
+    this.http
+      .get(`${this.BASE_URL}/v3/${type}/${teamEventId}`)
+      .subscribe((data: any) => {
+        const players = Object.values(data.participatingPlayers).map(
+          (p: any) => ({
+            ...p,
+            positionName: this.getPlayerPositionName(p.defaultPositionId, 'shortName')
+          }));
 
-				subject.next({ allPlayers: players });
-			});
-	}
+        subject.next({ allPlayers: players });
+      });
+  }
 
-	getPlayerPositionName(positionId, prop) {
+  getPlayerPositionName(positionId, prop) {
     const playerPosition = this.staticDataService.getStaticData().positions[positionId];
-		return playerPosition
-			? playerPosition[prop]
-			: playerPosition['0'][prop]
+    return playerPosition
+      ? playerPosition[prop]
+      : playerPosition['0'][prop]
   }
 
 
@@ -242,7 +242,7 @@ export class TeamEventValidationService {
   }
 
   getStaticData() {
-   return this.staticDataService.getStaticData()
+    return this.staticDataService.getStaticData()
   }
 
   getStaticPositionsList() {
@@ -250,11 +250,11 @@ export class TeamEventValidationService {
   }
 
   getStaticCompetitionsList() {
-    return objToArray(this.getStaticData().competitions , 'id');
+    return objToArray(this.getStaticData().competitions, 'id');
   }
 
   getStaticMatchPhasesList() {
-    return objToArray(this.getStaticData().matchPhases , 'id');
+    return objToArray(this.getStaticData().matchPhases, 'id');
   }
 
   getCompetitionNameById(id) {
@@ -266,7 +266,7 @@ export class TeamEventValidationService {
   }
 
   getMatchDuraiton() {
-    const matchDuraiton = this.getAllPhases().reduce((acc, phase)=>{
+    const matchDuraiton = this.getAllPhases().reduce((acc, phase) => {
       if (phase.subType !== 7) {
         acc += (phase.endTime - phase.startTime) / 60000;
       }
@@ -292,18 +292,43 @@ export class TeamEventValidationService {
   }
 
   onStepSelection(stepNumber, step, stepper, validateCallback) {
-	if (stepNumber) {
-		step.isCompleted = true;
-		stepper.selected.completed = true;
-		if (stepNumber == -1) {
-			step.isCompleted = false;
-			stepper.selected.completed = false;
-			stepper.previous();
-		} else if (step.isLastStep) {
-			validateCallback();
-		} else {
-			stepper.next();
-		}
-	}
-}
+    if (stepNumber) {
+      step.isCompleted = true;
+      stepper.selected.completed = true;
+      if (stepNumber == -1) {
+        step.isCompleted = false;
+        stepper.selected.completed = false;
+        stepper.previous();
+      } else if (step.isLastStep) {
+        validateCallback();
+      } else {
+        stepper.next();
+      }
+    }
+  }
+
+  onNextStep(currentStepNum, steps, callback) {
+    const nextStep = currentStepNum + 1;
+    const currentStep = steps[currentStepNum];
+    if (steps[nextStep] || currentStep.isLastStep) {
+      callback(nextStep, currentStep);
+    }
+  }
+
+  onPreviousStep(currentStep, steps, callback) {
+    const prevStep = currentStep - 1;
+    if (steps[prevStep]) {
+      callback(-1, steps[prevStep]);
+    }
+  }
+
+  onStepChange(selectedStep, steps): { currentStep, steps } {
+    steps = [...steps.map((step, i) => {
+      if (i > selectedStep.selectedIndex) {
+        step.isCompleted = false;
+      }
+      return step;
+    })];
+    return { currentStep: selectedStep.selectedIndex, steps };
+  }
 }

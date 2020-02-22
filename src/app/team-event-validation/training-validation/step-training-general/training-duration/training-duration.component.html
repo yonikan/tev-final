@@ -12,6 +12,7 @@
 			[propName]="'startTime'"
 			[maxPropName]="'endTime'"
 			[(range)]="highlightedRange"
+			[offset]="offset"
 			(updateTime)="updateTime($event, 'startTime')">
 		</app-simple-time-picker>
 		<app-simple-time-picker
@@ -19,6 +20,7 @@
 			[propName]="'endTime'"
 			[maxPropName]="'startTime'"
 			[(range)]="highlightedRange"
+			[offset]="offset"
 			(updateTime)="updateTime($event, 'endTime')">
 		</app-simple-time-picker>
 	</div>

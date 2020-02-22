@@ -1,6 +1,9 @@
 <div class="step-match-formations-container">
     <div class="container">
-        <div class="heading">Starting Formations</div>
+        <div class="title">
+            <h3>Starting Formations</h3>
+          </div>
+        <!-- <div class="heading">Starting Formations</div> -->
         <div class="content">
 			<app-formation-selection
 				[positions]="positions"
@@ -23,9 +26,5 @@
                 (formationFieldEmitter)="onFormationFieldEmitter($event)">
             </app-formation-field>
         </div>
-    </div>
-    <div class="step-footer">
-        <button class="step-back-btn" mat-button (click)="previousStep()">back</button>
-        <button class="step-submit-btn" mat-raised-button (click)="nextStep()" [disabled]="!isValidated">next</button>
     </div>
 </div>

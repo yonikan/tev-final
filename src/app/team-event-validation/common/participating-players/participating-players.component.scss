@@ -5,11 +5,8 @@
     .container {
         .title {
             @include team-event-section-title;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-        
+
         // .heading {
         //     @include team-event-step-heading;
         //     display: flex;

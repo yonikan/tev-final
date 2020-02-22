@@ -8,17 +8,19 @@
 		padding: 0;
     }
     .container {
-        .heading {
-            color: #3d4762;
-            font-size: 30px;
-			text-align: center;
-			margin-bottom: 20px;
-        }
+        .title {
+			@include team-event-section-title;
+		}
+        // .heading {
+        //     color: #3d4762;
+        //     font-size: 30px;
+		// 	text-align: center;
+		// 	margin-bottom: 20px;
+        // }
 
         .content {
             display: grid;
 			grid-template-columns: 50% auto 1fr;
-			grid-template-rows: 530px;
             row-gap: 10px;
             column-gap: 10px;
 
