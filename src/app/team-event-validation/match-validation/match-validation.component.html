@@ -3,7 +3,7 @@
         <mat-spinner></mat-spinner>
     </div>
 	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data"  (selectionChange)="onStepChange($event)" #stepper>
-		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted && currentStep === stepper._selectedIndex">
+		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted">
 			<ng-template matStepLabel>{{step.name}}</ng-template>
 			<app-step-match-overview
 				*ngIf="step.name === 'OVERVIEW' && step1Data"

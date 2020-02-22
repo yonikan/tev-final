@@ -2,6 +2,6 @@
 	<div class="label">{{label}}</div>
 	<div class="time-input">
 		<input type="time" matInput placeholder="0" max="getTimeStr(highlightedRang[maxPropName])"
-			[ngModel]="range[propName] | convertedDate: 'HH:mm': offset" (ngModelChange)="onUpdateTime($event)" />
+			[ngModel]="range[propName] | convertedDate: 'HH:mm': '0'" (ngModelChange)="onUpdateTime($event)" />
 	</div>
 </div>
