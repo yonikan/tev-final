@@ -136,7 +136,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 			};
 
 			this.store.next(newState);
-			this.sendToTeamEvent(newState);
+			this.sendToTeamEvent(newState.allPlayers);
 		});
 	}
 
@@ -163,7 +163,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 			};
 
 			this.store.next(newState);
-			this.sendToTeamEvent(newState);
+			this.sendToTeamEvent(newState.allPlayers);
 		});
 
 	}
@@ -219,6 +219,12 @@ export class ParticipatingPlayersComponent implements OnInit {
 	getClubPlayers() {
 		const clubPlayersGroup = this.getGrouped(this.clubPlayers, 'teamName', 'players');
 		return clubPlayersGroup.map((cpg: any) => {
+			cpg.players = cpg.players.map((player: any) => {
+				player.isParticipated = this.allPlayers.some(p => {
+					return p.id === player.userId && p.isParticipated
+				})
+				return player;
+			});
 			cpg.players = this.getGrouped(cpg.players, 'positionName', 'players');
 			return cpg;
 		});
