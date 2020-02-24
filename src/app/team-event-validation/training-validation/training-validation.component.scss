@@ -4,7 +4,8 @@
 
 :host {
     .training-validation-container {
-        @include team-event-container;
+		@include team-event-container;
+		@include stepper-bold-label;
     }
 }
 
