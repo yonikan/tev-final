@@ -4,7 +4,11 @@
     </div>
 	<mat-horizontal-stepper [linear]="true" *ngIf="!isLoading && step1Data" (selectionChange)="onStepChange($event)" #stepper>
 		<mat-step *ngFor="let step of steps; let i = index" [completed]="step.isCompleted">
-			<ng-template matStepLabel>{{step.name}}</ng-template>
+			<ng-template matStepLabel>
+				<div [ngClass]="{'stpper-bold-label': step.id === currentStep}">
+					{{step.name}}
+				</div>
+			</ng-template>
 			<app-step-training-general
 				*ngIf="step.name === 'GENERAL'"
 				[teamEventId]="trainingId"
