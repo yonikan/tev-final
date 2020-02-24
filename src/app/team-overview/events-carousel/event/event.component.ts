@@ -86,7 +86,17 @@ export class EventComponent implements OnInit {
     }
 
     let teamEventDate = moment(teamEventStartTime);
-    this.durationTimeAgo = teamEventDate.format('ddd, MMM Do YYYY');
+
+    let today = moment();
+    let yesterday = moment().subtract(1, 'day');
+    
+    if(moment(this.eventData.startTime).isSame(today, 'day')) {
+      this.durationTimeAgo = 'Today';
+    } else if (moment(this.eventData.startTime).isSame(yesterday, 'day')) {
+      this.durationTimeAgo = 'Yesterday';
+    } else {
+      this.durationTimeAgo = teamEventDate.format('ddd, MMM Do YYYY');
+    }
 
     let startHours = new Date(teamEventStartTime).toISOString().substring(11, 13);
     let startMinutes = new Date(teamEventStartTime).toISOString().substring(14, 16);
