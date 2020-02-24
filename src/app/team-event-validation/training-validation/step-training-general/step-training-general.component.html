@@ -5,5 +5,5 @@
 			[offset]="stepTrainingGeneralData.offset"
 			[highlightedRange]="highlightedRange">
 		</app-training-duration>
-        <app-tags (tagsEmitter)="onTagsEmitter($event)" [stepData]="stepTrainingGeneralData"></app-tags>
+        <app-tags [teamEventType]="1" (tagsEmitter)="onTagsEmitter($event)" [stepData]="stepTrainingGeneralData"></app-tags>
 </div>

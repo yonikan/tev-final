@@ -14,6 +14,7 @@ export class TagsComponent implements OnInit, OnChanges {
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @Input() stepData: any;
+  @Input() teamEventType: number;
   @Output() tagsEmitter = new EventEmitter<any>();
   tagCtrl = new FormControl();
   visible = true;
@@ -23,10 +24,19 @@ export class TagsComponent implements OnInit, OnChanges {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   teamEventTags: any[] = [];
   filteredTags: Observable<string[]>;
+  teamEventTypeString: string;
 
   constructor() {}
 
   ngOnInit() {
+    if (this.teamEventType === 1){
+      this.teamEventTypeString = 'training';
+    } else if (this.teamEventType === 2) {
+      this.teamEventTypeString = 'match';
+    } else {
+      this.teamEventTypeString = 'session';
+    };
+
     if(this.stepData.tags && this.stepData.tags.length > 0) {
       this.stepData.tags.forEach(tag => {
         this.teamEventTags.push({name: tag})
