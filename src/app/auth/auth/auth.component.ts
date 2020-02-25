@@ -45,9 +45,6 @@ export class AuthComponent implements OnInit, OnDestroy {
         filter(params => params.page)
       )
       .subscribe(params => {
-        const test = params.test;
-        console.log('test: ', test);
-
         this.loginMode = params.page;
         this.userToken = params.token;
       });
