@@ -49,27 +49,34 @@ export class ValidatedEventsComponent implements OnInit {
     );
   }
 
-  onDeleteSession(teamEventId) {
-    const modalTitle = 'Delete Session';
-    const modalMessage = `Are you sure you want to delete the session?`;
+  onDeleteSession(teamEvent) {
+    let eventType;
+    if(teamEvent.teamEventType === 1) {
+      eventType = 'training';
+    } else if(teamEvent.teamEventType === 2) {
+      eventType = 'match';
+    };
+    const modalTitle = `delete ${eventType}`;
+    const modalMessage = `Are you sure you want to delete the ${eventType}?`;
     const dialogRef = this.dialog.open(EventsCarouselModalComponent, {
       width: '500px',
       height: '200px',
       data: { 
         title: modalTitle,
         message: modalMessage,
-        modalData: teamEventId
+        modalData: teamEvent.teamEventId
       }
     });
     dialogRef.afterClosed()
       .subscribe(modalData => {
         if(modalData) {
           this.uiComponentsService.setIsLoading(true);
+          const PATH = this.serverEnvService.getBaseUrl(1);
           this.http
-            .delete<any>(`https://football-dev.playermaker.co.uk/api/v1/team_event/${teamEventId}`)
+            .delete<any>(`${PATH}/v1/team_event/${teamEvent.teamEventId}`)
             .subscribe((result: any) => {
               this.uiComponentsService.setIsLoading(false);
-              const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEventId );
+              const teamIndex = this.teamEvents.findIndex((teamEvent) => teamEvent.id === teamEvent.teamEventId );
               this.teamEvents.splice(teamIndex, 1);
             }, (err) => {
               console.log('err: ', err);

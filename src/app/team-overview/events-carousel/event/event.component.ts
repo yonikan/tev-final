@@ -15,7 +15,7 @@ export class EventComponent implements OnInit {
   @Output() confirmSessionEmitter = new EventEmitter<any>();
   @Output() convertSessionEmitter = new EventEmitter<any>();
   @Output() editSessionEmitter = new EventEmitter<any>();
-  @Output() deleteSessionEmitter = new EventEmitter<string>();
+  @Output() deleteSessionEmitter = new EventEmitter<any>();
   @Output() downloadPdfReportEmitter = new EventEmitter<any>();
   isValidated = false;
   teamEventTypeString;
@@ -161,15 +161,12 @@ export class EventComponent implements OnInit {
     this.editSessionEmitter.emit(event);
   }
 
-  deleteSession(eventId) {
-    this.deleteSessionEmitter.emit(eventId);
-
-    // const event = {
-    //   teamEventId: this.eventData.id,
-    //   teamEventType: this.eventData.type
-    // };
-
-    // this.deleteSessionEmitter.emit(event);
+  deleteSession() {
+    const event = {
+      teamEventId: this.eventData.id,
+      teamEventType: this.eventData.type
+    };
+    this.deleteSessionEmitter.emit(event);
   }
 
   downloadPdfReport(reportType) {
