@@ -148,7 +148,7 @@ export class AuthService {
   setPassword(token: string, password: string) {
     this.postSetPassword(token, password)
       .subscribe((results: any) => {
-
+        this.router.navigateByUrl('/login?page=user-login');
       });
   }
 }
