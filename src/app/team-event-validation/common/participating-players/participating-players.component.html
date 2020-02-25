@@ -8,7 +8,7 @@
 			[players]="allPlayers"
 			[actionName]="'Exclude'"
 			[isSwapAllowed]="true"
-			[isResetAllowed]="true"
+			[isResetAllowed]="isResetAllowed"
 			(excludePlayer)="doExcludePlayer($event)"
 			(resetChanges)="doResetChanges($event, true)"
 			(openSummaryPanel)="openSwapPlayersPanel($event)"></app-participating-column>
