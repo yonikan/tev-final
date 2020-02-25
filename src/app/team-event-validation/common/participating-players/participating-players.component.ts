@@ -45,6 +45,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 	clubPlayersGroup: any[];
 	currentPlayer;
 	isIncluded;
+	isResetAllowed = false;
 
 	constructor(private participatingPlayersService: ParticipatingPlayersService, public dialog: MatDialog, private teamEventValidationService: TeamEventValidationService, private uiComponentService: UiComponentsService) {
 	}
@@ -83,6 +84,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 	}
 
 	doExcludePlayer(player) {
+		this.isResetAllowed = true;
 		this.store.next({
 			excludedPlayers: [],
 			includedPlayers: [],
@@ -96,6 +98,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 		});
 	}
 	doIncludePlayer(player) {
+		this.isResetAllowed = true;
 		this.store.next({
 			excludedPlayers: [],
 			includedPlayers: [],
@@ -135,8 +138,9 @@ export class ParticipatingPlayersComponent implements OnInit {
 				})
 			};
 
+			this.isResetAllowed = true;
 			this.store.next(newState);
-			this.sendToTeamEvent(newState);
+			this.sendToTeamEvent(newState.allPlayers);
 		});
 	}
 
@@ -162,8 +166,9 @@ export class ParticipatingPlayersComponent implements OnInit {
 				clubPlayers: [...this.initialState.clubPlayers]
 			};
 
+			this.isResetAllowed = false;
 			this.store.next(newState);
-			this.sendToTeamEvent(newState);
+			this.sendToTeamEvent(newState.allPlayers);
 		});
 
 	}
@@ -219,6 +224,12 @@ export class ParticipatingPlayersComponent implements OnInit {
 	getClubPlayers() {
 		const clubPlayersGroup = this.getGrouped(this.clubPlayers, 'teamName', 'players');
 		return clubPlayersGroup.map((cpg: any) => {
+			cpg.players = cpg.players.map((player: any) => {
+				player.isParticipated = this.allPlayers.some(p => {
+					return p.id === player.userId && p.isParticipated
+				})
+				return player;
+			});
 			cpg.players = this.getGrouped(cpg.players, 'positionName', 'players');
 			return cpg;
 		});
