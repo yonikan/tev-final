@@ -9,6 +9,7 @@ import { PmDropdownComponent } from './pm-dropdown/pm-dropdown.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { PmContentDropdownComponent } from './pm-content-dropdown/pm-content-dropdown';
+import { RestrictLanguagesDirective } from './directives/restrict-languages.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PmContentDropdownComponent } from './pm-content-dropdown/pm-content-dro
     PmDropdownComponent,
     TimePickerComponent,
     ProfileImageComponent,
-    PmContentDropdownComponent
+    PmContentDropdownComponent,
+    RestrictLanguagesDirective
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { PmContentDropdownComponent } from './pm-content-dropdown/pm-content-dro
     PmDropdownComponent,
     TimePickerComponent,
     ProfileImageComponent,
-    PmContentDropdownComponent
+    PmContentDropdownComponent,
+    RestrictLanguagesDirective
   ]
 })
 export class SharedModule { }

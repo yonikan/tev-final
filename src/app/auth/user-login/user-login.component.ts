@@ -55,4 +55,20 @@ export class UserLoginComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }
+
+  // inputFilter(event: any) {
+  //   console.log('event: ', event);
+  //   // const pattern: RegExp = /[0-9\+\-\ ]/; // num
+  //   // const pattern = /^[A-Za-z0-9 _~!@#$%^*()+=,.?:|<>\s\-\s\\s\/]*$/; // en
+  //   const pattern: RegExp = /[0-9\+\-\ ]/; // num
+
+  //   let inputChar = String.fromCharCode(event.charCode);
+  //   console.log('inputChar: ', inputChar);
+
+  //   if (!pattern.test(event)) {
+  //     // invalid character, prevent input
+  //     // event.preventDefault();
+  //     console.log('not good!');
+  //   }
+  // }
 }

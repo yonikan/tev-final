@@ -13,6 +13,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 import { ValidatedEventsToastComponent } from './components/validated-events-toast/validated-events-toast.component';
 import { StaticDataService } from './services/static-data.service';
+// import { RestrictLanguagesDirective } from '../shared/directives/restrict-languages.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { StaticDataService } from './services/static-data.service';
     ThemePickerComponent,
     MenuComponent,
     ErrorModalComponent,
-    ValidatedEventsToastComponent
+    ValidatedEventsToastComponent,
+    // RestrictLanguagesDirective
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { StaticDataService } from './services/static-data.service';
     ThemePickerComponent,
     MenuComponent,
     ErrorModalComponent,
-    ValidatedEventsToastComponent
+    ValidatedEventsToastComponent,
+    // RestrictLanguagesDirective
   ]
 })
 export class CoreModule { }
