@@ -66,9 +66,9 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
   }
 
   removeRow(substitutionToRemove /* Substitution */, mode: string): void {
-    const substitutionIndex = this.substitutions.findIndex(substitution => substitution.subId === substitutionToRemove.subId);
-    if (mode === 'GENERAL') { this.substitutions.splice(substitutionIndex, 1); }
-    if (mode === 'SUGGESTED') { this.suggestedSubs.splice(substitutionIndex, 1); }
+    const selectSubsList = mode === 'SUGGESTED' ? this.suggestedSubs : this.substitutions;
+    const substitutionIndex = selectSubsList.findIndex(substitution => substitution.subId === substitutionToRemove.subId);
+    selectSubsList.splice(substitutionIndex, 1);
     delete this.subFormationPerMinute[substitutionToRemove.timeMin];
   }
 
@@ -148,8 +148,8 @@ export class SubstitutionsTableComponent implements OnInit, OnChanges {
       const prevSubFormation = index > 0 ? this.subFormationPerMinute[this.substitutions[index - 1].timeMin] : this.subFormationPerMinute[0]
       const inPlayerIdx = prevSubFormation.availableForSub.findIndex(({ id }) => id === substitutionForCheck.inPlayerId)
       const outPlayerIdx = prevSubFormation.lineup.findIndex(({ id }) => id === substitutionForCheck.outPlayerId)
-      if (inPlayerIdx === -1) { errorMassage += 'Invalid subbed in player' }
-      if (outPlayerIdx === -1) { errorMassage += 'Invalid subbed out player' }
+      if (inPlayerIdx === -1) { errorMassage += 'Invalid subbed in player, ' };
+      if (outPlayerIdx === -1) { errorMassage += 'Invalid subbed out player, ' };
     }
 
     // check all fields are full

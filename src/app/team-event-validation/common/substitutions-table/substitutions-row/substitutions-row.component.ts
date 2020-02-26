@@ -25,10 +25,6 @@ export class SubstitutionsRowComponent implements OnInit {
   Object: ObjectConstructor = Object;
   substitutionForDisplay; // Substitution
   positions; // ?
-  minTimeForSub: number | string = 0;
-  errorsManager = {
-    showError: false, errorMassage: ''
-  }
 
   constructor(private teamEventValidationService: TeamEventValidationService) {
   }
@@ -47,11 +43,17 @@ export class SubstitutionsRowComponent implements OnInit {
   setSubForDisplay(): void {
     const inPlayer = this.teamEventValidationService.getPlayerById(this.substitutionDraft['inPlayerId']);
     const outPlayer = this.teamEventValidationService.getPlayerById(this.substitutionDraft['outPlayerId']);
+
+    if (!this.substitutionDraft['positionId'] && inPlayer.defaultPositionId) {
+      this.populateCell(inPlayer.defaultPositionId, 'Position');
+      return;
+    }
+
     this.substitutionForDisplay = {
       Minute: this.substitutionDraft['timeMin'] || '',
       In: `${inPlayer.firstName || ''} ${inPlayer.lastName || ''}`,
       Out: `${outPlayer.firstName || ''} ${outPlayer.lastName || ''}`,
-      Position: this.substitutionDraft['positionId'] ? this.teamEventValidationService.getPlayerPositionName(this.substitutionDraft['positionId'], 'shortName') : (inPlayer.defaultPositionId && this.teamEventValidationService.getPlayerPositionName(inPlayer.defaultPositionId, 'shortName')) || '',
+      Position: this.substitutionDraft['positionId']? this.teamEventValidationService.getPlayerPositionName(this.substitutionDraft['positionId'], 'shortName') : '',
     }
   }
 
@@ -64,6 +66,7 @@ export class SubstitutionsRowComponent implements OnInit {
   }
 
   addRowEmit(): void {
+    if (this.rowMode === 'NEW' && !this.isSubFull()) { return };
     this.addRow.emit({ substitution: this.substitutionDraft, rowMode: this.rowMode });
     if (this.rowMode === 'EDIT') { this.changeRowMode('GENERAL'); }
     if (this.rowMode === 'NEW') { this.resetSubstitution(); }
@@ -93,10 +96,6 @@ export class SubstitutionsRowComponent implements OnInit {
 
     this.substitutionDraft[map[cell]] = value;
 
-    if (cell === 'Minute') {
-      if (value > this.minTimeForSub) { this.minTimeForSub = value };
-      (value > 125 || value <= 0 || !Number.isInteger(value)) ? this.errorsManager.showError = true : this.errorsManager.showError = false;
-    }
     this.setSubForDisplay();
   }
 
@@ -115,5 +114,9 @@ export class SubstitutionsRowComponent implements OnInit {
       Position: '',
     }
   };
+
+  isSubFull() {
+    return this.substitutionDraft.timeMin && this.substitutionDraft.inPlayerId && this.substitutionDraft.outPlayerId && this.substitutionDraft.positionId;
+  }
 
 }
