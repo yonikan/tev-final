@@ -8,7 +8,8 @@
         <form [formGroup]="userLoginFormGroup" (submit)="onLogin()" *ngIf="!isLoading">
             <mat-form-field>
                 <mat-label>Email Address</mat-label>
-                <input matInput type="email" formControlName="emailText">
+                <!-- <input  (ngModelChange)="inputFilter($event)" matInput type="email" formControlName="emailText"> -->
+                <input  appRestrictLanguages matInput type="email" formControlName="emailText">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Password</mat-label>

@@ -72,9 +72,6 @@ export class AuthService {
 
   login(email: string, password: string) {
     this.fetchUserLoginData(email, password)
-      // .pipe(
-      //   tap((loginData: any) => console.log(loginData)),
-      // )
       .subscribe(
         (userLoginDataResponse: UserLogin) => {
           if (userLoginDataResponse.token) {
@@ -84,8 +81,8 @@ export class AuthService {
             this.token = userLoginDataResponse.token;
             this.localStorageService.storeOnCookie('token', this.token);
             this.isAuthenticated = true;
-			this.authStatusListener.next(true);
-			this.router.navigate(['/team-overview']);
+            this.authStatusListener.next(true);
+            this.router.navigate(['/team-overview']);
           }
         },
         (error) => {
@@ -148,7 +145,7 @@ export class AuthService {
   setPassword(token: string, password: string) {
     this.postSetPassword(token, password)
       .subscribe((results: any) => {
-
+        this.router.navigateByUrl('/login?page=user-login');
       });
   }
 }
