@@ -4,6 +4,7 @@
 		(opened)="club.isOpen = true"
 		(closed)="club.isOpen = false"
 		hideToggle="true"
+		[expanded]="club.isOpen"
 		#matExpansionPanel>
 		<mat-expansion-panel-header>
 			<mat-panel-title>
