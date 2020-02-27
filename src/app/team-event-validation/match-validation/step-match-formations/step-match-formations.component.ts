@@ -56,6 +56,9 @@ export class StepMatchFormationsComponent implements OnInit, OnChanges {
 		this.formationData = this.stepMatchFormationsData.formation;
 		this.playersData = Object.values(this.stepMatchFormationsData.participatingPlayers)
 		.reduce((acc: any, val: any) => {
+			if (!val.isParticipated) {
+				return acc;
+			}
 			const position = this.positions[val.defaultPositionId];
 			const categoryPlayers = acc.find(v => v.category === position.category);
 			if (!categoryPlayers) {

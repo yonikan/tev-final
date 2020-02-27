@@ -5,32 +5,8 @@
   text-align: center;
   @include modal;
 
-  // .modal-container {
-  //   .dialog-header {
-  //     border-top: 5px solid $color-purple;
-  //     // border-bottom: 1px solid #000;
-  //     padding: 15px 0;
-  //     color: #fff;
-  //     // background-color: $color-purple;
-  //     background-color: #f4f4f4;
-  //     color: #3d4762;
-  //   }
-  
-  //   .dialog-content {
-  //     padding: 0 20px;
-  //     color: #96a1ae;
-  //   }
-  
-  //   .dialog-footer {
-  //     button {
-  //       background-color: $color-green;
-  //       color: white;
-  //       margin: 0 auto;
-  //       margin-bottom: 20px;
-  //       width: 50%;
-  //       text-transform: uppercase;
-  //       border-radius: 20px;
-  //     }
-  //   }
-  // }
+  .icon-error-icon {
+    margin-right: 10px;
+    color: $color-pink;
+  }
 }

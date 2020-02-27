@@ -23,7 +23,7 @@
 	</div>
 	<div class="details-content" [hidden]="!currentPlayer" #swapPlayersPanel>
 		<div>
-			<app-swap-players [clubPlayers]="clubPlayersGroup" (swapPlayer)="doSwapPlayer($event, true)" [currentPlayer]="currentPlayer" [isIncluded]="isIncluded"></app-swap-players>
+			<app-swap-players [teamId]="team.id" [clubPlayers]="clubPlayersGroup" (swapPlayer)="doSwapPlayer($event, true)" [currentPlayer]="currentPlayer" [isIncluded]="isIncluded"></app-swap-players>
 		</div>
 	</div>
 	<div *ngIf="allPlayers.length" (click)="openDialog()" class="contact-support-button">

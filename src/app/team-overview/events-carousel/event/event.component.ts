@@ -15,7 +15,7 @@ export class EventComponent implements OnInit {
   @Output() confirmSessionEmitter = new EventEmitter<any>();
   @Output() convertSessionEmitter = new EventEmitter<any>();
   @Output() editSessionEmitter = new EventEmitter<any>();
-  @Output() deleteSessionEmitter = new EventEmitter<string>();
+  @Output() deleteSessionEmitter = new EventEmitter<any>();
   @Output() downloadPdfReportEmitter = new EventEmitter<any>();
   isValidated = false;
   teamEventTypeString;
@@ -86,7 +86,17 @@ export class EventComponent implements OnInit {
     }
 
     let teamEventDate = moment(teamEventStartTime);
-    this.durationTimeAgo = teamEventDate.format('ddd, MMM Do YYYY');
+
+    let today = moment();
+    let yesterday = moment().subtract(1, 'day');
+    
+    if(moment(this.eventData.startTime).isSame(today, 'day')) {
+      this.durationTimeAgo = 'Today';
+    } else if (moment(this.eventData.startTime).isSame(yesterday, 'day')) {
+      this.durationTimeAgo = 'Yesterday';
+    } else {
+      this.durationTimeAgo = teamEventDate.format('ddd, MMM Do YYYY');
+    }
 
     let startHours = new Date(teamEventStartTime).toISOString().substring(11, 13);
     let startMinutes = new Date(teamEventStartTime).toISOString().substring(14, 16);
@@ -151,15 +161,12 @@ export class EventComponent implements OnInit {
     this.editSessionEmitter.emit(event);
   }
 
-  deleteSession(eventId) {
-    this.deleteSessionEmitter.emit(eventId);
-
-    // const event = {
-    //   teamEventId: this.eventData.id,
-    //   teamEventType: this.eventData.type
-    // };
-
-    // this.deleteSessionEmitter.emit(event);
+  deleteSession() {
+    const event = {
+      teamEventId: this.eventData.id,
+      teamEventType: this.eventData.type
+    };
+    this.deleteSessionEmitter.emit(event);
   }
 
   downloadPdfReport(reportType) {
