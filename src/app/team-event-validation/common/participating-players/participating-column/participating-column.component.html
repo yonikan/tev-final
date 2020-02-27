@@ -22,7 +22,7 @@
 							<span>{{'|'}}</span>
 						</div> -->
 						<div class="light-text" *ngIf="player.activeTime[0]">
-							{{player.activeTime[0].startTime | getTime}} - {{player.activeTime[0].endTime | getTime}}
+							{{player.activeTime[0].startTime | getTime: false}} - {{player.activeTime[0].endTime | getTime}}
 							{{player.activeTime[0].startTime | timeDiff: player.activeTime[0].endTime : 'm'}}
 						</div>
 					</div>
