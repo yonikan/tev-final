@@ -20,7 +20,7 @@ export class TagsComponent implements OnInit, OnChanges {
   visible = true;
   selectable = true;
   removable = true;
-  addOnBlur = true;
+  addOnBlur = false;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   teamEventTags: any[] = [];
   filteredTags: Observable<string[]>;
