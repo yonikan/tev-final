@@ -134,6 +134,7 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 		this.closeSelect = e.close;
 		this.isShowSwapPlayers = e.isOpen;
 		this.select = e.select;
+		this.playersData = this.playersData.map(playerData => ({...playerData, isOpen: false}));
 		if (e.isOpen) {
 			this.positionIdForSwap = e.positionId;
 			const { height } = e.select.nativeElement.getBoundingClientRect();
