@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TeamEventValidationService } from '../../team-event-validation.service';
-import { UiComponentsService } from 'src/app/core/services/ui-components.service';
 import { ContactSupportModalComponent } from 'src/app/shared/contact-support-modal/contact-support-modal.component';
 import { ParticipatingPlayersService } from './participating-players.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 interface InitialState {
 	excludedPlayers: Array<Object>;
@@ -46,17 +46,18 @@ export class ParticipatingPlayersComponent implements OnInit {
 	currentPlayer;
 	isIncluded;
 	isResetAllowed = false;
+	userId;
+	team: any = {};
 
-	constructor(private participatingPlayersService: ParticipatingPlayersService, public dialog: MatDialog, private teamEventValidationService: TeamEventValidationService, private uiComponentService: UiComponentsService) {
+	constructor(
+		private participatingPlayersService: ParticipatingPlayersService,
+		private dialog: MatDialog,
+		private teamEventValidationService: TeamEventValidationService,
+		private authService: AuthService) {
 	}
 
 	ngOnInit() {
-		// this.uiComponentService
-		// 	.getSidepanelOpenListener()
-		// 	.subscribe(data => {
-		// 		console.log('data' ,data);
-
-		// 	});
+		[this.team] = this.authService.getUserLoginData().teams;
 		this.store = this.participatingPlayersService.getStore();
 		this.participatingPlayersService.getState().subscribe(data => {
 			const {allPlayers, clubPlayers} = data;
@@ -216,9 +217,7 @@ export class ParticipatingPlayersComponent implements OnInit {
 
 		return Object
 			.keys(group)
-			.map((name, i) => {
-				return {name, [subGroupName]: group[name]}
-			});
+			.map(name => ({name, teamId: this.team.id, [subGroupName]: group[name]}));
 	}
 
 	getClubPlayers() {
