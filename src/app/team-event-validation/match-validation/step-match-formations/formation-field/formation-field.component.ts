@@ -83,22 +83,65 @@ export class FormationFieldComponent implements OnInit, OnChanges {
 		}, []);
 
 		const positionIdMap = this.mapPositionIds();
+		const defaultPositionPlayers = this.buildDefaultPositionPlayers(positionIdMap);
+
 		if (this.formationTemplate.formationPosition) {
 			this.formationTemplate.formationPosition = this.formationTemplate.formationPosition.map(formationPosition => {
 				const player = positionIdMap[formationPosition.positionId];
 				formationPosition.playerId = player ? player.playerId : null;
 				return formationPosition;
-			}).map(formationPosition => {
-				if (!formationPosition.playerId && positionIdMap.empty) {
-					const randPlayer = this.getRandomPlayer(positionIdMap.empty);
-					if (randPlayer) {
-						positionIdMap.empty = positionIdMap.empty.filter(positionMap => positionMap.playerId !== randPlayer.playerId);
-						formationPosition.playerId = randPlayer.playerId;
-					}
-				}
-				return formationPosition;
-			});
+			})
+			.map(formationPosition => this.positionPlayerByDefaultPosition(formationPosition, defaultPositionPlayers, positionIdMap))
+			.map(formationPosition => this.positionPlayerRandom(formationPosition, positionIdMap));
 		}
+	}
+
+	buildDefaultPositionPlayers(positionIdMap: any) {
+		return this.players.reduce((acc, val) => {
+			let formationPositionId = null;
+			this.formation.some(formation => {
+				if (formation.playerId === val.id) {
+					formationPositionId = formation.positionId;
+					return true;
+				}
+				return false;
+			});
+			if (formationPositionId && positionIdMap[formationPositionId].positionId) {
+				// exclude pre-positioned players
+				return acc;
+			}
+			if (!acc[val.defaultPositionId]) {
+				acc[val.defaultPositionId] = [];
+			}
+			acc[val.defaultPositionId] = [...acc[val.defaultPositionId], val];
+			return acc;
+		}, {});
+	}
+
+	positionPlayerRandom(formationPosition, positionIdMap) {
+		if (!formationPosition.playerId && positionIdMap.empty) {
+			const randPlayer = this.getRandomPlayer(positionIdMap.empty);
+			if (randPlayer) {
+				positionIdMap.empty = positionIdMap.empty.filter(positionMap => positionMap.playerId !== randPlayer.playerId);
+				formationPosition.playerId = randPlayer.playerId;
+			}
+		}
+		return formationPosition;
+	}
+
+	positionPlayerByDefaultPosition(formationPosition, defaultPositionPlayers, positionIdMap) {
+		if (!formationPosition.playerId && defaultPositionPlayers[formationPosition.positionId]) {
+			const [player] = defaultPositionPlayers[formationPosition.positionId];
+			if (player) {
+				[, ...defaultPositionPlayers[formationPosition.positionId]] = defaultPositionPlayers[formationPosition.positionId];
+				if (positionIdMap.empty) {
+					positionIdMap.empty = positionIdMap.empty.filter(positionPlayer => positionPlayer.playerId !== player.id);
+				}
+				formationPosition.playerId = player.id;
+			}
+		}
+
+		return formationPosition;
 	}
 
 	sameRow = (y1, y2) => y1 === y2;
