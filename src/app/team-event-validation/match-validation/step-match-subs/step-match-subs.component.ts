@@ -26,7 +26,7 @@ export class StepMatchSubsComponent implements OnInit {
 		this.stepSelectionEmitter.emit(-1);
   }
 
-  checkIfValid(event): void{
+  checkIfSubsAreValid(event): void{
     this.isStepValid = event.isValid;
     if (event.isValid) {
       this.onMatchSubsEmitter(event.substitutions);

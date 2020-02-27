@@ -36,7 +36,7 @@ export class SubstitutionsRowComponent implements OnInit {
   }
 
   setSubId(sub /* Substitution */): void {
-    sub['subId'] = Date.now();
+    sub['subId'] = +`${Date.now()}${Math.round(Math.random()*1000)}`;
     this.substitutionDraft = { ...this.substitution };
   }
 
