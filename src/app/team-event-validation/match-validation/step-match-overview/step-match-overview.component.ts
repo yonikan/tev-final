@@ -18,8 +18,6 @@ export class StepMatchOverviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.stepMatchOverviewData);
-
 	  this.participatingPlayersService.getData(this.teamEventId, 'match');
   }
 
