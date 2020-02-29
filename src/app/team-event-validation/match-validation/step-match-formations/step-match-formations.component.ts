@@ -92,6 +92,7 @@ export class StepMatchFormationsComponent implements OnInit, OnChanges {
 	}
 
 	onFormationFieldEmitter(formationFieldData) {
+		console.log('formationFieldData: ', formationFieldData);
 		const matchData = this.teamEventValidationService.getMatchValidationData();
 		let matchDataCopy = {...matchData};
 		matchDataCopy.formation = formationFieldData;

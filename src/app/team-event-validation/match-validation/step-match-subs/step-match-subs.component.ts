@@ -34,6 +34,7 @@ export class StepMatchSubsComponent implements OnInit {
   }
 
 	onMatchSubsEmitter(matchSubsData) {
+		console.log('matchSubsData: ', matchSubsData);
 		// const matchData = this.teamEventValidationService.getMatchValidationData();
 		// let matchDataCopy = {...matchData};
 		// matchDataCopy.substitutions = matchSubsData;

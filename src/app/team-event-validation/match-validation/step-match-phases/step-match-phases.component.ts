@@ -43,6 +43,7 @@ export class StepMatchPhasesComponent implements OnInit, OnChanges {
 	}
 
 	onMatchPhasesEmitter(updatedPhases) {
+		console.log('updatedPhases: ', updatedPhases);
     this.stepMatchPhasesData.phases = updatedPhases;
     //TODO: replace in step data
 

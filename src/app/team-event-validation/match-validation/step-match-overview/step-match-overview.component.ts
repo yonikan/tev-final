@@ -27,6 +27,7 @@ export class StepMatchOverviewComponent implements OnInit {
   }
 
   onMatchOverviewEmitter(matchOverviewData) {
+    console.log('matchOverviewData: ', matchOverviewData);
     const matchData = this.teamEventValidationService.getMatchValidationData();
 		let matchDataCopy = {...matchData};
     matchDataCopy.metadata.vanue = matchOverviewData.vanue;
@@ -40,6 +41,7 @@ export class StepMatchOverviewComponent implements OnInit {
   }
 
   onTagsEmitter(tags) {
+    console.log('tags: ', tags);
 		let trimmedTags = [];
 		tags.forEach(tag => {
 			trimmedTags.push(tag.name);
